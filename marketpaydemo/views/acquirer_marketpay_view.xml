@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2019 Pedro Baños Guirao
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3). -->
+<odoo>
+
+    <record id="acquirer_form_marketpay" model="ir.ui.view">
+        <field name="name">acquirer.form.marketpay</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.acquirer_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//group[@name="acquirer"]' position='after'>
+                <group attrs="{'invisible': [('provider', '!=', 'marketpay')]}">
+                    <field name="x_marketpay_key" attrs="{'required': [('provider', '=', 'marketpay')]}"/>
+                    <field name="x_marketpay_secret" attrs="{'required': [('provider', '=', 'marketpay')]}"/>
+                    <field name="x_marketpay_domain" attrs="{'required': [('provider', '=', 'marketpay')]}"/>
+                    <field name="x_marketpay_url_ok" attrs="{'required': [('provider', '=', 'marketpay')]}"/>
+                    <field name="x_marketpay_url_ko" attrs="{'required': [('provider', '=', 'marketpay')]}"/>
+                    <field name="x_marketpay_fee" attrs="{'required': [('provider', '=', 'marketpay')]}"/>
+                </group>
+                <group attrs="{'invisible': [('provider', '!=', 'marketpay')]}">
+                    <field name="send_quotation"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="transaction_form_marketpay" model="ir.ui.view">
+        <field name="name">acquirer.transaction.form.marketpay</field>
+        <field name="model">payment.transaction</field>
+        <field name="inherit_id" ref="payment.transaction_form"/>
+        <field name="arch" type="xml">
+            <field name="date" position='after'>
+                <field name="marketpay_txnid"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

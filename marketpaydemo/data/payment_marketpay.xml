@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016-2017 Sergio Teruel <sergio.teruel@tecnativa.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3). -->
+<odoo noupdate="1">
+
+    <record id="payment_acquirer_marketpay" model="payment.acquirer">
+        <field name="name">Marketpay</field>
+        <field name="image" type="base64"
+               file="marketpaydemo/static/description/marketpay.png"/>
+        <field name="provider">marketpay</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="view_template_id" ref="marketpay_form"/>
+        <field name="environment">test</field>
+        <field name="x_marketpay_key">Key</field>
+        <field name="x_marketpay_secret">Secret</field>
+        <field name="x_marketpay_domain">URL</field>
+        <field name="x_marketpay_url_ok">url OK</field>
+        <field name="x_marketpay_url_ko">url KO</field>
+        <field name="x_marketpay_fee">0</field>
+        <field name="description" type="html">
+            <p>
+                A payment gateway to accept online payments via credit cards.
+            </p>
+            <ul>
+                <li><i class="fa fa-check"/>eCommerce</li>
+            </ul>
+        </field>
+        <field name="pre_msg"><![CDATA[
+<p>You will be redirected to the Redsys payment gateway after clicking on the payment button.</p>]]></field>
+    </record>
+
+</odoo>
