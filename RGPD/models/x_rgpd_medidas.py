@@ -8,10 +8,11 @@ class x_rgpd_medidas(models.Model):
 
 
     x_name= fields.Char(String="string Demo", required=True)
-    x_empresa_id= fields.Integer()
+    # Multicompañia pendiente
+    #x_empresa_id= fields.Many2one('res.partner', 'Empresa' , domain[('is_company','=',True)])
     x_tipo = fields.Selection(['técnicas','legales','organizativas'])
     x_descripcion = fields.Text()
-    x_proyecto_id =
-    x_usuario_id =
-    x_estado = fields.Boolean(String="Estado")
+    x_proyecto_id = fields.Many2one('project.project')
+    x_usuario_id = fields.Many2one('res.users')
+    x_estado = fields.Selection(['Borrador','Activo','Archivado'])
 

@@ -9,4 +9,4 @@ class x_rgpd_legales(models.Model):
     id = fields.Integer()
     x_codigo = fields.Integer()
     x_name= fields.Char(String="string Demo", required=True)
-    x_estado = fields.Boolean(String="Estado")
+    #x_estado = fields.Selection([('borrador','Borrador'),('activo','Activo'),('archivado','Archivado')])
