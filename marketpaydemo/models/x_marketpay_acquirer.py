@@ -128,9 +128,11 @@ class x_marketpayacquirer(models.Model):
         #amount = str(int(round(values['amount'] * 100)))
         amount = 1000
         amountfee = self.x_marketpay_fee
-        success_url = self.x_marketpay_url_ok
-        cancel_url = self.x_marketpay_url_ko
-
+        #success_url = self.x_marketpay_url_ok
+        #cancel_url = self.x_marketpay_url_ko
+        success_url = '%s/payment/redsys/result/redsys_result_ok' % base_url
+        #success_url = ('%s/payment/redsys/return' % (callback_url or base_url))[:250]
+        cancel_url = '%s/payment/redsys/result/redsys_result_ko' % base_url
         apiPayin = swagger_client.PayInsRedsysApi()
 
         fees = swagger_client.Money(amount=amountfee, currency=currency)
@@ -184,6 +186,9 @@ class TxMarketpay(models.Model):
     def _marketpay_form_get_tx_from_data(self, data):
         """ Given a data dict coming from redsys, verify it and
         find the related transaction record. """
+
+        print("form get ###################")
+
         parameters = data.get('Ds_MerchantParameters', '')
         parameters_dic = json.loads(base64.b64decode(parameters).decode())
         reference = urllib.parse.unquote(parameters_dic.get('Ds_Order', ''))
@@ -227,6 +232,9 @@ class TxMarketpay(models.Model):
 
     @api.model
     def _get_marketpay_state(self, status_code):
+
+        print("STATE ###################")
+
         if 0 <= status_code <= 100:
             return "done"
         elif status_code <= 203:
@@ -237,6 +245,9 @@ class TxMarketpay(models.Model):
             return "error"
 
     def _marketpay_form_validate(self, data):
+
+        print("Validate ###################")
+
         params = self.merchant_params_json2dict(data)
         status_code = int(params.get('Ds_Response', '29999'))
         state = self._get_marketpay_state(status_code)
@@ -266,6 +277,9 @@ class TxMarketpay(models.Model):
 
     @api.model
     def form_feedback(self, data, acquirer_name):
+
+        print("form feedback ###################")
+
         res = super(TxMarketpay, self).form_feedback(data, acquirer_name)
         try:
             tx_find_method_name = '_%s_form_get_tx_from_data' % acquirer_name
