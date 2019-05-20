@@ -1,7 +1,36 @@
 <odoo>
     <data>
-        <!--  -->
-        <!--   <record id="object0" model="extra-addons/demodata.extra-addons/demodata"> -->
+
+        <record id="rgp_legales_id" model="x_rgpd_legales">
+                <field name="x_name">Compromiso de cancelación</field>
+                <field name="x_codigo">Conservado</field>
+
+        </record>
+        <record id="rgp_legales_id" model="x_rgpd_legales">
+                <field name="x_name">Rango de afectados</field>
+                <field name="x_codigo">Conservado</field>
+
+        </record>
+        <record id="rgp_legales_id" model="x_rgpd_legales">
+                <field name="x_name">Datos especialmente protegidos</field>
+                <field name="x_codigo">Conservado</field>
+
+        </record>
+        <record id="rgp_legales_id" model="x_rgpd_legales">
+                <field name="x_name">Ámbito geográfico</field>
+                <field name="x_codigo">Conservado</field>
+
+        </record>
+        <record id="rgp_legales_id" model="x_rgpd_legales">
+                <field name="x_name">Perfiles vulnerables</field>
+                <field name="x_codigo">Conservado</field>
+
+        </record>
+        <record id="rgp_legales_id" model="x_rgpd_legales">
+                <field name="x_name">Tipo de uso o tratamiento de la información</field>
+                <field name="x_codigo">Conservado</field>
+
+        </record>
         <!--     <field name="name">Object 0</field> -->
         <!--     <field name="value">0</field> -->
         <!--   </record> -->

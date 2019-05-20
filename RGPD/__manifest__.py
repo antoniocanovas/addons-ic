@@ -4,10 +4,10 @@
     'name': "RGPD",
 
     'summary': """
-        Modulos RGPD""",
+        Modulos RGPD """,
 
     'description': """
-        develop
+       *****
     """,
 
     'author': "Pedro Guirao",
@@ -24,9 +24,12 @@
 
     # always loaded
     'data': [
+
+        'views/views.xml',
+        #'views/medidas_view.xml',
+        'demo/demo.xml',
+        'security/user_groups.xml',
         'security/ir.model.access.csv',
-        #'views/views.xml',
-        #'views/templates.xml',
     ],
     # only loaded in demonstration mode
     'installable': True,

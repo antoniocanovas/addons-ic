@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+
+    <record id="view_x_rgpd_medidas_tree" model="ir.ui.view">
+
+      <field name="name">view.x_rgpd_medidas.tree</field>
+      <field name="model">x_rgpd_medidas</field>
+      <field name="arch" type="xml">
+        <tree string="Medidas">
+
+          <field name="x_name"/>
+          <field name="x_tipo"/>
+
+        </tree>
+
+      </field>
+
+    </record>
+<!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_x_rgpd_medidas">
+      <field name="name">Medidas</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">x_rgpd_medidas</field>
+      <field name="view_mode">tree</field>
+    </record>
+
+    <!-- server action to the one above -->
+
+
+    <!-- Top menu item -->
+
+
+
+    <menuitem name="Medidas" id="x_rgpd_medidas_menu_category" parent="rgpd_menu_root" sequence="2"/>
+    <menuitem name="Medidas" id="action_x_rgpd_medidas_menu" parent="x_rgpd_medidas_menu_category" action="action_x_rgpd_medidas" sequence="2"/>
+
+        <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="extra-addons/mi_modulo.menu_1" parent="extra-addons/mi_modulo.menu_root"/>
+    <menuitem name="Menu 2" id="extra-addons/mi_modulo.menu_2" parent="extra-addons/mi_modulo.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="extra-addons/mi_modulo.menu_1_list" parent="extra-addons/mi_modulo.menu_1"
+              action="extra-addons/mi_modulo.action_window"/>
+    <menuitem name="Server to list" id="extra-addons/mi_modulo" parent="extra-addons/mi_modulo.menu_2"
+              action="extra-addons/mi_modulo.action_server"/>
+    -->
+
+    </data>
+</odoo>

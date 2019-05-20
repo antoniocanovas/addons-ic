@@ -1,66 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <odoo>
     <data>
 
-    <record id="view_demo_data_tree" model="ir.ui.view">
-      <field name="name">view.demo.data.tree</field>
-      <field name="model">x_rgpd_medidas.data</field>
+    <record id="view_x_rgpd_legales_tree" model="ir.ui.view">
+
+      <field name="name">view.x_rgpd_legales.tree</field>
+      <field name="model">x_rgpd_legales</field>
       <field name="arch" type="xml">
-        <tree string="tree">
-
-          <field name="name"/>
-          <field name="date_from"/>
-
+        <tree string="legales">
+          <field name="x_name"/>
+          <field name="x_codigo"/>
+          <field name="x_estado"/>
         </tree>
       </field>
+    </record>
+    <record id="view_x_rgpd_legales_tree" model="ir.ui.view">
 
+      <field name="name">view.x_rgpd_legales.tree</field>
+      <field name="model">x_rgpd_legales</field>
+      <field name="arch" type="xml">
+        <form string="Legales">
+         <sheet string="RGPD Legales">
+            <group col="4">
+                <field name="x_name" modifiers="{}"/>
+                <field name="x_codigo" modifiers="{}"/>
+                <separator/>
+            </group>
+        </sheet>
+        </form>
+      </field>
     </record>
 
-    <record id="view_demo_data_form" model="ir.ui.view">
-      <field name="name">view.demo.data.form</field>
-      <field name="model">x_rgpd_medidas.data</field>
+    <record model="ir.actions.act_window" id="action_x_rgpd_legales">
+      <field name="name">Legales</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">x_rgpd_legales</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+<!-- MEDIDAS -->
+   <record id="view_x_rgpd_medidas_tree" model="ir.ui.view">
+
+      <field name="name">view.x_rgpd_medidas.tree</field>
+      <field name="model">x_rgpd_medidas</field>
       <field name="arch" type="xml">
-        <form name="demo data form">
-          <sheet>
-            <div class="oe_tittle">
-              <label for="name" class="oe_edit_only"/>
-              <h1>
-                <field name="name" placeholder="request"/>
-              </h1>
-            </div>
-            <group>
-              <field name="date_from"/>
+        <tree string="Medidas">
+          <field name="x_name"/>
+          <field name="x_tipo"/>
+        </tree>
+      </field>
+    </record>
+    <record id="view_x_rgpd_medidas_form" model="ir.ui.view">
+      <field name="name">view.x_rgpd_medidas.form</field>
+      <field name="model">x_rgpd_medidas</field>
+      <field name="arch" type="xml">
+        <form string="Medidas">
+            <header>
+                <field name="x_estado" options="{'clickable': '1'}" widget="statusbar"/>
+            </header>
+            <sheet string="Medidas">
+                <h3>
+                    <field name="x_name"/>
+                </h3>
+            <group col="4">
+                <field name="x_tipo" modifiers="{&quot;required&quot;: true}"/>
+                <newline/>
+                <field colspan="4" name="x_descripcion" modifiers="{}"/>
+                <newline/>
+                <field name="x_proyecto_id" can_create="true" can_write="true" modifiers="{}"/>
+                <newline/>
+                <field name="x_usuario_id" can_create="true" can_write="true" modifiers="{}"/>
+                <newline/>
+                <field name="x_empresa_id" can_create="true" can_write="true" modifiers="{}"/>
+                <separator/>
             </group>
-          </sheet>
+            </sheet>
         </form>
       </field>
 
     </record>
-
-    <record id="action_demo_data_views" model="ir.actions.act_window">
-      <field name="name">demo request</field>
+    <record model="ir.actions.act_window" id="action_x_rgpd_medidas">
+      <field name="name">Medidas</field>
       <field name="type">ir.actions.act_window</field>
-      <field name="res_model">demo.data</field>
-      <field name="view_mode">form</field>
-      <field name="help" type="html">
-       <p class="oe_view_nocontent_create"></p>
-        <p>Click to --- </p>
-      </field>
+      <field name="res_model">x_rgpd_medidas</field>
+      <field name="view_mode">tree,form</field>
+    </record>
 
+    <!--  OPCIONES  -->
+   <record id="view_x_rgpd_opciones_tree" model="ir.ui.view">
+
+      <field name="name">view.x_rgpd_opciones.tree</field>
+      <field name="model">x_rgpd_opciones</field>
+      <field name="arch" type="xml">
+        <tree string="Opciones">
+
+            <field name="x_name" modifiers="{}"/>
+            <field name="x_tipo_id"/>
+            <field name="x_estado"/>
+          </tree>
+
+      </field>
+    </record>
+
+    <record id="view_x_rgpd_opciones_form" model="ir.ui.view">
+      <field name="name">view.x_rgpd_opciones.form</field>
+      <field name="model">x_rgpd_opciones</field>
+      <field name="arch" type="xml">
+      <form string="Opciones">
+            <header>
+                <field name="x_estado" options="{'clickable': '1'}" widget="statusbar"/>
+            </header>
+            <sheet string="RGPD Opciones">
+            <h3>
+                <field name="x_name" modifiers="{}" placeholder="Opción breve ..."/>
+            </h3>
+                <group col="4">
+                    <field name="x_tipo_id" modifiers="{}" widget="selection" required="1"/>
+                    <separator/>
+                    <newline/>
+                    <field colspan="4" name="x_medida_ids" can_create="true" can_write="true" modifiers="{}"/>
+                    <newline/>
+                    <field colspan="4" name="x_clausula_informativa" modifiers="{}"/>
+                    <newline/>
+                    <newline/>
+                    <field colspan="4" name="x_clausula_tratamiento" modifiers="{}"/>
+                </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_x_rgpd_opciones">
+      <field name="name">Opciones</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">x_rgpd_opciones</field>
+      <field name="view_mode">tree,form</field>
     </record>
 
 
-    <menuitem id="menu_demo_data_root" name="DemoDataLib" sequence="10"/>
-    <menuitem id="menu_demo_request_categ" name="DemoData" parent="menu_demo_data_root" sequence="1"/>
-    <menuitem id="menu_demo_request" name="DemoData" parent="menu_demo_request_categ" sequence="1"/>
+    <!-- server action to the one above -->
 
 
+    <!-- Top menu item -->
 
+    <menuitem name="RGPD" id="rgpd_menu_root" sequence="1"/>
 
-</data>
+    <menuitem name="Legales" id="x_rgpd_legales_menu_category" parent="rgpd_menu_root" sequence="1"/>
+    <menuitem name="Medidas" id="x_rgpd_medidas_menu_category" parent="rgpd_menu_root" sequence="2"/>
+    <menuitem name="Opciones" id="x_rgpd_opciones_menu_category" parent="rgpd_menu_root" sequence="3"/>
+
+    <menuitem name="Legales" id="action_x_rgpd_legales_menu" parent="x_rgpd_legales_menu_category" action="action_x_rgpd_legales" sequence="1"/>
+    <menuitem name="Medidas" id="action_x_rgpd_medidas_menu" parent="x_rgpd_medidas_menu_category" action="action_x_rgpd_medidas" sequence="2"/>
+    <menuitem name="Opciones" id="action_x_rgpd_opciones_menu" parent="x_rgpd_opciones_menu_category" action="action_x_rgpd_opciones" sequence="3"/>
+
+        <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="extra-addons/mi_modulo.menu_1" parent="extra-addons/mi_modulo.menu_root"/>
+    <menuitem name="Menu 2" id="extra-addons/mi_modulo.menu_2" parent="extra-addons/mi_modulo.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="extra-addons/mi_modulo.menu_1_list" parent="extra-addons/mi_modulo.menu_1"
+              action="extra-addons/mi_modulo.action_window"/>
+    <menuitem name="Server to list" id="extra-addons/mi_modulo" parent="extra-addons/mi_modulo.menu_2"
+              action="extra-addons/mi_modulo.action_server"/>
+    -->
+
+    </data>
 </odoo>
-
-
-
