@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="rgpd_partner_form" model="ir.ui.view">
+        <field name="name">rgpd.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                <page name="studio_page_AbsN5" string="RGPD">
+                    <group col="4" name="studio_group_AbsN5">
+                        <field colspan="4" name="x_rgpd_grupo_ids" widget="many2many_tags"/>
+                        <field name="x_rgpd_grupo_modificado" invisible="1"/>
+                        <field colspan="4" name="x_rgpd_informado_ok"/>
+                        <field name="x_rgpd_informada_firmada_ids" attrs="{'invisible':[('x_rgpd_informado_ok','=',True)]}">
+                        <tree>
+                            <field name="x_name"/>
+                        </tree>
+                        </field>
+                        <field name="x_rgpd_informada_requerida_ids" attrs="{'invisible':[('x_rgpd_informado_ok','=',True)]}">
+                        <tree>
+                            <field name="x_name"/>
+                        </tree>
+                        </field>
+                        <field colspan="4" name="x_rgpd_tratamiento_ok"/>
+                        <field name="x_rgpd_tratamiento_firmada_ids" attrs="{'invisible':[('x_rgpd_tratamiento_ok','=',True)]}">
+                        <tree>
+                            <field name="x_name"/>
+                        </tree>
+                        </field>
+                        <field name="x_rgpd_tratamiento_requerida_ids" attrs="{'invisible':[('x_rgpd_tratamiento_ok','=',True)]}">
+                        <tree>
+                            <field name="x_name"/>
+                        </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+
+
+    </data>
+</odoo>

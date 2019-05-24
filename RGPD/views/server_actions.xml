@@ -1,0 +1,124 @@
+<odoo>
+    <data>
+        <record model="ir.actions.server" id="=> Actualizar tareas">
+            <field name="name">=> Actualizar tareas</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_x_rgpd_rats"/>
+            <field name="state">code</field>
+            <field name="code">
+                for me in record.x_medida_ids:
+	                tarea = env['project.task'].search([('x_medida_id','=',me.id),('x_rat_id','=',record.id)])
+	                if not tarea.id:
+	                    nombre = record.x_name + " - " + me.x_name
+	                    nuevatarea = env['project.task'].create({'name':nombre, 'x_medida_id':me.id, 'x_rat_id':record.id, 'project_id':me.x_proyecto_id.id, 'user_id':me.x_usuario_id.id})
+            </field>
+        </record>
+
+         <record model="ir.actions.server" id="Clausulas_interesado">
+            <field name="name">=> Cláusulas de interesado aceptadas</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="state">code</field>
+            <field name="code">
+                record['x_rgpd_informada_firmada_ids'] = [(6,0,record.x_rgpd_informada_requerida_ids.ids)]
+            </field>
+        </record>
+
+          <record model="ir.actions.server" id="Clausulas_tratamiento">
+            <field name="name">=> Cláusulas de tratamiento aceptadas</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="state">code</field>
+            <field name="code">
+                record['x_rgpd_tratamiento_firmada_ids'] = [(6,0,record.x_rgpd_tratamiento_requerida_ids.ids)]
+            </field>
+        </record>
+
+        <record id="general_RGPD_rats" model="base.automation">
+            <field name="name">=> General RGPD RATs</field>
+            <field name="model_id" ref="model_x_rgpd_rats"/>
+              <field name="trigger">on_write</field>
+            <field name="active" eval="True"/>
+            <field name="state">code</field>
+            <field name="code">
+                if record.x_estado == 'activo':
+                    for usuario in record.x_usuario_ids:
+                        usuario['x_rgpd_grupo_modificado'] = True
+
+            </field>
+        </record>
+
+         <record id="general_RGPD_grupos" model="base.automation">
+            <field name="name">=> General RGPD Grupos</field>
+            <field name="model_id" ref="model_x_rgpd_grupos"/>
+              <field name="trigger">on_write</field>
+            <field name="active" eval="True"/>
+            <field name="state">code</field>
+            <field name="code">
+                if record.x_estado == 'activo':
+                    for contacto in record.x_contacto_ids:
+                        contacto['x_rgpd_grupo_modificado'] = True
+            </field>
+         </record>
+
+          <record id="general_res_partner" model="base.automation">
+                <field name="name">=> General res.partner</field>
+                <field name="model_id" ref="model_res_partner"/>
+                <field name="trigger">on_write</field>
+                <field name="active" eval="True"/>
+                <field name="state">code</field>
+                <field name="code">
+ratusuario = []
+ratinteresado = []
+clausulasinfo = []
+clausulastratamiento = []
+if record.x_rgpd_grupo_modificado == True:
+    ratactivos = env['x_rgpd_rats'].search([('x_estado','=','activo')])
+    for rat in ratactivos:
+        if record.id in rat.x_usuario_ids.ids:
+            ratusuario.append(rat.id)
+        if record.id in rat.x_interesado_id.x_contacto_ids.ids:
+            ratinteresado.append(rat.id)
+    # Buscar las cláusulas informativas que le corresponden (por pertenencia al grupo de cada RAT para interesados):
+    if len(ratinteresado) > 0:
+        for rat_id in ratinteresado:
+            info = env['x_rgpd_rats'].browse(rat_id).x_clausula_informativa_ids
+            for ci in info:
+                clausulasinfo.append(ci.id)
+    # Buscar las cláusulas de tratamiento que le corresponden (por ser usuario de tratamiento):
+    if len(ratusuario) > 0:
+        for rat_id in ratusuario:
+            trat = env['x_rgpd_rats'].browse(rat_id).x_clausula_tratamiento_ids
+        for cl in trat:
+            clausulastratamiento.append(cl.id)
+    # Ordenar el array y asignarlos a campos M2M de requeridas y tratamiento:
+    clausulasinfo.sort()
+    clausulastratamiento.sort()
+    record['x_rgpd_informada_requerida_ids'] = [(6,0,clausulasinfo)]
+    record['x_rgpd_tratamiento_requerida_ids'] = [(6,0,clausulastratamiento)]
+    record['x_rgpd_grupo_modificado'] = False
+            </field>
+          </record>
+
+
+
+        <!-- <template id="listing"> -->
+        <!--   <ul> -->
+        <!--     <li t-foreach="objects" t-as="object"> -->
+        <!--       <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
+        <!--         <t t-esc="object.display_name"/> -->
+        <!--       </a> -->
+        <!--     </li> -->
+        <!--   </ul> -->
+        <!-- </template> -->
+        <!-- <template id="object"> -->
+        <!--   <h1><t t-esc="object.display_name"/></h1> -->
+        <!--   <dl> -->
+        <!--     <t t-foreach="object._fields" t-as="field"> -->
+        <!--       <dt><t t-esc="field"/></dt> -->
+        <!--       <dd><t t-esc="object[field]"/></dd> -->
+        <!--     </t> -->
+        <!--   </dl> -->
+        <!-- </template> -->
+    </data>
+</odoo>

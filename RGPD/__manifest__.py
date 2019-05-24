@@ -20,14 +20,15 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','project','base_automation'],
 
     # always loaded
     'data': [
-
+        'views/x_partner_view.xml',
+        'views/server_actions.xml',
         'views/views.xml',
-        #'views/medidas_view.xml',
         'demo/demo.xml',
+        'demo/data_opciones.xml',
         'security/user_groups.xml',
         'security/ir.model.access.csv',
     ],
