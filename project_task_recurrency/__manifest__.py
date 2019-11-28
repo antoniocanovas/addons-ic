@@ -8,7 +8,7 @@
     'author': 'Serincloud',
     'depends': [
         'project',
-        'base.automation'
+        'base_automation'
     ],
     'data': [
         'data/rec_task_action.xml',
