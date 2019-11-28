@@ -13,7 +13,7 @@ It contains the apps created with Studio and the customizations of existing apps
     ],
     'data': [
         'data/rec_task_action.xml',
-        #'views/project_task_rec_view.xml',
+        'views/project_task_rec_view.xml',
     ],
     'installable':True,
 }

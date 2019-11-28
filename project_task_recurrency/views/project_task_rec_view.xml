@@ -6,13 +6,13 @@
     <field name="model">project.task</field>
     <field name="inherit_id" ref="project.view_task_form2"/>
     <field name="arch" type="xml">
-      <xpath expr="//notebook/page[@name=extra_info]" position="after">
+      <xpath expr="//notebook/page[@name='extra_info']" position="after">
         <page string="Periodicidad">
           <group>
             <field name="rec_type"/>
             <field name="rec_date" attrs="{'readonly':[('rec_next_task_id','!=',False)], 'invisible':[('rec_type','!=','fechabase')], 'required':[('rec_type','=','fechabase')]}"/>
             <field name="rec_qty" attrs="{'readonly':[('rec_next_task_id','!=',False)], 'invisible':[('rec_type','not in',['fechabase','fechaarchivado'])]}"/>
-            <field name="rec_period" attrs="{'required':[('rec_qty','>',0)], 'readonly':[('rec_qty','!=',False)], 'invisible':[('rec_type','not in',['fechabase','fechaarchivado'])]}"/>
+            <field name="rec_period" attrs="{'required':[('rec_qty','>',0)], 'invisible':[('rec_type','not in',['fechabase','fechaarchivado'])]}"/>
             <field name="rec_next_task_id" readonly="1"/>
           </group>
         </page>
