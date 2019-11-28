@@ -60,7 +60,7 @@ if (record.active == False) and (record.rec_period) and not (record.rec_next_tas
   record['rec_next_task_id'] = nueva.id
 
             </field>
-            <field name="trigger">on_create</field>
+            <field name="trigger">on_write</field>
 
     </record>
 </odoo>
