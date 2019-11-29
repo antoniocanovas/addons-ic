@@ -10,5 +10,8 @@
         <field name="rule_groups" eval="[(4, ref('no_ve_admin_admin_asesoria')),(4, ref('base.res_company_rule_erp_manager'))]"/>
     </record>
 
+     <record id="base.menu_administration" model="ir.ui.menu">
+        <field name="groups_id" eval="[(6,0, ref('base.group_system'))]"/>
+    </record>
 
 </odoo>
