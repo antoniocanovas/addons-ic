@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="admin_asesoria" model="res.groups">
-        <field name="name">Admin Asesoria</field>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        <field name="users" eval="[(4, ref('base.user_root'))]"/>
-        <field name="menu_access" eval="[(4, ref('Admin'))]"/>
-        <field name="model_access" eval="[(4, ref('Admin'))]"/>
-        <field name="rule_groups" eval="[(4, ref('no_ve_admin_admin_asesoria')),(4, ref('base.res_company_rule_erp_manager'))]"/>
-    </record>
-
      <record id="base.menu_administration" model="ir.ui.menu">
         <field name="groups_id" eval="[(6,0, ref('base.group_system'))]"/>
     </record>

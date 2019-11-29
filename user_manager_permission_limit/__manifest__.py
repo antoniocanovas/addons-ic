@@ -16,7 +16,7 @@
         #'data/default_actions.xml',
         #'views/view.xml',
         'views/res_user_groups.xml'
-        #'security/user_groups.xml',
+        'security/user_groups.xml',
         #'security/ir.model.access.csv',
         #'data/default_data.xml',
 
