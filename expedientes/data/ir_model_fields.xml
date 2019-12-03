@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="studio_customization.expediente_count_pro_889f92e9-ee56-42a3-b71b-a59bfd9c4150" model="ir.model.fields" context="{'studio': True}">
+    <field name="complete_name" eval="False"/>
+    <field name="compute"><![CDATA[
+results = self.env['x_expediente_contactos'].read_group([('x_proyecto_id', 'in', self.ids)], 'x_proyecto_id', 'x_proyecto_id')
+dic = {}
+for x in results: dic[x['x_proyecto_id'][0]] = x['x_proyecto_id_count']
+for record in self: record['x_x_proyecto_id__x_expediente_contactos_count'] = dic.get(record.id, 0)
+]]></field>
+    <field name="copied" eval="False"/>
+    <field name="depends" eval="False"/>
+    <field name="domain">[]</field>
+    <field name="field_description">Expediente count</field>
+    <field name="groups" eval="[(6, 0, [])]"/>
+    <field name="help" eval="False"/>
+    <field name="index" eval="False"/>
+    <field name="model">project.project</field>
+    <field name="model_id" ref="project.model_project_project"/>
+    <field name="name">x_x_proyecto_id__x_expediente_contactos_count</field>
+    <field name="on_delete" eval="False"/>
+    <field name="readonly" eval="False"/>
+    <field name="related" eval="False"/>
+    <field name="relation" eval="False"/>
+    <field name="relation_field" eval="False"/>
+    <field name="relation_table" eval="False"/>
+    <field name="required" eval="False"/>
+    <field name="selectable" eval="False"/>
+    <field name="selection" eval="False"/>
+    <field name="size" eval="False"/>
+    <field name="state">manual</field>
+    <field name="store" eval="False"/>
+    <field name="track_visibility" eval="False"/>
+    <field name="translate" eval="False"/>
+    <field name="ttype">integer</field>
+  </record>
+  <record id="studio_customization.tarea_count_project__377e26ee-146d-4972-b5d2-0ecb991e8b0b" model="ir.model.fields" context="{'studio': True}">
+    <field name="complete_name" eval="False"/>
+    <field name="compute"><![CDATA[
+results = self.env['x_expediente_contactos'].read_group([('x_tarea_id', 'in', self.ids)], 'x_tarea_id', 'x_tarea_id')
+dic = {}
+for x in results: dic[x['x_tarea_id'][0]] = x['x_tarea_id_count']
+for record in self: record['x_x_tarea_id__x_expediente_contactos_count'] = dic.get(record.id, 0)
+]]></field>
+    <field name="copied" eval="False"/>
+    <field name="depends" eval="False"/>
+    <field name="domain">[]</field>
+    <field name="field_description">Tarea count</field>
+    <field name="groups" eval="[(6, 0, [])]"/>
+    <field name="help" eval="False"/>
+    <field name="index" eval="False"/>
+    <field name="model">project.task</field>
+    <field name="model_id" ref="project.model_project_task"/>
+    <field name="name">x_x_tarea_id__x_expediente_contactos_count</field>
+    <field name="on_delete" eval="False"/>
+    <field name="readonly" eval="False"/>
+    <field name="related" eval="False"/>
+    <field name="relation" eval="False"/>
+    <field name="relation_field" eval="False"/>
+    <field name="relation_table" eval="False"/>
+    <field name="required" eval="False"/>
+    <field name="selectable" eval="False"/>
+    <field name="selection" eval="False"/>
+    <field name="size" eval="False"/>
+    <field name="state">manual</field>
+    <field name="store" eval="False"/>
+    <field name="track_visibility" eval="False"/>
+    <field name="translate" eval="False"/>
+    <field name="ttype">integer</field>
+  </record>
+</odoo>

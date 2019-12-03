@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+  <record id="project_task_project_contacts_view" model="ir.ui.view">
+    <field name="name">project.task.project.contacs.view</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+      <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+        <page name="contactos_en_proyecto" string="Contactos del proyecto">
+          <group name="partner_id">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+              <field name="contact_ids">
+                <tree>
+                  <field name="partner_id"/>
+                  <field name="rol_id"/>
+                  <field name="task_id"/>
+                </tree>
+              </field>
+            </xpath>
+          </group>
+        </page>
+      </xpath>
+    </field>
+  </record>
+
+</odoo>

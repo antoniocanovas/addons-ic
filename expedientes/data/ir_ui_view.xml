@@ -1,0 +1,299 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="tipos_de_tramites" model="ir.ui.view">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <tree string="Tipos de trámites">
+        <field name="name" modifiers="{}"/>
+        <field name="usuario_id"/>
+        <field name="departamento_id"/>
+        <field name="intervalo"/>
+        <field name="archivado"/>
+      </tree>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" eval="False"/>
+    <field name="key" eval="False"/>
+    <field name="mode">primary</field>
+    <field name="model">expediente_tramites</field>
+    <field name="name">Default tree view for expediente_tramites</field>
+    <field name="priority">16</field>
+    <field name="type">tree</field>
+  </record>
+  <record id="expediente_tramites" model="ir.ui.view">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <form>
+        <sheet string="Tipos de trámites">
+          <h2>
+            <field name="name" modifiers="{}"/>
+          </h2>
+          <group col="2">
+            <field name="usuario_id" can_create="true" can_write="true" modifiers="{}"/>
+            <field name="departamento_id" modifiers="{}"/>
+            <field name="descripcion_tarea" colspan="4" modifiers="{}"/>
+            <field name="intervalo"/>
+            <field name="archivado"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" eval="False"/>
+    <field name="key" eval="False"/>
+    <field name="mode">primary</field>
+    <field name="model">expediente_tramites</field>
+    <field name="name">Default form view for expediente_tramites</field>
+    <field name="priority">16</field>
+    <field name="type">form</field>
+  </record>
+  <record id="lineas_tipo_expediente" model="ir.ui.view">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <tree string="Líneas de tipo de expediente">
+        <field name="name" modifiers="{&quot;readonly&quot;: true}"/>
+        <field name="usuario_id"/>
+        <field name="departamento_id"/>
+        <field name="intervalo"/>
+        <!--    <field name="dependencia_ids" widget="many2many_tags"/> -->
+      </tree>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" eval="False"/>
+    <field name="key" eval="False"/>
+    <field name="mode">primary</field>
+    <field name="model">expediente_tipo_lineas</field>
+    <field name="name">Default tree view for expediente_tipo_lineas</field>
+    <field name="priority">16</field>
+    <field name="type">tree</field>
+  </record>
+  <record id="expediente_tipos" model="ir.ui.view">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+          <field name="estado" options="{'clickable': '1', 'default_value':'borrador'}" widget="statusbar"/>
+        </header>
+        <sheet string="Tipos de expedientes">
+          <h2>
+            <field name="name" modifiers="{}"/>
+          </h2>
+          <group>
+            <field name="departamento_id"/>
+          </group>
+          <field name="linea_ids" string="Trámites" attrs="{'readonly':[('x_estado','!=','borrador')]}">
+            <tree string="Líneas de tipo de expediente" editable="top">
+              <field name="tramite_id"/>
+              <field name="name" invisible="1"/>
+              <field name="usuario_id"/>
+              <field name="departamento_id"/>
+              <field name="dependencia_ids" widget="many2many_tags"/>
+              <field name="intervalo"/>
+            </tree>
+          </field>
+          <group col="2">
+            <field name="nombre_tarea" placeholder="Por ejemplo: Trámites"/>
+          </group>
+          <h5 attrs="{'invisible':[('estado','=','borrador')]}">NOTAS: Sólo son visibles las "Activas" en los expedientes y ha de pasar a "Borrador" SI DESEA modificar los trámites y dependencias</h5>
+        </sheet>
+      </form>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" eval="False"/>
+    <field name="key" eval="False"/>
+    <field name="mode">primary</field>
+    <field name="model">expediente_tipos</field>
+    <field name="name">Default form view for expediente_tipos</field>
+    <field name="priority">16</field>
+    <field name="type">form</field>
+  </record>
+  <record id="expediente_tipos_tree" model="ir.ui.view">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <tree string="Tipos de expedientes">
+        <field name="name" modifiers="{}"/>
+        <field name="linea_ids" widget="many2many_tags"/>
+        <field name="estado"/>
+      </tree>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" eval="False"/>
+    <field name="key" eval="False"/>
+    <field name="mode">primary</field>
+    <field name="model">expediente_tipos</field>
+    <field name="name">Default tree view for expediente_tipos</field>
+    <field name="priority">16</field>
+    <field name="type">tree</field>
+  </record>
+  <record id="tipo_lineas_form" model="ir.ui.view">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <form>
+        <sheet string="Líneas de tipos de expediente">
+          <h2>
+            <field name="name" modifiers="{}"/>
+          </h2>
+          <group col="2">
+            <field name="tramite_id" on_change="1" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
+            <field name="intervalo" modifiers="{&quot;readonly&quot;: true}"/>
+            <newline/>
+            <field name="usuario_id" can_create="true" can_write="true" modifiers="{}"/>
+            <field name="departamento_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
+            <field name="tipo_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+            <newline/>
+          </group>
+          <h4>Trámites previos:</h4>
+          <field name="dependencia_ids" colspan="4" can_create="true" can_write="true" modifiers="{}"/>
+        </sheet>
+      </form>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" eval="False"/>
+    <field name="key" eval="False"/>
+    <field name="mode">primary</field>
+    <field name="model">expediente_tipo_lineas</field>
+    <field name="name">Default form view for expediente_tipo_lineas</field>
+    <field name="priority">16</field>
+    <field name="type">form</field>
+  </record>
+  <record id="project_expedientes" model="ir.ui.view">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//button[@name='361']" position="after">
+          <button class="oe_stat_button" string="Actualizar Trámites" icon="fa-level-down" type="action" name="388" attrs="{'invisible':['|',('tipo_expediente_id','=',False),('es_expediente','=',False)]}"/>
+          <button class="oe_stat_button" string="Es expediente" icon="fa-level-up" type="action" name="384" attrs="{'invisible':[('es_expediente','=',True)]}"/>
+        </xpath>
+        <xpath expr="//button[@name='toggle_active']" position="after">
+         <!-- <button class="oe_stat_button" icon="fa-diamond" type="action" name="400">
+            <field name="x_x_proyecto_id__x_expediente_contactos_count" string="Contactos" widget="statinfo"/>
+          </button>-->
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+          <page name="tramites" string="Trámites activos" attrs="{'invisible':[('es_expediente','=',False)]}">
+            <group name="expedientes">
+              <field name="es_expediente"/>
+              <field name="tipo_expediente_id"/>
+            </group>
+            <field name="task_ids" string="Trámites">
+              <tree editable="1">
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="departamento_id"/>
+                <field name="dependency_task_ids" widget="many2many_tags"/>
+                <field name="date_deadline"/>
+                <field name="stage_id"/>
+                <field name="linea_expediente_id" invisible="1"/>
+                <field name="project_id" invisible="1"/>
+              </tree>
+            </field>
+          </page>
+          <page name="resumen_tareas" string="Fechas límite" attrs="{'invisible':[('es_expediente','=',False)]}">
+            <field name="tarea_ids">
+              <tree decoration-danger="date_deadline and (date_deadline&lt;current_date)">
+                <field name="name"/>
+                <field name="date_deadline"/>
+                <field name="stage_id"/>
+                <field name="active"/>
+              </tree>
+            </field>
+          </page>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="project.edit_project"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">project.project</field>
+    <field name="name">project.project.form expedientes</field>
+    <field name="priority">99</field>
+    <field name="type">form</field>
+  </record>
+  <record id="proyect_task_expedientes" model="ir.ui.view">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <tree string="Contactos en expedientes" edit="0">
+        <field name="contacto_id"/>
+        <field name="rol_id"/>
+        <field name="tarea_id"/>
+      </tree>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" eval="False"/>
+    <field name="key" eval="False"/>
+    <field name="mode">primary</field>
+    <field name="model">expediente_contactos</field>
+    <field name="name">Default tree view for expediente_contactos</field>
+    <field name="priority">16</field>
+    <field name="type">tree</field>
+  </record>
+  <record id="studio_customization.odoo_studio_project__885affe9-bef5-44cb-8571-3abe52dfd7f9" model="ir.ui.view" context="{'studio': True}">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//button[@name='toggle_active']" position="after">
+          <button class="oe_stat_button" icon="fa-info" type="action" name="401">
+            <field name="x_x_tarea_id__x_expediente_contactos_count" string="Contactos" widget="statinfo"/>
+          </button>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+          <page name="studio_page_kYAA8" string="Contactos del proyecto">
+            <group name="studio_group_kYAA8">
+              <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="x_contacto_ids">
+                  <tree>
+                    <field name="x_contacto_id"/>
+                    <field name="x_rol_id"/>
+                    <field name="x_tarea_id"/>
+                  </tree>
+                </field>
+              </xpath>
+            </group>
+          </page>
+        </xpath>
+      </data>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="key" eval="False"/>
+    <field name="mode">extension</field>
+    <field name="model">project.task</field>
+    <field name="name">Odoo Studio: project.task.form customization</field>
+    <field name="priority">99</field>
+    <field name="type">form</field>
+  </record>
+  <record id="expediente_contactos_form" model="ir.ui.view">
+    <field name="active" eval="True"/>
+    <field name="arch" type="xml">
+      <form>
+        <sheet string="Contactos en expedientes">
+          <group col="4">
+            <field name="rol_id" on_change="1" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
+            <field name="proyecto_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
+            <field name="contacto_id" on_change="1" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
+            <separator/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+    <field name="field_parent" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="inherit_id" eval="False"/>
+    <field name="key" eval="False"/>
+    <field name="mode">primary</field>
+    <field name="model">expediente_contactos</field>
+    <field name="name">Default form view for expediente_contactos</field>
+    <field name="priority">16</field>
+    <field name="type">form</field>
+  </record>
+</odoo>
