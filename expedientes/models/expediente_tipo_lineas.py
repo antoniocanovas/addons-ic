@@ -39,4 +39,4 @@ class ExpedienteTipoLineas(models.Model):
         for record in self:
             record['intervalo'] = record.tramite_id.intervalo
 
-    intervalo = fields.Char(string='Intervalo',compute=compute_get_intervalo)
+    intervalo = fields.Integer(string='Intervalo',compute=compute_get_intervalo)
