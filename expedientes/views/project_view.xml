@@ -13,7 +13,7 @@
                     <page name="tramites" string="Trámites activos" attrs="{'invisible':[('es_expediente','=',False)]}">
                         <group name="expedientes">
                             <field name="es_expediente"/>
-                            <field name="tipo_expediente_id"/>
+                            <field name="tipo_expediente_id" widget='selection'/>
                         </group>
                         <field name="task_ids" string="Trámites">
                             <tree editable="1">
