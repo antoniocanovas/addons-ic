@@ -33,7 +33,7 @@ class ExpedienteTipoLineas(models.Model):
             record['departamento_id'] = record.tramite_id.departamento_id.id
 
     departamento_id = fields.Many2one('hr.department',compute=compute_get_departamento, string='Departamento')
-
+    #
     @api.depends('tramite_id')
     def compute_get_intervalo(self):
         for record in self:
