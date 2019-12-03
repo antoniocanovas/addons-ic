@@ -7,6 +7,7 @@ from odoo import fields, models, api
 
 class ExpedienteTipoLineas(models.Model):
     _name = 'expediente.tipo.lineas'
+    _description = 'Tipos de líneas en Expedientes.'
 
     tipo_id = fields.Many2one('expediente.tipos',string='Tipo')
     tramite_id = fields.Many2one('expediente.tramites',
@@ -39,4 +40,4 @@ class ExpedienteTipoLineas(models.Model):
         for record in self:
             record['intervalo'] = record.tramite_id.intervalo
 
-    intervalo = fields.Char(string='Intervalo',compute=compute_get_intervalo)
+    intervalo = fields.Integer(string='Intervalo',compute=compute_get_intervalo)

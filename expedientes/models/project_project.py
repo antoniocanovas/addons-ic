@@ -10,7 +10,7 @@ class project(models.Model):
 
 
     es_expediente = fields.Boolean(string='Es un expediente')
-    tipo_expediente_id = fields.Many2one('expediente.tipos',dominio=[('estado','=','activo')],string='Tipo')
+    tipo_expediente_id = fields.Many2one('expediente.tipos',domain=[('estado','=','activo')],string='Tipo')
     departamento_id = fields.Many2one('hr.department',string='Departamento')
 
     def compute_get_tareas(self):

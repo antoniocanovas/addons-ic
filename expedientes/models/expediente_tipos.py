@@ -12,7 +12,7 @@ class ExpedienteTipos(models.Model):
     name = fields.Char(string='Nombre',required=True)
     linea_ids = fields.One2many('expediente.tipo.lineas','tipo_id',string='Líneas')
     estado = fields.Selection(
-        [('borrador', 'Borrador'), ('activo', 'Activo'), ('archivado', 'Archivado')], string='Estado')
+        [('borrador', 'Borrador'), ('activo', 'Activo'), ('archivado', 'Archivado')],default='borrador', string='Estado')
     departamento_id = fields.Many2one('hr.department',string='Departamento',required=True)
     nombre_tarea = fields.Char('Nombre tarea')
 
