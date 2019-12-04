@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+  <record id="project_economical_resume" model="ir.ui.view">
+    <field name="name">project.economical.resume</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.edit_project"/>
+    <field name="arch" type="xml">
+      <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+        <page name="economical_resume" string="economía">
+          <group>
+            <group string="Suplidos">
+              <field name="addvance_supply" string="Adelantados"/>
+              <field name="expense_supply" string="Gastos"/>
+              <field name="aviable_supply" string="Disponible"/>
+            </group>
+            <group string="General">
+              <field name="invoiced_case"/>
+              <field name="imputed_case"/>
+              <field name="aviable_case"/>
+              <field name="currency_id" invisible="1"/>
+            </group>
+          </group>
+        </page>
+      </xpath>
+    </field>
+  </record>
+
+</odoo>
