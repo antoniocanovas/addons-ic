@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_res_partner_route_user,res.partner.route.user,model_res_partner_route,sales_team.group_sale_salesman,1,0,0,0
-access_res_partner_route_manager,res.partner.route.manager,model_res_partner_route,sales_team.group_sale_salesman,1,1,1,1
-access_res_partner_route_line_user,res.partner.route.line.user,model_res_partner_route_line,sales_team.group_sale_salesman,1,0,0,0
-access_res_partner_route_line_manager,res.partner.route.line.manager,model_res_partner_route_line,sales_team.group_sale_salesman,1,1,1,1
