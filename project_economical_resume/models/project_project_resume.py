@@ -48,7 +48,7 @@ class ProjectTaskContacts(models.Model):
             cuentas = self.env['account.account'].search([('is_supply', '=', True)]).ids
             facturado = self.env['account.analytic.line'].search([('account_id', '=', record.analytic_account_id.id),
                                                                   ('general_account_id', 'not in', cuentas),
-                                                                  ('is_timesheet', '=', False)])
+                                                                  ('project_id', '=', False)])
             for fac in facturado: total += fac.amount
             record['invoiced_case'] = total
 
@@ -59,7 +59,7 @@ class ProjectTaskContacts(models.Model):
         for record in self:
             total = 0
             imputaciones = self.env['account.analytic.line'].search(
-                [('is_timesheet', '=', True), ('account_id', '=', record.analytic_account_id.id)])
+                [('project_id', '!=', False), ('account_id', '=', record.analytic_account_id.id)])
             for imp in imputaciones: total += imp.amount
             record['inputed_case'] = total
 
@@ -69,9 +69,8 @@ class ProjectTaskContacts(models.Model):
     def _get_aviable_case(self):
         for record in self:
             total = 0
-            imputaciones = self.env['account.analytic.line'].search(
-                [('is_timesheet', '=', True), ('account_id', '=', record.analytic_account_id.id)])
-            for imp in imputaciones: total += imp.amount
-            record['aviable_case'] = total
+            importes = self.env['account.analytic.line'].search([('account_id', '=', record.analytic_account_id.id)])
+            for importe in importes: total += importe.amount
+            record['aviable_case'] = total - record.advance_supply + record.expense_supply
 
     aviable_case = fields.Monetary(string='Saldo',stored=False,compute=_get_aviable_case)
