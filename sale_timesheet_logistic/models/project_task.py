@@ -18,12 +18,8 @@ class ProjectTask(models.Model):
         readonly=True,
     )
     origin_date = fields.Datetime(
-        related='sale_line_id.origin_date',
         string='Collection Date',
-        readonly=True,
     )
     delivery_date = fields.Datetime(
-        related='sale_line_id.delivery_date',
         string='Delivery Date',
-        readonly=True,
     )
