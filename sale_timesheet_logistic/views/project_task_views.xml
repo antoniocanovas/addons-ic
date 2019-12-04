@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_sale_task_form">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <form string="Task" create="false" delete="false">
+                <sheet>
+                    <div class="oe_title">
+                        <field name="active" invisible="1"/>
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="km"/>
+                            <field name="kg"/>
+                            <field name="units"/>
+                        </group>
+                        <group>
+                            <field name="date_end"/>
+                            <field name="origin_id" options="{'no_create': True}"/>
+                            <field name="origin_date"/>
+                            <field name="delivery_id" options="{'no_create': True}"/>
+                            <field name="delivery_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="description_page" string="Description">
+                            <field name="description" type="html"/>
+                            <div class="oe_clear"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_task_form2_inherited">
+        <field name="name">project.task.form.inherited</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='extra_info']" position="before">
+                <field name="origin_id" invisible="True"/>
+                <page string="Route Data" id="route_tab" attrs="{'invisible': [('origin_id', '=', False)]}">
+                    <group>
+                        <group>
+                            <field name="km"/>
+                            <field name="kg"/>
+                            <field name="units"/>
+                        </group>
+                        <group>
+                            <field name="date_end"/>
+                            <field name="origin_id" options="{'no_create': True}"/>
+                            <field name="origin_date"/>
+                            <field name="delivery_id" options="{'no_create': True}"/>
+                            <field name="delivery_date"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

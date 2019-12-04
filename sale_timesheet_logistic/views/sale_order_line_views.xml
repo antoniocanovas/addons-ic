@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="groups_id" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page/field[@name='order_line']/form//field[@name='price_unit']" position="after">
+                <field name="product_type" invisible="True"/>
+                <field name="origin_id" attrs="{'invisible': [('product_type', '!=', 'service')]}"/>
+                <field name="origin_date" attrs="{'invisible': [('product_type', '!=', 'service')]}"/>
+                <field name="delivery_id" attrs="{'invisible': [('product_type', '!=', 'service')]}"/>
+                <field name="delivery_date" attrs="{'invisible': [('product_type', '!=', 'service')]}"/>
+            </xpath>
+            <xpath expr="//page/field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
+                <field name="product_type" invisible="True"/>
+                <field name="origin_id" attrs="{'readonly': [('product_type', '!=', 'service')]}" optional="hide"/>
+                <field name="origin_date" attrs="{'readonly': [('product_type', '!=', 'service')]}" optional="hide"/>
+                <field name="delivery_id" attrs="{'readonly': [('product_type', '!=', 'service')]}" optional="hide"/>
+                <field name="delivery_date" attrs="{'readonly': [('product_type', '!=', 'service')]}" optional="hide"/>
+                <button name="action_open_task" icon="fa-tasks" class="oe_stat_button" string="Open" type="object" attrs="{'invisible': ['|', ('product_type', '!=', 'service'), ('state', '=', 'draft')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

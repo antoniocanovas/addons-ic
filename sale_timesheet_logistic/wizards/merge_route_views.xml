@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_partner_route_merge_view_form_wizard" model="ir.ui.view">
+        <field name="name">partner.route.merge.wizard.form</field>
+        <field name="model">partner.route.merge.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate Route">
+                <group>
+                    <span class="o_form_label">This operation will merge all selected routes in the same route.</span>
+                </group>
+                <group>
+                    <field name="name"/>
+                </group>
+                <footer>
+                    <button name="merge_route" string="Merge" type="object" class="btn-primary"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_res_partner_route_merge" model="ir.actions.act_window">
+        <field name="name">Merge Routes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">partner.route.merge.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="groups_id" eval="[(4,ref('sales_team.group_sale_salesman'))]"/>
+        <field name="binding_model_id" ref="sale_timesheet_logistic.model_res_partner_route"/>
+        <field name="binding_view_types">list</field>
+    </record>
+
+</odoo>
