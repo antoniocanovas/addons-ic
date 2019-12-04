@@ -7,9 +7,8 @@
 """,
     'author': 'Serincloud',
     'depends': [
-        'project',
         'sale_supply',
-        'expedientes',
+        'hr_timesheet',
     ],
     'data': [
         'views/project_economical_resume.xml',

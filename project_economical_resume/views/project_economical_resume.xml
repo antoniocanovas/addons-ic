@@ -10,13 +10,13 @@
         <page name="economical_resume" string="economía">
           <group>
             <group string="Suplidos">
-              <field name="addvance_supply" string="Adelantados"/>
+              <field name="advance_supply" string="Adelantados"/>
               <field name="expense_supply" string="Gastos"/>
               <field name="aviable_supply" string="Disponible"/>
             </group>
             <group string="General">
               <field name="invoiced_case"/>
-              <field name="imputed_case"/>
+              <field name="inputed_case"/>
               <field name="aviable_case"/>
               <field name="currency_id" invisible="1"/>
             </group>
