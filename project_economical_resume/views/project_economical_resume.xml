@@ -7,7 +7,7 @@
     <field name="inherit_id" ref="project.edit_project"/>
     <field name="arch" type="xml">
       <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
-        <page name="economical_resume" string="economía">
+        <page name="economical_resume" string="Estado económico">
           <group>
             <group string="Suplidos">
               <field name="advance_supply" string="Adelantados"/>
