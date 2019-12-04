@@ -9,7 +9,7 @@ class ProjectTaskContacts(models.Model):
     _inherit = 'project.project'
 
     @api.depends('create_date')
-    def _get_advance_supply(self):
+    def _get_supply_advanced(self):
         for record in self:
             total = 0
             cuentas = self.env['account.account'].search([('is_supply', '=', True)]).ids
@@ -17,12 +17,12 @@ class ProjectTaskContacts(models.Model):
                 [('account_id', '=', record.analytic_account_id.id),
                  ('general_account_id', 'in', cuentas), ('amount', '>', 0)])
             for pago in pagos_suplidos: total += pago.amount
-            record['advance_supply'] = total
+            record['supply_advanced'] = total
 
-    advance_supply = fields.Monetary(string='Adelanto Suplidos',stored=False,compute=_get_advance_supply)
+    supply_advanced = fields.Monetary(string='Adelanto Suplidos', stored=False, compute=_get_supply_advanced)
 
     @api.depends('create_date')
-    def _get_expense_supply(self):
+    def _get_supply_consumed(self):
         for record in self:
             total = 0
             cuentas = self.env['account.account'].search([('is_supply', '=', True)]).ids
@@ -30,19 +30,19 @@ class ProjectTaskContacts(models.Model):
                 [('account_id', '=', record.analytic_account_id.id),
                  ('general_account_id', 'in', cuentas), ('amount', '<', 0)])
             for pago in pagos_suplidos: total += pago.amount
-            record['expense_supply'] = -1 * total
+            record['supply_consumed'] = -1 * total
 
-    expense_supply = fields.Monetary(string='Gastos Suplidos',stored=False,compute=_get_expense_supply)
+    supply_consumed = fields.Monetary(string='Gastos Suplidos',stored=False,compute=_get_supply_consumed)
 
     @api.depends('create_date')
-    def _get_aviable_supply(self):
+    def _get_supply_available(self):
         for record in self:
-            record['aviable_supply'] = record.advance_supply - record.expense_supply
+            record['supply_available'] = record.advance_supply - record.expense_supply
 
-    aviable_supply = fields.Monetary(string='Disponible Suplidos',stored=False,compute=_get_aviable_supply)
+    supply_available = fields.Monetary(string='Disponible Suplidos',stored=False,compute=_get_supply_available)
 
     @api.depends('create_date')
-    def _get_invoiced_case(self):
+    def _get_customer_invoiced(self):
         for record in self:
             total = 0
             cuentas = self.env['account.account'].search([('is_supply', '=', True)]).ids
@@ -50,27 +50,27 @@ class ProjectTaskContacts(models.Model):
                                                                   ('general_account_id', 'not in', cuentas),
                                                                   ('project_id', '=', False)])
             for fac in facturado: total += fac.amount
-            record['invoiced_case'] = total
+            record['customer_invoiced'] = total
 
-    invoiced_case = fields.Monetary(string='Facturado',stored=False,compute=_get_invoiced_case)
+    customer_invoice = fields.Monetary(string='Facturado',stored=False,compute=_get_customer_invoiced)
 
     @api.depends('create_date')
-    def _get_inputed_case(self):
+    def _get_timesheet_cost(self):
         for record in self:
             total = 0
             imputaciones = self.env['account.analytic.line'].search(
                 [('project_id', '!=', False), ('account_id', '=', record.analytic_account_id.id)])
             for imp in imputaciones: total += imp.amount
-            record['inputed_case'] = total
+            record['timesheet_cost'] = total
 
-    inputed_case = fields.Monetary(string='Imputaciones',stored=False,compute=_get_inputed_case)
+    timesheet_cost = fields.Monetary(string='Imputaciones',stored=False,compute=_get_timesheet_cost)
 
     @api.depends('create_date')
-    def _get_aviable_case(self):
+    def _get_balance(self):
         for record in self:
             total = 0
             importes = self.env['account.analytic.line'].search([('account_id', '=', record.analytic_account_id.id)])
             for importe in importes: total += importe.amount
-            record['aviable_case'] = total - record.advance_supply + record.expense_supply
+            record['balance'] = total - record.advance_supply + record.expense_supply
 
-    aviable_case = fields.Monetary(string='Saldo',stored=False,compute=_get_aviable_case)
+    balance = fields.Monetary(string='Saldo',stored=False,compute=_get_balance)

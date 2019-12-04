@@ -10,14 +10,14 @@
         <page name="economical_resume" string="Estado económico">
           <group>
             <group string="Suplidos">
-              <field name="advance_supply" string="Adelantados"/>
-              <field name="expense_supply" string="Gastos"/>
-              <field name="aviable_supply" string="Disponible"/>
+              <field name="supply_advanced" string="Adelantados"/>
+              <field name="supply_consumed" string="Gastos"/>
+              <field name="supply_available" string="Disponible"/>
             </group>
             <group string="General">
-              <field name="invoiced_case"/>
-              <field name="inputed_case"/>
-              <field name="aviable_case"/>
+              <field name="customer_invoiced"/>
+              <field name="timesheet_cost"/>
+              <field name="balance"/>
               <field name="currency_id" invisible="1"/>
             </group>
           </group>
