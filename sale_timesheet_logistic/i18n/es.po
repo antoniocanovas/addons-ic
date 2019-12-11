@@ -69,14 +69,14 @@ msgstr "Cerrar"
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__origin_date
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__origin_date
 msgid "Collection Date"
-msgstr "Fecha recogida"
+msgstr "A partir de"
 
 #. module: sale_timesheet_logistic
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__origin_id
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route_line__origin_id
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__origin_id
 msgid "Collection Point"
-msgstr "Punto de recogida"
+msgstr "Recoger en"
 
 #. module: sale_timesheet_logistic
 #: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_view_form_wizard
@@ -118,14 +118,14 @@ msgstr "Creado el"
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__delivery_date
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__delivery_date
 msgid "Delivery Date"
-msgstr "Fecha de entrega"
+msgstr "Antes de"
 
 #. module: sale_timesheet_logistic
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__delivery_id
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route_line__delivery_id
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__delivery_id
 msgid "Delivery Point"
-msgstr "Punto de entrega"
+msgstr "Entregar en"
 
 #. module: sale_timesheet_logistic
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_merge_wizard__display_name

@@ -41,7 +41,14 @@ class SaleOrderLine(models.Model):
         self.ensure_one()
         values = super()._timesheet_create_task_prepare_values(project)
         if self.origin_date:
-            values.update({'planned_date_begin': self.origin_date})
+            values.update({
+                'planned_date_begin': self.origin_date,
+                'origin_date': self.origin_date,
+            })
         if self.delivery_date:
-            values.update({'planned_date_end': self.delivery_date})
+            values.update({
+                'planned_date_end': self.delivery_date,
+                'delivery_date': self.delivery_date,
+                'date_deadline': self.delivery_date,
+            })
         return values

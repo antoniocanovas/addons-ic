@@ -16,16 +16,17 @@
                     </div>
                     <group>
                         <group>
-                            <field name="km"/>
-                            <field name="kg"/>
-                            <field name="units"/>
-                        </group>
-                        <group>
-                            <field name="date_end"/>
+                            <field name="user_id"/>
                             <field name="origin_id" options="{'no_create': True}"/>
                             <field name="origin_date"/>
                             <field name="delivery_id" options="{'no_create': True}"/>
                             <field name="delivery_date"/>
+                        </group>
+                        <group>
+                            <field name="date_end"/>
+                            <field name="km"/>
+                            <field name="kg"/>
+                            <field name="units"/>
                         </group>
                     </group>
                     <notebook>
@@ -48,16 +49,16 @@
                 <page string="Route Data" id="route_tab" attrs="{'invisible': [('origin_id', '=', False)]}">
                     <group>
                         <group>
-                            <field name="km"/>
-                            <field name="kg"/>
-                            <field name="units"/>
-                        </group>
-                        <group>
-                            <field name="date_end"/>
                             <field name="origin_id" options="{'no_create': True}"/>
                             <field name="origin_date"/>
                             <field name="delivery_id" options="{'no_create': True}"/>
                             <field name="delivery_date"/>
+                        </group>
+                        <group>
+                            <field name="date_end"/>
+                            <field name="km"/>
+                            <field name="kg"/>
+                            <field name="units"/>
                         </group>
                     </group>
                 </page>
