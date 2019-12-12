@@ -19,7 +19,7 @@
         'views/res_partner_views.xml',
         'wizards/create_route_views.xml',
         'wizards/merge_route_views.xml',
-        'project_task_form_fsm_views.xml',
+        'views/project_task_form_fsm_views.xml',
         'data/server_action.xml',
     ],
     'installable': True,
