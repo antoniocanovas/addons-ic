@@ -7,8 +7,8 @@
         <field name="inherit_id" ref="industry_fsm.project_task_view_form" />
         <field name="arch" type="xml">
             <xpath expr="//div[@class='oe_button_box'][not(ancestor::field)]" position="inside">
-                <button name="delivered_collected" type="action" class="oe_stat_button" string="Recogido" icon="fa-archive" attrs="{'invisible':[('origin_date','!=',False)]}"/>
-                <button name="delivered_collected" type="action" class="oe_stat_button" string="Entregado" icon="fa-archive" attrs="{'invisible':['|',('origin_date','=',False),('delivery_date','!=',False)]}"/>
+                <button name="sale_timesheet_logistic.delivered_collected" type="action" class="oe_stat_button" string="Recogido" icon="fa-archive" attrs="{'invisible':[('origin_date','!=',False)]}"/>
+                <button name="sale_timesheet_logistic.delivered_collected" type="action" class="oe_stat_button" string="Entregado" icon="fa-archive" attrs="{'invisible':['|',('origin_date','=',False),('delivery_date','!=',False)]}"/>
             </xpath>
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="km"/>
