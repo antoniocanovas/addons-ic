@@ -17,3 +17,9 @@ class ProjectTask(models.Model):
         string='Delivery Point',
         readonly=True,
     )
+    origin_date = fields.Datetime(
+        string='Collection Date',
+    )
+    delivery_date = fields.Datetime(
+        string='Delivery Date',
+    )
