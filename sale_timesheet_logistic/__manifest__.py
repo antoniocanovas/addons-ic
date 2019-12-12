@@ -9,8 +9,8 @@
     'category': 'Generic',
     'version': '13.0.1.0.1',
     'depends': [
+        'industry_fsm',
         'sale_timesheet',
-        'project_enterprise',
     ],
     'data': [
         'security/ir.model.access.csv',

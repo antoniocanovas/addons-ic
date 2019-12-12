@@ -12,10 +12,10 @@ class SaleOrderLine(models.Model):
         comodel_name='res.partner',
         string='Delivery Point',
     )
-    origin_date = fields.Datetime(
+    planned_date_begin = fields.Datetime(
         string='Collection Date',
     )
-    delivery_date = fields.Datetime(
+    planned_date_end = fields.Datetime(
         string='Delivery Date',
     )
     product_type = fields.Selection(
@@ -40,15 +40,13 @@ class SaleOrderLine(models.Model):
     def _timesheet_create_task_prepare_values(self, project):
         self.ensure_one()
         values = super()._timesheet_create_task_prepare_values(project)
-        if self.origin_date:
+        if self.planned_date_begin:
             values.update({
-                'planned_date_begin': self.origin_date,
-                'origin_date': self.origin_date,
+                'planned_date_begin': self.planned_date_begin,
             })
-        if self.delivery_date:
+        if self.planned_date_end:
             values.update({
-                'planned_date_end': self.delivery_date,
-                'delivery_date': self.delivery_date,
-                'date_deadline': self.delivery_date,
+                'planned_date_end': self.planned_date_end,
+                'date_deadline': self.planned_date_end,
             })
         return values
