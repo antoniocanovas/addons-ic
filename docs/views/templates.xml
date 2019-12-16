@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<odoo>
+    <data>
+
+        <template id="docs_report_document_report">
+            <t t-call="web.external_layout">
+                <t t-set="o" t-value="o.with_context(lang=lang)"/>
+                <div class="page">
+                   <div class="text-center">
+                        <h2><span t-field="o.type_id"/></h2>
+                    </div>
+                    <div class="text-center">
+                        <span t-field="o.intro"/>
+                    </div>
+                    <div class="text-center">
+                        <span t-field="o.body"/>
+                    </div>
+                    <div class="text-center">
+                        <span t-field="o.footer"/>
+                    </div>
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <tr>
+                                <t t-set="colspan" t-value="3"/>
+                                <th class="text-left"><span>Contacto</span></th>
+                                <th class="text-left"><span>Rol</span></th>
+                                <th class="text-left"><span>Tarea</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="o.implied_ids" t-as="contact">
+                                <tr t-att-class="'bg-200 font-weight-bold'">
+                                    <t>
+
+                                        <td><span t-field="contact.partner_id"/></td>
+                                        <td><span t-field="contact.rol_id"/></td>
+                                        <td><span t-field="contact.task_id"/></td>
+
+                                    </t>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <template id="docs_report_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="docs.docs_report_document_report" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

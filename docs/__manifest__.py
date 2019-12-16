@@ -1,13 +1,13 @@
 {
-    'name': 'Case Docs',
-    'version': '12.0.0.1',
+    'name': 'Docs',
+    'version': '12.0.001.0',
     'category': 'Projects',
     'description': u"""
 
 """,
     'author': 'Serincloud',
     'depends': [
-       'expedientes',
+        'expedientes',
         'project_task_contacts',
         'project_task_project_contacts',
     ],
@@ -18,9 +18,6 @@
         'data/mail_template_data.xml',
         'views/views.xml',
         'views/views_menu.xml',
-        #'views/project_view.xml',
-        #'data/actions.xml'
-        #'data/ir_ui_menu.xml',
     ],
     'installable':True,
 }

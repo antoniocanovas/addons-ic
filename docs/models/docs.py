@@ -14,6 +14,9 @@ class Docs(models.Model):
     task_id = fields.Many2one('project.task', string='Tarea')
     project_id = fields.Many2one('project.project',related='task_id.project_id', string='proyecto')
     implied_ids = fields.Many2many('project.task.contacts', string='Implicados')
+    user_id = fields.Many2one('res.users', string='Comercial', track_visibility='onchange',
+                              readonly=True, states={'draft': [('readonly', False)]},
+                              default=lambda self: self.env.user, copy=False)
 
     @api.depends('type_id')
     def _get_intro_text(self):
@@ -39,28 +42,36 @@ class Docs(models.Model):
     @api.multi
     def _get_report_base_filename(self):
         self.ensure_one()
-        return 'DOCS' + self.name + str(self.type_id)
+        return self.name + str(self.type_id.name)
+
+    @api.multi
+    def docs_print(self):
+        """ Hace falta hacer seguimiento si el DOc ha sido enviado?
+        """
+        return self.env.ref('docs.docs_report').report_action(self)
 
     @api.multi
     def action_docs_sent(self):
-        """ Open a window to compose an email, with the edi invoice template
-            message loaded by default
+        """ Open a window to compose an email
         """
         self.ensure_one()
         template = self.env.ref('docs.email_template_edi_docs', False)
         compose_form = self.env.ref('mail.email_compose_message_wizard_form', False)
+        self.ensure_one()
+        lang = self.env.context.get('lang')
+        if template and template.lang:
+            lang = template._render_template(template.lang, 'docs.docs', self.id)
+        self = self.with_context(lang=lang)
         ctx = dict(
             default_model='docs.docs',
             default_res_id=self.id,
             default_use_template=bool(template),
             default_template_id=template and template.id or False,
             default_composition_mode='comment',
-            #mark_invoice_as_sent=True,
-            #custom_layout="account.mail_template_data_notification_email_account_invoice",
-            force_email=True
+            user_id=self.env.user.id,
         )
         return {
-            'name': ('Compose Email'),
+            'name': ('Send Doc'),
             'type': 'ir.actions.act_window',
             'view_type': 'form',
             'view_mode': 'form',
@@ -69,17 +80,4 @@ class Docs(models.Model):
             'view_id': compose_form.id,
             'target': 'new',
             'context': ctx,
-        }
-
-class ReportDocs(models.AbstractModel):
-    _name = 'report.docs.docs'
-    _description = 'Docs Reporting'
-
-    @api.model
-    def _get_report_values(self, docids, data=None):
-        return {
-            'doc_ids': docids,
-            'doc_model': 'docs.docs',
-            'docs': self.env['docs.docs'].browse(docids),
-            'report_type': data.get('report_type') if data else '',
         }

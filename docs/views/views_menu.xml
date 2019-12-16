@@ -1,7 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <!--<menuitem id="menu_docs" name="Docs" sequence="9"/>-->
-
 
   <record id="action_docs_types" model="ir.actions.act_window">
     <field name="auto_search" eval="True"/>
@@ -11,14 +9,6 @@
     <field name="domain" eval="False"/>
     <field name="filter" eval="False"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
-                        This is your new action ; by default, it contains a list view and a form view.
-                    </p>
-                    <p>
-                        You can start customizing these screens by clicking on the Studio icon on the
-                        top right corner (you can also customize this help message there).
-                    </p>
-                ]]></field>
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
     <field name="name">Tipos de Documentos</field>
@@ -39,14 +29,6 @@
     <field name="domain" eval="False"/>
     <field name="filter" eval="False"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
-                        This is your new action ; by default, it contains a list view and a form view.
-                    </p>
-                    <p>
-                        You can start customizing these screens by clicking on the Studio icon on the
-                        top right corner (you can also customize this help message there).
-                    </p>
-                ]]></field>
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
     <field name="name">Docs</field>
@@ -68,14 +50,6 @@
     <field name="domain" eval="False"/>
     <field name="filter" eval="False"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
-                        This is your new action ; by default, it contains a list view and a form view.
-                    </p>
-                    <p>
-                        You can start customizing these screens by clicking on the Studio icon on the
-                        top right corner (you can also customize this help message there).
-                    </p>
-                ]]></field>
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
     <field name="name">Textos para expedientes</field>
