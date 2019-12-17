@@ -52,16 +52,9 @@ class Docs(models.Model):
 
     @api.multi
     def action_docs_sent(self):
-        """ Open a window to compose an email
-        """
         self.ensure_one()
         template = self.env.ref('docs.email_template_edi_docs', False)
         compose_form = self.env.ref('mail.email_compose_message_wizard_form', False)
-        self.ensure_one()
-        lang = self.env.context.get('lang')
-        if template and template.lang:
-            lang = template._render_template(template.lang, 'docs.docs', self.id)
-        self = self.with_context(lang=lang)
         ctx = dict(
             default_model='docs.docs',
             default_res_id=self.id,
