@@ -30,8 +30,8 @@
                     </p>
                 </div>
             </field>
-            <field name="report_template" ref="docs.docs_report_document"/>
-            <field name="report_name">Docs_${(object.name)}</field>
+            <field name="report_template" ref="docs.docs_report"/>
+            <field name="report_name">${('DOCS'+(str(object.type_id.name) or '')+'.pdf')}</field>
             <field name="lang">${object.user_id.company_id.lang}</field>
             <field name="user_signature" eval="False"/>
             <field name="auto_delete" eval="True"/>

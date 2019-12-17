@@ -59,7 +59,7 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <form>
-                <button name="action_docs_sent" string="Send &amp; Print" type="object"/>
+                <button name="action_docs_sent" string="Send" type="object"/>
                 <sheet string="Docs">
                     <h2>
                         <field name="name" modifiers="{}"/>

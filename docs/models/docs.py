@@ -10,7 +10,7 @@ class Docs(models.Model):
     _description = 'Docs en Expedientes'
 
     name = fields.Char(string="Nombre")
-    type_id = fields.Many2one('docs.types',string='Tipo')
+    type_id = fields.Many2one('docs.types',string='Tipo',store=True)
     task_id = fields.Many2one('project.task', string='Tarea')
     project_id = fields.Many2one('project.project',related='task_id.project_id', string='proyecto')
     implied_ids = fields.Many2many('project.task.contacts', string='Implicados')
@@ -23,14 +23,14 @@ class Docs(models.Model):
         for record in self:
             record['intro'] = record.type_id.intro_id.text
 
-    intro = fields.Html(string='Intro',compute=_get_intro_text,readonly=False,store=True)
+    intro = fields.Html(string='Intro',compute=_get_intro_text,readonly=False, store=True)
 
     @api.depends('type_id')
     def _get_footer_text(self):
         for record in self:
             record['footer'] = record.type_id.footer_id.text
 
-    footer = fields.Html(string='Footer', compute=_get_footer_text, readonly=False,store=True)
+    footer = fields.Html(string='Footer', compute=_get_footer_text, readonly=False, store=True)
 
     @api.depends('type_id')
     def _get_body_text(self):
@@ -57,7 +57,7 @@ class Docs(models.Model):
         compose_form = self.env.ref('mail.email_compose_message_wizard_form', False)
         ctx = dict(
             default_model='docs.docs',
-            default_res_id=self.id,
+            default_res_id=self.ids[0],
             default_use_template=bool(template),
             default_template_id=template and template.id or False,
             default_composition_mode='comment',
