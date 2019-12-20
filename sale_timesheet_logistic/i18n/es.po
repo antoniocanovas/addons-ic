@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-12 09:24+0000\n"
-"PO-Revision-Date: 2019-12-12 10:25+0100\n"
+"POT-Creation-Date: 2019-12-20 12:40+0000\n"
+"PO-Revision-Date: 2019-12-20 13:41+0100\n"
 "Last-Translator: cubells <vicent@vcubells.net>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -16,6 +16,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
 "X-Generator: Poedit 2.2.4\n"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_task_form_fsm_inherited
+msgid ""
+"<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" title="
+"\"Arrow\"/>"
+msgstr ""
+"<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" title="
+"\"Arrow\"/>"
 
 #. module: sale_timesheet_logistic
 #: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_view_form_wizard
@@ -34,6 +43,11 @@ msgid ""
 msgstr ""
 "<span class=\"o_form_label\">Esta operación unirá todas las rutas en una "
 "misma nueva ruta.</span>"
+
+#. module: sale_timesheet_logistic
+#: model:ir.actions.server,name:sale_timesheet_logistic.delivered_collected
+msgid "=> Picked Up / Delivered in tasks"
+msgstr "Recogido / entregado en tareas"
 
 #. module: sale_timesheet_logistic
 #: model:ir.model.fields,help:sale_timesheet_logistic.field_sale_order_line__product_type
@@ -66,6 +80,7 @@ msgid "Close"
 msgstr "Cerrar"
 
 #. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__origin_date
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__planned_date_begin
 msgid "Collection Date"
 msgstr "A partir de"
@@ -114,6 +129,12 @@ msgid "Created on"
 msgstr "Creado el"
 
 #. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_task_form_fsm_inherited
+msgid "Delivered"
+msgstr "Entregado"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__delivery_date
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__planned_date_end
 msgid "Delivery Date"
 msgstr "Antes de"
@@ -231,6 +252,16 @@ msgid "Open"
 msgstr "Abrir"
 
 #. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_task_form_fsm_inherited
+msgid "Picked Up"
+msgstr "Recogido"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_task_form_fsm_inherited
+msgid "Picked up / delivered"
+msgstr "Recogida / entregada"
+
+#. module: sale_timesheet_logistic
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__product_type
 msgid "Product Type"
 msgstr "Tipo de producto"
@@ -337,3 +368,6 @@ msgstr ""
 #, python-format
 msgid "You must select two or more routes to merge."
 msgstr "Debe seleccionar dos o más rutas que unir."
+
+#~ msgid "=> Recogido / Entregado en tareas "
+#~ msgstr "=> Recogido / Entregado en tareas "
