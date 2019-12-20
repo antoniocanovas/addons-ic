@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="delivered_collected" model="ir.actions.server">
+            <field name="name">=> Recogido / Entregado en tareas </field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="active" eval="True"/>
+            <field name="state">code</field>
+            <field name="code">
+#
+if (record.origin_date): record['delivery_date'] = datetime.datetime.today()
+else: record['origin_date'] = datetime.datetime.today()
+            </field>
+    </record>
+
+</odoo>
