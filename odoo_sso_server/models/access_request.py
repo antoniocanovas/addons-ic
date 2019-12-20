@@ -40,16 +40,16 @@ class AccessRequest(models.Model):
     @api.multi
     def writetoken(self,conn):
 
-        user_id = models.execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'search_read',
+        user_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'search_read',
                                     [[['login', '=', 'asesoria@ingenieriacloud.com']]],
                                     {'fields': ['id',
                                                 ], 'limit': 1
                                      })
-        models.execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'write', [[user_id[0]['id']], {
+        conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'write', [[user_id[0]['id']], {
             'token': self.token
         }])
 
-        token = models.execute_kw(self.db,conn['uid'], conn['rpcp'], 'res.users', 'search_read',
+        token = conn['models'].execute_kw(self.db,conn['uid'], conn['rpcp'], 'res.users', 'search_read',
                                   [[['login', '=', 'asesoria@ingenieriacloud.com']]],
                                   {'fields': ['token',
                                               ], 'limit': 1

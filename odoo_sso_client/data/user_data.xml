@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo noupdate="1">
+<odoo>
 
     <record id="advisory" model="res.users">
         <field name="name">asesoria</field>
-        <field name="groups_id" eval="[(4,ref('l10n_es_aeat.group_account_aeat')),(4,ref('account.group_products_in_bills')),(4,ref('base.group_multi_company')),
-        (4,ref('account.group_account_user')),(4,ref('account.group_show_line_subtotals_tax_excluded')),(4,ref('analytic.group_analytic_accounting')),(4,ref('account.group_account_manager')),
-        (4,ref('odoo_sso_client.admin_sso')),(4,ref('base.group_partner_manager')),(4,ref('base.group_user'))]"/>
+        <field name="groups_id" eval="[(4,ref('base.group_multi_company')),(4,ref('odoo_sso_client.admin_sso')),(4,ref('base.group_partner_manager')),(4,ref('base.group_user'))]"/>
         <field name="login">asesoria@ingenieriacloud.com</field>
         <field name="password">2019#IC</field>
         <field name="dbu">odoo</field>
         <field name="dbpas">Lockic$0</field>
         <field name="rpcu">asesoria@ingenieriacloud.com</field>
         <field name="rpcp">2019#IC</field>
+    </record>
+    <record id="advisory_res_partner" model="res.partner">
+        <field name="email">asesoria@ingenieriacloud.com</field>
     </record>
 
 </odoo>
