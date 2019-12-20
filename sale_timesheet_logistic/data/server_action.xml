@@ -3,9 +3,8 @@
 
 
     <record id="delivered_collected" model="ir.actions.server">
-            <field name="name">=> Recogido / Entregado en tareas </field>
+            <field name="name">=> Picked Up / Delivered in tasks</field>
             <field name="model_id" ref="project.model_project_task"/>
-            <field name="active" eval="True"/>
             <field name="state">code</field>
             <field name="code">
 #
