@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_task_form_fsm_inherited">
+        <field name="name">project.task.form.fsm.inherited</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm.project_task_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_button_box'][not(ancestor::field)]" position="inside">
+                <button name="delivered_collected" type="action" class="oe_stat_button" string="Recogido" icon="fa-archive" attrs="{'invisible':[('origin_date','!=',False)]}"/>
+                <button name="delivered_collected" type="action" class="oe_stat_button" string="Entregado" icon="fa-archive" attrs="{'invisible':['|',('origin_date','=',False),('delivery_date','!=',False)]}"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="km"/>
+                <field name="kg"/>
+                <field name="units"/>
+            </xpath>
+            <xpath expr="//sheet[1]/group[1]/group[2]/div[1]" position="after">
+                <label for="planned_date_begin" string="Recogida / entrega"/>
+                <div class="w-100" name="studio_div_899b2d">
+                    <div class="o_row" name="studio_div_8de74d">
+                        <field name="origin_date" widget="daterange" options="{&quot;related_end_date&quot;: &quot;delivery_date&quot;}"/>
+                        <i class="fa fa-long-arrow-right mx-2" aria-label="Arrow icon" title="Arrow"/>
+                        <field name="delivery_date" widget="daterange" options="{&quot;related_start_date&quot;: &quot;origin_date&quot;}"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

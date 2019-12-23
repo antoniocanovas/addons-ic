@@ -17,6 +17,7 @@
         'views/sale_order_line_views.xml',
         'views/project_task_views.xml',
         'views/res_partner_views.xml',
+        'views/project_task_form_fsm_views.xml',
         'wizards/create_route_views.xml',
         'wizards/merge_route_views.xml',
         'data/server_action.xml',
