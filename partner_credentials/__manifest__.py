@@ -1,21 +1,22 @@
 {
-    'name': "odoo sso client",
+    'name': "partner credentials",
     'summary': """
-       Añade la funcionalidad de conectarse a este odoo cliente con un usuario preasignado.
-       Para el servidor es necesario instalar odoo sso server.
+       Añade la funcionalidad de conectarse a un odoo cliente con un usuario preasignado.
         """,
     'author': "Pedro Guirao",
     'license': 'AGPL-3',
     'website': "https://ingenieriacloud.com",
     'category': 'Tools',
-    'version': '12.0.6.0.0',
+    'version': '12.0.1.0.0',
     'depends': [
-        'partner_credentials',
+        'contacts',
     ],
     'data': [
+        'views/views.xml',
+        'views/view_menu.xml',
+        'views/view_partner_credentials.xml',
         'security/user_groups.xml',
         'security/ir.model.access.csv',
-        'data/user_data.xml',
     ],
     'installable': True,
     'application': True,

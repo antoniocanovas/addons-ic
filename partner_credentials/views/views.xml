@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="credentials_tree" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <tree string="Credentials">
+                <field name="name" modifiers="{}"/>
+            </tree>
+        </field>
+        <field name="model">partner.credentials</field>
+        <field name="name">Default tree view for partner credentials</field>
+        <field name="type">tree</field>
+    </record>
+
+    <record id="credentials_form" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <form>
+                <sheet name="main" string="Credentials">
+                    <h2>
+                        <field name="name" modifiers="{}"/>
+                    </h2>
+                    <h4>
+                        <field name="url" widget="url" modifiers="{}"/>
+                    </h4>
+                    <group name="basic_params">
+                        <group col="2">
+                            <field name="partner_id"/>
+                            <field name="type"/>
+                            <field name="public"/>
+                            <newline/>
+                        </group>
+                        <group col="2">
+                            <group col="2">
+                                <field name="user"/>
+                                <field name="password"/>
+                            </group>
+                        </group>
+                    </group>
+                </sheet>
+                <!--<div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>-->
+            </form>
+        </field>
+        <field name="model">partner.credentials</field>
+        <field name="name">Default form view for partner credentials</field>
+        <field name="type">form</field>
+    </record>
+
+
+</odoo>
