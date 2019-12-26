@@ -17,7 +17,7 @@ class AccessRequest(models.Model):
         return ''.join(random.choice(temptoken) for i in range(10))
 
     @api.multi
-    def setxmlrpc(self):
+    def _setxmlrpc(self):
 
         if not self.db or not self.url:
             raise Warning((
@@ -37,26 +37,26 @@ class AccessRequest(models.Model):
                 'models': models,
                 'rpcu': asesoria.rpcu,
                 'rpcp': asesoria.rpcp,
-                'token':asesoria.token
+                'token':asesoria.token,
             }
 
     @api.multi
     def writetoken(self,conn):
 
         user_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'search_read',
-                                    [[['login', '=', 'asesoria@ingenieriacloud.com']]],
-                                    {'fields': ['id',
-                                                ], 'limit': 1
-                                     })
+                                            [[['login', '=', 'asesoria@ingenieriacloud.com']]],
+                                            {'fields': ['id',
+                                                        ], 'limit': 1
+                                             })
         conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'write', [[user_id[0]['id']], {
-            'token': conn['token']
+            'token': conn['token'],
         }])
 
         token = conn['models'].execute_kw(self.db,conn['uid'], conn['rpcp'], 'res.users', 'search_read',
-                                  [[['login', '=', 'asesoria@ingenieriacloud.com']]],
-                                  {'fields': ['token',
-                                              ], 'limit': 1
-                                   })
+                                          [[['login', '=', 'asesoria@ingenieriacloud.com']]],
+                                          {'fields': ['token',
+                                                      ], 'limit': 1
+                                           })
 
         if token[0]['token'] == conn['token']:
             return True
@@ -70,8 +70,7 @@ class AccessRequest(models.Model):
 
         redirection = werkzeug.utils.redirect('%s%s' % (url, ''))
 
-        conn = self.setxmlrpc()
-
+        conn = self._setxmlrpc()
         #self.token = self.tokengenerator()
         writeok = self.writetoken(conn)
 
