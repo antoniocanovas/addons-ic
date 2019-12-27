@@ -11,5 +11,3 @@ class PartnerConnFields(models.Model):
     dbp = fields.Char()
     rpcu = fields.Char()
     rpcp = fields.Char()
-    token = fields.Char()
-

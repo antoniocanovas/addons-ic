@@ -1,8 +1,8 @@
 {
     'name': "odoo sso client",
     'summary': """
-       Añade la funcionalidad de conectarse a este odoo cliente con un usuario preasignado.
-       Para el servidor es necesario instalar odoo sso server.
+       Añade el usuario requerido para conectar desde un Odoo maestro a esta instancia. 
+       No afecta al entorno de usuario, crea un usuario interno.
         """,
     'author': "Pedro Guirao",
     'license': 'AGPL-3',
@@ -10,11 +10,10 @@
     'category': 'Tools',
     'version': '12.0.6.0.0',
     'depends': [
-        'partner_credentials',
     ],
     'data': [
-        'security/user_groups.xml',
-        'security/ir.model.access.csv',
+        #'security/user_groups.xml',
+        #'security/ir.model.access.csv',
         'data/user_data.xml',
     ],
     'installable': True,

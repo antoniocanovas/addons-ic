@@ -1,7 +1,9 @@
 {
     'name': "partner credentials",
     'summary': """
-       Añade la funcionalidad de conectarse a un odoo cliente con un usuario preasignado.
+        Añade un nuevo modelo para documentar usuario y contraseña de aplicaciones, y añade
+        al usuario un botón para ver los accesos configurados para este.
+        Faltan las reglas de acceso.
         """,
     'author': "Pedro Guirao",
     'license': 'AGPL-3',
@@ -15,7 +17,7 @@
         'views/views.xml',
         'views/view_menu.xml',
         'views/view_partner_credentials.xml',
-        'security/user_groups.xml',
+        #'security/user_groups.xml',
         'security/ir.model.access.csv',
     ],
     'installable': True,

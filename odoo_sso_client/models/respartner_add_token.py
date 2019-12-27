@@ -5,8 +5,6 @@ from odoo import fields, models, api
 
 
 class PartnerConnFields(models.Model):
-    _inherit = 'partner.credentials'
+    _inherit = 'res.partner'
 
-    url_sso = fields.Char('Servidor')
-    db = fields.Char('Base de Datos')
-
+    token = fields.Char()

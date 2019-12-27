@@ -1,8 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-todo_usuarios,Todo usuarios,base.model_res_users,odoo_sso_client.admin_sso,1,1,1,1
-todo_partners,Todo partners,base.model_res_partner,odoo_sso_client.admin_sso,1,1,1,1
-todo_aeat,Todo AEAT,base.model_res_groups,odoo_sso_client.admin_sso,1,1,1,1
-todo_companias,Todo compañias,base.model_res_company,odoo_sso_client.admin_sso,1,1,1,1
-ir_config,ir.config,base.model_ir_config_parameter,odoo_sso_client.admin_sso,1,1,1,1
-todo_reglas,Todo Reglas,base.model_ir_rule,odoo_sso_client.admin_sso,1,1,1,1
+sso_access, group_sso_access,base.respartner_add_token,base.group_user,1,1,1,1
+
 

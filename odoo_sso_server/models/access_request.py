@@ -10,6 +10,9 @@ import random
 class AccessRequest(models.Model):
     _inherit = 'partner.credentials'
 
+    url = fields.Char('Servidor')
+    db = fields.Char('Base de Datos')
+
     @api.multi
     def tokengenerator(self):
 
@@ -27,7 +30,8 @@ class AccessRequest(models.Model):
             asesoria = self.env['res.users'].search([('name', '=', 'asesoria')])
 
             asesoria.token = self.tokengenerator()
-
+            print("ASESORIA")
+            print(asesoria.rpcu)
             common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(self.url))
             uid = common.authenticate(self.db, asesoria.rpcu, asesoria.rpcp, {})
             models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(self.url))
@@ -42,7 +46,8 @@ class AccessRequest(models.Model):
 
     @api.multi
     def writetoken(self,conn):
-
+        print("####DEBUG####")
+        print(conn)
         user_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'search_read',
                                             [[['login', '=', 'asesoria@ingenieriacloud.com']]],
                                             {'fields': ['id',

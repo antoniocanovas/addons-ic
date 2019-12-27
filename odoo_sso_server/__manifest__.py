@@ -1,7 +1,7 @@
 {
     'name': "odoo sso server",
     'summary': """
-       Añade la funcionalidad de conectarse a un odoo cliente con un usuario preasignado.
+        Amplia la vista credentials para conexión sso a otras instancias de Odoo.
         """,
     'author': "Pedro Guirao",
     'license': 'AGPL-3',
@@ -10,9 +10,11 @@
     'version': '12.0.5.0.0',
     'depends': [
         'odoo_sso_client',
+        'partner_credentials',
     ],
     'data': [
         'views/view.xml',
+        'data/user_data.xml',
     ],
     'installable': True,
     'application': True,

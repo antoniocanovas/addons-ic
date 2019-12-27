@@ -20,7 +20,7 @@
                         <field name="name" modifiers="{}"/>
                     </h2>
                     <h4>
-                        <field name="url" widget="url" modifiers="{}"/>
+                        <field name="url_credentials" widget="url" modifiers="{}"/>
                     </h4>
                     <group name="basic_params">
                         <group col="2">
