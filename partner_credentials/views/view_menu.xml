@@ -21,14 +21,22 @@
         <field name="view_type">form</field>
     </record>
 
-    <record id="menu_partner_credentials" model="ir.ui.menu">
+    <!--<record id="menu_partner_credentials" model="ir.ui.menu">
         <field name="action" ref="action_credentials"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="name">Credentials</field>
         <field name="sequence">1</field>
         <field name="web_icon" eval="False"/>
-    </record>
+    </record>-->
+
+    <menuitem
+            action="action_credentials"
+            id="menu_partner_credentials"
+            name="Credentials"
+            sequence="1"
+            web_icon="partner_credentials,static/description/credentials.png"
+    />
 
     <record id="menu_main_partner_credentials" model="ir.ui.menu">
         <field name="action" ref="action_credentials"/>
