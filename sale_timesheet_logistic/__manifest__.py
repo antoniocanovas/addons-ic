@@ -7,7 +7,7 @@
     'license': 'AGPL-3',
     'website': "https://ingenieriacloud.com",
     'category': 'Generic',
-    'version': '13.0.1.0.2',
+    'version': '13.0.2.0.2',
     'depends': [
         'industry_fsm',
         'sale_timesheet',
