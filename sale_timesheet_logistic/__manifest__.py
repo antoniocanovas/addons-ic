@@ -7,7 +7,7 @@
     'license': 'AGPL-3',
     'website': "https://ingenieriacloud.com",
     'category': 'Generic',
-    'version': '13.0.2.0.2',
+    'version': '13.0.3.0.2',
     'depends': [
         'industry_fsm',
         'sale_timesheet',
@@ -20,7 +20,6 @@
         'views/project_task_form_fsm_views.xml',
         'wizards/create_route_views.xml',
         'wizards/merge_route_views.xml',
-        'data/server_action.xml',
     ],
     'installable': True,
 }

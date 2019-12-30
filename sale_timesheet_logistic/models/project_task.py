@@ -23,3 +23,10 @@ class ProjectTask(models.Model):
     delivery_date = fields.Datetime(
         string='Delivery Date',
     )
+
+    def delivered_collected(self):
+        for task in self:
+            if task.origin_date:
+                task.delivery_date = fields.datetime.now()
+            else:
+                task.origin_date = fields.datetime.now()
