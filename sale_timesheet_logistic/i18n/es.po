@@ -83,7 +83,7 @@ msgstr "Cerrar"
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__origin_date
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__planned_date_begin
 msgid "Collection Date"
-msgstr "A partir de"
+msgstr "Fecha recogida"
 
 #. module: sale_timesheet_logistic
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__origin_id
@@ -137,7 +137,7 @@ msgstr "Entregado"
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__delivery_date
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__planned_date_end
 msgid "Delivery Date"
-msgstr "Antes de"
+msgstr "Fecha entrega"
 
 #. module: sale_timesheet_logistic
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__delivery_id
