@@ -7,7 +7,7 @@ from odoo import fields, models, api
 
 class ExpedienteTipos(models.Model):
     _name = 'expediente.tipos'
-    _description = 'Seleccionado en el proyecto de forma requerida si es tipo expediente.'
+    _description = 'Tipos de expedientes.'
 
     name = fields.Char(string='Nombre',required=True)
     linea_ids = fields.One2many('expediente.tipo.lineas','tipo_id',string='Líneas')
