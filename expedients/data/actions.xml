@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-  <record id="al_crear_nuevo_diario" model="base.automation">
+  <record id="task_procedures" model="base.automation">
             <field name="name">=> Tareas (General) </field>
             <field name="model_id" ref="project.model_project_task"/>
             <field name="active" eval="True"/>
@@ -9,17 +9,17 @@
             <field name="code">
 # Pasa por todas las archivadas NO TERMINADAS para comprobar si hay que activarlas tras cambiar de etapa cualquier tarea;
 # si alguna que debería estar archivada se ha decidido cambiar manualmente a activa, no se toca:
-if record.project_id.es_expediente == True:
+if record.project_id.is_expedient == True:
   archivadas = env['project.task'].search([('project_id','=',record.project_id.id),('active','=',False),('stage_id.closed','=',False),('dependency_task_ids','!=',False)])
   for ta in archivadas:
     activar = 'si'
     # Trámites de esta tarea:
     tramites_dependencia = []
-    for li in ta.linea_expediente_id.dependencia_ids:
+    for li in ta.expedient_line_id.dependency_ids:
       tramites_dependencia.append(li.id)
     # Pasa por todas las tareas (archivadas o no) de los trámites anteriores y si alguna está pendiente NO ACTIVES la tarea:
     for de in tramites_dependencia:
-      tarea_dependiente = env['project.task'].search([('project_id','=',record.project_id.id),('linea_expediente_id.tramite_id','=',de),'|',('active','=',True),('active','=',False)])
+      tarea_dependiente = env['project.task'].search([('project_id','=',record.project_id.id),('expedient_line_id.procedure_id','=',de),'|',('active','=',True),('active','=',False)])
       if (tarea_dependiente.id) and (tarea_dependiente.stage_id.closed == False):
         activar = 'no'
     if (activar == 'si'):
@@ -29,25 +29,25 @@ if record.project_id.es_expediente == True:
             <field name="trigger">on_create_or_write</field>
     </record>
 
-    <record id="al_crear_nuevo_usuario" model="base.automation">
+    <record id="check_expedient_type" model="base.automation">
             <field name="name">=> Chequeo tipo expediente (Acción automática) </field>
-            <field name="model_id" ref="expedientes.model_expediente_tipos"/>
+            <field name="model_id" ref="expedients.model_expedient_type"/>
             <field name="active" eval="True"/>
             <field name="state">code</field>
             <field name="code">
 # Comprobar que son resoubles y no tienen dependencias cruzadas:
-if record.estado == 'activo':
+if record.state == 'activo':
 # 1. Array con todas las líneas + otro con pendientes con dependencias (vamos quitando) + Trámites pendientes totales (vamos quitando):
-  todas = record.linea_ids.ids
+  todas = record.line_ids.ids
   lineaspendientes = todas
   tramitesdelineas = []
   tramites = []
 
     # Rellenamos los trámites de las líneas (tramitesdelineas validar sin repeticiones) y trámites dependencias (tramites) sin repetición:
-  for li in record.linea_ids:
-    if li.tramite_id.id not in tramitesdelineas:
-      tramitesdelineas.append(li.tramite_id.id)
-    for de in li.dependencia_ids:
+  for li in record.line_ids:
+    if li.procedure_id.id not in tramitesdelineas:
+      tramitesdelineas.append(li.procedure_id.id)
+    for de in li.dependency_ids:
       if de.id not in tramites:
         tramites.append(de.id)
 
@@ -56,31 +56,31 @@ if record.estado == 'activo':
     raise Warning('Hay trámites repetidos, chequéalo ...')
 
     # Quito trámites sin dependencias ya que estas no hay que chequear que son correctas, antes he revisado que no están repetidos:
-  for li in record.linea_ids:
-    if not li.dependencia_ids.ids:
-      tramites.remove(li.tramite_id.id)
+  for li in record.line_ids:
+    if not li.dependency_ids.ids:
+      tramites.remove(li.procedure_id.id)
       lineaspendientes.remove(li.id)
 
 # 2. Bucle con tantas vueltas como todas las líneas para comprobar que se pueden cerrar, sería el máximo de vueltas necesario si se pierden de una en una:
-  for li in record.linea_ids:
+  for li in record.line_ids:
     # Bucle sobre las pendientes para ver qué líneas y trámites podemos quitar:
     for pe in lineaspendientes:
-      estado = 'activo'
-      linea = env['expediente.tipo.lineas'].browse(pe)
-      for de in linea.dependencia_ids:
+      state = 'activo'
+      linea = env['expedient.line.type'].browse(pe)
+      for de in linea.dependency_ids:
         if de.id in tramites:
-          estado = 'pendiente'
+          state = 'pendiente'
       # Chequeo de si esta línea ha de seguir pendiente o ya se puede terminar, así como su trámite:
-      if (estado == 'activo') and (linea.tramite_id.id in tramites):
-        tramites.remove(linea.tramite_id.id)
-      if (estado == 'activo'):
+      if (state == 'activo') and (linea.procedure_id.id in tramites):
+        tramites.remove(linea.procedure_id.id)
+      if (state == 'activo'):
         lineaspendientes.remove(pe)
 
 # 3. Mensaje de conclusión en caso de que haya error en la configuración:
   if len(lineaspendientes) > 0:
     mensaje = "Las líneas: "
     for pe in lineaspendientes:
-      linea = env['expediente.tipo.lineas'].browse(pe)
+      linea = env['expedient.line.type'].browse(pe)
       mensaje += linea.name + "\n"
     mensaje += "   ... tienen dependencias cruzadas o hay un trámite como dependencia que no existe como prinicipal. Esto ocasiona que no haya forma de cerrar el expediente." + "\n\n" + "Soluciona el bucle o quita el trámite que no pertenece a esta plantilla."
     raise Warning(mensaje)

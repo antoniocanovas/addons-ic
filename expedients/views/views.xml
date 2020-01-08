@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="tipos_de_tramites_tree" model="ir.ui.view">
+    <record id="expedient_type_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree string="Tipos de trámites">
                 <field name="name" modifiers="{}"/>
-                <field name="usuario_id"/>
-                <field name="departamento_id"/>
-                <field name="intervalo"/>
-                <field name="archivado"/>
+                <field name="user_id"/>
+                <field name="departament_id"/>
+                <field name="interval"/>
+                <field name="store"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -17,13 +17,13 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">expediente.tramites</field>
-        <field name="name">Default tree view for expediente_tramites</field>
+        <field name="model">expedient.procedure</field>
+        <field name="name">Default tree view for expedient_procedure</field>
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
 
-    <record id="expediente_tramites_form" model="ir.ui.view">
+    <record id="expedient_procedure_form" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <form>
@@ -32,11 +32,11 @@
                         <field name="name" modifiers="{}"/>
                     </h2>
                     <group col="2">
-                        <field name="usuario_id" can_create="true" can_write="true" modifiers="{}"/>
-                        <field name="departamento_id" modifiers="{}"/>
-                        <field name="descripcion_tarea" colspan="4" modifiers="{}"/>
-                        <field name="intervalo"/>
-                        <field name="archivado"/>
+                        <field name="user_id" can_create="true" can_write="true" modifiers="{}"/>
+                        <field name="departament_id" modifiers="{}"/>
+                        <field name="task_description" colspan="4" modifiers="{}"/>
+                        <field name="interval"/>
+                        <field name="store"/>
                     </group>
                 </sheet>
             </form>
@@ -46,21 +46,21 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">expediente.tramites</field>
-        <field name="name">Default form view for expediente_tramites</field>
+        <field name="model">expedient.procedure</field>
+        <field name="name">Default form view for expedient_procedure</field>
         <field name="priority">16</field>
         <field name="type">form</field>
     </record>
 
-    <record id="lineas_tipo_expediente_tree" model="ir.ui.view">
+    <record id="expedient_type_line_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree string="Líneas de tipo de expediente">
                 <field name="name" modifiers="{&quot;readonly&quot;: true}"/>
-                <field name="usuario_id"/>
-                <field name="departamento_id"/>
-                <field name="intervalo"/>
-                <field name="dependencia_ids" widget="many2many_tags"/>
+                <field name="user_id"/>
+                <field name="departament_id"/>
+                <field name="interval"/>
+                <field name="dependency_ids" widget="many2many_tags"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -68,40 +68,40 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">expediente.tipo.lineas</field>
-        <field name="name">Default tree view for expediente_tipo_lineas</field>
+        <field name="model">expedient.line.type</field>
+        <field name="name">Default tree view for expedient_line_type</field>
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
 
-    <record id="expediente_tipos_form" model="ir.ui.view">
+    <record id="expedient_type_form" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <field name="estado" options="{'clickable': '1', 'default_value':'borrador'}" widget="statusbar"/>
+                    <field name="state" options="{'clickable': '1', 'default_value':'borrador'}" widget="statusbar"/>
                 </header>
                 <sheet string="Tipos de expedientes">
                     <h2>
                         <field name="name" modifiers="{}"/>
                     </h2>
                     <group>
-                        <field name="departamento_id"/>
+                        <field name="departament_id"/>
                     </group>
-                    <field name="linea_ids" string="Trámites" attrs="{'readonly':[('estado','!=','borrador')]}">
+                    <field name="line_ids" string="Trámites" attrs="{'readonly':[('state','!=','borrador')]}">
                         <tree string="Líneas de tipo de expediente" editable="top">
-                            <field name="tramite_id"/>
+                            <field name="procedure_id"/>
                             <field name="name" invisible="1"/>
-                            <field name="usuario_id"/>
-                            <field name="departamento_id"/>
-                            <field name="dependencia_ids" widget="many2many_tags"/>
-                            <field name="intervalo"/>
+                            <field name="user_id"/>
+                            <field name="departament_id"/>
+                            <field name="dependency_ids" widget="many2many_tags"/>
+                            <field name="interval"/>
                         </tree>
                     </field>
                     <group col="2">
-                        <field name="nombre_tarea" placeholder="Por ejemplo: Trámites"/>
+                        <field name="task_name" placeholder="Por ejemplo: Trámites"/>
                     </group>
-                    <h5 attrs="{'invisible':[('estado','=','borrador')]}">NOTAS: Sólo son visibles las "Activas" en los expedientes y ha de pasar a "Borrador" SI DESEA modificar los trámites y dependencias</h5>
+                    <h5 attrs="{'invisible':[('state','=','borrador')]}">NOTAS: Sólo son visibles las "Activas" en los expedientes y ha de pasar a "Borrador" SI DESEA modificar los trámites y dependencias</h5>
                 </sheet>
             </form>
         </field>
@@ -110,19 +110,19 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">expediente.tipos</field>
-        <field name="name">Default form view for expediente_tipos</field>
+        <field name="model">expedient.type</field>
+        <field name="name">Default form view for expedient_type</field>
         <field name="priority">16</field>
         <field name="type">form</field>
     </record>
 
-    <record id="expediente_tipos_tree" model="ir.ui.view">
+    <record id="expedient_type_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree string="Tipos de expedientes">
                 <field name="name" modifiers="{}"/>
-                <field name="linea_ids" widget="many2many_tags"/>
-                <field name="estado"/>
+                <field name="line_ids" widget="many2many_tags"/>
+                <field name="state"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -130,12 +130,12 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">expediente.tipos</field>
-        <field name="name">Default tree view for expediente_tipos</field>
+        <field name="model">expedient.type</field>
+        <field name="name">Default tree view for expedient_type</field>
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
-    <record id="tipo_lineas_form" model="ir.ui.view">
+    <record id="line_type_form" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <form>
@@ -144,16 +144,16 @@
                         <field name="name" modifiers="{}"/>
                     </h2>
                     <group col="2">
-                        <field name="tramite_id" on_change="1" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
-                        <field name="intervalo" modifiers="{&quot;readonly&quot;: true}"/>
+                        <field name="procedure_id" on_change="1" can_create="true" can_write="true" modifiers="{&quot;required&quot;: true}"/>
+                        <field name="interval" modifiers="{&quot;readonly&quot;: true}"/>
                         <newline/>
-                        <field name="usuario_id" can_create="true" can_write="true" modifiers="{}"/>
-                        <field name="departamento_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
-                        <field name="tipo_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                        <field name="user_id" can_create="true" can_write="true" modifiers="{}"/>
+                        <field name="departament_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
+                        <field name="type_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
                         <newline/>
                     </group>
                     <h4>Trámites previos:</h4>
-                    <field name="dependencia_ids" colspan="4" can_create="true" can_write="true" modifiers="{}"/>
+                    <field name="dependency_ids" colspan="4" can_create="true" can_write="true" modifiers="{}"/>
                 </sheet>
             </form>
         </field>
@@ -162,8 +162,8 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">expediente.tipo.lineas</field>
-        <field name="name">Default form view for expediente_tipo_lineas</field>
+        <field name="model">expedient.line.type</field>
+        <field name="name">Default form view for expedient_line_type</field>
         <field name="priority">16</field>
         <field name="type">form</field>
     </record>

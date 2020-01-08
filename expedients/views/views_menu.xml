@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-  <record id="action_expediente_tipo_lineas" model="ir.actions.act_window">
+  <record id="action_expedient_line_type" model="ir.actions.act_window">
     <field name="auto_search" eval="True"/>
     <field name="binding_model_id" eval="False"/>
     <field name="binding_type">action</field>
@@ -20,7 +20,7 @@
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
     <field name="name">Líneas de tipos de expediente</field>
-    <field name="res_model">expediente.tipo.lineas</field>
+    <field name="res_model">expedient.line.type</field>
     <field name="search_view_id" eval="False"/>
     <field name="src_model" eval="False"/>
     <field name="target">current</field>
@@ -30,11 +30,11 @@
     <field name="view_mode">tree,form</field>
     <field name="view_type">form</field>
   </record>
-  <record id="action_tipos_de_expedientes" model="ir.actions.act_window">
+  <record id="action_expedient_type" model="ir.actions.act_window">
     <field name="auto_search" eval="True"/>
     <field name="binding_model_id" eval="False"/>
     <field name="binding_type">action</field>
-    <field name="context">{'default_estado':'borrador'}</field>
+    <field name="context">{'default_state':'borrador'}</field>
     <field name="domain" eval="False"/>
     <field name="filter" eval="False"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
@@ -49,7 +49,7 @@
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
     <field name="name">Tipos de expediente</field>
-    <field name="res_model">expediente.tipos</field>
+    <field name="res_model">expedient.type</field>
     <field name="search_view_id" eval="False"/>
     <field name="src_model" eval="False"/>
     <field name="target">current</field>
@@ -59,7 +59,7 @@
     <field name="view_mode">tree,form</field>
     <field name="view_type">form</field>
   </record>
-  <record id="action_tipos_de_tramites" model="ir.actions.act_window">
+  <record id="action_procedure_type" model="ir.actions.act_window">
     <field name="auto_search" eval="True"/>
     <field name="binding_model_id" eval="False"/>
     <field name="binding_type">action</field>
@@ -78,7 +78,7 @@
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
     <field name="name">Tipos de trámites</field>
-    <field name="res_model">expediente.tramites</field>
+    <field name="res_model">expedient.procedure</field>
     <field name="search_view_id" eval="False"/>
     <field name="src_model" eval="False"/>
     <field name="target">current</field>
@@ -91,8 +91,8 @@
 
 
 
-  <record id="menu_tipos_de_tramites" model="ir.ui.menu">
-    <field name="action" ref="action_tipos_de_tramites"/>
+  <record id="menu_procedure_types" model="ir.ui.menu">
+    <field name="action" ref="action_procedure_type"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="name">Tipos de trámites</field>
@@ -100,8 +100,8 @@
     <field name="sequence">2</field>
     <field name="web_icon" eval="False"/>
   </record>
-  <record id="menu_tipos_de_expedientes" model="ir.ui.menu" context="{'studio': True}">
-    <field name="action" ref="action_tipos_de_expedientes"/>
+  <record id="menu_expedient_type" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="action_expedient_type"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="name">Tipos de expediente</field>
@@ -109,8 +109,8 @@
     <field name="sequence">1</field>
     <field name="web_icon" eval="False"/>
   </record>
-  <record id="menu_expediente_tipo_lineas" model="ir.ui.menu" context="{'studio': True}">
-    <field name="action" ref="action_expediente_tipo_lineas"/>
+  <record id="menu_expedient_line_type" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="action_expedient_line_type"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="name">Líneas de tipos de expediente</field>
