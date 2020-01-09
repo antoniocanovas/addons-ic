@@ -8,9 +8,9 @@
             <field name="state">code</field>
             <field name="code">
 # Pasa por todas las archivadas NO TERMINADAS para comprobar si hay que activarlas tras cambiar de etapa cualquier tarea;
-# si alguna que debería estar archivada se ha decidido cambiar manualmente a activa, no se toca:
+# No se permite archivar tareas del procedimiento del expediente (expedient_line_id) si no están cerradas.Si se permite para tareas manuales que este valor es False:
 if record.project_id.is_expedient == True:
-  archivadas = env['project.task'].search([('project_id','=',record.project_id.id),('active','=',False),('stage_id.closed','=',False),('dependency_task_ids','!=',False)])
+  archivadas = env['project.task'].search([('project_id','=',record.project_id.id),('active','=',False),('stage_id.closed','=',False),('expedient_line_id','!=',False)])
   for ta in archivadas:
     activar = 'si'
     # Trámites de esta tarea:
