@@ -10,12 +10,12 @@
                     <button class="oe_stat_button" string="Es expediente" icon="fa-level-up" type="object" name="make_expedient" attrs="{'invisible':[('is_expedient','=',True)]}"/>
                 </xpath>
                 <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
-                    <page name="tramites" string="Trámites activos" attrs="{'invisible':[('is_expedient','=',False)]}">
+                    <page name="tramites" string="Trámites" attrs="{'invisible':[('is_expedient','=',False)]}">
                         <group name="expedientes">
                             <field name="is_expedient"/>
                             <field name="expedient_type_id" widget='selection'/>
                         </group>
-                        <field name="task_ids" string="Trámites">
+                        <field name="task_ids" decoration-danger="date_deadline and (date_deadline&lt;current_date)">
                             <tree editable="1">
                                 <field name="name"/>
                                 <field name="user_id"/>
@@ -23,18 +23,9 @@
                                 <field name="dependency_task_ids" widget="many2many_tags"/>
                                 <field name="date_deadline"/>
                                 <field name="stage_id"/>
+                                <field name="active"/>
                                 <field name="expedient_line_id" invisible="1"/>
                                 <field name="project_id" invisible="1"/>
-                            </tree>
-                        </field>
-                    </page>
-                    <page name="resumen_tareas" string="Fechas límite" attrs="{'invisible':[('is_expedient','=',False)]}">
-                        <field name="task_ids">
-                            <tree decoration-danger="date_deadline and (date_deadline&lt;current_date)">
-                                <field name="name"/>
-                                <field name="date_deadline"/>
-                                <field name="stage_id"/>
-                                <field name="active"/>
                             </tree>
                         </field>
                     </page>
