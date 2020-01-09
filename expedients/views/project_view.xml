@@ -15,8 +15,8 @@
                             <field name="is_expedient"/>
                             <field name="expedient_type_id" widget='selection'/>
                         </group>
-                        <field name="task_ids" decoration-danger="date_deadline and (date_deadline&lt;current_date)">
-                            <tree editable="1">
+                        <field name="task_ids">
+                            <tree editable="1" decoration-danger="date_deadline and (date_deadline&lt;current_date)">
                                 <field name="name"/>
                                 <field name="user_id"/>
                                 <field name="departament_id"/>
