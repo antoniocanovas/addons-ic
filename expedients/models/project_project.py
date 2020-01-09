@@ -62,9 +62,14 @@ class project(models.Model):
                              ('active', '=', False), ('active', '=', True)])
                         dependencias.append(tarea.id)
                     ta['dependency_task_ids'] = [(6, 0, dependencias)]
-                if (
-                        ta.id not in exist.ids):  # <= Por si se pulsa el botón segunda vez, que no se archiven las que se activaron manualmente
-                    ta['active'] = False
+                    
+                   
+            # Archivar las nuevas tareas que tengan dependencias no cumplidas, por si se pulsa por segunda vez el botón "Actualizar trámites":
+                if (ta.id not in exist.ids) and (ta.dependency_task_ids.ids):
+                    activo = True
+                    for dep in ta.dependency_task_ids:
+                        if dep.active == True: activo = False   # <= Si alguna dependencia está activa, la nueva tarea será archivada.
+                    ta['active'] = activo
 
             # Ahora las fechas límite:
             for ta in todas:
