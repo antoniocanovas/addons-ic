@@ -52,7 +52,7 @@ class ProjectTaskContacts(models.Model):
             for fac in facturado: total += fac.amount
             record['customer_invoiced'] = total
 
-    customer_invoice = fields.Monetary(string='Facturado',stored=False,compute=_get_customer_invoiced)
+    customer_invoiced = fields.Monetary(string='Facturado',stored=False,compute=_get_customer_invoiced)
 
     @api.depends('create_date')
     def _get_timesheet_cost(self):
