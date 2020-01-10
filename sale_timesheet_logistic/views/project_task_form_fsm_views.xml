@@ -4,12 +4,12 @@
     <record model="ir.ui.view" id="view_task_form_fsm_inherited">
         <field name="name">project.task.form.fsm.inherited</field>
         <field name="model">project.task</field>
-        <field name="inherit_id" ref="industry_fsm.project_task_view_form" />
+        <field name="inherit_id" ref="industry_fsm.project_task_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@class='oe_button_box'][not(ancestor::field)]" position="inside">
+            <div name="button_box" position="inside">
                 <button name="delivered_collected" type="object" class="oe_stat_button" string="Recogido" icon="fa-truck" attrs="{'invisible':[('origin_date','!=',False)]}"/>
                 <button name="delivered_collected" type="object" class="oe_stat_button" string="Entregado" icon="fa-truck" attrs="{'invisible':['|',('origin_date','=',False),('delivery_date','!=',False)]}"/>
-            </xpath>
+            </div>
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="km"/>
                 <field name="kg"/>
@@ -25,6 +25,11 @@
                     </div>
                 </div>
             </xpath>
+            <field name="user_id" position="after">
+                <field name="fleet_vehicle_id"/>
+                <field name="task_route_id"/>
+                <field name="profitability" widget="monetary" groups="account.group_account_user"/>
+            </field>
         </field>
     </record>
 

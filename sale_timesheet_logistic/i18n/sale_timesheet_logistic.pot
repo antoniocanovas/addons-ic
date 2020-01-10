@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-30 11:37+0000\n"
-"PO-Revision-Date: 2019-12-30 11:37+0000\n"
+"POT-Creation-Date: 2020-01-10 14:07+0000\n"
+"PO-Revision-Date: 2020-01-10 14:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,25 +23,6 @@ msgid ""
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_view_form_wizard
-msgid ""
-"<span class=\"o_form_label\">This operation will create a route with the "
-"lines of the sale order.</span>"
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_merge_view_form_wizard
-msgid ""
-"<span class=\"o_form_label\">This operation will merge all selected routes "
-"in the same route.</span>"
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: model:ir.actions.server,name:sale_timesheet_logistic.delivered_collected
-msgid "=> Picked Up / Delivered in tasks"
-msgstr ""
-
-#. module: sale_timesheet_logistic
 #: model:ir.model.fields,help:sale_timesheet_logistic.field_sale_order_line__product_type
 msgid ""
 "A storable product is a product for which you manage stock. The Inventory app has to be installed.\n"
@@ -50,19 +31,13 @@ msgid ""
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route__active
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__active
 msgid "Active"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_view_search
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_search
 msgid "Archived"
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_merge_view_form_wizard
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_view_form_wizard
-msgid "Close"
 msgstr ""
 
 #. module: sale_timesheet_logistic
@@ -73,44 +48,27 @@ msgstr ""
 
 #. module: sale_timesheet_logistic
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__origin_id
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route_line__origin_id
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__origin_id
 msgid "Collection Point"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_view_form_wizard
-msgid "Create"
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_fleet_vehicle__cost_per_km
+msgid "Cost/km"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model:ir.actions.act_window,name:sale_timesheet_logistic.action_res_partner_route_create
-msgid "Create Route"
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: model:ir.model,name:sale_timesheet_logistic.model_partner_route_wizard
-msgid "Create routes from sale order lines"
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: model_terms:ir.actions.act_window,help:sale_timesheet_logistic.res_partner_route_action
+#: model_terms:ir.actions.act_window,help:sale_timesheet_logistic.project_task_route_action
 msgid "Create your route"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_merge_wizard__create_uid
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_wizard__create_uid
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route__create_uid
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route_line__create_uid
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_merge_wizard__create_date
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_wizard__create_date
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route__create_date
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route_line__create_date
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__create_date
 msgid "Created on"
 msgstr ""
 
@@ -122,7 +80,6 @@ msgstr ""
 
 #. module: sale_timesheet_logistic
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__delivery_id
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route_line__delivery_id
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__delivery_id
 msgid "Delivery Point"
 msgstr ""
@@ -133,22 +90,13 @@ msgid "Description"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_merge_wizard__display_name
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_wizard__display_name
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route__display_name
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route_line__display_name
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__display_name
 msgid "Display Name"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_view_form
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_form
 msgid "Enter any note you want"
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_merge_wizard__name
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_wizard__name
-msgid "Enter the name of the new route"
 msgstr ""
 
 #. module: sale_timesheet_logistic
@@ -157,17 +105,20 @@ msgid "Entregado"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_merge_view_form_wizard
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_view_form_wizard
-msgid "Generate Route"
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__id
+msgid "ID"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_merge_wizard__id
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_wizard__id
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route__id
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route_line__id
-msgid "ID"
+#: model:ir.model.fields,help:sale_timesheet_logistic.field_project_task_type__is_logistic_draft
+msgid ""
+"If you mark this check, tasks in this stage are considered selectables on "
+"logistic routes"
+msgstr ""
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__is_selectable
+msgid "Is Selectable"
 msgstr ""
 
 #. module: sale_timesheet_logistic
@@ -181,54 +132,33 @@ msgid "Km"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_merge_wizard____last_update
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_wizard____last_update
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route____last_update
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route_line____last_update
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route____last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_merge_wizard__write_uid
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_wizard__write_uid
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route__write_uid
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route_line__write_uid
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_merge_wizard__write_date
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_partner_route_wizard__write_date
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route__write_date
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route_line__write_date
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__write_date
 msgid "Last Updated on"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_view_form
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__fleet_vehicle_id
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__fleet_vehicle_id
+msgid "License Plate"
+msgstr ""
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_form
 msgid "Lines"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_merge_view_form_wizard
-msgid "Merge"
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: model:ir.actions.act_window,name:sale_timesheet_logistic.action_res_partner_route_merge
-#: model:ir.model,name:sale_timesheet_logistic.model_partner_route_merge_wizard
-msgid "Merge Routes"
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: code:addons/sale_timesheet_logistic/wizards/create_route.py:0
-#: code:addons/sale_timesheet_logistic/wizards/merge_route.py:0
-#, python-format
-msgid "New Route"
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route__note
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__note
 msgid "Note"
 msgstr ""
 
@@ -243,6 +173,18 @@ msgid "Product Type"
 msgstr ""
 
 #. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__profitability
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__profitability
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order__profitability
+msgid "Profitability"
+msgstr ""
+
+#. module: sale_timesheet_logistic
+#: model:ir.model,name:sale_timesheet_logistic.model_project_task_route
+msgid "Project Task Route"
+msgstr ""
+
+#. module: sale_timesheet_logistic
 #: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_task_form_fsm_inherited
 msgid "Recogida / entrega"
 msgstr ""
@@ -253,17 +195,11 @@ msgid "Recogido"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route__name
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route_line__route_id
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_view_form
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_view_tree
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__task_route_id
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__name
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_form
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_tree
 msgid "Route"
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: code:addons/sale_timesheet_logistic/wizards/create_route.py:0
-#, python-format
-msgid "Route %s"
 msgstr ""
 
 #. module: sale_timesheet_logistic
@@ -272,36 +208,19 @@ msgid "Route Data"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_view_form
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_form
 msgid "Route Lines"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model:ir.model,name:sale_timesheet_logistic.model_res_partner_route_line
-msgid "Route lines"
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route__line_ids
-msgid "Route_lines"
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: model:ir.actions.act_window,name:sale_timesheet_logistic.res_partner_route_action
-#: model:ir.ui.menu,name:sale_timesheet_logistic.menu_routes_config
-#: model:ir.ui.menu,name:sale_timesheet_logistic.res_partner_route_menu
+#: model:ir.actions.act_window,name:sale_timesheet_logistic.project_task_route_action
+#: model:ir.ui.menu,name:sale_timesheet_logistic.project_task_route_menu
 msgid "Routes"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model:ir.model,name:sale_timesheet_logistic.model_res_partner_route
-msgid "Routes of the partners"
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: code:addons/sale_timesheet_logistic/wizards/create_route.py:0
-#, python-format
-msgid "Routes only can be defined with service products."
+#: model:ir.model,name:sale_timesheet_logistic.model_sale_order
+msgid "Sales Order"
 msgstr ""
 
 #. module: sale_timesheet_logistic
@@ -310,13 +229,13 @@ msgid "Sales Order Line"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.res_partner_route_view_search
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_search
 msgid "Search Quotation Template"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_res_partner_route_line__sequence
-msgid "Sequence"
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_type__is_logistic_draft
+msgid "Selectable on logistic routes"
 msgstr ""
 
 #. module: sale_timesheet_logistic
@@ -326,9 +245,19 @@ msgid "Task"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: code:addons/sale_timesheet_logistic/models/sale_order_line.py:0
+#: code:addons/sale_timesheet_logistic/models/sale_order.py:0
 #, python-format
 msgid "Task Data"
+msgstr ""
+
+#. module: sale_timesheet_logistic
+#: model:ir.model,name:sale_timesheet_logistic.model_project_task_type
+msgid "Task Stage"
+msgstr ""
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__task_ids
+msgid "Tasks"
 msgstr ""
 
 #. module: sale_timesheet_logistic
@@ -337,19 +266,6 @@ msgid "Units"
 msgstr ""
 
 #. module: sale_timesheet_logistic
-#: code:addons/sale_timesheet_logistic/wizards/create_route.py:0
-#, python-format
-msgid "You must define origin and delivery points in every line."
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: code:addons/sale_timesheet_logistic/wizards/create_route.py:0
-#, python-format
-msgid "You must have lines with origin and delivery points."
-msgstr ""
-
-#. module: sale_timesheet_logistic
-#: code:addons/sale_timesheet_logistic/wizards/merge_route.py:0
-#, python-format
-msgid "You must select two or more routes to merge."
+#: model:ir.model,name:sale_timesheet_logistic.model_fleet_vehicle
+msgid "Vehicle"
 msgstr ""

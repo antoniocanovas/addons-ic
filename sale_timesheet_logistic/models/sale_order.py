@@ -1,4 +1,17 @@
-from odoo import _, fields, models
+from odoo import _, api, fields, models
+
+
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+
+    profitability = fields.Float(
+        compute='_compute_profitability',
+    )
+
+    @api.depends('tasks_ids.profitability')
+    def _compute_profitability(self):
+        for order in self:
+            order.profitability = sum(order.mapped('tasks_ids.profitability'))
 
 
 class SaleOrderLine(models.Model):

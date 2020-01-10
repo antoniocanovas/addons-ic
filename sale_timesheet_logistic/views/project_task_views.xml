@@ -16,6 +16,7 @@
                     </div>
                     <group>
                         <group>
+                            <field name="fleet_vehicle_id"/>
                             <field name="user_id"/>
                             <field name="origin_id" options="{'no_create': True}"/>
                             <field name="planned_date_begin"/>
@@ -43,7 +44,8 @@
     <record model="ir.ui.view" id="view_task_form2_inherited">
         <field name="name">project.task.form.inherited</field>
         <field name="model">project.task</field>
-        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="priority" eval="9999"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook/page[@name='extra_info']" position="before">
                 <field name="origin_id" invisible="True"/>
@@ -66,8 +68,100 @@
                     </group>
                 </page>
             </xpath>
+            <field name="sale_line_id" position="after">
+                <field name="fleet_vehicle_id"/>
+                <field name="task_route_id"/>
+                <field name="profitability" widget="monetary" groups="account.group_account_user"/>
+            </field>
         </field>
     </record>
-
+    <record id="task_type_edit" model="ir.ui.view">
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit"/>
+        <field name="arch" type="xml">
+            <field name="fold" position="after">
+                <field name="is_logistic_draft"/>
+            </field>
+        </field>
+    </record>
+    <record id="project_task_route_view_search" model="ir.ui.view">
+        <field name="name">project.task.route.search</field>
+        <field name="model">project.task.route</field>
+        <field name="arch" type="xml">
+            <search string="Search Quotation Template">
+                <field name="name"/>
+                <filter string="Archived" name="inactive" domain="[('active','=', False)]"/>
+            </search>
+        </field>
+    </record>
+    <record id="project_task_route_view_form" model="ir.ui.view">
+        <field name="name">project.task.route.form</field>
+        <field name="model">project.task.route</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Route">
+                <sheet>
+                    <div name="button_box" class="oe_button_box"/>
+                    <widget name="web_ribbon" text="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <field name="active" invisible="1"/>
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="fleet_vehicle_id"/>
+                            <field name="profitability"/>
+                        </group>
+                    </group>
+                    <notebook name="main_book">
+                        <page string="Lines">
+                            <field name="task_ids" widget="section_and_note_one2many">
+                                <tree string="Route Lines" editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="user_id"/>
+                                    <field name="origin_id"/>
+                                    <field name="planned_date_begin"/>
+                                    <field name="delivery_id"/>
+                                    <field name="planned_date_end"/>
+                                    <field name="km"/>
+                                    <field name="profitability"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <field name="note" nolabel="1"
+                           placeholder="Enter any note you want"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="project_task_route_view_tree" model="ir.ui.view">
+        <field name="name">project.task.route.tree</field>
+        <field name="model">project.task.route</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Route">
+                <field name="name"/>
+                <field name="fleet_vehicle_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="project_task_route_action" model="ir.actions.act_window">
+        <field name="name">Routes</field>
+        <field name="res_model">project.task.route</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="project_task_route_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your route
+            </p>
+        </field>
+    </record>
+    <menuitem id="project_task_route_menu" action="project_task_route_action" parent="industry_fsm.fsm_menu_planning" sequence="90" name="Routes" groups="sales_team.group_sale_manager"/>
 
 </odoo>
