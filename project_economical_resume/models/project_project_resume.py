@@ -37,7 +37,7 @@ class ProjectTaskContacts(models.Model):
     @api.depends('create_date')
     def _get_supply_available(self):
         for record in self:
-            record['supply_available'] = record.advance_supply - record.expense_supply
+            record['supply_available'] = record.supply_advanced - record.supply_consumed
 
     supply_available = fields.Monetary(string='Disponible Suplidos',stored=False,compute=_get_supply_available)
 
@@ -71,6 +71,6 @@ class ProjectTaskContacts(models.Model):
             total = 0
             importes = self.env['account.analytic.line'].search([('account_id', '=', record.analytic_account_id.id)])
             for importe in importes: total += importe.amount
-            record['balance'] = total - record.advance_supply + record.expense_supply
+            record['balance'] = total - record.supply_advanced + record.supply_consumed
 
     balance = fields.Monetary(string='Saldo',stored=False,compute=_get_balance)
