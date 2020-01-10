@@ -5,7 +5,7 @@
 from odoo import fields, models, api
 
 
-class ProjectTaskContacts(models.Model):
+class ProjectEconomicalResume(models.Model):
     _inherit = 'project.project'
 
     @api.depends('create_date')
@@ -52,7 +52,12 @@ class ProjectTaskContacts(models.Model):
             for fac in facturado: total += fac.amount
             record['customer_invoiced'] = total
 
-    customer_invoiced = fields.Monetary(string='Facturado',stored=False,compute=_get_customer_invoiced)
+    customer_invoiced = fields.Monetary(
+        string='Facturado',
+        stored=False,
+        compute=_get_customer_invoiced,
+        help='Suma de productos y servicios facturados a cliente menos los provenientes de facturas de proveedor que se han asignado contra esta cuenta análitica'
+    )
 
     @api.depends('create_date')
     def _get_timesheet_cost(self):
@@ -63,7 +68,11 @@ class ProjectTaskContacts(models.Model):
             for imp in imputaciones: total += imp.amount
             record['timesheet_cost'] = total
 
-    timesheet_cost = fields.Monetary(string='Imputaciones',stored=False,compute=_get_timesheet_cost)
+    timesheet_cost = fields.Monetary(
+        string='Imputaciones',stored=False,
+        compute=_get_timesheet_cost,
+        help='Coste de horas imputadas contra este proyecto'
+                                    )
 
     @api.depends('create_date')
     def _get_balance(self):

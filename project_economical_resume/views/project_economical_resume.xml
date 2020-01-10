@@ -17,6 +17,7 @@
             <group string="General">
               <field name="customer_invoiced"/>
               <field name="timesheet_cost"/>
+              <field name="no_timesheet_cost"/>
               <field name="balance"/>
               <field name="currency_id" invisible="1"/>
             </group>
