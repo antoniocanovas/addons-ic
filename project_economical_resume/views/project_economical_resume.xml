@@ -15,7 +15,7 @@
               <field name="supply_available" string="Disponible"/>
             </group>
             <group string="General">
-              <field name="customer_invoice"/>
+              <field name="customer_invoiced"/>
               <field name="timesheet_cost"/>
               <field name="balance"/>
               <field name="currency_id" invisible="1"/>
