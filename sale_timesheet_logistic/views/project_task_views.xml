@@ -112,7 +112,6 @@
                     </div>
                     <group>
                         <group>
-                            <field name="name"/>
                             <field name="fleet_vehicle_id"/>
                             <field name="profitability"/>
                         </group>
