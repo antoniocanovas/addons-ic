@@ -18,6 +18,7 @@ class Docs(models.Model):
                               readonly=True, states={'draft': [('readonly', False)]},
                               default=lambda self: self.env.user, copy=False)
 
+
     @api.depends('type_id')
     def _get_intro_text(self):
         for record in self:

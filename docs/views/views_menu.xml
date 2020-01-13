@@ -5,7 +5,7 @@
     <field name="auto_search" eval="True"/>
     <field name="binding_model_id" eval="False"/>
     <field name="binding_type">action</field>
-    <field name="context">{}</field>
+    <field name="context">{'default_active':1}</field>
     <field name="domain" eval="False"/>
     <field name="filter" eval="False"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
@@ -46,7 +46,7 @@
     <field name="auto_search" eval="True"/>
     <field name="binding_model_id" eval="False"/>
     <field name="binding_type">action</field>
-    <field name="context">{}</field>
+    <field name="context">{'default_active':1}</field>
     <field name="domain" eval="False"/>
     <field name="filter" eval="False"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
@@ -64,14 +64,21 @@
     <field name="view_type">form</field>
   </record>
 
-   <record id="menu_docs" model="ir.ui.menu">
+  <!--<record id="menu_docs" model="ir.ui.menu">
     <field name="action" ref="action_docs"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="name">Docs</field>
-    <field name="sequence">3</field>
+    <field name="sequence">10</field>
     <field name="web_icon" eval="False"/>
-  </record>
+  </record>-->
+  <menuitem
+          action="action_docs"
+          id="menu_docs"
+          name="Docs"
+          sequence="10"
+          web_icon="docs,static/description/docs.png"
+  />
 
   <record id="menu_docs_types" model="ir.ui.menu">
     <field name="action" ref="action_docs_types"/>
@@ -89,19 +96,20 @@
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="name">Textos</field>
     <field name="parent_id" ref="menu_docs"/>
-    <field name="sequence">1</field>
+    <field name="sequence">3</field>
     <field name="web_icon" eval="False"/>
   </record>
 
-   <record id="menu_docs_docs" model="ir.ui.menu">
+  <record id="menu_docs_docs" model="ir.ui.menu">
     <field name="action" ref="action_docs"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="name">Docs</field>
     <field name="parent_id" ref="menu_docs"/>
-    <field name="sequence">2</field>
+    <field name="sequence">1</field>
     <field name="web_icon" eval="False"/>
   </record>
+
 
 
 

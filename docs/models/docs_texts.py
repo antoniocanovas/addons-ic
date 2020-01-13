@@ -14,3 +14,4 @@ class DocsTexts(models.Model):
         [('intro', 'Introducción'), ('body', 'Cuerpo del mensaje'), ('footer', 'Pié de página')], requierd=True,
         string='Tipo')
     text = fields.Html(string='Texto')
+    active = fields.Boolean('Activo',default=True)

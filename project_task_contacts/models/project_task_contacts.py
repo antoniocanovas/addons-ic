@@ -9,7 +9,7 @@ class ProjectTaskContacts(models.Model):
     _name = 'project.task.contacts'
     _description = 'Contactos en tareas'
 
-    partner_id = fields.Many2one('res.partner',string='Contacto')
+    partner_id = fields.Many2one('res.partner',string='Contacto',required=True)
     task_id = fields.Many2one('project.task',string='Tarea',required=True)
     rol_id = fields.Many2one('res.partner.title',string='rol',required=True)
 

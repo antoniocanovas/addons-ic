@@ -10,10 +10,10 @@ class DocsTypes(models.Model):
     _description = 'Tipos de plantillas para docs'
 
     name = fields.Char(string='Nombre plantilla',required=True)
-    print_odoo_header= fields.Boolean(string='Cabecera estandar')
     intro_id=fields.Many2one('docs.texts',string='Intro',domain=[('type','=','intro')])
     body_id = fields.Many2one('docs.texts', string='Body',domain=[('type','=','body')])
     footer_id = fields.Many2one('docs.texts', string='Footer',domain=[('type','=','footer')])
+    active = fields.Boolean('Activo',default=True)
 
     @api.depends('intro_id','intro_id.text')
     def get_intro(self):

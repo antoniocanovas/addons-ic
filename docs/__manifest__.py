@@ -1,13 +1,13 @@
 {
     'name': 'Docs',
-    'version': '12.0.001.0',
+    'version': '12.0.2.0',
     'category': 'Projects',
     'description': u"""
 
 """,
     'author': 'Serincloud',
     'depends': [
-        'expedientes',
+        'expedients',
         'project_task_contacts',
         'project_task_project_contacts',
     ],
