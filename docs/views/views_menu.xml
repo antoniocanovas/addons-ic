@@ -11,7 +11,7 @@
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
-    <field name="name">Tipos de Documentos</field>
+    <field name="name">Types of documents</field>
     <field name="res_model">docs.types</field>
     <field name="search_view_id" eval="False"/>
     <field name="src_model" eval="False"/>
@@ -52,7 +52,7 @@
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
-    <field name="name">Textos para expedientes</field>
+    <field name="name">Texts for expedients</field>
     <field name="res_model">docs.texts</field>
     <field name="search_view_id" eval="False"/>
     <field name="src_model" eval="False"/>
@@ -84,7 +84,7 @@
     <field name="action" ref="action_docs_types"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Tipos</field>
+    <field name="name">Types</field>
     <field name="parent_id" ref="menu_docs"/>
     <field name="sequence">2</field>
     <field name="web_icon" eval="False"/>
@@ -94,7 +94,7 @@
     <field name="action" ref="action_docs_texts"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Textos</field>
+    <field name="name">Texts</field>
     <field name="parent_id" ref="menu_docs"/>
     <field name="sequence">3</field>
     <field name="web_icon" eval="False"/>

@@ -7,14 +7,14 @@ from odoo import fields, models, api
 
 class Docs(models.Model):
     _name = 'docs.docs'
-    _description = 'Docs en Expedientes'
+    _description = 'Docs for Expedients'
 
-    name = fields.Char(string="Nombre")
-    type_id = fields.Many2one('docs.types',string='Tipo',store=True)
-    task_id = fields.Many2one('project.task', string='Tarea')
-    project_id = fields.Many2one('project.project',related='task_id.project_id', string='proyecto')
-    implied_ids = fields.Many2many('project.task.contacts', string='Implicados')
-    user_id = fields.Many2one('res.users', string='Comercial', track_visibility='onchange',
+    name = fields.Char(string="Name")
+    type_id = fields.Many2one('docs.types',string='Type',store=True)
+    task_id = fields.Many2one('project.task', string='Task')
+    project_id = fields.Many2one('project.project',related='task_id.project_id', string='Project')
+    implied_ids = fields.Many2many('project.task.contacts', string='Implied')
+    user_id = fields.Many2one('res.users', string='Salesman', track_visibility='onchange',
                               readonly=True, states={'draft': [('readonly', False)]},
                               default=lambda self: self.env.user, copy=False)
 
@@ -22,9 +22,9 @@ class Docs(models.Model):
     @api.depends('type_id')
     def _get_intro_text(self):
         for record in self:
-            record['intro'] = record.type_id.intro_id.text
+            record['header'] = record.type_id.header_id.text
 
-    intro = fields.Html(string='Intro',compute=_get_intro_text,readonly=False, store=True)
+    header = fields.Html(string='Header',compute=_get_intro_text,readonly=False, store=True)
 
     @api.depends('type_id')
     def _get_footer_text(self):
@@ -38,7 +38,7 @@ class Docs(models.Model):
         for record in self:
             record['body'] = record.type_id.body_id.text
 
-    body = fields.Html(string='body', compute=_get_body_text,readonly=False,store=True)
+    body = fields.Html(string='Body', compute=_get_body_text,readonly=False,store=True)
 
     @api.multi
     def _get_report_base_filename(self):

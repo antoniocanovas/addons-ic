@@ -28,7 +28,7 @@
                         <field name="name" required="True"/>
                     </h2>
                     <group col="2">
-                        <field name="intro_id" on_change="1" can_create="true" can_write="true" />
+                        <field name="header_id" on_change="1" can_create="true" can_write="true" />
                         <field name="body_id" on_change="1" can_create="true" can_write="true" />
                         <field name="footer_id" on_change="1" can_create="true" can_write="true" />
                         <field name="active"/>
@@ -36,7 +36,7 @@
                     </group>
                     <h4>Previsualización:</h4>
                     <notebook nolabel="1"></notebook>
-                    <field name="intro_text" colspan="4" modifiers="{&quot;readonly&quot;: true}"/>
+                    <field name="header_text" colspan="4" modifiers="{&quot;readonly&quot;: true}"/>
                     <field name="body_text" colspan="4" modifiers="{&quot;readonly&quot;: true}"/>
                     <field name="footer_text" colspan="4" modifiers="{&quot;readonly&quot;: true}"/>
                 </sheet>
@@ -77,8 +77,8 @@
                         <h4><b><i>El documento queda así, puedes editarlo:</i></b></h4>
                     </group>
                     <group attrs="{'invisible':[('id','=',False)]}">
-                        <field name="type_id" string="Asunto"/>
-                        <field name="intro" colspan="4" can_write="true" modifiers="{}"/>
+                        <field name="type_id" string="Subject"/>
+                        <field name="header" colspan="4" can_write="true" modifiers="{}"/>
                         <field name="body" colspan="4" can_write="true" modifiers="{}"/>
                         <field name="footer" colspan="4" can_write="true" modifiers="{}"/>
                     </group>

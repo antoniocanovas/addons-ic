@@ -27,7 +27,7 @@
                         <h2><span t-field="o.type_id"/></h2>
                     </div>
                     <div class="header">
-                        <span t-field="o.intro" widget="html" />
+                        <span t-field="o.header" widget="html" />
                     </div>
                     <table class="table table-sm o_main_table">
                         <thead>

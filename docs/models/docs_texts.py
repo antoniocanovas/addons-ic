@@ -7,11 +7,11 @@ from odoo import fields, models, api
 
 class DocsTexts(models.Model):
     _name = 'docs.texts'
-    _description = 'Docs bloques de textos'
+    _description = 'Docs Text bloqs'
 
-    name = fields.Char(string='Nombre',required=True)
+    name = fields.Char(string='Name',required=True)
     type = fields.Selection(
-        [('intro', 'Introducción'), ('body', 'Cuerpo del mensaje'), ('footer', 'Pié de página')], requierd=True,
-        string='Tipo')
-    text = fields.Html(string='Texto')
-    active = fields.Boolean('Activo',default=True)
+        [('intro', 'Header'), ('body', 'Body of message'), ('footer', 'Footer')], requierd=True,
+        string='Type')
+    text = fields.Html(string='Text')
+    active = fields.Boolean('Active',default=True)
