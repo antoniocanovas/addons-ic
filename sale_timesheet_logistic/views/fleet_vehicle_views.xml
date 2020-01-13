@@ -5,6 +5,9 @@
         <field name="model">fleet.vehicle</field>
         <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
         <field name="arch" type="xml">
+            <field name="driver_id" position="before">
+                <field name="authorized_driver_ids" widget="many2many_tags"/>
+            </field>
             <field name="residual_value" position="after">
                 <field name="cost_per_km" widget="monetary"/>
             </field>

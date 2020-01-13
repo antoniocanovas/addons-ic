@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-10 14:07+0000\n"
-"PO-Revision-Date: 2020-01-10 15:10+0100\n"
+"PO-Revision-Date: 2020-01-13 16:11+0100\n"
 "Last-Translator: cubells <vicent@vcubells.net>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -70,7 +70,7 @@ msgstr "Coste/km"
 #. module: sale_timesheet_logistic
 #: model_terms:ir.actions.act_window,help:sale_timesheet_logistic.project_task_route_action
 msgid "Create your route"
-msgstr "Crear ruta"
+msgstr "Crear trayecto"
 
 #. module: sale_timesheet_logistic
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__create_uid
@@ -213,23 +213,23 @@ msgstr "Recogido"
 #: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_form
 #: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_tree
 msgid "Route"
-msgstr "Ruta"
+msgstr "Trayecto"
 
 #. module: sale_timesheet_logistic
 #: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_task_form2_inherited
 msgid "Route Data"
-msgstr "Datos de la ruta"
+msgstr "Datos del trayecto"
 
 #. module: sale_timesheet_logistic
 #: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_form
 msgid "Route Lines"
-msgstr "Líneas de ruta"
+msgstr "Líneas de trayecto"
 
 #. module: sale_timesheet_logistic
 #: model:ir.actions.act_window,name:sale_timesheet_logistic.project_task_route_action
 #: model:ir.ui.menu,name:sale_timesheet_logistic.project_task_route_menu
 msgid "Routes"
-msgstr "Rutas"
+msgstr "Trayectos"
 
 #. module: sale_timesheet_logistic
 #: model:ir.model,name:sale_timesheet_logistic.model_sale_order
@@ -249,7 +249,7 @@ msgstr "Buscar una plantilla de presupuesto"
 #. module: sale_timesheet_logistic
 #: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_type__is_logistic_draft
 msgid "Selectable on logistic routes"
-msgstr "Seleccionable en las rutas logísticas"
+msgstr "Seleccionable en las trayectos logísticos"
 
 #. module: sale_timesheet_logistic
 #: model:ir.model,name:sale_timesheet_logistic.model_project_task
