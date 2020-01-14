@@ -8,3 +8,5 @@ class PartnerConnFields(models.Model):
     _inherit = 'res.partner'
 
     token = fields.Char()
+    dbu = fields.Char()
+    dbp = fields.Char()

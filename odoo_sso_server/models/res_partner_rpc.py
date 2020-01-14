@@ -7,7 +7,6 @@ from odoo import fields, models, api
 class PartnerConnFields(models.Model):
     _inherit = 'res.partner'
 
-    dbu = fields.Char()
-    dbp = fields.Char()
+
     rpcu = fields.Char()
     rpcp = fields.Char()
