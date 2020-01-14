@@ -122,17 +122,14 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <form>
+                <h2>
+                    <field name="name" required="True"/>
+                </h2>
                 <sheet string="Docs bloques de textos">
-                    <group col="4">
-                        <h2>
-                            <field name="name" modifiers="{&quot;readonly&quot;: true}" required="True"/>
-                        </h2>
-                        <newline/>
-                        <field name="type" modifiers="{&quot;readonly&quot;: true}" required="True"/>
-                        <newline/>
+                    <group>
+                        <field name="type" required="True"/>
                         <field name="active"/>
-                        <field name="text" colspan="4" modifiers="{&quot;readonly&quot;: true}"/>
-                        <separator/>
+                        <field name="text" modifiers="{&quot;readonly&quot;: true}"/>
                     </group>
                 </sheet>
             </form>
