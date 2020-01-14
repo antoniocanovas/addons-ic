@@ -66,12 +66,10 @@
                         <field name="name" required="True"/>
                     </h2>
                     <group col="4">
-                        <field name="type_id" on_change="1" can_create="true" can_write="true" required="True"/>
-                        <newline/>
+                        <field name="type_id" on_change="1" can_create="true" can_write="true" required="True" placeholder="Nombre del documento ..."/>
                         <field name="task_id" on_change="1" can_create="true" can_write="true" required="True"/>
                         <field name="project_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
-                        <field name="implied_ids" domain="[('project_id','=',project_id)]"/>
-
+                        <field name="implied_ids" domain="[('project_id','=',project_id)]" colspan="4"/>
                     </group>
                     <group col="2" attrs="{'invisible':[('id','=',False)]}">
                         <h4><b><i>El documento queda así, puedes editarlo:</i></b></h4>
@@ -123,7 +121,7 @@
         <field name="arch" type="xml">
             <form>
                 <h2>
-                    <field name="name" required="True"/>
+                    <field name="name" required="True" placeholder="Nombre del tipo de documento ..."/>
                 </h2>
                 <sheet string="Docs bloques de textos">
                     <group>
