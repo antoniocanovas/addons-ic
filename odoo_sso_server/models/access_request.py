@@ -3,6 +3,7 @@
 
 import xmlrpc.client
 from odoo import fields, models, api
+from odoo.exceptions import AccessError, UserError, RedirectWarning, ValidationError, Warning
 import werkzeug
 import string
 import random
@@ -10,7 +11,7 @@ import random
 class AccessRequest(models.Model):
     _inherit = 'partner.credentials'
 
-    url = fields.Char('Servidor')
+    url = fields.Char('Url', help="Pon la dirección web completa sin poner '/' al final")
     db = fields.Char('Base de Datos')
 
     @api.multi
@@ -27,46 +28,55 @@ class AccessRequest(models.Model):
                 "Revise los campos 'Base de datos' y 'Servidor' en la pestaña SSO"
             ))
         else:
-            asesoria = self.env['res.users'].search([('name', '=', 'asesoria')])
+            remote_user = self.env['res.users'].search([('name', '=', 'asesoria')])
 
-            asesoria.token = self.tokengenerator()
-            print("ASESORIA")
-            print(asesoria.rpcu)
-            common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(self.url))
-            uid = common.authenticate(self.db, asesoria.rpcu, asesoria.rpcp, {})
-            models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(self.url))
+            remote_user.token = self.tokengenerator()
+
+            try:
+                common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(self.url))
+                uid = common.authenticate(self.db, remote_user.rpcu, remote_user.rpcp, {})
+                models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(self.url))
+            except Exception as e:
+                raise Warning(("Exception when calling remote server: %s\n" % e))
 
             return {
                 'uid': uid,
                 'models': models,
-                'rpcu': asesoria.rpcu,
-                'rpcp': asesoria.rpcp,
-                'token':asesoria.token,
+                'rpcu': remote_user.rpcu,
+                'rpcp': remote_user.rpcp,
+                'token':remote_user.token,
             }
 
     @api.multi
     def writetoken(self,conn):
-        print("####DEBUG####")
-        print(conn)
-        user_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'search_read',
+
+        try:
+            user_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'search_read',
                                             [[['login', '=', 'asesoria@ingenieriacloud.com']]],
                                             {'fields': ['id',
                                                         ], 'limit': 1
                                              })
-        conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'write', [[user_id[0]['id']], {
-            'token': conn['token'],
-        }])
-
-        token = conn['models'].execute_kw(self.db,conn['uid'], conn['rpcp'], 'res.users', 'search_read',
+        except Exception as e:
+            raise Warning(("Exception when calling remote user: %s\n" % e))
+        try:
+            conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'write', [[user_id[0]['id']], {
+                'token': conn['token'],
+            }])
+        except Exception as e:
+            raise Warning("Exception when sending token: %s\n" % e)
+        try:
+            token = conn['models'].execute_kw(self.db,conn['uid'], conn['rpcp'], 'res.users', 'search_read',
                                           [[['login', '=', 'asesoria@ingenieriacloud.com']]],
                                           {'fields': ['token',
                                                       ], 'limit': 1
                                            })
+        except Exception as e:
+            raise Warning(("Exception when reading remote token: %s\n" % e))
 
         if token[0]['token'] == conn['token']:
             return True
         else:
-            return False
+            raise Warning("Exception when matching token")
 
 
     @api.multi

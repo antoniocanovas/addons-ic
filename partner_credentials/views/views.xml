@@ -5,6 +5,9 @@
         <field name="arch" type="xml">
             <tree string="Credentials">
                 <field name="name" modifiers="{}"/>
+                <field name="partner_id"/>
+                <field name="type"/>
+                <field name="public"/>
             </tree>
         </field>
         <field name="model">partner.credentials</field>
@@ -19,9 +22,6 @@
                     <h2>
                         <field name="name" modifiers="{}"/>
                     </h2>
-                    <h4>
-                        <field name="url_credentials" widget="url" modifiers="{}"/>
-                    </h4>
                     <group name="basic_params">
                         <group col="2">
                             <field name="partner_id"/>

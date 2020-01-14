@@ -8,7 +8,6 @@ class PartnerCredentials(models.Model):
     _description = 'Manage sites and instances from Master Odoo'
 
     name = fields.Char(string='Nombre')
-    url_credentials = fields.Char(string='Url')
     type = fields.Selection([
         ('odoo', 'Odoo'), ('web', 'Web')
     ])

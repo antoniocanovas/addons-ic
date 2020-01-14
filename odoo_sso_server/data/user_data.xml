@@ -2,10 +2,8 @@
 <odoo noupdate="1">
 
     <record id="odoo_sso_client.advisory" model="res.users">
-        <field name="dbu">odoo</field>
-        <field name="dbpas">Lockic$0</field>
         <field name="rpcu">asesoria@ingenieriacloud.com</field>
-        <field name="rpcp">2019#IC</field>
+        <field name="rpcp">3dmWaVf%=9dvepFc2020</field>
     </record>
 
 </odoo>

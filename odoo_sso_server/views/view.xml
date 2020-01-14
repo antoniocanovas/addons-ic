@@ -8,12 +8,11 @@
         <field name="inherit_id" ref="partner_credentials.credentials_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form/sheet/group" position="after">
-                <notebook colspan="4">
+                <notebook colspan="4" attrs="{'invisible':[('type','!=','odoo')]}">
                     <page name="SSO" string="SSO">
                         <group>
+                            <group><field name="url" placeholder="https://www.ejemplos.com"/></group>
                             <group><field name="db"/></group>
-                            <group><field name="url" placeholder="https:// o http://
-                             y terminar sin /"/></group>
                             <group>
                                 <button string="Conectar" type="object"
                                         name="request_f" class="oe_highlight"/>
