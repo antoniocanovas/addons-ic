@@ -50,14 +50,6 @@ class ProjectTask(models.Model):
             else:
                 task.origin_date = fields.datetime.now()
 
-    @api.onchange('user_id')
-    def _onchange_partner_id(self):
-        vehicle_obj = self.env['fleet.vehicle']
-        if self.user_id:
-            vehicle = vehicle_obj.search(
-                [('driver_id', '=', self.user_id.partner_id.id)], limit=1)
-            self.fleet_vehicle_id = vehicle
-
 
 class ProjectTaskType(models.Model):
     _inherit = 'project.task.type'

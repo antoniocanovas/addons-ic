@@ -28,7 +28,7 @@
             <field name="user_id" position="after">
                 <field name="fleet_vehicle_id"/>
                 <field name="task_route_id"/>
-                <field name="profitability" widget="monetary" groups="account.group_account_user"/>
+                <field name="profitability" widget="monetary" groups="sales_team.group_sale_manager"/>
             </field>
         </field>
     </record>
