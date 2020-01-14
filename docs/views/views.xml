@@ -122,7 +122,7 @@
             <form>
                 <sheet string="Docs bloques de textos">
                     <h2>
-                        <field name="name" required="True" placeholder="Nombre del tipo de documento ..."/>
+                        <field name="name" required="True" placeholder="Nombre del bloque de texto ..."/>
                     </h2>
                     <group>
                         <field name="type" required="True"/>
