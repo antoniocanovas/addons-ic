@@ -7,19 +7,18 @@
     'license': 'AGPL-3',
     'website': "https://ingenieriacloud.com",
     'category': 'Generic',
-    'version': '13.0.3.0.2',
+    'version': '13.0.4.0.2',
     'depends': [
+        'fleet',
         'industry_fsm',
         'sale_timesheet',
     ],
     'data': [
         'security/ir.model.access.csv',
-        'views/sale_order_line_views.xml',
+        'views/sale_order_views.xml',
         'views/project_task_views.xml',
-        'views/res_partner_views.xml',
         'views/project_task_form_fsm_views.xml',
-        'wizards/create_route_views.xml',
-        'wizards/merge_route_views.xml',
+        'views/fleet_vehicle_views.xml',
     ],
     'installable': True,
 }
