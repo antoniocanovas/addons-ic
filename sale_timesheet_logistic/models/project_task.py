@@ -34,6 +34,28 @@ class ProjectTask(models.Model):
         comodel_name='project.task.route',
         string='Route',
     )
+    analytic_line_id = fields.Many2one(
+        comodel_name='account.analytic.line',
+        string='Apunte analítico',
+        readonly=True,
+    )
+
+    @api.depends('user_id')
+    def _get_vehicles_for_user(self):
+        for record in self:
+            vehiculos=record.user_id.vehicle_ids.ids
+            record['vehicle_ids'] = [(6,0,vehiculos)]
+
+    vehicle_ids = fields.Many2many(
+        comodel_name='fleet.vehicle',
+        relation='fleet_vehicle_project_task_rel',
+        column1='project_task_id',
+        column2='fleet_vehicle_id',
+        string='Vehículos para Usuario',
+        readonly=True,
+        store=False,
+        compute=_get_vehicles_for_user,
+    )
 
     @api.depends('sale_line_id.price_subtotal', 'km')
     def _compute_profitability(self):
