@@ -1,6 +1,6 @@
 # Copyright
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
-
+import base64
 
 from odoo import fields, models, api
 
@@ -52,10 +52,39 @@ class Docs(models.Model):
         return self.env.ref('docs.docs_report').report_action(self)
 
     @api.multi
+    def action_generate_attachment(self):
+
+        # generate pdf from report, use report's id as reference
+        report_id = 'docs.docs_report'
+        pdf = self.env.ref(report_id).render_qweb_pdf(self.ids[0])
+        # pdf result is a list
+        b64_pdf = base64.b64encode(pdf[0])
+
+        # save pdf as attachment
+        name = self.name + (str(self.type_id.name))
+        return self.env['ir.attachment'].create({
+            'name': self.name,
+            'type': 'binary',
+            'datas': b64_pdf,
+            'datas_fname': name + '.pdf',
+            'store_fname': name,
+            'res_model': self._name,
+            'res_id': self.id,
+            'mimetype': 'application/x-pdf'
+        })
+
+    @api.multi
     def action_docs_sent(self):
         self.ensure_one()
         template = self.env.ref('docs.email_template_edi_docs', False)
         compose_form = self.env.ref('mail.email_compose_message_wizard_form', False)
+
+        attachment = self.action_generate_attachment()
+
+        email_template = self.env.ref('docs.email_template_edi_docs')
+        email_template.attachment_ids = False
+        email_template.attachment_ids = [(4, attachment.id)]
+
         ctx = dict(
             default_model='docs.docs',
             default_res_id=self.ids[0],
@@ -63,6 +92,7 @@ class Docs(models.Model):
             default_template_id=template and template.id or False,
             default_composition_mode='comment',
             user_id=self.env.user.id,
+            attachment_ids=[(4, attachment.id)],
         )
         return {
             'name': ('Send Doc'),
