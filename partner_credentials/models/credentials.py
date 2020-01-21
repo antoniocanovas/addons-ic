@@ -15,5 +15,5 @@ class PartnerCredentials(models.Model):
     user = fields.Char('User')
     password = fields.Char('Password')
     public = fields.Boolean('Public')
-
+    url = fields.Char('Url')
 

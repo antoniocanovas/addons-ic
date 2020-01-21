@@ -11,7 +11,7 @@ import random
 class AccessRequest(models.Model):
     _inherit = 'partner.credentials'
 
-    url = fields.Char('Url', help="Pon la dirección web completa sin poner '/' al final")
+
     db = fields.Char('Base de Datos')
 
     @api.multi
