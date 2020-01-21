@@ -52,7 +52,7 @@ class AccessRequest(models.Model):
 
         try:
             user_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'search_read',
-                                            [[['login', '=', 'asesoria@ingenieriacloud.com']]],
+                                            [[['login', '=', 'asesoria']]],
                                             {'fields': ['id',
                                                         ], 'limit': 1
                                              })
@@ -66,7 +66,7 @@ class AccessRequest(models.Model):
             raise Warning("Exception when sending token: %s\n" % e)
         try:
             token = conn['models'].execute_kw(self.db,conn['uid'], conn['rpcp'], 'res.users', 'search_read',
-                                          [[['login', '=', 'asesoria@ingenieriacloud.com']]],
+                                          [[['login', '=', 'asesoria']]],
                                           {'fields': ['token',
                                                       ], 'limit': 1
                                            })

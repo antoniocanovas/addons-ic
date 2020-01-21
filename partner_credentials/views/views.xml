@@ -23,17 +23,15 @@
                         <field name="name" modifiers="{}"/>
                     </h2>
                     <group name="basic_params">
-                        <group col="2">
+                        <group>
+                            <field name="url" widget="url" placeholder="https://www.ejemplos.com"/>
                             <field name="partner_id"/>
                             <field name="type"/>
-                            <field name="public"/>
-                            <newline/>
                         </group>
-                        <group col="2">
-                            <group col="2">
-                                <field name="user"/>
-                                <field name="password"/>
-                            </group>
+                        <group>
+                            <field name="user"/>
+                            <field name="password"/>
+                            <field name="public"/>
                         </group>
                     </group>
                 </sheet>

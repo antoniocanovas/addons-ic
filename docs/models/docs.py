@@ -83,7 +83,7 @@ class Docs(models.Model):
 
         email_template = self.env.ref('docs.email_template_edi_docs')
         email_template.attachment_ids = False
-        email_template.attachment_ids = [(4, attachment.id)]
+        email_template.attachment_ids = [(6, 0,  [attachment.id])]
 
         ctx = dict(
             default_model='docs.docs',
@@ -92,7 +92,8 @@ class Docs(models.Model):
             default_template_id=template and template.id or False,
             default_composition_mode='comment',
             user_id=self.env.user.id,
-            attachment_ids=[(4, attachment.id)],
+            attachment_ids=[(6, 0,  [attachment.id])],
+            #attachment_ids=[(4, attachment.id)],
         )
         return {
             'name': ('Send Doc'),
