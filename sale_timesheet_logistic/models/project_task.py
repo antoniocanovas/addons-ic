@@ -111,7 +111,21 @@ class ProjectTaskRoute(models.Model):
     active = fields.Boolean(
         default=True,
     )
+
     note = fields.Html()
+
+    @api.depends('create_date')
+    def _compute_task_km(self):
+        for record in self:
+            km = 0
+            for ta in record.task_ids:
+                km += ta.km
+            record['km'] = km
+
+    km = fields.Float(
+        store=False,
+        compute=_compute_task_km,
+    )
 
     @api.depends('task_ids.stage_id.is_logistic_draft')
     def _compute_is_selectable(self):
