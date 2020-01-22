@@ -114,17 +114,17 @@ class ProjectTaskRoute(models.Model):
 
     note = fields.Html()
 
-    #@api.depends('create_date')
-    #def _compute_task_km(self):
-    #    for record in self:
-    #        this_km = 0
-    #        for ta in record.task_ids:
-    #            this_km += ta.this_km
-    #        record['km'] = this_km
+    @api.depends('create_date')
+    def _compute_task_km(self):
+        for record in self:
+            this_km = 0
+            for ta in record.task_ids:
+                this_km += ta.this_km
+            record['km'] = this_km
 
     km = fields.Float(
         store=False,
-        #compute=_compute_task_km,
+        compute=_compute_task_km,
         string='Km',
     )
 
