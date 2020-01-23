@@ -37,7 +37,7 @@ class AccessRequest(models.Model):
                 uid = common.authenticate(self.db, remote_user.rpcu, remote_user.rpcp, {})
                 models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(self.url))
             except Exception as e:
-                raise Warning(("Exception when calling remote server: %s\n" % e))
+                raise Warning(("Exception when calling remote server $common: %s\n" % e))
 
             return {
                 'uid': uid,
@@ -57,7 +57,7 @@ class AccessRequest(models.Model):
                                                         ], 'limit': 1
                                              })
         except Exception as e:
-            raise Warning(("Exception when calling remote user: %s\n" % e))
+            raise Warning(("Exception when calling remote user $token: %s\n" % e))
         try:
             conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'write', [[user_id[0]['id']], {
                 'token': conn['token'],
