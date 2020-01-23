@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_nrc_template_user","nrc_template user","model_nrc_template","l10n_es_aeat.group_account_aeat",1,0,0,0
+"access_nrc_template_manager","nrc_template manager","model_nrc_template","base.group_system",1,1,1,0
+"access_nrc_template_line_user","nrc_template_line user","model_nrc_template_line","l10n_es_aeat.group_account_aeat",1,0,0,0
+"access_nrc_template_line_manager","nrc_template_line manager","model_nrc_template_line","base.group_system",1,1,1,0

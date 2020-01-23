@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="nrc_template_request" model="nrc.template">
+        <field name="name">Solicitud de NRC's</field>
+        <field name="nrc_type">nrc_request</field>
+    </record>
+    <record id="nrc_template_line_request_01" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">1</field>
+        <field name="position">1</field>
+        <field name="length">2</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Tipo de registro</field>
+    </record>
+    <record id="nrc_template_line_request_02" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">2</field>
+        <field name="position">3</field>
+        <field name="length">1</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Origen de la transmisión</field>
+    </record>
+    <record id="nrc_template_line_request_03" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">3</field>
+        <field name="position">4</field>
+        <field name="length">30</field>
+        <field name="required">True</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Referencia del Ordenante.</field>
+    </record>
+    <record id="nrc_template_line_request_04" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">4</field>
+        <field name="position">34</field>
+        <field name="length">1</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Forma de pago</field>
+    </record>
+    <record id="nrc_template_line_request_05" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">5</field>
+        <field name="position">35</field>
+        <field name="length">20</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Código Cuenta Cliente del Asesor</field>
+    </record>
+    <record id="nrc_template_line_request_06" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">6</field>
+        <field name="position">55</field>
+        <field name="length">20</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Referencia propia del fichero Identificador propio de la transmisión</field>
+    </record>
+    <record id="nrc_template_line_request_07" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">7</field>
+        <field name="position">75</field>
+        <field name="length">4</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Entidad Financiera destinataria</field>
+    </record>
+    <record id="nrc_template_line_request_08" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">8</field>
+        <field name="position">79</field>
+        <field name="length">8</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Fecha confección fichero</field>
+    </record>
+    <record id="nrc_template_line_request_09" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">9</field>
+        <field name="position">87</field>
+        <field name="length">1</field>
+        <field name="required">True</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Denominación de las liquidaciones (moneda)</field>
+    </record>
+    <record id="nrc_template_line_request_10" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">10</field>
+        <field name="position">88</field>
+        <field name="length">1</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Tipo de liquidación</field>
+    </record>
+    <record id="nrc_template_line_request_11" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">11</field>
+        <field name="position">89</field>
+        <field name="length">8</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Fecha de proceso del fichero</field>
+    </record>
+    <record id="nrc_template_line_request_12" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">12</field>
+        <field name="position">97</field>
+        <field name="length">1</field>
+        <field name="required">True</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Indicador de acción a realizar en caso de falta de saldo</field>
+    </record>
+    <record id="nrc_template_line_request_13" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">13</field>
+        <field name="position">98</field>
+        <field name="length">1</field>
+        <field name="required">True</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Tipo de fichero de solicitudes</field>
+    </record>
+    <record id="nrc_template_line_request_14" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">14</field>
+        <field name="position">99</field>
+        <field name="length">2</field>
+        <field name="required">True</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Versión del formato</field>
+    </record>
+    <record id="nrc_template_line_request_15" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">15</field>
+        <field name="position">101</field>
+        <field name="length">10</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Espacio reservado para campos de respuesta</field>
+    </record>
+    <record id="nrc_template_line_request_16" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">16</field>
+        <field name="position">111</field>
+        <field name="length">1</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Espacio reservado para Entidades Financieras</field>
+    </record>
+    <record id="nrc_template_line_request_17" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">17</field>
+        <field name="position">112</field>
+        <field name="length">4</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">4 primeras posiciones del IBAN del Asesor</field>
+    </record>
+    <record id="nrc_template_line_request_18" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_request"/>
+        <field name="sequence">18</field>
+        <field name="position">116</field>
+        <field name="length">141</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Espacio disponible</field>
+    </record>
+
+    <record id="nrc_template_line" model="nrc.template">
+        <field name="name">Linea de las solicitudes</field>
+        <field name="nrc_type">nrc_line</field>
+    </record>
+    <record id="nrc_template_line_01" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">1</field>
+        <field name="position">1</field>
+        <field name="length">2</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Tipo de registro</field>
+    </record>
+    <record id="nrc_template_line_02" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">2</field>
+        <field name="position">3</field>
+        <field name="length">5</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Número correlativo de liquidación</field>
+    </record>
+    <record id="nrc_template_line_03" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">3</field>
+        <field name="position">8</field>
+        <field name="length">3</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Concepto o modelo de las liquidaciones</field>
+    </record>
+    <record id="nrc_template_line_04" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">4</field>
+        <field name="position">11</field>
+        <field name="length">4</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Ejercicio fiscal</field>
+    </record>
+    <record id="nrc_template_line_05" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">5</field>
+        <field name="position">15</field>
+        <field name="length">2</field>
+        <field name="required">True</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Periodo de liquidación</field>
+    </record>
+    <record id="nrc_template_line_06" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">6</field>
+        <field name="position">17</field>
+        <field name="length">1</field>
+        <field name="required">True</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Tipo de Moneda de la liquidación</field>
+    </record>
+    <record id="nrc_template_line_07" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">7</field>
+        <field name="position">18</field>
+        <field name="length">1</field>
+        <field name="required">True</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Tipo de autoliquidación</field>
+    </record>
+    <record id="nrc_template_line_08" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">8</field>
+        <field name="position">19</field>
+        <field name="length">9</field>
+        <field name="required">True</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Nif del contribuyente</field>
+    </record>
+    <record id="nrc_template_line_09" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">9</field>
+        <field name="position">28</field>
+        <field name="length">38</field>
+        <field name="required">True</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Nombre del contribuyente</field>
+    </record>
+    <record id="nrc_template_line_10" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">10</field>
+        <field name="position">66</field>
+        <field name="length">4</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Anagrama - Letras de etiqueta en personas físicas</field>
+    </record>
+    <record id="nrc_template_line_11" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">11</field>
+        <field name="position">70</field>
+        <field name="length">5</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Espacio libre (Valor “00000” ceros)</field>
+    </record>
+    <record id="nrc_template_line_12" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">12</field>
+        <field name="position">75</field>
+        <field name="length">12</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Importe de la liquidación</field>
+    </record>
+    <record id="nrc_template_line_13" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">13</field>
+        <field name="position">87</field>
+        <field name="length">12</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Importe total de la deuda</field>
+    </record>
+    <record id="nrc_template_line_14" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">14</field>
+        <field name="position">99</field>
+        <field name="length">1</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Opción de fraccionamiento según normativa</field>
+    </record>
+    <record id="nrc_template_line_15" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">15</field>
+        <field name="position">100</field>
+        <field name="length">20</field>
+        <field name="char_type">numeric</field>
+        <field name="description">
+            Código de cuenta cliente:
+            - cargo al contribuyente
+            - para devolución
+            - segundo plazo
+        </field>
+    </record>
+    <record id="nrc_template_line_16" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">16</field>
+        <field name="position">120</field>
+        <field name="length">48</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Espacio reservado para campos de respuesta</field>
+    </record>
+    <record id="nrc_template_line_17" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">17</field>
+        <field name="position">168</field>
+        <field name="length">22</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Número de bastidor. Sólo en el modelo 576</field>
+    </record>
+    <record id="nrc_template_line_18" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">18</field>
+        <field name="position">190</field>
+        <field name="length">4</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">4 primeras posiciones del IBAN del Cliente</field>
+    </record>
+    <record id="nrc_template_line_19" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_line"/>
+        <field name="sequence">19</field>
+        <field name="position">194</field>
+        <field name="length">63</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Espacio libre</field>
+    </record>
+
+    <record id="nrc_template_end" model="nrc.template">
+        <field name="name">Final de las solicitudes</field>
+        <field name="nrc_type">nrc_end</field>
+    </record>
+    <record id="nrc_template_line_end_01" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_end"/>
+        <field name="sequence">1</field>
+        <field name="position">1</field>
+        <field name="length">2</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Tipo de registro</field>
+    </record>
+    <record id="nrc_template_line_end_02" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_end"/>
+        <field name="sequence">2</field>
+        <field name="position">3</field>
+        <field name="length">5</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Número de registros incluyendo totales y cabeceras</field>
+    </record>
+    <record id="nrc_template_line_end_03" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_end"/>
+        <field name="sequence">3</field>
+        <field name="position">8</field>
+        <field name="length">5</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Número de solicitudes</field>
+    </record>
+    <record id="nrc_template_line_end_04" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_end"/>
+        <field name="sequence">4</field>
+        <field name="position">13</field>
+        <field name="length">12</field>
+        <field name="required">True</field>
+        <field name="char_type">numeric</field>
+        <field name="description">Importe de solicitudes</field>
+    </record>
+    <record id="nrc_template_line_end_05" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_end"/>
+        <field name="sequence">5</field>
+        <field name="position">25</field>
+        <field name="length">17</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Espacio reservado para campos de respuesta</field>
+    </record>
+    <record id="nrc_template_line_end_06" model="nrc.template.line">
+        <field name="nrc_id" ref="l10n_es_irnr_for_contacts.nrc_template_end"/>
+        <field name="sequence">6</field>
+        <field name="position">42</field>
+        <field name="length">215</field>
+        <field name="char_type">alphanumeric</field>
+        <field name="description">Espacio libre</field>
+    </record>
+
+</odoo>

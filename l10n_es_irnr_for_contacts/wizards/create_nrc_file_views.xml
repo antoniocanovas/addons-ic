@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_create_nrc_file" model="ir.ui.view">
+        <field name="name">create.nrc.file.view.form</field>
+        <field name="model">create.nrc.file</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="date_irnr"/>
+                    <field name="fiscalyear"/>
+                    <field name="period_declaration"/>
+                </group>
+                <footer>
+                    <button name="create_nrc_file" type="object" string="Create NRC File" class="oe_highlight"/>
+                    <button special="cancel" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <act_window
+            id="action_create_nrc_file"
+            res_model="create.nrc.file"
+            src_model="res.partner"
+            target="new"
+            multi="True"
+            key2="client_action_multi"
+            view_mode="form"
+            name="Create NRC File"/>
+
+</odoo>

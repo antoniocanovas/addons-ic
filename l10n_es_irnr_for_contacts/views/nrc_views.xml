@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="l10n_es_aeat_irnr_nrc_tree" model="ir.ui.view">
+        <field name="model">nrc.template</field>
+        <field name="arch" type="xml">
+            <tree string="NRC mapping">
+                <field name="name"/>
+                <field name="nrc_type"/>
+            </tree>
+        </field>
+    </record>
+    <record id="l10n_es_aeat_irnr_nrc_form" model="ir.ui.view">
+        <field name="model">nrc.template</field>
+        <field name="arch" type="xml">
+            <form string="NRC mapping">
+                <header/>
+                <sheet>
+                    <group col="4">
+                        <field name="name" colspan="4"/>
+                        <field name="nrc_type"/>
+                    </group>
+                    <notebook>
+                        <page string="Mapping Lines">
+                            <field name="line_ids">
+                                <tree string="Lines" editable="bottom">
+                                    <field name='sequence' widget='handle'/>
+                                    <field name='description'/>
+                                    <field name='position'/>
+                                    <field name='length'/>
+                                    <field name='char_type'/>
+                                    <field name='padding'/>
+                                    <field name='required'/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_l10n_es_irnr_nrc">
+        <field name="name">NRC mapping</field>
+        <field name="res_model">nrc.template</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_l10n_es_irnr_nrc"
+              parent="l10n_es_aeat.menu_l10n_es_aeat_config"
+              action="action_l10n_es_irnr_nrc"
+              name="NRC mapping"
+              sequence="90"/>
+
+</odoo>
