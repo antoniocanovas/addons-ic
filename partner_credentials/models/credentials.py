@@ -5,7 +5,8 @@ from odoo import fields, models, api
 
 class PartnerCredentials(models.Model):
     _name = 'partner.credentials'
-    _description = 'Manage sites and instances from Master Odoo'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _description = 'Partner Credentials'
 
     name = fields.Char(string='Nombre')
     type = fields.Selection([
