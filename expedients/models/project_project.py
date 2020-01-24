@@ -43,12 +43,12 @@ class project(models.Model):
                 if li.id not in lineswithtask:
                     nombre = record.name + " - " + li.procedure_id.name
                     nuevatarea = self.env['project.task'].create({'name': nombre,
-                                                         'project_id': record.id,
-                                                         'user_id': li.procedure_id.user_id.id,
-                                                         'departament_id': li.procedure_id.departament_id.id,
-                                                         'description': li.procedure_id.task_description,
-                                                         'active': True,
-                                                         'expedient_line_id': li.id})
+                                                                  'project_id': record.id,
+                                                                  'user_id': li.procedure_id.user_id.id,
+                                                                  'departament_id': li.procedure_id.departament_id.id,
+                                                                  'description': li.procedure_id.task_description,
+                                                                  'active': True,
+                                                                  'expedient_line_id': li.id})
 
             # Ahora las dependencias ya que tenemos todas las tareas de las líneas y podemos relacionar:
             todas = self.env['project.task'].search(
@@ -62,14 +62,19 @@ class project(models.Model):
                              ('active', '=', False), ('active', '=', True)])
                         dependencias.append(tarea.id)
                     ta['dependency_task_ids'] = [(6, 0, dependencias)]
-                    
-                   
-            # Archivar las nuevas tareas que tengan dependencias no cumplidas, por si se pulsa por segunda vez el botón "Actualizar trámites":
-                if (ta.id not in exist.ids) and (ta.dependency_task_ids.ids):
+
+
+                    # Archivar las nuevas tareas que tengan dependencias no cumplidas, por si se pulsa por segunda vez el botón "Actualizar trámites":
+                    # Respeta las existentes de antes por si hemos querido adelantar algún trámite manualmente:
+                if (ta.id not in exist.ids) and (ta.expedient_line_id.id) and (
+                            ta.expedient_line_id.dependency_ids.ids):
                     activo = True
-                    for dep in ta.dependency_task_ids:
-                        if dep.active == True: activo = False   # <= Si alguna dependencia está activa, la nueva tarea será archivada.
-                    ta['active'] = activo
+                    for de in ta.expedient_line_id.dependency_ids:
+                        tarea_en_proyecto = self.env['project.task'].search(
+                            [('id', 'in', todas.ids), ('expedient_line_id', '=', de.id)])
+                        if (tarea_en_proyecto.stage_id.closed == False):
+                            activo = False
+                        ta['active'] = activo
 
             # Ahora las fechas límite:
             for ta in todas:

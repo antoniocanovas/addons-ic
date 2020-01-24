@@ -76,14 +76,26 @@ class Docs(models.Model):
     @api.multi
     def action_docs_sent(self):
         self.ensure_one()
+
+        print("############ DEBUG ##################################")
+
         template = self.env.ref('docs.email_template_edi_docs', False)
         compose_form = self.env.ref('mail.email_compose_message_wizard_form', False)
 
+        print("############ COMPOSE FORM ##################################")
+
         attachment = self.action_generate_attachment()
 
+        print("############ ATTACHMENT ##################################")
+
         email_template = self.env.ref('docs.email_template_edi_docs')
+
+        print("############ TEMPLATE ##################################")
+
         email_template.attachment_ids = False
-        email_template.attachment_ids = [(6, 0,  [attachment.id])]
+        #email_template.attachment_ids = [(6, 0,  [attachment.id])]
+        email_template.attachment_ids = [(4, attachment.id)]
+
 
         ctx = dict(
             default_model='docs.docs',
@@ -92,8 +104,8 @@ class Docs(models.Model):
             default_template_id=template and template.id or False,
             default_composition_mode='comment',
             user_id=self.env.user.id,
-            attachment_ids=[(6, 0,  [attachment.id])],
-            #attachment_ids=[(4, attachment.id)],
+            #attachment_ids=[(6, 0,  [attachment.id])],
+            attachment_ids=[(4, attachment.id)],
         )
         return {
             'name': ('Send Doc'),
