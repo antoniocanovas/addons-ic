@@ -15,4 +15,5 @@ class ExpedientTypes(models.Model):
         [('borrador', 'Borrador'), ('activo', 'Activo'), ('archivado', 'Archivado')],default='borrador', string='Estado')
     departament_id = fields.Many2one('hr.department',string='Departamento',required=True)
     task_name = fields.Char('Nombre tarea')
+    stage_ids = fields.Many2many('project.task.type')
 

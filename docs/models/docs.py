@@ -94,8 +94,9 @@ class Docs(models.Model):
 
         email_template.attachment_ids = False
         #email_template.attachment_ids = [(6, 0,  [attachment.id])]
-        email_template.attachment_ids = [(4, attachment.id)]
+        #email_template.attachment_ids = [(4, attachment.id)]
 
+        print("############ ATT2 ##################################")
 
         ctx = dict(
             default_model='docs.docs',
@@ -105,8 +106,10 @@ class Docs(models.Model):
             default_composition_mode='comment',
             user_id=self.env.user.id,
             #attachment_ids=[(6, 0,  [attachment.id])],
-            attachment_ids=[(4, attachment.id)],
+            #attachment_ids=[(4, attachment.id)],
         )
+
+        print("############ CTX ##################################")
         return {
             'name': ('Send Doc'),
             'type': 'ir.actions.act_window',

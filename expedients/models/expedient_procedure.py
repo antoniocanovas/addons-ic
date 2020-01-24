@@ -10,7 +10,7 @@ class ExpedientProcedures(models.Model):
     _description = 'List of procedures for expedients'
 
     name = fields.Char(string='Nombre',required=True)
-    task_description = fields.Char('Asunto en tarea')
+    task_description = fields.Text('Procedimiento')
     store = fields.Boolean(string='Archivado')
     departament_id = fields.Many2one('hr.department',string='Departamento')
     interval = fields.Integer('Días desde inicio exp.')

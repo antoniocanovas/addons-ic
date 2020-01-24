@@ -1,6 +1,6 @@
 {
     'name': 'Expedients',
-    'version': '12.0.2.0',
+    'version': '12.0.3.0',
     'category': 'Projects',
     'description': u"""
 
@@ -10,7 +10,6 @@
         'project',
         'project_stage_closed',
         'project_task_dependency',
-        'project_task_default_stage',
         'hr',
         'base_automation',
     ],
