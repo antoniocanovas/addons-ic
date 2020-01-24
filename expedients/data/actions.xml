@@ -57,8 +57,9 @@ if record.state == 'activo':
 
     # Quito trámites sin dependencias ya que estas no hay que chequear que son correctas, antes he revisado que no están repetidos:
   for li in record.line_ids:
-    if not li.dependency_ids.ids:
+    if not (li.dependency_ids.ids) and (li.procedure_id.id in tramites):
       tramites.remove(li.procedure_id.id)
+    if not (li.dependency_ids.ids) and (li.id in lineaspendientes):
       lineaspendientes.remove(li.id)
 
 # 2. Bucle con tantas vueltas como todas las líneas para comprobar que se pueden cerrar, sería el máximo de vueltas necesario si se pierden de una en una:
