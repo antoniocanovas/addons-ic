@@ -27,15 +27,20 @@ class project(models.Model):
     @api.multi
     def create_case_tasks(self):
         for record in self:
-            # Crear o actualizar añadiendo las etapas que faltan en el proyecto:
-            etapas_plantilla = record.expedient_type_id.stage_ids
-            for etapa in etapas_plantilla:
-                record['type_ids'] = [(4, etapa.id)]
-            
             # Crear las tareas en base al tipo de expediente, enlazando cada tarea con su línea origen:
             # Si las tareas están archivadas y pulsamos de nuevo las repite, así que lo primero, sacar del archivo:
             exist = self.env['project.task'].search(
                 [('project_id', '=', record.id), '|', ('active', '=', False), ('active', '=', True)])
+
+            # Crear o actualizar añadiendo las etapas que faltan en el proyecto:
+            #etapas_plantilla = record.expedient_type_id.stage_ids
+            #for etapa in etapas_plantilla:
+            #    record['type_ids'] = [(4, etapa.id)]
+
+            # Crear o actualizar añadiendo las etapas que faltan en el proyecto:
+        
+            for e in record.expedient_type_id.stage_ids:
+                record['type_ids'] = [(4, e.id)]
 
             # Las líneas del tipo de expediente que ya tienen tarea son:
             lineswithtask = []

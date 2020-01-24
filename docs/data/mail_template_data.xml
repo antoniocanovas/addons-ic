@@ -31,7 +31,7 @@
                 </div>
             </field>
             <field name="report_template" ref="docs.docs_report"/>
-            <field name="report_name">${(object._get_report_base_filename()+(str(object.type_id.name) or '')+'.pdf')}</field>
+            <field name="report_name">${((str(object.type_id.name) or '')+'.pdf')}</field>
             <field name="lang">${object.user_id.company_id.lang}</field>
             <field name="user_signature" eval="False"/>
             <field name="auto_delete" eval="True"/>
