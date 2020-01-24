@@ -87,6 +87,7 @@
                     </h2>
                     <group>
                         <field name="departament_id"/>
+                        <field name="stage_ids"/>
                     </group>
                     <field name="line_ids" string="Trámites" attrs="{'readonly':[('state','!=','borrador')]}">
                         <tree string="Líneas de tipo de expediente" editable="top">
@@ -96,7 +97,6 @@
                             <field name="departament_id"/>
                             <field name="dependency_ids" widget="many2many_tags"/>
                             <field name="interval"/>
-                            <field name="stage_ids"/>
                         </tree>
                     </field>
                     <group col="2">
