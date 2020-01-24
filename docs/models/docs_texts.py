@@ -11,7 +11,7 @@ class DocsTexts(models.Model):
 
     name = fields.Char(string='Name',required=True)
     type = fields.Selection(
-        [('intro', 'Header'), ('body', 'Body of message'), ('footer', 'Footer')], requierd=True,
+        [('header', 'Header'), ('body', 'Body of message'), ('footer', 'Footer')], requierd=True,
         string='Type')
     text = fields.Html(string='Text')
     active = fields.Boolean('Active',default=True)
