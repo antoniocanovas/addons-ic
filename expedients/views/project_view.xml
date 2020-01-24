@@ -43,4 +43,32 @@
         <field name="type">form</field>
     </record>
 
+    <record id="project_project_stages_form_inh" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                    <page name="etapas_proyecto" string="Etapas">
+                        <group name="grupo_etapas_proyecto">
+                            <field name="type_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="fold"/>
+                                    <field name="description"/>
+                                    <field name="closed"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+            </data>
+        </field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="mode">extension</field>
+        <field name="model">project.project</field>
+        <field name="name">project.project.stages.form.inh</field>
+        <field name="type">form</field>
+    </record>
+
+
 </odoo>
