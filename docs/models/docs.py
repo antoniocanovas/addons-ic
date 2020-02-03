@@ -70,7 +70,10 @@ class Docs(models.Model):
             pdf = self.env.ref(report_id).render_qweb_pdf(self.ids[0])
             # pdf result is a list
             b64_pdf = base64.b64encode(pdf[0])
-
+            main_attachment = self.env['ir.attachment'].sudo().search(
+                ['&', ('res_id', '=', self.id), ('name', '=', self.type_id.name + '.pdf')]
+            )
+            main_attachment.unlink()
             # save pdf as attachment
             name = self.name + (str(self.type_id.name))
             self.attachment_id = self.env['ir.attachment'].sudo().create({
@@ -81,13 +84,17 @@ class Docs(models.Model):
                 'store_fname': name,
                 'res_model': 'project.task',
                 'res_id': self.task_id,
-                'mimetype': 'application/x-pdf'
+                'mimetype': 'application/pdf'
             })
             self.attachment_datas = self.attachment_id.datas
             self.attachment_name = self.attachment_id.datas_fname
             self.state = 'validated'
 
         else:
+            main_attachment = self.env['ir.attachment'].sudo().search(
+                ['&', ('res_id', '=', self.id), ('name', '=', self.type_id.name + '.pdf')]
+            )
+            main_attachment.unlink()
             self.attachment_id.unlink()
             self.state = 'draft'
 
@@ -104,12 +111,8 @@ class Docs(models.Model):
             compose_form = self.env.ref('mail.email_compose_message_wizard_form', False)
 
             attachment = self.attachment_id
-            #attachment = self.action_generate_attachment()
-            #self.attachment_id = attachment
             email_template = self.env.ref('docs.email_template_edi_docs')
 
-            #email_template.attachment_ids = [(5,0,0)]
-            #email_template.attachment_ids = [(6, 0,  [attachment.id])]
             email_template.attachment_ids = [(4, attachment.id)]
 
             ctx = dict(
