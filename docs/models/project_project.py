@@ -8,6 +8,7 @@ from odoo import fields, models, api
 class ProjectTaskContacts(models.Model):
     _inherit = 'project.project'
 
+    @api.multi
     def _get_docs(self):
         results = self.env['docs.docs'].search([('project_id','=',self.id)])
         self.docs_count = len(results)

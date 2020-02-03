@@ -1,6 +1,6 @@
 {
     'name': 'Docs',
-    'version': '12.0.2.0',
+    'version': '12.0.3.0',
     'category': 'Projects',
     'description': u"""
 

@@ -40,7 +40,9 @@
                     <field name="body_text" colspan="4" modifiers="{&quot;readonly&quot;: true}"/>
                     <field name="footer_text" colspan="4" modifiers="{&quot;readonly&quot;: true}"/>
                 </sheet>
+
             </form>
+
         </field>
         <field name="field_parent" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
@@ -60,6 +62,9 @@
             <form>
                 <header>
                     <button name="action_docs_sent" string="Send" type="object" class="oe_highlight oe_read_only"/>
+                    <button name="action_generate_attachment" string="Validate" type="object" class="oe_highlight oe_read_only" attrs="{'invisible':[('state','!=','draft')]}"/>
+                    <button name="action_generate_attachment" string="To Draft" type="object" class="oe_highlight oe_read_only" attrs="{'invisible':[('state','!=','validated')]}"/>
+                    <field name="state"  widget="statusbar"/>
                 </header>
                 <sheet string="Docs">
                     <h2>
@@ -69,9 +74,12 @@
                         <field name="type_id" on_change="1" can_create="true" can_write="true" required="True" placeholder="Nombre del documento ..."/>
                         <field name="task_id" on_change="1" can_create="true" can_write="true" required="True"/>
                         <field name="project_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true}"/>
+                        <field name="attachment_datas" filename="attachment_name" readonly="True"/>
+                        <field name="attachment_name" invisible="1"/>
                         <field name="implied_ids" domain="[('project_id','=',project_id)]" colspan="4"/>
                     </group>
                     <group col="2" attrs="{'invisible':[('id','=',False)]}">
+
                         <h4><b><i>El documento queda así, puedes editarlo:</i></b></h4>
                     </group>
                     <group attrs="{'invisible':[('id','=',False)]}">
@@ -81,6 +89,11 @@
                         <field name="footer" colspan="4" can_write="true" modifiers="{}"/>
                     </group>
                 </sheet>
+                 <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh':'recipients'}"/>
+                </div>
             </form>
         </field>
         <field name="field_parent" eval="False"/>
@@ -181,7 +194,7 @@
         <field name="auto_search" eval="True"/>
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
-        <field name="context">{'search_default_task_id': active_id,'default_task_id': active_id}</field>
+        <field name="context">{'search_default_id': active_id,'default_id': active_id}</field>
         <field name="domain">[('task_id', '=',active_id)]</field>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="help"><![CDATA[<p>Docs asociados a la tarea </p>]]></field>
@@ -227,5 +240,41 @@
         <field name="view_mode">tree,form</field>
         <field name="view_type">form</field>
     </record>
+
+     <!-- Buttons for attachments on tasks -->
+
+    <record id="project_task_attachments_form" model="ir.ui.view">
+        <field name="name">project.task.docs.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='toggle_active']" position="after">
+                <button class="oe_stat_button" icon="fa-info" type="object" name="action_view_attachments">
+                    <field name="attachment_count" string="Attachments" widget="statinfo"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="action_task_attachments" model="ir.actions.act_window">
+        <field name="auto_search" eval="True"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="context">{'search_default_res_id': active_id,'default_res_id': active_id}</field>
+        <field name="domain">[('res_id', '=',active_id)]</field>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="help"><![CDATA[<p>Attachments linked to task </p>]]></field>
+        <field name="limit">80</field>
+        <field name="name">Attachments</field>
+        <field name="res_model">ir.attachment</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="base.view_attachment_search"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+    </record>
+
+
 
 </odoo>
