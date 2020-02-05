@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="ocr_transactions_form" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_get_documents" string="Get Documents" type="object" class="oe_highlight oe_read_only"/>
+                </header>
+                <sheet string="OCR">
+                    <h2>
+                        <field name="ocr_customer_name"/>
+                    </h2>
+                    <group name="basic_params">
+                        <group>
+                            <field name="ocr_transaction_status"/>
+                            <field name="ocr_document_type"/>
+                        </group>
+                        <group>
+                            <field name="ocr_token"/>
+                            <field name="ocr_value_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="value"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">ocr.transactions</field>
+        <field name="name">Default form view for ocr transactions</field>
+        <field name="priority">16</field>
+        <field name="type">form</field>
+    </record>
+
+    <record id="ocr_transactions_tree" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <tree string="OCR">
+                <field name="ocr_customer_name"/>
+                <field name="ocr_transaction_status"/>
+                <field name="ocr_document_type"/>
+                <field name="ocr_token"/>
+                <field name="ocr_date_created"/>
+                <field name="ocr_date_updated"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">ocr.transactions</field>
+        <field name="name">Default tree view for ocr transactions</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
+    </record>
+
+   <record id="ocr_dictionary_form" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <form>
+                <sheet string="OCR">
+                    <h2>
+                        <field name="name"/>
+                    </h2>
+                    <group name="basic_params">
+                        <field name="res_model"/>
+                        <field name="res_field"/>
+                        <field name="res_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">ocr.dictionary</field>
+        <field name="name">Default form view for ocr dictionary</field>
+        <field name="priority">16</field>
+        <field name="type">form</field>
+    </record>
+
+    <record id="ocr_dictionary_tree" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <tree string="OCR">
+                <field name="res_model"/>
+                <field name="name"/>
+                <field name="res_field"/>
+                <field name="res_id"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">ocr.dictionary</field>
+        <field name="name">Default tree view for ocr dictionary</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
+    </record>
+
+</odoo>

@@ -34,6 +34,7 @@ class Docs(models.Model):
         ],
         default='draft',
         string='State',
+        track_visibility='always',
     )
 
     @api.depends('type_id')

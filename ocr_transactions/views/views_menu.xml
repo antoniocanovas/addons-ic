@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="action_ocr_transactions" model="ir.actions.act_window">
+        <field name="auto_search" eval="True"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <!--<field name="context" eval="False"></field>-->
+        <!-- <field name="domain" eval="[('tag_ids.facet_id.name', '=', 'OCR')]"/>-->
+        <field name="filter" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="limit">80</field>
+        <field name="multi" eval="False"/>
+        <field name="name">OCR</field>
+        <field name="res_model">ocr.transactions</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="src_model" eval="False"/>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="usage" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+    </record>
+
+    <record id="action_ocr_documents" model="ir.actions.act_window">
+        <field name="auto_search" eval="True"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="filter" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="limit">80</field>
+        <field name="multi" eval="False"/>
+        <field name="name">Documents</field>
+        <field name="res_model">account.invoice</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="src_model" eval="False"/>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="usage" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">tree</field>
+    </record>
+
+    <record id="action_ocr_dictionary" model="ir.actions.act_window">
+        <field name="auto_search" eval="True"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="filter" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="limit">80</field>
+        <field name="multi" eval="False"/>
+        <field name="name">Dictionary</field>
+        <field name="res_model">ocr.dictionary</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="src_model" eval="False"/>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="usage" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">tree</field>
+    </record>
+
+    <menuitem
+            action="action_ocr_transactions"
+            id="menu_ocr"
+            name="OCR"
+            sequence="10"
+            web_icon="ocr_transactions,static/description/docs.png"
+    />
+    <record id="menu_ocr_transactions" model="ir.ui.menu">
+        <field name="action" ref="action_ocr_transactions"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Queue</field>
+        <field name="parent_id" ref="menu_ocr"/>
+        <field name="sequence">1</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+    <record id="menu_ocr_documents" model="ir.ui.menu">
+        <field name="action" ref="action_ocr_documents"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Documents</field>
+        <field name="parent_id" ref="menu_ocr"/>
+        <field name="sequence">2</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+    <record id="menu_ocr_configuration" model="ir.ui.menu">
+        <field name="action" ref="action_ocr_dictionary"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Configuration</field>
+        <field name="parent_id" ref="menu_ocr"/>
+        <field name="sequence">3</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+    <record id="menu_ocr_dictionary" model="ir.ui.menu">
+        <field name="action" ref="action_ocr_dictionary"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Dictionary</field>
+        <field name="parent_id" ref="menu_ocr_configuration"/>
+        <field name="sequence">1</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+
+
+</odoo>

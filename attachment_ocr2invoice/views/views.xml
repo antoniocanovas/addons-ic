@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="ocr2invoice_form" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_ocr2invoice_get" string="Get Invoices" type="object" class="oe_highlight oe_read_only"/>
+                </header>
+                <sheet string="OCR">
+                    <h2>
+                        <field name="ocr_customer_name"/>
+                    </h2>
+                       <group name="basic_params">
+                        <group>
+                           <field name="ocr_invoice_status"/>
+                        <field name="ocr_invoice_type"/>
+                        </group>
+                        <group>
+                            <field name="ocr_token"/>
+                            <field name="ocr_values_id" domain="[('token', '=', ocr_token)]"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">ocr.invoice</field>
+        <field name="name">Default form view for ocr2invoice</field>
+        <field name="priority">16</field>
+        <field name="type">form</field>
+    </record>
+
+    <record id="ocr2invoice_tree" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <tree string="OCR">
+                <field name="ocr_customer_name"/>
+                <field name="ocr_invoice_status"/>
+                <field name="ocr_invoice_type"/>
+                <field name="ocr_token"/>
+                <field name="ocr_date_created"/>
+                <field name="ocr_date_updated"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">ocr.invoice</field>
+        <field name="name">Default tree view for ocr2invoice</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
+    </record>
+
+
+</odoo>
