@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_ocr_invoice, OCR Invoices,model_ocr_invoice,base.group_user,1,1,1,1
-access_ocr_values, OCR Values,model_ocr_values,base.group_user,1,1,1,1
