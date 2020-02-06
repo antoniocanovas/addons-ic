@@ -14,6 +14,8 @@
                 <field name="km"/>
                 <field name="kg"/>
                 <field name="units"/>
+                <field name="origin_id"/>
+                <field name="delivery_id"/>
             </xpath>
             <xpath expr="//sheet[1]/group[1]/group[2]/div[1]" position="after">
                 <label for="planned_date_begin" string="Recogida / entrega"/>
