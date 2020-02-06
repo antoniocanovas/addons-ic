@@ -119,7 +119,7 @@ class ProjectTaskRoute(models.Model):
         for record in self:
             this_km = 0
             for ta in record.task_ids:
-                this_km += ta.this_km
+                this_km += ta.km
             record['km'] = this_km
 
     km = fields.Float(
