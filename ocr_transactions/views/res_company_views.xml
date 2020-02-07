@@ -13,6 +13,10 @@
                         <field name="api_key"/>
                         <field name="api_domain"/>
                     </group>
+                    <group>
+                        <button name="action_get_documents" string="Get Documents" type="object" class="oe_highlight oe_read_only"/>
+                        <field name="last_connection_date" readonly="True"/>
+                    </group>
                 </page>
             </xpath>
         </field>
