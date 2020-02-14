@@ -12,14 +12,11 @@ class OcrTransactions(models.Model):
     _name = 'ocr.transactions'
     _description = 'Ocr Transactions'
 
-    ocr_token = fields.Char('Api Token')
-    ocr_transaction_status = fields.Char('Status')
-    ocr_document_type = fields.Char('Type')
-    ocr_customer_name = fields.Char('Customer')
-    ocr_date_created = fields.Char('Create date')
-    ocr_date_updated = fields.Char('Updated at')
-    ocr_document_cif = fields.Char('Customer')      # Sin uso en esta versión
-    ocr_value_ids = fields.One2many('ocr.values', 'ocr_transaction_id')
+    token = fields.Char('Api Token')
+    status = fields.Char('Status')
+    type = fields.Char('Type')
+    name = fields.Char('Customer')
+    value_ids = fields.One2many('ocr.values', 'ocr_transaction_id')
 
 
 

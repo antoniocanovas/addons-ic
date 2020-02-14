@@ -7,22 +7,22 @@
             <form>
                 <sheet string="OCR">
                     <h2>
-                        <field name="ocr_customer_name"/>
+                        <field name="name"/>
                     </h2>
-                    <group name="basic_params">
-                        <group>
-                            <field name="ocr_transaction_status"/>
-                            <field name="ocr_document_type"/>
-                        </group>
-                        <group>
-                            <field name="ocr_token"/>
-                            <field name="ocr_value_ids">
-                                <tree>
-                                    <field name="name"/>
-                                    <field name="value"/>
-                                </tree>
-                            </field>
-                        </group>
+                    <group name="basic_params" col="2">
+                        <field name="status"/>
+                        <field name="type"/>
+                        <field name="value_ids">
+                            <tree>
+                                <field name="name"/>
+                                <field name="value"/>
+                                <field name="dictionary_id"/>
+                            </tree>
+                        </field>
+                        <newline/>
+                        <field name="create_date"/>
+                        <field name="write_date"/>
+                        <field name="token"/>
                     </group>
                 </sheet>
             </form>
@@ -42,12 +42,11 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree string="OCR">
-                <field name="ocr_customer_name"/>
-                <field name="ocr_transaction_status"/>
-                <field name="ocr_document_type"/>
-                <field name="ocr_token"/>
-                <field name="ocr_date_created"/>
-                <field name="ocr_date_updated"/>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="status"/>
+                <field name="create_date"/>
+                <field name="write_date"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -88,10 +87,14 @@
             <form>
                 <sheet string="Ocr Dictionary">
                     <group col="4">
-                        <field name="res_model" modifiers="{}"/>
-                        <field name="name" modifiers="{}"/>
-                        <field name="res_field" modifiers="{}"/>
-                        <field name="res_id" modifiers="{}"/>
+                        <field name="name" colspan="4"/>
+                        <field name="res_model" colspan="4"/>
+                        <field name="tax_id" colspan="4" attrs="{
+                        'invisible':[('res_model','!=','account.tax')],
+                        'required':[('res_model','=','account.tax')]
+                        }"/>
+                        <field name="res_field" colspan="4" />
+                        <field name="res_id" colspan="4" />
                         <separator/>
                     </group>
                 </sheet>
