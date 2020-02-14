@@ -13,13 +13,13 @@ class OcrValues(models.Model):
     name = fields.Char('Name')
     value = fields.Char('Value')
     ocr_transaction_id = fields.Many2one('ocr.transactions')
-    dictionary_id = fields.Many2one('ocr.dictionary')
 
-    #@api.depends('name')
-    #def _get_dictionary(self):
-    #    data = self.env['ocr.dictionary'].search([('name', '=', self.name)])
-    #    if data.id:
-    #        self.dictionary_id = data.id
 
-    #compute = _get_dictionary
+    @api.depends('name')
+    def _get_dictionary(self):
+        for record in self:
+            data = self.env['ocr.dictionary'].search([('name', '=', record.name)])
+            if data.id:
+                record.dictionary_id = data.id
 
+    dictionary_id = fields.Many2one('ocr.dictionary', compute=_get_dictionary)
