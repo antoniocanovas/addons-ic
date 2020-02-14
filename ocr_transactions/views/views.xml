@@ -12,8 +12,8 @@
                     <group name="basic_params" col="2">
                         <field name="status"/>
                         <field name="type"/>
-                        <field name="value_ids">
-                            <tree>
+                        <field name="value_ids" context="{'default_ocr_transaction_id': id}">
+                            <tree editable="bottom">
                                 <field name="name"/>
                                 <field name="value"/>
                                 <field name="dictionary_id"/>

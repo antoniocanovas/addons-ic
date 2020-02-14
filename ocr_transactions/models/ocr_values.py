@@ -22,4 +22,4 @@ class OcrValues(models.Model):
             if data.id:
                 record.dictionary_id = data.id
 
-    dictionary_id = fields.Many2one('ocr.dictionary', compute=_get_dictionary)
+    dictionary_id = fields.Many2one('ocr.dictionary', store="False", compute=_get_dictionary)
