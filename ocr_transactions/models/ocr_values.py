@@ -20,7 +20,7 @@ class OcrValues(models.Model):
         for record in self:
             data = self.env['ocr.dictionary'].search([
                 ('name', '=', record.name),
-                ('type', '=', record.ocr_transaction_id.type),
+                ('type', '=', record.ocr_transaction_id.type)
             ])
             if data.id:
                 record.dictionary_id = data.id
