@@ -13,4 +13,5 @@ class OcrDictionary(models.Model):
     name = fields.Char('Label')
     res_field = fields.Char('Field')
     res_id = fields.Char('External ID')
+    type = fields.Char('Type of document')
     tax_id = fields.Many2one('account.tax')
