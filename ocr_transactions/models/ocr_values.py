@@ -14,7 +14,6 @@ class OcrValues(models.Model):
     value = fields.Char('Value')
     ocr_transaction_id = fields.Many2one('ocr.transactions')
 
-
     @api.depends('name')
     def _get_dictionary(self):
         for record in self:
