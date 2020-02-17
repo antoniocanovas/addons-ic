@@ -64,12 +64,11 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree>
-                <field name="res_model"/>
                 <field name="name"/>
                 <field name="type"/>
+                <field name="res_model"/>
                 <field name="res_field"/>
                 <field name="res_id"/>
-                <field name="type"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -98,7 +97,6 @@
                         }"/>
                         <field name="res_field" colspan="4" />
                         <field name="res_id" colspan="4" />
-                        <field name="type" colspan="4" />
                         <separator/>
                     </group>
                 </sheet>
