@@ -58,9 +58,15 @@ class ResCompany(models.Model):
                 if exist.status != transactions_by_state['FACTURAS'][i]['status']:
                     exist.status = transactions_by_state['FACTURAS'][i]['status']
             else:
+                type_doc = transactions_by_state['FACTURAS'][i]['type']
+                if transactions_by_state['FACTURAS'][i]['type'] == "emitida":
+                    type_doc = "out_invoice"
+                if transactions_by_state['FACTURAS'][i]['type'] == "recibida":
+                    type_doc = "in_invoice"
+
                 self.env['ocr.transactions'].create({
                     'status': transactions_by_state['FACTURAS'][i]['status'],
-                    'type': transactions_by_state['FACTURAS'][i]['type'],
+                    'type': type_doc,
                     'name': transactions_by_state['FACTURAS'][i]['client'],
                     'token': transactions_by_state['FACTURAS'][i]['token'],
                     'create_date': transactions_by_state['FACTURAS'][i]['created_at'],
@@ -72,12 +78,8 @@ class ResCompany(models.Model):
         for p in transactions_processed:
             api_transaction_url_token = "%s%s" % (api_transaction_url, p.token)
             p_invoice = self.get_documents_data(api_transaction_url_token, header)
-            print("##########FACTURA###########")
-            print(p_invoice)
             if p_invoice:
                 for v in p_invoice["result"]["basic"].values():
-                    print(p.token)
-                    print(v["Value"]["Text"])
                     self.env['ocr.values'].sudo().create({
                         'token': p.token,
                         'name': v["ERPName"],
@@ -88,13 +90,27 @@ class ResCompany(models.Model):
                     # p.client = MIRAR EN PASO PREVIO
                 partner = self.env['res.partner'].search([("name", "=", p.name)])
                 if not partner:
+                    account600_id = self.env['ir.model.data'].search([
+                        ('name', '=', 'l10n_es.1_account_common_600'),
+                        ('model', '=', 'account_tax')
+                    ])
+                    account600 = self.env['account.account'].search([('id', '=', account600_id.res_id)])
+
+                    account700_id = self.env['ir.model.data'].search([
+                        ('name', '=', 'l10n_es.1_account_common_700'),
+                        ('model', '=', 'account_tax')
+                    ])
+                    account700 = self.env['account.account'].search([('id', '=', account700_id.res_id)])
+
                     partner = self.env['res.partner'].sudo().create({
                         'name': p.name,
+                        'ocr_sale_account_id': account600,
+                        'ocr_purchase_account_id': account700,
                     })
                 if partner:
                     invoice = self.env['account.invoice'].sudo().create({
                         'partner_id': partner.id,
-                        'type': 'in_invoice',
+                        'type': p.type,
                         'ocr_transaction_id': p.id
                     })
                 if invoice:

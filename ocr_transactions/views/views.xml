@@ -64,11 +64,12 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree>
+                <field name="res_model"/>
                 <field name="name"/>
                 <field name="type"/>
-                <field name="res_model"/>
                 <field name="res_field"/>
                 <field name="res_id"/>
+                <field name="type"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -97,6 +98,7 @@
                         }"/>
                         <field name="res_field" colspan="4" />
                         <field name="res_id" colspan="4" />
+                        <field name="type" colspan="4" />
                         <separator/>
                     </group>
                 </sheet>
@@ -133,6 +135,20 @@
         <field name="arch" type="xml">
             <xpath expr="//form/header" position="inside">
                 <button name="action_send_odoo_client" string="Send Odoo Client" type="object" class="oe_highlight" />
+            </xpath>
+            <xpath expr="//form/sheet" position="after">
+                <div class="o_attachment_preview" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_account_invoice_form_preview" model="ir.ui.view">
+        <field name="name">OCR invoice attachment preview</field>
+        <field name="model">account.invoice</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet" position="after">
+                <div class="o_attachment_preview" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
             </xpath>
         </field>
     </record>
