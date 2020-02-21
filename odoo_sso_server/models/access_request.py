@@ -13,6 +13,7 @@ class AccessRequest(models.Model):
 
 
     db = fields.Char('Base de Datos')
+    remote_company_id = fields.Integer('Id de empresa')
 
     @api.multi
     def tokengenerator(self):

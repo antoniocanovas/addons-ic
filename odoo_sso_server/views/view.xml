@@ -7,16 +7,18 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="partner_credentials.credentials_form"/>
         <field name="arch" type="xml">
-           <xpath expr="//form/sheet/group" position="after">
+            <xpath expr="//form/sheet/group" position="after">
                 <notebook colspan="4" attrs="{'invisible':[('type','!=','odoo')]}">
                     <page name="SSO" string="SSO">
                         <group col="4">
                             <button string="Conectar" type="object" name="request_f" class="oe_highlight" colspan="2"/>
+                            <newline/>
                             <field name="db"/>
+                            <field name="remote_company_id" attrs="{'required':[('type','=','odoo')]}"/>
                         </group>
                     </page>
                 </notebook>
-           </xpath>
+            </xpath>
         </field>
     </record>
 
