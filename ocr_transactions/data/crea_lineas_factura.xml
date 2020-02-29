@@ -19,7 +19,6 @@ if record.type in ['out_invoice','out_refund']:
   taxiva4  = env['ocr.dictionary'].search([('name','=','IVA4'),('type','=','out_invoice')]).tax_id
   taxiva0  = env['ocr.dictionary'].search([('name','=','IVA0'),('type','=','out_invoice')]).tax_id
 # Diccionario de retenciones para ventas:
-  cc = record.partner_id.ocr_purchase_account_id.id
   taxret19 = env['ocr.dictionary'].search([('name','=','IRPF19'),('type','=','out_invoice')]).tax_id
   taxret15 = env['ocr.dictionary'].search([('name','=','IRPF15'),('type','=','out_invoice')]).tax_id
   taxret7  = env['ocr.dictionary'].search([('name','=','IRPF7'),('type','=','out_invoice')]).tax_id
@@ -27,6 +26,7 @@ if record.type in ['out_invoice','out_refund']:
 
 # Diccionario de impuestos para compras:
 elif record.type in ['in_invoice','in_refund']:
+  cc = record.partner_id.ocr_purchase_account_id.id
   taxiva21 = env['ocr.dictionary'].search([('name','=','IVA21'),('type','=','in_invoice')]).tax_id
   taxiva10 = env['ocr.dictionary'].search([('name','=','IVA10'),('type','=','in_invoice')]).tax_id
   taxiva4  = env['ocr.dictionary'].search([('name','=','IVA4'),('type','=','in_invoice')]).tax_id
