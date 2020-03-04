@@ -8,9 +8,9 @@ import werkzeug
 import string
 import random
 
+
 class AccessRequest(models.Model):
     _inherit = 'partner.credentials'
-
 
     db = fields.Char('Base de Datos')
     remote_company_id = fields.Integer('Id de empresa')
@@ -29,8 +29,8 @@ class AccessRequest(models.Model):
                 "Revise los campos 'Base de datos' y 'Servidor' en la pestaña SSO"
             ))
         else:
-            remote_user = self.env['res.users'].search([('name', '=', 'asesoria')])
 
+            remote_user = self.env['res.users'].sudo().search([('name', '=', 'asesoria')])
             remote_user.token = self.tokengenerator()
 
             try:
@@ -79,7 +79,6 @@ class AccessRequest(models.Model):
         else:
             raise Warning("Exception when matching token")
 
-
     @api.multi
     def request_f(self, values):
         url = "%s/93201967" % self.url
@@ -97,4 +96,3 @@ class AccessRequest(models.Model):
                     'target': 'current',
                     }
 
-    

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="view_account_invoice_form_preview_jobs" model="ir.ui.view">
+        <field name="name">Send invoice to customer Odoo client</field>
+        <field name="model">account.invoice</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header" position="inside">
+                <button name="prepare_invoice_send" string="Send Odoo Client" type="object" class="oe_highlight" />
+            </xpath>
+            <xpath expr="//sheet/notebook/page[@name='other_info']" position="after">
+                <page string="Job state" name="job_state">
+                    <group>
+                        <field name="ocr_invoice_jobs_ids"
+                               options="{'reload_on_button': true}"
+                               nolabel="1"
+                               readonly="1"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_invoice_supplier_send_inh_job" model="ir.ui.view">
+        <field name="name">Send invoice to customer Odoo supplier</field>
+        <field name="model">account.invoice</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header" position="inside">
+                <button name="prepare_invoice_send" string="Send Odoo Client" type="object" class="oe_highlight" />
+            </xpath>
+            <xpath expr="//sheet/notebook/page[@name='other_info']" position="after">
+                <page string="Job state" name="job_state">
+                    <group>
+                        <field name="ocr_invoice_jobs_ids"
+                               options="{'reload_on_button': true}"
+                               nolabel="1"
+                               readonly="1"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+
+</odoo>

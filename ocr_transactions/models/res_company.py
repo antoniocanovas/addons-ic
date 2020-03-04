@@ -87,8 +87,10 @@ class ResCompany(models.Model):
                         'ocr_transaction_id': p.id,
                     })
                     p.status = 'downloaded'
-                    # p.client = MIRAR EN PASO PREVIO
-                partner = self.env['res.partner'].search([("name", "=", p.name)])
+
+                partner_vat = self.env['ocr.values'].sudo().search([
+                    ('ocr_transaction_id', '=', p.id), ('name', '=', 'CIF')])
+                partner = self.env['res.partner'].search([("vat", "=", partner_vat.value)])
                 if not partner:
                     account600_id = self.env['ir.model.data'].search([
                         ('name', '=', 'l10n_es.1_account_common_600'),
@@ -103,16 +105,34 @@ class ResCompany(models.Model):
                     account700 = self.env['account.account'].search([('id', '=', account700_id.res_id)])
 
                     partner = self.env['res.partner'].sudo().create({
-                        'name': p.name,
+                        'name': partner_vat.value,
+                        'vat': partner_vat.value,
                         'ocr_sale_account_id': account600,
                         'ocr_purchase_account_id': account700,
                     })
                 if partner:
-                    invoice = self.env['account.invoice'].sudo().create({
-                        'partner_id': partner.id,
-                        'type': p.type,
-                        'ocr_transaction_id': p.id
-                    })
+                    if p.type == "in_invoice":
+                        journal_type = "purchase"
+                    else:
+                        journal_type = "sale"
+
+                    date = self.env['ocr.values'].sudo().search([
+                        ('ocr_transaction_id', '=', p.id),('name', '=', 'Fecha')])
+                    if date.value:
+                        invoice = self.env['account.invoice'].sudo().create({
+                            'partner_id': partner.id,
+                            'type': p.type,
+                            'journal_type': journal_type,
+                            'date_invoice': datetime.strptime(date.value, '%d/%m/%Y').date(),
+                            'ocr_transaction_id': p.id
+                        })
+                    else:
+                        invoice = self.env['account.invoice'].sudo().create({
+                            'partner_id': partner.id,
+                            'type': p.type,
+                            'journal_type': journal_type,
+                            'ocr_transaction_id': p.id
+                        })
                 if invoice:
                     self.get_attachment_data(p_invoice['image'], header)
                     attachment = self.generate_attachment(invoice, p)
@@ -164,7 +184,6 @@ class ResCompany(models.Model):
         header = self.get_header()
 
         transactions_by_state = self.get_documents_data(api_transaction_url, header)
-        print(transactions_by_state)
         ############### Control status donwloaded #######################
 
         if transactions_by_state:

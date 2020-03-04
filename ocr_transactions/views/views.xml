@@ -113,26 +113,14 @@
         <field name="type">form</field>
     </record>
 
-    <record id="view_account_invoice_send_inh" model="ir.ui.view">
-        <field name="name">Send invoice to customer Odoo</field>
-        <field name="model">account.invoice</field>
-        <field name="type">form</field>
-        <field name="inherit_id" ref="account.invoice_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//form/header" position="inside">
-                <button name="action_send_odoo_client" string="Send Odoo Client" type="object" class="oe_highlight" />
-            </xpath>
-        </field>
-    </record>
-
     <record id="view_account_invoice_supplier_send_inh" model="ir.ui.view">
         <field name="name">Send invoice to customer Odoo</field>
         <field name="model">account.invoice</field>
         <field name="type">form</field>
         <field name="inherit_id" ref="account.invoice_supplier_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//form/header" position="inside">
-                <button name="action_send_odoo_client" string="Send Odoo Client" type="object" class="oe_highlight" />
+            <xpath expr="//sheet/group/group/field[@name='reference']" position="after">
+                <field name="ocr_transaction_id"/>
             </xpath>
             <xpath expr="//sheet/group/group[2]/field[@name='partner_bank_id']" position="attributes">
                 <attribute name="attrs">{
@@ -144,17 +132,18 @@
                     'invisible':[('ocr_transaction_id','!=','False')]
                     }</attribute>
             </xpath>
-            <xpath expr="//sheet/group/group/field[@name='reference']" position="after">
-                <field name="ocr_transaction_id"/>
-            </xpath>
         </field>
     </record>
+
     <record id="view_account_invoice_form_preview" model="ir.ui.view">
         <field name="name">OCR invoice attachment preview</field>
         <field name="model">account.invoice</field>
         <field name="type">form</field>
         <field name="inherit_id" ref="account.invoice_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//sheet/group/group/field[@name='partner_id']" position="after">
+                <field name="ocr_transaction_id"/>
+            </xpath>
             <xpath expr="//form/sheet" position="after">
                 <div class="o_attachment_preview" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
             </xpath>
@@ -162,9 +151,6 @@
                 <attribute name="attrs">{
                     'invisible':[('ocr_transaction_id','!=','False')]
                     }</attribute>
-            </xpath>
-            <xpath expr="//sheet/group/group/field[@name='partner_id']" position="after">
-                <field name="ocr_transaction_id"/>
             </xpath>
         </field>
     </record>

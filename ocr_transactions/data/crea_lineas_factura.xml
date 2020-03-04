@@ -19,6 +19,7 @@ if record.type in ['out_invoice','out_refund']:
   taxiva4  = env['ocr.dictionary'].search([('name','=','IVA4'),('type','=','out_invoice')]).tax_id
   taxiva0  = env['ocr.dictionary'].search([('name','=','IVA0'),('type','=','out_invoice')]).tax_id
 # Diccionario de retenciones para ventas:
+
   taxret19 = env['ocr.dictionary'].search([('name','=','IRPF19'),('type','=','out_invoice')]).tax_id
   taxret15 = env['ocr.dictionary'].search([('name','=','IRPF15'),('type','=','out_invoice')]).tax_id
   taxret7  = env['ocr.dictionary'].search([('name','=','IRPF7'),('type','=','out_invoice')]).tax_id
