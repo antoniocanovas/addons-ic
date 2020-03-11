@@ -11,6 +11,7 @@
         'contacts',
         'documents_account',
         'ocr_transactions',
+        'ase_replication_server',
     ],
     'data': [
         #'security/ir.model.access.csv',
