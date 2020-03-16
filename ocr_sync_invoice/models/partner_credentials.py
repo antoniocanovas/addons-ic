@@ -20,42 +20,12 @@ class ConfigClient(models.Model):
     _inherit = 'partner.credentials'
 
     @api.multi
-    def get_product_local_id(self, product):
-
-        local_external_id = self.env['ir.model.data'].sudo().search([
-            ("model", "=", 'product.product'),
-            ('res_id', '=', product.id)
-        ])
-        if local_external_id and str(local_external_id.module) != '__export__':
-            local_external_id_name = local_external_id.name
-            print(local_external_id)
-        else:
-            local_external_id_name = str(self.env.user.company_id.id) + '_product_product_' + str(product.id)
-            print(local_external_id)
-
-
-        #record = self.env['ir.model.data'].sudo().search([
-        #    ("model", "=", 'product.product'),
-        #    ('res_id', '=', product.id)
-        #])
-
-
-        # account_id = record[0]['res_id']
-
-
-
-    @api.multi
     def get_line_objects(self, invoice):
         product_list = []
         for line in invoice.invoice_line_ids:
             if line.product_id:
-                print("produt in lines")
-                print(line.product_id.name)
-                print(line.product_id.id)
-                #self.get_product_local_id(line.product_id)
                 line.product_id.is_replicable = True
-                self.product_ids = [(4, 0, line.product_id.id)]
-                #product_list.append(line.product_id.id)
+                self.product_p_ids = [(4, line.product_id.id)]
             # Asset Profile of product
             if line.asset_profile_id:
                 line.asset_profile_id.is_replicable = True
@@ -65,11 +35,6 @@ class ConfigClient(models.Model):
                 line.account_id.is_replicable = True
                 self.account_ids = [(4, line.account_id.id)]
 
-        #print(product_list)
-        #self.product_ids = (4, product_list)
-        for product in self.product_ids:
-            print(product.name)
-            print(product.id)
         return True
 
     @api.multi
@@ -79,12 +44,18 @@ class ConfigClient(models.Model):
         for line in invoice.invoice_line_ids:
             if line.product_id:
                 product_id = self.get_product(line.product_id, conn)
+                if not product_id:
+                    raise Warning("A valid Product must be selected")
             if line.account_id:
                 account_id = self.get_account(line.account_id, conn)
             if line.asset_profile_id:
                 profile_id = self.get_asset_profile(line.asset_profile_id, conn)
+            else:
+                profile_id = False
             if line.invoice_line_tax_ids:
                 tax_ids = self.get_taxes(line.invoice_line_tax_ids, conn)
+            else:
+                tax_ids = []
 
             line_dic = {
                 'product_id': product_id,
@@ -132,7 +103,16 @@ class ConfigClient(models.Model):
         except Exception as e:
             raise Warning(("Exception when calling remote server $CreateInvoice: %s\n" % e))
 
-        if len(exist) == 0:
+        if exist:
+            try:
+                record = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
+                                                   'ir.model.data', 'read',
+                                                   [exist], {'fields': ['res_id']})
+                invoice_id = record[0]['res_id']
+            except Exception as e:
+                raise Warning(("Exception when calling remote server $DesfaultAccountRemote: %s\n" % e))
+            return invoice_id
+        else:
             try:
                 invoice_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'account.invoice', 'create',
                                                        [{
@@ -181,11 +161,59 @@ class ConfigClient(models.Model):
                 i += 1
             except Exception as e:
                 raise Warning(("Exception when calling remote server $RegisterInvoiceLine: %s\n" % e))
+        if invoice_line_id:
+            return invoice_line_id
+        else:
+            return False
+
+    @api.multi
+    def compute_invoice(self, invoice, invoice_id, conn):
+        invoice.remote_state = 'sent'
+        invoice.remote_send_failed = False
+        try:
+            compute_tax = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
+                                                    'account.invoice', 'compute_taxes',
+                                                    [[invoice_id], ])
+        except Exception as e:
+            raise Warning((" Error On tax calc : %s\n" % e))
+        try:
+            compute_tax = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
+                                                    'account.invoice', 'action_invoice_open',
+                                                    [[invoice_id], ])
+        except Exception as e:
+            raise Warning((" Error Validating remote invoice : %s\n" % e))
 
     @api.multi
     def que_set_parameters(self):
         # new_delay = self.sudo().with_delay().set_parameters()
-        self.set_parameters(False)
+        #self.set_parameters(False)
+        print(self.name)
+        for pc in self:
+            print(pc.name)
+            company = self.env.user.company_id
+            # Set ETA
+            jobs = self.env['queue.job'].sudo().search(["|",
+                                                        ('state', '=', 'pending'), ('state', '=', 'enqueued')
+                                                        ])
+            eta = 30 + (len(jobs) * 30)
+
+            if not self.db or not self.url:
+                raise Warning((
+                    "Revise los campos 'Base de datos' y 'Servidor' en la pestaña SSO"
+                ))
+            elif not self.remote_company_id or self.remote_company_id == "0":
+                raise Warning((
+                    "Debe especificar el ID de la empresa en la pestaña SSO"
+                ))
+            else:
+                queue_obj = self.env['queue.job'].sudo()
+                new_delay = pc.sudo().with_context(
+                    company_id=company.id
+                ).with_delay(eta=eta).set_parameters(pc)
+                job = queue_obj.search([
+                    ('uuid', '=', new_delay.uuid)
+                ], limit=1)
+                pc.sudo().ase_replication_jobs_ids |= job
 
     @job
     @api.multi
@@ -197,42 +225,17 @@ class ConfigClient(models.Model):
         if invoice:
             objects = self.get_line_objects(invoice)
 
-        print("ESTAS AQUI")
-
-        for product in self.product_ids:
-            print(product.name)
-            print(product.id)
-
-        # Check accounts on products
-        if len(self.product_ids) > 0:
-            for product in self.product_ids:
-                self.add_product_accounts(product)
-        # Check Groups in account assets
-        if len(self.account_asset_ids) > 0:
-            for account_asset in self.account_asset_ids:
-                self.add_groups_asset(account_asset)
-        # Check asset profile on accounts
-        if len(self.account_ids) > 0:
-            for account in self.account_ids:
-                if account.asset_profile_id:
-                    self.account_asset_ids = [(4, account.asset_profile_id.id)]
-        # Check parent on asset_groups
-        if len(self.asset_group_ids) > 0:
-            for asset_group in self.asset_group_ids:
-                if asset_group.parent_id:
-                    self.asset_group_ids = [(4, asset_group.parent_id.id)]
+        self.check_dependences()
 
         # Replicate
         if len(self.account_ids) > 0:
             for account in self.account_ids:
                 acc_id = self.get_account(account, conn)
-                print(acc_id)
                 if not acc_id:
                     self.write_account(account, conn)
                     self.last_change = datetime.now()
-
-        if len(self.product_ids) > 0:
-            for product in self.product_ids:
+        if len(self.product_p_ids) > 0:
+            for product in self.product_p_ids:
                 prod_id = self.get_product(product, conn)
                 if not prod_id:
                     self.write_products(product, conn)
@@ -267,5 +270,10 @@ class ConfigClient(models.Model):
             if invoice_line_list:
                 invoice_id = self.write_invoice_to_remote(conn, invoice)
                 if invoice_id:
-                    self.create_invoice_lines(conn, invoice_id, invoice, invoice_line_list)
+                    invoice_line_id = self.create_invoice_lines(conn, invoice_id, invoice, invoice_line_list)
+                    if invoice_line_id:
+                        self.compute_invoice(invoice, invoice_id, conn)
+                    else:
+                        invoice.remote_send_failed = True
+
 

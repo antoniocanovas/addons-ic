@@ -1,6 +1,6 @@
 {
     'name': 'ocr sync invoice',
-    'version': '12.0.1.0',
+    'version': '12.0.2.0',
     'category': '',
     'description': u"""
 

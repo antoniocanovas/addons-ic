@@ -198,6 +198,10 @@ if (subtotal.id) and (neto > 0):
   impuestos = [taxiva0.id]
   nuevalin = env['account.invoice.line'].create({'invoice_id':record.id,'name':'hola','quantity':1,'price_unit':neto,'account_id':cc})
   nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+
+# Reculcalate Taxes
+if record.invoice_line_ids.ids:
+  record.compute_taxes()
             </field>
         </record>
 

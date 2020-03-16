@@ -111,10 +111,6 @@ class ResCompany(models.Model):
                         'ocr_purchase_account_id': account700,
                     })
                 if partner:
-                    if p.type == "in_invoice":
-                        journal_type = "purchase"
-                    else:
-                        journal_type = "sale"
 
                     date = self.env['ocr.values'].sudo().search([
                         ('ocr_transaction_id', '=', p.id),('name', '=', 'Fecha')])
@@ -122,7 +118,6 @@ class ResCompany(models.Model):
                         invoice = self.env['account.invoice'].sudo().create({
                             'partner_id': partner.id,
                             'type': p.type,
-                            'journal_type': journal_type,
                             'date_invoice': datetime.strptime(date.value, '%d/%m/%Y').date(),
                             'ocr_transaction_id': p.id
                         })
@@ -130,7 +125,6 @@ class ResCompany(models.Model):
                         invoice = self.env['account.invoice'].sudo().create({
                             'partner_id': partner.id,
                             'type': p.type,
-                            'journal_type': journal_type,
                             'ocr_transaction_id': p.id
                         })
                 if invoice:
