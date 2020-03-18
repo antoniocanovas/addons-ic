@@ -10,7 +10,14 @@ from odoo.exceptions import ValidationError
 from datetime import datetime
 
 import logging
+
 _logger = logging.getLogger(__name__)
+
+try:
+    from odoo.addons.queue_job.job import job
+except ImportError:
+    _logger.debug('Can not `import queue_job`.')
+    import functools
 
 
 class ResCompany(models.Model):
@@ -24,6 +31,10 @@ class ResCompany(models.Model):
         string='Api Url'
     )
     last_connection_date = fields.Date('Last connection date')
+    ocr_transactions_jobs_ids = fields.Many2many(
+        comodel_name='queue.job', column1='company_id', column2='job_id',
+        string="Connector Jobs", copy=False,
+    )
 
     @api.multi
     def get_header(self):
@@ -50,12 +61,21 @@ class ResCompany(models.Model):
             )
 
     @api.multi
-    def create_queue_transactions(self, transactions_by_state):
+    def create_queue_invoice_transactions(self, transactions_by_state):
         for i in range(len(transactions_by_state['FACTURAS'])):
             token = transactions_by_state['FACTURAS'][i]['token']
             exist = self.env['ocr.transactions'].search([("token", "=", token)])
             if exist.token:
-                if exist.status != transactions_by_state['FACTURAS'][i]['status']:
+                if exist.status == "downloaded":
+                    print("CORRECTED")
+                    invoice = self.env['account.invoice'].search([("ocr_transaction_id", "=", exist.id)])
+                    print(invoice)
+                    if invoice and invoice.state == 'draft':
+                        invoice.unlink()
+                        print("Borrada")
+                    else:
+                        exist.status = transactions_by_state['FACTURAS'][i]['status']
+                else:
                     exist.status = transactions_by_state['FACTURAS'][i]['status']
             else:
                 type_doc = transactions_by_state['FACTURAS'][i]['type']
@@ -74,7 +94,7 @@ class ResCompany(models.Model):
                 })
 
     @api.multi
-    def create_documents(self, transactions_processed, api_transaction_url, header):
+    def create_invoices(self, transactions_processed, api_transaction_url, header):
         for p in transactions_processed:
             api_transaction_url_token = "%s%s" % (api_transaction_url, p.token)
             p_invoice = self.get_documents_data(api_transaction_url_token, header)
@@ -150,7 +170,7 @@ class ResCompany(models.Model):
 
     @api.multi
     def generate_attachment(self, document, ocr_document):
-
+        # podemos pasar res_model desde action_get_x para hacer geneérica esta función
         with open('/tmp/test.jpg', "rb") as pdf_file:
             pdf_file_encode = base64.b64encode(pdf_file.read())
 
@@ -171,7 +191,26 @@ class ResCompany(models.Model):
         })
 
     @api.multi
-    def action_get_documents(self):
+    def prepare_ocr_transactions(self):
+        company = self.env.user.company_id
+
+        queue_obj = self.env['queue.job'].sudo()
+        new_delay = company.sudo().with_context(
+            company_id=company.id
+        ).with_delay().action_queue_get_invoices()
+        job = queue_obj.search([
+            ('uuid', '=', new_delay.uuid)
+        ], limit=1)
+        company.sudo().ocr_transactions_jobs_ids |= job
+
+    @job
+    @api.multi
+    def action_queue_get_invoices(self):
+        print("encolado")
+        self.action_get_invoices()
+
+    @api.multi
+    def action_get_invoices(self):
 
         ########## Actualmente solo traemos facturas ###################
         api_transaction_url = "%s/facturas/" % self.env.user.company_id.api_domain
@@ -180,13 +219,14 @@ class ResCompany(models.Model):
         transactions_by_state = self.get_documents_data(api_transaction_url, header)
         ############### Control status donwloaded #######################
 
+
         if transactions_by_state:
-            self.create_queue_transactions(transactions_by_state)
+            self.create_queue_invoice_transactions(transactions_by_state)
 
         transactions_processed = self.env['ocr.transactions'].search([(
             "status", "=", 'processed'
         )], limit=1)
         if transactions_processed:
-            self.create_documents(transactions_processed, api_transaction_url, header)
+            self.create_invoices(transactions_processed, api_transaction_url, header)
 
         self.last_connection_date = datetime.now().date()

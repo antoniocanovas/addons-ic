@@ -4,7 +4,6 @@
 import xmlrpc.client
 from odoo import fields, models, api
 from odoo.exceptions import AccessError, UserError, RedirectWarning, ValidationError, Warning
-import werkzeug
 import string
 import random
 
@@ -82,11 +81,8 @@ class AccessRequest(models.Model):
     @api.multi
     def request_f(self, values):
         url = "%s/93201967" % self.url
-
-        redirection = werkzeug.utils.redirect('%s%s' % (url, ''))
-
         conn = self._setxmlrpc()
-        #self.token = self.tokengenerator()
+
         writeok = self.writetoken(conn)
 
         if writeok == True:

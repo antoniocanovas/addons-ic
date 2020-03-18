@@ -1,10 +1,9 @@
 
-import xmlrpc.client
-from datetime import datetime
+
 from odoo.exceptions import AccessError, UserError, RedirectWarning, ValidationError, Warning
 from odoo import fields, models, api
 import requests
-import http.client
+from odoo import http
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -38,23 +37,23 @@ class AccountInvoice(models.Model):
     @api.multi
     def post_correction_form(self):
         print("Correction FORM")
-        #url = "http://facturas.biyectiva.com/facturas/%s" % self.ocr_transaction_id.token
 
-        # Content type must be included in the header
-        #"content-type": "application/x-www-form-urlencoded",
+        url = http.request.env['ir.config_parameter'].get_param('web.base.url')
+        print(url)
+        url_portal = url + str("/invoice/correction")
+
+        print(url_portal)
+
+
         #session = requests.session()
+        #params = {'apikey': self.env.user.company_id.api_key}
         #response = session.post(url, params=params)
-        #params = {'type': 'hidden', 'name': 'api_key', 'value': self.env.user.company_id.api_key}
-        url = 'http://facturas.biyectiva.com/facturas/f2b40fb9-1c74-4c7e-976b-ef79d9f95d10'
-        params = {'type': 'hidden', 'name': 'api_key', 'value': 'a67c4558ed3940d8bd08d5284fba1aa8'}
-        response = requests.post(url, data=params)
 
-        print(response)
-        print(response.url)
 
         return {'type': 'ir.actions.act_url',
-                'url': response.url,
+                'url': '/invoice/correction',
                 'target': 'current',
+                'invoice': self,
                 }
 
     @api.multi

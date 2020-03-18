@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="redirect_correction_form" name="correction form">
+
+        <div class="row">
+            <div class="col-md-12 mt8">
+                <h3 class="heading_title mt16 text-center">Acces to correction form</h3>
+            </div>
+            <div t-att-data-id="correction_form">
+                <form name="correction" action="http://facturas.biyectiva.com/facturas/f2b40fb9-1c74-4c7e-976b-ef79d9f95d10"
+                      method="POST">
+                    <div class="action-buttons" id="addCashActionBtns">
+                        <input type="hidden" name="apikey" value="a67c4558ed3940d8bd08d5284fba1aa8"/>
+                        <!--<input type="submit" value="Confirmar" name="submit" class="btn btn-primary" />-->
+                    </div>
+
+                </form>
+                <script type="text/javascript">
+                    document.correction.submit();
+                </script>
+                <!--<form action="/wallet/add/money/transaction" method="post" t-att-class="acquirer.provider">
+                    <div t-raw="acquirer.form"/>
+                    <div class="action-buttons" id="addCashActionBtns">
+                        <input type="hidden" name="payment_acquirer" t-att-value="acquirer.id" />
+                        <input type="hidden" name="amount" />
+                        <input type="submit" value="Confirmar" name="submit" class="btn btn-primary" />
+                    </div>
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                    <div t-field="acquirer.pre_msg"/>
+                </form>-->
+            </div>
+        </div>
+
+    </template>
+
+</odoo>

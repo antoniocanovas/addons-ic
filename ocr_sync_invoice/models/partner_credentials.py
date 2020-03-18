@@ -44,8 +44,8 @@ class ConfigClient(models.Model):
         for line in invoice.invoice_line_ids:
             if line.product_id:
                 product_id = self.get_product(line.product_id, conn)
-                if not product_id:
-                    raise Warning("A valid Product must be selected")
+            else:
+                product_id = False
             if line.account_id:
                 account_id = self.get_account(line.account_id, conn)
             if line.asset_profile_id:

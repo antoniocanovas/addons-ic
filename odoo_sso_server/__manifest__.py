@@ -7,7 +7,7 @@
     'license': 'AGPL-3',
     'website': "https://ingenieriacloud.com",
     'category': 'Tools',
-    'version': '12.0.7.0.0',
+    'version': '12.0.7.1.0',
     'depends': [
         'odoo_sso_client',
         'partner_credentials',

@@ -14,8 +14,19 @@
                         <field name="api_domain"/>
                     </group>
                     <group>
-                        <button name="action_get_documents" string="Get Documents" type="object" class="oe_highlight oe_read_only"/>
+                        <button name="action_get_invoices" string="Get Documents" type="object" class="oe_highlight oe_read_only"/>
                         <field name="last_connection_date" readonly="True"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//notebook/page[@name='OCR']" position="after">
+                <page string="Job state" name="job_state">
+                    <group>
+                        <field name="ocr_transactions_jobs_ids"
+                               options="{'reload_on_button': true}"
+                               nolabel="1"
+                               readonly="1"
+                        />
                     </group>
                 </page>
             </xpath>

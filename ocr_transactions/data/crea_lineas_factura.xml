@@ -6,6 +6,10 @@
             <field name="active" eval="True"/>
             <field name="state">code</field>
             <field name="code">
+# Comprobamos que el partner tiene asignadas cuentas contables por defecto para crear las líneas de factura:
+if (not record.partner_id.ocr_sale_account_id.id) or (not record.partner_id.ocr_purchase_account_id.id):
+  raise Warning('Asigne las cuentas contables por defecto para OCR en la ficha de esta empresa, antes de intentar crear las líneas de factura.')
+
 # Inicializando:
 base_iva21 = 0
 base_iva10 = 0

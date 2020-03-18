@@ -1,6 +1,6 @@
 {
     'name': 'OCR transactions',
-    'version': '12.0.6.3',
+    'version': '12.0.7.1',
     'category': '',
     'description': u"""
 
@@ -10,6 +10,7 @@
         'account',
         'contacts',
         'documents_account',
+        'queue_job_cron',
     ],
     'data': [
         'security/ir.model.access.csv',
@@ -19,6 +20,7 @@
         'views/views_menu.xml',
         'views/res_company_views.xml',
         'views/res_partner_views.xml',
+        'data/ocr_queue_job.xml',
     ],
     'installable': True,
 }
