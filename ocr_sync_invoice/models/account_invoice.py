@@ -67,22 +67,28 @@ class AccountInvoice(models.Model):
             ])
             eta = 30 + (len(jobs)*30)
             # Tomar VAT del usuario que envía a OCR y sea tipo Odoo
-            pc = self.env['partner.credentials'].sudo().search([('partner_id.vat', '=', self.ocr_transaction_id.name)])
+            pc = self.env['partner.credentials'].sudo().search([
+                ('partner_id.vat', '=', self.ocr_transaction_id.name)], limit=1)
             if not pc:
                 raise Warning((
                     "Revise que el cliente esté dado de alta en 'Partner Credentials' y configurados los campos de "
                     " 'Base de datos' y 'Servidor' en la pestaña SSO"
                 ))
             else:
-
-                queue_obj = self.env['queue.job'].sudo()
-                new_delay = invoice.sudo().with_context(
-                        company_id=company.id
-                     ).with_delay(eta=eta).send_invoice(pc)
-                job = queue_obj.search([
-                    ('uuid', '=', new_delay.uuid)
-                ], limit=1)
-                invoice.sudo().ocr_invoice_jobs_ids |= job
+                if len(pc) > 1:
+                    raise Warning((
+                        "Revise que el cliente esté dado de alta en 'Partner Credentials' "
+                        "y no esté dado de alta por otro asesor"
+                    ))
+                else:
+                    queue_obj = self.env['queue.job'].sudo()
+                    new_delay = invoice.sudo().with_context(
+                            company_id=company.id
+                         ).with_delay(eta=eta).send_invoice(pc)
+                    job = queue_obj.search([
+                        ('uuid', '=', new_delay.uuid)
+                    ], limit=1)
+                    invoice.sudo().ocr_invoice_jobs_ids |= job
 
     @job
     @api.multi

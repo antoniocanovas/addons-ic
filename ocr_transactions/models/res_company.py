@@ -206,7 +206,7 @@ class ResCompany(models.Model):
     @job
     @api.multi
     def action_queue_get_invoices(self):
-        print("encolado")
+
         self.action_get_invoices()
 
     @api.multi

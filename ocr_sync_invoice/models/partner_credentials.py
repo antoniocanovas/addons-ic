@@ -187,9 +187,9 @@ class ConfigClient(models.Model):
     def que_set_parameters(self):
         # new_delay = self.sudo().with_delay().set_parameters()
         #self.set_parameters(False)
-        print(self.name)
+
         for pc in self:
-            print(pc.name)
+
             company = self.env.user.company_id
             # Set ETA
             jobs = self.env['queue.job'].sudo().search(["|",
@@ -209,7 +209,7 @@ class ConfigClient(models.Model):
                 queue_obj = self.env['queue.job'].sudo()
                 new_delay = pc.sudo().with_context(
                     company_id=company.id
-                ).with_delay(eta=eta).set_parameters(pc)
+                ).with_delay(eta=eta).set_parameters(False)
                 job = queue_obj.search([
                     ('uuid', '=', new_delay.uuid)
                 ], limit=1)

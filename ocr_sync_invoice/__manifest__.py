@@ -12,7 +12,6 @@
         'ase_replication_server',
     ],
     'data': [
-        #'security/ir.model.access.csv',
         'views/views.xml',
         'views/template.xml',
     ],
