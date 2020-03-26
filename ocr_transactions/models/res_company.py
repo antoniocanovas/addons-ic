@@ -63,19 +63,12 @@ class ResCompany(models.Model):
     @api.multi
     def create_queue_invoice_transactions(self, transactions_by_state):
         for i in range(len(transactions_by_state['FACTURAS'])):
+
             token = transactions_by_state['FACTURAS'][i]['token']
             exist = self.env['ocr.transactions'].search([("token", "=", token)])
+            # No se Borran facturas, solo actualizamos el transaction si no hay líneas de factura
             if exist.token:
-                if exist.status == "downloaded":
-                    print("CORRECTED")
-                    invoice = self.env['account.invoice'].search([("ocr_transaction_id", "=", exist.id)])
-                    print(invoice)
-                    if invoice and invoice.state == 'draft':
-                        invoice.unlink()
-                        print("Borrada")
-                    else:
-                        exist.status = transactions_by_state['FACTURAS'][i]['status']
-                else:
+                if exist.status != transactions_by_state['FACTURAS'][i]['status']:
                     exist.status = transactions_by_state['FACTURAS'][i]['status']
             else:
                 type_doc = transactions_by_state['FACTURAS'][i]['type']
@@ -96,63 +89,82 @@ class ResCompany(models.Model):
     @api.multi
     def create_invoices(self, transactions_processed, api_transaction_url, header):
         for p in transactions_processed:
-            api_transaction_url_token = "%s%s" % (api_transaction_url, p.token)
-            p_invoice = self.get_documents_data(api_transaction_url_token, header)
-            if p_invoice:
-                for v in p_invoice["result"]["basic"].values():
-                    self.env['ocr.values'].sudo().create({
-                        'token': p.token,
-                        'name': v["ERPName"],
-                        'value': v["Value"]["Text"],
-                        'ocr_transaction_id': p.id,
-                    })
+
+            invoice = self.env['account.invoice'].search([("ocr_transaction_id.token", "=", p.token)])
+            if invoice:
+                if not invoice.invoice_line_ids:
+                    api_transaction_url_token = "%s%s" % (api_transaction_url, p.token)
+                    p_invoice = self.get_documents_data(api_transaction_url_token, header)
+
+                    if p_invoice:
+                        for v in p_invoice["result"]["basic"].values():
+                            ocr_values = self.env['ocr.values'].sudo().search([
+                                ('token', '=', p.token),
+                                ('name', '=', v["ERPName"])])
+                            ocr_values.value = v["Value"]["Text"]
+                        p.status = 'downloaded'
+                else:
                     p.status = 'downloaded'
+            else:
 
-                partner_vat = self.env['ocr.values'].sudo().search([
-                    ('ocr_transaction_id', '=', p.id), ('name', '=', 'CIF')])
-                partner = self.env['res.partner'].search([("vat", "=", partner_vat.value)])
-                if not partner:
-                    account600_id = self.env['ir.model.data'].search([
-                        ('name', '=', 'l10n_es.1_account_common_600'),
-                        ('model', '=', 'account_tax')
-                    ])
-                    account600 = self.env['account.account'].search([('id', '=', account600_id.res_id)])
+                api_transaction_url_token = "%s%s" % (api_transaction_url, p.token)
+                p_invoice = self.get_documents_data(api_transaction_url_token, header)
 
-                    account700_id = self.env['ir.model.data'].search([
-                        ('name', '=', 'l10n_es.1_account_common_700'),
-                        ('model', '=', 'account_tax')
-                    ])
-                    account700 = self.env['account.account'].search([('id', '=', account700_id.res_id)])
-
-                    partner = self.env['res.partner'].sudo().create({
-                        'name': partner_vat.value,
-                        'vat': partner_vat.value,
-                        'ocr_sale_account_id': account600,
-                        'ocr_purchase_account_id': account700,
-                    })
-                if partner:
-
-                    date = self.env['ocr.values'].sudo().search([
-                        ('ocr_transaction_id', '=', p.id),('name', '=', 'Fecha')])
-                    if date.value:
-                        invoice = self.env['account.invoice'].sudo().create({
-                            'partner_id': partner.id,
-                            'type': p.type,
-                            'date_invoice': datetime.strptime(date.value, '%d/%m/%Y').date(),
-                            'ocr_transaction_id': p.id
+                if p_invoice:
+                    for v in p_invoice["result"]["basic"].values():
+                        self.env['ocr.values'].sudo().create({
+                            'token': p.token,
+                            'name': v["ERPName"],
+                            'value': v["Value"]["Text"],
+                            'ocr_transaction_id': p.id,
                         })
-                    else:
-                        invoice = self.env['account.invoice'].sudo().create({
-                            'partner_id': partner.id,
-                            'type': p.type,
-                            'ocr_transaction_id': p.id
+                        p.status = 'downloaded'
+
+                    partner_vat = self.env['ocr.values'].sudo().search([
+                        ('ocr_transaction_id', '=', p.id), ('name', '=', 'CIF')])
+                    partner = self.env['res.partner'].search([("vat", "=", partner_vat.value)])
+                    if not partner:
+                        account600_id = self.env['ir.model.data'].search([
+                            ('name', '=', 'l10n_es.1_account_common_600'),
+                            ('model', '=', 'account_tax')
+                        ])
+                        account600 = self.env['account.account'].search([('id', '=', account600_id.res_id)])
+
+                        account700_id = self.env['ir.model.data'].search([
+                            ('name', '=', 'l10n_es.1_account_common_700'),
+                            ('model', '=', 'account_tax')
+                        ])
+                        account700 = self.env['account.account'].search([('id', '=', account700_id.res_id)])
+
+                        partner = self.env['res.partner'].sudo().create({
+                            'name': partner_vat.value,
+                            'vat': partner_vat.value,
+                            'ocr_sale_account_id': account600,
+                            'ocr_purchase_account_id': account700,
                         })
-                if invoice:
-                    self.get_attachment_data(p_invoice['image'], header)
-                    attachment = self.generate_attachment(invoice, p)
-                    body = "<p>created with OCR Documents</p>"
-                    invoice.message_post(body=body, attachment_ids=[attachment.id])
-                    invoice.message_main_attachment_id = [(4, attachment.id)]
+                    if partner:
+
+                        date = self.env['ocr.values'].sudo().search([
+                            ('ocr_transaction_id', '=', p.id),('name', '=', 'Fecha')])
+                        if date.value:
+                            invoice = self.env['account.invoice'].sudo().create({
+                                'partner_id': partner.id,
+                                'type': p.type,
+                                'date_invoice': datetime.strptime(date.value, '%d/%m/%Y').date(),
+                                'ocr_transaction_id': p.id
+                            })
+                        else:
+                            invoice = self.env['account.invoice'].sudo().create({
+                                'partner_id': partner.id,
+                                'type': p.type,
+                                'ocr_transaction_id': p.id
+                            })
+                    if invoice:
+                        self.get_attachment_data(p_invoice['image'], header)
+                        attachment = self.generate_attachment(invoice, p)
+                        body = "<p>created with OCR Documents</p>"
+                        invoice.message_post(body=body, attachment_ids=[attachment.id])
+                        invoice.message_main_attachment_id = [(4, attachment.id)]
 
     @api.multi
     def get_attachment_data(self, api_img_url, headers):
@@ -225,7 +237,7 @@ class ResCompany(models.Model):
 
         transactions_processed = self.env['ocr.transactions'].search([(
             "status", "=", 'processed'
-        )], limit=1)
+        )], limit=10)
         if transactions_processed:
             self.create_invoices(transactions_processed, api_transaction_url, header)
 

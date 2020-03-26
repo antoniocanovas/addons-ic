@@ -20,6 +20,7 @@ REMOTE_STATES = [
     ('cancelled', 'Cancelled'),
 ]
 
+
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
@@ -33,27 +34,16 @@ class AccountInvoice(models.Model):
         readonly=True, copy=False,
         help="Mark as sent when succesfully created on remote client",
     )
+    to_correct = fields.Boolean("For correction portal", default=False)
 
     @api.multi
     def post_correction_form(self):
-        print("Correction FORM")
 
-        url = http.request.env['ir.config_parameter'].get_param('web.base.url')
-        print(url)
-        url_portal = url + str("/invoice/correction")
-
-        print(url_portal)
-
-
-        #session = requests.session()
-        #params = {'apikey': self.env.user.company_id.api_key}
-        #response = session.post(url, params=params)
-
+        self.to_correct = True
 
         return {'type': 'ir.actions.act_url',
                 'url': '/invoice/correction',
                 'target': 'current',
-                'invoice': self,
                 }
 
     @api.multi
