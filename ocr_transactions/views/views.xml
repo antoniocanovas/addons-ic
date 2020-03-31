@@ -26,6 +26,7 @@
                         <field name="token"/>
                         <field name="json_text"/>
                         <field name="attachment_id"/>
+                        <field name="invoice_id"/>
                     </group>
                 </sheet>
             </form>

@@ -166,6 +166,7 @@ class ResCompany(models.Model):
                                 'ocr_transaction_id': t.id
                             })
                     if invoice:
+                        t.invoice_id = invoice.id
                         if not t.ocr_upload_id:
                             self.get_attachment_data(p_invoice['image'], header)
                             attachment = self.generate_attachment(invoice, t)
@@ -222,8 +223,6 @@ class ResCompany(models.Model):
         if attachment:
             attachment.res_model = 'account.invoice'
             attachment.res_id = document.id
-            print(attachment.res_model)
-
             return attachment
         else:
             return False

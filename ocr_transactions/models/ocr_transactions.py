@@ -20,6 +20,7 @@ class OcrTransactions(models.Model):
     ocr_upload_id = fields.Many2one('ocr.uploads')
     json_text = fields.Char('Json')
     attachment_id = fields.Many2one('ir.attachment', string='Invoice Document')
+    invoice_id = fields.Many2one('account.invoice', string='Invoice')
 
 
 
