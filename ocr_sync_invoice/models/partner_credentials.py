@@ -195,7 +195,7 @@ class ConfigClient(models.Model):
             jobs = self.env['queue.job'].sudo().search(["|",
                                                         ('state', '=', 'pending'), ('state', '=', 'enqueued')
                                                         ])
-            eta = 30 + (len(jobs) * 30)
+            eta = 20 + (len(jobs) * 20)
 
             if not self.db or not self.url:
                 raise Warning((

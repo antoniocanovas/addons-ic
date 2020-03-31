@@ -55,7 +55,7 @@ class AccountInvoice(models.Model):
             jobs = self.env['queue.job'].sudo().search(["|",
                 ('state', '=', 'pending'), ('state', '=', 'enqueued')
             ])
-            eta = 30 + (len(jobs)*30)
+            eta = 20 + (len(jobs)*20)
             # Tomar VAT del usuario que envía a OCR y sea tipo Odoo
             pc = self.env['partner.credentials'].sudo().search([
                 ('partner_id.vat', '=', self.ocr_transaction_id.name)], limit=1)

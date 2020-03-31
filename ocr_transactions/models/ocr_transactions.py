@@ -17,6 +17,9 @@ class OcrTransactions(models.Model):
     type = fields.Char('Type')
     name = fields.Char('Customer')
     value_ids = fields.One2many('ocr.values', 'ocr_transaction_id')
+    ocr_upload_id = fields.Many2one('ocr.uploads')
+    json_text = fields.Char('Json')
+    attachment_id = fields.Many2one('ir.attachment', string='Invoice Document')
 
 
 

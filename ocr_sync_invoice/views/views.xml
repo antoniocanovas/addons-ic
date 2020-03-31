@@ -38,7 +38,7 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="account.invoice_supplier_form"/>
         <field name="arch" type="xml">
-             <xpath expr="//sheet/group/group/field[@name='ocr_transaction_id']" position="after">
+             <xpath expr="//sheet/group/group/field[@name='date_due']" position="after">
                 <field name="remote_state"/>
             </xpath>
             <xpath expr="//form/header" position="inside">

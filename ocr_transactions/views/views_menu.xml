@@ -7,6 +7,7 @@
         <field name="binding_type">action</field>
         <!--<field name="context" eval="False"></field>-->
         <!-- <field name="domain" eval="[('tag_ids.facet_id.name', '=', 'OCR')]"/>-->
+        <field name="domain" eval="[('status','!=','downloaded')]"/>
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
@@ -22,6 +23,28 @@
         <field name="view_mode">tree,form</field>
         <field name="view_type">form</field>
     </record>
+
+    <record id="action_ocr_transactions_downloaded" model="ir.actions.act_window">
+        <field name="auto_search" eval="True"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <!--<field name="context" eval="False"></field>-->
+        <!-- <field name="domain" eval="[('tag_ids.facet_id.name', '=', 'OCR')]"/>-->
+        <field name="filter" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="limit">80</field>
+        <field name="multi" eval="False"/>
+        <field name="name">Downloads</field>
+        <field name="res_model">ocr.transactions</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="src_model" eval="False"/>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="usage" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+    </record>menu_ocr_transactions_downloaded
 
     <record id="action_ocr_documents" model="ir.actions.act_window">
         <field name="auto_search" eval="True"/>
@@ -41,6 +64,26 @@
         <field name="view_id" eval="False"/>
         <field name="view_mode">tree,form</field>
         <field name="view_type">tree</field>
+    </record>
+
+    <record id="action_ocr_uploads" model="ir.actions.act_window">
+        <field name="auto_search" eval="True"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="filter" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="limit">80</field>
+        <field name="multi" eval="False"/>
+        <field name="name">Uploads</field>
+        <field name="res_model">ocr.uploads</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="src_model" eval="False"/>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="usage" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
     </record>
 
     <record id="action_ocr_in_invoice" model="ir.actions.act_window">
@@ -123,6 +166,16 @@
         <field name="web_icon" eval="False"/>
     </record>
 
+    <record id="menu_ocr_transactions_downloaded" model="ir.ui.menu">
+        <field name="action" ref="action_ocr_transactions_downloaded"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Downloads</field>
+        <field name="parent_id" ref="menu_ocr_transactions"/>
+        <field name="sequence">1</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
     <record id="menu_ocr_documents" model="ir.ui.menu">
         <field name="action" ref="action_ocr_documents"/>
         <field name="active" eval="True"/>
@@ -137,7 +190,7 @@
         <field name="action" ref="action_ocr_in_invoice"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="name">In invoice</field>
+        <field name="name">Out invoice</field>
         <field name="parent_id" ref="menu_ocr_documents"/>
         <field name="sequence">1</field>
         <field name="web_icon" eval="False"/>
@@ -147,7 +200,7 @@
         <field name="action" ref="action_ocr_out_invoice"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="name">Out invoice</field>
+        <field name="name">In invoice</field>
         <field name="parent_id" ref="menu_ocr_documents"/>
         <field name="sequence">2</field>
         <field name="web_icon" eval="False"/>
@@ -169,6 +222,16 @@
         <field name="name">Dictionary</field>
         <field name="parent_id" ref="menu_ocr_configuration"/>
         <field name="sequence">1</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+    <record id="menu_ocr_uploads" model="ir.ui.menu">
+        <field name="action" ref="action_ocr_uploads"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Uploads</field>
+        <field name="parent_id" ref="menu_ocr"/>
+        <field name="sequence">4</field>
         <field name="web_icon" eval="False"/>
     </record>
 
