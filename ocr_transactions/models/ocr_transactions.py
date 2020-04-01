@@ -13,7 +13,7 @@ class OcrTransactions(models.Model):
     _description = 'Ocr Transactions'
 
     token = fields.Char('Api Token')
-    status = fields.Char('Status')
+    state = fields.Char('Status')
     type = fields.Char('Type')
     name = fields.Char('Customer')
     value_ids = fields.One2many('ocr.values', 'ocr_transaction_id')

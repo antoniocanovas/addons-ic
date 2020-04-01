@@ -13,9 +13,12 @@
             <xpath expr="//form/header" position="inside">
                 <button name="prepare_invoice_send" string="Send Odoo Client" type="object"
                         class="oe_highlight" attrs="{
-                            'invisible':[('remote_state','==','sent')]
+                            'invisible':['|',('remote_state','==','sent'),('ocr_transaction_id','==', False)]
                         }"/>
-                <button name="post_correction_form" string="Go correction portal" type="object" class="oe_highlight" />
+                <button name="post_correction_form" string="Go correction portal" type="object"
+                        class="oe_highlight" attrs="{
+                            'invisible':['|',('remote_state','==','sent'),('ocr_transaction_id','==', False)]
+                        }" />
             </xpath>
 
             <xpath expr="//sheet/notebook/page[@name='other_info']" position="after">
@@ -38,15 +41,18 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="account.invoice_supplier_form"/>
         <field name="arch" type="xml">
-             <xpath expr="//sheet/group/group/field[@name='date_due']" position="after">
+             <xpath expr="//sheet/group/group/field[@name='customer_id']" position="after">
                 <field name="remote_state"/>
             </xpath>
             <xpath expr="//form/header" position="inside">
                 <button name="prepare_invoice_send" string="Send Odoo Client" type="object"
                         class="oe_highlight" attrs="{
-                            'invisible':[('remote_state','==','sent')]
+                            'invisible':['|',('remote_state','==','sent'),('ocr_transaction_id','==', False)]
                         }" />
-                <button name="post_correction_form" string="Go correction portal" type="object" class="oe_highlight" />
+                <button name="post_correction_form" string="Go correction portal" type="object"
+                        class="oe_highlight" attrs="{
+                            'invisible':['|',('remote_state','==','sent'),('ocr_transaction_id','==', False)]
+                        }" />
             </xpath>
             <xpath expr="//sheet/notebook/page[@name='other_info']" position="after">
                 <page string="Job state" name="job_state">

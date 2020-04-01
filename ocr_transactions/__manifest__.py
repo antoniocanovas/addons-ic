@@ -21,6 +21,7 @@
         'views/res_company_views.xml',
         'views/res_partner_views.xml',
         'data/ocr_queue_job.xml',
+        'data/dictionary_data.xml',
     ],
     'installable': True,
 }

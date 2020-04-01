@@ -70,12 +70,12 @@ class ResCompany(models.Model):
             # No se Borran facturas, solo actualizamos el transaction si no hay líneas de factura
             # Si hay lineas no debe actualizar estado
             if exist.token:
-                if exist.status == "downloaded":
+                if exist.state == "downloaded":
                     invoice = self.env['account.invoice'].sudo().search([("ocr_transaction_id.token", "=", token)])
                     if not invoice.invoice_line_ids:
-                        exist.status = transactions_by_state['FACTURAS'][i]['status']
-                elif exist.status != transactions_by_state['FACTURAS'][i]['status']:
-                    exist.status = transactions_by_state['FACTURAS'][i]['status']
+                        exist.state = transactions_by_state['FACTURAS'][i]['status']
+                elif exist.state != transactions_by_state['FACTURAS'][i]['status']:
+                    exist.state = transactions_by_state['FACTURAS'][i]['status']
             else:
                 type_doc = transactions_by_state['FACTURAS'][i]['type']
                 if transactions_by_state['FACTURAS'][i]['type'] == "emitida":
@@ -84,7 +84,7 @@ class ResCompany(models.Model):
                     type_doc = "in_invoice"
 
                 self.env['ocr.transactions'].create({
-                    'status': transactions_by_state['FACTURAS'][i]['status'],
+                    'state': transactions_by_state['FACTURAS'][i]['status'],
                     'type': type_doc,
                     'name': transactions_by_state['FACTURAS'][i]['client'],
                     'token': transactions_by_state['FACTURAS'][i]['token'],
@@ -108,9 +108,9 @@ class ResCompany(models.Model):
                                 ('token', '=', t.token),
                                 ('name', '=', v["ERPName"])])
                             ocr_values.value = v["Value"]["Text"]
-                        t.status = 'downloaded'
+                        t.state = 'downloaded'
                 else:
-                    t.status = 'downloaded'
+                    t.state = 'downloaded'
             else:
 
                 api_transaction_url_token = "%s%s" % (api_transaction_url, t.token)
@@ -124,7 +124,7 @@ class ResCompany(models.Model):
                             'value': v["Value"]["Text"],
                             'ocr_transaction_id': t.id,
                         })
-                        t.status = 'downloaded'
+                        t.state = 'downloaded'
 
                     partner_vat = self.env['ocr.values'].sudo().search([
                         ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
@@ -168,8 +168,10 @@ class ResCompany(models.Model):
                     if invoice:
                         t.invoice_id = invoice.id
                         if not t.ocr_upload_id:
-                            self.get_attachment_data(p_invoice['image'], header)
-                            attachment = self.generate_attachment(invoice, t)
+                            d_attach = False
+                            d_attach = self.get_attachment_data(p_invoice['image'], header)
+                            if d_attach:
+                                attachment = self.generate_attachment(invoice, t)
                         else:
                             attachment = self.get_upload_attachment(invoice, t)
 
@@ -185,6 +187,7 @@ class ResCompany(models.Model):
             with open('/tmp/test.jpg', 'wb') as f:
                 response.raw.decode_content = True
                 shutil.copyfileobj(response.raw, f)
+            return True
         else:
             error = json.loads(response.content.decode('utf-8'))
             _logger.info(
@@ -215,9 +218,9 @@ class ResCompany(models.Model):
     @api.multi
     def get_upload_attachment(self, document, ocr_document):
 
-        folder = self.env['documents.folder'].search([("id", "=", "2")])
-        tag = self.env['documents.tag'].search([("name", "=", "To review")])
-        tag_ids = [(4, tag.id)]
+        #folder = self.env['documents.folder'].search([("id", "=", "2")])
+        #tag = self.env['documents.tag'].search([("name", "=", "To review")])
+        #tag_ids = [(4, tag.id)]
 
         attachment = self.env['ir.attachment'].sudo().search([('id', '=', ocr_document.attachment_id.id)])
         if attachment:
@@ -226,18 +229,18 @@ class ResCompany(models.Model):
             return attachment
         else:
             return False
-        #return self.env['ir.attachment'].sudo().create({
-        #    'name': ocr_document.name,
-        #    'type': 'binary',
-        #    'datas': ocr_document.attachment_id.datas,
-        #    'datas_fname': ocr_document.attachment_id.datas_fname,
-        #    'store_fname': ocr_document.attachment_id.store_fname,
-        #    'folder_id': folder.id,
-        #    'tag_ids': tag_ids,
-        #    'res_model': 'account.invoice',
-        #    'res_id': document.id,
-        #    'mimetype': 'image/jpg'
-        #})
+
+    @api.multi
+    def mark_uploads_done(self, transactions_processed):
+        for t in transactions_processed:
+            if t.ocr_upload_id:
+                if t.ocr_upload_id.state != "done":
+                    f_state = "done"
+                    for transaction in t.ocr_upload_id.ocr_transaction_ids:
+                        if transaction.state == "error":
+                            f_state = "error"
+
+                    t.ocr_upload_id.state = f_state
 
     @api.multi
     def prepare_ocr_get_transactions(self):
@@ -277,9 +280,10 @@ class ResCompany(models.Model):
             self.create_queue_invoice_transactions(transactions_by_state)
 
         transactions_processed = self.env['ocr.transactions'].search([(
-            "status", "=", 'processed'
+            "state", "=", 'processed'
         )], limit=10)
         if transactions_processed:
             self.create_invoices(transactions_processed, api_transaction_url, header)
+            self.mark_uploads_done(transactions_processed)
 
         self.last_connection_date = datetime.now().date()

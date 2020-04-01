@@ -18,27 +18,29 @@ except ImportError:
     import functools
 
 TYPE = [
-    ('emitida', 'Emitida'),
-    ('recibida', 'Recibida'),
+    ('emitida', 'Facturas emitidas'),
+    ('recibida', 'Facturas de proveedor'),
 ]
-STATUS = [
-    ('pendiente', 'Pendiente'),
-    ('enviando', 'Enviando'),
-    ('enviado', 'Enviado'),
+STATE = [
+    ('draft', 'Draft'),
+    ('sending', 'Sending'),
+    ('processing', 'Processing'),
     ('error', 'Error'),
+    ('done', 'Done'),
 ]
 
 
 class OcrUploads(models.Model):
     _name = 'ocr.uploads'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Ocr Uploads'
 
     partner_id = fields.Many2one('res.partner')
     type = fields.Selection(
         selection=TYPE, string="Type", default='recibida',
     )
-    status = fields.Selection(
-        selection=STATUS, string="Type", default='pendiente',
+    state = fields.Selection(
+        selection=STATE, string="Type", default='draft', track_visibility='onchange'
     )
     name = fields.Char('Name')
     ocr_transaction_ids = fields.One2many('ocr.transactions', 'ocr_upload_id')
@@ -102,7 +104,7 @@ class OcrUploads(models.Model):
             type_doc = "in_invoice"
 
         ocr_transaction_id = self.env['ocr.transactions'].create({
-            'status': "Enviado",
+            'state': "Enviado",
             'ocr_upload_id': self.id,
             'type': type_doc,
             'name': upload.partner_id.vat,
@@ -120,7 +122,7 @@ class OcrUploads(models.Model):
                 "Partner has not vat defined")
         else:
             for upload in self:
-                if upload.status == "enviando":
+                if upload.state == "processing" or upload.state == "sending":
                     raise ValidationError(
                         "Odoo is still uploading this!!! Please be patient")
 
@@ -139,7 +141,7 @@ class OcrUploads(models.Model):
                     ('uuid', '=', new_delay.uuid)
                 ], limit=1)
                 upload.sudo().ocr_post_transactions_jobs_ids |= job
-                upload.status = 'enviando'
+                upload.state = 'sending'
 
     @job
     @api.multi
@@ -157,7 +159,7 @@ class OcrUploads(models.Model):
 
             djson = self.prepare_attachment(attachment, self)
             if not djson:
-                self.status = "error"
+                self.state = "error"
                 _logger.info(
                     "Error from OCR server  image type not supported"
                 )
@@ -169,13 +171,13 @@ class OcrUploads(models.Model):
                     ocr_transaction_id = self.create_ocr_transaction(res['token'], attachment, self)
                     self.ocr_transaction_ids = [(4, ocr_transaction_id.id)]
                 else:
-                    self.status = "error"
+                    self.state = "error"
                     error = json.loads(response.content.decode('utf-8'))
                     _logger.info(
                         "Error from OCR server  %s" % error
                     )
-        if self.status != "error":
-            self.status = "enviado"
+        if self.state != "error":
+            self.state = "sending"
 
 
 
