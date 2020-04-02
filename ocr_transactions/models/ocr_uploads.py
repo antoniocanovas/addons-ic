@@ -177,7 +177,7 @@ class OcrUploads(models.Model):
                     self.state = "error"
                     self.upload_transaction_error = json.loads(response.content.decode('utf-8'))
                     _logger.info(
-                        "Error from OCR server  %s" % self.upload_error
+                        "Error from OCR server  %s" % self.upload_transaction_error
                     )
         if self.state != "error":
             self.state = "sending"
