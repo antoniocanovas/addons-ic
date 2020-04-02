@@ -32,6 +32,7 @@
                                 <field name="json_text"/>
                                 <field name="create_date"/>
                                 <field name="write_date"/>
+                                <field name="transaction_error"/>
                             </group>
                         </page>
                     </notebook>
@@ -167,10 +168,14 @@
                             <field name="ocr_transaction_ids" readonly="True" attrs="{'invisible':[('state','=','draft')]}"/>
                             <separator/>
                             Formatos soportados: jpeg, pdf y jpg
+
                         </page>
-                        <page string="Jobs" attrs="{'invisible':[('state','not in',['enviando','enviado','error'])]}">
+                        <page string="Jobs" attrs="{'invisible':[('state','not in',['sending','done','error'])]}">
                             <field name="ocr_post_transactions_jobs_ids" readonly="True"/>
                             <button name="action_post_invoices" string="Send to OCR" type="object" groups="base.group_system"/>
+                        </page>
+                        <page string="Error" attrs="{'invisible':[('state','not in',['error'])]}">
+                            <field name="upload_transaction_error"/>
                         </page>
                     </notebook>
                 </sheet>

@@ -36,6 +36,7 @@ class ResCompany(models.Model):
         string="Connector Jobs", copy=False,
     )
 
+
     @api.multi
     def get_header(self):
         api_key = self.env.user.company_id.api_key
@@ -149,7 +150,6 @@ class ResCompany(models.Model):
                             'ocr_purchase_account_id': account700,
                         })
                     if partner:
-
                         date = self.env['ocr.values'].sudo().search([
                             ('token', '=', t.token), ('name', '=', 'Fecha')])
                         if date.value:
@@ -169,7 +169,7 @@ class ResCompany(models.Model):
                         t.invoice_id = invoice.id
                         if not t.ocr_upload_id:
                             d_attach = False
-                            d_attach = self.get_attachment_data(p_invoice['image'], header)
+                            d_attach = self.get_attachment_data(p_invoice['image'], header, t)
                             if d_attach:
                                 attachment = self.generate_attachment(invoice, t)
                         else:
@@ -181,39 +181,45 @@ class ResCompany(models.Model):
                             invoice.message_main_attachment_id = [(4, attachment.id)]
 
     @api.multi
-    def get_attachment_data(self, api_img_url, headers):
+    def get_attachment_data(self, api_img_url, headers, t):
         response = requests.get(api_img_url, headers=headers, stream=True)
         if response.status_code == 200:
-            with open('/tmp/test.jpg', 'wb') as f:
-                response.raw.decode_content = True
-                shutil.copyfileobj(response.raw, f)
-            return True
+            try:
+                with open('/tmp/test.jpg', 'wb') as f:
+                    response.raw.decode_content = True
+                    shutil.copyfileobj(response.raw, f)
+                return True
+            except Exception as e:
+                t.transaction_error = e
         else:
-            error = json.loads(response.content.decode('utf-8'))
+            t.transaction_error = json.loads(response.content.decode('utf-8'))
             _logger.info(
-                "Error from OCR server  %s" % error
+                "Error from OCR server  %s" % t.transaction_error
             )
 
     @api.multi
     def generate_attachment(self, document, ocr_document):
         # podemos pasar res_model desde action_get_x para hacer geneérica esta función #
-        with open('/tmp/test.jpg', "rb") as pdf_file:
-            pdf_file_encode = base64.b64encode(pdf_file.read())
-        folder = self.env['documents.folder'].search([("id", "=", "2")])
-        tag = self.env['documents.tag'].search([("name", "=", "To review")])
-        tag_ids = [(4, tag.id)]
-        return self.env['ir.attachment'].sudo().create({
-            'name': ocr_document.name,
-            'type': 'binary',
-            'datas': pdf_file_encode,
-            'datas_fname': ocr_document.name,
-            'store_fname': ocr_document.name,
-            'folder_id': folder.id,
-            'tag_ids': tag_ids,
-            'res_model': 'account.invoice',
-            'res_id': document.id,
-            'mimetype': 'image/jpg'
-        })
+        try:
+            with open('/tmp/test.jpg', "rb") as pdf_file:
+                pdf_file_encode = base64.b64encode(pdf_file.read())
+            folder = self.env['documents.folder'].search([("id", "=", "2")])
+            tag = self.env['documents.tag'].search([("name", "=", "To review")])
+            tag_ids = [(4, tag.id)]
+            return self.env['ir.attachment'].sudo().create({
+                'name': ocr_document.name,
+                'type': 'binary',
+                'datas': pdf_file_encode,
+                'datas_fname': ocr_document.name,
+                'store_fname': ocr_document.name,
+                'folder_id': folder.id,
+                'tag_ids': tag_ids,
+                'res_model': 'account.invoice',
+                'res_id': document.id,
+                'mimetype': 'image/jpg'
+            })
+        except Exception as e:
+            ocr_document.transaction_error = e
 
     @api.multi
     def get_upload_attachment(self, document, ocr_document):
@@ -239,6 +245,8 @@ class ResCompany(models.Model):
                     for transaction in t.ocr_upload_id.ocr_transaction_ids:
                         if transaction.state == "error":
                             f_state = "error"
+                        elif transaction.state == "processing" or transaction.state == "sending":
+                            f_state = "processing"
 
                     t.ocr_upload_id.state = f_state
 

@@ -35,6 +35,7 @@ class OcrUploads(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Ocr Uploads'
 
+    upload_transaction_error = fields.Char('upload Error Code')
     partner_id = fields.Many2one('res.partner')
     type = fields.Selection(
         selection=TYPE, string="Type", default='recibida',
@@ -53,6 +54,7 @@ class OcrUploads(models.Model):
         comodel_name='queue.job', column1='upload_id', column2='job_id',
         string="Connector Jobs", copy=False,
     )
+
 
     @api.multi
     def get_uploader_header(self):
@@ -160,6 +162,7 @@ class OcrUploads(models.Model):
             djson = self.prepare_attachment(attachment, self)
             if not djson:
                 self.state = "error"
+                self.upload_error = "No image to upload or invalid"
                 _logger.info(
                     "Error from OCR server  image type not supported"
                 )
@@ -172,9 +175,9 @@ class OcrUploads(models.Model):
                     self.ocr_transaction_ids = [(4, ocr_transaction_id.id)]
                 else:
                     self.state = "error"
-                    error = json.loads(response.content.decode('utf-8'))
+                    self.upload_error = json.loads(response.content.decode('utf-8'))
                     _logger.info(
-                        "Error from OCR server  %s" % error
+                        "Error from OCR server  %s" % self.upload_error
                     )
         if self.state != "error":
             self.state = "sending"

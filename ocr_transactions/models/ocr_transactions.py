@@ -21,7 +21,7 @@ class OcrTransactions(models.Model):
     json_text = fields.Char('Json')
     attachment_id = fields.Many2one('ir.attachment', string='Invoice Document')
     invoice_id = fields.Many2one('account.invoice', string='Invoice')
-
+    transaction_error = fields.Char('Transaction Error Code')
 
 
 
