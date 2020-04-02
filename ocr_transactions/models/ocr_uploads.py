@@ -162,7 +162,7 @@ class OcrUploads(models.Model):
             djson = self.prepare_attachment(attachment, self)
             if not djson:
                 self.state = "error"
-                self.upload_error = "No image to upload or invalid"
+                self.upload_transaction_error = "No image to upload or invalid"
                 _logger.info(
                     "Error from OCR server  image type not supported"
                 )
@@ -175,7 +175,7 @@ class OcrUploads(models.Model):
                     self.ocr_transaction_ids = [(4, ocr_transaction_id.id)]
                 else:
                     self.state = "error"
-                    self.upload_error = json.loads(response.content.decode('utf-8'))
+                    self.upload_transaction_error = json.loads(response.content.decode('utf-8'))
                     _logger.info(
                         "Error from OCR server  %s" % self.upload_error
                     )
