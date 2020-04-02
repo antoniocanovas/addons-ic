@@ -13,6 +13,8 @@
 
                         <field name="ocr_sale_account_id"/>
                         <field name="ocr_purchase_account_id"/>
+                        <field name="ocr_sale_product_id"/>
+                        <field name="ocr_purchase_product_id"/>
 
                     </group>
                 </page>

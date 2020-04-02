@@ -13,3 +13,10 @@ class ResPartner(models.Model):
     ocr_purchase_account_id = fields.Many2one(
         'account.account',
     )
+    ocr_sale_product_id = fields.Many2one(
+        'product.product',
+    )
+    ocr_purchase_product_id = fields.Many2one(
+        'product.product',
+    )
+
