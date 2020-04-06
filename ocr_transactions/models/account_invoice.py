@@ -22,7 +22,7 @@ class AccountInvoice(models.Model):
         for invoice in self:
             # Comprobamos que el partner tiene asignadas cuentas contables por defecto para crear las líneas de factura:
             if (not invoice.partner_id.ocr_sale_account_id.id) or (not invoice.partner_id.ocr_purchase_account_id.id):
-                raise ValidationError(
+                raise Warning(
                     'Asigne las cuentas contables por defecto para OCR en la ficha de esta empresa, antes de intentar crear las líneas de factura.')
 
             # Inicializando:
@@ -32,8 +32,19 @@ class AccountInvoice(models.Model):
 
             # Diccionario de impuestos para ventas:
             if invoice.type in ['out_invoice', 'out_refund']:
-                cc = invoice.partner_id.ocr_sale_account_id.id
-                cc_name = invoice.partner_id.ocr_sale_account_id.name
+                # Si hay producto en la configuración OCR del partner, se utiliza; en otro caso sólo la cuenta contable:
+                producto = invoice.partner_id.ocr_sale_product_id
+                if (producto.property_account_income_id.id):
+                    cc = producto.property_account_income_id.id
+                    descrip = producto.name
+                elif (not producto.property_account_income_id.id) and (
+                producto.categ_id.property_account_income_categ_id.id):
+                    cc = producto.categ_id.property_account_income_categ_id.id
+                    descrip = producto.name
+                else:
+                    cc = invoice.partner_id.ocr_sale_account_id.id
+                    descrip = invoice.partner_id.ocr_sale_account_id.name
+
                 taxiva21 = self.env['ocr.dictionary'].search([('name', '=', 'IVA21'), ('type', '=', 'out_invoice')]).tax_id
                 taxiva10 = self.env['ocr.dictionary'].search([('name', '=', 'IVA10'), ('type', '=', 'out_invoice')]).tax_id
                 taxiva4 = self.env['ocr.dictionary'].search([('name', '=', 'IVA4'), ('type', '=', 'out_invoice')]).tax_id
@@ -47,8 +58,19 @@ class AccountInvoice(models.Model):
 
             # Diccionario de impuestos para compras:
             elif invoice.type in ['in_invoice', 'in_refund']:
-                cc = invoice.partner_id.ocr_purchase_account_id.id
-                cc_name = invoice.partner_id.ocr_purchase_account_id.name
+                # Si hay producto en la configuración OCR del partner, se utiliza; en otro caso sólo la cuenta contable:
+                producto = invoice.partner_id.ocr_purchase_product_id
+                if (producto.property_account_expense_id.id):
+                    cc = producto.property_account_expense_id.id
+                    descrip = producto.name
+                elif (not producto.property_account_expense_id.id) and (
+                producto.categ_id.property_account_expense_categ_id.id):
+                    cc = producto.categ_id.property_account_expense_categ_id.id
+                    descrip = producto.name
+                else:
+                    cc = invoice.partner_id.ocr_purchase_account_id.id
+                    descrip = invoice.partner_id.ocr_purchase_account_id.name
+
                 taxiva21 = self.env['ocr.dictionary'].search([('name', '=', 'IVA21'), ('type', '=', 'in_invoice')]).tax_id
                 taxiva10 = self.env['ocr.dictionary'].search([('name', '=', 'IVA10'), ('type', '=', 'in_invoice')]).tax_id
                 taxiva4 = self.env['ocr.dictionary'].search([('name', '=', 'IVA4'), ('type', '=', 'in_invoice')]).tax_id
@@ -99,10 +121,10 @@ class AccountInvoice(models.Model):
                 if (base_iva21 >= base_ret19):
                     # crear línea con base de retención y dejar base restante para otra línea:
                     impuestos = [taxiva21.id, taxret19.id]
-                    nuevalin = self.env['account.invoice.line'].create(
-                        {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_ret19,
-                         'account_id': cc})
                     nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
+                    nuevalin = self.env['account.invoice.line'].create(
+                        {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                         'price_unit': base_ret19, 'account_id': cc})
                     base_iva21 -= base_ret19
                     neto -= base_ret19
                     base_ret19 = 0
@@ -112,8 +134,8 @@ class AccountInvoice(models.Model):
                     # crear línea con base de retención y dejar base restante para otra línea:
                     impuestos = [taxiva10.id, taxret19.id]
                     nuevalin = self.env['account.invoice.line'].create(
-                        {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_ret19,
-                         'account_id': cc})
+                        {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                         'price_unit': base_ret19, 'account_id': cc})
                     nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                     base_iva10 -= base_ret19
                     neto -= base_ret19
@@ -123,8 +145,8 @@ class AccountInvoice(models.Model):
                     # crear línea con base de retención y dejar base restante para otra línea:
                     impuestos = [taxiva4.id, taxret19.id]
                     nuevalin = self.env['account.invoice.line'].create(
-                        {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_ret19,
-                         'account_id': cc})
+                        {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                         'price_unit': base_ret19, 'account_id': cc})
                     nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                     base_iva4 -= base_ret19
                     neto -= base_ret19
@@ -135,8 +157,8 @@ class AccountInvoice(models.Model):
                     # crear línea con base de retención y dejar base restante para otra línea:
                     impuestos = [taxiva21.id, taxret15.id]
                     nuevalin = self.env['account.invoice.line'].create(
-                        {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_ret15,
-                         'account_id': cc})
+                        {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                         'price_unit': base_ret15, 'account_id': cc})
                     nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                     base_iva21 -= base_ret15
                     neto -= base_ret15
@@ -146,8 +168,8 @@ class AccountInvoice(models.Model):
                     # crear línea con base de retención y dejar base restante para otra línea:
                     impuestos = [taxiva10.id, taxret15.id]
                     nuevalin = self.env['account.invoice.line'].create(
-                        {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_ret15,
-                         'account_id': cc})
+                        {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                         'price_unit': base_ret15, 'account_id': cc})
                     nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                     base_iva10 -= base_ret15
                     neto -= base_ret15
@@ -157,8 +179,8 @@ class AccountInvoice(models.Model):
                     # crear línea con base de retención y dejar base restante para otra línea:
                     impuestos = [taxiva4.id, taxret15.id]
                     nuevalin = self.env['account.invoice.line'].create(
-                        {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_ret15,
-                         'account_id': cc})
+                        {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                         'price_unit': base_ret15, 'account_id': cc})
                     nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                     base_iva4 -= base_ret15
                     neto -= base_ret15
@@ -169,7 +191,8 @@ class AccountInvoice(models.Model):
                     # crear línea con base de retención y dejar base restante para otra línea:
                     impuestos = [taxiva21.id, taxret7.id]
                     nuevalin = self.env['account.invoice.line'].create(
-                        {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_ret7, 'account_id': cc})
+                        {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                         'price_unit': base_ret7, 'account_id': cc})
                     nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                     base_iva21 -= base_ret7
                     neto -= base_ret7
@@ -179,7 +202,8 @@ class AccountInvoice(models.Model):
                     # crear línea con base de retención y dejar base restante para otra línea:
                     impuestos = [taxiva10.id, taxret7.id]
                     nuevalin = self.env['account.invoice.line'].create(
-                        {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_ret7, 'account_id': cc})
+                        {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                         'price_unit': base_ret7, 'account_id': cc})
                     nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                     base_iva10 -= base_ret7
                     neto -= base_ret7
@@ -189,7 +213,8 @@ class AccountInvoice(models.Model):
                     # crear línea con base de retención y dejar base restante para otra línea:
                     impuestos = [taxiva4.id, taxret7.id]
                     nuevalin = self.env['account.invoice.line'].create(
-                        {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_ret7, 'account_id': cc})
+                        {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                         'price_unit': base_ret7, 'account_id': cc})
                     nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                     base_iva4 -= base_ret7
                     neto -= base_ret7
@@ -200,7 +225,8 @@ class AccountInvoice(models.Model):
                     # crear línea con base de retención y dejar base restante para otra línea:
                     impuestos = [taxiva21.id, taxret2.id]
                     nuevalin = self.env['account.invoice.line'].create(
-                        {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_ret2, 'account_id': cc})
+                        {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                         'price_unit': base_ret2, 'account_id': cc})
                     nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                     base_iva21 -= base_ret2
                     neto -= base_ret2
@@ -210,7 +236,8 @@ class AccountInvoice(models.Model):
                     # crear línea con base de retención y dejar base restante para otra línea:
                     impuestos = [taxiva10.id, taxret2.id]
                     nuevalin = self.env['account.invoice.line'].create(
-                        {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_ret2, 'account_id': cc})
+                        {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                         'price_unit': base_ret2, 'account_id': cc})
                     nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                     base_iva10 -= base_ret2
                     neto -= base_ret2
@@ -220,7 +247,8 @@ class AccountInvoice(models.Model):
                     # crear línea con base de retención y dejar base restante para otra línea:
                     impuestos = [taxiva4.id, taxret2.id]
                     nuevalin = self.env['account.invoice.line'].create(
-                        {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_ret2, 'account_id': cc})
+                        {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                         'price_unit': base_ret2, 'account_id': cc})
                     nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                     base_iva4 -= base_ret2
                     neto -= base_ret2
@@ -229,19 +257,22 @@ class AccountInvoice(models.Model):
             if (taxiva21.id) and (base_iva21 > 0):
                 impuestos = [taxiva21.id]
                 nuevalin = self.env['account.invoice.line'].create(
-                    {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_iva21, 'account_id': cc})
+                    {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                     'price_unit': base_iva21, 'account_id': cc})
                 nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                 neto -= base_iva21
             if (taxiva10.id) and (base_iva10 > 0):
                 impuestos = [taxiva10.id]
                 nuevalin = self.env['account.invoice.line'].create(
-                    {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_iva10, 'account_id': cc})
+                    {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                     'price_unit': base_iva10, 'account_id': cc})
                 nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                 neto -= base_iva10
             if (taxiva4.id) and (base_iva4 > 0):
                 impuestos = [taxiva4.id]
                 nuevalin = self.env['account.invoice.line'].create(
-                    {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': base_iva4, 'account_id': cc})
+                    {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                     'price_unit': base_iva4, 'account_id': cc})
                 nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                 neto -= base_iva4
 
@@ -249,11 +280,13 @@ class AccountInvoice(models.Model):
             if (subtotal.id) and (neto > 0):
                 impuestos = [taxiva0.id]
                 nuevalin = self.env['account.invoice.line'].create(
-                    {'invoice_id': invoice.id, 'name': cc_name, 'quantity': 1, 'price_unit': neto, 'account_id': cc})
+                    {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
+                     'price_unit': neto, 'account_id': cc})
                 nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
 
             # Reculcalate Taxes
             if invoice.invoice_line_ids.ids:
                 invoice.compute_taxes()
+
 
 
