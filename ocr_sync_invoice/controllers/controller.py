@@ -1,10 +1,6 @@
+
 import logging
-import pprint
 import werkzeug
-import json
-from datetime import datetime
-import swagger_client
-from swagger_client.rest import ApiException
 
 from odoo import http, _
 from odoo.http import request
@@ -16,7 +12,7 @@ _logger = logging.getLogger(__name__)
 
 class CorrectionPortal(http.Controller):
     @http.route(['/invoice/correction'], type='http', auth="user", website=True)
-    def wallet_add_money(self, **post):
+    def correction_portal(self, **post):
 
         invoice = request.env['account.invoice'].sudo().search([('to_correct', '=', True)], limit=1)
         invoice.to_correct = False
