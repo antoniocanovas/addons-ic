@@ -156,7 +156,7 @@
             id="menu_ocr"
             name="OCR"
             sequence="10"
-            web_icon="ocr_transactions,static/description/docs.png"
+            web_icon="ocr_transactions,static/description/OCR.png"
     />
 
     <record id="menu_ocr_documents" model="ir.ui.menu">
