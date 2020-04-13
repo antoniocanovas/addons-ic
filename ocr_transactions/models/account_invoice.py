@@ -22,7 +22,7 @@ class AccountInvoice(models.Model):
         for invoice in self:
             # Comprobamos que el partner tiene asignadas cuentas contables por defecto para crear las líneas de factura:
             if (not invoice.partner_id.ocr_sale_account_id.id) or (not invoice.partner_id.ocr_purchase_account_id.id):
-                raise Warning(
+                raise ValidationError(
                     'Asigne las cuentas contables por defecto para OCR en la ficha de esta empresa, antes de intentar crear las líneas de factura.')
 
             # Inicializando:

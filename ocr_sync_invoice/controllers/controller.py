@@ -1,11 +1,8 @@
 
 import logging
-import werkzeug
 
 from odoo import http, _
 from odoo.http import request
-import requests
-from werkzeug.utils import redirect
 
 _logger = logging.getLogger(__name__)
 
