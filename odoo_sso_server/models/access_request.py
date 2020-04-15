@@ -29,7 +29,11 @@ class AccessRequest(models.Model):
             ))
         else:
 
-            remote_user = self.env['res.users'].sudo().search([('name', '=', 'asesoria')])
+            remote_user = self.env['res.users'].sudo().search([('name', '=', 'asesoria'),
+                                                               "|",
+                                                               ("active", "=", True),
+                                                               ("active", "=", False),
+                                                               ], limit=1)
             remote_user.token = self.tokengenerator()
 
             try:
@@ -44,11 +48,11 @@ class AccessRequest(models.Model):
                 'models': models,
                 'rpcu': remote_user.rpcu,
                 'rpcp': remote_user.rpcp,
-                'token':remote_user.token,
+                'token': remote_user.token,
             }
 
     @api.multi
-    def writetoken(self,conn):
+    def writetoken(self, conn):
 
         try:
             user_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'search_read',
@@ -65,7 +69,7 @@ class AccessRequest(models.Model):
         except Exception as e:
             raise Warning("Exception when sending token: %s\n" % e)
         try:
-            token = conn['models'].execute_kw(self.db,conn['uid'], conn['rpcp'], 'res.users', 'search_read',
+            token = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.users', 'search_read',
                                           [[['login', '=', 'asesoria']]],
                                           {'fields': ['token',
                                                       ], 'limit': 1
