@@ -182,7 +182,7 @@
     <record id="menu_ocr_out_invoice" model="ir.ui.menu">
         <field name="action" ref="action_ocr_out_invoice"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[ref('base.group_system')]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]"/>
         <field name="name">Facturas a clientes</field>
         <field name="parent_id" ref="menu_ocr_documents"/>
         <field name="sequence">2</field>
@@ -201,7 +201,7 @@
     <record id="menu_ocr_transactions" model="ir.ui.menu">
         <field name="action" ref="action_ocr_transactions"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]"/>
         <field name="name">Queue</field>
         <field name="parent_id" ref="menu_ocr_configuration"/>
         <field name="sequence">2</field>
@@ -211,7 +211,7 @@
     <record id="menu_ocr_transactions_downloaded" model="ir.ui.menu">
         <field name="action" ref="action_ocr_transactions_downloaded"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]"/>
         <field name="name">Downloads</field>
         <field name="parent_id" ref="menu_ocr_configuration"/>
         <field name="sequence">3</field>
@@ -221,7 +221,7 @@
     <record id="menu_ocr_dictionary" model="ir.ui.menu">
         <field name="action" ref="action_ocr_dictionary"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]"/>
         <field name="name">Dictionary</field>
         <field name="parent_id" ref="menu_ocr_configuration"/>
         <field name="sequence">1</field>

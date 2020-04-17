@@ -67,7 +67,7 @@ class ResCompany(models.Model):
         for i in range(len(transactions_by_state['FACTURAS'])):
 
             token = transactions_by_state['FACTURAS'][i]['token']
-            exist = self.env['ocr.transactions'].search([("token", "=", token)])
+            exist = self.env['ocr.transactions'].search([("token", "=", token)], limit=1)
             # No se Borran facturas, solo actualizamos el transaction si no hay líneas de factura
             # Si hay lineas no debe actualizar estado
             if exist.token:
@@ -146,6 +146,7 @@ class ResCompany(models.Model):
                         partner = self.env['res.partner'].sudo().create({
                             'name': partner_vat.value,
                             'vat': partner_vat.value,
+                            'company_type': 'company',
                             'ocr_sale_account_id': account600,
                             'ocr_purchase_account_id': account700,
                         })
@@ -153,16 +154,30 @@ class ResCompany(models.Model):
                         date = self.env['ocr.values'].sudo().search([
                             ('token', '=', t.token), ('name', '=', 'Fecha')])
                         if date.value:
+                            date_invoice = datetime.strptime(date.value, '%d/%m/%Y').date()
+                        else:
+                            date_invoice = False
+
+                        reference = self.env['ocr.values'].sudo().search([
+                            ('token', '=', t.token), ('name', '=', 'NumFactura')])
+                        if not reference:
+                            reference_value = False
+                        else:
+                            reference_value = reference.value
+
+                        if t.type == 'in_invoice':
                             invoice = self.env['account.invoice'].sudo().create({
                                 'partner_id': partner.id,
                                 'type': t.type,
-                                'date_invoice': datetime.strptime(date.value, '%d/%m/%Y').date(),
+                                'reference': reference_value,
+                                'date_invoice': date_invoice,
                                 'ocr_transaction_id': t.id
                             })
                         else:
                             invoice = self.env['account.invoice'].sudo().create({
                                 'partner_id': partner.id,
                                 'type': t.type,
+                                'date_invoice': date_invoice,
                                 'ocr_transaction_id': t.id
                             })
                     if invoice:

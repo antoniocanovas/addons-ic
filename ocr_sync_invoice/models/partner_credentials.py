@@ -78,6 +78,7 @@ class ConfigClient(models.Model):
                                                        [{
                                                            'name': partner.name,
                                                            'vat': partner.vat,
+                                                           'company_type': 'company'
 
                                                        }])
 
@@ -88,34 +89,24 @@ class ConfigClient(models.Model):
 
     @api.multi
     def write_invoice_to_remote(self, conn, invoice):
-
         partner_id = self.check_partner_in_remote(invoice.partner_id, conn)
 
         try:
-            exist = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
-                                              'ir.model.data', 'search',
-                                              [[('model', '=', 'account.invoice'),
-                                                ('name', '=',
-                                                 str(self.remote_company_id) + '_account_invoice_' + str(invoice.id))
+            invoice_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
+                                              'account.invoice', 'search',
+                                              [[('reference', '=', invoice.reference),
                                                 ]],
                                               {'limit': 1})
-
         except Exception as e:
             raise Warning(("Exception when calling remote server $CreateInvoice: %s\n" % e))
 
-        if exist:
-            try:
-                record = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
-                                                   'ir.model.data', 'read',
-                                                   [exist], {'fields': ['res_id']})
-                invoice_id = record[0]['res_id']
-            except Exception as e:
-                raise Warning(("Exception when calling remote server $DesfaultAccountRemote: %s\n" % e))
-            return invoice_id
+        if invoice_id:
+            return False
         else:
             try:
                 invoice_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'account.invoice', 'create',
                                                        [{
+                                                           'reference': invoice.reference,
                                                            'partner_id': partner_id,
                                                            'type': invoice.type,
                                                            'date_invoice': invoice.date_invoice,
@@ -124,17 +115,7 @@ class ConfigClient(models.Model):
                 raise Warning(("Exception when calling remote server $RegisterInvoice: %s\n" % e))
 
             if invoice_id:
-                try:
-                    external_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'ir.model.data',
-                                                            'create', [{
-                            'module': 'ase_replication_server',
-                            'model': 'account.invoice',
-                            'name': str(self.remote_company_id) + '_account_invoice_' + str(invoice.id),
-                            'res_id': invoice_id,
-                        }])
-                    return invoice_id
-                except Exception as e:
-                    raise Warning(("Exception when calling remote server $Invoice: %s\n" % e))
+                return invoice_id
             else:
                 return False
 

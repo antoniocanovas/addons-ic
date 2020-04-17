@@ -16,6 +16,7 @@ except ImportError:
 
 REMOTE_STATES = [
     ('not_sent', 'Not sent'),
+    ('sending', 'Sending'),
     ('sent', 'Sent'),
     ('cancelled', 'Cancelled'),
 ]
@@ -78,6 +79,7 @@ class AccountInvoice(models.Model):
                     job = queue_obj.search([
                         ('uuid', '=', new_delay.uuid)
                     ], limit=1)
+                    invoice.remote_state = 'sending'
                     invoice.sudo().ocr_invoice_jobs_ids |= job
 
     @job
