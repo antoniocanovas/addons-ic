@@ -20,3 +20,9 @@ class ResPartner(models.Model):
         'product.product',
     )
 
+    #@api.onchange('write_date')
+    #def get_uppercase_vat(self):
+    #    if self.vat:
+    #        self.vat = str(self.vat).upper()
+
+

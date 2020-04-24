@@ -68,10 +68,12 @@ class ConfigClient(models.Model):
 
     @api.multi
     def check_partner_in_remote(self, partner, conn):
+        print("Partner")
         partner_exist = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
                                                   'res.partner', 'search_read',
                                                   [[('vat', '=', partner.vat)]],
                                                   {'fields': ['id'], 'limit': 1})
+        print("exist", partner_exist)
         if not partner_exist:
             try:
                 partner_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.partner', 'create',
@@ -83,6 +85,7 @@ class ConfigClient(models.Model):
                                                        }])
 
                 return partner_id
+                print("not exist", partner_id)
             except Exception as e:
                 raise Warning(("Exception when calling remote server $CreatePartner: %s\n" % e))
         return partner_exist[0]['id']
@@ -90,17 +93,20 @@ class ConfigClient(models.Model):
     @api.multi
     def write_invoice_to_remote(self, conn, invoice):
         partner_id = self.check_partner_in_remote(invoice.partner_id, conn)
-
+        print(invoice.reference)
         try:
             invoice_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
                                               'account.invoice', 'search',
                                               [[('reference', '=', invoice.reference),
+                                                ('partner_id', '=', partner_id),
                                                 ]],
                                               {'limit': 1})
+            print("not esixt invoice so ...", invoice_id)
         except Exception as e:
             raise Warning(("Exception when calling remote server $CreateInvoice: %s\n" % e))
 
         if invoice_id:
+            invoice.remote_state = 'sent'
             return False
         else:
             try:
@@ -111,12 +117,14 @@ class ConfigClient(models.Model):
                                                            'type': invoice.type,
                                                            'date_invoice': invoice.date_invoice,
                                                        }])
+                print("Invoice Created", invoice_id)
             except Exception as e:
                 raise Warning(("Exception when calling remote server $RegisterInvoice: %s\n" % e))
 
             if invoice_id:
                 return invoice_id
             else:
+                invoice.remote_state = 'sent'
                 return False
 
     @api.multi
