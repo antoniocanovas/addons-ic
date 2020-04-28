@@ -15,7 +15,10 @@ class AccountInvoice(models.Model):
     def check_customer_id(self):
         for invoice in self:
             if invoice.ocr_transaction_id:
-                invoice.customer_id = invoice.ocr_transaction_id.ocr_upload_id.partner_id.id
+                pc = self.env['partner.credentials'].sudo().search([
+                    ('partner_id.vat', '=', self.ocr_transaction_id.name)], limit=1)
+                invoice.customer_id = pc.partner_id.id
+                #invoice.customer_id = invoice.ocr_transaction_id.ocr_upload_id.partner_id.id
 
     @api.multi
     def create_invoice_lines_from_ocr(self):

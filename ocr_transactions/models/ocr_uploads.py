@@ -158,11 +158,11 @@ class OcrUploads(models.Model):
         api_transaction_url = "%s/facturas/" % self.env.user.company_id.api_domain
 
         for attachment in self.attachment_ids:
-
             djson = self.prepare_attachment(attachment, self)
             if not djson:
                 self.state = "error"
-                self.upload_transaction_error = "No image to upload or invalid"
+                self.upload_transaction_error = str(self.upload_transaction_error) + \
+                                                "No image to upload or invalid"
                 _logger.info(
                     "Error from OCR server  image type not supported"
                 )
@@ -175,7 +175,15 @@ class OcrUploads(models.Model):
                     self.ocr_transaction_ids = [(4, ocr_transaction_id.id)]
                 else:
                     self.state = "error"
-                    self.upload_transaction_error = json.loads(response.content.decode('utf-8'))
+                    try:
+                        res = json.loads(response.content.decode('utf-8'))
+                        self.upload_transaction_error = str(self.upload_transaction_error) +\
+                                                        " Error " +\
+                                                        str(attachment.datas_fname) + str(res)
+                    except Exception as e:
+                        self.upload_transaction_error = str(self.upload_transaction_error) +\
+                                                        " Error " + \
+                                                        str(attachment.datas_fname)
                     _logger.info(
                         "Error from OCR server  %s" % self.upload_transaction_error
                     )

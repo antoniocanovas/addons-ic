@@ -35,6 +35,7 @@ class AccountInvoice(models.Model):
         readonly=True, copy=False,
         help="Mark as sent when succesfully created on remote client",
     )
+    invoice_sync_error = fields.Char('Error')
     to_correct = fields.Boolean("For correction portal", default=False)
 
     @api.multi
@@ -59,17 +60,20 @@ class AccountInvoice(models.Model):
             eta = 20 + (len(jobs)*20)
             # Tomar VAT del usuario que envía a OCR y sea tipo Odoo
             pc = self.env['partner.credentials'].sudo().search([
-                ('partner_id.vat', '=', self.ocr_transaction_id.name)], limit=1)
-            if not pc:
+                ('partner_id.vat', '=', self.ocr_transaction_id.name)])
+            if len(pc) > 1:
                 raise Warning((
-                    "Revise que el cliente esté dado de alta en 'Partner Credentials' y configurados los campos de "
-                    " 'Base de datos' y 'Servidor' en la pestaña SSO"
+                    "Hay dos Partner Credentials con mismo VAT o Número de documento de identificación"
                 ))
             else:
-                if len(pc) > 1:
+                if not pc:
                     raise Warning((
-                        "Revise que el cliente esté dado de alta en 'Partner Credentials' "
-                        "y no esté dado de alta por otro asesor"
+                        "Revise que el cliente esté dado de alta en 'Partner Credentials' y configurados los campos de "
+                        " 'Base de datos' y 'Servidor' en la pestaña SSO"
+                    ))
+                if not invoice.invoice_line_ids:
+                    raise Warning((
+                        "La factura no contiene líneas de factura"
                     ))
                 else:
                     queue_obj = self.env['queue.job'].sudo()
@@ -90,7 +94,6 @@ class AccountInvoice(models.Model):
 
     @api.multi
     def _send_invoice_to_remote(self, pc):
-
         pc.set_parameters(self)
 
 

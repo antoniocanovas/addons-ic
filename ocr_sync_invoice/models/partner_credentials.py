@@ -68,12 +68,10 @@ class ConfigClient(models.Model):
 
     @api.multi
     def check_partner_in_remote(self, partner, conn):
-        print("Partner")
         partner_exist = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
                                                   'res.partner', 'search_read',
                                                   [[('vat', '=', partner.vat)]],
                                                   {'fields': ['id'], 'limit': 1})
-        print("exist", partner_exist)
         if not partner_exist:
             try:
                 partner_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'res.partner', 'create',
@@ -85,7 +83,6 @@ class ConfigClient(models.Model):
                                                        }])
 
                 return partner_id
-                print("not exist", partner_id)
             except Exception as e:
                 raise Warning(("Exception when calling remote server $CreatePartner: %s\n" % e))
         return partner_exist[0]['id']
@@ -93,7 +90,6 @@ class ConfigClient(models.Model):
     @api.multi
     def write_invoice_to_remote(self, conn, invoice):
         partner_id = self.check_partner_in_remote(invoice.partner_id, conn)
-        print(invoice.reference)
         try:
             invoice_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
                                               'account.invoice', 'search',
@@ -101,11 +97,11 @@ class ConfigClient(models.Model):
                                                 ('partner_id', '=', partner_id),
                                                 ]],
                                               {'limit': 1})
-            print("not esixt invoice so ...", invoice_id)
         except Exception as e:
             raise Warning(("Exception when calling remote server $CreateInvoice: %s\n" % e))
 
         if invoice_id:
+            invoice.invoice_sync_error = ("La factura ya existe en el cliente: %s\n" % invoice.reference)
             invoice.remote_state = 'sent'
             return False
         else:
@@ -117,7 +113,6 @@ class ConfigClient(models.Model):
                                                            'type': invoice.type,
                                                            'date_invoice': invoice.date_invoice,
                                                        }])
-                print("Invoice Created", invoice_id)
             except Exception as e:
                 raise Warning(("Exception when calling remote server $RegisterInvoice: %s\n" % e))
 
@@ -173,12 +168,49 @@ class ConfigClient(models.Model):
             raise Warning((" Error Validating remote invoice : %s\n" % e))
 
     @api.multi
+    def create_attachment(self, conn, invoice, invoice_id):
+
+        try:
+            invoice_attachment = self.env['ir.attachment'].sudo().search([
+                ('res_model', '=', 'account.invoice'),
+                ('res_id', '=', invoice.id)
+            ])
+
+            attachment_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'ir.attachment', 'create',
+                                                      [{
+                                                          'name': invoice_attachment.name,
+                                                          'type': 'binary',
+                                                          'datas': invoice_attachment.datas,
+                                                          'display_name': invoice_attachment.display_name,
+                                                          'store_fname': invoice_attachment.store_fname,
+                                                          'res_model': 'account.invoice',
+                                                          'res_id': invoice_id,
+                                                          'mimetype': 'application/pdf'
+                                                      }])
+            return attachment_id
+        except Exception as e:
+            invoice.invoice_sync_error = ("No se ha podido crear el adjunto"
+                                          " en servidor remoto: %s\n" % e)
+
+    @api.multi
+    def create_message_post(self, conn, invoice_id, attachment_id):
+        try:
+            message_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'mail.message',
+                                                   'create',
+                                                   [{
+                                                       'res_id': invoice_id,
+                                                       'model': 'account.invoice',
+                                                       'body': 'Documentos',
+                                                       'attachment_ids': [(6, 0, [attachment_id])],
+                                                   }])
+            return message_id
+        except Exception as e:
+            raise Warning(("Exception when calling remote server $Message_post: %s\n" % e))
+
+    @api.multi
     def que_set_parameters(self):
         # new_delay = self.sudo().with_delay().set_parameters()
-        #self.set_parameters(False)
-
         for pc in self:
-
             company = self.env.user.company_id
             # Set ETA
             jobs = self.env['queue.job'].sudo().search(["|",
@@ -207,7 +239,6 @@ class ConfigClient(models.Model):
     @job
     @api.multi
     def set_parameters(self, invoice):
-
         conn = self.setxmlrpc()
         self.set_remote_company(conn)
 
@@ -253,7 +284,6 @@ class ConfigClient(models.Model):
         if len(self.account_ids) > 0:
             for account in self.account_ids:
                 self.write_asset_profile_account(account, conn)
-
         if invoice:
             invoice_line_list = self.get_lines(conn, invoice)
             if invoice_line_list:
@@ -262,6 +292,9 @@ class ConfigClient(models.Model):
                     invoice_line_id = self.create_invoice_lines(conn, invoice_id, invoice, invoice_line_list)
                     if invoice_line_id:
                         self.compute_invoice(invoice, invoice_id, conn)
+                        attachment_id = self.create_attachment(conn, invoice, invoice_id)
+                        if attachment_id:
+                            message_id = self.create_message_post(conn, invoice_id, attachment_id)
                     else:
                         invoice.remote_send_failed = True
 

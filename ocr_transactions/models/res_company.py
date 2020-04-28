@@ -266,6 +266,26 @@ class ResCompany(models.Model):
                     t.ocr_upload_id.state = f_state
 
     @api.multi
+    def check_dbcopy_instance(self):
+        company = self.env.user.company_id
+
+        if company.master_db_name != self.env.cr.dbname:
+            cron_job = self.env['ir.cron'].sudo().search([('name', '=', '=> OCR transactions GET')])
+            if cron_job:
+                cron_job.active = False
+            jobs_started = self.env['queue.job'].sudo().search([
+                                                        ('state', '=', 'started'),
+                                                        ])
+            for job in jobs_started:
+                job.unlink()
+            jobs = self.env['queue.job'].sudo().search(["|",
+                                                        ('state', '=', 'pending'),
+                                                        ('state', '=', 'enqueued'),
+                                                        ])
+            for job in jobs:
+                job.state = 'done'
+
+    @api.multi
     def prepare_ocr_get_transactions(self):
         company = self.env.user.company_id
 
