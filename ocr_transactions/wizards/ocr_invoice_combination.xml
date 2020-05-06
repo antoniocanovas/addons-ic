@@ -10,9 +10,8 @@
         <field name="arch" type="xml">
             <form>
                 <group>
-                   <field name="ocr_transaction_id" />
-
-                    <field name="attachment_datas" widget="image" readonly="True"/>
+                    <field name="ocr_transaction_id" readonly="True" />
+                    <field name="attachment_datas" widget='image' readonly="True"/>
                 </group>
 
 

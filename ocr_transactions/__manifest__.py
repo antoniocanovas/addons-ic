@@ -1,6 +1,6 @@
 {
     'name': 'OCR transactions',
-    'version': '12.0.10.0.2',
+    'version': '12.0.10.0.3',
     'category': '',
     'description': u"""
 
@@ -9,13 +9,11 @@
     'depends': [
         'account',
         'contacts',
-        'documents_account',
         'dbcopy_post_actions',
         'queue_job_cron',
     ],
     'data': [
         'security/ir.model.access.csv',
-        'data/document_ocr_tag.xml',
         'data/crea_lineas_factura.xml',
         'views/views.xml',
         'views/views_menu.xml',
