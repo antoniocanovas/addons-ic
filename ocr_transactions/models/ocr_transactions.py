@@ -1,5 +1,5 @@
 # Copyright
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+
 import base64
 
 from odoo import fields, models, api
@@ -21,6 +21,8 @@ class OcrTransactions(models.Model):
     json_text = fields.Char('Json')
     attachment_id = fields.Many2one('ir.attachment', string='Invoice Document')
     invoice_id = fields.Many2one('account.invoice', string='Invoice')
+    next_token = fields.Char('Próxima Factura')
+    previus_token = fields.Char('')
     transaction_error = fields.Char('Transaction Error Code')
 
 

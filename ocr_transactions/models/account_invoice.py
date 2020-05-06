@@ -11,6 +11,27 @@ class AccountInvoice(models.Model):
     ocr_transaction_id = fields.Many2one('ocr.transactions', string='OCR', readonly=True)
     customer_id = fields.Many2one('res.partner', readonly=True, string='Customer')
 
+    @api.multi
+    def invoice_combination_wizard(self):
+        for invoice in self:
+            if invoice.ocr_transaction_id:
+                view_id = self.env.ref('ocr_transactions.invoice_combination_view').id
+
+                return {
+                    'name': _("Combinar Facturas"),
+                    'type': 'ir.actions.act_window',
+                    'view_type': 'form',
+                    'view_mode': 'form',
+                    'res_model': 'ocr.invoice.combination',
+                    'view_id': view_id,
+                    'target': 'new',
+                    'context': {
+                        'default_ocr_transaction_id': invoice.ocr_transaction_id.id,
+                        'default_attachment_datas': invoice.message_main_attachment_id.datas,
+                        'default_original_ocr_transaction_id': self.ocr_transaction_id.id,
+                    }
+                }
+
     @api.constrains('ocr_transaction_id')
     def check_customer_id(self):
         for invoice in self:

@@ -4,6 +4,8 @@ import base64
 
 from odoo import fields, models, api
 import json
+from PIL import Image
+import io
 import shutil
 import requests
 from odoo.exceptions import ValidationError
@@ -36,7 +38,6 @@ class ResCompany(models.Model):
         string="Connector Jobs", copy=False,
     )
 
-
     @api.multi
     def get_header(self):
         api_key = self.env.user.company_id.api_key
@@ -64,7 +65,16 @@ class ResCompany(models.Model):
     @api.multi
     def create_queue_invoice_transactions(self, transactions_by_state):
         #### Comprobar si hay que crearlo, actualizarlo o ignorarlo ####
+
         for i in range(len(transactions_by_state['FACTURAS'])):
+
+            #if 'tokens' in transactions_by_state['FACTURAS'][i]:
+            #    print("Hay tokens")
+            #    print(transactions_by_state['FACTURAS'][i]['tokens'])
+            #    for idx, token in enumerate(transactions_by_state['FACTURAS'][i]['tokens']):
+            #        if token != 'null':
+            #            exist = self.env['ocr.transactions'].search([("token", "=", token)], limit=1)
+            #            print()
 
             token = transactions_by_state['FACTURAS'][i]['token']
             exist = self.env['ocr.transactions'].search([("token", "=", token)], limit=1)
@@ -89,9 +99,44 @@ class ResCompany(models.Model):
                     'type': type_doc,
                     'name': transactions_by_state['FACTURAS'][i]['client'],
                     'token': transactions_by_state['FACTURAS'][i]['token'],
+                    'next_token': False,
+                    'previus_token': False,
                     'create_date': transactions_by_state['FACTURAS'][i]['created_at'],
                     'write_date': transactions_by_state['FACTURAS'][i]['updated_at'],
                 })
+
+    @api.multi
+    def order_transactions(self, transactions):
+        transactions_ordered = []
+        print(transactions)
+        for t in transactions:
+            if not t.previus_token and not t.next_token:
+                transactions_ordered.append(t)
+            else:
+                t_next = self.env['ocr.transactions'].sudo().search([
+                    ('token', '=', t.next_token),
+                    ('state', '=', 'processed')
+                ])
+                t_previus = self.env['ocr.transactions'].sudo().search([
+                    ('token', '=', t.previus_token),
+                    ('state', '=', 'processed')
+                ])
+                if t.previus_token == 'null' and t.next_token != 'null':
+                    if t_next:
+                        transactions_ordered.append(t)
+                        transactions_ordered.append(t_next)
+                elif t.next_token == 'null' and t.previus_token != 'null':
+                    if t_previus:
+                        transactions_ordered.append(t_previus)
+                        transactions_ordered.append(t)
+                elif t_previus and t_next:
+                    transactions_ordered.append(t_previus)
+                    transactions_ordered.append(t)
+                    transactions_ordered.append(t_next)
+
+            print(transactions)
+            print(transactions_ordered)
+        return transactions_ordered
 
     @api.multi
     def create_invoices(self, transactions_processed, api_transaction_url, header):
@@ -113,7 +158,6 @@ class ResCompany(models.Model):
                 else:
                     t.state = 'downloaded'
             else:
-
                 api_transaction_url_token = "%s%s" % (api_transaction_url, t.token)
                 p_invoice = self.get_documents_data(api_transaction_url_token, header)
                 if p_invoice:
@@ -182,74 +226,84 @@ class ResCompany(models.Model):
                             })
                     if invoice:
                         t.invoice_id = invoice.id
-                        if not t.ocr_upload_id:
-                            d_attach = False
-                            d_attach = self.get_attachment_data(p_invoice['image'], header, t)
-                            if d_attach:
-                                attachment = self.generate_attachment(invoice, t)
-                        else:
-                            attachment = self.get_upload_attachment(invoice, t)
-
+                        #Necesitamos descargar la imagen desde OCR
+                        #if not t.ocr_upload_id:
+                        #    d_attach = False
+                        #    d_attach = self.get_attachment_data(p_invoice['image'], header, t)
+                        #    if d_attach:
+                        #        attachment = self.generate_attachment(invoice, t)
+                        #else:
+                        #    attachment = self.get_upload_attachment(invoice, t)
+                        #d_attach = False
+                        #d_attach = self.get_attachment_data(p_invoice['image'], header, t)
+                        #if d_attach:
+                        #    attachment = self.generate_attachment(invoice, t)
+                        attachment = self.generate_attachment_test(p_invoice['image'], header, invoice, t)
                         body = "<p>created with OCR Documents</p>"
                         if attachment:
                             invoice.message_post(body=body, attachment_ids=[attachment.id])
                             invoice.message_main_attachment_id = [(4, attachment.id)]
 
     @api.multi
-    def get_attachment_data(self, api_img_url, headers, t):
+    def generate_attachment_test(self, api_img_url, headers, document, ocr_document):
         response = requests.get(api_img_url, headers=headers, stream=True)
         if response.status_code == 200:
-            try:
-                with open('/tmp/test.jpg', 'wb') as f:
-                    response.raw.decode_content = True
-                    shutil.copyfileobj(response.raw, f)
-                return True
-            except Exception as e:
-                t.transaction_error = e
+
+            image_bytes = io.BytesIO(response.content)
+            # img_file_encode = base64.b64encode(response.content)
+            img_file_encode = Image.open(image_bytes)
+            # pdf_file_encode = img_file_encode.convert('RGB')
+            imgByteArr = io.BytesIO()
+            img_file_encode.save(imgByteArr, format="pdf", save_all=True)
+            imgByteArr = imgByteArr.getvalue()
+
+            print("pdf created")
+            #pdf_file_datas = base64.b64encode(imgByteArr)
+
+            print("Crear attachment")
+
+            return self.env['ir.attachment'].sudo().create({
+                    'name': str(ocr_document.name) + "_" + str(ocr_document.id),
+                    'type': 'binary',
+                    'datas': imgByteArr,
+                    'datas_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
+                    'store_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
+                    'res_model': 'account.invoice',
+                    'res_id': document.id,
+                    'mimetype': 'application/pdf'
+                })
+
         else:
-            t.transaction_error = json.loads(response.content.decode('utf-8'))
+            ocr_document.transaction_error = json.loads(response.content.decode('utf-8'))
             _logger.info(
-                "Error from OCR server  %s" % t.transaction_error
+                "Error from OCR server  %s" % ocr_document.transaction_error
             )
 
     @api.multi
-    def generate_attachment(self, document, ocr_document):
-        # podemos pasar res_model desde action_get_x para hacer geneérica esta función #
-        try:
-            with open('/tmp/test.jpg', "rb") as pdf_file:
-                pdf_file_encode = base64.b64encode(pdf_file.read())
-            folder = self.env['documents.folder'].search([("id", "=", "2")])
-            tag = self.env['documents.tag'].search([("name", "=", "To review")])
-            tag_ids = [(4, tag.id)]
+    def generate_attachment(self, api_img_url, headers, document, ocr_document):
+        response = requests.get(api_img_url, headers=headers, stream=True)
+        if response.status_code == 200:
+            #response.raw.decode_content = True
+            pdf_file_encode = base64.b64encode(response.content)
+            # folder = self.env['documents.folder'].search([("id", "=", "2")])
+            # tag = self.env['documents.tag'].search([("name", "=", "To review")])
+            # tag_ids = [(4, tag.id)]
             return self.env['ir.attachment'].sudo().create({
-                'name': ocr_document.name,
+                'name': str(ocr_document.name) + "_" + str(ocr_document.id),
                 'type': 'binary',
                 'datas': pdf_file_encode,
-                'datas_fname': ocr_document.name,
-                'store_fname': ocr_document.name,
-                'folder_id': folder.id,
-                'tag_ids': tag_ids,
+                'datas_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
+                'store_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
                 'res_model': 'account.invoice',
                 'res_id': document.id,
-                'mimetype': 'image/jpg'
+                'mimetype': 'image/jpeg'
             })
-        except Exception as e:
-            ocr_document.transaction_error = e
 
-    @api.multi
-    def get_upload_attachment(self, document, ocr_document):
-
-        #folder = self.env['documents.folder'].search([("id", "=", "2")])
-        #tag = self.env['documents.tag'].search([("name", "=", "To review")])
-        #tag_ids = [(4, tag.id)]
-
-        attachment = self.env['ir.attachment'].sudo().search([('id', '=', ocr_document.attachment_id.id)])
-        if attachment:
-            attachment.res_model = 'account.invoice'
-            attachment.res_id = document.id
-            return attachment
         else:
-            return False
+            ocr_document.transaction_error = json.loads(response.content.decode('utf-8'))
+            _logger.info(
+                "Error from OCR server  %s" % ocr_document.transaction_error
+            )
 
     @api.multi
     def mark_uploads_done(self, transactions_processed):
@@ -325,6 +379,10 @@ class ResCompany(models.Model):
         transactions_processed = self.env['ocr.transactions'].search([(
             "state", "=", 'processed'
         )], limit=10)
+
+        #No vamos a ordenar de momento
+        #transactions_processed_in_order = self.order_transactions(transactions_processed)
+
         if transactions_processed:
             self.create_invoices(transactions_processed, api_transaction_url, header)
             self.mark_uploads_done(transactions_processed)

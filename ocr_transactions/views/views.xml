@@ -57,6 +57,9 @@
                 <field name="name"/>
                 <field name="type"/>
                 <field name="state"/>
+                <field name="previus_token"/>
+                <field name="token"/>
+                <field name="next_token"/>
                 <field name="create_date"/>
                 <field name="write_date"/>
             </tree>
@@ -151,7 +154,10 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="prepare_ocr_post_transactions" string="Send" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'enviado')]}"/>
+                    <!--<button name="prepare_ocr_post_transactions" string="Send" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'enviado')]}"/>-->
+                    <button name="action_post_invoices" string="Send" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'enviado')]}"/>
+
+
                     <field name="state" widget="statusbar" statusbar_visible="draft,sending,processing,done,error"/>
                 </header>
                 <sheet string="Ocr Uploads">
@@ -239,6 +245,10 @@
         <field name="arch" type="xml">
             <xpath expr="//form/header" position="inside">
                 <button name="create_invoice_lines_from_ocr" string="Generate Lines" type="object"
+                        class="oe_highlight" attrs="{
+                            'invisible':['|',('invoice_line_ids','==',True),('ocr_transaction_id','==', False)]
+                        }" />
+                <button name="invoice_combination_wizard" string="Invoice Combination" type="object"
                         class="oe_highlight" attrs="{
                             'invisible':['|',('invoice_line_ids','==',True),('ocr_transaction_id','==', False)]
                         }" />

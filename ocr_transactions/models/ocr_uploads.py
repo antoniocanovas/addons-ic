@@ -20,6 +20,8 @@ except ImportError:
 TYPE = [
     ('emitida', 'Facturas emitidas'),
     ('recibida', 'Facturas de proveedor'),
+    ('emitida_batch', 'Lote de facturas emitidas'),
+    ('recibida_batch', 'Lote de facturas de proveedor'),
 ]
 STATE = [
     ('draft', 'Draft'),
@@ -78,31 +80,48 @@ class OcrUploads(models.Model):
 
         ext = strname[(strlen - 3)] + strname[(strlen - 2)] + strname[(strlen - 1)]
 
-        if ext == "JPG" or ext == "jpeg" or ext == "jpg":
-            image = "data:image/jpeg;base64," + str(attachment.datas.decode('ascii'))
-        elif ext == "pdf" or ext == "PDF":
-            image = "data:application/pdf;base64," + str(attachment.datas.decode('ascii'))
-        elif ext == "png" or ext == "PNG":
-            image = "data:image/png;base64," + str(attachment.datas.decode('ascii'))
-        elif ext == "iff" or ext == "tif" or ext == "TIF" or ext == "IFF":
-            image = "data:image/tiff;base64," + str(attachment.datas.decode('ascii'))
+        if upload.type == 'emitida_batch' or upload.type == 'recibida_batch':
+            if ext == "pdf" or ext == "PDF":
+                image = "data:application/pdf;base64," + str(attachment.datas.decode('ascii'))
+                djson = {
+                    "type": upload.type,
+                    "image": image,
+                    "client": upload.partner_id.vat,
+                }
+                d_json = json.dumps(djson)
+                return d_json
+            else:
+                raise ValidationError("El archivo de lotes debe ser PDF")
         else:
-            return False
+            if ext == "JPG" or ext == "jpeg" or ext == "jpg":
+                image = "data:image/jpeg;base64," + str(attachment.datas.decode('ascii'))
+            elif ext == "pdf" or ext == "PDF":
+                image = "data:application/pdf;base64," + str(attachment.datas.decode('ascii'))
+            elif ext == "png" or ext == "PNG":
+                image = "data:image/png;base64," + str(attachment.datas.decode('ascii'))
+            elif ext == "iff" or ext == "tif" or ext == "TIF" or ext == "IFF":
+                image = "data:image/tiff;base64," + str(attachment.datas.decode('ascii'))
+            else:
+                return False
 
-        djson = {
-            "type": upload.type,
-            "image": image,
-            "client": upload.partner_id.vat,
-        }
-        d_json = json.dumps(djson)
-        return d_json
+            djson = {
+                "type": upload.type,
+                "image": image,
+                "client": upload.partner_id.vat,
+            }
+            d_json = json.dumps(djson)
+            return d_json
 
     @api.multi
-    def create_ocr_transaction(self, token, attachment, upload):
+    def create_ocr_transaction(self, token, attachment, pre, nxt, upload):
 
         if upload.type == "emitida":
             type_doc = "out_invoice"
         if upload.type == "recibida":
+            type_doc = "in_invoice"
+        if upload.type == "emitida_batch":
+            type_doc = "out_invoice"
+        if upload.type == "recibida_batch":
             type_doc = "in_invoice"
 
         ocr_transaction_id = self.env['ocr.transactions'].create({
@@ -111,7 +130,9 @@ class OcrUploads(models.Model):
             'type': type_doc,
             'name': upload.partner_id.vat,
             'token': token,
-            'attachment_id': attachment.id ,
+            'attachment_id': attachment.id,
+            'previus_token': pre,
+            'next_token': nxt,
             #'create_date': transactions_by_state['created_at'],
         })
         return ocr_transaction_id
@@ -171,8 +192,43 @@ class OcrUploads(models.Model):
 
                 if response.status_code == 200:
                     res = json.loads(response.content.decode('utf-8'))
-                    ocr_transaction_id = self.create_ocr_transaction(res['token'], attachment, self)
-                    self.ocr_transaction_ids = [(4, ocr_transaction_id.id)]
+                    # Ahora nos puede mandar una lista
+                    if 'tokens' in res:
+                        print(res['tokens'])
+                        print(len(res['tokens']))
+                        list = res['tokens']
+                        for idx, token in enumerate(list):
+                            if token != 'null':
+                                #previus, next = self.get_side_tokens(token, res['tokens'])
+                                print("DEBUGG")
+                                print(idx)
+                                print(token)
+                                print("Token anterior")
+                                if idx == 0 or list[idx - 1] == 'null':
+                                    pre = 'null'
+                                else:
+                                    pre = list[(idx - 1) % len(list)]
+                                print(pre)
+                                print("Token siguiente")
+                                if idx >= (len(list)-1) or (list[(idx + 1) % len(list)]) == 'null':
+                                    nxt = 'null'
+                                else:
+                                    nxt = list[(idx + 1) % len(list)]
+                                print(nxt)
+
+                                ocr_transaction_id = self.create_ocr_transaction(
+                                    token, attachment, pre, nxt, self
+                                )
+                                self.ocr_transaction_ids = [(4, ocr_transaction_id.id)]
+                            else:
+                                self.upload_transaction_error = str(self.upload_transaction_error) + \
+                                                                " Error " + \
+                                                                str(attachment.datas_fname) + 'OCR post NULL'
+                    else:
+                        ocr_transaction_id = self.create_ocr_transaction(
+                            res['token'], attachment, False, False, self
+                        )
+                        self.ocr_transaction_ids = [(4, ocr_transaction_id.id)]
                 else:
                     self.state = "error"
                     try:
@@ -187,8 +243,8 @@ class OcrUploads(models.Model):
                     _logger.info(
                         "Error from OCR server  %s" % self.upload_transaction_error
                     )
-        if self.state != "error":
-            self.state = "sending"
+            if self.state != "error":
+                self.state = "sending"
 
 
 

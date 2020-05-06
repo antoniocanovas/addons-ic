@@ -24,6 +24,7 @@
         'data/ocr_queue_job.xml',
         'data/ocr_dbcopy_post_actions_job.xml',
         'data/dictionary_data.xml',
+        'wizards/ocr_invoice_combination.xml',
     ],
     'installable': True,
 }
