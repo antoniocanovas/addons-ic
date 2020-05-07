@@ -1,6 +1,6 @@
 {
     'name': 'OCR transactions',
-    'version': '12.0.10.0.3',
+    'version': '12.0.10.0.4',
     'category': '',
     'description': u"""
 
@@ -22,6 +22,7 @@
         'data/ocr_queue_job.xml',
         'data/ocr_dbcopy_post_actions_job.xml',
         'data/dictionary_data.xml',
+        'views/template.xml',
         'wizards/ocr_invoice_combination.xml',
     ],
     'installable': True,

@@ -21,4 +21,4 @@ class CorrectionPortal(http.Controller):
             'apikey': request.env.user.company_id.api_key,
             'invoice': invoice,
         }
-        return request.render("ocr_sync_invoice.redirect_correction_form", values)
+        return request.render("ocr_transactions.redirect_correction_form", values)

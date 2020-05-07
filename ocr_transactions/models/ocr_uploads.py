@@ -194,27 +194,19 @@ class OcrUploads(models.Model):
                     res = json.loads(response.content.decode('utf-8'))
                     # Ahora nos puede mandar una lista
                     if 'tokens' in res:
-                        print(res['tokens'])
-                        print(len(res['tokens']))
                         list = res['tokens']
                         for idx, token in enumerate(list):
                             if token != 'null':
-                                #previus, next = self.get_side_tokens(token, res['tokens'])
-                                print("DEBUGG")
-                                print(idx)
-                                print(token)
-                                print("Token anterior")
+
                                 if idx == 0 or list[idx - 1] == 'null':
                                     pre = 'null'
                                 else:
                                     pre = list[(idx - 1) % len(list)]
-                                print(pre)
-                                print("Token siguiente")
+
                                 if idx >= (len(list)-1) or (list[(idx + 1) % len(list)]) == 'null':
                                     nxt = 'null'
                                 else:
                                     nxt = list[(idx + 1) % len(list)]
-                                print(nxt)
 
                                 ocr_transaction_id = self.create_ocr_transaction(
                                     token, attachment, pre, nxt, self

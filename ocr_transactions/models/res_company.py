@@ -19,6 +19,7 @@ except ImportError:
     _logger.debug('Can not `import queue_job`.')
     import functools
 
+
 class ResCompany(models.Model):
     _inherit = 'res.company'
 

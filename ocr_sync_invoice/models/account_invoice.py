@@ -39,16 +39,6 @@ class AccountInvoice(models.Model):
     to_correct = fields.Boolean("For correction portal", default=False)
 
     @api.multi
-    def post_correction_form(self):
-
-        self.to_correct = True
-
-        return {'type': 'ir.actions.act_url',
-                'url': '/invoice/correction',
-                'target': 'current',
-                }
-
-    @api.multi
     def prepare_invoice_send(self):
 
         for invoice in self:

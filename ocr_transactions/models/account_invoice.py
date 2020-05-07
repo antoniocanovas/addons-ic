@@ -10,12 +10,27 @@ class AccountInvoice(models.Model):
 
     ocr_transaction_id = fields.Many2one('ocr.transactions', string='OCR', readonly=True)
     customer_id = fields.Many2one('res.partner', readonly=True, string='Customer')
+    to_correct = fields.Boolean("For correction portal", default=False)
+
+    @api.multi
+    def post_correction_form(self):
+
+        self.to_correct = True
+
+        return {'type': 'ir.actions.act_url',
+                'url': '/invoice/correction',
+                'target': 'current',
+                }
 
     @api.multi
     def invoice_combination_wizard(self):
 
         if self.ocr_transaction_id:
             view_id = self.env.ref('ocr_transactions.invoice_combination_view').id
+            attachment = False
+            for msg in self.message_ids:
+                if msg.body == "<p>created with OCR Documents</p>":
+                    attachment = msg.attachment_ids[0].datas
 
             return {
                 'name': _("Combinar Facturas"),
@@ -27,7 +42,9 @@ class AccountInvoice(models.Model):
                 'target': 'new',
                 'context': {
                     'default_ocr_transaction_id': self.ocr_transaction_id.id,
-                    'default_attachment_datas': self.message_main_attachment_id.datas,
+                    'default_invoice_id_link': self.ocr_transaction_id.invoice_id.id,
+                    #'default_attachment_datas': self.message_main_attachment_id.datas,
+                    'default_attachment_datas': attachment,
                     'default_original_ocr_transaction_id': self.ocr_transaction_id.id,
                 }
             }
