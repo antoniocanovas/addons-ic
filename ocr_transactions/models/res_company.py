@@ -99,6 +99,8 @@ class ResCompany(models.Model):
     def create_invoices(self, transactions_processed, api_transaction_url, header):
         for t in transactions_processed:
             invoice = self.env['account.invoice'].sudo().search([("ocr_transaction_id.token", "=", t.token)])
+            previus_ocr_values = self.env['ocr.values'].sudo().search([("token", "=", t.token)])
+
             if invoice:
                 if not invoice.invoice_line_ids:
                     api_transaction_url_token = "%s%s" % (api_transaction_url, t.token)
@@ -110,13 +112,23 @@ class ResCompany(models.Model):
                             ocr_values = self.env['ocr.values'].sudo().search([
                                 ('token', '=', t.token),
                                 ('name', '=', v["ERPName"])])
-                            ocr_values.value = v["Value"]["Text"]
+
+                            for ocrv in ocr_values:
+                                ocrv.value = v["Value"]["Text"]
+                        for v in p_invoice["result"]["extended"].values():
+                            ocr_values = self.env['ocr.values'].sudo().search([
+                                ('token', '=', t.token),
+                                ('name', '=', v["ERPName"])])
+
+                            for ocrv in ocr_values:
+                                ocrv.value = v["Value"]["Text"]
                         t.state = 'downloaded'
                 else:
                     t.state = 'downloaded'
-            else:
+            elif not previus_ocr_values:
                 api_transaction_url_token = "%s%s" % (api_transaction_url, t.token)
                 p_invoice = self.get_documents_data(api_transaction_url_token, header)
+
                 if p_invoice:
                     t.json_text = p_invoice
                     for v in p_invoice["result"]["basic"].values():
@@ -126,7 +138,14 @@ class ResCompany(models.Model):
                             'value': v["Value"]["Text"],
                             'ocr_transaction_id': t.id,
                         })
-                        t.state = 'downloaded'
+                    for v in p_invoice["result"]["extended"].values():
+                        self.env['ocr.values'].sudo().create({
+                            'token': t.token,
+                            'name': v["ERPName"],
+                            'value': v["Value"]["Text"],
+                            'ocr_transaction_id': t.id,
+                        })
+                    t.state = 'downloaded'
 
                     partner_vat = self.env['ocr.values'].sudo().search([
                         ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
@@ -153,14 +172,16 @@ class ResCompany(models.Model):
                         })
                     if partner:
                         date = self.env['ocr.values'].sudo().search([
-                            ('token', '=', t.token), ('name', '=', 'Fecha')])
+                            ('token', '=', t.token), ('name', '=', 'Fecha')], limit=1)
+
                         if date.value:
                             date_invoice = datetime.strptime(date.value, '%d/%m/%Y').date()
                         else:
                             date_invoice = False
 
                         reference = self.env['ocr.values'].sudo().search([
-                            ('token', '=', t.token), ('name', '=', 'NumFactura')])
+                            ('token', '=', t.token), ('name', '=', 'NumFactura')], limit=1)
+
                         if not reference:
                             reference_value = False
                         else:

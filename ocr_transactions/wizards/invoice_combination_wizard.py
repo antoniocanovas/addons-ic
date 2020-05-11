@@ -7,17 +7,36 @@ import io
 from odoo import fields, models, api
 from odoo.exceptions import ValidationError
 
+
 class InvoiceCombination(models.TransientModel):
     _name = 'ocr.invoice.combination'
     _description = 'Invoice Combination'
-
-    #ocr_transaction_ids = fields.Many2one('ocr.transactions', string='Factura')
-    #invoice_id = fields.Many2one('ir.attachment', string='Factura')
 
     original_ocr_transaction_id = fields.Many2one('ocr.transactions', string='Factura')
     ocr_transaction_id = fields.Many2one('ocr.transactions', string='Factura')
     attachment_datas = fields.Binary(string='Documento', attachment=True)
     invoice_id_link = fields.Many2one('account.invoice', string='Enlace a Factura')
+
+    @api.multi
+    def show_invoice(self):
+        self.ensure_one()
+        if self.ocr_transaction_id.invoice_id:
+            try:
+                form_view_id = self.env.ref("ocr_transactions.ocr_account_invoice_form").id
+            except Exception as e:
+                form_view_id = False
+            return {
+                'type': 'ir.actions.act_window',
+                'name': 'action_ocr_in_invoice',
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_model': 'account.invoice',
+                'res_id': self.ocr_transaction_id.invoice_id.id,
+                'views': [(form_view_id, 'form')],
+                'target': 'current',
+            }
+        else:
+            raise ValidationError("No hay Factura asociada")
 
     @api.multi
     def show_previus_invoice(self):
@@ -165,6 +184,11 @@ class InvoiceCombination(models.TransientModel):
         image2 = Image.open(image_stream2)
 
         if original.previus_token == combined.token:
+            #Reordenamos si van en orden inverso
+            # Revisar asignación de tokens
+            #t_combined = combined
+            #combined = original
+            #original = t_combined
             pages = [image2, image]
         else:
             pages = [image, image2]
@@ -176,6 +200,7 @@ class InvoiceCombination(models.TransientModel):
                 with open('/tmp/tmp_combined_img.jpg', "rb") as img_file:
                     img_file_encode = base64.b64encode(img_file.read())
             except Exception as e:
+                img_file_encode = False
                 raise ValidationError(("Ha habido un problema al tratar la imagen, pruebe de nuevo: %s\n" % e))
 
             attachment_id = self.env['ir.attachment'].sudo().create({
@@ -206,6 +231,22 @@ class InvoiceCombination(models.TransientModel):
                 self.combine_values(original, combined)
 
                 combined.invoice_id.unlink()
+
+                #return vista de factura resultante
+                #try:
+                #    form_view_id = self.env.ref("my_module.my_form_view_external_id").id
+                #except Exception as e:
+                #    form_view_id = False
+                #return {
+                #    'type': 'ir.actions.act_window',
+                #    'name': 'My Action Name',
+                #    'view_type': 'form',
+                #    'view_mode': 'form',
+                #    'res_model': 'my.model',
+                #    'res_id': ''
+                #    'views': [(form_view_id, 'form')],
+                #    'target': 'current',
+                #}
 
             else:
                 raise ValidationError(("Ha habido un problema al tratar la imagen, pruebe de nuevo en unos instantes"))

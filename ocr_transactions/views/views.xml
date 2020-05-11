@@ -13,7 +13,8 @@
                         <field name="type"/>
                         <field name="state"/>
                         <field name="ocr_upload_id"/>
-                        <field name="invoice_id"/>
+                        <field name="invoice_reference"/>
+                        <!--context="{'form_view_ref': 'ocr_transactions.ocr_account_invoice_form'}" />-->
                     </group>
                     <notebook colspan="4">
                         <page string="Valores">
@@ -36,7 +37,12 @@
                             </group>
                         </page>
                     </notebook>
+                    <footer>
+                    <button t-if="invoice_id" name="show_invoice" string="Ver Factura" class="oe_right oe_highlight"
+                            type="object"/>
+                </footer>
                 </sheet>
+
             </form>
         </field>
         <field name="field_parent" eval="False"/>
@@ -166,6 +172,7 @@
                     <notebook colspan="4">
                         <page string="Documentos">
                             <field name="attachment_ids" widget="many2many_binary" attrs="{'invisible':[('state','!=','draft')]}"/>
+                            <!--<field name="attachment_ids" attrs="{'invisible':[('state','!=','draft')]}"/>-->
                             <field name="ocr_transaction_ids" readonly="True" attrs="{'invisible':[('state','=','draft')]}"/>
                             <separator/>
                             Formatos soportados: jpeg, pdf y jpg
@@ -235,7 +242,7 @@
     <record id="ocr_account_invoice_form" model="ir.ui.view">
         <field name="name">ocr.account.invoice.form</field>
         <field name="model">account.invoice</field>
-        <field name="priority">99</field>
+        <field name="priority">15</field>
         <field name="arch" type="xml">
             <form string="Factura de proveedor">
                 <header>
@@ -248,13 +255,9 @@
                             'invisible':['|',('invoice_line_ids','==',True),('ocr_transaction_id','==', False)]
                         }" />
                     <button name="post_correction_form" string="Go correction portal" type="object"
-                        class="oe_highlight"/>
+                            class="oe_highlight"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,open,paid" invisible="1" />
                 </header>
-                <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': [('has_outstanding','=',False)]}">
-                    You have <bold><a class="alert-link" href="#outstanding" role="button">outstanding debits</a></bold> for this supplier. You can allocate them to mark this bill as paid.
-                </div>
-                <field name="has_outstanding" invisible="1"/>
                 <sheet string="Factura de proveedor">
 
                     <field name="type" invisible="1"/>

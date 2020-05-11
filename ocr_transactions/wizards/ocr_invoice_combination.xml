@@ -10,8 +10,18 @@
         <field name="arch" type="xml">
             <form>
                 <group>
-                    <field name="invoice_id_link" readonly="True" />
-                    <field name="attachment_datas" widget='image' readonly="True"/>
+                    <button t-if="invoice_id" name="show_invoice" string="Ver Factura" class="oe_left oe_highlight"
+                            type="object"/>
+                </group>
+                <group>
+                        <div><field name="attachment_datas" widget='image' readonly="True" class="o_attachment_preview"/></div>
+                </group>
+                <group>
+                    <div>
+                        <!--<div><field name="attachment_datas" widget='image' readonly="True" class="o_attachment_preview"/></div>-->
+                        <div><field name="attachment_datas" widget='image' readonly="True"/></div>
+                        <!--<div><field name="attachment_datas" widget='image' readonly="True" class="o_attachment_preview"/></div>-->
+                    </div>
                 </group>
 
 

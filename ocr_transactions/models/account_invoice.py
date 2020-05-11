@@ -32,6 +32,18 @@ class AccountInvoice(models.Model):
                 if msg.body == "<p>created with OCR Documents</p>":
                     attachment = msg.attachment_ids[0].datas
 
+            #if self.ocr_transaction_id.token_list:
+            #    transactions_list = []
+            #    print(self.ocr_transaction_id.token_list)
+            #    for key in self.ocr_transaction_id.token_list:
+            #        print(key)
+            #        ocr_trans = self.env['ocr.transactions'].sudo().search([
+            #            ('token', '=', key)
+            #        ])
+            #        transactions_list.append(ocr_trans.id)
+
+            #    print(transactions_list)
+
             return {
                 'name': _("Combinar Facturas"),
                 'type': 'ir.actions.act_window',

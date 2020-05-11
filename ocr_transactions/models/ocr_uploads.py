@@ -113,7 +113,7 @@ class OcrUploads(models.Model):
             return d_json
 
     @api.multi
-    def create_ocr_transaction(self, token, attachment, pre, nxt, upload):
+    def create_ocr_transaction(self, token, attachment, pre, nxt, upload, list):
 
         if upload.type == "emitida":
             type_doc = "out_invoice"
@@ -133,6 +133,7 @@ class OcrUploads(models.Model):
             'attachment_id': attachment.id,
             'previus_token': pre,
             'next_token': nxt,
+            'token_list': list,
             #'create_date': transactions_by_state['created_at'],
         })
         return ocr_transaction_id
@@ -209,7 +210,7 @@ class OcrUploads(models.Model):
                                     nxt = list[(idx + 1) % len(list)]
 
                                 ocr_transaction_id = self.create_ocr_transaction(
-                                    token, attachment, pre, nxt, self
+                                    token, attachment, pre, nxt, self, list
                                 )
                                 self.ocr_transaction_ids = [(4, ocr_transaction_id.id)]
                             else:
@@ -218,7 +219,7 @@ class OcrUploads(models.Model):
                                                                 str(attachment.datas_fname) + 'OCR post NULL'
                     else:
                         ocr_transaction_id = self.create_ocr_transaction(
-                            res['token'], attachment, False, False, self
+                            res['token'], attachment, False, False, self, False
                         )
                         self.ocr_transaction_ids = [(4, ocr_transaction_id.id)]
                 else:

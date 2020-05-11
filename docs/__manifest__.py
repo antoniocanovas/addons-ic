@@ -7,7 +7,6 @@
 """,
     'author': 'Serincloud',
     'depends': [
-        'expedients',
         'project_task_contacts',
         'project_task_project_contacts',
     ],
