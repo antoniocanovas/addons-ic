@@ -1,0 +1,103 @@
+<odoo>
+    <template id="portal_my_home_menu_docs_docs" name="Portal layout : Docs menu entries" inherit_id="portal.portal_breadcrumbs" priority="99">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'doc'" t-attf-class="breadcrumb-item #{'active ' if not doc else ''}">
+                <a t-if="doc" t-attf-href="/my/docs?{{ keep_query() }}">Docs</a>
+                <t t-else="">Docs</t>
+            </li>
+            <li t-if="doc" class="breadcrumb-item active">
+                <t t-esc="doc.name" t-if="doc.name"/>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_docs_docs" name="Portal My Home : Docs entries" inherit_id="portal.portal_my_home" priority="99">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-if="doc_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Docs</t>
+                <t t-set="url" t-value="'/my/docs'"/>
+                <t t-set="count" t-value="doc_count"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_my_docs" name="Mis Docs">
+      <t t-call="portal.portal_layout">
+        <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+        <t t-call="portal.portal_searchbar">
+            <t t-set="title">Docs</t>
+        </t>
+        <t t-if="not docs">
+            <p>There are currently no Docs for your account.</p>
+        </t>
+        <t t-if="docs" t-call="portal.portal_table">
+            <thead>
+                <tr class="active">
+                    <th>Doc #</th>
+                    <th>Tipo</th>
+                    <th class='d-none d-md-table-cell'>Tarea</th>
+                    <th>Fecha</th>
+                    <th/>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="docs" t-as="doc">
+                    <tr>
+                        <td>
+                            <a t-attf-href="/my/docs/#{doc.id}?#{keep_query()}" t-att-title="doc.name">
+                                <t t-esc="doc.name" t-if="doc.name"/>
+                            </a>
+                        </td>
+                        <td><span t-field="doc.type_id"/></td>
+                        <td class='d-none d-md-table-cell'><span t-field="doc.task_id"/></td>
+                        <td><span t-field="doc.write_date"/></td>
+                    </tr>
+                </t>
+            </tbody>
+        </t>
+      </t>
+    </template>
+
+    <template id="portal_doc_page" name="Doc Portal Template" inherit_id="portal.portal_sidebar" primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+
+
+            <div class="row mt16 o_portal_invoice_sidebar">
+                <!-- Sidebar -->
+                <t t-call="portal.portal_record_sidebar">
+                    <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
+
+                    <t t-set="entries">
+                        <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                            <li class="list-group-item flex-grow-1">
+                                <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
+                                    <div class="btn-group  flex-grow-1 mr-1 mb-1">
+                                        <a class="btn btn-secondary btn-block o_download_btn" t-att-href="doc.get_portal_url(report_type='pdf', download=True)" title="Download"><i class="fa fa-download"/> Descargar</a>
+                                    </div>
+                                    <div class="btn-group flex-grow-1 mb-1">
+                                        <a class="btn btn-secondary btn-block o_print_btn o_portal_invoice_print" t-att-href="doc.get_portal_url(report_type='pdf')" id="print_doc_report" title="Print" target="_blank"><i class="fa fa-print"/> Imprimir</a>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </t>
+                </t>
+
+                <!-- Page Content -->
+                <div id="invoice_content" class="o_portal_page_content col-12 col-lg d-flex flex-column align-items-end">
+                    <div class="o_portal_page_size">
+                        <div class="o_portal_html_view shadow">
+                            <div class="o_portal_html_loader text-center">
+                                <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw text-black-50"></i>
+                            </div>
+                            <iframe id="doc_html"  width="100%" height="200%" frameborder="0" scrolling="no" t-att-src="doc.get_portal_url(report_type='html')"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

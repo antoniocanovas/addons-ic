@@ -1,6 +1,6 @@
 {
     'name': 'Docs',
-    'version': '12.0.4.0',
+    'version': '12.0.5.0',
     'category': 'Projects',
     'description': u"""
 
@@ -15,8 +15,10 @@
         'views/templates.xml',
         'views/docs_report.xml',
         'data/mail_template_data.xml',
+        'data/ir_rule.xml',
         'views/views.xml',
         'views/views_menu.xml',
+        'views/docs_portal.xml',
     ],
-    'installable':True,
+    'installable': True,
 }

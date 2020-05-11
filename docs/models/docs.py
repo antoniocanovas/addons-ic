@@ -8,7 +8,7 @@ from odoo.exceptions import AccessError, UserError, RedirectWarning, ValidationE
 
 class Docs(models.Model):
     _name = 'docs.docs'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['portal.mixin', 'mail.thread', 'mail.activity.mixin']
     _description = 'Docs for Expedients'
 
     name = fields.Char(string="Name")
@@ -57,6 +57,20 @@ class Docs(models.Model):
             record['body'] = record.type_id.body_id.text
 
     body = fields.Html(string='Body', compute=_get_body_text, readonly=False, store=True)
+
+    @api.multi
+    def preview_invoice(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_url',
+            'target': 'self',
+            'url': self.get_portal_url(),
+        }
+
+    def _compute_access_url(self):
+        super(Docs, self)._compute_access_url()
+        for doc in self:
+            doc.access_url = '/my/docs/%s' % (doc.id)
 
     @api.multi
     def _get_report_base_filename(self):
