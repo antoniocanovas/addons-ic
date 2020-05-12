@@ -78,6 +78,7 @@
                         <field name="attachment_datas" filename="attachment_name" readonly="True" attrs="{'readonly':[('state','!=','draft')]}"/>
                         <field name="attachment_name" invisible="1"/>
                         <field name="implied_ids" domain="[('project_id','=',project_id)]" colspan="4" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="is_public"/>
                     </group>
                     <group col="2" attrs="{'invisible':[('id','=',False)]}">
 

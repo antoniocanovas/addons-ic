@@ -19,6 +19,7 @@ class Docs(models.Model):
     attachment_datas = fields.Binary(string='Attachment')
     attachment_name = fields.Char(string='Attachment Name')
     implied_ids = fields.Many2many('project.task.contacts', string='Implied')
+    is_public = fields.Boolean('Es público')
     user_id = fields.Many2one(
         'res.users',
         string='Salesman',
