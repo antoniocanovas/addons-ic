@@ -104,6 +104,15 @@
                     </div>
                 </div>
             </div>
+            <div class="mt32">
+                <h4><strong> Mensajes </strong></h4>
+                <t t-call="portal.message_thread">
+                    <t t-set="object" t-value="doc"/>
+                    <t t-set="token" t-value="doc.access_token"/>
+                    <t t-set="pid" t-value="pid"/>
+                    <t t-set="hash" t-value="hash"/>
+                </t>
+            </div>
 
         </xpath>
     </template>
