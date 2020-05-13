@@ -38,6 +38,15 @@ class AccountInvoice(models.Model):
     invoice_sync_error = fields.Char('Error')
     to_correct = fields.Boolean("For correction portal", default=False)
 
+    @api.constrains('ocr_transaction_id')
+    def check_customer_id(self):
+        for invoice in self:
+            if invoice.ocr_transaction_id:
+                pc = self.env['partner.credentials'].sudo().search([
+                    ('partner_id.vat', '=', self.ocr_transaction_id.name)], limit=1)
+                invoice.customer_id = pc.partner_id.id
+                # invoice.customer_id = invoice.ocr_transaction_id.ocr_upload_id.partner_id.id
+
     @api.multi
     def prepare_invoice_send(self):
 

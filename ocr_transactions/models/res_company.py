@@ -27,7 +27,7 @@ class ResCompany(models.Model):
         string='Api Key',
     )
     api_domain = fields.Char(
-        default='http://biyectiva.com:5000',
+        default='https://ocr.biyectiva.com:6000',
         string='Api Url'
     )
     last_connection_date = fields.Date('Last connection date')
@@ -202,6 +202,7 @@ class ResCompany(models.Model):
                                 'date_invoice': date_invoice,
                                 'ocr_transaction_id': t.id
                             })
+
                     if invoice:
                         t.invoice_id = invoice.id
                         attachment = self.generate_attachment(p_invoice['image'], header, invoice, t)

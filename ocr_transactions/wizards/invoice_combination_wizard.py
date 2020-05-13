@@ -155,17 +155,24 @@ class InvoiceCombination(models.TransientModel):
 
     @api.multi
     def combine_values(self, original, combined):
-        if combined.value_ids:
-            for value in combined.value_ids:
+        original_values = []
+        for value in original.value_ids:
+            original_values.append(value.name)
+        for value in combined.value_ids:
+            if value.name not in original_values:
                 value.ocr_transaction_id = original.id
                 value.token = original.token
 
+        #for value in combined.value_ids:
+        #    value.ocr_transaction_id = original.id
+        #    value.token = original.token
+
     @api.multi
     def invoice_combination(self):
-
         #check consecutive invoices
         original = self.original_ocr_transaction_id
         combined = self.ocr_transaction_id
+        self.combine_values(original, combined)
         if original.next_token != combined.token and original.previus_token != combined.token:
             raise ValidationError(("Las facturas seleccionadas no son consecutivas"))
 
