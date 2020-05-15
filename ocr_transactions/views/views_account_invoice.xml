@@ -1,0 +1,17 @@
+<odoo>
+
+    <record id="view_invoice_supplier_tree_ocr_transactions_inh" model="ir.ui.view">
+        <field name="name">Supplier tree inh ocr transactions</field>
+        <field name="model">account.invoice</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="account.invoice_supplier_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='state']" position="after">
+                 <field name="ocr_delivery_invoice" invisible="1"/>
+                <field name="is_ocr" readonly="True" attrs="{'column_invisible':[('ocr_delivery_invoice','!=',False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

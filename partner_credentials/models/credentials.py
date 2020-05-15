@@ -12,7 +12,7 @@ class PartnerCredentials(models.Model):
     type = fields.Selection([
         ('odoo', 'Odoo'), ('web', 'Web')
     ])
-    partner_id = fields.Many2one('res.partner',string='Partner')
+    partner_id = fields.Many2one('res.partner', string='Partner')
     user = fields.Char('User')
     password = fields.Char('Password')
     public = fields.Boolean('Public')

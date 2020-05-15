@@ -7,6 +7,7 @@ from odoo import fields, models, api
 class PartnerCredentialsFields(models.Model):
     _inherit = 'res.partner'
 
+
     def _get_credentials(self):
         results = self.env['partner.credentials'].search([('partner_id', '=', self.id)])
         self.credentials_count = len(results)

@@ -157,16 +157,17 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <!--<button name="prepare_ocr_post_transactions" string="Send" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'enviado')]}"/>-->
-                    <button name="action_post_invoices" string="Send" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'enviado')]}"/>
+                    <button name="prepare_ocr_post_transactions" string="Send" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'enviado')]}"/>
+                    <!--<button name="action_post_invoices" string="Send" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'enviado')]}"/>-->
                     <field name="state" widget="statusbar" statusbar_visible="draft,sending,processing,done,error"/>
                 </header>
                 <sheet string="Ocr Uploads">
                     <h2>
-                        <field name="name" placeholder="Cliente y algo descriptivo ..."/>
+                        <field name="name" placeholder="Algo descriptivo ..."/>
                     </h2>
+                    <group><field name="ocr_delivery_upload" invisible="1"/></group>
                     <group col="4">
-                        <field name="partner_id"/>
+                        <field name="partner_credentials_id" attrs="{'invisible': [('ocr_delivery_upload', '!=', True)]}"/>
                         <field name="type"/>
                     </group>
                     <notebook colspan="4">
@@ -211,7 +212,6 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree decoration-info="state == 'draft'" decoration-muted="state == 'cancel'" decoration-bf="not partner_id" string="Vendor Bill" js_class="account_bills_tree">
-                <field name="customer_id" string="Cliente"/>
                 <field name="partner_id" invisible="1"/>
                 <field name="invoice_icon" string=" "/>
                 <field name="vendor_display_name" groups="base.group_user" string="Proveedor"/>
@@ -246,13 +246,17 @@
         <field name="arch" type="xml">
             <form string="Factura de proveedor">
                 <header>
+                    <field name="ocr_delivery_invoice" invisible="1"/>
+                    <button name="action_invoice_open" type="object" string="Validar"
+                            class="oe_highlight" attrs="{
+                            'invisible':[('ocr_delivery_invoice','=',True)]}"/>
                     <button name="create_invoice_lines_from_ocr" string="Generate Lines" type="object"
                             class="oe_highlight" attrs="{
-                            'invisible':['|',('invoice_line_ids','==',True),('ocr_transaction_id','==', False)]
+                            'invisible':['|',('invoice_line_ids','=',True),('ocr_transaction_id','=', False)]
                         }" />
                     <button name="invoice_combination_wizard" string="Invoice Combination" type="object"
                             class="oe_highlight" attrs="{
-                            'invisible':['|',('invoice_line_ids','==',True),('ocr_transaction_id','==', False)]
+                            'invisible':['|',('invoice_line_ids','=',True),('ocr_transaction_id','=', False)]
                         }" />
                     <button name="post_correction_form" string="Go correction portal" type="object"
                             class="oe_highlight"/>
@@ -268,13 +272,12 @@
                                    context="{'default_customer': 0, 'search_default_supplier': 1, 'default_supplier': 1, 'default_is_company': True, 'show_vat': True}"
                                    domain="[('supplier', '=', True)]"/>
                             <field name="reference" string="Referencia"/>
-                            <field name="ocr_transaction_id"/>
-
+                            <field name="ocr_transaction_id" groups="base.group_system"/>
                         </group>
                         <group>
                             <field name="date_invoice" string="Fecha Factura" options="{'datepicker': {'warn_future': true}}"/>
-                            <field name="customer_id"/>
                             <field name="move_name" invisible="1"/>
+
                             <field name="company_currency_id" invisible="1"/>
                             <field name="commercial_partner_id" invisible="1"/>
                         </group>

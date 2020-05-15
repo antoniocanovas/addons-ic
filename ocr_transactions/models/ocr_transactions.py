@@ -17,6 +17,7 @@ class OcrTransactions(models.Model):
     state = fields.Char('Status')
     type = fields.Char('Type')
     name = fields.Char('Customer')
+    customer_vat = fields.Char('vat')
     value_ids = fields.One2many('ocr.values', 'ocr_transaction_id')
     ocr_upload_id = fields.Many2one('ocr.uploads')
     json_text = fields.Char('Json')

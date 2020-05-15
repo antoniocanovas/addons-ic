@@ -35,18 +35,33 @@ class ResCompany(models.Model):
         comodel_name='queue.job', column1='company_id', column2='job_id',
         string="Connector Jobs", copy=False,
     )
+    ocr_delivery_company = fields.Boolean('Gestiona OCR de clientes', default=False)
 
     @api.multi
-    def get_header(self):
-        api_key = self.env.user.company_id.api_key
+    def create_apikey_list(self):
+        ApiKeys = []
+        if self.ocr_delivery_company:
+            ocr_clients = self.env['partner.credentials'].sudo().search([])
+            for client in ocr_clients:
+                if client.client_api_key:
+                    ApiKeys.append(client.client_api_key)
+        if self.env.user.company_id.api_key:
+            ApiKeys.append(self.env.user.company_id.api_key)
+        if len(ApiKeys) > 0:
+            print(ApiKeys)
+            return ApiKeys
+        else:
+            print(ApiKeys)
+            raise ValidationError(
+                "You must set Api Key in company and/or credentials form.")
+
+    @api.multi
+    def get_header(self, api_key):
         if api_key:
             header = {
                 'X-API_KEY': api_key,
             }
             return header
-        else:
-            raise ValidationError(
-                "You must set Api Key in company form.")
 
     @api.multi
     def get_documents_data(self, api_transaction_url, headers):
@@ -67,16 +82,25 @@ class ResCompany(models.Model):
         for i in range(len(transactions_by_state['FACTURAS'])):
 
             token = transactions_by_state['FACTURAS'][i]['token']
-            exist = self.env['ocr.transactions'].search([("token", "=", token)], limit=1)
+            client = transactions_by_state['FACTURAS'][i]['client']
+            exist = self.env['ocr.transactions'].search([
+                ("token", "=", token),
+                ("name", "=", client)
+            ], limit=1)
             # No se Borran facturas, solo actualizamos el transaction si no hay líneas de factura
             # Si hay lineas no debe actualizar estado
             if exist.token:
-                if exist.state == "downloaded":
-                    invoice = self.env['account.invoice'].sudo().search([("ocr_transaction_id.token", "=", token)])
-                    if not invoice.invoice_line_ids:
-                        exist.state = transactions_by_state['FACTURAS'][i]['status']
-                elif exist.state != transactions_by_state['FACTURAS'][i]['status']:
+                if exist.state != transactions_by_state['FACTURAS'][i]['status']:
                     exist.state = transactions_by_state['FACTURAS'][i]['status']
+                #if exist.state == "downloaded":
+                #    invoice = self.env['account.invoice'].sudo().search([
+                #        ("ocr_transaction_id.token", "=", token),
+                #        ("ocr_transaction_id.name", "=", client)
+                #    ], limit=1)
+                #    if not invoice.invoice_line_ids:
+                #        exist.state = transactions_by_state['FACTURAS'][i]['status']
+                #elif exist.state != transactions_by_state['FACTURAS'][i]['status']:
+                #    exist.state = transactions_by_state['FACTURAS'][i]['status']
             else:
                 type_doc = transactions_by_state['FACTURAS'][i]['type']
                 if transactions_by_state['FACTURAS'][i]['type'] == "emitida":
@@ -96,55 +120,80 @@ class ResCompany(models.Model):
                 })
 
     @api.multi
+    def update_transactions_error_code(self, transactions_with_errors, api_transaction_url, header):
+        for t in transactions_with_errors:
+            print("Transactions with errors")
+            api_transaction_url_token = "%s%s" % (api_transaction_url, t.token)
+            ocr_document_data = self.get_documents_data(api_transaction_url_token, header)
+            t.json_text = ocr_document_data
+            if ocr_document_data:
+                if ocr_document_data["result"]["status"] == "ERROR":
+                    t.transaction_error = ocr_document_data["result"]["reason"]
+                    t.state = 'downloaded'
+
+    @api.multi
+    def ocr_update_values(self, t, ocr_document_data, type_values):
+
+        for v in ocr_document_data["result"][type_values].values():
+            ocr_values = self.env['ocr.values'].sudo().search([
+                ('token', '=', t.token),
+                ('name', '=', v["ERPName"])])
+            print("Cuantos Values", ocr_values)
+            for ocrv in ocr_values:
+                ocrv.value = v["Value"]["Text"]
+            if not ocr_values:
+                print("No existía")
+                self.env['ocr.values'].sudo().create({
+                    'token': t.token,
+                    'name': v["ERPName"],
+                    'value': v["Value"]["Text"],
+                    'ocr_transaction_id': t.id,
+                })
+        t.state = 'downloaded'
+
+    @api.multi
     def create_invoices(self, transactions_processed, api_transaction_url, header):
         for t in transactions_processed:
-            invoice = self.env['account.invoice'].sudo().search([("ocr_transaction_id.token", "=", t.token)])
-            previus_ocr_values = self.env['ocr.values'].sudo().search([("token", "=", t.token)])
+            invoice = self.env['account.invoice'].sudo().search([
+                ("ocr_transaction_id.token", "=", t.token),
+                ("ocr_transaction_id.name", "=", t.name)
+            ], limit=1)
+            previus_ocr_values = self.env['ocr.values'].sudo().search([
+                ("ocr_transaction_id", "=", t.id)
+            ])
 
-            if invoice:
-                if not invoice.invoice_line_ids:
-                    api_transaction_url_token = "%s%s" % (api_transaction_url, t.token)
-                    p_invoice = self.get_documents_data(api_transaction_url_token, header)
+            api_transaction_url_token = "%s%s" % (api_transaction_url, t.token)
+            ocr_document_data = self.get_documents_data(api_transaction_url_token, header)
+            t.json_text = ocr_document_data
 
-                    if p_invoice:
-                        t.json_text = p_invoice
-                        for v in p_invoice["result"]["basic"].values():
-                            ocr_values = self.env['ocr.values'].sudo().search([
-                                ('token', '=', t.token),
-                                ('name', '=', v["ERPName"])])
-
-                            for ocrv in ocr_values:
-                                ocrv.value = v["Value"]["Text"]
-                        for v in p_invoice["result"]["extended"].values():
-                            ocr_values = self.env['ocr.values'].sudo().search([
-                                ('token', '=', t.token),
-                                ('name', '=', v["ERPName"])])
-
-                            for ocrv in ocr_values:
-                                ocrv.value = v["Value"]["Text"]
+            if ocr_document_data:
+                if invoice:
+                    print("Hay ocr docs and invoice")
+                    if not invoice.invoice_line_ids:
+                        basic_values = self.ocr_update_values(t, ocr_document_data, "basic")
+                        extended_values = self.ocr_update_values(t, ocr_document_data, "extended")
                         t.state = 'downloaded'
-                else:
-                    t.state = 'downloaded'
-            elif not previus_ocr_values:
-                api_transaction_url_token = "%s%s" % (api_transaction_url, t.token)
-                p_invoice = self.get_documents_data(api_transaction_url_token, header)
+                    else:
+                        t.state = 'downloaded'
 
-                if p_invoice:
-                    t.json_text = p_invoice
-                    for v in p_invoice["result"]["basic"].values():
+                elif not previus_ocr_values:
+                    print("Hay ocr doc pero no values previos")
+                    for v in ocr_document_data["result"]["basic"].values():
                         self.env['ocr.values'].sudo().create({
                             'token': t.token,
                             'name': v["ERPName"],
                             'value': v["Value"]["Text"],
                             'ocr_transaction_id': t.id,
                         })
-                    for v in p_invoice["result"]["extended"].values():
+                    for v in ocr_document_data["result"]["extended"].values():
                         self.env['ocr.values'].sudo().create({
                             'token': t.token,
                             'name': v["ERPName"],
                             'value': v["Value"]["Text"],
                             'ocr_transaction_id': t.id,
                         })
+                    if ocr_document_data["result"]["status"] == "ERROR":
+                        t.transaction_error = ocr_document_data["result"]["reason"]
                     t.state = 'downloaded'
 
                     partner_vat = self.env['ocr.values'].sudo().search([
@@ -193,19 +242,21 @@ class ResCompany(models.Model):
                                 'type': t.type,
                                 'reference': reference_value,
                                 'date_invoice': date_invoice,
-                                'ocr_transaction_id': t.id
+                                'ocr_transaction_id': t.id,
+                                'is_ocr': True,
                             })
                         else:
                             invoice = self.env['account.invoice'].sudo().create({
                                 'partner_id': partner.id,
                                 'type': t.type,
                                 'date_invoice': date_invoice,
-                                'ocr_transaction_id': t.id
+                                'ocr_transaction_id': t.id,
+                                'is_ocr': True,
                             })
 
                     if invoice:
                         t.invoice_id = invoice.id
-                        attachment = self.generate_attachment(p_invoice['image'], header, invoice, t)
+                        attachment = self.generate_attachment(ocr_document_data['image'], header, invoice, t)
                         body = "<p>created with OCR Documents</p>"
                         if attachment:
                             invoice.message_post(body=body, attachment_ids=[attachment.id])
@@ -295,26 +346,31 @@ class ResCompany(models.Model):
 
     @api.multi
     def action_get_invoices(self):
+        ########## Comprobamos si somos OCR Manager ####################
+        ApiKeys = self.create_apikey_list()
 
         ########## Actualmente solo traemos facturas ###################
         api_transaction_url = "%s/facturas/" % self.env.user.company_id.api_domain
-        header = self.get_header()
+        ########## Hacemos una consulta por cada ApiKey ################
+        for key in ApiKeys:
+            header = self.get_header(key)
 
-        transactions_by_state = self.get_documents_data(api_transaction_url, header)
-        ############### Control status donwloaded #######################
+            transactions_by_state = self.get_documents_data(api_transaction_url, header)
+            ############### Control status donwloaded #######################
+            if transactions_by_state:
+                self.create_queue_invoice_transactions(transactions_by_state)
 
-        if transactions_by_state:
-            self.create_queue_invoice_transactions(transactions_by_state)
+            transactions_processed = self.env['ocr.transactions'].search([
+                                                                            ("state", "=", 'processed'),
+                                                                        ], limit=10)
+            transactions_with_errors = self.env['ocr.transactions'].search([
+                                                                          ("state", "=", 'error'),
+                                                                          ], limit=10)
+            #if transactions_with_errors:
+            #    self.update_transactions_error_code(transactions_with_errors, api_transaction_url, header)
 
-        transactions_processed = self.env['ocr.transactions'].search([(
-            "state", "=", 'processed'
-        )], limit=10)
+            if transactions_processed:
+                self.create_invoices(transactions_processed, api_transaction_url, header)
+                self.mark_uploads_done(transactions_processed)
 
-        #No vamos a ordenar de momento
-        #transactions_processed_in_order = self.order_transactions(transactions_processed)
-
-        if transactions_processed:
-            self.create_invoices(transactions_processed, api_transaction_url, header)
-            self.mark_uploads_done(transactions_processed)
-
-        self.last_connection_date = datetime.now().date()
+            self.last_connection_date = datetime.now().date()

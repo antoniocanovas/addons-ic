@@ -19,6 +19,10 @@ except ImportError:
 class ConfigClient(models.Model):
     _inherit = 'partner.credentials'
 
+    client_api_key = fields.Char(
+        string='Ocr Key',
+    )
+
     @api.multi
     def get_line_objects(self, invoice):
         product_list = []
@@ -185,7 +189,7 @@ class ConfigClient(models.Model):
                                                           'store_fname': invoice_attachment.store_fname,
                                                           'res_model': 'account.invoice',
                                                           'res_id': invoice_id,
-                                                          'mimetype': 'application/pdf'
+                                                          'mimetype': 'image/jpeg'
                                                       }])
             return attachment_id
         except Exception as e:

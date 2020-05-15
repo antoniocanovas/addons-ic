@@ -38,7 +38,8 @@ class OcrUploads(models.Model):
     _description = 'Ocr Uploads'
 
     upload_transaction_error = fields.Char('upload Error Code')
-    partner_id = fields.Many2one('res.partner')
+    partner_credentials_id = fields.Many2one('partner.credentials', string="Cliente", domain="[('type', '=', 'odoo')]")
+    partner_id = fields.Many2one('res.partner', string="Cliente")
     type = fields.Selection(
         selection=TYPE, string="Type", default='recibida',
     )
@@ -56,20 +57,34 @@ class OcrUploads(models.Model):
         comodel_name='queue.job', column1='upload_id', column2='job_id',
         string="Connector Jobs", copy=False,
     )
-
+    ocr_delivery_upload = fields.Boolean(string='Es Gestor OCR',
+                                   default=lambda self: self.env.user.company_id.ocr_delivery_company)
 
     @api.multi
-    def get_uploader_header(self):
-        api_key = self.env.user.company_id.api_key
-        if api_key:
-            header = {
-                'Content-Type': 'application/json',
-                'X-API_KEY': api_key,
-            }
-            return header
+    def get_api_key(self):
+
+        if self.partner_id == self.env.user.company_id.partner_id:
+            api_key = self.env.user.company_id.api_key
         else:
+            #ocr_client = self.env['partner.credentials'].sudo().search([
+            #    ('partner_id', '=', self.partner_id.id)
+            #])
+            #api_key = ocr_client.client_api_key
+            api_key = self.partner_credentials_id.client_api_key
+        print(api_key)
+        if not api_key:
             raise ValidationError(
-                "You must set Api Key in company form.")
+                "You must set Api Key in company and/or credentials form.")
+        else:
+            return api_key
+
+    @api.multi
+    def get_uploader_header(self, api_key):
+        header = {
+            'Content-Type': 'application/json',
+            'X-API_KEY': api_key,
+        }
+        return header
 
     @api.multi
     def prepare_attachment(self, attachment, upload):
@@ -141,9 +156,16 @@ class OcrUploads(models.Model):
     @api.multi
     def prepare_ocr_post_transactions(self):
 
+        if self.env.user.company_id.ocr_delivery_company:
+            if not self.partner_credentials_id:
+                raise ValidationError("Partner must be selected")
+            else:
+                self.partner_id = self.partner_credentials_id.partner_id.id
+        else:
+            self.partner_id = self.env.user.company_id.partner_id.id
+
         if not self.partner_id.vat:
-            raise ValidationError(
-                "Partner has not vat defined")
+            raise ValidationError("Partner has not vat defined")
         else:
             for upload in self:
                 if upload.state == "processing" or upload.state == "sending":
@@ -176,8 +198,10 @@ class OcrUploads(models.Model):
     @api.multi
     def action_post_invoices(self):
 
-        header = self.get_uploader_header()
         api_transaction_url = "%s/facturas/" % self.env.user.company_id.api_domain
+        api_key = self.get_api_key()
+
+        header = self.get_uploader_header(api_key)
 
         for attachment in self.attachment_ids:
             djson = self.prepare_attachment(attachment, self)
@@ -238,6 +262,7 @@ class OcrUploads(models.Model):
                     )
             if self.state != "error":
                 self.state = "sending"
+
 
 
 

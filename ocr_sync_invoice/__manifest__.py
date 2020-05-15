@@ -1,6 +1,6 @@
 {
     'name': 'ocr sync invoice',
-    'version': '12.10.0.2',
+    'version': '12.10.0.3',
     'category': '',
     'description': u"""
 
@@ -12,6 +12,8 @@
     ],
     'data': [
         'views/views.xml',
+        'views/res_company_ocr_manager.xml',
+        'views/partner_credentials_ocr_manager.xml',
     ],
     'installable': True,
 }

@@ -91,7 +91,7 @@
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="context" eval="{'type':'in_invoice'}"></field>
-        <field name="domain" eval="[('type','=','in_invoice')]"/>
+        <field name="domain" eval="[('type','=','in_invoice'),('is_ocr','=',True)]"/>
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>

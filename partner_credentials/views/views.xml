@@ -20,7 +20,7 @@
             <form>
                 <sheet name="main" string="Credentials">
                     <h2>
-                        <field name="name" modifiers="{}"/>
+                        <field name="name"/>
                     </h2>
                     <group name="basic_params">
                         <group>

@@ -11,6 +11,9 @@ class AccountInvoice(models.Model):
     ocr_transaction_id = fields.Many2one('ocr.transactions', string='OCR', readonly=True)
     customer_id = fields.Many2one('res.partner', readonly=True, string='Customer')
     to_correct = fields.Boolean("For correction portal", default=False)
+    is_ocr = fields.Boolean('De OCR')
+    ocr_delivery_invoice = fields.Boolean(string='Es Gestor OCR',
+                                         default=lambda self: self.env.user.company_id.ocr_delivery_company)
 
     @api.multi
     def post_correction_form(self):
@@ -31,18 +34,6 @@ class AccountInvoice(models.Model):
             for msg in self.message_ids:
                 if msg.body == "<p>created with OCR Documents</p>":
                     attachment = msg.attachment_ids[0].datas
-
-            #if self.ocr_transaction_id.token_list:
-            #    transactions_list = []
-            #    print(self.ocr_transaction_id.token_list)
-            #    for key in self.ocr_transaction_id.token_list:
-            #        print(key)
-            #        ocr_trans = self.env['ocr.transactions'].sudo().search([
-            #            ('token', '=', key)
-            #        ])
-            #        transactions_list.append(ocr_trans.id)
-
-            #    print(transactions_list)
 
             return {
                 'name': _("Combinar Facturas"),
