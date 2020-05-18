@@ -21,6 +21,11 @@ REMOTE_STATES = [
     ('cancelled', 'Cancelled'),
 ]
 
+REMOTE_TYPES = [
+    ('in_invoice', 'Facturas Proveedor'),
+    ('in_refund', 'Rectificativa Proveedor'),
+]
+
 
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
@@ -34,6 +39,10 @@ class AccountInvoice(models.Model):
         selection=REMOTE_STATES, string="Remote state", default='not_sent',
         readonly=True, copy=False,
         help="Mark as sent when succesfully created on remote client",
+    )
+    remote_type = fields.Selection(
+        selection=REMOTE_TYPES, string="Tipo", default='in_invoice',
+        help="Mark as refund to create a refund invoice in customer Odoo",
     )
     invoice_sync_error = fields.Char('Error')
     to_correct = fields.Boolean("For correction portal", default=False)
@@ -51,6 +60,10 @@ class AccountInvoice(models.Model):
     def prepare_invoice_send(self):
 
         for invoice in self:
+            if invoice.amount_total < 0:
+                raise Warning((
+                    "La factura tiene TOTAL negativo, por favor revise la factura"
+                ))
             company = invoice.company_id
             #Set ETA
             jobs = self.env['queue.job'].sudo().search(["|",

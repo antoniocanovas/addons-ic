@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 import base64
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 from PIL import Image
 import requests
@@ -48,10 +48,8 @@ class ResCompany(models.Model):
         if self.env.user.company_id.api_key:
             ApiKeys.append(self.env.user.company_id.api_key)
         if len(ApiKeys) > 0:
-            print(ApiKeys)
             return ApiKeys
         else:
-            print(ApiKeys)
             raise ValidationError(
                 "You must set Api Key in company and/or credentials form.")
 
@@ -78,9 +76,7 @@ class ResCompany(models.Model):
     @api.multi
     def create_queue_invoice_transactions(self, transactions_by_state):
         #### Comprobar si hay que crearlo, actualizarlo o ignorarlo ####
-
         for i in range(len(transactions_by_state['FACTURAS'])):
-
             token = transactions_by_state['FACTURAS'][i]['token']
             client = transactions_by_state['FACTURAS'][i]['client']
             exist = self.env['ocr.transactions'].search([
@@ -92,15 +88,6 @@ class ResCompany(models.Model):
             if exist.token:
                 if exist.state != transactions_by_state['FACTURAS'][i]['status']:
                     exist.state = transactions_by_state['FACTURAS'][i]['status']
-                #if exist.state == "downloaded":
-                #    invoice = self.env['account.invoice'].sudo().search([
-                #        ("ocr_transaction_id.token", "=", token),
-                #        ("ocr_transaction_id.name", "=", client)
-                #    ], limit=1)
-                #    if not invoice.invoice_line_ids:
-                #        exist.state = transactions_by_state['FACTURAS'][i]['status']
-                #elif exist.state != transactions_by_state['FACTURAS'][i]['status']:
-                #    exist.state = transactions_by_state['FACTURAS'][i]['status']
             else:
                 type_doc = transactions_by_state['FACTURAS'][i]['type']
                 if transactions_by_state['FACTURAS'][i]['type'] == "emitida":
@@ -122,7 +109,6 @@ class ResCompany(models.Model):
     @api.multi
     def update_transactions_error_code(self, transactions_with_errors, api_transaction_url, header):
         for t in transactions_with_errors:
-            print("Transactions with errors")
             api_transaction_url_token = "%s%s" % (api_transaction_url, t.token)
             ocr_document_data = self.get_documents_data(api_transaction_url_token, header)
             t.json_text = ocr_document_data
@@ -133,16 +119,13 @@ class ResCompany(models.Model):
 
     @api.multi
     def ocr_update_values(self, t, ocr_document_data, type_values):
-
         for v in ocr_document_data["result"][type_values].values():
             ocr_values = self.env['ocr.values'].sudo().search([
                 ('token', '=', t.token),
                 ('name', '=', v["ERPName"])])
-            print("Cuantos Values", ocr_values)
             for ocrv in ocr_values:
                 ocrv.value = v["Value"]["Text"]
             if not ocr_values:
-                print("No existía")
                 self.env['ocr.values'].sudo().create({
                     'token': t.token,
                     'name': v["ERPName"],
@@ -168,7 +151,6 @@ class ResCompany(models.Model):
 
             if ocr_document_data:
                 if invoice:
-                    print("Hay ocr docs and invoice")
                     if not invoice.invoice_line_ids:
                         basic_values = self.ocr_update_values(t, ocr_document_data, "basic")
                         extended_values = self.ocr_update_values(t, ocr_document_data, "extended")
@@ -177,7 +159,6 @@ class ResCompany(models.Model):
                         t.state = 'downloaded'
 
                 elif not previus_ocr_values:
-                    print("Hay ocr doc pero no values previos")
                     for v in ocr_document_data["result"]["basic"].values():
                         self.env['ocr.values'].sudo().create({
                             'token': t.token,
@@ -366,11 +347,28 @@ class ResCompany(models.Model):
             transactions_with_errors = self.env['ocr.transactions'].search([
                                                                           ("state", "=", 'error'),
                                                                           ], limit=10)
-            #if transactions_with_errors:
-            #    self.update_transactions_error_code(transactions_with_errors, api_transaction_url, header)
+            if transactions_with_errors:
+                self.update_transactions_error_code(transactions_with_errors, api_transaction_url, header)
 
             if transactions_processed:
                 self.create_invoices(transactions_processed, api_transaction_url, header)
                 self.mark_uploads_done(transactions_processed)
 
             self.last_connection_date = datetime.now().date()
+
+    @api.multi
+    def ocr_delete_old_transactions(self):
+        transactions = self.env['ocr.transactions'].sudo().search([])
+        ## DOMAIN : '|', ("state", "=", 'downloaded'), ("state", "=", 'error')
+        for transaction in transactions:
+            if (datetime.utcnow() - transaction.write_date) > timedelta(minutes=30):
+                transaction.unlink()
+
+    @api.multi
+    def ocr_restart_halted_queue_jobs(self):
+        jobs = self.env['queue.job'].sudo().search(["|",
+                                                    ('state', '=', 'started'), ('state', '=', 'enqueued')
+                                                    ])
+        for job in jobs:
+            if (datetime.utcnow() - job.create_date) > timedelta(minutes=15):
+                job.state = 'pending'

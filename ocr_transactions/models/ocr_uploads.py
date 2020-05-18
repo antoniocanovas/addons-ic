@@ -3,6 +3,7 @@
 
 from odoo import fields, models, api
 import json
+from datetime import datetime
 import requests
 from odoo.exceptions import ValidationError
 
@@ -44,7 +45,7 @@ class OcrUploads(models.Model):
         selection=TYPE, string="Type", default='recibida',
     )
     state = fields.Selection(
-        selection=STATE, string="Type", default='draft', track_visibility='onchange'
+        selection=STATE, string="State", default='draft', track_visibility='onchange'
     )
     name = fields.Char('Name')
     ocr_transaction_ids = fields.One2many('ocr.transactions', 'ocr_upload_id')
@@ -60,18 +61,20 @@ class OcrUploads(models.Model):
     ocr_delivery_upload = fields.Boolean(string='Es Gestor OCR',
                                    default=lambda self: self.env.user.company_id.ocr_delivery_company)
 
+    @api.constrains('attachment_ids')
+    def _get_upload_name(self):
+        for record in self:
+            if not self.env.user.company_id.ocr_delivery_company:
+                record.name = "Creado por " + str(self.env.user.name) + " el " +\
+                              str(datetime.utcnow().strftime('%d-%m-%Y'))
+
     @api.multi
     def get_api_key(self):
 
         if self.partner_id == self.env.user.company_id.partner_id:
             api_key = self.env.user.company_id.api_key
         else:
-            #ocr_client = self.env['partner.credentials'].sudo().search([
-            #    ('partner_id', '=', self.partner_id.id)
-            #])
-            #api_key = ocr_client.client_api_key
             api_key = self.partner_credentials_id.client_api_key
-        print(api_key)
         if not api_key:
             raise ValidationError(
                 "You must set Api Key in company and/or credentials form.")
@@ -141,7 +144,7 @@ class OcrUploads(models.Model):
 
         ocr_transaction_id = self.env['ocr.transactions'].create({
             'state': "Enviado",
-            'ocr_upload_id': self.id,
+            'ocr_upload_id': upload.id,
             'type': type_doc,
             'name': upload.partner_id.vat,
             'token': token,
@@ -158,12 +161,11 @@ class OcrUploads(models.Model):
 
         if self.env.user.company_id.ocr_delivery_company:
             if not self.partner_credentials_id:
-                raise ValidationError("Partner must be selected")
+                self.partner_id = self.env.user.company_id.partner_id.id
             else:
                 self.partner_id = self.partner_credentials_id.partner_id.id
         else:
             self.partner_id = self.env.user.company_id.partner_id.id
-
         if not self.partner_id.vat:
             raise ValidationError("Partner has not vat defined")
         else:
@@ -200,7 +202,6 @@ class OcrUploads(models.Model):
 
         api_transaction_url = "%s/facturas/" % self.env.user.company_id.api_domain
         api_key = self.get_api_key()
-
         header = self.get_uploader_header(api_key)
 
         for attachment in self.attachment_ids:

@@ -109,12 +109,16 @@ class ConfigClient(models.Model):
             invoice.remote_state = 'sent'
             return False
         else:
+            if invoice.remote_type:
+                type_for_remote = invoice.remote_type
+            else:
+                type_for_remote = invoice.type
             try:
                 invoice_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'account.invoice', 'create',
                                                        [{
                                                            'reference': invoice.reference,
                                                            'partner_id': partner_id,
-                                                           'type': invoice.type,
+                                                           'type': type_for_remote,
                                                            'date_invoice': invoice.date_invoice,
                                                        }])
             except Exception as e:
