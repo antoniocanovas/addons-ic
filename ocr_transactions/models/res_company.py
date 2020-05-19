@@ -376,7 +376,7 @@ class ResCompany(models.Model):
 
     @api.multi
     def ocr_mark_invoice_as_ocr(self):
-        invoices = self.env['account.invoice'].sudo().search(['type', '=', 'in_invoice'])
+        invoices = self.env['account.invoice'].sudo().search([('type', '=', 'in_invoice')])
         for invoice in invoices:
             invoice.is_ocr = True
 
