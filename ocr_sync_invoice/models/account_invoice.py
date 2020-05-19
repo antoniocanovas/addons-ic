@@ -18,6 +18,7 @@ REMOTE_STATES = [
     ('not_sent', 'Not sent'),
     ('sending', 'Sending'),
     ('sent', 'Sent'),
+    ('error', 'Error'),
     ('cancelled', 'Cancelled'),
 ]
 

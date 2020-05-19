@@ -166,7 +166,7 @@
     <record id="menu_ocr_documents" model="ir.ui.menu">
         <field name="action" ref="action_ocr_documents"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]"/>
         <field name="name">Documents</field>
         <field name="parent_id" ref="menu_ocr"/>
         <field name="sequence">2</field>
@@ -176,7 +176,7 @@
     <record id="menu_ocr_in_invoice" model="ir.ui.menu">
         <field name="action" ref="action_ocr_in_invoice"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]"/>
         <field name="name">Facturas de proveedor</field>
         <field name="parent_id" ref="menu_ocr_documents"/>
         <field name="sequence">1</field>

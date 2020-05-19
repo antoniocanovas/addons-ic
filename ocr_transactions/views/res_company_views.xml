@@ -15,7 +15,7 @@
                     </group>
                     <group>
                         <button name="action_get_invoices" string="Get Documents" type="object" class="oe_highlight oe_read_only"/>
-                        <field name="last_connection_date" readonly="True"/>
+                        <field name="last_connection_date" widget="date" readonly="True"/>
                     </group>
                 </page>
             </xpath>

@@ -31,6 +31,7 @@ class ResCompany(models.Model):
         string='Api Url'
     )
     last_connection_date = fields.Date('Last connection date')
+    #last_connection_date_char = fields.Char('Last connection')
     ocr_transactions_jobs_ids = fields.Many2many(
         comodel_name='queue.job', column1='company_id', column2='job_id',
         string="Connector Jobs", copy=False,
@@ -78,10 +79,9 @@ class ResCompany(models.Model):
         #### Comprobar si hay que crearlo, actualizarlo o ignorarlo ####
         for i in range(len(transactions_by_state['FACTURAS'])):
             token = transactions_by_state['FACTURAS'][i]['token']
-            client = transactions_by_state['FACTURAS'][i]['client']
+            #client = transactions_by_state['FACTURAS'][i]['client']
             exist = self.env['ocr.transactions'].search([
                 ("token", "=", token),
-                ("name", "=", client)
             ], limit=1)
             # No se Borran facturas, solo actualizamos el transaction si no hay líneas de factura
             # Si hay lineas no debe actualizar estado
@@ -354,14 +354,15 @@ class ResCompany(models.Model):
                 self.create_invoices(transactions_processed, api_transaction_url, header)
                 self.mark_uploads_done(transactions_processed)
 
-            self.last_connection_date = datetime.now().date()
+            time = datetime.now()
+            self.last_connection_date = time.strftime('%Y-%m-%d %H:%M:%S')
 
     @api.multi
     def ocr_delete_old_transactions(self):
         transactions = self.env['ocr.transactions'].sudo().search([])
         ## DOMAIN : '|', ("state", "=", 'downloaded'), ("state", "=", 'error')
         for transaction in transactions:
-            if (datetime.utcnow() - transaction.write_date) > timedelta(minutes=30):
+            if (datetime.utcnow() - transaction.write_date) > timedelta(days=30):
                 transaction.unlink()
 
     @api.multi
@@ -370,5 +371,12 @@ class ResCompany(models.Model):
                                                     ('state', '=', 'started'), ('state', '=', 'enqueued')
                                                     ])
         for job in jobs:
-            if (datetime.utcnow() - job.create_date) > timedelta(minutes=15):
+            if (datetime.utcnow() - job.create_date) > timedelta(minutes=30):
                 job.state = 'pending'
+
+    @api.multi
+    def ocr_mark_invoice_as_ocr(self):
+        invoices = self.env['account.invoice'].sudo().search(['type', '=', 'in_invoice'])
+        for invoice in invoices:
+            invoice.is_ocr = True
+

@@ -54,13 +54,13 @@
             <xpath expr="//form/header" position="inside">
                 <button name="prepare_invoice_send" string="Send Odoo Client" type="object"
                         class="oe_highlight" attrs="{
-                            'invisible':['|','|',('remote_state','=','sent'), ('remote_state','=','sending'),('ocr_transaction_id','=', False)]
+                            'invisible':[('ocr_transaction_id','=', False)]
                         }" />
 
             </xpath>
             <xpath expr="//form/header/button[@name='post_correction_form']" position="attributes">
                 <attribute name="attrs">{
-                    'invisible':['|','|',('remote_state','==','sent'), ('remote_state','==','sending'),('ocr_transaction_id','==', False)]
+                    'invisible':['|','|',('remote_state','=','sent'), ('remote_state','=','sending'),('ocr_transaction_id','=', False)]
                     }</attribute>
             </xpath>
             <xpath expr="//sheet/notebook/page[@name='other_info']" position="after">

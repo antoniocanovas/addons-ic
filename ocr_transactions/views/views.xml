@@ -250,9 +250,6 @@
             <form string="Factura de proveedor">
                 <header>
                     <field name="ocr_delivery_invoice" invisible="1"/>
-                    <button name="action_invoice_open" type="object" string="Validar"
-                            class="oe_highlight" attrs="{
-                            'invisible':[('ocr_delivery_invoice','=',True)]}"/>
                     <button name="create_invoice_lines_from_ocr" string="Generate Lines" type="object"
                             class="oe_highlight" attrs="{
                             'invisible':['|',('invoice_line_ids','=',True),('ocr_transaction_id','=', False)]

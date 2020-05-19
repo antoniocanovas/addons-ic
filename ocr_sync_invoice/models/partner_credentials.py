@@ -71,7 +71,7 @@ class ConfigClient(models.Model):
         return invoice_line_list
 
     @api.multi
-    def check_partner_in_remote(self, partner, conn):
+    def check_partner_in_remote(self, partner, conn, invoice):
         partner_exist = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
                                                   'res.partner', 'search_read',
                                                   [[('vat', '=', partner.vat)]],
@@ -88,12 +88,14 @@ class ConfigClient(models.Model):
 
                 return partner_id
             except Exception as e:
+                invoice.invoice_sync_error = ("Error comprobando proveedor: %s\n" % invoice.reference)
+                invoice.remote_state = 'error'
                 raise Warning(("Exception when calling remote server $CreatePartner: %s\n" % e))
         return partner_exist[0]['id']
 
     @api.multi
     def write_invoice_to_remote(self, conn, invoice):
-        partner_id = self.check_partner_in_remote(invoice.partner_id, conn)
+        partner_id = self.check_partner_in_remote(invoice.partner_id, conn, invoice)
         try:
             invoice_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
                                               'account.invoice', 'search',
@@ -122,6 +124,8 @@ class ConfigClient(models.Model):
                                                            'date_invoice': invoice.date_invoice,
                                                        }])
             except Exception as e:
+                invoice.invoice_sync_error = ("Error al crear la factura: %s\n" % invoice.reference)
+                invoice.remote_state = 'error'
                 raise Warning(("Exception when calling remote server $RegisterInvoice: %s\n" % e))
 
             if invoice_id:
@@ -152,6 +156,8 @@ class ConfigClient(models.Model):
                                                             }])
                 i += 1
             except Exception as e:
+                invoice.invoice_sync_error = ("Error creando líneas de factura: %s\n" % invoice.reference)
+                invoice.remote_state = 'error'
                 raise Warning(("Exception when calling remote server $RegisterInvoiceLine: %s\n" % e))
         if invoice_line_id:
             return invoice_line_id
@@ -173,6 +179,8 @@ class ConfigClient(models.Model):
                                                     'account.invoice', 'action_invoice_open',
                                                     [[invoice_id], ])
         except Exception as e:
+            invoice.invoice_sync_error = ("Error validando factura: %s\n" % invoice.reference)
+            invoice.remote_state = 'error'
             raise Warning((" Error Validating remote invoice : %s\n" % e))
 
     @api.multi
@@ -197,6 +205,7 @@ class ConfigClient(models.Model):
                                                       }])
             return attachment_id
         except Exception as e:
+            invoice.remote_state = 'error'
             invoice.invoice_sync_error = ("No se ha podido crear el adjunto"
                                           " en servidor remoto: %s\n" % e)
 
