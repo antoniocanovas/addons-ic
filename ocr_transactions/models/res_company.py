@@ -182,14 +182,13 @@ class ResCompany(models.Model):
                     partner = self.env['res.partner'].search([("vat", "=", partner_vat.value)], limit=1)
                     if not partner:
                         account600_id = self.env['ir.model.data'].search([
-                            ('name', '=', 'l10n_es.1_account_common_600'),
-                            ('model', '=', 'account_tax')
+                            ('name', '=', '1_account_common_600'),
+                            ('model', '=', 'account.account')
                         ])
                         account600 = self.env['account.account'].search([('id', '=', account600_id.res_id)])
-
                         account700_id = self.env['ir.model.data'].search([
-                            ('name', '=', 'l10n_es.1_account_common_700'),
-                            ('model', '=', 'account_tax')
+                            ('name', '=', '1_account_common_7000'),
+                            ('model', '=', 'account.account')
                         ])
                         account700 = self.env['account.account'].search([('id', '=', account700_id.res_id)])
 
@@ -197,8 +196,8 @@ class ResCompany(models.Model):
                             'name': partner_vat.value,
                             'vat': partner_vat.value,
                             'company_type': 'company',
-                            'ocr_sale_account_id': account600,
-                            'ocr_purchase_account_id': account700,
+                            'ocr_sale_account_id': account700.id,
+                            'ocr_purchase_account_id': account600.id,
                         })
                     if partner:
                         date = self.env['ocr.values'].sudo().search([
@@ -362,8 +361,10 @@ class ResCompany(models.Model):
         transactions = self.env['ocr.transactions'].sudo().search([])
         ## DOMAIN : '|', ("state", "=", 'downloaded'), ("state", "=", 'error')
         for transaction in transactions:
+            print(datetime.utcnow(), transaction.write_date)
             if (datetime.utcnow() - transaction.write_date) > timedelta(days=30):
-                transaction.unlink()
+                print("Es mayor")
+                #transaction.unlink()
 
     @api.multi
     def ocr_restart_halted_queue_jobs(self):
@@ -379,4 +380,7 @@ class ResCompany(models.Model):
         invoices = self.env['account.invoice'].sudo().search([('type', '=', 'in_invoice')])
         for invoice in invoices:
             invoice.is_ocr = True
+
+
+
 
