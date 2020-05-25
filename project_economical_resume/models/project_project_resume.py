@@ -48,7 +48,10 @@ class ProjectEconomicalResume(models.Model):
             apuntes = self.env['account.analytic.line'].search([('account_id', '=', record.analytic_account_id.id)]).ids
             record['analytic_line_ids'] = [(6, 0, apuntes)]
 
-    analytic_line_ids = fields.Many2many('account.analytic_line', string='Costes e Ingresos',
+    analytic_line_ids = fields.Many2many(comodel_name='account.analytic.line',
+                                relation="m2m_project_account_analytic_line_rel",
+                                column1="m2m_id",
+                                column2="line_id", string='Costes e Ingresos',
                                          stored=False, readonly=True, compute=_get_analytic_line)
 
     @api.depends('create_date')

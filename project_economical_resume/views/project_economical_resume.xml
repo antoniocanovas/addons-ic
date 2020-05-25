@@ -39,13 +39,13 @@
   <record id="project_economical_resume_kanban" model="ir.ui.view">
     <field name="name">project.economical.resume.kanban</field>
     <field name="model">project.project</field>
-    <field name="inherit_id" ref="	project.view_project_kanban"/>
+    <field name="inherit_id" ref="project.view_project_kanban"/>
     <field name="arch" type="xml">
       <xpath expr="//kanban[1]/templates[1]/t[1]/div[1]/div[1]/span[1]/field[@name='is_favorite']" position="after">
         <field name="supply_advanced" invisible="1"/>
         <field name="supply_available" invisible="1"/>
-        <field name="x_invoiced" invisible="1"/>
-        <field name="x_invoiced_due" invisible="1"/>
+        <field name="invoiced" invisible="1"/>
+        <field name="invoiced_due" invisible="1"/>
 
         <div class="o_project_kanban_boxes">
           <a class="o_project_kanban_box" name="270" type="action">
@@ -54,7 +54,7 @@
                 Pyto:
               </span>
               <span class="o_value">
-                <t t-esc="record.x_invoiced.value"/>
+                <t t-esc="record.invoiced.value"/>
               </span>
             </div>
           </a>
@@ -64,7 +64,7 @@
                 Cobrar:
               </span>
               <span class="o_value">
-                <t t-esc="record.x_invoiced_due.value"/>
+                <t t-esc="record.invoiced_due.value"/>
               </span>
             </div>
           </a>
