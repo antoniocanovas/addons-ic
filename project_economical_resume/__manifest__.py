@@ -1,6 +1,6 @@
 {
     'name': 'project economical resume',
-    'version': '12.0.0.1',
+    'version': '12.0.0.2',
     'category': 'Projects',
     'description': u"""
 

@@ -9,6 +9,49 @@ class ProjectEconomicalResume(models.Model):
     _inherit = 'project.project'
 
     @api.depends('create_date')
+    def _get_invoiced_due(self):
+        for record in self:
+            total = 0
+            facturas = []
+            lineas = self.env['account.invoice.line'].search(
+                [('account_analytic_id', '=', record.analytic_account_id.id),
+                 ('invoice_id.type', 'in', ['out_invoice']),
+                 ('invoice_id.state', 'not in', ['cancel'])])
+
+            for li in lineas:
+                if (li.invoice_id.residual != 0) and (li.invoice_id.id not in facturas):
+                    total += li.invoice_id.residual
+                    facturas.append(li.invoice_id.id)
+            record['invoiced_due'] = total
+
+    invoiced_due = fields.Monetary(string='Por cobrar', stored=False, readonly=True,
+                                   compute=_get_invoiced_due)
+
+    @api.depends('create_date')
+    def _get_invoiced(self):
+        for record in self:
+            total = 0
+            lineas = self.env['account.invoice.line'].search(
+                [('account_analytic_id', '=', record.analytic_account_id.id),
+                 ('invoice_id.type', 'in', ['out_invoice']),
+                 ('invoice_id.state', 'not in', ['cancel'])])
+            for li in lineas:
+                total += li.price_total
+            record['invoiced'] = total
+
+    invoiced = fields.Monetary(string='Importe', stored=False, readonly=True,
+                               compute=_get_invoiced)
+
+    @api.depends('create_date')
+    def _get_analytic_line(self):
+        for record in self:
+            apuntes = self.env['account.analytic.line'].search([('account_id', '=', record.analytic_account_id.id)]).ids
+            record['analytic_line_ids'] = [(6, 0, apuntes)]
+
+    analytic_line_ids = fields.Many2many('account.analytic_line', string='Costes e Ingresos',
+                                         stored=False, readonly=True, compute=_get_analytic_line)
+
+    @api.depends('create_date')
     def _get_supply_advanced(self):
         for record in self:
             total = 0

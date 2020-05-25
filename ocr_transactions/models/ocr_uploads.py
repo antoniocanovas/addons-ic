@@ -64,9 +64,18 @@ class OcrUploads(models.Model):
     @api.constrains('attachment_ids')
     def _get_upload_name(self):
         for record in self:
+            if record.type == "recibida_batch":
+                tipo = "Lote de facturas recibidas"
+            elif record.type == "emitida_batch":
+                tipo = "Lote de facturas emitidas"
+            elif record.type == "recibida":
+                tipo = "recibida"
+            elif record.type == "emitida":
+                tipo = "emitida"
+
             if not self.env.user.company_id.ocr_delivery_company:
-                record.name = "Creado por " + str(self.env.user.name) + " el " +\
-                              str(datetime.utcnow().strftime('%d-%m-%Y'))
+                record.name = str(self.env.user.name) + " - " +\
+                              str(datetime.utcnow().strftime('%d-%m-%Y')) + "-" + str(tipo)
 
     @api.multi
     def get_api_key(self):

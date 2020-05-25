@@ -34,6 +34,18 @@
         </field>
     </record>-->
 
+    <record id="view_invoice_supplier_tree_ocr_sync_invoice_inh" model="ir.ui.view">
+        <field name="name">Supplier tree inh ocr sync_invoice</field>
+        <field name="model">account.invoice</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="account.invoice_supplier_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='is_ocr']" position="attributes">
+                <attribute name="attrs">{'column_invisible':[('ocr_delivery_invoice','!=',False)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
     <record id="account.action_vendor_bill_template" model="ir.actions.act_window">
         <field name="domain">[('type','=','in_invoice'),('is_ocr','=',False)]</field>
     </record>
