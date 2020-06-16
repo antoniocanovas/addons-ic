@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="devices_tree" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <tree string="Devices">
+                <field name="name" modifiers="{}"/>
+            </tree>
+        </field>
+        <field name="model">device.types</field>
+        <field name="name">Default tree view for partner credentials devices</field>
+        <field name="type">tree</field>
+    </record>
+
+    <record id="devices_form" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <form>
+                <sheet name="main" string="Credentials">
+                    <h2>
+                        <field name="name"/>
+                    </h2>
+                </sheet>
+            </form>
+        </field>
+        <field name="model">device.types</field>
+        <field name="name">Default form view for partner credentials devices</field>
+        <field name="type">form</field>
+    </record>
+
+
+</odoo>

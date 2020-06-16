@@ -52,9 +52,12 @@ class AccountInvoice(models.Model):
     def check_customer_id(self):
         for invoice in self:
             if invoice.ocr_transaction_id:
+                #pc = self.env['partner.credentials'].sudo().search([
+                #    ('partner_id.vat', '=', self.ocr_transaction_id.name)], limit=1)
                 pc = self.env['partner.credentials'].sudo().search([
-                    ('partner_id.vat', '=', self.ocr_transaction_id.name)], limit=1)
-                invoice.customer_id = pc.partner_id.id
+                        ('client_api_key', '=', self.ocr_transaction_id.customer_api_key)], limit=1)
+                if pc:
+                    invoice.customer_id = pc.partner_id.id
                 # invoice.customer_id = invoice.ocr_transaction_id.ocr_upload_id.partner_id.id
 
     @api.multi
@@ -73,7 +76,9 @@ class AccountInvoice(models.Model):
             eta = 20 + (len(jobs)*20)
             # Tomar VAT del usuario que envía a OCR y sea tipo Odoo
             pc = self.env['partner.credentials'].sudo().search([
-                ('partner_id.vat', '=', self.ocr_transaction_id.name)])
+                ('partner_id.vat', '=', self.ocr_transaction_id.name),
+                ('type', '=', 'odoo'),
+            ])
             if len(pc) > 1:
                 raise Warning((
                     "Hay dos Partner Credentials con mismo VAT o Número de documento de identificación"

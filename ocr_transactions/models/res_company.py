@@ -5,6 +5,7 @@ import base64
 from datetime import datetime, timedelta
 import json
 from PIL import Image
+import csv
 import requests
 from odoo import fields, models, api
 from odoo.exceptions import ValidationError
@@ -63,6 +64,21 @@ class ResCompany(models.Model):
             return header
 
     @api.multi
+    def get_partner_by_vat(self, vat):
+        vat_cleaned = vat.value.replace('-', '')
+        vat_cleaned = vat_cleaned.replace('ES', '')
+        vat_cleaned = vat_cleaned.replace('FR', '')
+        vat_cleaned = vat_cleaned.replace('IT', '')
+        vat_cleaned = vat_cleaned.replace('PR', '')
+        vat_cleaned.upper()
+
+        partner = self.env['res.partner'].search(["|",
+                                                  ("vat", "=", vat.value),
+                                                  ("vat", "=", vat_cleaned),
+                                                  ], limit=1)
+        return partner
+
+    @api.multi
     def get_documents_data(self, api_transaction_url, headers):
         response = requests.get(api_transaction_url, headers=headers)
 
@@ -75,7 +91,7 @@ class ResCompany(models.Model):
             )
 
     @api.multi
-    def create_queue_invoice_transactions(self, transactions_by_state):
+    def create_queue_invoice_transactions(self, transactions_by_state, key):
         #### Comprobar si hay que crearlo, actualizarlo o ignorarlo ####
         for i in range(len(transactions_by_state['FACTURAS'])):
             token = transactions_by_state['FACTURAS'][i]['token']
@@ -100,6 +116,7 @@ class ResCompany(models.Model):
                     'type': type_doc,
                     'name': transactions_by_state['FACTURAS'][i]['client'],
                     'token': transactions_by_state['FACTURAS'][i]['token'],
+                    'customer_api_key': key,
                     'next_token': False,
                     'previus_token': False,
                     'create_date': transactions_by_state['FACTURAS'][i]['created_at'],
@@ -139,7 +156,6 @@ class ResCompany(models.Model):
         for t in transactions_processed:
             invoice = self.env['account.invoice'].sudo().search([
                 ("ocr_transaction_id.token", "=", t.token),
-                ("ocr_transaction_id.name", "=", t.name)
             ], limit=1)
             previus_ocr_values = self.env['ocr.values'].sudo().search([
                 ("ocr_transaction_id", "=", t.id)
@@ -179,7 +195,7 @@ class ResCompany(models.Model):
 
                     partner_vat = self.env['ocr.values'].sudo().search([
                         ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
-                    partner = self.env['res.partner'].search([("vat", "=", partner_vat.value)], limit=1)
+                    partner = self.get_partner_by_vat(partner_vat)
                     if not partner:
                         account600_id = self.env['ir.model.data'].search([
                             ('name', '=', '1_account_common_600'),
@@ -338,11 +354,11 @@ class ResCompany(models.Model):
             transactions_by_state = self.get_documents_data(api_transaction_url, header)
             ############### Control status donwloaded #######################
             if transactions_by_state:
-                self.create_queue_invoice_transactions(transactions_by_state)
+                self.create_queue_invoice_transactions(transactions_by_state, key)
 
             transactions_processed = self.env['ocr.transactions'].search([
                                                                             ("state", "=", 'processed'),
-                                                                        ], limit=10)
+                                                                        ], limit=30)
             transactions_with_errors = self.env['ocr.transactions'].search([
                                                                           ("state", "=", 'error'),
                                                                           ], limit=10)
@@ -361,10 +377,8 @@ class ResCompany(models.Model):
         transactions = self.env['ocr.transactions'].sudo().search([])
         ## DOMAIN : '|', ("state", "=", 'downloaded'), ("state", "=", 'error')
         for transaction in transactions:
-            print(datetime.utcnow(), transaction.write_date)
-            if (datetime.utcnow() - transaction.write_date) > timedelta(days=30):
-                print("Es mayor")
-                #transaction.unlink()
+            if (datetime.utcnow() - transaction.write_date) > timedelta(days=25):
+                transaction.sudo().unlink()
 
     @api.multi
     def ocr_restart_halted_queue_jobs(self):

@@ -26,6 +26,7 @@ class OcrTransactions(models.Model):
     next_token = fields.Char('Próxima Factura')
     previus_token = fields.Char('')
     transaction_error = fields.Char('Transaction Error Code')
+    customer_api_key = fields.Char('Customer Api Key')
 
     token_list = fields.Char('Lista')
 
