@@ -19,9 +19,9 @@ except ImportError:
     import functools
 
 TYPE = [
-    ('emitida', 'Facturas emitidas'),
+    #('emitida', 'Facturas emitidas'),
     ('recibida', 'Facturas de proveedor'),
-    ('emitida_batch', 'Lote de facturas emitidas'),
+    #('emitida_batch', 'Lote de facturas emitidas'),
     ('recibida_batch', 'Lote de facturas de proveedor'),
 ]
 STATE = [
@@ -102,45 +102,53 @@ class OcrUploads(models.Model):
     def prepare_attachment(self, attachment, upload):
         self.ensure_one()
 
+        vat = upload.partner_id.get_ocr_vat()
+
         strname = str(attachment.datas_fname)
         strlen = len(strname)
 
-        ext = strname[(strlen - 3)] + strname[(strlen - 2)] + strname[(strlen - 1)]
+        if attachment.datas:
+            ext = strname[(strlen - 3)] + strname[(strlen - 2)] + strname[(strlen - 1)]
+            if upload.type == 'emitida_batch' or upload.type == 'recibida_batch':
+                if ext == "pdf" or ext == "PDF":
+                    image = "data:application/pdf;base64," + str(attachment.datas.decode('ascii'))
+                    djson = {
+                        "type": upload.type,
+                        "image": image,
+                        # "client": upload.partner_id.vat,
+                        "client": vat,
+                    }
+                    d_json = json.dumps(djson)
+                    return d_json
+                else:
+                    raise ValidationError("El archivo de lotes debe ser PDF")
+            else:
+                if ext == "JPG" or ext == "jpeg" or ext == "jpg":
+                    image = "data:image/jpeg;base64," + str(attachment.datas.decode('ascii'))
+                elif ext == "pdf" or ext == "PDF":
+                    image = "data:application/pdf;base64," + str(attachment.datas.decode('ascii'))
+                elif ext == "png" or ext == "PNG":
+                    image = "data:image/png;base64," + str(attachment.datas.decode('ascii'))
+                elif ext == "iff" or ext == "tif" or ext == "TIF" or ext == "IFF":
+                    image = "data:image/tiff;base64," + str(attachment.datas.decode('ascii'))
+                else:
+                    return False
 
-        if upload.type == 'emitida_batch' or upload.type == 'recibida_batch':
-            if ext == "pdf" or ext == "PDF":
-                image = "data:application/pdf;base64," + str(attachment.datas.decode('ascii'))
                 djson = {
                     "type": upload.type,
                     "image": image,
-                    "client": upload.partner_id.vat,
+                    # "client": upload.partner_id.vat,
+                    "client": vat,
                 }
                 d_json = json.dumps(djson)
                 return d_json
-            else:
-                raise ValidationError("El archivo de lotes debe ser PDF")
         else:
-            if ext == "JPG" or ext == "jpeg" or ext == "jpg":
-                image = "data:image/jpeg;base64," + str(attachment.datas.decode('ascii'))
-            elif ext == "pdf" or ext == "PDF":
-                image = "data:application/pdf;base64," + str(attachment.datas.decode('ascii'))
-            elif ext == "png" or ext == "PNG":
-                image = "data:image/png;base64," + str(attachment.datas.decode('ascii'))
-            elif ext == "iff" or ext == "tif" or ext == "TIF" or ext == "IFF":
-                image = "data:image/tiff;base64," + str(attachment.datas.decode('ascii'))
-            else:
-                return False
-
-            djson = {
-                "type": upload.type,
-                "image": image,
-                "client": upload.partner_id.vat,
-            }
-            d_json = json.dumps(djson)
-            return d_json
+            self.upload_transaction_error = str(self.upload_transaction_error) + \
+                                            "No image to upload or invalid =>" + strname
+            return False
 
     @api.multi
-    def create_ocr_transaction(self, token, attachment, pre, nxt, upload, list):
+    def create_ocr_transaction(self, token, key, attachment, pre, nxt, upload, list):
 
         if upload.type == "emitida":
             type_doc = "out_invoice"
@@ -157,6 +165,7 @@ class OcrUploads(models.Model):
             'type': type_doc,
             'name': upload.partner_id.vat,
             'token': token,
+            'customer_api_key': key,
             'attachment_id': attachment.id,
             'previus_token': pre,
             'next_token': nxt,
@@ -217,8 +226,6 @@ class OcrUploads(models.Model):
             djson = self.prepare_attachment(attachment, self)
             if not djson:
                 self.state = "error"
-                self.upload_transaction_error = str(self.upload_transaction_error) + \
-                                                "No image to upload or invalid"
                 _logger.info(
                     "Error from OCR server  image type not supported"
                 )
@@ -244,7 +251,7 @@ class OcrUploads(models.Model):
                                     nxt = list[(idx + 1) % len(list)]
 
                                 ocr_transaction_id = self.create_ocr_transaction(
-                                    token, attachment, pre, nxt, self, list
+                                    token, api_key, attachment, pre, nxt, self, list
                                 )
                                 self.ocr_transaction_ids = [(4, ocr_transaction_id.id)]
                             else:
@@ -253,7 +260,7 @@ class OcrUploads(models.Model):
                                                                 str(attachment.datas_fname) + 'OCR post NULL'
                     else:
                         ocr_transaction_id = self.create_ocr_transaction(
-                            res['token'], attachment, False, False, self, False
+                            res['token'], api_key, attachment, False, False, self, False
                         )
                         self.ocr_transaction_ids = [(4, ocr_transaction_id.id)]
                 else:

@@ -20,9 +20,37 @@ class ResPartner(models.Model):
         'product.product',
     )
 
-    #@api.onchange('write_date')
-    #def get_uppercase_vat(self):
-    #    if self.vat:
-    #        self.vat = str(self.vat).upper()
+    @api.multi
+    def get_ocr_vat(self):
+        for record in self:
+            if record.vat:
+                vat = record.vat.replace('-', '')
+                vat = vat.replace('ES', '')
+                vat = vat.replace('FR', '')
+                vat = vat.replace('IT', '')
+                vat = vat.replace('PR', '')
+                vat.upper()
+                return vat
+            else:
+                return False
+
+    #@api.multi
+    #def check_ocr_vat(self, vat):
+    #    for record in self:
+    #        if record.vat:
+    #            print("")
+
+    #@api.depends('vat')
+    #def _get_ocr_vat_format(self):
+    #    for record in self:
+    #        if record.vat:
+    #            vat = record.vat.replace('-', '')
+    #            vat = vat.replace('ES', '')
+    #            vat = vat.replace('FR', '')
+    #            vat = vat.replace('IT', '')
+    #            vat = vat.replace('PR', '')
+    #            self.ocr_vat = vat.upper()
+
+    #ocr_vat = fields.Char('OCR_vat', compute=_get_ocr_vat_format)
 
 
