@@ -4,8 +4,6 @@
 import base64
 from datetime import datetime, timedelta
 import json
-from PIL import Image
-import csv
 import requests
 from odoo import fields, models, api
 from odoo.exceptions import ValidationError
