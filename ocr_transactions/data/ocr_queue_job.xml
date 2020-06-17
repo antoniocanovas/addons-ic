@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-    <data>
+    <data noupdate="1">
 
         <record id="ir_cron_ocr_get_queue_jobs" model="ir.cron">
             <field name="name">=> OCR transactions GET</field>
@@ -21,7 +21,7 @@
         <record id="ir_cron_ocr_delete_old_transactions" model="ir.cron">
             <field name="name">=> OCR transactions DELETE</field>
             <field ref="model_res_company" name="model_id" />
-            <field eval="True" name="active" />
+            <field eval="False" name="active" />
             <field name="user_id" ref="base.user_root" />
             <field name="interval_number">24</field>
             <field name="channel_id">1</field>
@@ -36,7 +36,7 @@
         <record id="ir_cron_ocr_restart_halted_queue_jobs" model="ir.cron">
             <field name="name">=> OCR queue_jobs RESTART</field>
             <field ref="model_res_company" name="model_id" />
-            <field eval="True" name="active" />
+            <field eval="False" name="active" />
             <field name="user_id" ref="base.user_root" />
             <field name="interval_number">1</field>
             <field name="channel_id">1</field>

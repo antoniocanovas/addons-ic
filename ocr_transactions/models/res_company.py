@@ -36,6 +36,7 @@ class ResCompany(models.Model):
         string="Connector Jobs", copy=False,
     )
     ocr_delivery_company = fields.Boolean('Gestiona OCR de clientes', default=False)
+    ocr_disable_queue_jobs = fields.Boolean('Avoid queue_job', default=False)
 
     @api.multi
     def create_apikey_list(self):
@@ -318,19 +319,22 @@ class ResCompany(models.Model):
     def prepare_ocr_get_transactions(self):
         company = self.env.user.company_id
 
-        jobs = self.env['queue.job'].sudo().search(["|",
-                                                    ('state', '=', 'pending'), ('state', '=', 'enqueued')
-                                                    ])
-        eta = 20 + (len(jobs) * 20)
+        if company.ocr_disable_queue_jobs:
+            company.action_get_invoices()
+        else:
+            jobs = self.env['queue.job'].sudo().search(["|",
+                                                        ('state', '=', 'pending'), ('state', '=', 'enqueued')
+                                                        ])
+            eta = 20 + (len(jobs) * 20)
 
-        queue_obj = self.env['queue.job'].sudo()
-        new_delay = company.sudo().with_context(
-            company_id=company.id
-        ).with_delay(eta=eta).action_queue_get_invoices()
-        job = queue_obj.search([
-            ('uuid', '=', new_delay.uuid)
-        ], limit=1)
-        company.sudo().ocr_transactions_jobs_ids |= job
+            queue_obj = self.env['queue.job'].sudo()
+            new_delay = company.sudo().with_context(
+                company_id=company.id
+            ).with_delay(eta=eta).action_queue_get_invoices()
+            job = queue_obj.search([
+                ('uuid', '=', new_delay.uuid)
+            ], limit=1)
+            company.sudo().ocr_transactions_jobs_ids |= job
 
     @job
     @api.multi
@@ -342,7 +346,6 @@ class ResCompany(models.Model):
     def action_get_invoices(self):
         ########## Comprobamos si somos OCR Manager ####################
         ApiKeys = self.create_apikey_list()
-
         ########## Actualmente solo traemos facturas ###################
         api_transaction_url = "%s/facturas/" % self.env.user.company_id.api_domain
         ########## Hacemos una consulta por cada ApiKey ################
@@ -356,9 +359,13 @@ class ResCompany(models.Model):
 
             transactions_processed = self.env['ocr.transactions'].search([
                                                                             ("state", "=", 'processed'),
+                                                                            ("customer_api_key", "=", key),
                                                                         ], limit=30)
+            print(key)
+            print(transactions_processed)
             transactions_with_errors = self.env['ocr.transactions'].search([
-                                                                          ("state", "=", 'error'),
+                                                                        ("state", "=", 'error'),
+                                                                        ("customer_api_key", "=", key),
                                                                           ], limit=10)
             if transactions_with_errors:
                 self.update_transactions_error_code(transactions_with_errors, api_transaction_url, header)

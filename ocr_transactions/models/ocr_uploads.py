@@ -187,27 +187,33 @@ class OcrUploads(models.Model):
         if not self.partner_id.vat:
             raise ValidationError("Partner has not vat defined")
         else:
-            for upload in self:
-                if upload.state == "processing" or upload.state == "sending":
-                    raise ValidationError(
-                        "Odoo is still uploading this!!! Please be patient")
+            company = self.env.user.company_id
+            if company.ocr_disable_queue_jobs:
+                for upload in self:
+                    if upload.state == "processing" or upload.state == "sending":
+                        raise ValidationError(
+                            "Odoo is still uploading this!!! Please be patient")
+                    upload.action_post_invoices()
+            else:
+                for upload in self:
+                    if upload.state == "processing" or upload.state == "sending":
+                        raise ValidationError(
+                            "Odoo is still uploading this!!! Please be patient")
 
-                company = self.env.user.company_id
+                    jobs = self.env['queue.job'].sudo().search(["|",
+                                                                ('state', '=', 'pending'), ('state', '=', 'enqueued')
+                                                                ])
+                    eta = 20 + (len(jobs) * 20)
 
-                jobs = self.env['queue.job'].sudo().search(["|",
-                                                            ('state', '=', 'pending'), ('state', '=', 'enqueued')
-                                                            ])
-                eta = 20 + (len(jobs) * 20)
-
-                queue_obj = self.env['queue.job'].sudo()
-                new_delay = upload.sudo().with_context(
-                    company_id=company.id
-                ).with_delay(eta=eta).action_queue_post_invoices()
-                job = queue_obj.search([
-                    ('uuid', '=', new_delay.uuid)
-                ], limit=1)
-                upload.sudo().ocr_post_transactions_jobs_ids |= job
-                upload.state = 'sending'
+                    queue_obj = self.env['queue.job'].sudo()
+                    new_delay = upload.sudo().with_context(
+                        company_id=company.id
+                    ).with_delay(eta=eta).action_queue_post_invoices()
+                    job = queue_obj.search([
+                        ('uuid', '=', new_delay.uuid)
+                    ], limit=1)
+                    upload.sudo().ocr_post_transactions_jobs_ids |= job
+                    upload.state = 'sending'
 
     @job
     @api.multi
