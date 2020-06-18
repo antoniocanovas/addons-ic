@@ -14,8 +14,8 @@
     ],
     'data': [
         'views/views.xml',
-        'views/view_menu.xml',
-        'security/ir.model.access.csv',
+        #'views/view_menu.xml',
+        #'security/ir.model.access.csv',
     ],
     'installable': True,
     'application': True,

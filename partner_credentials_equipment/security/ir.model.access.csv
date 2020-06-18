@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_partner_credentials_devices, Partner Credentials Devices,model_partner_credential_devices,base.group_user,1,1,1,1
-access_partner_credentials_devices_admin, Partner Credentials Devices Admin,model_partner_credential_devices,partner_credentials.admin_credentials,1,1,1,1
-access_device_types, Device Types,model_device_types,base.group_user,1,1,1,1
-access_device_types_admin, Device Types Admin,model_device_types,partner_credentials.admin_credentials,1,1,1,1

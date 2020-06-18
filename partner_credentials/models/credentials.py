@@ -10,11 +10,12 @@ class PartnerCredentials(models.Model):
 
     name = fields.Char(string='Nombre')
     type = fields.Selection([
-        ('odoo', 'Odoo'), ('web', 'Web')
+        ('odoo', 'Odoo'), ('web', 'Web'), ('other', 'Other')
     ])
     partner_id = fields.Many2one('res.partner', string='Partner')
     user = fields.Char('User')
     password = fields.Char('Password')
     public = fields.Boolean('Public')
     url = fields.Char('Url')
+    active = fields.Boolean('Active', default='True')
 
