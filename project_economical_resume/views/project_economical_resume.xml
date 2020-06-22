@@ -35,8 +35,8 @@
     </field>
   </record>
 
-
   <record id="project_economical_resume_kanban" model="ir.ui.view">
+    <!-- <field name="priority" eval="9999"/>-->
     <field name="name">project.economical.resume.kanban</field>
     <field name="model">project.project</field>
     <field name="inherit_id" ref="project.view_project_kanban"/>
@@ -46,6 +46,8 @@
         <field name="supply_available" invisible="1"/>
         <field name="invoiced" invisible="1"/>
         <field name="invoiced_due" invisible="1"/>
+      </xpath>
+      <xpath expr="//div[hasclass('o_project_kanban_boxes')]" position="after">
 
         <div class="o_project_kanban_boxes">
           <a class="o_project_kanban_box" name="270" type="action">
@@ -69,7 +71,6 @@
             </div>
           </a>
         </div>
-
         <div class="o_project_kanban_boxes">
           <a class="o_project_kanban_box" name="270" type="action">
             <div>
@@ -93,6 +94,7 @@
           </a>
         </div>
       </xpath>
+
     </field>
   </record>
 
