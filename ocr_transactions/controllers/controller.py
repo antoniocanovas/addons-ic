@@ -3,6 +3,8 @@ import logging
 
 from odoo import http, _
 from odoo.http import request
+import requests
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -10,7 +12,7 @@ _logger = logging.getLogger(__name__)
 class CorrectionPortal(http.Controller):
     @http.route(['/invoice/correction'], type='http', auth="user", website=True)
     def correction_portal(self, **post):
-
+        ## sustituir api_key de customer por company si ocr_delivery es negativo
         invoice = request.env['account.invoice'].sudo().search([('to_correct', '=', True)], limit=1)
         invoice.to_correct = False
         if request.env.user.company_id.ocr_delivery_company and invoice.customer_id:
@@ -27,4 +29,12 @@ class CorrectionPortal(http.Controller):
             'apikey': apikey,
             'invoice': invoice,
         }
-        return request.render("ocr_transactions.redirect_correction_form", values)
+
+        params = {'apikey': values['apikey']}
+        r = requests.post(values['action'], params)
+
+        if str(r) == "<Response [500]>":
+            raise ValidationError(
+                "Server Error, please contact with your administrator.")
+        else:
+            return request.render("ocr_transactions.redirect_correction_form", values)

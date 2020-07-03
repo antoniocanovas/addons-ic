@@ -63,19 +63,36 @@ class ResCompany(models.Model):
             return header
 
     @api.multi
-    def get_partner_by_vat(self, vat):
-        vat_cleaned = vat.value.replace('-', '')
+    def clean_vat(self, vat):
+        vat_cleaned = vat.replace('-', '')
+        vat_cleaned = vat_cleaned.replace(" ", "")
         vat_cleaned = vat_cleaned.replace('ES', '')
         vat_cleaned = vat_cleaned.replace('FR', '')
         vat_cleaned = vat_cleaned.replace('IT', '')
         vat_cleaned = vat_cleaned.replace('PR', '')
         vat_cleaned.upper()
+        return vat_cleaned
+
+    @api.multi
+    def get_partner_by_vat(self, vat):
+        vat_cleaned = self.clean_vat(vat.value)
 
         partner = self.env['res.partner'].search(["|",
                                                   ("vat", "=", vat.value),
                                                   ("vat", "=", vat_cleaned),
                                                   ], limit=1)
-        return partner
+
+        if partner:
+            return partner
+        else:
+
+            partners = self.env['res.partner'].search([])
+            for p in partners:
+                if p.vat != False:
+                    p_vat = self.clean_vat(p.vat)
+                    if p_vat == vat_cleaned:
+                        return p
+            return False
 
     @api.multi
     def get_documents_data(self, api_transaction_url, headers):
@@ -361,8 +378,6 @@ class ResCompany(models.Model):
                                                                             ("state", "=", 'processed'),
                                                                             ("customer_api_key", "=", key),
                                                                         ], limit=30)
-            print(key)
-            print(transactions_processed)
             transactions_with_errors = self.env['ocr.transactions'].search([
                                                                         ("state", "=", 'error'),
                                                                         ("customer_api_key", "=", key),

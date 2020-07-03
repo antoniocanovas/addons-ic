@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_task_route_user,project.task.route.user,model_project_task_route,sales_team.group_sale_salesman,1,0,0,0
+access_project_task_route_manager,project.task.route.user,model_project_task_route,sales_team.group_sale_salesman,1,1,1,1
+access_fleet_vehicle_user_rel,fleet.vehicle.res.users.rel,model_fleet_vehicle_res_users_rel,fleet.fleet_group_user,1,1,1,1
