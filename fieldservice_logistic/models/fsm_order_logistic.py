@@ -15,7 +15,7 @@ class FsmOrderLogistic(models.Model):
         help='Delivery address for current sales order.'
     )
 
-    logistic_route_line_id = fields.Many2one('logistic.route.line',string='Ruta')
+    logistic_route_line_id = fields.Many2one('fsm.logistic.route.line',string='Ruta')
 
     date_up = fields.Datetime('Cargardo')
     date_down = fields.Datetime('Descargado')
@@ -31,14 +31,14 @@ class FsmOrderLogistic(models.Model):
                 record['location_next_id'] = record.location_dest_id.id
 
     location_next_id = fields.Many2one(
-        relation='res.partner',
+        'res.partner',
         string='Siguiente parada',
         compute=_get_next_location
     )
 
-    #location_next_latitude = fields.Float(related='location_next_id.partner_latitude', stored='False')
-    #location_next_longitude = fields.Float(related='location_next_id.partner_longitude', stored='False')
-    #location_next_country = fields.Float(related='location_next_id.country_id.name', stored='False')
+    location_next_latitude = fields.Float(related='location_next_id.partner_latitude', stored='False')
+    location_next_longitude = fields.Float(related='location_next_id.partner_longitude', stored='False')
+    location_next_country = fields.Char(related='location_next_id.country_id.name', stored='False')
 
 
     @api.multi

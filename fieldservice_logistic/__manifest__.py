@@ -16,10 +16,12 @@
         'fieldservice_sale',
         'fieldservice_google_map',
         'fieldservice_google_marker_icon_picker',
+
     ],
     'data': [
         'views/views_portes.xml',
         'views/views_portes_menu.xml',
+        'security/ir.model.access.csv',
     ],
     'installable': True,
 }

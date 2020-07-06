@@ -1,4 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_project_task_route_user,project.task.route.user,model_project_task_route,sales_team.group_sale_salesman,1,0,0,0
-access_project_task_route_manager,project.task.route.user,model_project_task_route,sales_team.group_sale_salesman,1,1,1,1
-access_fleet_vehicle_user_rel,fleet.vehicle.res.users.rel,model_fleet_vehicle_res_users_rel,fleet.fleet_group_user,1,1,1,1
+access_fsm_logistic_route_line_user,fsm.logistic.route.line,model_fsm_logistic_route_line,fieldservice.group_fsm_user,1,1,0,0
+access_fsm_logistic_route_line_manager,fsm.logistic.route.line,model_fsm_logistic_route_line,fieldservice.group_fsm_manager,1,1,1,1

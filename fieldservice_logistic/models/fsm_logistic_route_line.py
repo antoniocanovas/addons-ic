@@ -9,8 +9,8 @@ class LogisticRouteLine(models.Model):
         required=True,
         string='Route',
     )
-    fleet_vehicle_id = fields.Many2one(
-        comodel_name='fleet.vehicle',
+    fsm_vehicle_id = fields.Many2one(
+        comodel_name='fsm.vehicle',
         string='License Plate',
     )
     profitability = fields.Float(

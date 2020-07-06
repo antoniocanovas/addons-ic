@@ -27,7 +27,7 @@
         (0, 0, {'view_mode': 'form', 'view_id': ref('fieldservice_logistic.fsm_portes_form')}),
         (0, 0, {'view_mode': 'calendar', 'view_id': ref('fieldservice.fsm_order_calendar_view')}),
         (0, 0, {'view_mode': 'tree', 'view_id': ref('fieldservice.fsm_order_tree_view')}),
-        (0, 0, {'view_mode': 'map', 'view_id': ref('fieldservice_google_map.ir_ui_view_fsm_order_map')}),]"/>
+        (0, 0, {'view_mode': 'map', 'view_id': ref('fieldservice_logistic.ir_ui_view_fsm_order_map_portes')}),]"/>
         <!--(0, 0, {'view_mode': 'timeline', 'view_id': ref('fieldservice.fsm_order_timeline_view')}),-->
 
     </record>
