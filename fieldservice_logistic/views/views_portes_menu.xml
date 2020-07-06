@@ -13,21 +13,23 @@
         <field name="multi" eval="False"/>
         <field name="name">Portes</field>
         <field name="res_model">fsm.order</field>
-        <!--<field name="search_view_id" eval="fieldservice.fsm_order_search_view"/>-->
+        <field name="search_view_id" ref="fieldservice.fsm_order_search_view"/>
         <field name="src_model" eval="False"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
         <field name="view_id" eval="False"/>
         <!--<field name="view_mode">kanban,timeline,tree,map,calendar,form</field>-->
-        <field name="view_mode">kanban,form,tree,calendar</field>
+        <field name="view_mode">kanban,form,tree,calendar,maps,timeline</field>
         <field name="view_type">form</field>
         <field name="view_ids" eval="[(5, 0, 0),
         (0, 0, {'view_mode': 'kanban', 'view_id': ref('fieldservice_logistic.fsm_portes_kanban')}),
         (0, 0, {'view_mode': 'form', 'view_id': ref('fieldservice_logistic.fsm_portes_form')}),
         (0, 0, {'view_mode': 'calendar', 'view_id': ref('fieldservice.fsm_order_calendar_view')}),
-        (0, 0, {'view_mode': 'tree', 'view_id': ref('fieldservice.fsm_order_tree_view')})]"/>
-        <!--(0, 0, {'view_mode': 'map', 'view_id': ref('fieldservice_google_map.ir_ui_view_fsm_order_map')}),-->
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('fieldservice.fsm_order_tree_view')}),
+        (0, 0, {'view_mode': 'map', 'view_id': ref('fieldservice_google_map.ir_ui_view_fsm_order_map')})],"/>
+        <!--(0, 0, {'view_mode': 'timeline', 'view_id': ref('fieldservice.fsm_order_timeline_view')})]-->
+
     </record>
 
     <menuitem

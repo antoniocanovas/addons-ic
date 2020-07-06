@@ -14,7 +14,7 @@
         'fieldservice_isp_flow',
         'fieldservice_fleet',
         'fieldservice_sale',
-        #'fieldservice_google_map',
+        'fieldservice_google_map',
     ],
     'data': [
         'views/views_portes.xml',

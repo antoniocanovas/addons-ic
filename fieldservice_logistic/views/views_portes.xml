@@ -62,7 +62,7 @@
         <field name="mode">primary</field>
         <field name="model">fsm.order</field>
         <field name="name">Default kanban view for Portes</field>
-        <field name="priority">16</field>
+        <field name="priority">32</field>
         <field name="type">kanban</field>
     </record>
 
@@ -71,15 +71,20 @@
         <field name="arch" type="xml">
             <form string="Order">
                 <header>
-                    <button id="action_complete" name="action_complete" string="Complete" class="oe_highlight" type="object" groups="fieldservice.group_fsm_dispatcher" attrs="{'invisible': [('stage_id', 'in', (2, 3))]}"/>
+                    <button id="action_start_auto" name="action_start_auto" string="Start" class="oe_highlight" type="object" groups="fieldservice.group_fsm_dispatcher" attrs="{'invisible': [('stage_id', 'not in', (7, 8))]}"/>
+                    <button id="action_complete_auto" name="action_complete_auto" string="Complete" class="oe_highlight" type="object" groups="fieldservice.group_fsm_dispatcher" attrs="{'invisible': [('stage_id', 'in', (2, 3))]}"/>
                     <field name="is_button" invisible="1"/>
                     <button id="action_cancel" name="action_cancel" string="Cancel Order" type="object" groups="fieldservice.group_fsm_dispatcher" attrs="{'invisible': [('stage_id', 'in', (2, 3))]}"/>
                     <field name="stage_id" widget="statusbar" options="{'fold_field': 'fold'}" domain="[('stage_type', '=', 'order'),                                     ('team_ids', 'in', (team_id, False))]"/>
                 </header>
                 <sheet>
+                    <div name="button_box" position="inside">
+                        <button name="delivered_collected" type="object" class="oe_stat_button" string="Recogido" icon="fa-truck" attrs="{'invisible':[('date_up','!=',False)]}"/>
+                        <button name="delivered_collected" type="object" class="oe_stat_button" string="Entregado" icon="fa-truck" attrs="{'invisible':['|',('date_up','=',False),('date_down','!=',False)]}"/>
+                    </div>
                     <div class="oe_button_box" name="button_box">
-                        <button name="delivered_collected" type="object" class="oe_highlight" string="Recogido" icon="fa-truck" attrs="{'invisible':['|',('date_start','!=',False),('date_end','!=',False)]}"/>
-                        <button name="delivered_collected" type="object" class="oe_stat_button" string="Entregado" icon="fa-truck" attrs="{'invisible':['|',('date_start','=',False),('date_end','!=',False)]}"/>
+                        <button name="delivered_collected" type="object" class="oe_highlight" string="Recogido" icon="fa-truck" attrs="{'invisible':['|',('date_up','!=',False),('date_down','!=',False)]}"/>
+                        <button name="delivered_collected" type="object" class="oe_stat_button" string="Entregado" icon="fa-truck" attrs="{'invisible':['|',('date_up','=',False),('date_down','!=',False)]}"/>
                     </div>
                     <div class="oe_title">
                         <h1>
@@ -91,7 +96,7 @@
                             <field name="type" options="{'no_create': True, 'no_open': True}" invisible="1"/>
                             <field name="template_id" groups="fieldservice.group_fsm_template" invisible="1"/>
                             <field name="priority" widget="priority"/>
-                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+                            <field name="tag_ids" widget="many2many_tags" readonly="True" options="{'color_field': 'color', 'no_create_edit': True}"/>
                             <field name="location_next_id"/>
                         </group>
                         <group>
@@ -118,6 +123,8 @@
                         </group>
                         <group id="execution-left" string="Execution">
                             <field name="date_start"/>
+                            <field name="date_up"/>
+                            <field name="date_down"/>
                             <field name="date_end"/>
                             <field name="duration" readonly="1"/>
                         </group>
@@ -146,8 +153,68 @@
         <field name="mode">primary</field>
         <field name="model">fsm.order</field>
         <field name="name">Default form view for Portes</field>
-        <field name="priority">16</field>
+        <field name="priority">32</field>
         <field name="type">form</field>
     </record>
+
+    <record model="ir.ui.view" id="fsm_order_form_up_down">
+        <field name="name">fsm.order.form.inherited</field>
+        <field name="model">fsm.order</field>
+        <field name="inherit_id" ref="fieldservice.fsm_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook/page[@name='execution_page']/group/group/field[@name='date_start']" position="after">
+                <field name="date_up"/>
+                <field name="date_down"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- GeoEngine views
+    <record id="ir_ui_view_fsm_order_map_portes" model="ir.ui.view">
+        <field name="name">ir.ui.view.fsm.order.map.portes</field>
+        <field name="arch" type="xml">
+            <map class="o_res_partner_map" library="geometry" string="Map" lat="location_next_latitude" lng="location_next_longitude" color="marker_color">
+                <field name="name" select="1"/>
+                <field name="display_name"/>
+                <field name="type"/>
+                <field name="location_next_id"/>
+                <field name="person_id"/>
+                <field name="priority"/>
+                <field name="location_next_country"/>
+                <field name='stage_name'/>
+                <field name="location_next_latitude"/>
+                <field name="location_next_longitude"/>
+                <field name="stage_id"/>
+                <field name="marker_color"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_res_partner_kanban">
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title oe_partner_heading">
+                                    <field name="display_name"/>
+                                </strong>
+                                <ul>
+                                    <li>
+                                        <b>Location: </b><field name="location_next_id"/>
+                                    </li>
+                                    <li t-if="record.type.raw_value">
+                                        <b>Type: </b><field name="type"/>
+                                    </li>
+                                    <li t-if="record.person_id.raw_value">
+                                        <b>Assigned To: </b><field name="person_id"/>
+                                    </li>
+                                    <li t-if="record.priority.raw_value">
+                                        <b>Priority: </b><field name="priority" widget="priority"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </map>
+        </field>
+        <field name="model">fsm.order</field>
+    </record> -->
+
 
 </odoo>
