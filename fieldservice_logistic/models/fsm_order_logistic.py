@@ -4,6 +4,10 @@ from odoo import fields, models, api
 class FsmOrderLogistic(models.Model):
     _inherit = 'fsm.order'
 
+    km = fields.Float('Kilómetros')
+    kg = fields.Float('Kg')
+    units = fields.Float('Unidades')
+
     location_dest_id = fields.Many2one(
         relation='res.partner',
         related='sale_id.partner_shipping_id',
@@ -19,12 +23,10 @@ class FsmOrderLogistic(models.Model):
         # Si no hay fecha de recogida, hay que ir a location_id, en caso contrario si no hay de entrega hay que ir a
         # x_location_dest_id, y si están ambas la ruta está hecha y este campo es nulo
         for record in self:
-            sitio = False
             if (not record.date_up and not record.date_down):
-                sitio = record.location_id.partner_id.id
+                record['location_next_id'] = record.location_id.partner_id.id
             elif (record.date_up and not record.date_down):
-                sitio = record.location_dest_id.id
-            record['location_next_id'] = sitio
+                record['location_next_id'] = record.location_dest_id.id
 
     location_next_id = fields.Many2one(
         relation='res.partner',
