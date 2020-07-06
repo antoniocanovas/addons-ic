@@ -15,6 +15,8 @@ class FsmOrderLogistic(models.Model):
         help='Delivery address for current sales order.'
     )
 
+    logistic_route_line_id = fields.Many2one('logistic.route.line',string='Ruta')
+
     date_up = fields.Datetime('Cargardo')
     date_down = fields.Datetime('Descargado')
 

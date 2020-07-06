@@ -15,6 +15,7 @@
         'fieldservice_fleet',
         'fieldservice_sale',
         'fieldservice_google_map',
+        'fieldservice_google_marker_icon_picker',
     ],
     'data': [
         'views/views_portes.xml',
