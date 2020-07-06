@@ -78,13 +78,9 @@
                     <field name="stage_id" widget="statusbar" options="{'fold_field': 'fold'}" domain="[('stage_type', '=', 'order'),                                     ('team_ids', 'in', (team_id, False))]"/>
                 </header>
                 <sheet>
-                    <div name="button_box" position="inside">
-                        <button name="delivered_collected" type="object" class="oe_stat_button" string="Recogido" icon="fa-truck" attrs="{'invisible':[('date_up','!=',False)]}"/>
-                        <button name="delivered_collected" type="object" class="oe_stat_button" string="Entregado" icon="fa-truck" attrs="{'invisible':['|',('date_up','=',False),('date_down','!=',False)]}"/>
-                    </div>
                     <div class="oe_button_box" name="button_box">
-                        <button name="delivered_collected" type="object" class="oe_highlight" string="Recogido" icon="fa-truck" attrs="{'invisible':['|',('date_up','!=',False),('date_down','!=',False)]}"/>
-                        <button name="delivered_collected" type="object" class="oe_stat_button" string="Entregado" icon="fa-truck" attrs="{'invisible':['|',('date_up','=',False),('date_down','!=',False)]}"/>
+                        <button name="delivered_collected" type="object" class="oe_highlight" string="Recogido" icon="fa-truck" attrs="{'invisible':['|',('date_start','!=',False),('date_end','!=',False)]}"/>
+                        <button name="delivered_collected" type="object" class="oe_stat_button" string="Entregado" icon="fa-truck" attrs="{'invisible':['|',('date_start','=',False),('date_end','!=',False)]}"/>
                     </div>
                     <div class="oe_title">
                         <h1>
@@ -96,7 +92,7 @@
                             <field name="type" options="{'no_create': True, 'no_open': True}" invisible="1"/>
                             <field name="template_id" groups="fieldservice.group_fsm_template" invisible="1"/>
                             <field name="priority" widget="priority"/>
-                            <field name="tag_ids" widget="many2many_tags" readonly="True" options="{'color_field': 'color', 'no_create_edit': True}"/>
+                            <field name="tag_ids" readonly='1'  widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
                             <field name="location_next_id"/>
                         </group>
                         <group>
