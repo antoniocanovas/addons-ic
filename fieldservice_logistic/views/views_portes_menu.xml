@@ -6,7 +6,7 @@
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="context" eval="{'search_default_my_orders':1}"/>
-        <!--<field name="domain" eval="['|',('person_id.partner_id.user_ids', '=', uid),('person_id','=',False)]"/>-->
+        <field name="domain" eval="[('stage_name','not in',['New','Confirmed','Requested','Assigned','Cancelled']),'|',('person_id.partner_id.user_ids', '=', 'uid'),('person_id','=',False)]"/>
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
@@ -20,7 +20,7 @@
         <field name="usage" eval="False"/>
         <field name="view_id" eval="False"/>
         <!--<field name="view_mode">kanban,timeline,tree,map,calendar,form</field>-->
-        <field name="view_mode">kanban,form,calendar,tree,map</field>
+        <field name="view_mode">kanban,form,calendar,tree,map,timeline</field>
         <field name="view_type">form</field>
         <field name="view_ids" eval="[(5, 0, 0),
         (0, 0, {'view_mode': 'kanban', 'view_id': ref('fieldservice_logistic.fsm_portes_kanban')}),

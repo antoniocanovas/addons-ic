@@ -15,10 +15,11 @@ class FsmOrderLogistic(models.Model):
         help='Delivery address for current sales order.'
     )
 
-    logistic_route_line_id = fields.Many2one('fsm.logistic.route.line',string='Ruta')
+    logistic_route_line_id = fields.Many2one('fsm.logistic.route.line',string='Ruta',
+                                             domain="[('active','=',True),('fsm_vehicle_id','!=',False),('fsm_vehicle_id','=','vehicle_id.id')]")
 
-    date_up = fields.Datetime('Cargardo')
-    date_down = fields.Datetime('Descargado')
+    date_up = fields.Datetime('Cargardo', track_visibility='onchange')
+    date_down = fields.Datetime('Descargado', track_visibility='onchange')
 
     @api.depends('location_dest_id', 'location_id', 'date_up', 'date_down')
     def _get_next_location(self):

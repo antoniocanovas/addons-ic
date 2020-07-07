@@ -16,10 +16,6 @@ class LogisticRouteLine(models.Model):
     profitability = fields.Float(
          #compute='_compute_profitability',
     )
-    is_selectable = fields.Boolean(
-        #compute='_compute_is_selectable',
-        store=True,
-    )
     fsm_order_ids = fields.One2many(
         comodel_name='fsm.order',
         inverse_name='logistic_route_line_id',
