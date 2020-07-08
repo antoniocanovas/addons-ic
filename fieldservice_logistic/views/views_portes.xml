@@ -39,6 +39,8 @@
                                 </div>
                                 <div>
                                     <field name="description"/>
+                                    <field name="location_next_id" options="{'color_field': 'color'}"/>
+                                    <field name="logistic_route_line_id"/>
                                 </div>
                                 <div>
                                     <field name="logistic_route_line_id"/>
@@ -131,7 +133,7 @@
                             <field name="date_end"/>
                             <field name="duration" readonly="1"/>
                         </group>
-                        <group id="measures" string="medidas">
+                        <group id="measures" string="Mediciones">
                             <field name="km"/>
                             <field name="kg"/>
                             <field name="units"/>
@@ -174,16 +176,18 @@
             <xpath expr="//sheet/notebook/page[@name='execution_page']/group/group/field[@name='date_start']" position="after">
                 <field name="date_up"/>
                 <field name="date_down"/>
-                <field name="logistic_route_line_id"/>
             </xpath>
             <xpath expr="//sheet/notebook/page[@name='execution_page']" position="after">
-                <page string="measures" name="measures">
-                    <group string="measures" name="measures">
+                <page string="Medidas" name="measures">
+                    <group string="Medidas" name="measures">
                         <field name="km"/>
                         <field name="kg"/>
                         <field name="units"/>
                     </group>
                 </page>
+            </xpath>
+            <xpath expr="//field[@name='vehicle_id']" position="after">
+                <field name="logistic_route_line_id" context="{'default_fsm_vehicle_id':vehicle_id}" />
             </xpath>
         </field>
     </record>
@@ -236,14 +240,22 @@
     </record>
 
     <record id="view_fsm_logistic_route_line_tree" model="ir.ui.view">
-        <field name="name">view.fsm.route.line.tree</field>
-        <field name="model">fsm.logistic.route.line</field>
+        <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree string="Trayectos">
                 <field name="name"/>
                 <field name="fsm_vehicle_id"/>
             </tree>
         </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">fsm.logistic.route.line</field>
+        <field name="name">view_fsm_logistic_route_line_tree</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
     </record>
 
     <record id="view_fsm_logistic_route_line_form" model="ir.ui.view">
@@ -293,6 +305,12 @@
                 </sheet>
             </form>
         </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="priority">16</field>
     </record>
 
 
