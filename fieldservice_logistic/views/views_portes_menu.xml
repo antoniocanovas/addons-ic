@@ -6,7 +6,7 @@
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="context" eval="{'search_default_my_orders':1}"/>
-        <field name="domain" eval="[('stage_name','not in',['New','Confirmed','Requested','Assigned','Cancelled']),'|',('person_id.partner_id.user_ids', '=', 'uid'),('person_id','=',False)]"/>
+        <field name="domain">[('stage_name','not in',['New','Confirmed','Requested','Assigned','Cancelled', 'Completed']),'|',('person_id.partner_id.user_ids', '=', uid),('person_id','=',False)]</field>
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
@@ -29,7 +29,36 @@
         (0, 0, {'view_mode': 'tree', 'view_id': ref('fieldservice.fsm_order_tree_view')}),
         (0, 0, {'view_mode': 'map', 'view_id': ref('fieldservice_logistic.ir_ui_view_fsm_order_map_portes')}),]"/>
         <!--(0, 0, {'view_mode': 'timeline', 'view_id': ref('fieldservice.fsm_order_timeline_view')}),-->
+    </record>
 
+    <record id="action_portes_completed" model="ir.actions.act_window">
+        <field name="auto_search" eval="True"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="context" eval="{'search_default_my_orders':1}"/>
+        <field name="domain">[('stage_name','in',['Cancelled', 'Completed']),'|',('person_id.partner_id.user_ids', '=', uid),('person_id','=',False)]</field>
+        <field name="filter" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="limit">80</field>
+        <field name="multi" eval="False"/>
+        <field name="name">Portes</field>
+        <field name="res_model">fsm.order</field>
+        <field name="search_view_id" ref="fieldservice.fsm_order_search_view"/>
+        <field name="src_model" eval="False"/>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="usage" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <!--<field name="view_mode">kanban,timeline,tree,map,calendar,form</field>-->
+        <field name="view_mode">kanban,form,calendar,tree,map,timeline</field>
+        <field name="view_type">form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'kanban', 'view_id': ref('fieldservice_logistic.fsm_portes_kanban')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('fieldservice_logistic.fsm_portes_form')}),
+        (0, 0, {'view_mode': 'calendar', 'view_id': ref('fieldservice.fsm_order_calendar_view')}),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('fieldservice.fsm_order_tree_view')}),
+        (0, 0, {'view_mode': 'map', 'view_id': ref('fieldservice_logistic.ir_ui_view_fsm_order_map_portes')}),]"/>
+        <!--(0, 0, {'view_mode': 'timeline', 'view_id': ref('fieldservice.fsm_order_timeline_view')}),-->
     </record>
 
     <menuitem
@@ -39,6 +68,24 @@
             sequence="10"
             web_icon="fieldservice_logistic,static/description/portes.png"
     />
+
+    <record id="menu_portes_todo" model="ir.ui.menu">
+        <field name="active" eval="True"/>
+        <field name="action" ref="action_portes"/>
+        <field name="groups_id" eval="[ref('base.group_system')]"/>
+        <field name="name">Portes</field>
+        <field name="parent_id" ref="menu_portes"/>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="menu_portes_completed" model="ir.ui.menu">
+        <field name="active" eval="True"/>
+        <field name="action" ref="action_portes_completed"/>
+        <field name="groups_id" eval="[ref('base.group_system')]"/>
+        <field name="name">Finalizados</field>
+        <field name="parent_id" ref="menu_portes"/>
+        <field name="sequence">2</field>
+    </record>
 
     <record id="action_fsm_logistic_route_line" model="ir.actions.act_window">
         <field name="auto_search" eval="True"/>

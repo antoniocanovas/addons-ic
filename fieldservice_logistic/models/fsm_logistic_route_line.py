@@ -13,9 +13,6 @@ class LogisticRouteLine(models.Model):
         comodel_name='fsm.vehicle',
         string='License Plate',
     )
-    profitability = fields.Float(
-         #compute='_compute_profitability',
-    )
     fsm_order_ids = fields.One2many(
         comodel_name='fsm.order',
         inverse_name='logistic_route_line_id',
@@ -41,14 +38,3 @@ class LogisticRouteLine(models.Model):
         compute=_compute_task_km,
         string='Km',
     )
-
-    #@api.depends('task_ids.stage_id.is_logistic_draft')
-    #def _compute_is_selectable(self):
-    #    for route in self:
-    #        route.is_selectable = any(route.mapped(
-    #            'task_ids.stage_id.is_logistic_draft'))
-
-    #@api.depends('task_ids.profitability')
-    #def _compute_profitability(self):
-    #    for route in self:
-    #        route.profitability = sum(route.mapped('task_ids.profitability'))

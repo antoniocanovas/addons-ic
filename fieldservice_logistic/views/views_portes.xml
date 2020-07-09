@@ -138,11 +138,7 @@
                             <field name="kg"/>
                             <field name="units"/>
                         </group>
-
                     </group>
-
-
-
                     <group string="Resolution" name="resolution_grp">
                         <field name="resolution" nolabel="1"/>
                     </group>
@@ -280,7 +276,6 @@
                         <group>
                             <field name="fsm_vehicle_id"/>
                             <field name="km"/>
-                            <field name="profitability" widget="monetary" groups="sales_team.group_sale_manager"/>
                         </group>
                     </group>
                     <notebook name="main_book">

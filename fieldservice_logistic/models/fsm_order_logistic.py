@@ -15,8 +15,13 @@ class FsmOrderLogistic(models.Model):
         help='Delivery address for current sales order.'
     )
 
-    logistic_route_line_id = fields.Many2one('fsm.logistic.route.line',string='Ruta',
-                                             domain="[('active','=',True),('fsm_vehicle_id','!=',False),('fsm_vehicle_id','=','vehicle_id.id')]")
+    @api.onchange('vehicle_id')
+    def get_logistic_route_domain(self):
+        for record in self:
+            return {'domain': {'logistic_route_line_id': [('active','=',True),('fsm_vehicle_id','!=',False),('fsm_vehicle_id','=', record.vehicle_id.id)]}}
+
+    logistic_route_line_id = fields.Many2one('fsm.logistic.route.line',string='Trayectos',)
+                                             #domain="[('active','=',True),('fsm_vehicle_id','!=',False),('fsm_vehicle_id','=','vehicle_id.id')]")
 
     date_up = fields.Datetime('Cargardo', track_visibility='onchange')
     date_down = fields.Datetime('Descargado', track_visibility='onchange')
@@ -36,6 +41,7 @@ class FsmOrderLogistic(models.Model):
         string='Siguiente parada',
         compute=_get_next_location
     )
+
 
     location_next_latitude = fields.Float(related='location_next_id.partner_latitude', stored='False')
     location_next_longitude = fields.Float(related='location_next_id.partner_longitude', stored='False')
