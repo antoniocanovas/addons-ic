@@ -233,8 +233,8 @@ class ResCompany(models.Model):
                         account700 = self.env['account.account'].search([('id', '=', account700_id.res_id)])
 
                         partner = self.env['res.partner'].sudo().create({
-                            'name': partner_name_value,
-                            'vat': partner_vat_value,
+                            'name': str(partner_name_value),
+                            'vat': str(partner_vat_value),
                             'company_type': 'company',
                             'ocr_sale_account_id': account700.id,
                             'ocr_purchase_account_id': account600.id,
