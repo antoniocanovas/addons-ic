@@ -22,6 +22,9 @@
             <xpath expr="//div[@class='oe_button_box'][not(ancestor::field)]" position="inside">
                 <button class="oe_stat_button" string="Reparto Km" icon="fa-level-up" type="object" name="action_km_wizard"/>
             </xpath>
+            <xpath expr="//sheet/group/group/field[@name='km']" position="after">
+                  <field name="logistic_margin"/>
+            </xpath>
         </field>
     </record>
 
@@ -33,6 +36,17 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='function']" position="inside">
                 <field name="km2origin "/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="fsm_order_form_margin">
+        <field name="name">fsm.order.form.margin.inherited</field>
+        <field name="model">fsm.order</field>
+        <field name="inherit_id" ref="fieldservice.fsm_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='units']" position="after">
+                <field name="logistic_margin"/>
             </xpath>
         </field>
     </record>

@@ -7,7 +7,7 @@ class LogisticRouteLine(models.Model):
 
     name = fields.Char(
         required=True,
-        string='Route',
+        string='Trayecto',
     )
     fsm_vehicle_id = fields.Many2one(
         comodel_name='fsm.vehicle',

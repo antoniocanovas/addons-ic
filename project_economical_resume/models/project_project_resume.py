@@ -8,6 +8,8 @@ from odoo import fields, models, api
 class ProjectEconomicalResume(models.Model):
     _inherit = 'project.project'
 
+    credit = fields.Monetary(related='partner_id.credit', stored='False', readonly=True, string="Credito en cliente")
+
     @api.depends('create_date')
     def _get_invoiced_due(self):
         for record in self:

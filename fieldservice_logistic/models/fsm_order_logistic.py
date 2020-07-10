@@ -9,7 +9,7 @@ class FsmOrderLogistic(models.Model):
     units = fields.Float('Unidades')
 
     location_dest_id = fields.Many2one(
-        relation='res.partner',
+        'res.partner',
         related='sale_id.partner_shipping_id',
         string='Dir. de entrega',
         help='Delivery address for current sales order.'
