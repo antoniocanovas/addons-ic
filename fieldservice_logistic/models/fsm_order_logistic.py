@@ -20,8 +20,7 @@ class FsmOrderLogistic(models.Model):
         for record in self:
             return {'domain': {'logistic_route_line_id': [('active','=',True),('fsm_vehicle_id','!=',False),('fsm_vehicle_id','=', record.vehicle_id.id)]}}
 
-    logistic_route_line_id = fields.Many2one('fsm.logistic.route.line',string='Trayectos',)
-                                             #domain="[('active','=',True),('fsm_vehicle_id','!=',False),('fsm_vehicle_id','=','vehicle_id.id')]")
+    logistic_route_line_id = fields.Many2one('fsm.logistic.route.line', string='Trayectos')
 
     date_up = fields.Datetime('Cargardo', track_visibility='onchange')
     date_down = fields.Datetime('Descargado', track_visibility='onchange')

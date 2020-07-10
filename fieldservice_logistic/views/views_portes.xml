@@ -183,7 +183,8 @@
                 </page>
             </xpath>
             <xpath expr="//field[@name='vehicle_id']" position="after">
-                <field name="logistic_route_line_id" context="{'default_fsm_vehicle_id':vehicle_id}" />
+                <field name="logistic_route_line_id" context="{'default_fsm_vehicle_id':vehicle_id}"/>
+                <!--attrs="{'domain':[('active','=',True),('fsm_vehicle_id','!=',False),('fsm_vehicle_id','=',vehicle_id.id)]}"-->
             </xpath>
         </field>
     </record>

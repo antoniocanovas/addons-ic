@@ -9,6 +9,7 @@ class FsmOrderLogistic(models.Model):
         for record in self:
             this_margin = record.sale_line_id.price_subtotal - record.logistic_route_line_id.fsm_vehicle_id.cost_per_km * record.km
             record.logistic_margin = this_margin
-            record.sale_line_id.margin = this_margin
+            linea = record.sale_line_id
+            linea['margin'] = this_margin
 
     logistic_margin = fields.Float(string='Margen', compute=_get_margin)
