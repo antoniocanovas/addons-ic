@@ -4,6 +4,7 @@
 import base64
 from datetime import datetime, timedelta
 import json
+from random import randint
 import requests
 from odoo import fields, models, api
 from odoo.exceptions import ValidationError
@@ -61,6 +62,13 @@ class ResCompany(models.Model):
                 'X-API_KEY': api_key,
             }
             return header
+
+    @api.multi
+    def random_with_N_digits(n):
+        range_start = 10 ** (n - 1)
+        range_end = (10 ** n) - 1
+        return randint(range_start, range_end)
+
 
     @api.multi
     def clean_vat(self, vat):
@@ -215,11 +223,10 @@ class ResCompany(models.Model):
                     if partner_vat:
                         partner = self.get_partner_by_vat(partner_vat)
                         partner_name_value = partner_vat.value
-                        partner_vat_value = partner_vat.value
                     else:
                         partner = False
-                        partner_name_value = "00000000N"
-                        partner_vat_value = "00000000N"
+                        partner_name_value = self.random_with_N_digits(8)
+                        partner_name_value = str(partner_name_value)+"Z"
                     if not partner:
                         account600_id = self.env['ir.model.data'].search([
                             ('name', '=', '1_account_common_600'),
@@ -234,7 +241,7 @@ class ResCompany(models.Model):
 
                         partner = self.env['res.partner'].sudo().create({
                             'name': str(partner_name_value),
-                            'vat': str(partner_vat_value),
+                            'vat': str(partner_name_value),
                             'company_type': 'company',
                             'ocr_sale_account_id': account700.id,
                             'ocr_purchase_account_id': account600.id,
