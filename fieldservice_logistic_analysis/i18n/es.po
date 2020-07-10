@@ -1,0 +1,363 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_timesheet_logistic
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-10 14:07+0000\n"
+"PO-Revision-Date: 2020-01-13 16:11+0100\n"
+"Last-Translator: cubells <vicent@vcubells.net>\n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 2.2.4\n"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_task_form_fsm_inherited
+msgid ""
+"<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" title="
+"\"Arrow\"/>"
+msgstr ""
+"<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" title="
+"\"Arrow\"/>"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,help:sale_timesheet_logistic.field_sale_order_line__product_type
+msgid ""
+"A storable product is a product for which you manage stock. The Inventory "
+"app has to be installed.\n"
+"A consumable product is a product for which stock is not managed.\n"
+"A service is a non-material product you provide."
+msgstr ""
+"Un producto almacenable es un producto para el que gestiona stock. La "
+"aplicación de inventario debe estar instalada.\n"
+"Un producto consumible es un producto para el que no se gestionan las "
+"existencias.\n"
+"Un servicio es un producto no material."
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_search
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__origin_date
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__planned_date_begin
+msgid "Collection Date"
+msgstr "Fecha recogida"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__origin_id
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__origin_id
+msgid "Collection Point"
+msgstr "Recoger en"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_fleet_vehicle__cost_per_km
+msgid "Cost/km"
+msgstr "Coste/km"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.actions.act_window,help:sale_timesheet_logistic.project_task_route_action
+msgid "Create your route"
+msgstr "Crear trayecto"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__delivery_date
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__planned_date_end
+msgid "Delivery Date"
+msgstr "Fecha entrega"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__delivery_id
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__delivery_id
+msgid "Delivery Point"
+msgstr "Entregar en"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_sale_task_form
+msgid "Description"
+msgstr "Descripción"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_form
+msgid "Enter any note you want"
+msgstr "Introduce una nota"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_task_form_fsm_inherited
+msgid "Entregado"
+msgstr "Entregado"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__id
+msgid "ID"
+msgstr "ID"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,help:sale_timesheet_logistic.field_project_task_type__is_logistic_draft
+msgid ""
+"If you mark this check, tasks in this stage are considered selectables on "
+"logistic routes"
+msgstr ""
+"Si marcas esto, las tareas en esta etapa serán consideradas seleccionables "
+"en las rutas logísticas"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__is_selectable
+msgid "Is Selectable"
+msgstr "Es seleccionable"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__kg
+msgid "Kg"
+msgstr "Kg"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__km
+msgid "Km"
+msgstr "Km"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route____last_update
+msgid "Last Modified on"
+msgstr "Modificado el"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__write_uid
+msgid "Last Updated by"
+msgstr "Modificado por"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__write_date
+msgid "Last Updated on"
+msgstr "Actualizado por"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__fleet_vehicle_id
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__fleet_vehicle_id
+msgid "License Plate"
+msgstr "Matrícula"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_form
+msgid "Lines"
+msgstr "Líneas"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__note
+msgid "Note"
+msgstr "Nota"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_order_form
+msgid "Open"
+msgstr "Abrir"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order_line__product_type
+msgid "Product Type"
+msgstr "Tipo de producto"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__profitability
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__profitability
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_sale_order__profitability
+msgid "Profitability"
+msgstr "Rentabilidad"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model,name:sale_timesheet_logistic.model_project_task_route
+msgid "Project Task Route"
+msgstr "Project Task Route"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_task_form_fsm_inherited
+#| msgid "=> Recogido / Entregado en tareas "
+msgid "Recogida / entrega"
+msgstr "Recogida / entrega"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_task_form_fsm_inherited
+msgid "Recogido"
+msgstr "Recogido"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__task_route_id
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__name
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_form
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_tree
+msgid "Route"
+msgstr "Trayecto"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_task_form2_inherited
+msgid "Route Data"
+msgstr "Datos del trayecto"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_form
+msgid "Route Lines"
+msgstr "Líneas de trayecto"
+
+#. module: sale_timesheet_logistic
+#: model:ir.actions.act_window,name:sale_timesheet_logistic.project_task_route_action
+#: model:ir.ui.menu,name:sale_timesheet_logistic.project_task_route_menu
+msgid "Routes"
+msgstr "Trayectos"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model,name:sale_timesheet_logistic.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model,name:sale_timesheet_logistic.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Líneas de pedido de venta"
+
+#. module: sale_timesheet_logistic
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.project_task_route_view_search
+msgid "Search Quotation Template"
+msgstr "Buscar una plantilla de presupuesto"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_type__is_logistic_draft
+msgid "Selectable on logistic routes"
+msgstr "Seleccionable en las trayectos logísticos"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model,name:sale_timesheet_logistic.model_project_task
+#: model_terms:ir.ui.view,arch_db:sale_timesheet_logistic.view_sale_task_form
+msgid "Task"
+msgstr "Tarea"
+
+#. module: sale_timesheet_logistic
+#: code:addons/sale_timesheet_logistic/models/sale_order.py:0
+#, python-format
+msgid "Task Data"
+msgstr "Fecha de la tarea"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model,name:sale_timesheet_logistic.model_project_task_type
+msgid "Task Stage"
+msgstr "Etapa de la tarea"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task_route__task_ids
+msgid "Tasks"
+msgstr "Tareas"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model.fields,field_description:sale_timesheet_logistic.field_project_task__units
+msgid "Units"
+msgstr "Unidades"
+
+#. module: sale_timesheet_logistic
+#: model:ir.model,name:sale_timesheet_logistic.model_fleet_vehicle
+msgid "Vehicle"
+msgstr "Vehículo"
+
+#~ msgid ""
+#~ "<span class=\"o_form_label\">This operation will create a route with the "
+#~ "lines of the sale order.</span>"
+#~ msgstr ""
+#~ "<span class=\"o_form_label\">Esta operación creará una ruta con las "
+#~ "ubicaciones que hay en las líneas del pedido.</span>"
+
+#~ msgid ""
+#~ "<span class=\"o_form_label\">This operation will merge all selected "
+#~ "routes in the same route.</span>"
+#~ msgstr ""
+#~ "<span class=\"o_form_label\">Esta operación unirá todas las rutas en una "
+#~ "misma nueva ruta.</span>"
+
+#~ msgid "=> Picked Up / Delivered in tasks"
+#~ msgstr "Recogido / entregado en tareas"
+
+#~ msgid "Close"
+#~ msgstr "Cerrar"
+
+#~ msgid "Create"
+#~ msgstr "Crear"
+
+#~ msgid "Create routes from sale order lines"
+#~ msgstr "Crear ruta a partir de las líneas de pedido"
+
+#~ msgid "Delivered"
+#~ msgstr "Entregado"
+
+#~ msgid "Enter the name of the new route"
+#~ msgstr "Introduce el nombre de la nueva ruta"
+
+#~ msgid "Generate Route"
+#~ msgstr "Generar ruta"
+
+#~ msgid "Merge"
+#~ msgstr "Unir"
+
+#~ msgid "Merge Routes"
+#~ msgstr "Unir rutas"
+
+#~ msgid "New Route"
+#~ msgstr "Nueva ruta"
+
+#~ msgid "Picked Up"
+#~ msgstr "Recogido"
+
+#~ msgid "Picked up / delivered"
+#~ msgstr "Recogida / entregada"
+
+#~ msgid "Route %s"
+#~ msgstr "Ruta %s"
+
+#~ msgid "Route lines"
+#~ msgstr "Líneas de ruta"
+
+#~ msgid "Route_lines"
+#~ msgstr "Route_lines"
+
+#~ msgid "Routes of the partners"
+#~ msgstr "Rutas de los clientes"
+
+#~ msgid "Routes only can be defined with service products."
+#~ msgstr "Las rutas solamente se pueden definir con servicios."
+
+#~ msgid "Sequence"
+#~ msgstr "Secuencia"
+
+#~ msgid "You must define origin and delivery points in every line."
+#~ msgstr ""
+#~ "Debe definir un punto de recogida y un punto de entrega en cada línea."
+
+#~ msgid "You must have lines with origin and delivery points."
+#~ msgstr ""
+#~ "Debe definir líneas con el punto de recogida y con el punto de entrega."
+
+#~ msgid "You must select two or more routes to merge."
+#~ msgstr "Debe seleccionar dos o más rutas que unir."

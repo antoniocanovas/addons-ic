@@ -211,7 +211,15 @@ class ResCompany(models.Model):
 
                     partner_vat = self.env['ocr.values'].sudo().search([
                         ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
-                    partner = self.get_partner_by_vat(partner_vat)
+
+                    if partner_vat:
+                        partner = self.get_partner_by_vat(partner_vat)
+                        partner_name_value = partner_vat.value
+                        partner_vat_value = partner_vat.value
+                    else:
+                        partner = False
+                        partner_name_value = "00000000N"
+                        partner_vat_value = "00000000N"
                     if not partner:
                         account600_id = self.env['ir.model.data'].search([
                             ('name', '=', '1_account_common_600'),
@@ -225,8 +233,8 @@ class ResCompany(models.Model):
                         account700 = self.env['account.account'].search([('id', '=', account700_id.res_id)])
 
                         partner = self.env['res.partner'].sudo().create({
-                            'name': partner_vat.value,
-                            'vat': partner_vat.value,
+                            'name': partner_name_value,
+                            'vat': partner_vat_value,
                             'company_type': 'company',
                             'ocr_sale_account_id': account700.id,
                             'ocr_purchase_account_id': account600.id,

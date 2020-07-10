@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <act_window id="action_km_wizard" name="Calculate KM" res_model="logistic.analysis.km"
+                src_model="fsm.logistic.route.line" view_mode="form" target="new"/>
+
+    <record id="calculate_km_wizard_view" model="ir.ui.view">
+        <field name="name">Calcualte KM Wizard</field>
+        <field name="model">logistic.analysis.km</field>
+        <field name="arch" type="xml">
+            <form string="Reparto de km">
+                   <group>
+                       <field name="total_km"/>
+                       <field name="logistic_route_line_id" required="1" readonly="1"/>
+                   </group>
+                   <footer>
+                       <button string="Reparto Equitativo" name="equitative_km" type="object" class="btn-primary"/>
+                       <button string="Reparto Proporcional" name="distribute_km" type="object" class="btn-primary"/>
+                       <button string="Cancel" class="btn-secondary" special="cancel"/>
+                   </footer>
+               </form>
+        </field>
+    </record>
+
+</odoo>
