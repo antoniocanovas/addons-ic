@@ -174,8 +174,8 @@
                 <field name="date_down"/>
             </xpath>
             <xpath expr="//sheet/notebook/page[@name='execution_page']" position="after">
-                <page string="Medidas" name="measures">
-                    <group string="Medidas" name="measures">
+                <page string="Mediciones" name="measures">
+                    <group string="Mediciones" name="measures">
                         <field name="km"/>
                         <field name="kg"/>
                         <field name="units"/>

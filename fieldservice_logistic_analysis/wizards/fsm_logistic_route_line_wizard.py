@@ -33,7 +33,7 @@ class LogisticRouteLineWizard(models.TransientModel):
 
             if orders > 0:
                 for order in record.logistic_route_line_id.fsm_order_ids:
-                    if not (order.location_id.parnter_id.id) or not (order.location_dest_id.id) or (
+                    if not (order.location_id.partner_id.id) or not (order.location_dest_id.id) or (
                             order.location_id.partner_id.km2origin == 0) or (order.location_dest_id.km2origin == 0):
                         raise Warning("Porte sin dirección o kilometraje desde base en recogida o entrega")
                     if (order.location_id.partner_id.km2origin > order.location_dest_id.km2origin):
