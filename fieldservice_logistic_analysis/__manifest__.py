@@ -13,7 +13,6 @@
     ],
     'data': [
         'views/view_analysis.xml',
-        'security/ir.model.access.csv',
         'wizards/calcualte_km_wizard_view.xml',
     ],
     'installable': True,
