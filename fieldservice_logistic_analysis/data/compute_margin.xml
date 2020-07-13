@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="calculate logistic margin" model="base.automation">
+            <field name="name">=> Actualizar margen en SOL </field>
+            <field name="model_id" ref="fieldservice.model_fsm_order"/>
+            <field name="active" eval="True"/>
+            <field name="state">code</field>
+            <field name="code">
+sol = record.sale_line_id
+coste = record.vehicle_id.fleet_vehicle_id.cost_per_km * record.km
+
+if sol.id:
+    margen = sol.price_subtotal - coste
+    if margen != sol.margin:
+        sol['margin'] = margen
+else:
+    margen = 0 - coste
+if margen != record.logistic_margin:
+    record['logistic_margin'] = margen
+
+            </field>
+            <field name="trigger">on_create_or_write</field>
+    </record>
+
+</odoo>

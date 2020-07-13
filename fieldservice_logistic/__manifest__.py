@@ -16,6 +16,7 @@
         'fieldservice_sale',
         'fieldservice_google_map',
         'fieldservice_google_marker_icon_picker',
+        'base_automation',
 
     ],
     'data': [
