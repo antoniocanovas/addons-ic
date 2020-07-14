@@ -23,7 +23,7 @@
                 <button class="oe_stat_button" string="Reparto Km" icon="fa-level-up" type="object" name="action_km_wizard"/>
             </xpath>
             <xpath expr="//sheet/group/group/field[@name='km']" position="after">
-                  <field name="logistic_margin"/>
+                   <field name="logistic_margin" widget="monetary" groups="sales_team.group_sale_manager"/>
             </xpath>
         </field>
     </record>

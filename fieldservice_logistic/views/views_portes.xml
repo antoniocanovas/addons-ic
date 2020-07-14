@@ -290,7 +290,6 @@
                                     <field name="location_dest_id"/>
                                     <field name="scheduled_date_end"/>
                                     <field name="km"/>
-                                    <field name="logistic_margin" widget="monetary" groups="sales_team.group_sale_manager"/>
                                 </tree>
                             </field>
                         </page>
