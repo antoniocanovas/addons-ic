@@ -15,6 +15,11 @@ class FsmOrderLogistic(models.Model):
         help='Delivery address for current sales order.'
     )
 
+    stage_external_id = fields.Char(
+        related ='stage_id.external_id',
+        string = 'Estado FSM'
+    )
+
     @api.onchange('vehicle_id')
     def get_logistic_route_domain(self):
         for record in self:

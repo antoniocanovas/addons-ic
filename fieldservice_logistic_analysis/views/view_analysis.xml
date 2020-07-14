@@ -34,8 +34,8 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='function']" position="inside">
-                <field name="km2origin "/>
+            <xpath expr="//field[@name='function']" position="after">
+                <field name="km2origin"/>
             </xpath>
         </field>
     </record>
