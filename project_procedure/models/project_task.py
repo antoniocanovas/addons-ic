@@ -10,7 +10,7 @@ class ProjectTask(models.Model):
 
 
     departament_id = fields.Many2one('hr.department',string='Departamento')
-    procedure_line_id = fields.Many2one('project.procedure.line.type',string='Linea procedure')
+    procedure_line_id = fields.Many2one('project.procedure.line',string='Linea procedure')
 
 
 

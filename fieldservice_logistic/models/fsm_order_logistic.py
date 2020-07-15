@@ -17,7 +17,8 @@ class FsmOrderLogistic(models.Model):
 
     stage_external_id = fields.Char(
         related ='stage_id.external_id',
-        string = 'Estado FSM'
+        string = 'Estado FSM',
+        store = True,
     )
 
     @api.onchange('vehicle_id')

@@ -11,4 +11,4 @@ class FsmOrderLogistic(models.Model):
             nombre = self.env['ir.model.data'].search([('model', '=', 'fsm.stage'), ('res_id', '=', record.id)]).name
             record['external_id'] = nombre
 
-    external_id = fields.Char(string='Trayecto', stored=True, readonly=True, compute=_get_external_id)
+    external_id = fields.Char(string='Trayecto', store=True, readonly=True, compute=_get_external_id)

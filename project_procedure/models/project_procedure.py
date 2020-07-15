@@ -7,7 +7,7 @@ from odoo import fields, models, api
 
 class ProjectProcedure(models.Model):
     _name = 'project.procedure'
-    _description = 'List of procedures for procedures'
+    _description = 'Plantillas de procedimiento de proyectos'
 
     name = fields.Char(string='Nombre',required=True)
     task_description = fields.Text('Procedimiento')

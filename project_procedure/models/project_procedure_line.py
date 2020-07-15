@@ -5,11 +5,11 @@
 from odoo import fields, models, api
 
 
-class ProjectProcedureLineType(models.Model):
-    _name = 'project.procedure.line.type'
-    _description = 'Line file types.'
+class ProjectProcedureLine(models.Model):
+    _name = 'project.procedure.line'
+    _description = 'Líneas de procedimiento de proyecto.'
 
-    type_id = fields.Many2one('project.procedure.type',string='Tipo')
+    type_id = fields.Many2one('project.procedure.action',string='Tipo')
     procedure_id = fields.Many2one('project.procedure',
                                  domain=[('store','=',False)],string='Tramite',required=True)
     dependency_ids = fields.Many2many('project.procedure',

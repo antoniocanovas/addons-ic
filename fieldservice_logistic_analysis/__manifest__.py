@@ -7,7 +7,7 @@
     'license': 'AGPL-3',
     'website': "https://ingenieriacloud.com",
     'category': 'Generic',
-    'version': '12.0.0.0.1',
+    'version': '12.0.0.0.2',
     'depends': [
         'fieldservice_logistic',
         'sale_margin',

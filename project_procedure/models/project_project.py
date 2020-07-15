@@ -10,7 +10,7 @@ class project(models.Model):
 
 
     is_procedure = fields.Boolean(string='Basado en procedimiento')
-    procedure_type_id = fields.Many2one('project.procedure.type',domain=[('state','=','activo')],string='Tipo')
+    procedure_type_id = fields.Many2one('project.procedure.action',domain=[('state','=','activo')],string='Tipo')
     departament_id = fields.Many2one('hr.department',string='Departamento')
 
     def compute_get_task(self):

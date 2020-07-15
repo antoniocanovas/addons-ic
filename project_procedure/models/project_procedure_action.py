@@ -5,12 +5,12 @@
 from odoo import fields, models, api
 
 
-class ProjectProcedureTypes(models.Model):
-    _name = 'project.procedure.type'
-    _description = 'Types of files.'
+class ProjectProcedureAction(models.Model):
+    _name = 'project.procedure.action'
+    _description = 'Acciones'
 
     name = fields.Char(string='Nombre',required=True)
-    line_ids = fields.One2many('project.procedure.line.type','type_id',string='Líneas')
+    line_ids = fields.One2many('project.procedure.line','type_id',string='Líneas')
     state = fields.Selection(
         [('borrador', 'Borrador'), ('activo', 'Activo'), ('archivado', 'Archivado')],default='borrador', string='Estado')
     departament_id = fields.Many2one('hr.department',string='Departamento',required=True)
