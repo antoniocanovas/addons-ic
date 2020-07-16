@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
+
     <record id="procedure_type_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
@@ -9,7 +10,7 @@
                 <field name="user_id"/>
                 <field name="departament_id"/>
                 <field name="interval"/>
-                <field name="store"/>
+                <field name="active"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -36,7 +37,7 @@
                         <field name="departament_id" modifiers="{}"/>
                         <field name="task_description" colspan="4" modifiers="{}"/>
                         <field name="interval"/>
-                        <field name="store"/>
+                        <field name="active"/>
                     </group>
                 </sheet>
             </form>
@@ -74,7 +75,7 @@
         <field name="type">tree</field>
     </record>
 
-    <record id="procedure_type_form" model="ir.ui.view">
+    <record id="procedure_action_form" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <form>
@@ -117,7 +118,7 @@
         <field name="type">form</field>
     </record>
 
-    <record id="procedure_type_tree" model="ir.ui.view">
+    <record id="procedure_action_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree string="Tipos de procedimientos">
@@ -136,7 +137,8 @@
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
-    <record id="line_type_form" model="ir.ui.view">
+
+    <record id="line_procedure_form" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <form>
@@ -153,7 +155,7 @@
                         <field name="type_id" can_create="true" can_write="true" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
                         <newline/>
                     </group>
-                    <h4>Trámites previos:</h4>
+                    <h4>Acciones previas:</h4>
                     <field name="dependency_ids" colspan="4" can_create="true" can_write="true" modifiers="{}"/>
                 </sheet>
             </form>

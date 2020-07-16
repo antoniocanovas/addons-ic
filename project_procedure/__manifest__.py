@@ -7,7 +7,6 @@
 """,
     'author': 'Serincloud',
     'depends': [
-        'project',
         'project_stage_closed',
         'project_task_dependency',
         'hr',

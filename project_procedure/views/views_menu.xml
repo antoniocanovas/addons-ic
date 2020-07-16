@@ -33,7 +33,7 @@
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
     <field name="name">Acciones de procedimiento</field>
-    <field name="res_model">project.procedure.action</field>
+    <field name="res_model">project.procedure</field>
     <field name="search_view_id" eval="False"/>
     <field name="src_model" eval="False"/>
     <field name="target">current</field>
@@ -53,8 +53,8 @@
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
-    <field name="name">Tipos de trámites</field>
-    <field name="res_model">project.procedure</field>
+    <field name="name">Plantillas</field>
+    <field name="res_model">project.procedure.action</field>
     <field name="search_view_id" eval="False"/>
     <field name="src_model" eval="False"/>
     <field name="target">current</field>
@@ -67,7 +67,7 @@
 
 
 
-  <record id="menu_project_procedure_action" model="ir.ui.menu">
+  <!--<record id="menu_project_procedure_action" model="ir.ui.menu">
     <field name="action" ref="action_procedure_action"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
@@ -93,22 +93,31 @@
     <field name="parent_id" ref="project.menu_project_config"/>
     <field name="sequence">3</field>
     <field name="web_icon" eval="False"/>
-  </record>
+  </record>-->
 
-  <menuitem
+  <!--<menuitem
           action="action_procedure_template"
           id="menu_project_procedures"
           name="Procedimientos"
           sequence="10"
           web_icon="project_procedures,static/description/procedimientos.png"
-  />
+  />-->
+
+  <record id="menu_project_procedure" model="ir.ui.menu">
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Procedimientos</field>
+    <field name="parent_id" ref="project.menu_project_config"/>
+    <field name="sequence">2</field>
+    <field name="web_icon" eval="False"/>
+  </record>
 
   <record id="menu_procedure_template" model="ir.ui.menu" context="{'studio': True}">
     <field name="action" ref="action_procedure_template"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Plantillas de procedimiento</field>
-    <field name="parent_id" ref="menu_project_procedures"/>
+    <field name="name">Plantillas</field>
+    <field name="parent_id" ref="menu_project_procedure"/>
     <field name="sequence">1</field>
     <field name="web_icon" eval="False"/>
   </record>
@@ -117,8 +126,8 @@
     <field name="action" ref="action_procedure_action"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Acciones para procedimiento</field>
-    <field name="parent_id" ref="menu_project_procedures"/>
+    <field name="name">Acciones</field>
+    <field name="parent_id" ref="menu_project_procedure"/>
     <field name="sequence">2</field>
     <field name="web_icon" eval="False"/>
   </record>
@@ -127,8 +136,8 @@
     <field name="action" ref="action_procedure_line"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Líneas de procedimientos</field>
-    <field name="parent_id" ref="menu_project_procedures"/>
+    <field name="name">Líneas</field>
+    <field name="parent_id" ref="menu_project_procedure"/>
     <field name="sequence">3</field>
     <field name="web_icon" eval="False"/>
   </record>

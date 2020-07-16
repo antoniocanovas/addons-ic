@@ -9,11 +9,12 @@ class ProjectProcedureLine(models.Model):
     _name = 'project.procedure.line'
     _description = 'Líneas de procedimiento de proyecto.'
 
+
     type_id = fields.Many2one('project.procedure.action',string='Tipo')
     procedure_id = fields.Many2one('project.procedure',
-                                 domain=[('store','=',False)],string='Tramite',required=True)
+                                 domain=[('active','=',True)],string='Acción',required=True)
     dependency_ids = fields.Many2many('project.procedure',
-                                 domain=[('store', '=', False)], string='Dependencia')
+                                 domain=[('active', '=', True)], string='Dependencia')
 
     def compute_get_name(self):
         for record in self:

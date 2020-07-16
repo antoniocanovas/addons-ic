@@ -8,9 +8,8 @@ import datetime
 class project(models.Model):
     _inherit = 'project.project'
 
-
     is_procedure = fields.Boolean(string='Basado en procedimiento')
-    procedure_type_id = fields.Many2one('project.procedure.action',domain=[('state','=','activo')],string='Tipo')
+    procedure_type_id = fields.Many2one('project.procedure',domain=[('state','=','activo')],string='Tipo')
     departament_id = fields.Many2one('hr.department',string='Departamento')
 
     def compute_get_task(self):
@@ -19,7 +18,7 @@ class project(models.Model):
                 [('project_id', '=', record.id), '|', ('active', '=', False), ('active', '=', True)])
             record['task_ids'] = [(6, 0, tareas.ids)]
 
-    task_ids = fields.Many2many('project.task', string='tarea', compute=compute_get_task, stored=False)
+    task_ids = fields.Many2many('project.task', string='tarea', compute=compute_get_task, store=False)
 
     def make_procedure(self):
         self.is_procedure = True

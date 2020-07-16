@@ -11,7 +11,7 @@ class ProjectProcedure(models.Model):
 
     name = fields.Char(string='Nombre',required=True)
     task_description = fields.Text('Procedimiento')
-    store = fields.Boolean(string='Archivado')
+    active = fields.Boolean(string='Activo')
     departament_id = fields.Many2one('hr.department',string='Departamento')
     interval = fields.Integer('Días desde inicio exp.')
     user_id = fields.Many2one('res.users',string='usuario')
