@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+  <record id="action_expedient_line_type" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Líneas de tipos de expediente</field>
+    <field name="res_model">expedient.line.type</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="action_expedient_type" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'default_state':'borrador'}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Tipos de expediente</field>
+    <field name="res_model">expedient.type</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+  <record id="action_procedure_type" model="ir.actions.act_window">
+    <field name="auto_search" eval="True"/>
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                        This is your new action ; by default, it contains a list view and a form view.
+                    </p>
+                    <p>
+                        You can start customizing these screens by clicking on the Studio icon on the
+                        top right corner (you can also customize this help message there).
+                    </p>
+                ]]></field>
+    <field name="limit">80</field>
+    <field name="multi" eval="False"/>
+    <field name="name">Tipos de trámites</field>
+    <field name="res_model">expedient.procedure</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="src_model" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+
+
+
+  <record id="menu_procedure_types" model="ir.ui.menu">
+    <field name="action" ref="action_procedure_type"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Tipos de trámites</field>
+    <field name="parent_id" ref="project.menu_project_config"/>
+    <field name="sequence">2</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="menu_expedient_type" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="action_expedient_type"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Tipos de expediente</field>
+    <field name="parent_id" ref="project.menu_project_config"/>
+    <field name="sequence">1</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="menu_expedient_line_type" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="action_expedient_line_type"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Líneas de tipos de expediente</field>
+    <field name="parent_id" ref="project.menu_project_config"/>
+    <field name="sequence">3</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+
+</odoo>

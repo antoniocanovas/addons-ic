@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_expedient_type, Tipos de expedientes,model_expedient_type,project.group_project_user,1,1,1,1
+access_expedient_procedure, Tramites de expedientes,model_expedient_procedure,project.group_project_user,1,1,1,1
+access_expedient_line_type, Tipos de línea expedientes,model_expedient_line_type,project.group_project_user,1,1,1,1
