@@ -33,7 +33,7 @@
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
     <field name="name">Acciones de procedimiento</field>
-    <field name="res_model">project.procedure</field>
+    <field name="res_model">project.procedure.action</field>
     <field name="search_view_id" eval="False"/>
     <field name="src_model" eval="False"/>
     <field name="target">current</field>
@@ -54,7 +54,7 @@
     <field name="limit">80</field>
     <field name="multi" eval="False"/>
     <field name="name">Plantillas</field>
-    <field name="res_model">project.procedure.action</field>
+    <field name="res_model">project.procedure</field>
     <field name="search_view_id" eval="False"/>
     <field name="src_model" eval="False"/>
     <field name="target">current</field>
@@ -135,7 +135,7 @@
   <record id="menu_procedure_line" model="ir.ui.menu" context="{'studio': True}">
     <field name="action" ref="action_procedure_line"/>
     <field name="active" eval="True"/>
-    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
     <field name="name">Líneas</field>
     <field name="parent_id" ref="menu_project_procedure"/>
     <field name="sequence">3</field>

@@ -9,7 +9,7 @@ class project(models.Model):
     _inherit = 'project.project'
 
     is_procedure = fields.Boolean(string='Basado en procedimiento')
-    procedure_type_id = fields.Many2one('project.procedure',domain=[('state','=','activo')],string='Tipo')
+    procedure_id = fields.Many2one('project.procedure',domain=[('state','=','activo')],string='Plantilla')
     departament_id = fields.Many2one('hr.department',string='Departamento')
 
     def compute_get_task(self):
@@ -32,13 +32,13 @@ class project(models.Model):
                 [('project_id', '=', record.id), '|', ('active', '=', False), ('active', '=', True)])
 
             # Crear o actualizar añadiendo las etapas que faltan en el proyecto:
-            #etapas_plantilla = record.procedure_type_id.stage_ids
+            #etapas_plantilla = record.procedure_id.stage_ids
             #for etapa in etapas_plantilla:
             #    record['type_ids'] = [(4, etapa.id)]
 
             # Crear o actualizar añadiendo las etapas que faltan en el proyecto:
         
-            for e in record.procedure_type_id.stage_ids:
+            for e in record.procedure_id.stage_ids:
                 record['type_ids'] = [(4, e.id)]
 
             # Las líneas del tipo de procedure que ya tienen tarea son:
@@ -48,7 +48,7 @@ class project(models.Model):
                     lineswithtask.append(ta.procedure_line_id.id)
             #
             # Buscamos las tareas que tendrían que haber y las creamos (por si se han borrado o ampliado el ámbito):
-            for li in record.procedure_type_id.line_ids:
+            for li in record.procedure_id.line_ids:
                 if li.id not in lineswithtask:
                     nombre = record.name + " - " + li.procedure_id.name
                     nuevatarea = self.env['project.task'].create({'name': nombre,
@@ -104,6 +104,6 @@ class project(models.Model):
                     ta['date_deadline'] = fecha.date()
 
             # Cambiar la etiqueta de las tareas en base a la plantilla:
-            if record.procedure_type_id.task_name:
-                record['label_tasks'] = record.procedure_type_id.task_name
+            if record.procedure_id.task_name:
+                record['label_tasks'] = record.procedure_id.task_name
 

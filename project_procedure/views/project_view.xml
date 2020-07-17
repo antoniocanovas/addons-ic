@@ -6,14 +6,14 @@
         <field name="arch" type="xml">
             <data>
                 <xpath expr="//button[@name='toggle_active']" position="before">
-                    <button class="oe_stat_button" string="Actualizar Trámites" icon="fa-level-down" type="object" name="create_case_tasks" attrs="{'invisible':['|',('procedure_type_id','=',False),('is_procedure','=',False)]}"/>
+                    <button class="oe_stat_button" string="Actualizar Trámites" icon="fa-level-down" type="object" name="create_case_tasks" attrs="{'invisible':['|',('procedure_id','=',False),('is_procedure','=',False)]}"/>
                     <button class="oe_stat_button" string="Es procedimiento" icon="fa-level-up" type="object" name="make_procedure" attrs="{'invisible':[('is_procedure','=',True)]}"/>
                 </xpath>
                 <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
-                    <page name="acciones" string="Acciones" attrs="{'invisible':[('is_procedure','=',False)]}">
+                    <page name="acciones" string="Procedimiento" attrs="{'invisible':[('is_procedure','=',False)]}">
                         <group name="procedures">
                             <field name="is_procedure"/>
-                            <field name="procedure_type_id" widget='selection'/>
+                            <field name="procedure_id" widget='selection'/>
                         </group>
                         <field name="task_ids">
                             <tree editable="1" decoration-danger="date_deadline and (date_deadline&lt;current_date)">

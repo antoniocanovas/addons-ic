@@ -29,9 +29,9 @@ if record.project_id.is_procedure == True:
             <field name="trigger">on_create_or_write</field>
     </record>
 
-    <record id="check_procedure_type" model="base.automation">
+    <record id="check_project_procedure" model="base.automation">
             <field name="name">=> Chequeo tipo procedure (Acción automática) </field>
-            <field name="model_id" ref="project_procedure.model_project_procedure_action"/>
+            <field name="model_id" ref="project_procedure.model_project_procedure"/>
             <field name="active" eval="True"/>
             <field name="state">code</field>
             <field name="code">
