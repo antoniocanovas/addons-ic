@@ -7,14 +7,14 @@
             <xpath expr="//div[@id='qrcode']" position="after">
                 <div id="retention" class="row" t-if="o.retention_id">
                     <div>
-                        <table class="table">
+                        <table class="table table-sm">
                             <tr>
                                 <td><strong>Retentions</strong></td>
+                                <td><strong>Vencimiento</strong></td>
                                 <td t-if="o.type == 'out_invoice' or o.type == 'out_refund'">
                                     <strong>Debe</strong></td>
                                 <td t-if="o.type == 'in_invoice' or o.type == 'in_refund'">
                                     <strong>Haber</strong></td>
-                                <td><strong>Fecha Vencimiento</strong></td>
                             </tr>
                             <t t-foreach="o.retention_id.line_ids" t-as="retention">
                                 <tr style="">
@@ -36,7 +36,6 @@
                             </t>
                             <tr class="border-black o_total">
                                 <td><strong>Total</strong></td>
-                                <td/>
                                 <td/>
                                 <td class="text-right">
                                     <span t-field="o.retention_amount"/>
