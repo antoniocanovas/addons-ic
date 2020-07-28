@@ -421,8 +421,10 @@ class ResCompany(models.Model):
                                                     ('state', '=', 'started'), ('state', '=', 'enqueued')
                                                     ])
         for job in jobs:
+            desired_eta = datetime.now() + timedelta(seconds=200)
             if (datetime.utcnow() - job.create_date) > timedelta(minutes=30):
                 job.state = 'pending'
+                job.eta = desired_eta
 
     @api.multi
     def ocr_mark_invoice_as_ocr(self):

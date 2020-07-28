@@ -24,8 +24,8 @@ class AccountInvoiceRetention(models.Model):
     def _compute_retention_amount(self):
         for record in self:
             total = 0
-            if (record.retencion_id.id):
-                for li in record.x_retencion_id.line_ids:
+            if (record.retention_id.id):
+                for li in record.retention_id.line_ids:
                     total += li.credit
                 record['retention_amount'] = total
 

@@ -13,6 +13,8 @@
     ],
     'data': [
         'views/account_invoice_form_retention.xml',
+        'views/account_invoice_retention_template.xml',
+
     ],
     'installable': True,
 }

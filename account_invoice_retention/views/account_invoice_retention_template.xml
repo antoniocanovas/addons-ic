@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <template id="report_invoice_document_retentions" inherit_id="account.report_invoice_document">
+            <xpath expr="//div[@id='qrcode']" position="after">
+                <div id="retention" class="row" t-if="o.retention_id">
+                    <div>
+                        <table class="table">
+                            <tr>
+                                <td><strong>Retentions</strong></td>
+                                <td t-if="o.type == 'out_invoice' or o.type == 'out_refund'">
+                                    <strong>Debe</strong></td>
+                                <td t-if="o.type == 'in_invoice' or o.type == 'in_refund'">
+                                    <strong>Haber</strong></td>
+                                <td><strong>Fecha Vencimiento</strong></td>
+                            </tr>
+                            <t t-foreach="o.retention_id.line_ids" t-as="retention">
+                                <tr style="">
+                                    <t>
+                                        <td><span t-esc="retention.name"/></td>
+                                        <td t-if="o.type == 'out_invoice' or o.type == 'out_refund'"
+                                            class="text-right o_price_total">
+                                            <span t-esc="retention.debit"/>
+                                        </td>
+                                        <td t-if="o.type == 'in_invoice' or o.type == 'in_refund'"
+                                            class="text-right o_price_total">
+                                            <span t-esc="retention.credit"/>
+                                        </td>
+                                        <td class="text-right o_price_total">
+                                            <span t-esc="retention.date_maturity"/>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </t>
+                            <tr class="border-black o_total">
+                                <td><strong>Total</strong></td>
+                                <td/>
+                                <td/>
+                                <td class="text-right">
+                                    <span t-field="o.retention_amount"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+
+        <!--<template id="report_invoice_document_with_retentions" inherit_id="account.report_invoice_document_with_payments">
+            <xpath expr="//div[@class='clearfix']" position="after">
+                    <div id="retention" class="row" t-if="o.retention_id">
+                        <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                            <table class="table">
+                                <tr class="border-black o_subtotal" style="">
+                                    <td><strong>Retentions</strong></td>
+                                    <td class="text-right"/>
+                                </tr>
+                                <t t-foreach="o.retention_id" t-as="retention">
+                                    <tr style="">
+                                        <t>
+                                            <td><span t-esc="retention.name"/></td>
+                                            <td class="text-right o_price_total">
+                                                <span t-esc="retention.amount"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                                <tr class="border-black o_total">
+                                    <td><strong>Total</strong></td>
+                                    <td class="text-right">
+                                        <span t-field="o.retention_amount"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+            </xpath>
+        </template>-->
+
+    </data>
+
+</odoo>
