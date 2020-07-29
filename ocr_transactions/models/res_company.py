@@ -126,9 +126,11 @@ class ResCompany(models.Model):
             # No se Borran facturas, solo actualizamos el transaction si no hay líneas de factura
             # Si hay lineas no debe actualizar estado
             if exist.token:
+                print("Lee Facturas y actualiza estado")
                 if exist.state != transactions_by_state['FACTURAS'][i]['status']:
                     exist.state = transactions_by_state['FACTURAS'][i]['status']
             else:
+                print("Lee Facturas y crea transaction")
                 type_doc = transactions_by_state['FACTURAS'][i]['type']
                 if transactions_by_state['FACTURAS'][i]['type'] == "emitida":
                     type_doc = "out_invoice"
@@ -178,27 +180,39 @@ class ResCompany(models.Model):
     @api.multi
     def create_invoices(self, transactions_processed, api_transaction_url, header):
         for t in transactions_processed:
+            print("Por transaction procesed")
             invoice = self.env['account.invoice'].sudo().search([
                 ("ocr_transaction_id.token", "=", t.token),
             ], limit=1)
+            print("invoice",invoice)
             previus_ocr_values = self.env['ocr.values'].sudo().search([
                 ("ocr_transaction_id", "=", t.id)
             ])
+            print("VALUES",previus_ocr_values)
 
             api_transaction_url_token = "%s%s" % (api_transaction_url, t.token)
             ocr_document_data = self.get_documents_data(api_transaction_url_token, header)
             t.json_text = ocr_document_data
 
-            if ocr_document_data:
+            if not ocr_document_data:
+                print("No ha devuelto datos")
+                t.json_text = "Sin datos del servidor"
+                t.state = 'error'
+            else:
+                print("Hay datos")
                 if invoice:
+                    print("Hay factura")
                     if not invoice.invoice_line_ids:
+                        print("Sin lineas")
                         basic_values = self.ocr_update_values(t, ocr_document_data, "basic")
                         extended_values = self.ocr_update_values(t, ocr_document_data, "extended")
                         t.state = 'downloaded'
                     else:
+                        print("Con lineas")
                         t.state = 'downloaded'
 
                 elif not previus_ocr_values:
+                    print("No hay factura ni valores previos")
                     for v in ocr_document_data["result"]["basic"].values():
                         self.env['ocr.values'].sudo().create({
                             'token': t.token,
@@ -420,11 +434,13 @@ class ResCompany(models.Model):
         jobs = self.env['queue.job'].sudo().search(["|",
                                                     ('state', '=', 'started'), ('state', '=', 'enqueued')
                                                     ])
+        print("Ejecución")
         for job in jobs:
+            print("Encontrados", jobs)
             desired_eta = datetime.now() + timedelta(seconds=200)
-            if (datetime.utcnow() - job.create_date) > timedelta(minutes=30):
+
+            if (datetime.utcnow() - job.date_created) > timedelta(minutes=30):
                 job.state = 'pending'
-                job.eta = desired_eta
 
     @api.multi
     def ocr_mark_invoice_as_ocr(self):
