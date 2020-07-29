@@ -199,109 +199,116 @@ class ResCompany(models.Model):
                 t.json_text = "Sin datos del servidor"
                 t.state = 'error'
             else:
-                print("Hay datos")
-                if invoice:
-                    print("Hay factura")
-                    if not invoice.invoice_line_ids:
-                        print("Sin lineas")
-                        basic_values = self.ocr_update_values(t, ocr_document_data, "basic")
-                        extended_values = self.ocr_update_values(t, ocr_document_data, "extended")
-                        t.state = 'downloaded'
-                    else:
-                        print("Con lineas")
-                        t.state = 'downloaded'
-
-                elif not previus_ocr_values:
-                    print("No hay factura ni valores previos")
-                    for v in ocr_document_data["result"]["basic"].values():
-                        self.env['ocr.values'].sudo().create({
-                            'token': t.token,
-                            'name': v["ERPName"],
-                            'value': v["Value"]["Text"],
-                            'ocr_transaction_id': t.id,
-                        })
-                    for v in ocr_document_data["result"]["extended"].values():
-                        self.env['ocr.values'].sudo().create({
-                            'token': t.token,
-                            'name': v["ERPName"],
-                            'value': v["Value"]["Text"],
-                            'ocr_transaction_id': t.id,
-                        })
-                    if ocr_document_data["result"]["status"] == "ERROR":
-                        t.transaction_error = ocr_document_data["result"]["reason"]
-                    t.state = 'downloaded'
-
-                    partner_vat = self.env['ocr.values'].sudo().search([
-                        ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
-
-                    if partner_vat:
-                        partner = self.get_partner_by_vat(partner_vat)
-                        partner_name_value = partner_vat.value
-                    else:
-                        partner = False
-                        partner_name_value = self.random_with_N_digits(8)
-                        partner_name_value = str(partner_name_value)+"Z"
-                    if not partner:
-                        account600_id = self.env['ir.model.data'].search([
-                            ('name', '=', '1_account_common_600'),
-                            ('model', '=', 'account.account')
-                        ])
-                        account600 = self.env['account.account'].search([('id', '=', account600_id.res_id)])
-                        account700_id = self.env['ir.model.data'].search([
-                            ('name', '=', '1_account_common_7000'),
-                            ('model', '=', 'account.account')
-                        ])
-                        account700 = self.env['account.account'].search([('id', '=', account700_id.res_id)])
-
-                        partner = self.env['res.partner'].sudo().create({
-                            'name': str(partner_name_value),
-                            'vat': str(partner_name_value),
-                            'company_type': 'company',
-                            'ocr_sale_account_id': account700.id,
-                            'ocr_purchase_account_id': account600.id,
-                        })
-                    if partner:
-                        date = self.env['ocr.values'].sudo().search([
-                            ('token', '=', t.token), ('name', '=', 'Fecha')], limit=1)
-
-                        if date.value:
-                            date_invoice = datetime.strptime(date.value, '%d/%m/%Y').date()
-                        else:
-                            date_invoice = False
-
-                        reference = self.env['ocr.values'].sudo().search([
-                            ('token', '=', t.token), ('name', '=', 'NumFactura')], limit=1)
-
-                        if not reference:
-                            reference_value = False
-                        else:
-                            reference_value = reference.value
-
-                        if t.type == 'in_invoice':
-                            invoice = self.env['account.invoice'].sudo().create({
-                                'partner_id': partner.id,
-                                'type': t.type,
-                                'reference': reference_value,
-                                'date_invoice': date_invoice,
-                                'ocr_transaction_id': t.id,
-                                'is_ocr': True,
-                            })
-                        else:
-                            invoice = self.env['account.invoice'].sudo().create({
-                                'partner_id': partner.id,
-                                'type': t.type,
-                                'date_invoice': date_invoice,
-                                'ocr_transaction_id': t.id,
-                                'is_ocr': True,
-                            })
-
+                if ocr_document_data["result"]["status"] == "ERROR":
+                    t.transaction_error = ocr_document_data["result"]["reason"]
+                    t.state = 'error'
+                else:
+                    print("Hay datos")
                     if invoice:
-                        t.invoice_id = invoice.id
-                        attachment = self.generate_attachment(ocr_document_data['image'], header, invoice, t)
-                        body = "<p>created with OCR Documents</p>"
-                        if attachment:
-                            invoice.message_post(body=body, attachment_ids=[attachment.id])
-                            invoice.message_main_attachment_id = [(4, attachment.id)]
+                        print("Hay factura")
+                        if not invoice.invoice_line_ids:
+                            print("Sin lineas")
+                            basic_values = self.ocr_update_values(t, ocr_document_data, "basic")
+                            extended_values = self.ocr_update_values(t, ocr_document_data, "extended")
+                            t.state = 'downloaded'
+                        else:
+                            print("Con lineas")
+                            t.state = 'downloaded'
+                    else:
+                        if not previus_ocr_values:
+                            print("No hay factura ni valores previos")
+                            for v in ocr_document_data["result"]["basic"].values():
+                                self.env['ocr.values'].sudo().create({
+                                    'token': t.token,
+                                    'name': v["ERPName"],
+                                    'value': v["Value"]["Text"],
+                                    'ocr_transaction_id': t.id,
+                                })
+                            for v in ocr_document_data["result"]["extended"].values():
+                                self.env['ocr.values'].sudo().create({
+                                    'token': t.token,
+                                    'name': v["ERPName"],
+                                    'value': v["Value"]["Text"],
+                                    'ocr_transaction_id': t.id,
+                                })
+                        else:
+                            print("No hay factura pero si valores previos")
+                            basic_values = self.ocr_update_values(t, ocr_document_data, "basic")
+                            extended_values = self.ocr_update_values(t, ocr_document_data, "extended")
+                            
+                        t.state = 'downloaded'
+
+                        partner_vat = self.env['ocr.values'].sudo().search([
+                            ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
+
+                        if partner_vat:
+                            partner = self.get_partner_by_vat(partner_vat)
+                            partner_name_value = partner_vat.value
+                        else:
+                            partner = False
+                            partner_name_value = self.random_with_N_digits(8)
+                            partner_name_value = str(partner_name_value)+"Z"
+                        if not partner:
+                            account600_id = self.env['ir.model.data'].search([
+                                ('name', '=', '1_account_common_600'),
+                                ('model', '=', 'account.account')
+                            ])
+                            account600 = self.env['account.account'].search([('id', '=', account600_id.res_id)])
+                            account700_id = self.env['ir.model.data'].search([
+                                ('name', '=', '1_account_common_7000'),
+                                ('model', '=', 'account.account')
+                            ])
+                            account700 = self.env['account.account'].search([('id', '=', account700_id.res_id)])
+
+                            partner = self.env['res.partner'].sudo().create({
+                                'name': str(partner_name_value),
+                                'vat': str(partner_name_value),
+                                'company_type': 'company',
+                                'ocr_sale_account_id': account700.id,
+                                'ocr_purchase_account_id': account600.id,
+                            })
+                        if partner:
+                            date = self.env['ocr.values'].sudo().search([
+                                ('token', '=', t.token), ('name', '=', 'Fecha')], limit=1)
+
+                            if date.value:
+                                date_invoice = datetime.strptime(date.value, '%d/%m/%Y').date()
+                            else:
+                                date_invoice = False
+
+                            reference = self.env['ocr.values'].sudo().search([
+                                ('token', '=', t.token), ('name', '=', 'NumFactura')], limit=1)
+
+                            if not reference:
+                                reference_value = False
+                            else:
+                                reference_value = reference.value
+
+                            if t.type == 'in_invoice':
+                                invoice = self.env['account.invoice'].sudo().create({
+                                    'partner_id': partner.id,
+                                    'type': t.type,
+                                    'reference': reference_value,
+                                    'date_invoice': date_invoice,
+                                    'ocr_transaction_id': t.id,
+                                    'is_ocr': True,
+                                })
+                            else:
+                                invoice = self.env['account.invoice'].sudo().create({
+                                    'partner_id': partner.id,
+                                    'type': t.type,
+                                    'date_invoice': date_invoice,
+                                    'ocr_transaction_id': t.id,
+                                    'is_ocr': True,
+                                })
+
+                        if invoice:
+                            t.invoice_id = invoice.id
+                            attachment = self.generate_attachment(ocr_document_data['image'], header, invoice, t)
+                            body = "<p>created with OCR Documents</p>"
+                            if attachment:
+                                invoice.message_post(body=body, attachment_ids=[attachment.id])
+                                invoice.message_main_attachment_id = [(4, attachment.id)]
 
     @api.multi
     def generate_attachment(self, api_img_url, headers, document, ocr_document):
