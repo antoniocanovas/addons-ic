@@ -12,25 +12,34 @@
                                 <td><strong>Retentions</strong></td>
                                 <td><strong>Vencimiento</strong></td>
                                 <td t-if="o.type == 'out_invoice' or o.type == 'out_refund'">
-                                    <strong>Debe</strong></td>
+                                    <strong>Importe</strong></td>
                                 <td t-if="o.type == 'in_invoice' or o.type == 'in_refund'">
-                                    <strong>Haber</strong></td>
+                                    <strong>Importe</strong></td>
                             </tr>
                             <t t-foreach="o.retention_id.line_ids" t-as="retention">
                                 <tr style="">
                                     <t>
-                                        <td><span t-esc="retention.name"/></td>
-                                        <td t-if="o.type == 'out_invoice' or o.type == 'out_refund'"
+                                        <td t-if="(o.type == 'out_invoice' or o.type == 'out_refund') and retention.debit != 0.0">
+                                          <span t-esc="retention.name"/></td>
+                                        <td t-if="(o.type == 'out_invoice' or o.type == 'out_refund') and retention.debit != 0.0"
+                                        class="text-right o_price_total">
+                                            <span t-esc="retention.date_maturity"/>
+                                        </td>
+                                        <td t-if="(o.type == 'in_invoice' or o.type == 'in_refund') and retention.debit != 0.0">
+                                          <span t-esc="retention.name"/></td>
+                                        <td t-if="(o.type == 'in_invoice' or o.type == 'in_refund') and retention.debit != 0.0"
+                                        class="text-right o_price_total">
+                                            <span t-esc="retention.date_maturity"/>
+                                        </td>
+                                        <td t-if="(o.type == 'out_invoice' or o.type == 'out_refund') and retention.debit != 0.0"
                                             class="text-right o_price_total">
                                             <span t-esc="retention.debit"/>
                                         </td>
-                                        <td t-if="o.type == 'in_invoice' or o.type == 'in_refund'"
+                                        <td t-if="(o.type == 'in_invoice' or o.type == 'in_refund') and retention.debit != 0.0"
                                             class="text-right o_price_total">
                                             <span t-esc="retention.credit"/>
                                         </td>
-                                        <td class="text-right o_price_total">
-                                            <span t-esc="retention.date_maturity"/>
-                                        </td>
+
                                     </t>
                                 </tr>
                             </t>
@@ -47,6 +56,22 @@
             </xpath>
         </template>
 
+
+        <!--<template id="report_invoice_document_with_payments_retentions" inherit_id="account.report_invoice_document_with_payments" primary="True">
+             <xpath expr="//t/tr/td" position="attributes">
+                <attribute name="attrs">{'invisible':[1]}</attribute>
+                 <tr>
+                       <span t-esc="payment_vals['name']"/>
+                       <span t-esc="payment_vals['name'][1]"/>
+                       <span t-esc="payment_vals['name'][0]"/>
+                       <span t-esc="o.retention_id.name"/>
+
+                            <t t-if="payment_vals['name'][1] == o.retention_id.name" >
+
+                            </t>
+                    </tr>
+            </xpath>
+        </template>-->
         <!--<template id="report_invoice_document_with_retentions" inherit_id="account.report_invoice_document_with_payments">
             <xpath expr="//div[@class='clearfix']" position="after">
                     <div id="retention" class="row" t-if="o.retention_id">

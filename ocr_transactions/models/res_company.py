@@ -249,9 +249,13 @@ class ResCompany(models.Model):
                     if partner:
                         date = self.env['ocr.values'].sudo().search([
                             ('token', '=', t.token), ('name', '=', 'Fecha')], limit=1)
-
+                        #ValueError: time data '25 Junio 2020' does not match format '%d/%m/%Y'
                         if date.value:
-                            date_invoice = datetime.strptime(date.value, '%d/%m/%Y').date()
+                            try:
+                                date_invoice = datetime.strptime('date.value', '%d/%m/%Y').date()
+                            except Exception as e:
+                                date_invoice = False
+                                t.transaction_error = e
                         else:
                             date_invoice = False
 
