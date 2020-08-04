@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_caritas_zonas" model="ir.ui.view">
+        <field name="name">Caritas Zonas Partner</field>
+        <field name="model">res.partner</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='internal_notes']" position="after">
+                <page  name="caritas" string="Caritas" groups="account.group_account_manager">
+                    <group>
+                        <field name="zona_pastoral_id"/>
+                        <field name="fead_id" attrs='{"invisible": [("zona_pastoral_id", "=", False)]}'/>
+                        <field name="faga_id" attrs='{"invisible": [("zona_pastoral_id", "=", False)]}'/>
+                        <field name="azagra_id" attrs='{"invisible": [("zona_pastoral_id", "=", False)]}'/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
