@@ -1,5 +1,5 @@
 {
-    'name': "Caritas Zonas",
+    'name': "Caritas",
     'summary': """
         Descripción : ""
         """,
@@ -7,9 +7,10 @@
     'license': 'AGPL-3',
     'website': "https://ingenieriacloud.com",
     'category': 'Tools',
-    'version': '12.0.0.0.1',
+    'version': '12.0.0.0.2',
     'depends': [
         'contacts',
+        'sale',
     ],
     'data': [
         'views/res_company_caritas.xml',

@@ -3,7 +3,7 @@
     <data>
 
         <record id="action_caritas_zonas" model="ir.actions.act_window">
-            <field name="name">Caritas Zonas</field>
+            <field name="name">Zonas Caritas</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">caritas.zona</field>
             <field name="view_type">form</field>
@@ -12,7 +12,7 @@
 
         <menuitem
                 id="menu_caritas_zona"
-                name="Caritas Zonas"
+                name="Zonas Caritas"
                 parent="base.menu_users"
                 sequence="4"
                 action="action_caritas_zonas"
@@ -37,7 +37,7 @@
             <field name="model">caritas.zona</field>
             <field name="field_parent"></field>
             <field name="arch" type="xml">
-                <tree string="Caritas Zonas">
+                <tree string="Zonas Caritas">
                     <field name="name"/>
                 </tree>
             </field>

@@ -8,12 +8,13 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook/page[@name='internal_notes']" position="after">
-                <page  name="caritas" string="Caritas" groups="account.group_account_manager">
+                <page  name="caritas" string="Caritas" groups="sales_team.group_sale_manager"
+                       attrs='{"invisible": [("zona_pastoral_id", "=", False)]}'>
                     <group>
-                        <field name="zona_pastoral_id"/>
-                        <field name="fead_id" attrs='{"invisible": [("zona_pastoral_id", "=", False)]}'/>
-                        <field name="faga_id" attrs='{"invisible": [("zona_pastoral_id", "=", False)]}'/>
-                        <field name="azagra_id" attrs='{"invisible": [("zona_pastoral_id", "=", False)]}'/>
+                        <field name="zona_pastoral_id" readonly='True'/>
+                        <field name="fead_id" readonly='True'/>
+                        <field name="faga_id" readonly='True'/>
+                        <field name="azagra_id" readonly='True'/>
                     </group>
                 </page>
             </xpath>
