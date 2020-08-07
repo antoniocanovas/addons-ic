@@ -37,7 +37,7 @@ class AccountBankStatementAutomation(models.Model):
 
     @api.multi
     def automated_import_files(self):
-        self = self.with_context(journal_id=self.journal_id.id) #'journal_id': " + str(self.id)
+        self = self.with_context(journal_id=self.journal_id.id)
         for bsa in self.bank_statement_attachment_ids:
             print("Importando")
             bank_statement = self.env['account.bank.statement.import'].create({

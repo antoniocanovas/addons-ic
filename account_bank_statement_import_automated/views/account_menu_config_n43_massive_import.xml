@@ -3,7 +3,7 @@
     <data>
 
         <record id="action_n43_massive_import" model="ir.actions.act_window">
-            <field name="name">n43 Importación Masiva</field>
+            <field name="name">n43 Importación masiva</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">account.bank.statement.automated</field>
             <field name="view_type">form</field>
@@ -12,9 +12,9 @@
 
         <menuitem
                 id="menu_n43_massive_import"
-                name="n43 Importación Masiva"
-                parent="account.menu_account_config"
-                sequence="10"
+                name="n43 Importación masiva"
+                parent="account.account_account_menu"
+                sequence="20"
                 action="action_n43_massive_import"
                 />
 
