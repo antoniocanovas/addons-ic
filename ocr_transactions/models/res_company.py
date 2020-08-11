@@ -252,7 +252,7 @@ class ResCompany(models.Model):
                         #ValueError: time data '25 Junio 2020' does not match format '%d/%m/%Y'
                         if date.value:
                             try:
-                                date_invoice = datetime.strptime('date.value', '%d/%m/%Y').date()
+                                date_invoice = datetime.strptime(date.value, '%d/%m/%Y').date()
                             except Exception as e:
                                 date_invoice = False
                                 t.transaction_error = e
