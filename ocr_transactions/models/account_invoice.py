@@ -156,10 +156,10 @@ class AccountInvoice(models.Model):
                 if (base_iva21 >= base_ret19):
                     # crear línea con base de retención y dejar base restante para otra línea:
                     impuestos = [taxiva21.id, taxret19.id]
-                    nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                     nuevalin = self.env['account.invoice.line'].create(
                         {'product_id': producto.id, 'invoice_id': invoice.id, 'name': descrip, 'quantity': 1,
                          'price_unit': base_ret19, 'account_id': cc})
+                    nuevalin['invoice_line_tax_ids'] = [(6, 0, impuestos)]
                     base_iva21 -= base_ret19
                     neto -= base_ret19
                     base_ret19 = 0
