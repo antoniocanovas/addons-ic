@@ -7,9 +7,22 @@
             <field name="active" eval="True"/>
             <field name="state">code</field>
             <field name="code">
+
+
 sol = record.sale_line_id
 coste = record.vehicle_id.fleet_vehicle_id.cost_per_km * record.km
 
+# # # # # # # # # # # # # # # 
+# Actualizar valores en SOL:
+# # # # # # # # # # # # # # # 
+if (sol.product_uom.category_id.id == 2) and (record.kg > 0):
+  cantidad = 0
+  cantidad = record.kg * sol.product_uom.factor
+  sol['product_uom_qty'] = cantidad
+
+# # # # # # # # # # # 
+# Cálculo del margen:
+# # # # # # # # # # # 
 if sol.id:
     margen = sol.price_subtotal - coste
     if margen != sol.margin:
@@ -17,7 +30,7 @@ if sol.id:
 else:
     margen = 0 - coste
 if margen != record.logistic_margin:
-    record['logistic_margin'] = margen
+    record['logistic_margin'] = margen                
 
             </field>
             <field name="trigger">on_create_or_write</field>
