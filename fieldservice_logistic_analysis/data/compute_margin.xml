@@ -2,7 +2,7 @@
 <odoo>
 
     <record id="calculate logistic margin" model="base.automation">
-            <field name="name">=> Actualizar margen en SOL </field>
+            <field name="name">=> Actualizar cantidades y margen en SOL </field>
             <field name="model_id" ref="fieldservice.model_fsm_order"/>
             <field name="active" eval="True"/>
             <field name="state">code</field>
