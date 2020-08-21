@@ -10,3 +10,4 @@ class LogisticFleetVehicle(models.Model):
     analytic_id = fields.Many2one(
         comodel_name='account.analytic.line',
         string='Anlytic Account',
+    )
