@@ -38,7 +38,7 @@ if margen != record.logistic_margin:
 
     <record id="calculate account_analytic_line" model="base.automation">
             <field name="name">=> Línea de factura (general) </field>
-            <field name="model_id" ref="analytic_enterprise.model_account_analytic_line"/>
+            <field name="model_id" ref=""account.model_account_invoice_line"/>
             <field name="active" eval="True"/>
             <field name="state">code</field>
             <field name="code">
