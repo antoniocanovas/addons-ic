@@ -15,7 +15,7 @@
     'data': [
         'views/view_analysis.xml',
         'wizards/calcualte_km_wizard_view.xml',
-        'data/compute_margin.xml'
+        'data/compute_margin.xml',
     ],
     'installable': True,
 }

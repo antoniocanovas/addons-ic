@@ -215,7 +215,7 @@ class ResCompany(models.Model):
                         })
                     if ocr_document_data["result"]["status"] == "ERROR":
                         t.transaction_error = ocr_document_data["result"]["reason"]
-                    t.state = 'downloaded'
+                        t.state = 'downloaded'
 
                     partner_vat = self.env['ocr.values'].sudo().search([
                         ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
@@ -286,6 +286,7 @@ class ResCompany(models.Model):
                             })
 
                     if invoice:
+                        t.state = 'downloaded'
                         t.invoice_id = invoice.id
                         attachment = self.generate_attachment(ocr_document_data['image'], header, invoice, t)
                         body = "<p>created with OCR Documents</p>"
