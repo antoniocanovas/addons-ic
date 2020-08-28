@@ -6,4 +6,4 @@ class LogisticFleetVehicle(models.Model):
 
 
     cost_per_km = fields.Float('Coste/KM')
-    analytic_id = fields.Many2one('account.analytic.line')
+    analytic_id = fields.Many2one('account.analytic.account')
