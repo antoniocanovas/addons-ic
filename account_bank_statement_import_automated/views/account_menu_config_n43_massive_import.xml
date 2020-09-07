@@ -20,9 +20,11 @@
 
         <record id="bank_statement_automated_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
+        <field name="domain" eval="[('state','!=','completed')]"/>
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="state"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -44,7 +46,7 @@
                     <button name="automated_import_files" string="Importar" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'completo')]}"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,completed,error"/>
                 </header>
-                <sheet string="Ocr Uploads">
+                <sheet string="Journal Automated Import">
                     <h2>
                         <field name="name" placeholder="Nombre ..."/>
                     </h2>
@@ -52,7 +54,7 @@
                         <page string="Documentos">
                             <group><field name="journal_id"/></group>
                             <group col="4">
-                                <field name="bank_statement_attachment_ids" widget="many2many_binary"/>
+                                <field name="bank_statement_attachment_id"/>
                             </group>
                             <separator/>
                             Formatos soportados: n43

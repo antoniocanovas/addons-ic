@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_company_n43_service" model="ir.ui.view">
+        <field name="name">N43 Service</field>
+        <field name="model">res.company</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[1]" position="after">
+                <page name="tesoralia" string="Tesoralia">
+                    <group>
+                        <field name="ftp_url"/>
+                        <field name="ftp_port"/>
+                        <field name="ftp_user"/>
+                        <field name="ftp_passwd"/>
+                    </group>
+                    <group>
+                      <!--  <button name="automated_ftp_get_n43_files" string="Get Documents" type="object" class="oe_highlight oe_read_only"/>
+                        <field name="last_connection_date" widget="date" readonly="True"/>-->
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

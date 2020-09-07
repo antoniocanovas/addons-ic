@@ -7,7 +7,9 @@
     'description': """ Upload multiple documents n43 formated """,
     'data': [
         'views/account_menu_config_n43_massive_import.xml',
+        'views/res_company_views.xml',
         'security/ir.model.access.csv',
+        'data/automatic_n43_import.xml',
     ],
     'installable': True,
 }
