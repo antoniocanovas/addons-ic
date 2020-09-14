@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 {
-    'name': 'Account Bank Statement Import Automated',
+    'name': 'Account Bank Statement Import Tesoralia',
     'category': 'Accounting',
     'version': '12.0.0.0.1',
     'depends': ['account_bank_statement_import','l10n_es_account_bank_statement_import_n43'],

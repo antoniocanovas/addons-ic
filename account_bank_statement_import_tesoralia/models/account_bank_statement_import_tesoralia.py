@@ -17,8 +17,8 @@ STATE = [
 ]
 
 
-class AccountBankStatementAutomation(models.Model):
-    _name = 'account.bank.statement.automated'
+class AccountBankStatementTesoralia(models.Model):
+    _name = 'account.bank.statement.tesoralia'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Importación Automática de Estractos'
 
@@ -79,7 +79,7 @@ class AccountBankStatementAutomation(models.Model):
 
     @api.multi
     def get_n43_list(self):
-        imported_n43_ids = self.env['account.bank.statement.automated'].sudo().search([])
+        imported_n43_ids = self.env['account.bank.statement.tesoralia'].sudo().search([])
 
         print(imported_n43_ids)
         imported_n43_list = []
@@ -113,7 +113,7 @@ class AccountBankStatementAutomation(models.Model):
                                 'datas': base64.b64encode(data),
                                 'datas_fname': row,
                                 'store_fname': row,
-                                'res_model': 'account.bank.statement.automated',
+                                'res_model': 'account.bank.statement.tesoralia',
                                 #'res_id': self.id,
                                 'mimetype': 'text/plain'
                             })
@@ -128,7 +128,7 @@ class AccountBankStatementAutomation(models.Model):
                                 bank_account_number = bank_account_number.replace(' ', '')
 
                                 if bank_account_number == bsa_bank_number:
-                                    self.env['account.bank.statement.automated'].sudo().create({
+                                    self.env['account.bank.statement.tesoralia'].sudo().create({
                                         'name': row,
                                         'journal_id': journal_id.id,
                                         'bank_statement_attachment_id': attachment_id.id,
@@ -142,7 +142,7 @@ class AccountBankStatementAutomation(models.Model):
 
     @api.multi
     def automated_import_files(self):
-        imported_n43_ids = self.env['account.bank.statement.automated'].sudo().search([['state', '=', 'draft']])
+        imported_n43_ids = self.env['account.bank.statement.tesoralia'].sudo().search([['state', '=', 'draft']])
         #company_id = self.env.user.company_id # Journal pasado por contexto match con primeros dígitos de arachivo 20 dice ANtonio
         #self = self.with_context(journal_id=company_id.journal_id.id)
         for bsa in imported_n43_ids:
