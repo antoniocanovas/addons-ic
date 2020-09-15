@@ -301,6 +301,7 @@ class ResCompany(models.Model):
     @api.multi
     def generate_attachment(self, api_img_url, headers, document, ocr_document):
         response = requests.get(api_img_url, headers=headers, stream=True)
+
         if response.status_code == 200:
 
             img_file_encode = base64.b64encode(response.content)
@@ -316,6 +317,11 @@ class ResCompany(models.Model):
                     'mimetype': 'image/jpeg'
                 })
 
+        elif response.status_code == 400:
+            ocr_document.transaction_error = "Error 400"
+            _logger.info(
+                "Error from OCR server  %s" % ocr_document.transaction_error
+            )
         else:
             ocr_document.transaction_error = json.loads(response.content.decode('utf-8'))
             _logger.info(
