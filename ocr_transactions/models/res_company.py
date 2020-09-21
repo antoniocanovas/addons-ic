@@ -126,16 +126,18 @@ class ResCompany(models.Model):
             # No se Borran facturas, solo actualizamos el transaction si no hay líneas de factura
             # Si hay lineas no debe actualizar estado
             if exist.token:
+
                 if exist.state != transactions_by_state['FACTURAS'][i]['status']:
                     exist.state = transactions_by_state['FACTURAS'][i]['status']
             else:
+
                 type_doc = transactions_by_state['FACTURAS'][i]['type']
                 if transactions_by_state['FACTURAS'][i]['type'] == "emitida":
                     type_doc = "out_invoice"
                 if transactions_by_state['FACTURAS'][i]['type'] == "recibida":
                     type_doc = "in_invoice"
-
-                self.env['ocr.transactions'].create({
+                # Añadir método para name = cliente limpiando NIF. Actualmente si viene de fuera de Odoo se crea con el NIF que manda biyectiva que no es el registrado en Odoo.
+                ocr_transaction = self.env['ocr.transactions'].create({
                     'state': transactions_by_state['FACTURAS'][i]['status'],
                     'type': type_doc,
                     'name': transactions_by_state['FACTURAS'][i]['client'],
@@ -147,6 +149,7 @@ class ResCompany(models.Model):
                     'write_date': transactions_by_state['FACTURAS'][i]['updated_at'],
                 })
 
+
     @api.multi
     def update_transactions_error_code(self, transactions_with_errors, api_transaction_url, header):
         for t in transactions_with_errors:
@@ -156,7 +159,7 @@ class ResCompany(models.Model):
             if ocr_document_data:
                 if ocr_document_data["result"]["status"] == "ERROR":
                     t.transaction_error = ocr_document_data["result"]["reason"]
-                    t.state = 'downloaded'
+                    t.state = 'error'
 
     @api.multi
     def ocr_update_values(self, t, ocr_document_data, type_values):
@@ -178,9 +181,11 @@ class ResCompany(models.Model):
     @api.multi
     def create_invoices(self, transactions_processed, api_transaction_url, header):
         for t in transactions_processed:
+
             invoice = self.env['account.invoice'].sudo().search([
                 ("ocr_transaction_id.token", "=", t.token),
             ], limit=1)
+
             previus_ocr_values = self.env['ocr.values'].sudo().search([
                 ("ocr_transaction_id", "=", t.id)
             ])
@@ -199,6 +204,10 @@ class ResCompany(models.Model):
                         t.state = 'downloaded'
 
                 elif not previus_ocr_values:
+
+                    #if ocr_document_data["result"]["status"] == "ERROR":
+                    #    t.transaction_error = ocr_document_data["result"]["reason"]
+                    #    t.state = 'downloaded'
                     for v in ocr_document_data["result"]["basic"].values():
                         self.env['ocr.values'].sudo().create({
                             'token': t.token,
@@ -213,12 +222,9 @@ class ResCompany(models.Model):
                             'value': v["Value"]["Text"],
                             'ocr_transaction_id': t.id,
                         })
-                    if ocr_document_data["result"]["status"] == "ERROR":
-                        t.transaction_error = ocr_document_data["result"]["reason"]
-                        t.state = 'downloaded'
 
                     partner_vat = self.env['ocr.values'].sudo().search([
-                        ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
+                    ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
 
                     if partner_vat:
                         partner = self.get_partner_by_vat(partner_vat)
@@ -300,7 +306,8 @@ class ResCompany(models.Model):
 
     @api.multi
     def generate_attachment(self, api_img_url, headers, document, ocr_document):
-        response = requests.get(api_img_url, headers=headers, stream=True)
+
+        response = requests.get(api_img_url, headers=headers)
 
         if response.status_code == 200:
 
@@ -400,6 +407,7 @@ class ResCompany(models.Model):
             header = self.get_header(key)
 
             transactions_by_state = self.get_documents_data(api_transaction_url, header)
+     
             ############### Control status donwloaded #######################
             if transactions_by_state:
                 self.create_queue_invoice_transactions(transactions_by_state, key)
