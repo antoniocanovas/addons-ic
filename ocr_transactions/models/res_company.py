@@ -160,6 +160,7 @@ class ResCompany(models.Model):
                 if ocr_document_data["result"]["status"] == "ERROR":
                     t.transaction_error = ocr_document_data["result"]["reason"]
                     t.state = 'error'
+                    t.cleared = True
 
     @api.multi
     def ocr_update_values(self, t, ocr_document_data, type_values):
@@ -407,7 +408,7 @@ class ResCompany(models.Model):
             header = self.get_header(key)
 
             transactions_by_state = self.get_documents_data(api_transaction_url, header)
-     
+
             ############### Control status donwloaded #######################
             if transactions_by_state:
                 self.create_queue_invoice_transactions(transactions_by_state, key)
@@ -419,7 +420,9 @@ class ResCompany(models.Model):
             transactions_with_errors = self.env['ocr.transactions'].search([
                                                                         ("state", "=", 'error'),
                                                                         ("customer_api_key", "=", key),
+                                                                        ("cleared", "=", False),
                                                                           ], limit=10)
+            print("DEBUG", transactions_with_errors)
             if transactions_with_errors:
                 self.update_transactions_error_code(transactions_with_errors, api_transaction_url, header)
 

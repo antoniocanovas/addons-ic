@@ -15,6 +15,7 @@ class OcrTransactions(models.Model):
 
     token = fields.Char('Api Token')
     state = fields.Char('Status')
+    cleared = fields.Boolean('Cleared', default=False)
     type = fields.Char('Type')
     name = fields.Char('Customer')
     customer_vat = fields.Char('vat')
