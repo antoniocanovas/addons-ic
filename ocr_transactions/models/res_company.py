@@ -161,7 +161,6 @@ class ResCompany(models.Model):
                     t.transaction_error = ocr_document_data["result"]["reason"]
                     t.state = 'error'
                     t.cleared = True
-                    print (t, t.cleared)
 
     @api.multi
     def ocr_update_values(self, t, ocr_document_data, type_values):
@@ -421,9 +420,9 @@ class ResCompany(models.Model):
             transactions_with_errors = self.env['ocr.transactions'].search([
                                                                         ("state", "=", 'error'),
                                                                         ("customer_api_key", "=", key),
-                                                                        ("cleared", "=", 'False'),
+                                                                        ("cleared", "=", False),
                                                                           ], limit=10)
-            print("DEBUG", transactions_with_errors)
+
             if transactions_with_errors:
                 self.update_transactions_error_code(transactions_with_errors, api_transaction_url, header)
 
