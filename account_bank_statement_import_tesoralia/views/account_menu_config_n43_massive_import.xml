@@ -12,7 +12,7 @@
 
         <menuitem
                 id="menu_n43_massive_import"
-                name="n43 Importación masiva"
+                name="Tesoralia N43"
                 parent="account.account_account_menu"
                 sequence="20"
                 action="action_n43_massive_import"
@@ -43,7 +43,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="automated_import_files" string="Importar" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'completo')]}"/>
+                    <button name="import_files" string="Importar" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'completo')]}"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,completed,error"/>
                 </header>
                 <sheet string="Journal Automated Import">

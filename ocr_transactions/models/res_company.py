@@ -422,7 +422,6 @@ class ResCompany(models.Model):
                                                                         ("customer_api_key", "=", key),
                                                                         ("cleared", "=", False),
                                                                           ], limit=10)
-
             if transactions_with_errors:
                 self.update_transactions_error_code(transactions_with_errors, api_transaction_url, header)
 

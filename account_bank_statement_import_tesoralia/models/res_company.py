@@ -2,6 +2,9 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from odoo import fields, models, api
+from odoo.exceptions import ValidationError
+from datetime import datetime, timedelta
+
 
 import logging
 
@@ -28,9 +31,21 @@ class ResCompany(models.Model):
     last_connection_date = fields.Date(
         'Last connection date'
     )
-    #journal_id = fields.Many2one('account.journal', domain=[('type', '=', 'bank')])
 
 
+    @api.multi
+    def force_sync_tesoralia(self):
+        if self.ftp_url and self.ftp_port and self.ftp_user and self.ftp_passwd:
+
+            tesoralia = self.env['account.bank.statement.tesoralia'].sudo()
+            conn = tesoralia.automated_ftp_get_n43_files()
+
+            time = datetime.now()
+            self.last_connection_date = time
+
+        else:
+            raise ValidationError(
+                "You must set ftp server data.")
 
 
 

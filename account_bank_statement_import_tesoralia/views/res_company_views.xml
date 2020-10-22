@@ -15,9 +15,9 @@
                         <field name="ftp_user"/>
                         <field name="ftp_passwd"/>
                     </group>
-                    <group>
-                      <!--  <button name="automated_ftp_get_n43_files" string="Get Documents" type="object" class="oe_highlight oe_read_only"/>
-                        <field name="last_connection_date" widget="date" readonly="True"/>-->
+                     <group>
+                        <button name="force_sync_tesoralia" string="Force Sync" type="object" class="oe_highlight oe_read_only"/>
+                        <field name="last_connection_date" widget="date" readonly="True"/>
                     </group>
                 </page>
             </xpath>
