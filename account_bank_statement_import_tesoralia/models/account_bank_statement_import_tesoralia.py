@@ -144,22 +144,22 @@ class AccountBankStatementTesoralia(models.Model):
 
     @api.multi
     def import_files(self):
+        if self.state != 'cancelled':
+            if self.journal_id:
+                self = self.with_context(journal_id=self.journal_id.id)
 
-        if self.journal_id:
-            self = self.with_context(journal_id=self.journal_id.id)
+                bank_statement = self.env['account.bank.statement.import'].create({
+                    'data_file': self.bank_statement_attachment_id.datas,
+                    'display_name': self.bank_statement_attachment_id.datas_fname,
+                    'filename': self.bank_statement_attachment_id.datas_fname,
+                })
 
-            bank_statement = self.env['account.bank.statement.import'].create({
-                'data_file': self.bank_statement_attachment_id.datas,
-                'display_name': self.bank_statement_attachment_id.datas_fname,
-                'filename': self.bank_statement_attachment_id.datas_fname,
-            })
-
-            try:
-                bank_statement.import_file()
-                self.state = 'completed'
-            except Exception as e:
-                self.state = 'error'
-                raise ValidationError('Server Error: %s' % e)
+                try:
+                    bank_statement.import_file()
+                    self.state = 'completed'
+                except Exception as e:
+                    self.state = 'error'
+                    raise ValidationError('Server Error: %s' % e)
 
     @api.multi
     def automated_import_files(self):
