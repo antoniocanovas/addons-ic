@@ -2,7 +2,7 @@
 {
     'name': 'Account Bank Statement Import Tesoralia',
     'category': 'Accounting',
-    'version': '12.0.0.0.2',
+    'version': '12.0.0.0.3',
     'depends': ['account_bank_statement_import','l10n_es_account_bank_statement_import_n43'],
     'description': """ Upload multiple documents n43 formated """,
     'data': [

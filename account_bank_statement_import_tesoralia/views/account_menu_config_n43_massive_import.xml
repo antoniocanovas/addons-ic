@@ -43,8 +43,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="import_files" string="Importar" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'completo')]}"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,completed,error"/>
+                    <button name="import_files" string="Importar" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'completed')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,completed,error,cancelled" clickable="True"/>
                 </header>
                 <sheet string="Journal Automated Import">
                     <h2>
