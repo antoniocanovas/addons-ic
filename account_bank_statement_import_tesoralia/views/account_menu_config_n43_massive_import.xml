@@ -3,7 +3,7 @@
     <data>
 
         <record id="action_n43_massive_import" model="ir.actions.act_window">
-            <field name="name">n43 Importación masiva</field>
+            <field name="name">Tesoralia</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">account.bank.statement.tesoralia</field>
             <field name="view_type">form</field>

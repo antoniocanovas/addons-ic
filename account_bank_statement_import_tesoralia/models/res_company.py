@@ -41,7 +41,7 @@ class ResCompany(models.Model):
             conn = tesoralia.automated_ftp_get_n43_files()
 
             time = datetime.now()
-            self.last_connection_date = time
+            self.last_connection_date = time.strftime('%Y-%m-%d %H:%M:%S')
 
         else:
             raise ValidationError(

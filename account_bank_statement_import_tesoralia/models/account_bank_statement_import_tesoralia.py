@@ -82,12 +82,17 @@ class AccountBankStatementTesoralia(models.Model):
     @api.multi
     def get_n43_list(self):
         imported_n43_ids = self.env['account.bank.statement.tesoralia'].sudo().search([])
-
-        print(imported_n43_ids)
         imported_n43_list = []
         for n43 in imported_n43_ids:
             imported_n43_list.append(n43.name)
         return imported_n43_list
+
+    @api.multi
+    def move_file_to_downloaded_dir(self, sftpclient, file):
+        try:
+            sftpclient.rename(file, 'downloaded/%s' % file)  # At this point, you are in remote_path in either case
+        except IOError:
+            print("ERROR", IOError)
 
     @api.multi
     def automated_ftp_get_n43_files(self):
@@ -101,42 +106,50 @@ class AccountBankStatementTesoralia(models.Model):
 
                 imported_n43_list = self.get_n43_list()
 
+                if 'downloaded' not in dirlist:
+                    try:
+                        sftpclient.mkdir("downloaded")  # Create remote_path
+                    except IOError:
+                        print("ERROR", IOError)
+
                 for row in dirlist:
-                    if row not in imported_n43_list:
-                        sftpclient.get(row, '/tmp/%s' % row)
+                    if row != 'downloaded':
+                        if row not in imported_n43_list:
+                            sftpclient.get(row, '/tmp/%s' % row)
+                            try:
+                                bsa_bank_number = row[:24]
 
-                        try:
-                            with open('/tmp/%s' % row, "r+b") as file:
-                                data = file.read()
-                                file.close()
-                                attachment_id = self.env['ir.attachment'].sudo().create({
-                                    'name': row,
-                                    'type': 'binary',
-                                    'datas': base64.b64encode(data),
-                                    'datas_fname': row,
-                                    'store_fname': row,
-                                    'res_model': 'account.bank.statement.tesoralia',
-                                    #'res_id': self.id,
-                                    'mimetype': 'text/plain'
-                                })
+                                journal = self.env['account.journal'].sudo().search([])
+                                for journal_id in journal:
+                                    if journal_id.bank_account_id.acc_number:
+                                        bank_account_number = journal_id.bank_account_id.acc_number
+                                        bank_account_number = bank_account_number[:29]
+                                        bank_account_number = bank_account_number.replace(' ', '')
 
-                            bsa_bank_number = row[:24]
+                                        if bank_account_number == bsa_bank_number:
+                                            with open('/tmp/%s' % row, "r+b") as file:
+                                                data = file.read()
+                                                file.close()
+                                                attachment_id = self.env['ir.attachment'].sudo().create({
+                                                    'name': row,
+                                                    'type': 'binary',
+                                                    'datas': base64.b64encode(data),
+                                                    'datas_fname': row,
+                                                    'store_fname': row,
+                                                    'res_model': 'account.bank.statement.tesoralia',
+                                                    # 'res_id': self.id,
+                                                    'mimetype': 'text/plain'
+                                                })
 
-                            journal = self.env['account.journal'].sudo().search([])
-                            for journal_id in journal:
-                                if journal_id.bank_account_id.acc_number:
-                                    bank_account_number = journal_id.bank_account_id.acc_number
-                                    bank_account_number = bank_account_number[:29]
-                                    bank_account_number = bank_account_number.replace(' ', '')
+                                            self.env['account.bank.statement.tesoralia'].sudo().create({
+                                                'name': row,
+                                                'journal_id': journal_id.id,
+                                                'bank_statement_attachment_id': attachment_id.id,
+                                            })
+                                            self.move_file_to_downloaded_dir(sftpclient, row)
 
-                                    if bank_account_number == bsa_bank_number:
-                                        self.env['account.bank.statement.tesoralia'].sudo().create({
-                                            'name': row,
-                                            'journal_id': journal_id.id,
-                                            'bank_statement_attachment_id': attachment_id.id,
-                                        })
-                        except Exception as e:
-                            raise ValidationError('Server Error: %s' % e)
+                            except Exception as e:
+                                raise ValidationError('Server Error: %s' % e)
                 sftpclient.close()
 
             except Exception as e:
