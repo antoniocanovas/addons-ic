@@ -9,7 +9,12 @@
         <field name="arch" type="xml">
             <xpath expr="//notebook/page[1]" position="after">
                 <page name="Viafirma" string="Viafirma">
-                     <group>
+                    <group>
+                        <field name="user_viafirma"/>
+                        <field name="pass_viafirma" password="True"/>
+                    </group>
+
+                    <group>
                         <button name="force_sync_viafirma" string="Force Sync" type="object" class="oe_highlight oe_read_only"/>
                         <field name="last_connection_date" widget="date" readonly="True"/>
                     </group>
