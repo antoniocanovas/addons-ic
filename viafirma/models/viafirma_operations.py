@@ -82,7 +82,11 @@ class ViafirmaOperations(models.Model):
 
         header = self.get_uploader_header()
         response_code = self.env('viafirma').status_id
+
         search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/status/'+ response_code
+
+        ## user company viafrima data
+
         stat_firmweb = requests.get(search_url, headers=header,auth=('dev_inelga', 'PnCDKj5HrR'))
         if stat_firmweb.ok:
             statu_firmweb = json.loads(stat_firmweb.content)
