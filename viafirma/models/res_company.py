@@ -14,6 +14,8 @@ _logger = logging.getLogger(__name__)
 class ResCompany(models.Model):
     _inherit = 'res.company'
     last_connection_date = fields.Datetime('Last connection dates')
+    user_viafirma = fields.Char('User')
+    pass_viafirma = fields.Char('Passwd')
 
     @api.multi
     def force_sync_viafirma(self):
