@@ -1,0 +1,155 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <!--
+            <record model="ir.ui.view" id="tecdoc.list">
+              <field name="name">tecdoc list</field>
+              <field name="model">tecdoc.tecdoc</field>
+              <field name="arch" type="xml">
+                <tree>
+                  <field name="name"/>
+                  <field name="value"/>
+                  <field name="value2"/>
+                </tree>
+              </field>
+            </record>
+        -->
+
+        <!-- actions opening views on models -->
+        <!--
+            <record model="ir.actions.act_window" id="tecdoc.action_window">
+              <field name="name">tecdoc window</field>
+              <field name="res_model">tecdoc.tecdoc</field>
+              <field name="view_mode">tree,form</field>
+            </record>
+        -->
+
+        <!-- server action to the one above -->
+        <!--
+            <record model="ir.actions.server" id="tecdoc.action_server">
+              <field name="name">tecdoc server</field>
+              <field name="model_id" ref="model_tecdoc_tecdoc"/>
+              <field name="state">code</field>
+              <field name="code">
+                action = {
+                  "type": "ir.actions.act_window",
+                  "view_mode": "tree,form",
+                  "res_model": model._name,
+                }
+              </field>
+            </record>
+        -->
+
+        <!-- Top menu item -->
+        <!--
+            <menuitem name="tecdoc" id="tecdoc.menu_root"/>
+        -->
+        <!-- menu categories -->
+        <!--
+            <menuitem name="Menu 1" id="tecdoc.menu_1" parent="tecdoc.menu_root"/>
+            <menuitem name="Menu 2" id="tecdoc.menu_2" parent="tecdoc.menu_root"/>
+        -->
+        <!-- actions -->
+        <!--
+            <menuitem name="List" id="tecdoc.menu_1_list" parent="tecdoc.menu_1"
+                      action="tecdoc.action_window"/>
+            <menuitem name="Server to list" id="tecdoc" parent="tecdoc.menu_2"
+                      action="tecdoc.action_server"/>
+        -->
+        <record id="viafirma_form" model="ir.ui.view">
+            <field name="active" eval="True"/>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet string="Viafirma">
+                        <h2>
+                            <field name="name"/>
+                        </h2>
+                        <group name="viafirma_data" col="4">
+                            <field name="template_id"/>
+                            <field name="attachment_signed_id"/>
+                            <field name="attachment_id"/>
+                            <field name="status"/>
+                        </group>
+                        <group name="viafirma_others">
+                            <field name="line_ids">
+                                <tree editable="top">
+                                    <field name="partner_id" required="1"/>
+                                    <field name="email" readonly="1"/>
+                                    <field name="mobile" readonly="1"/>
+                                    <field name="signed_date" readonly="1"/>
+                                    <field name="status" readonly="1"/>
+                                </tree>
+                            </field>
+                            <field name="res_model"/>
+                            <field name="res_id"/>
+                            <field name="res_id_name"/>
+                            <field name="status_id"/>
+                            <field name="completed_date"/>
+                            <field name="create_date"/>
+                        </group>
+                        <group>
+                            <button name="firma_web" string="Send" type="object" class="oe_highlight oe_read_only"/>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+            <field name="field_parent" eval="False"/>
+            <field name="groups_id" eval="[(6, 0, [])]"/>
+            <field name="inherit_id" eval="False"/>
+            <field name="key" eval="False"/>
+            <field name="mode">primary</field>
+            <field name="model">viafirma</field>
+            <field name="name">Default form view for Viafirma</field>
+            <field name="priority">16</field>
+            <field name="type">form</field>
+        </record>
+
+        <record id="viafirma_tree" model="ir.ui.view">
+            <field name="active" eval="True"/>
+            <field name="arch" type="xml">
+                <tree string="Viafirma">
+                    <field name="name"/>
+                    <field name="res_model"/>
+                </tree>
+            </field>
+            <field name="field_parent" eval="False"/>
+            <field name="groups_id" eval="[(6, 0, [])]"/>
+            <field name="inherit_id" eval="False"/>
+            <field name="key" eval="False"/>
+            <field name="mode">primary</field>
+            <field name="model">viafirma</field>
+            <field name="name">Default tree view for Viafirma</field>
+            <field name="priority">16</field>
+            <field name="type">tree</field>
+        </record>
+
+        <record id="viafirma_template_form" model="ir.ui.view">
+            <field name="active" eval="True"/>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet string="Viafirma Template">
+                        <h2>
+                            <field name="name"/>
+                        </h2>
+                        <group name="basic_params" col="4">
+                            <field name="description"/>
+                            <field name="code"/>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+            <field name="field_parent" eval="False"/>
+            <field name="groups_id" eval="[(6, 0, [])]"/>
+            <field name="inherit_id" eval="False"/>
+            <field name="key" eval="False"/>
+            <field name="mode">primary</field>
+            <field name="model">viafirma.templates</field>
+            <field name="name">Default form view for Viafirma Templates</field>
+            <field name="priority">16</field>
+            <field name="type">form</field>
+        </record>
+
+    </data>
+</odoo>
