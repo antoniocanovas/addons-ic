@@ -96,7 +96,6 @@ class AccountBankStatementTesoralia(models.Model):
 
     @api.multi
     def automated_ftp_get_n43_files(self):
-
         company_id = self.env.user.company_id
         if company_id.ftp_url and company_id.ftp_port and company_id.ftp_user and company_id.ftp_passwd:
             try:
@@ -154,6 +153,9 @@ class AccountBankStatementTesoralia(models.Model):
 
             except Exception as e:
                 raise ValidationError('Server Error: %s' % e)
+
+        if company_id.autoimport:
+            self.automated_import_files()
 
     @api.multi
     def import_files(self):
