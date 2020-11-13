@@ -28,6 +28,10 @@ class ResCompany(models.Model):
     ftp_passwd = fields.Char(
         string='Password FTP'
     )
+    autoimport = fields.Boolean(
+        "Importar Automaticamente",
+        default=False,
+    )
     last_connection_date = fields.Date(
         'Last connection date'
     )
