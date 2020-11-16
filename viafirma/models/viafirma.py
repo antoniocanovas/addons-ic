@@ -90,7 +90,7 @@ class Viafirma(models.Model):
                 "templateType": self.template_type,
                 #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
                 "templateReference": str(self.binary_to_encode_64.decode('ascii')),
-                "templateCode": self.template_id
+                "templateCode": self.template_id.code
             },
             "callbackMails": self.env.user.email,
             "callbackURL": ""
