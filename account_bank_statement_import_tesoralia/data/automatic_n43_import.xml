@@ -38,7 +38,7 @@
             <!--<field name="user_id" ref="base.user_root" />-->
             <field name="binding_model_id" ref="model_account_bank_statement_tesoralia"/>
             <field name="state">code</field>
-            <field name="code">model.import_files()</field>
+            <field name="code">records.import_files()</field>
         </record>
 
     </data>
