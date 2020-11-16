@@ -35,7 +35,7 @@ class Viafirma(models.Model):
     status_id = fields.Char(string='Código de seguimiento')
     noti_text = fields.Char(string='Texto de la notificacion')
     noti_detail = fields.Char(string='Detalle de la notificación')
-    noti_tipo = fields.Selection(selection=[('MAIL','MAIL'),('SMS','SMS'),('MAIL_SMS','MAIL_SMS')],string="Tipo de notificacion",default='mail')
+    noti_tipo = fields.Selection(selection=[('MAIL','MAIL'),('SMS','SMS'),('MAIL_SMS','MAIL_SMS')],string="Tipo de notificacion",default='MAIL')
     noti_subject = fields.Char(string='Asunto de la notificacion')
     police_code = fields.Char(string='Codigo de la politica',default='test002')
     template_type = fields.Selection(selection=[('url','URL'),('base64','BASE64'),('message','MESSAGE')],string="Tipo de teemplate",default='base64')
