@@ -5,7 +5,7 @@ import paramiko
 from os import listdir
 import base64
 from odoo.exceptions import ValidationError
-from odoo.addons.base.models.res_bank import sanitize_account_number
+from datetime import datetime, timedelta
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -150,6 +150,8 @@ class AccountBankStatementTesoralia(models.Model):
                             except Exception as e:
                                 raise ValidationError('Server Error: %s' % e)
                 sftpclient.close()
+                time = datetime.now()
+                company_id.tesoralia_last_connection_date = time
 
             except Exception as e:
                 raise ValidationError('Server Error: %s' % e)
@@ -159,22 +161,23 @@ class AccountBankStatementTesoralia(models.Model):
 
     @api.multi
     def import_files(self):
-        if self.state != 'completed':
-            if self.journal_id:
-                self = self.with_context(journal_id=self.journal_id.id)
+        for record in self:
+            if record.state != 'completed':
+                if record.journal_id:
+                    record = record.with_context(journal_id=record.journal_id.id)
 
-                bank_statement = self.env['account.bank.statement.import'].create({
-                    'data_file': self.bank_statement_attachment_id.datas,
-                    'display_name': self.bank_statement_attachment_id.datas_fname,
-                    'filename': self.bank_statement_attachment_id.datas_fname,
-                })
+                    bank_statement = record.env['account.bank.statement.import'].create({
+                        'data_file': record.bank_statement_attachment_id.datas,
+                        'display_name': record.bank_statement_attachment_id.datas_fname,
+                        'filename': record.bank_statement_attachment_id.datas_fname,
+                    })
 
-                try:
-                    bank_statement.import_file()
-                    self.state = 'completed'
-                except Exception as e:
-                    self.state = 'error'
-                    raise ValidationError('Server Error: %s' % e)
+                    try:
+                        bank_statement.import_file()
+                        record.state = 'completed'
+                    except Exception as e:
+                        record.state = 'error'
+                        raise ValidationError('Server Error: %s' % e)
 
     @api.multi
     def automated_import_files(self):
