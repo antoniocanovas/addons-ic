@@ -29,7 +29,19 @@ class Viafirma(models.Model):
     status = fields.Selection(selection=[('borrador','Borrador'),('enviado','Enviado'),('error','Error'),('firmado','Firmado'),('rechazado','Rechazado')],string="Estado",default='borrador')
     template_id = fields.Many2one('viafirma.templates')
     line_ids = fields.One2many('viafirma.lines','viafirma_id')
-    status_id = fields.Char('Código de seguimiento')
+    status_id = fields.Char(string='Código de seguimiento')
+    noti_text = fields.Char(string='Texto de la notificacion')
+    noti_detail = fields.Char(string='Detalle de la notificación')
+    noti_tipo = fields.Selection(selection=[('mail','MAIL'),('sms','SMS'),('mail_sms','MAIL_SMS')],string="Tipo de notificacion",default='mail')
+    noti_subject = fields.Char(string='Asunto de la notificacion')
+    police_code = fields.Char(string='Codigo de la politica',default='test002')
+    template_type = fields.Selection(selection=[('url','URL'),('base64','BASE64'),('message','MESSAGE')],string="Tipo de teemplate",default='base64')
+    templareReference = fields.Char(defautl='"templateReference": ')  # este campo sirve para construir la linea que puede ser una url, base65 o un codigo
+    document_readRequired = fields.Boolean(string='Requiere lectura obligatoria',default=False)
+    document_watermarkText = fields.Char(string='Texto a poner como marca de agua')
+    document_formRequired = fields.Boolean(string='Hay que rellenar un formulario',default=False)
+
+
 
     @api.multi
     def compose_name(self):
@@ -51,6 +63,7 @@ class Viafirma(models.Model):
     def compose_call(self):
         ''' tenemos que componer la llamada a la firma, por lo que tenemos que conocer el groupcode, el texto de la notificacion
             y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
+        # No se como extraer el email ni el phone de self.line_ids
 
         data = {
             "groupCode": "inelga",
@@ -58,24 +71,25 @@ class Viafirma(models.Model):
                 "type": "WEB"
             },
             "notification": {
-                "text": "TEST Firma web",
-                "detail": "notificado vía email",
-                "notificationType": "MAIL",
+                "text": self.noti_text,
+                "detail": self.noti_detail,
+                "notificationType": self.noti_tipo,
                 "sharedLink": {
                     "appCode": "com.viafirma.documents",
                     "email": "luismi@ingenieriacloud.com",
                     "phone": "+34627161870",
-                    "subject": "TEST firma remota"
+                    "subject": self.noti_subject
                 }
             },
             "document": {
-                "templateType": "url",
+                "templateType": self.template_type,
                 "templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
-                "policyCode": "test002"
+                "policyCode": self.police_code
             },
             "callbackMails": "luismi@ingenieriacloud.com",
             "callbackURL": ""
         }
+        print(data)
         return data
 
     def status_response_firmweb(self):

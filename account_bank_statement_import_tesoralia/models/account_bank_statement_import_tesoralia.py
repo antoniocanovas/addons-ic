@@ -97,9 +97,9 @@ class AccountBankStatementTesoralia(models.Model):
     @api.multi
     def automated_ftp_get_n43_files(self):
         company_id = self.env.user.company_id
-        if company_id.ftp_url and company_id.ftp_port and company_id.ftp_user and company_id.ftp_passwd:
+        if company_id.ftp_url_tesoralia and company_id.ftp_port_tesoralia and company_id.ftp_user_tesoralia and company_id.ftp_passwd_tesoralia:
             try:
-                sftpclient = self.create_sftp_client(company_id.ftp_url, company_id.ftp_port, company_id.ftp_user, company_id.ftp_passwd, None, 'DSA')
+                sftpclient = self.create_sftp_client(company_id.ftp_url_tesoralia, company_id.ftp_port_tesoralia, company_id.ftp_user_tesoralia, company_id.ftp_passwd_tesoralia, None, 'DSA')
                 # List files in the default directory on the remote computer.
                 dirlist = sftpclient.listdir('.')
 
@@ -154,12 +154,12 @@ class AccountBankStatementTesoralia(models.Model):
             except Exception as e:
                 raise ValidationError('Server Error: %s' % e)
 
-        if company_id.autoimport:
+        if company_id.tesoralia_autoimport:
             self.automated_import_files()
 
     @api.multi
     def import_files(self):
-        if self.state != 'cancelled':
+        if self.state != 'completed':
             if self.journal_id:
                 self = self.with_context(journal_id=self.journal_id.id)
 

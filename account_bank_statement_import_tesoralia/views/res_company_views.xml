@@ -10,14 +10,17 @@
             <xpath expr="//notebook/page[1]" position="after">
                 <page name="tesoralia" string="Tesoralia">
                     <group>
-                        <field name="ftp_url"/>
-                        <field name="ftp_port"/>
-                        <field name="ftp_user"/>
-                        <field name="ftp_passwd" password="True"/>
+                        <field name="ftp_url_tesoralia"/>
+                        <field name="ftp_port_tesoralia"/>
+                        <field name="ftp_user_tesoralia"/>
+                        <field name="ftp_passwd_tesoralia" password="True"/>
                     </group>
-                     <group>
+                    <group>
+                        <field name="tesoralia_autoimport"/>
+                    </group>
+                    <group>
                         <button name="force_sync_tesoralia" string="Force Sync" type="object" class="oe_highlight oe_read_only"/>
-                        <field name="last_connection_date" widget="date" readonly="True"/>
+                        <field name="tesoralia_last_connection_date" widget="date" readonly="True"/>
                     </group>
                 </page>
             </xpath>
