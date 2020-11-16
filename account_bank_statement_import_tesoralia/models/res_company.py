@@ -14,38 +14,39 @@ _logger = logging.getLogger(__name__)
 class ResCompany(models.Model):
     _inherit = 'res.company'
 
-    ftp_user = fields.Char(
+    ftp_user_tesoralia = fields.Char(
         string='Usuario FTP',
     )
-    ftp_url = fields.Char(
+    ftp_url_tesoralia = fields.Char(
         default='ftp.tesoralia.com',
         string='Api Url'
     )
-    ftp_port = fields.Integer(
+    ftp_port_tesoralia = fields.Integer(
         default='22',
         string='Puerto FTP',
     )
-    ftp_passwd = fields.Char(
+    ftp_passwd_tesoralia = fields.Char(
         string='Password FTP'
     )
-    autoimport = fields.Boolean(
-        "Importar Automaticamente",
+    tesoralia_autoimport = fields.Boolean(
+        "Autoimportar",
+        help="Si está habilitado tras descargarse la información el extracto será importado automáticamente en el diario del banco correspondiente a la cuenta descargada.",
         default=False,
     )
-    last_connection_date = fields.Date(
+    tesoralia_last_connection_date = fields.Datetime(
         'Last connection date'
     )
 
 
     @api.multi
     def force_sync_tesoralia(self):
-        if self.ftp_url and self.ftp_port and self.ftp_user and self.ftp_passwd:
+        if self.ftp_url_tesoralia and self.ftp_port_tesoralia and self.ftp_user_tesoralia and self.ftp_passwd_tesoralia:
 
             tesoralia = self.env['account.bank.statement.tesoralia'].sudo()
             conn = tesoralia.automated_ftp_get_n43_files()
 
             time = datetime.now()
-            self.last_connection_date = time.strftime('%Y-%m-%d %H:%M:%S')
+            self.tesoralia_last_connection_date = time
 
         else:
             raise ValidationError(
