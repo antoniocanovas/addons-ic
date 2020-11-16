@@ -43,7 +43,6 @@ class Viafirma(models.Model):
     document_readRequired = fields.Boolean(string='Requiere lectura obligatoria',default=False)
     document_watermarkText = fields.Char(string='Texto a poner como marca de agua')
     document_formRequired = fields.Boolean(string='Hay que rellenar un formulario',default=False)
-
     binary_to_encode_64 = fields.Binary("Documento ejemplo")
 
 
