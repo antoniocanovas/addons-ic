@@ -68,6 +68,9 @@
                             <field name="template_id"/>
                             <field name="attachment_signed_id"/>
                             <field name="attachment_id"/>
+
+                            <field name="binary_to_encode_64"/>
+
                             <field name="status"/>
                         </group>
                         <group name="viafirma_compose">

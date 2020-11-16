@@ -12,7 +12,9 @@ class ViafirmaLines(models.Model):
     name = fields.Char(string='Nombre',related='partner_id.name', store=False)
     email = fields.Char(string='Email',related='partner_id.email', store=False)
     mobile = fields.Char(string='Mobile', related='partner_id.mobile', store=False)
-    partner_id = fields.Many2one('res.partner')
+    partner_id = fields.Many2one(
+        'res.partner',
+    )
     signed_date = fields.Date(string='Signed date')
     status = fields.Selection(selection=[('borrador','Borrador'),('enviado','Enviado'),('error','Error'),('firmado','Firmado'),('rechazado','Rechazado')],string="Estado",default='borrador')
     viafirma_id = fields.Many2one('viafirma')
