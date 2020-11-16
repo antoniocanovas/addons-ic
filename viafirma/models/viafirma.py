@@ -89,7 +89,8 @@ class Viafirma(models.Model):
             "callbackMails": "luismi@ingenieriacloud.com",
             "callbackURL": ""
         }
-        print(data)
+        #print(data)
+        # TODO callbackMails se ha de rellenar con el email del usuario que crea o lanza la peticion
         return data
 
     def status_response_firmweb(self):
