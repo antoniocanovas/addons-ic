@@ -28,7 +28,10 @@ class Viafirma(models.Model):
     #status = fields.Selection(String='Estado', related='viafirma_lines.status')
     status = fields.Selection(selection=[('borrador','Borrador'),('enviado','Enviado'),('error','Error'),('firmado','Firmado'),('rechazado','Rechazado')],string="Estado",default='borrador')
     template_id = fields.Many2one('viafirma.templates')
-    line_ids = fields.One2many('viafirma.lines','viafirma_id')
+    line_ids = fields.One2many(
+        'viafirma.lines',
+        'viafirma_id'
+    )
     status_id = fields.Char(string='Código de seguimiento')
     noti_text = fields.Char(string='Texto de la notificacion')
     noti_detail = fields.Char(string='Detalle de la notificación')
@@ -41,6 +44,7 @@ class Viafirma(models.Model):
     document_watermarkText = fields.Char(string='Texto a poner como marca de agua')
     document_formRequired = fields.Boolean(string='Hay que rellenar un formulario',default=False)
 
+    binary_to_encode_64 = fields.Binary("Documento ejemplo")
 
 
     @api.multi
@@ -65,6 +69,8 @@ class Viafirma(models.Model):
             y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
         # No se como extraer el email ni el phone de self.line_ids
 
+        # def_check_parameters
+
         data = {
             "groupCode": "inelga",
             "workflow": {
@@ -76,17 +82,18 @@ class Viafirma(models.Model):
                 "notificationType": self.noti_tipo,
                 "sharedLink": {
                     "appCode": "com.viafirma.documents",
-                    "email": "luismi@ingenieriacloud.com",
-                    "phone": "+34627161870",
+                    "email": self.line_ids.partner_id.email, #
+                    "phone": self.line_ids.partner_id.mobile,
                     "subject": self.noti_subject
                 }
             },
             "document": {
                 "templateType": self.template_type,
-                "templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
+                #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
+                "templateReference": str(self.binary_to_encode_64.decode('ascii')),
                 "policyCode": self.police_code
             },
-            "callbackMails": "luismi@ingenieriacloud.com",
+            "callbackMails": self.env.user.email,
             "callbackURL": ""
         }
         #print(data)
@@ -137,23 +144,55 @@ class Viafirma(models.Model):
         if viafirma_user:
             if viafirma_pass:
                 print("Inicio commm")
-                envios = self.env['viafirma'].search([('status', '=', 'borrador')])
-                for envio in envios:
-                    print(envio)
-                    header = self.get_uploader_header()
-                    search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
-                    datas = self.compose_call()
+                #envios = self.env['viafirma'].search([('status', '=', 'borrador')])
+                print(self)
+                header = self.get_uploader_header()
+                search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
+                datas = self.compose_call()
+                print(datas)
 
-                    response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
-                                                     auth=(viafirma_user, viafirma_pass))
+                response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
+                                                 auth=(viafirma_user, viafirma_pass))
 
-                    print(response_firmweb, response_firmweb.content.decode('utf-8'), response_firmweb.ok)
-                    if response_firmweb.ok:
-                        #resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
-                        resp_firmweb = response_firmweb.content.decode('utf-8')
-                        print(resp_firmweb)
-                        # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
-                        envio.status_id =  resp_firmweb
+                print(response_firmweb, response_firmweb.content.decode('utf-8'), response_firmweb.ok)
+                if response_firmweb.ok:
+                    #resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
+                    resp_firmweb = response_firmweb.content.decode('utf-8')
+                    print(resp_firmweb)
+                    # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
+                    self.status_id =  resp_firmweb
         else:
             raise ValidationError(
                         "You must set Viafirma login Api credentials")
+        #
+        # Esto para multiples records desde interfaz
+        def firma_web_multi(self):
+            ''' solo firma web y un solo firmante, la mas simple de todas, de momento selecciono todos los registros que tenga en el modelo viafirma y que haga el proceso
+             de envio para cada uno de ellos, aunque no coge ningun valor de estos, ni emqail ni adjunto'''
+            viafirma_user = self.env.user.company_id.user_viafirma
+            viafirma_pass = self.env.user.company_id.pass_viafirma
+
+            if viafirma_user:
+                if viafirma_pass:
+                    print("Inicio commm")
+                    envios = self.env['viafirma'].search([('status', '=', 'borrador')])
+                    for envio in envios:
+                        print(envio)
+                        header = self.get_uploader_header()
+                        search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
+                        datas = self.compose_call()
+                        print(datas)
+
+                        response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
+                                                         auth=(viafirma_user, viafirma_pass))
+
+                        print(response_firmweb, response_firmweb.content.decode('utf-8'), response_firmweb.ok)
+                        if response_firmweb.ok:
+                            # resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
+                            resp_firmweb = response_firmweb.content.decode('utf-8')
+                            print(resp_firmweb)
+                            # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
+                            envio.status_id = resp_firmweb
+            else:
+                raise ValidationError(
+                    "You must set Viafirma login Api credentials")
