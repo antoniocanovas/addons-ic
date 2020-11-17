@@ -23,8 +23,10 @@ class Viafirma(models.Model):
     res_id_name = fields.Char('Nombre del documento origen')
     attachment_id = fields.Many2one('ir.attachment')
     attachment_signed_id = fields.Many2one('ir.attachment')
+
     create_date = fields.Date(string="Fecha creacion")
     completed_date = fields.Date(string='Fecha firma')
+
     #status = fields.Selection(String='Estado', related='viafirma_lines.status')
     status = fields.Selection(selection=[('borrador','Borrador'),('enviado','Enviado'),('error','Error'),('firmado','Firmado'),('rechazado','Rechazado')],string="Estado",default='borrador')
     template_id = fields.Many2one('viafirma.templates')
@@ -35,7 +37,9 @@ class Viafirma(models.Model):
     status_id = fields.Char(string='Código de seguimiento')
     noti_text = fields.Char(string='Texto de la notificacion')
     noti_detail = fields.Char(string='Detalle de la notificación')
-    noti_tipo = fields.Selection(selection=[('MAIL','MAIL'),('SMS','SMS'),('MAIL_SMS','MAIL_SMS')],string="Tipo de notificacion",default='MAIL')
+    noti_tipo = fields.Many2many(
+        comodel_name="viafirma.notification.signature",
+                                string="Tipo de Notificación")
     noti_subject = fields.Char(string='Asunto de la notificacion')
     police_code = fields.Char(string='Codigo de la politica',default='test002')
     template_type = fields.Selection(selection=[('url','URL'),('base64','BASE64'),('message','MESSAGE')],string="Tipo de teemplate",default='base64')
@@ -43,6 +47,11 @@ class Viafirma(models.Model):
     document_readRequired = fields.Boolean(string='Requiere lectura obligatoria',default=False)
     document_watermarkText = fields.Char(string='Texto a poner como marca de agua')
     document_formRequired = fields.Boolean(string='Hay que rellenar un formulario',default=False)
+
+    viafirma_groupcode_id = fields.Many2one(
+        'viafirma.groups',
+        string="Código de grupo",
+    )
     binary_to_encode_64 = fields.Binary("Documento ejemplo")
 
 
@@ -66,14 +75,13 @@ class Viafirma(models.Model):
     def compose_call(self):
         ''' tenemos que componer la llamada a la firma, por lo que tenemos que conocer el groupcode, el texto de la notificacion
             y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
-        # No se como extraer el email ni el phone de self.line_ids
 
         # def_check_parameters
 
         data = {
-            "groupCode": "inelga",
+            "groupCode": self.viafirma_groupcode_id.id,
             "workflow": {
-                "type": "WEB"
+                "type": self.noti_tipo,
             },
             "notification": {
                 "text": self.noti_text,
@@ -86,6 +94,10 @@ class Viafirma(models.Model):
                     "subject": self.noti_subject
                 }
             },
+            "metadataList": [{
+                "key": "MOBILE_SMS_01",
+                "value": self.line_ids.partner_id.mobile
+            }],
             "document": {
                 "templateType": self.template_type,
                 #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
@@ -95,8 +107,7 @@ class Viafirma(models.Model):
             "callbackMails": self.env.user.email,
             "callbackURL": ""
         }
-        #print(data)
-        # TODO callbackMails se ha de rellenar con el email del usuario que crea o lanza la peticion
+
         return data
 
     def status_response_firmweb(self):
@@ -134,36 +145,60 @@ class Viafirma(models.Model):
             raise ValidationError(
                 "You must set Viafirma login Api credentials")
 
+    @api.multi
+    def check_mandatory_signatures(self):
+        for firma in self.template_id.firma_ids:
+            try:
+                value = getattr(self.line_ids.partner_id, firma.type)
+                if not value:
+                   raise ValidationError(
+                       "%s is mandatory for this template" % firma.type)
+            except Exception as e:
+                raise ValidationError(
+                    "Server Error Notifications: %s" % firma.type)
+
+        #if self.template_id.mobile_required:
+        #    if not self.line_ids.partner_id.mobile:
+        #        raise ValidationError(
+        #            "Mobile is mandatory for this template")
+        #if self.template_id.email_required:
+        #    if not self.line_ids.partner_id.email:
+        #        raise ValidationError(
+        #            "Email is mandatory for this template")
+
+    @api.multi
     def firma_web(self):
         ''' solo firma web y un solo firmante, la mas simple de todas, de momento selecciono todos los registros que tenga en el modelo viafirma y que haga el proceso
          de envio para cada uno de ellos, aunque no coge ningun valor de estos, ni emqail ni adjunto'''
+
+        #Comprobamos todas las restricciones para informar al ususario antes de iniciar ejecución
+        self.check_mandatory_signatures()
+
+        if not self.binary_to_encode_64:
+            raise ValidationError(
+                "Need a binary to send")
+
         viafirma_user = self.env.user.company_id.user_viafirma
         viafirma_pass = self.env.user.company_id.pass_viafirma
 
         if viafirma_user:
             if viafirma_pass:
-                print("Inicio commm")
-                #envios = self.env['viafirma'].search([('status', '=', 'borrador')])
-                print(self)
                 header = self.get_uploader_header()
                 search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
                 datas = self.compose_call()
-                print(datas)
 
                 response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
                                                  auth=(viafirma_user, viafirma_pass))
 
-                print(response_firmweb, response_firmweb.content.decode('utf-8'), response_firmweb.ok)
                 if response_firmweb.ok:
                     #resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
                     resp_firmweb = response_firmweb.content.decode('utf-8')
-                    print(resp_firmweb)
                     # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
                     self.status_id =  resp_firmweb
         else:
             raise ValidationError(
                         "You must set Viafirma login Api credentials")
-        #
+
         # Esto para multiples records desde interfaz
         def firma_web_multi(self):
             ''' solo firma web y un solo firmante, la mas simple de todas, de momento selecciono todos los registros que tenga en el modelo viafirma y que haga el proceso

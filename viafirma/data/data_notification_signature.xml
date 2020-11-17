@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+
+        <record id="viafirma_mail_notification_signature" model="viafirma.notification.signature">
+            <field name="type">email</field>
+            <field name="name">MAIL</field>
+        </record>
+
+        <record id="viafirma_mobile_notification_signature" model="viafirma.notification.signature">
+            <field name="type">mobile</field>
+            <field name="name">MOBILE</field>
+        </record>
+
+    </data>
+</odoo>

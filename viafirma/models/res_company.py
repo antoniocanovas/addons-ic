@@ -20,7 +20,7 @@ class ResCompany(models.Model):
     @api.multi
     def force_sync_viafirma(self):
         viafirmatemplates = self.env['viafirma.templates'].sudo()
-        conn = viafirmatemplates.upd_templates()
+        conn = viafirmatemplates.updated_templates()
 
         time = datetime.now()
         self.last_connection_date = time

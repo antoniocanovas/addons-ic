@@ -67,7 +67,8 @@
                         <group name="viafirma_data" col="4">
                             <field name="template_id"/>
                             <field name="attachment_signed_id"/>
-                            <field name="attachment_id"/>
+                            <field name="viafirma_groupcode_id"/>
+                            <!--<field name="attachment_id"/>-->
 
                             <field name="binary_to_encode_64"/>
 
@@ -76,7 +77,7 @@
                         <group name="viafirma_compose">
                             <field name="noti_text" required="1"/>
                             <field name="noti_detail"/>
-                            <field name="noti_tipo"/>
+                            <field name="noti_tipo" widget="many2many_tags"/>
                             <field name="noti_subject" required="1"/>
                             <field name="police_code"/>
                             <field name="template_type"/>
@@ -150,6 +151,9 @@
                             <field name="description"/>
                             <field name="code"/>
                         </group>
+                        <group name="notifications" col="4">
+                            <field name="firma_ids" widget="many2many_tags"/>
+                        </group>
                     </sheet>
 
                 </form>
@@ -163,6 +167,47 @@
             <field name="name">Default form view for Viafirma Templates</field>
             <field name="priority">16</field>
             <field name="type">form</field>
+        </record>
+
+        <record id="viafirma_groups_form" model="ir.ui.view">
+            <field name="active" eval="True"/>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet string="Códigos de grupo">
+                        <h2>
+                            <field name="name"/>
+                        </h2>
+                    </sheet>
+
+                </form>
+            </field>
+            <field name="field_parent" eval="False"/>
+            <field name="groups_id" eval="[(6, 0, [])]"/>
+            <field name="inherit_id" eval="False"/>
+            <field name="key" eval="False"/>
+            <field name="mode">primary</field>
+            <field name="model">viafirma.groups</field>
+            <field name="name">Default form view for Viafirma groupss</field>
+            <field name="priority">16</field>
+            <field name="type">form</field>
+        </record>
+
+        <record id="viafirma_groups_tree" model="ir.ui.view">
+            <field name="active" eval="True"/>
+            <field name="arch" type="xml">
+                <tree string="Códigos de grupo">
+                    <field name="name"/>
+                </tree>
+            </field>
+            <field name="field_parent" eval="False"/>
+            <field name="groups_id" eval="[(6, 0, [])]"/>
+            <field name="inherit_id" eval="False"/>
+            <field name="key" eval="False"/>
+            <field name="mode">primary</field>
+            <field name="model">viafirma.groups</field>
+            <field name="name">Default tree view for Viafirma</field>
+            <field name="priority">16</field>
+            <field name="type">tree</field>
         </record>
 
     </data>

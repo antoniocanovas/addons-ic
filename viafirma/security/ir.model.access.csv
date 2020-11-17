@@ -2,4 +2,6 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_viafirma_user,viafirma,model_viafirma,base.group_user,1,1,1,1
 access_viafirma_templates_user,viafirma.templates,model_viafirma_templates,base.group_user,1,1,1,1
 access_viafirma_lines_user,viafirma.lines,model_viafirma_lines,base.group_user,1,1,1,1
+access_viafirma_groups_user,viafirma.groups,model_viafirma_groups,base.group_user,1,1,1,1
+access_viafirma_notification_signature_user,viafirma.notification.signature,model_viafirma_notification_signature,base.group_user,1,1,1,1
 

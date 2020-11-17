@@ -30,6 +30,7 @@
         'views/views_menu.xml',
         'views/res_company_views.xml',
         'data/update_sends.xml',
+        'data/data_notification_signature.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
