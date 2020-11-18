@@ -197,6 +197,10 @@ class Viafirma(models.Model):
          de envio para cada uno de ellos, aunque no coge ningun valor de estos, ni emqail ni adjunto'''
 
         #Comprobamos todas las restricciones para informar al ususario antes de iniciar ejecución
+        if not self.env['viafirma.templates'].updated_templates(self.template_id.code):
+            raise ValidationError(
+                "Template no existe")
+
         if self.line_ids:
             self.check_mandatory_attr(self.template_id.firma_ids)
             self.check_mandatory_attr(self.noti_tipo)
@@ -258,6 +262,8 @@ class Viafirma(models.Model):
                             print(resp_firmweb)
                             # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
                             envio.status_id = resp_firmweb
+                            # ya puedo hacer la primera consulta para saber si ha habido algun error
+                            self.status_response_firmweb()
             else:
                 raise ValidationError(
                     "You must set Viafirma login Api credentials")
