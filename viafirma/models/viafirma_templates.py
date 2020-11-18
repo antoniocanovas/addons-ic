@@ -37,6 +37,12 @@ class ViafirmaTemplates(models.Model):
     def create_templates(self, thedict):
         '''Esta funcion actualiza las plantillas y crea las nuevas'''
 
+        # chequeo si no viene description para dejarlo en un str vacio
+        try:
+            if not thedict['title']
+        except:
+            thedict["title"] = ""
+
         existe = self.env['viafirma.templates'].search([('code', '=', thedict["code"])])
         if not existe:
             viafirma_template_id = self.env['viafirma.templates'].create({
