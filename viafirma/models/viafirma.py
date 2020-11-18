@@ -197,6 +197,10 @@ class Viafirma(models.Model):
          de envio para cada uno de ellos, aunque no coge ningun valor de estos, ni emqail ni adjunto'''
 
         #Comprobamos todas las restricciones para informar al ususario antes de iniciar ejecución
+        if not self.env['viafirma.templates'].updated_templates(self.template_id):
+            raise ValidationError(
+                "Template no existe")
+
         if self.line_ids:
             self.check_mandatory_attr(self.template_id.firma_ids)
             self.check_mandatory_attr(self.noti_tipo)
