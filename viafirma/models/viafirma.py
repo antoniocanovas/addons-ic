@@ -129,7 +129,7 @@ class Viafirma(models.Model):
             "document": {
                 "templateType": self.template_type,
                 # "templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
-                #"templateReference": str(self.binary_to_encode_64.decode('ascii')),
+                "templateReference": str(self.binary_to_encode_64.decode('ascii')),
                 "templateCode": self.template_id.code
             },
         }
