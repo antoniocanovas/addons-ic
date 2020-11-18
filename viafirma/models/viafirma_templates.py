@@ -77,5 +77,5 @@ class ViafirmaTemplates(models.Model):
                         if resu_template["code"] == checkCode:
                             canLaunch = True
 
-        deleteOldTemplates(listAllTemplatesAPI)
+        self.deleteOldTemplates(listAllTemplatesAPI)
         return canLaunch
