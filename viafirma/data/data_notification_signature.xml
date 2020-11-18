@@ -2,14 +2,27 @@
 <odoo>
     <data>
 
-        <record id="viafirma_mail_notification_signature" model="viafirma.notification.signature">
-            <field name="type">email</field>
+        <record id="viafirma_mail_signature" model="viafirma.notification.signature">
+            <field name="type">signature</field>
             <field name="name">MAIL</field>
+            <field name="value">email</field>
         </record>
 
-        <record id="viafirma_mobile_notification_signature" model="viafirma.notification.signature">
-            <field name="type">mobile</field>
+        <record id="viafirma_mobile_signature" model="viafirma.notification.signature">
+            <field name="type">signature</field>
             <field name="name">MOBILE</field>
+            <field name="value">mobile</field>
+        </record>
+
+        <record id="viafirma_mobile_notification" model="viafirma.notification.signature">
+            <field name="type">notification</field>
+            <field name="name">SMS</field>
+            <field name="value">mobile</field>
+        </record>
+        <record id="viafirma_mail_notification" model="viafirma.notification.signature">
+            <field name="type">notification</field>
+            <field name="name">MAIL</field>
+            <field name="value">email</field>
         </record>
 
     </data>
