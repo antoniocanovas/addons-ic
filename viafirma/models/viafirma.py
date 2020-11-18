@@ -85,7 +85,7 @@ class Viafirma(models.Model):
         }
         workflow = {
             "workflow": {
-                "type": self.noti_tipo,
+                "type": "WEB",
             },
         }
 
@@ -109,7 +109,7 @@ class Viafirma(models.Model):
                 "notification": {
                     "text": self.noti_text,
                     "detail": self.noti_detail,
-                    "notificationType": self.noti_tipo.name,
+                    "notificationType": self.noti_tipo[0].name,
                     "sharedLink": {
                         "appCode": "com.viafirma.documents",
                         "email": self.line_ids.partner_id.email,  #

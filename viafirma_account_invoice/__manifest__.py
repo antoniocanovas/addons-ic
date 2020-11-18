@@ -25,12 +25,7 @@
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/views_menu.xml',
-        'views/res_company_views.xml',
-        'data/update_sends.xml',
-        'data/template_notifications.xml',
+        'views/views_account_invoice.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

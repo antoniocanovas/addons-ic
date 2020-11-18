@@ -1,0 +1,57 @@
+<odoo>
+
+    <!--<record id="view_invoice_supplier_tree_ocr_transactions_inh" model="ir.ui.view">
+        <field name="name">Supplier tree inh ocr transactions</field>
+        <field name="model">account.invoice</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="account.invoice_supplier_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='state']" position="after">
+                 <field name="ocr_delivery_invoice" invisible="1"/>
+                <field name="is_ocr" readonly="True"/>
+            </xpath>
+            <xpath expr="//tree/field[@name='date_invoice']" position="before">
+                <field name="partner_id" string="Proveedor"/>
+            </xpath>
+            <xpath expr="//tree/field[@name='vendor_display_name']" position="attributes">
+                <attribute name="attrs">{'column_invisible':[1]}</attribute>
+            </xpath>
+        </field>
+    </record>-->
+
+    <record id="view_viafirma_invoice_form_inh" model="ir.ui.view">
+        <field name="name">Viafirma account</field>
+        <field name="model">account.invoice</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet" position="inside">
+                 <div class="oe_button_box" name="button_box">
+                    <button class="oe_stat_button" icon="fa-info" type="object" name="action_view_viafirma">
+                        <field name="viafirma_count" string="Viafirma" widget="statinfo"/>
+                    </button>
+                 </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_viafirma_in_invoice" model="ir.actions.act_window">
+        <field name="auto_search" eval="True"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="context">{'search_default_invoice_id': active_id,'default_invoice_id': active_id}</field>
+        <field name="domain">[('invoice_id', '=', active_id)]</field>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="help"><![CDATA[<p>Viafirma de Factura </p>]]></field>
+        <field name="limit">80</field>
+        <field name="name">Viafirma</field>
+        <field name="res_model">viafirma</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="docs_tree"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+    </record>
+
+
+</odoo>
