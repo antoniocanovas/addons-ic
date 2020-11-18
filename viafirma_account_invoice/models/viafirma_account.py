@@ -37,10 +37,13 @@ class Viafirma(models.Model):
     status_id = fields.Char(string='Código de seguimiento')
     noti_text = fields.Char(string='Texto de la notificacion')
     noti_detail = fields.Char(string='Detalle de la notificación')
-    noti_tipo = fields.Many2many(
-        comodel_name="viafirma.notification.signature",
-        string="Tipo de Notificacione",
-        domain=[('type', '=', 'notification')],
+    noti_tipo = fields.Selection(
+        selection=[
+            ('MAIL','MAIL'),
+            ('SMS','SMS'),
+            ('MAIL_SMS','MAIL_SMS')],
+        string="Tipo de notificacion",
+        default='MAIL'
     )
     noti_subject = fields.Char(string='Asunto de la notificacion')
     police_code = fields.Char(string='Codigo de la politica',default='test002')
@@ -80,67 +83,35 @@ class Viafirma(models.Model):
 
         # def_check_parameters
 
-        groupCode = {
+        data = {
             "groupCode": self.viafirma_groupcode_id.id,
-        }
-        workflow = {
             "workflow": {
                 "type": self.noti_tipo,
             },
-        }
-
-        if len(self.noti_tipo) > 1:
-
-            notification = {
-                "notification": {
-                    "text": self.noti_text,
-                    "detail": self.noti_detail,
-                    "notificationType": "MAIL_SMS",
-                    "sharedLink": {
-                        "appCode": "com.viafirma.documents",
-                        "email": self.line_ids.partner_id.email,  #
-                        "phone": self.line_ids.partner_id.mobile,
-                        "subject": self.noti_subject
-                    }
-                },
-            }
-        else:
-            notification = {
-                "notification": {
-                    "text": self.noti_text,
-                    "detail": self.noti_detail,
-                    "notificationType": self.noti_tipo.name,
-                    "sharedLink": {
-                        "appCode": "com.viafirma.documents",
-                        "email": self.line_ids.partner_id.email,  #
-                        "phone": self.line_ids.partner_id.mobile,
-                        "subject": self.noti_subject
-                    }
-                },
-            }
-
-        metadatalist = {
+            "notification": {
+                "text": self.noti_text,
+                "detail": self.noti_detail,
+                "notificationType": self.noti_tipo,
+                "sharedLink": {
+                    "appCode": "com.viafirma.documents",
+                    "email": self.line_ids.partner_id.email, #
+                    "phone": self.line_ids.partner_id.mobile,
+                    "subject": self.noti_subject
+                }
+            },
             "metadataList": [{
                 "key": "MOBILE_SMS_01",
                 "value": self.line_ids.partner_id.mobile
             }],
-        }
-        document = {
             "document": {
                 "templateType": self.template_type,
-                # "templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
+                #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
                 "templateReference": str(self.binary_to_encode_64.decode('ascii')),
                 "templateCode": self.template_id.code
             },
-        }
-        callbackmails = {
             "callbackMails": self.env.user.email,
-        }
-        callbackurl = {
             "callbackURL": ""
         }
-
-        data = {**groupCode, **workflow, **notification, **metadatalist, **document, **callbackmails, **callbackurl }
 
         return data
 
@@ -180,16 +151,26 @@ class Viafirma(models.Model):
                 "You must set Viafirma login Api credentials")
 
     @api.multi
-    def check_mandatory_attr(self, signot):
-        for attr in signot:
+    def check_mandatory(self):
+        for notification in self.template_id.notification_ids:
+            print(notification.type)
             try:
-                value = getattr(self.line_ids.partner_id, attr.value)
+                value = getattr(self.line_ids.partner_id, notification.type)
+                if not value:
+                   raise ValidationError(
+                       "%s is mandatory for this template" % notification.type)
             except Exception as e:
                 raise ValidationError(
-                    "Server Error : %s" % e)
-            if not value:
-               raise ValidationError(
-                   "%s is mandatory for this template" % attr.value)
+                    "Server Error Notifications: %s" % notification.type)
+
+        #if self.template_id.mobile_required:
+        #    if not self.line_ids.partner_id.mobile:
+        #        raise ValidationError(
+        #            "Mobile is mandatory for this template")
+        #if self.template_id.email_required:
+        #    if not self.line_ids.partner_id.email:
+        #        raise ValidationError(
+        #            "Email is mandatory for this template")
 
     @api.multi
     def firma_web(self):
@@ -197,38 +178,28 @@ class Viafirma(models.Model):
          de envio para cada uno de ellos, aunque no coge ningun valor de estos, ni emqail ni adjunto'''
 
         #Comprobamos todas las restricciones para informar al ususario antes de iniciar ejecución
-        if self.line_ids:
-            self.check_mandatory_attr(self.template_id.firma_ids)
-            self.check_mandatory_attr(self.noti_tipo)
+        self.check_mandatory()
 
-            if not self.binary_to_encode_64:
-                raise ValidationError(
-                    "Need a binary to send")
+        viafirma_user = self.env.user.company_id.user_viafirma
+        viafirma_pass = self.env.user.company_id.pass_viafirma
 
-            viafirma_user = self.env.user.company_id.user_viafirma
-            viafirma_pass = self.env.user.company_id.pass_viafirma
+        if viafirma_user:
+            if viafirma_pass:
+                header = self.get_uploader_header()
+                search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
+                datas = self.compose_call()
 
-            if viafirma_user:
-                if viafirma_pass:
-                    header = self.get_uploader_header()
-                    search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
-                    datas = self.compose_call()
+                response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
+                                                 auth=(viafirma_user, viafirma_pass))
 
-                    response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
-                                                     auth=(viafirma_user, viafirma_pass))
-
-                    if response_firmweb.ok:
-                        #resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
-                        resp_firmweb = response_firmweb.content.decode('utf-8')
-                        # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
-                        self.status_id =  resp_firmweb
-            else:
-                raise ValidationError(
-                            "You must set Viafirma login Api credentials")
+                if response_firmweb.ok:
+                    #resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
+                    resp_firmweb = response_firmweb.content.decode('utf-8')
+                    # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
+                    self.status_id =  resp_firmweb
         else:
             raise ValidationError(
-                "No hay firmantes seleccionados")
-
+                        "You must set Viafirma login Api credentials")
 
         # Esto para multiples records desde interfaz
         def firma_web_multi(self):

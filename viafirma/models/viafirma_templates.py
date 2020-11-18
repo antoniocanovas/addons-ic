@@ -14,10 +14,12 @@ class ViafirmaTemplates(models.Model):
     name = fields.Char('Name')
     code = fields.Char('Code')
     description = fields.Char('Description')
-    firma_ids = fields.Many2many(comodel_name="viafirma.notification.signature",
-                                string="Firmas")
-    firmas_ids = fields.Many2many(comodel_name="viafirma.notification.signature",
-                                 string="Firmas")
+    firma_ids = fields.Many2many(
+        comodel_name="viafirma.notification.signature",
+        string="Firmas",
+        domain=[('type', '=', 'signature')],
+    )
+
 
     def get_uploader_header(self):
 

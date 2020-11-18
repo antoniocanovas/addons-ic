@@ -9,5 +9,6 @@ class ViafirmaNotificationSignature(models.Model):
     _name = 'viafirma.notification.signature'
     _description = 'Viafirma Notification and Signature'
 
-    type = fields.Char('Type', help="Variable name in partner")
+    type = fields.Char('Type')
     name = fields.Char('Name')
+    value = fields.Char('Value')
