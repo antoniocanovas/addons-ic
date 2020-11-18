@@ -83,10 +83,8 @@ class ViafirmaTemplates(models.Model):
                     for resu_template in resu_templates:
                         listAllTemplatesAPI.append(resu_template["code"])
                         self.create_templates(resu_template)
-                        print(checkCode)
                         if resu_template["code"] == checkCode:
                             canLaunch = True
-                            print("Template encontrada")
 
         self.deleteOldTemplates(listAllTemplatesAPI)
         return canLaunch
