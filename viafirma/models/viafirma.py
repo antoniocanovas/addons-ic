@@ -262,6 +262,8 @@ class Viafirma(models.Model):
                             print(resp_firmweb)
                             # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
                             envio.status_id = resp_firmweb
+                            # ya puedo hacer la primera consulta para saber si ha habido algun error
+                            self.status_response_firmweb()
             else:
                 raise ValidationError(
                     "You must set Viafirma login Api credentials")

@@ -126,6 +126,7 @@
                 <tree string="Viafirma">
                     <field name="name"/>
                     <field name="res_model"/>
+                    <field name="status"/>
                 </tree>
             </field>
             <field name="field_parent" eval="False"/>
@@ -167,6 +168,25 @@
             <field name="name">Default form view for Viafirma Templates</field>
             <field name="priority">16</field>
             <field name="type">form</field>
+        </record>
+
+        <record id="viafirma_template_tree" model="ir.ui.view">
+            <field name="active" eval="True"/>
+            <field name="arch" type="xml">
+                <tree string="Viafirma Template">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+            <field name="field_parent" eval="False"/>
+            <field name="groups_id" eval="[(6, 0, [])]"/>
+            <field name="inherit_id" eval="False"/>
+            <field name="key" eval="False"/>
+            <field name="mode">primary</field>
+            <field name="model">viafirma.templates</field>
+            <field name="name">Default tree view for Viafirma Templates</field>
+            <field name="priority">16</field>
+            <field name="type">tree</field>
         </record>
 
         <record id="viafirma_groups_form" model="ir.ui.view">
