@@ -26,6 +26,13 @@ class ViafirmaTemplates(models.Model):
         }
         return header
 
+    def deleteOldTemplates(self, listCodes):
+        ''' Recorro todos los registros del modelo y busco coincidencias con lo traido desde la api, sino hay coincidencia se borra el registro '''
+        allTemplates = self.env['viafirma.templates'].search([])
+        for template in allTemplates:
+            if template.code not in listCodes:
+                self.search([('code', '=', template.code)]).unlink()
+
     @api.multi
     def create_templates(self, thedict):
         '''Esta funcion actualiza las plantillas y crea las nuevas'''
@@ -37,13 +44,24 @@ class ViafirmaTemplates(models.Model):
                 'code': thedict["code"],
                 'description': thedict["title"]
             })
+        else:
+            viafirma_template_id = existe.write({
+                'name': thedict["code"],
+                'code': thedict["code"],
+                'description': thedict["title"]
+            })
             return viafirma_template_id
 
     @api.multi
-    def updated_templates(self):
+    def updated_templates(self, checkCode = ""):
+
+        ''' add checkCode para buscar en caso de llamada si existe la plantilla antes de la llamada '''
 
         viafirma_user = self.env.user.company_id.user_viafirma
         viafirma_pass = self.env.user.company_id.pass_viafirma
+
+        canLaunch = False # lo utilizo para saber si esta operativa la plantilla y poder lanzar
+        listAllTemplatesAPI = [] # la utilizo para saber todos los codigo de templates que he descargado
 
         if viafirma_user:
             if viafirma_pass:
@@ -54,4 +72,10 @@ class ViafirmaTemplates(models.Model):
                 if response_template.ok:
                     resu_templates = json.loads(response_template.content)
                     for resu_template in resu_templates:
+                        listAllTemplatesAPI.append(resu_template["code"])
                         self.create_templates(resu_template)
+                        if resu_template["code"] == checkCode:
+                            canLaunch = True
+
+        deleteOldTemplates(listAllTemplatesAPI)
+        return canLaunch
