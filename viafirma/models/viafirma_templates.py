@@ -39,10 +39,10 @@ class ViafirmaTemplates(models.Model):
 
         # chequeo si no viene description para dejarlo en un str vacio
         try:
-            if not thedict["title"]:
+            if not thedict["description"]:
                 pass
         except:
-            thedict["title"] = ""
+            thedict["description"] = ""
 
         existe = self.env['viafirma.templates'].search([('code', '=', thedict["code"])])
         if not existe:
