@@ -176,7 +176,7 @@ class Viafirma(models.Model):
                         rr_doc_trail = json.loads(r_doc_trail.content)
                         # con esto obtengo el link en el campo "link" lo tengo que descargar y unir al campo viafirma.XXXXX (os recuerdo que no hay campo porque se ha considerado no guardarlo
                         self.attachment_trail_url = rr_doc_trail["url"]
-                else if statu_firmweb["status"] == 'ERROR':
+                elif statu_firmweb["status"] == 'ERROR':
                     # guardar el resultado de error en un campo para su visualizacion
                     url = 'https://sandbox.viafirma.com/documents/api/v3/messages/' + response_code
                     r_error = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
