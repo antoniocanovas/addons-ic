@@ -176,7 +176,7 @@ class Viafirma(models.Model):
                     statu_firmweb = json.loads(stat_firmweb.content)
                     # de momento lo hago con la primera line_ids que hay
                     self.line_ids.status = statu_firmweb["status"]
-                    print(statu_firmweb)
+                    print(statu_firmweb["status"])
                     self.status = statu_firmweb["status"]
                     # statu_firmweb["status"] contiene el estado actual de la peticion y que me puede servir para cambiar el campo viafirma.status
                     if statu_firmweb["status"] == 'RESPONSED':
