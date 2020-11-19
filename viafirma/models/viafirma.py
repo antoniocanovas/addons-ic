@@ -76,7 +76,7 @@ class Viafirma(models.Model):
         viafirmas =self.env['viafirma'].search([])
         for via in viafirmas:
             if via.status != 'RESPONSED':
-                self.status_response_firmweb(via)
+                self.status_response_firmweb() # TODO no funciona no manda el record, no manda nada, debería de mandar via, pero entonces hay que poner un nuevo parametro a la funcion
 
     def get_uploader_header(self):
 
