@@ -240,6 +240,7 @@ class Viafirma(models.Model):
                         resp_firmweb = response_firmweb.content.decode('utf-8')
                         # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
                         self.status_id =  resp_firmweb
+                        self.status_response_firmweb()
             else:
                 raise ValidationError(
                             "You must set Viafirma login Api credentials")
