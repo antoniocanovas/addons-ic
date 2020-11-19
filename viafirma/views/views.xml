@@ -78,7 +78,7 @@
                         <group name="viafirma_compose">
                             <field name="noti_text" required="1"/>
                             <field name="noti_detail"/>
-                            <field name="noti_tipo" widget="many2many_tags"/>
+                            <field name="noti_tipo" widget="many2many_tags" required="1"/>
                             <field name="noti_subject" required="1"/>
                             <field name="police_code"/>
                             <field name="template_type"/>

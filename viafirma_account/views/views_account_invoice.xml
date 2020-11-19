@@ -25,12 +25,15 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="account.invoice_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//form/sheet" position="inside">
-                 <div class="oe_button_box" name="button_box">
+            <xpath expr="//form/sheet/div[@class='oe_button_box']" position="before">
+                <div class="oe_button_box" name="button_box">
                     <button class="oe_stat_button" icon="fa-info" type="object" name="action_view_viafirma">
                         <field name="viafirma_count" string="Viafirma" widget="statinfo"/>
                     </button>
-                 </div>
+                </div>
+            </xpath>
+            <xpath expr="//form/header" position="inside">
+                    <button name="do_viafirma" class="oe_highlight" string="Viafirma" type="object"/>
             </xpath>
         </field>
     </record>
@@ -48,7 +51,7 @@
         <field name="res_model">viafirma</field>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="view_id" ref="docs_tree"/>
+        <field name="view_id" ref="viafirma.viafirma_tree"/>
         <field name="view_mode">tree,form</field>
         <field name="view_type">form</field>
     </record>
