@@ -69,6 +69,15 @@ class Viafirma(models.Model):
     def send_viafirma(self):
         return
 
+    def upd_viafirma(selfself):
+        ''' chequeamos cada 5 minutos por cron el estado de los viafirma que no tengan estado RESPONSED (finalizado) para
+        actualizar su estado cada cierto tiempo y ver si ha habido algun error'''
+
+        viafirmas = self.env['viafirma'].search([])
+        for via in viafirmas:
+            if via.status != 'RECEIVED':
+                self.status_response_firmweb()
+
     def get_uploader_header(self):
 
         header = {
