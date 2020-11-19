@@ -75,7 +75,6 @@ class Viafirma(models.Model):
 
         viafirmas =self.env['viafirma'].search([])
         for via in viafirmas:
-            print(via.status)
             if via.status != 'RESPONSED':
                 self.status_response_firmweb()
 
@@ -161,8 +160,6 @@ class Viafirma(models.Model):
         header = self.get_uploader_header()
         response_code = self.status_id
 
-        print(str(response_code))
-
         search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/status/' + str(response_code)
 
         viafirma_user = self.env.user.company_id.user_viafirma
@@ -174,6 +171,7 @@ class Viafirma(models.Model):
                 stat_firmweb = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
                 if stat_firmweb.ok:
                     statu_firmweb = stat_firmweb.content.decode('utf-8')
+                    print(statu_firmweb)
                     # de momento lo hago con la primera line_ids que hay
                     self.line_ids.status = statu_firmweb["status"]
                     self.status = statu_firmweb["status"]
