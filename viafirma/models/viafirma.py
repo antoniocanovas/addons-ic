@@ -76,7 +76,7 @@ class Viafirma(models.Model):
         viafirmas =self.env['viafirma'].search([])
         for via in viafirmas:
             print(via.status)
-            if via.status != 'RECEIVED':
+            if via.status != 'RESPONSED':
                 self.status_response_firmweb()
 
     def get_uploader_header(self):
