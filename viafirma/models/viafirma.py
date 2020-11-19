@@ -29,7 +29,8 @@ class Viafirma(models.Model):
     completed_date = fields.Date(string='Fecha firma')
 
     #status = fields.Selection(String='Estado', related='viafirma_lines.status')
-    status = fields.Selection(selection=[('borrador','Borrador'),('enviado','Enviado'),('error','Error'),('firmado','Firmado'),('rechazado','Rechazado')],string="Estado",default='borrador')
+    #status = fields.Selection(selection=[('borrador','Borrador'),('enviado','Enviado'),('error','Error'),('firmado','Firmado'),('rechazado','Rechazado')],string="Estado",default='borrador')
+    status = fields.Char('Estado')
     template_id = fields.Many2one('viafirma.templates')
     line_ids = fields.One2many(
         'viafirma.lines',
