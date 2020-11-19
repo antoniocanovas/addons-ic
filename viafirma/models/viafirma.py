@@ -161,7 +161,7 @@ class Viafirma(models.Model):
         header = self.get_uploader_header()
         response_code = self.status_id
 
-        search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/status/' + response_code
+        search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/status/' + str(response_code)
 
         viafirma_user = self.env.user.company_id.user_viafirma
         viafirma_pass = self.env.user.company_id.pass_viafirma
