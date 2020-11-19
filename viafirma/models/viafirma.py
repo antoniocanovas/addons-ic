@@ -155,37 +155,38 @@ class Viafirma(models.Model):
         viafirma_user = self.env.user.company_id.user_viafirma
         viafirma_pass = self.env.user.company_id.pass_viafirma
 
-        if viafirma_user & viafirma_pass:
+        if viafirma_user:
+            if viafirma_pass:
 
-            stat_firmweb = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
-            if stat_firmweb.ok:
-                statu_firmweb = json.loads(stat_firmweb.content)
-                print(statu_firmweb)
-                self.status = statu_firmweb["status"]
-                # statu_firmweb["status"] contiene el estado actual de la peticion y que me puede servir para cambiar el campo viafirma.status
-                if statu_firmweb["status"] == 'RESPONSED':
-                    # ya ha sido firmada me puedo descargar el documento firmado y el trail de la firma
-                    # empezamos por el documento firmado
-                    url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/signed/' + response_code
-                    r_doc_sig = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
-                    if r_doc_sig.ok:
-                        rr_doc_sio = json.loads(r_doc_sig.content)
-                        # con esto obtengo el link en el campo "link" lo tengo que descargar y unir al campo viafirma.attachment_signed_id
-                    # ahora le toca el turno al documento de trail, pero para este documento no hay campo en el modelo viafirma, lo dejo preparado
-                    url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/trail/' + response_code
-                    r_doc_trail = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
-                    if r_doc_trail.ok:
-                        rr_doc_trail = json.loads(r_doc_trail.content)
-                        # con esto obtengo el link en el campo "link" lo tengo que descargar y unir al campo viafirma.XXXXX (os recuerdo que no hay campo porque se ha considerado no guardarlo
-                        self.attachment_trail_url = rr_doc_trail["url"]
-                elif statu_firmweb["status"] == 'ERROR':
-                    # guardar el resultado de error en un campo para su visualizacion
-                    url = 'https://sandbox.viafirma.com/documents/api/v3/messages/' + response_code
-                    r_error = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
-                    if r_error.ok:
-                        rr_error = json.loads(r_error.content)
-                        # los dos campos de este dictionary interesantes son message y trace
-                        raise ValidationError("Error %s ." % rr_error["workflow"]["history"])
+                stat_firmweb = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
+                if stat_firmweb.ok:
+                    statu_firmweb = json.loads(stat_firmweb.content)
+                    print(statu_firmweb)
+                    self.status = statu_firmweb["status"]
+                    # statu_firmweb["status"] contiene el estado actual de la peticion y que me puede servir para cambiar el campo viafirma.status
+                    if statu_firmweb["status"] == 'RESPONSED':
+                        # ya ha sido firmada me puedo descargar el documento firmado y el trail de la firma
+                        # empezamos por el documento firmado
+                        url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/signed/' + response_code
+                        r_doc_sig = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
+                        if r_doc_sig.ok:
+                            rr_doc_sio = json.loads(r_doc_sig.content)
+                            # con esto obtengo el link en el campo "link" lo tengo que descargar y unir al campo viafirma.attachment_signed_id
+                        # ahora le toca el turno al documento de trail, pero para este documento no hay campo en el modelo viafirma, lo dejo preparado
+                        url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/trail/' + response_code
+                        r_doc_trail = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
+                        if r_doc_trail.ok:
+                            rr_doc_trail = json.loads(r_doc_trail.content)
+                            # con esto obtengo el link en el campo "link" lo tengo que descargar y unir al campo viafirma.XXXXX (os recuerdo que no hay campo porque se ha considerado no guardarlo
+                            self.attachment_trail_url = rr_doc_trail["url"]
+                    elif statu_firmweb["status"] == 'ERROR':
+                        # guardar el resultado de error en un campo para su visualizacion
+                        url = 'https://sandbox.viafirma.com/documents/api/v3/messages/' + response_code
+                        r_error = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
+                        if r_error.ok:
+                            rr_error = json.loads(r_error.content)
+                            # los dos campos de este dictionary interesantes son message y trace
+                            raise ValidationError("Error %s ." % rr_error["workflow"]["history"])
 
 
 
