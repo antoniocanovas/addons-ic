@@ -30,7 +30,7 @@ class Viafirma(models.Model):
 
     #status = fields.Selection(String='Estado', related='viafirma_lines.status')
     #status = fields.Selection(selection=[('borrador','Borrador'),('enviado','Enviado'),('error','Error'),('firmado','Firmado'),('rechazado','Rechazado')],string="Estado",default='borrador')
-    status = fields.Char('Estado')
+    status = fields.Char('Estado', default = 'Borrador')
     template_id = fields.Many2one('viafirma.templates')
     line_ids = fields.One2many(
         'viafirma.lines',
