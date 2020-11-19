@@ -23,6 +23,7 @@ class Viafirma(models.Model):
     res_id_name = fields.Char('Nombre del documento origen')
     attachment_id = fields.Many2one('ir.attachment')
     attachment_signed_id = fields.Many2one('ir.attachment')
+    attachment_trail_url = fields.Char('Url documento de Trail firmado')
 
     create_date = fields.Date(string="Fecha creacion")
     completed_date = fields.Date(string='Fecha firma')
@@ -175,6 +176,18 @@ class Viafirma(models.Model):
                     if r_doc_trail.ok:
                         rr_doc_trail = json.loads(r_doc_trail.content)
                         # con esto obtengo el link en el campo "link" lo tengo que descargar y unir al campo viafirma.XXXXX (os recuerdo que no hay campo porque se ha considerado no guardarlo
+                        self.attachment_trail_url = rr_doc_trail["url"]
+                else if statu_firmweb["status"] == 'ERROR':
+                    # guardar el resultado de error en un campo para su visualizacion
+                    url = 'https://sandbox.viafirma.com/documents/api/v3/messages/' + response_code
+                    r_error = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
+                    if r_error.ok:
+                        rr_error = json.loads(r_error.content)
+                        # los dos campos de este dictionary interesantes son message y trace
+                        raise ValidationError("Error %s ." % rr_error["workflow"]["history"])
+
+
+
         else:
             raise ValidationError(
                 "You must set Viafirma login Api credentials")
