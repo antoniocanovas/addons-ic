@@ -160,6 +160,8 @@ class Viafirma(models.Model):
             stat_firmweb = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
             if stat_firmweb.ok:
                 statu_firmweb = json.loads(stat_firmweb.content)
+                print(statu_firmweb)
+                self.status = statu_firmweb["status"]
                 # statu_firmweb["status"] contiene el estado actual de la peticion y que me puede servir para cambiar el campo viafirma.status
                 if statu_firmweb["status"] == 'RESPONSED':
                     # ya ha sido firmada me puedo descargar el documento firmado y el trail de la firma
@@ -184,6 +186,7 @@ class Viafirma(models.Model):
                         rr_error = json.loads(r_error.content)
                         # los dos campos de este dictionary interesantes son message y trace
                         raise ValidationError("Error %s ." % rr_error["workflow"]["history"])
+
 
 
 
