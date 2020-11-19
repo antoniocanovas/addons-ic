@@ -11,4 +11,3 @@ class ViafirmaGroups(models.Model):
     name = fields.Char(
         string='Código de grupo'
     )
-

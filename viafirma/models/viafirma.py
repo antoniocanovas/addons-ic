@@ -81,7 +81,7 @@ class Viafirma(models.Model):
         # def_check_parameters
 
         groupCode = {
-            "groupCode": self.viafirma_groupcode_id.id,
+            "groupCode": self.viafirma_groupcode_id.name,
         }
         workflow = {
             "workflow": {
@@ -128,7 +128,7 @@ class Viafirma(models.Model):
         document = {
             "document": {
                 "templateType": self.template_type,
-                # "templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
+                #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
                 "templateReference": str(self.binary_to_encode_64.decode('ascii')),
                 "templateCode": self.template_id.code
             },
@@ -141,7 +141,6 @@ class Viafirma(models.Model):
         }
 
         data = {**groupCode, **workflow, **notification, **metadatalist, **document, **callbackmails, **callbackurl }
-
         return data
 
     def status_response_firmweb(self):
@@ -216,7 +215,6 @@ class Viafirma(models.Model):
 
                     response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
                                                      auth=(viafirma_user, viafirma_pass))
-
                     if response_firmweb.ok:
                         #resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
                         resp_firmweb = response_firmweb.content.decode('utf-8')
