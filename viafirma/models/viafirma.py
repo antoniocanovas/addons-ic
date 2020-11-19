@@ -75,6 +75,7 @@ class Viafirma(models.Model):
 
         viafirmas =self.env['viafirma'].search([])
         for via in viafirmas:
+            print(via.status)
             if via.status != 'RECEIVED':
                 self.status_response_firmweb()
 
