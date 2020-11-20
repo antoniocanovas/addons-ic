@@ -36,14 +36,14 @@ class Viafirma(models.Model):
     line_ids = fields.One2many(
         'viafirma.lines',
         'viafirma_id',
-        string='firmantes'
+        string='Firmantes'
     )
-    status_id = fields.Char(string='Código de seguimiento')
+    status_id = fields.Char(string='Código seguimiento')
     noti_text = fields.Char(string='Titulo')
     noti_detail = fields.Char(string='Descripcion')
     noti_tipo = fields.Many2many(
         comodel_name="viafirma.notification.signature",
-        string="Tipo de Notificacione",
+        string="Tipo Notificacion",
         domain=[('type', '=', 'notification')],
     )
     noti_subject = fields.Char(string='Asunto')
@@ -52,7 +52,7 @@ class Viafirma(models.Model):
     templareReference = fields.Char(defautl='"templateReference": ')  # este campo sirve para construir la linea que puede ser una url, base65 o un codigo
     document_readRequired = fields.Boolean(string='Lectura obligatoria',default=False)
     document_watermarkText = fields.Char(string='Marca de agua')
-    document_formRequired = fields.Boolean(string='formulario',default=False)
+    document_formRequired = fields.Boolean(string='Formulario',default=False)
 
     viafirma_groupcode_id = fields.Many2one(
         'viafirma.groups',
