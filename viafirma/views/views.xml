@@ -64,45 +64,52 @@
                         <h2>
                             <field name="name"/>
                         </h2>
-                        <group name="viafirma_data" col="4">
-                            <field name="template_id"/>
-                            <field name="attachment_signed_id"/>
-                            <field name="attachment_trail_url"/>
-                            <field name="viafirma_groupcode_id"/>
-                            <!--<field name="attachment_id"/>-->
+                        <notebook colspan="4">
+                            <page string="General">
+                                <group name="viafirma_data" col="4">
+                                    <field name="template_id"/>
 
-                            <field name="binary_to_encode_64"/>
+                                    <!--<field name="attachment_id"/>-->
 
-                            <field name="status"/>
-                        </group>
-                        <group name="viafirma_compose">
-                            <field name="noti_text" required="1"/>
-                            <field name="noti_detail"/>
-                            <field name="noti_tipo" widget="many2many_tags" required="1"/>
-                            <field name="noti_subject" required="1"/>
-                            <field name="police_code"/>
-                            <field name="template_type"/>
-                            <field name="document_readRequired"/>
-                            <field name="document_watermarkText"/>
-                            <field name="document_formRequired"/>
-                        </group>
-                        <group name="viafirma_others">
-                            <field name="line_ids">
-                                <tree editable="top">
-                                    <field name="partner_id" required="1"/>
-                                    <field name="email" readonly="1"/>
-                                    <field name="mobile" readonly="1"/>
-                                    <field name="signed_date" readonly="1"/>
-                                    <field name="status" readonly="1"/>
-                                </tree>
-                            </field>
-                            <field name="res_model"/>
-                            <field name="res_id"/>
-                            <field name="res_id_name"/>
-                            <field name="status_id"/>
-                            <field name="completed_date"/>
-                            <field name="create_date"/>
-                        </group>
+                                    <field name="binary_to_encode_64" readonly="1"/>
+
+                                    <field name="status"/>
+                                </group>
+                                <group name="viafirma_compose">
+                                    <field name="noti_text" required="1"/>
+                                    <field name="noti_detail"/>
+                                    <field name="noti_tipo" widget="many2many_tags" required="1"/>
+                                    <field name="noti_subject" required="1"/>
+                                    <field name="template_type"/>
+                                    <field name="line_ids">
+                                        <tree editable="top">
+                                            <field name="partner_id" required="1"/>
+                                            <field name="email" readonly="1"/>
+                                            <field name="mobile" readonly="1"/>
+                                            <field name="signed_date" readonly="1"/>
+                                            <field name="status" readonly="1"/>
+                                        </tree>
+                                    </field>
+                                    <field name="document_readRequired"/>
+                                    <field name="document_watermarkText"/>
+                                    <field name="document_formRequired"/>
+                                    <field name="status_id"/>
+                                </group>
+                            </page>
+                            <page string="Seguimiento">
+                                <group name="viafirma_others">
+                                    <field name="attachment_signed_id"/>
+                                    <field name="attachment_trail_url"/>
+                                    <field name="viafirma_groupcode_id"/>
+                                    <field name="police_code"/>
+                                    <field name="res_model"/>
+                                    <field name="res_id"/>
+                                    <field name="res_id_name"/>
+                                    <field name="completed_date"/>
+                                    <field name="create_date"/>
+                                </group>
+                            </page>
+                        </notebook>
                         <group>
                             <button name="firma_web" string="Send" type="object" class="oe_highlight oe_read_only"/>
                         </group>
@@ -130,6 +137,7 @@
                     <field name="status"/>
                     <field name="attachment_signed_id"/>
                     <field name="attachment_trail_url"/>
+                    <field name="error_text"/>
                 </tree>
             </field>
             <field name="field_parent" eval="False"/>

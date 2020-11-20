@@ -8,6 +8,7 @@ import requests
 from odoo.exceptions import ValidationError
 from odoo import fields, models, api
 from datetime import datetime
+import wget
 
 class Viafirma(models.Model):
     _name = 'viafirma'
@@ -18,15 +19,15 @@ class Viafirma(models.Model):
     #res_model = fields.Reference(src_model, 'Modelo del documento origen')
     #res_id = fields.Reference(res_model.id, 'Id origen')
     #res_id_name = fields.Reference(res_model, 'Nombre del documento origen')
-    res_model = fields.Char('Modelo del documento origen')
+    res_model = fields.Char('Modelo origen')
     res_id = fields.Char('Id origen')
-    res_id_name = fields.Char('Nombre del documento origen')
+    res_id_name = fields.Char('Documento origen')
     attachment_id = fields.Many2one('ir.attachment')
     attachment_signed_id = fields.Many2one('ir.attachment')
-    attachment_trail_url = fields.Char('Url documento de Trail firmado')
+    attachment_trail_url = fields.Char('Url Trail')
 
     create_date = fields.Date(string="Fecha creacion")
-    completed_date = fields.Date(string='Fecha firma')
+    completed_date = fields.Date(string='Ultima modificacion')
 
     #status = fields.Selection(String='Estado', related='viafirma_lines.status')
     #status = fields.Selection(selection=[('borrador','Borrador'),('enviado','Enviado'),('error','Error'),('firmado','Firmado'),('rechazado','Rechazado')],string="Estado",default='borrador')
@@ -34,29 +35,31 @@ class Viafirma(models.Model):
     template_id = fields.Many2one('viafirma.templates')
     line_ids = fields.One2many(
         'viafirma.lines',
-        'viafirma_id'
+        'viafirma_id',
+        string='Firmantes'
     )
-    status_id = fields.Char(string='Código de seguimiento')
-    noti_text = fields.Char(string='Texto de la notificacion')
-    noti_detail = fields.Char(string='Detalle de la notificación')
+    status_id = fields.Char(string='Código seguimiento')
+    noti_text = fields.Char(string='Titulo')
+    noti_detail = fields.Char(string='Descripcion')
     noti_tipo = fields.Many2many(
         comodel_name="viafirma.notification.signature",
-        string="Tipo de Notificacione",
+        string="Tipo Notificacion",
         domain=[('type', '=', 'notification')],
     )
-    noti_subject = fields.Char(string='Asunto de la notificacion')
-    police_code = fields.Char(string='Codigo de la politica',default='test002')
+    noti_subject = fields.Char(string='Asunto')
+    police_code = fields.Char(string='Codigo politica',default='test002')
     template_type = fields.Selection(selection=[('url','URL'),('base64','BASE64'),('message','MESSAGE')],string="Tipo de teemplate",default='base64')
     templareReference = fields.Char(defautl='"templateReference": ')  # este campo sirve para construir la linea que puede ser una url, base65 o un codigo
-    document_readRequired = fields.Boolean(string='Requiere lectura obligatoria',default=False)
-    document_watermarkText = fields.Char(string='Texto a poner como marca de agua')
-    document_formRequired = fields.Boolean(string='Hay que rellenar un formulario',default=False)
+    document_readRequired = fields.Boolean(string='Lectura obligatoria',default=False)
+    document_watermarkText = fields.Char(string='Marca de agua')
+    document_formRequired = fields.Boolean(string='Formulario',default=False)
 
     viafirma_groupcode_id = fields.Many2one(
         'viafirma.groups',
-        string="Código de grupo",
+        string="Grupo",
     )
-    binary_to_encode_64 = fields.Binary("Documento ejemplo")
+    binary_to_encode_64 = fields.Binary("Documento")
+    error_text = fields.Char('Error')
 
 
     @api.multi
@@ -77,7 +80,7 @@ class Viafirma(models.Model):
         viafirmas =self.env['viafirma'].search([('status', '!=', 'RESPONSED')])
         print(viafirmas)
         for via in viafirmas:
-            via.status_response_firmweb() # TODO no funciona no manda el record, no manda nada, debería de mandar via, pero entonces hay que poner un nuevo parametro a la funcion
+            via.status_response_firmweb()
 
     def get_uploader_header(self):
 
@@ -163,7 +166,7 @@ class Viafirma(models.Model):
         response_code = self.status_id
 
         search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/status/' + str(response_code)
-        print(search_url)
+        #print(search_url)
 
         viafirma_user = self.env.user.company_id.user_viafirma
         viafirma_pass = self.env.user.company_id.pass_viafirma
@@ -172,10 +175,8 @@ class Viafirma(models.Model):
             if viafirma_pass:
 
                 stat_firmweb = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
-                print(stat_firmweb.content)
                 if stat_firmweb.ok:
                     statu_firmweb = json.loads(stat_firmweb.content.decode('utf-8'))
-                    print(statu_firmweb)
                     # de momento lo hago con la primera line_ids que hay
                     self.line_ids.status = statu_firmweb["status"]
                     self.status = statu_firmweb["status"]
@@ -184,31 +185,30 @@ class Viafirma(models.Model):
                         # ya ha sido firmada me puedo descargar el documento firmado y el trail de la firma
                         # empezamos por el documento firmado
                         url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/signed/' + response_code
-                        r_doc_sig = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
+                        r_doc_sig = requests.get(url, headers=header, auth=(viafirma_user, viafirma_pass))
                         if r_doc_sig.ok:
                             rr_doc_sio = json.loads(r_doc_sig.content.decode('utf-8'))
                             # con esto obtengo el link en el campo "link" lo tengo que descargar y unir al campo viafirma.attachment_signed_id
+                            print('signed', rr_doc_sio["link"])
+                            # self.attachment_signed_id = wget.download(rr_doc_sio["link"], out=response_code+'.pdf')
                         # ahora le toca el turno al documento de trail, pero para este documento no hay campo en el modelo viafirma, lo dejo preparado
                         url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/trail/' + response_code
-                        r_doc_trail = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
+                        r_doc_trail = requests.get(url, headers=header, auth=(viafirma_user, viafirma_pass))
                         if r_doc_trail.ok:
                             rr_doc_trail = json.loads(r_doc_trail.content.decode('utf-8'))
                             # con esto obtengo el link en el campo "link" lo tengo que descargar y unir al campo viafirma.XXXXX (os recuerdo que no hay campo porque se ha considerado no guardarlo
-                            self.attachment_trail_url = rr_doc_trail["url"]
+                            print(rr_doc_trail["link"])
+                            self.attachment_trail_url = rr_doc_trail["link"]
                     elif statu_firmweb['status'] == 'ERROR':
                         # guardar el resultado de error en un campo para su visualizacion
                         url = 'https://sandbox.viafirma.com/documents/api/v3/messages/' + response_code
-                        r_error = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
-                        print("R_error", r_error, url)
+                        r_error = requests.get(url, headers=header, auth=(viafirma_user, viafirma_pass))
+                        #print("R_error", r_error, url)
                         if r_error.ok:
-                            rr_error = json.loads(r_error.content.decode('utf-8'))
+                            rr_error = json.loads(r_error.content)
                             print("Pedro Error", rr_error)
                             # los dos campos de este dictionary interesantes son message y trace
-                            raise ValidationError("Error %s ." % rr_error["workflow"]["history"])
-
-
-
-
+                            self.error_text =  rr_error["workflow"]["history"]
         else:
             raise ValidationError(
                 "You must set Viafirma login Api credentials")
