@@ -69,14 +69,15 @@ class Viafirma(models.Model):
     def send_viafirma(self):
         return
 
+    @api.multi
     def upd_viafirma(self):
         ''' chequeamos cada 5 minutos por cron el estado de los viafirma que no tengan estado RESPONSED (finalizado) para
         actualizar su estado cada cierto tiempo y ver si ha habido algun error'''
 
-        viafirmas =self.env['viafirma'].search([])
+        viafirmas =self.env['viafirma'].search([('status', '!=', 'RESPONSED')])
+        print(viafirmas)
         for via in viafirmas:
-            if via.status != 'RESPONSED':
-                self.status_response_firmweb() # TODO no funciona no manda el record, no manda nada, debería de mandar via, pero entonces hay que poner un nuevo parametro a la funcion
+            via.status_response_firmweb() # TODO no funciona no manda el record, no manda nada, debería de mandar via, pero entonces hay que poner un nuevo parametro a la funcion
 
     def get_uploader_header(self):
 
@@ -154,6 +155,7 @@ class Viafirma(models.Model):
         data = {**groupCode, **workflow, **notification, **metadatalist, **document, **callbackmails, **callbackurl }
         return data
 
+
     def status_response_firmweb(self):
         ''' Esta funcion ha de obtener el estado de la peticion'''
 
@@ -170,8 +172,9 @@ class Viafirma(models.Model):
             if viafirma_pass:
 
                 stat_firmweb = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
+                print(stat_firmweb.content)
                 if stat_firmweb.ok:
-                    statu_firmweb = stat_firmweb.content.decode('utf-8')
+                    statu_firmweb = json.loads(stat_firmweb.content.decode('utf-8'))
                     print(statu_firmweb)
                     # de momento lo hago con la primera line_ids que hay
                     self.line_ids.status = statu_firmweb["status"]
@@ -183,21 +186,23 @@ class Viafirma(models.Model):
                         url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/signed/' + response_code
                         r_doc_sig = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
                         if r_doc_sig.ok:
-                            rr_doc_sio = r_doc_sig.content.decode('utf-8')
+                            rr_doc_sio = json.loads(r_doc_sig.content.decode('utf-8'))
                             # con esto obtengo el link en el campo "link" lo tengo que descargar y unir al campo viafirma.attachment_signed_id
                         # ahora le toca el turno al documento de trail, pero para este documento no hay campo en el modelo viafirma, lo dejo preparado
                         url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/trail/' + response_code
                         r_doc_trail = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
                         if r_doc_trail.ok:
-                            rr_doc_trail = r_doc_trail.content.decode('utf-8')
+                            rr_doc_trail = json.loads(r_doc_trail.content.decode('utf-8'))
                             # con esto obtengo el link en el campo "link" lo tengo que descargar y unir al campo viafirma.XXXXX (os recuerdo que no hay campo porque se ha considerado no guardarlo
                             self.attachment_trail_url = rr_doc_trail["url"]
-                    elif statu_firmweb["status"] == 'ERROR':
+                    elif statu_firmweb['status'] == 'ERROR':
                         # guardar el resultado de error en un campo para su visualizacion
                         url = 'https://sandbox.viafirma.com/documents/api/v3/messages/' + response_code
                         r_error = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
+                        print("R_error", r_error, url)
                         if r_error.ok:
-                            rr_error = r_error.content.decode('utf-8')
+                            rr_error = json.loads(r_error.content.decode('utf-8'))
+                            print("Pedro Error", rr_error)
                             # los dos campos de este dictionary interesantes son message y trace
                             raise ValidationError("Error %s ." % rr_error["workflow"]["history"])
 
