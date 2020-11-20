@@ -8,6 +8,7 @@ import requests
 from odoo.exceptions import ValidationError
 from odoo import fields, models, api
 from datetime import datetime
+import wget
 
 class Viafirma(models.Model):
     _name = 'viafirma'
@@ -187,13 +188,14 @@ class Viafirma(models.Model):
                         if r_doc_sig.ok:
                             rr_doc_sio = json.loads(r_doc_sig.content.decode('utf-8'))
                             # con esto obtengo el link en el campo "link" lo tengo que descargar y unir al campo viafirma.attachment_signed_id
+                            self.attachment_signed_id = wget.download(rr_doc_sig["link"])
                         # ahora le toca el turno al documento de trail, pero para este documento no hay campo en el modelo viafirma, lo dejo preparado
                         url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/trail/' + response_code
                         r_doc_trail = requests.get(url, headers=header, auth=(viafirma_user, viafirma_pass))
                         if r_doc_trail.ok:
                             rr_doc_trail = json.loads(r_doc_trail.content.decode('utf-8'))
                             # con esto obtengo el link en el campo "link" lo tengo que descargar y unir al campo viafirma.XXXXX (os recuerdo que no hay campo porque se ha considerado no guardarlo
-                            self.attachment_trail_url = rr_doc_trail["url"]
+                            self.attachment_trail_url = rr_doc_trail["link"]
                     elif statu_firmweb['status'] == 'ERROR':
                         # guardar el resultado de error en un campo para su visualizacion
                         url = 'https://sandbox.viafirma.com/documents/api/v3/messages/' + response_code
