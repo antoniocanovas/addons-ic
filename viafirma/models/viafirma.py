@@ -188,8 +188,8 @@ class Viafirma(models.Model):
                         if r_doc_sig.ok:
                             rr_doc_sio = json.loads(r_doc_sig.content.decode('utf-8'))
                             # con esto obtengo el link en el campo "link" lo tengo que descargar y unir al campo viafirma.attachment_signed_id
-                            print('signed', rr_doc_sig["link"])
-                            self.attachment_signed_id = wget.download(rr_doc_sig["link"])
+                            print('signed', rr_doc_sio["link"])
+                            self.attachment_signed_id = wget.download(rr_doc_sio["link"])
                         # ahora le toca el turno al documento de trail, pero para este documento no hay campo en el modelo viafirma, lo dejo preparado
                         url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/trail/' + response_code
                         r_doc_trail = requests.get(url, headers=header, auth=(viafirma_user, viafirma_pass))
