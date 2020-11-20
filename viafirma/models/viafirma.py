@@ -77,7 +77,7 @@ class Viafirma(models.Model):
         viafirmas =self.env['viafirma'].search([('status', '!=', 'RESPONSED')])
         print(viafirmas)
         for via in viafirmas:
-            via.status_response_firmweb() # TODO no funciona no manda el record, no manda nada, debería de mandar via, pero entonces hay que poner un nuevo parametro a la funcion
+            via.status_response_firmweb()
 
     def get_uploader_header(self):
 
@@ -201,7 +201,7 @@ class Viafirma(models.Model):
                         r_error = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
                         print("R_error", r_error, url)
                         if r_error.ok:
-                            rr_error = json.loads(r_error.content.decode('utf-8'))
+                            rr_error = json.loads(r_error)
                             print("Pedro Error", rr_error)
                             # los dos campos de este dictionary interesantes son message y trace
                             raise ValidationError("Error %s ." % rr_error["workflow"]["history"])
