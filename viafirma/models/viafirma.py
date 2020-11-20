@@ -57,6 +57,7 @@ class Viafirma(models.Model):
         string="Código de grupo",
     )
     binary_to_encode_64 = fields.Binary("Documento ejemplo")
+    error_text = fields.Char('Texto del error')
 
 
     @api.multi
@@ -202,11 +203,7 @@ class Viafirma(models.Model):
                             rr_error = json.loads(r_error.content)
                             print("Pedro Error", rr_error)
                             # los dos campos de este dictionary interesantes son message y trace
-                            raise ValidationError("Error %s ." % rr_error["workflow"]["history"])
-
-
-
-
+                            self.error_text =  rr_error["workflow"]["history"]
         else:
             raise ValidationError(
                 "You must set Viafirma login Api credentials")

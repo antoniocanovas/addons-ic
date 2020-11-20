@@ -130,6 +130,7 @@
                     <field name="status"/>
                     <field name="attachment_signed_id"/>
                     <field name="attachment_trail_url"/>
+                    <field name="error_text"/>
                 </tree>
             </field>
             <field name="field_parent" eval="False"/>
