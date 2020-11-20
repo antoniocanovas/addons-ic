@@ -95,7 +95,7 @@
                                     <field name="document_formRequired"/>
                                     <field name="status_id"/>
                                 </group>
-                            </page>page>
+                            </page>
                             <page string="Seguimiento">
                                 <group name="viafirma_others">
                                     <field name="attachment_signed_id"/>
@@ -108,8 +108,8 @@
                                     <field name="completed_date"/>
                                     <field name="create_date"/>
                                 </group>
-                            </page>page>
-                        </notebook>notebook>
+                            </page>
+                        </notebook>
                         <group>
                             <button name="firma_web" string="Send" type="object" class="oe_highlight oe_read_only"/>
                         </group>
