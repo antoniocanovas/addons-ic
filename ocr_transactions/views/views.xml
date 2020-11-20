@@ -38,9 +38,9 @@
                         </page>
                     </notebook>
                     <footer>
-                    <button t-if="invoice_id" name="show_invoice" string="Ver Factura" class="oe_right oe_highlight"
-                            type="object"/>
-                </footer>
+                        <button t-if="invoice_id" name="show_invoice" string="Ver Factura" class="oe_right oe_highlight"
+                                type="object"/>
+                    </footer>
                 </sheet>
 
             </form>
@@ -360,6 +360,11 @@
                                     <field name="move_id" groups="account.group_account_user" attrs="{'invisible': [('move_id', '=', False)]}"/>
                                     <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
                                 </group>
+                            </group>
+                        </page>
+                        <page string="OCR Info" name="ocr_info">
+                            <group>
+                                <field name="ocr_transaction_error"/>
                             </group>
                         </page>
                     </notebook>

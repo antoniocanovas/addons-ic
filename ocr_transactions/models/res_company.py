@@ -182,7 +182,6 @@ class ResCompany(models.Model):
     @api.multi
     def create_invoices(self, transactions_processed, api_transaction_url, header):
         for t in transactions_processed:
-
             invoice = self.env['account.invoice'].sudo().search([
                 ("ocr_transaction_id.token", "=", t.token),
             ], limit=1)
@@ -424,8 +423,11 @@ class ResCompany(models.Model):
                                                                           ], limit=10)
             if transactions_with_errors:
                 self.update_transactions_error_code(transactions_with_errors, api_transaction_url, header)
+                self.create_invoices(transactions_with_errors, api_transaction_url, header)
+                self.mark_uploads_done(transactions_with_errors)
 
             if transactions_processed:
+
                 self.create_invoices(transactions_processed, api_transaction_url, header)
                 self.mark_uploads_done(transactions_processed)
 
