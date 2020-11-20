@@ -172,10 +172,8 @@ class Viafirma(models.Model):
             if viafirma_pass:
 
                 stat_firmweb = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
-                print(stat_firmweb.content)
                 if stat_firmweb.ok:
                     statu_firmweb = json.loads(stat_firmweb.content.decode('utf-8'))
-                    print(statu_firmweb)
                     # de momento lo hago con la primera line_ids que hay
                     self.line_ids.status = statu_firmweb["status"]
                     self.status = statu_firmweb["status"]
@@ -199,9 +197,9 @@ class Viafirma(models.Model):
                         # guardar el resultado de error en un campo para su visualizacion
                         url = 'https://sandbox.viafirma.com/documents/api/v3/messages/' + response_code
                         r_error = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
-                        print("R_error", r_error, url)
+                        #print("R_error", r_error, url)
                         if r_error.ok:
-                            rr_error = json.loads(r_error)
+                            rr_error = json.loads(r_error.content)
                             print("Pedro Error", rr_error)
                             # los dos campos de este dictionary interesantes son message y trace
                             raise ValidationError("Error %s ." % rr_error["workflow"]["history"])
