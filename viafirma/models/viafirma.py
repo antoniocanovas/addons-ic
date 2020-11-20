@@ -19,15 +19,15 @@ class Viafirma(models.Model):
     #res_model = fields.Reference(src_model, 'Modelo del documento origen')
     #res_id = fields.Reference(res_model.id, 'Id origen')
     #res_id_name = fields.Reference(res_model, 'Nombre del documento origen')
-    res_model = fields.Char('Modelo del documento origen')
+    res_model = fields.Char('Modelo origen')
     res_id = fields.Char('Id origen')
-    res_id_name = fields.Char('Nombre del documento origen')
+    res_id_name = fields.Char('Documento origen')
     attachment_id = fields.Many2one('ir.attachment')
     attachment_signed_id = fields.Many2one('ir.attachment')
-    attachment_trail_url = fields.Char('Url documento de Trail firmado')
+    attachment_trail_url = fields.Char('Url Trail')
 
     create_date = fields.Date(string="Fecha creacion")
-    completed_date = fields.Date(string='Fecha firma')
+    completed_date = fields.Date(string='Ultima modificacion')
 
     #status = fields.Selection(String='Estado', related='viafirma_lines.status')
     #status = fields.Selection(selection=[('borrador','Borrador'),('enviado','Enviado'),('error','Error'),('firmado','Firmado'),('rechazado','Rechazado')],string="Estado",default='borrador')
@@ -35,30 +35,31 @@ class Viafirma(models.Model):
     template_id = fields.Many2one('viafirma.templates')
     line_ids = fields.One2many(
         'viafirma.lines',
-        'viafirma_id'
+        'viafirma_id',
+        string='firmantes'
     )
     status_id = fields.Char(string='Código de seguimiento')
-    noti_text = fields.Char(string='Texto de la notificacion')
-    noti_detail = fields.Char(string='Detalle de la notificación')
+    noti_text = fields.Char(string='Titulo')
+    noti_detail = fields.Char(string='Descripcion')
     noti_tipo = fields.Many2many(
         comodel_name="viafirma.notification.signature",
         string="Tipo de Notificacione",
         domain=[('type', '=', 'notification')],
     )
-    noti_subject = fields.Char(string='Asunto de la notificacion')
-    police_code = fields.Char(string='Codigo de la politica',default='test002')
+    noti_subject = fields.Char(string='Asunto')
+    police_code = fields.Char(string='Codigo politica',default='test002')
     template_type = fields.Selection(selection=[('url','URL'),('base64','BASE64'),('message','MESSAGE')],string="Tipo de teemplate",default='base64')
     templareReference = fields.Char(defautl='"templateReference": ')  # este campo sirve para construir la linea que puede ser una url, base65 o un codigo
-    document_readRequired = fields.Boolean(string='Requiere lectura obligatoria',default=False)
-    document_watermarkText = fields.Char(string='Texto a poner como marca de agua')
-    document_formRequired = fields.Boolean(string='Hay que rellenar un formulario',default=False)
+    document_readRequired = fields.Boolean(string='Lectura obligatoria',default=False)
+    document_watermarkText = fields.Char(string='Marca de agua')
+    document_formRequired = fields.Boolean(string='formulario',default=False)
 
     viafirma_groupcode_id = fields.Many2one(
         'viafirma.groups',
-        string="Código de grupo",
+        string="Grupo",
     )
-    binary_to_encode_64 = fields.Binary("Documento ejemplo")
-    error_text = fields.Char('Texto del error')
+    binary_to_encode_64 = fields.Binary("Documento")
+    error_text = fields.Char('Error')
 
 
     @api.multi
