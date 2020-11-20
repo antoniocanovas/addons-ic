@@ -284,7 +284,7 @@ class OcrUploads(models.Model):
                         "Error from OCR server  %s" % self.upload_transaction_error
                     )
             if self.state != "error":
-                self.state = "sending"
+                self.state = "processing"
 
 
 

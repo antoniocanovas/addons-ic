@@ -16,5 +16,5 @@ class ViafirmaLines(models.Model):
         'res.partner',
     )
     signed_date = fields.Date(string='Signed date')
-    status = fields.Selection(selection=[('borrador','Borrador'),('RECEIVED','RECEIVED'),('ERROR','ERROR'),('firmado','Firmado'),('rechazado','Rechazado')],string="Estado",default='borrador')
+    status = fields.Selection(selection=[('borrador','Borrador'),('RECEIVED','RECEIVED'),('ERROR','ERROR'),('WAITING','WAITING'),('firmado','Firmado'),('rechazado','Rechazado')],string="Estado",default='borrador')
     viafirma_id = fields.Many2one('viafirma')
