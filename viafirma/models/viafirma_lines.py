@@ -26,6 +26,7 @@ class ViafirmaLines(models.Model):
         ('REJECTED','REJECTED'),
         ('EXPIRED','EXPIRED'),
         ('DELETED','DELETED'),
+        ('SENT','SENT'),
         ('RESPONSED','RESPONSED')
         ],string="Estado",default='borrador')
     viafirma_id = fields.Many2one('viafirma')
