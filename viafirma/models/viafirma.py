@@ -10,6 +10,14 @@ from odoo import fields, models, api
 from datetime import datetime
 #import wget
 
+STATE = [
+    ('draft', 'Borrador'),
+    ('sending', 'Sending'),
+    ('processing', 'Processing'),
+    ('error', 'Error'),
+    ('done', 'Done'),
+]
+
 class Viafirma(models.Model):
     _name = 'viafirma'
     _inherit = ['mail.thread', 'mail.activity.mixin']
@@ -31,9 +39,12 @@ class Viafirma(models.Model):
     completed_date = fields.Date(string='Ultima modificacion')
 
     #status = fields.Selection(String='Estado', related='viafirma_lines.status')
-    #status = fields.Selection(selection=[
-    # ('borrador','Borrador'),('enviado','Enviado'),('error','Error'),('firmado','Firmado'),('rechazado','Rechazado')
-    # ],string="Estado",default='borrador'), track_visibility='onchange']
+    state = fields.Selection(
+        selection=STATE,
+        string="Estado",
+        default='draft',
+        track_visibility='onchange'
+    )
 
     status = fields.Char('Estado', default = 'Borrador')
 

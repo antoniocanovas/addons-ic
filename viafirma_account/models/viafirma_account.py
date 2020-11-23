@@ -9,6 +9,9 @@ from odoo.exceptions import ValidationError
 class ViafirmaAccount(models.Model):
     _inherit = 'account.invoice'
 
+
+    viafirma_ids = fields.One2many('viafirma','invoice_id')
+
     @api.multi
     def _get_viafirma(self):
         results = self.env['viafirma'].search([('invoice_id', '=', self.id)])

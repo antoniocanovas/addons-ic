@@ -60,6 +60,9 @@
             <field name="active" eval="True"/>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                             <field name="state" widget="statusbar" nolabel="1"/>
+                    </header>
                     <sheet string="Viafirma">
                         <h2>
                             <field name="name"/>
