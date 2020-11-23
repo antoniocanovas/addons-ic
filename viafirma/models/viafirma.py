@@ -24,8 +24,8 @@ class Viafirma(models.Model):
     res_id = fields.Char('Id origen')
     res_id_name = fields.Char('Documento origen')
     attachment_id = fields.Many2one('ir.attachment')
-    attachment_signed_id = fields.Many2one('ir.attachment')
-    attachment_trail_url = fields.Char('Url Trail')
+    #attachment_signed_id = fields.Many2one('ir.attachment')
+    #attachment_trail_url = fields.Char('Url Trail')
 
     create_date = fields.Date(string="Fecha creacion")
     completed_date = fields.Date(string='Ultima modificacion')

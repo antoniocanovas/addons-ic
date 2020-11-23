@@ -64,49 +64,51 @@
                         <h2>
                             <field name="name"/>
                         </h2>
-                        <notebook colspan="4">
-                            <page string="General">
-                                <group name="viafirma_data" col="4">
-                                    <field name="template_id"/>
-
-                                    <!--<field name="attachment_id"/>-->
-
-                                    <field name="binary_to_encode_64" readonly="1"/>
-
-                                    <field name="status"/>
-                                </group>
-                                <group name="viafirma_compose">
+                        <group name="cabecera">
+                            <group>
+                                <field name="template_id"/>
+                                <field name="noti_detail"/>
+                                <field name="document_watermarkText"/>
+                            </group>
+                            <group>
+                                <field name="noti_tipo" widget="many2many_tags" required="1"/>
+                                <field name="document_readRequired"/>
+                                <field name="create_date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Firmas">
+<!--                                 <group name="viafirma_compose">
                                     <field name="noti_text" required="1"/>
-                                    <field name="noti_detail"/>
-                                    <field name="noti_tipo" widget="many2many_tags" required="1"/>
                                     <field name="noti_subject" required="1"/>
-                                    <field name="template_type"/>
-                                    <field name="line_ids">
-                                        <tree editable="top">
-                                            <field name="partner_id" required="1"/>
-                                            <field name="email" readonly="1"/>
-                                            <field name="mobile" readonly="1"/>
-                                            <field name="signed_date" readonly="1"/>
-                                            <field name="status" readonly="1"/>
-                                        </tree>
-                                    </field>
-                                    <field name="document_readRequired"/>
-                                    <field name="document_watermarkText"/>
-                                    <field name="document_formRequired"/>
-                                    <field name="status_id"/>
-                                </group>
+                                </group>   -->
+                                <field name="line_ids">
+                                    <tree editable="top">
+                                        <field name="partner_id" required="1"/>
+                                        <field name="email" readonly="1"/>
+                                        <field name="mobile" readonly="1"/>
+                                        <field name="signed_date" readonly="1"/>
+                                        <field name="status" readonly="1"/>
+                                    </tree>
+                                </field>
                             </page>
                             <page string="Seguimiento">
-                                <group name="viafirma_others">
+                                <group name="viafirma_data" col="4">
+                                    <field name="status"/>
+                                    <field name="document_formRequired"/>
+                                    <field name="res_id_name"/>
                                     <field name="document_signed_id"/>
                                     <field name="document_trail_id"/>
-                                    <field name="viafirma_groupcode_id"/>
-                                    <field name="police_code"/>
+                                    <field name="completed_date"/>
+                                </group>
+                                <group name="viafirma_tecnico" col="4" groups="base.group_system">
+                                    <field name="status_id"/>
+                                    <!--<field name="police_code"/>
+                                    <field name="viafirma_groupcode_id"/>-->
                                     <field name="res_model"/>
                                     <field name="res_id"/>
-                                    <field name="res_id_name"/>
-                                    <field name="completed_date"/>
-                                    <field name="create_date"/>
+                                    <field name="template_type"/>
+                                    <field name="binary_to_encode_64" readonly="1"/>
                                 </group>
                             </page>
                         </notebook>
@@ -140,8 +142,8 @@
                     <field name="name"/>
                     <field name="res_model"/>
                     <field name="status"/>
-                    <field name="attachment_signed_id"/>
-                    <field name="attachment_trail_url"/>
+                    <field name="document_signed_id"/>
+                    <field name="document_trail_id"/>
                     <field name="error_text"/>
                 </tree>
             </field>
@@ -167,9 +169,13 @@
                         <group name="basic_params" col="4">
                             <field name="description"/>
                             <field name="code"/>
+                            <field name="num_firmantes"/>
                         </group>
                         <group name="notifications" col="4">
                             <field name="firma_ids" widget="many2many_tags"/>
+                        </group>
+                        <group name="models_use" col="4">
+                            <field name="models_use" widget="many2many_tags"/>
                         </group>
                     </sheet>
 

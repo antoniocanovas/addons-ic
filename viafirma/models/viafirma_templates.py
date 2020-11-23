@@ -19,7 +19,11 @@ class ViafirmaTemplates(models.Model):
         string="Firmas",
         domain=[('type', '=', 'signature')],
     )
-
+    num_firmantes = fields.Integer('Numero firmantes')
+    models_use = fields.Many2many(
+        comodel_name="ir.model",
+        string="Modelos usados"
+    )
 
     def get_uploader_header(self):
 
