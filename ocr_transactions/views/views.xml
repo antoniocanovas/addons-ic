@@ -269,10 +269,12 @@
                         <group>
                             <field string="Proveedor" name="partner_id"
                                    widget="res_partner_many2one"
-                                   context="{'default_customer': 0, 'search_default_supplier': 1, 'default_supplier': 1, 'default_is_company': True, 'show_vat': True}"
+                                   context="{'default_customer': 0, 'search_default_supplier': 1,
+                                    'default_supplier': 1, 'default_is_company': True, 'show_vat': True}"
                                    domain="[('supplier', '=', True)]"/>
                             <field name="reference" string="Referencia"/>
                             <field name="ocr_transaction_id" groups="base.group_system"/>
+                            <field name="ocr_transaction_error" attrs="{'invisible':[('ocr_transaction_error','=', False)]}" />
                         </group>
                         <group>
                             <field name="date_invoice" string="Fecha Factura" options="{'datepicker': {'warn_future': true}}"/>
@@ -360,11 +362,6 @@
                                     <field name="move_id" groups="account.group_account_user" attrs="{'invisible': [('move_id', '=', False)]}"/>
                                     <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
                                 </group>
-                            </group>
-                        </page>
-                        <page string="OCR Info" name="ocr_info">
-                            <group>
-                                <field name="ocr_transaction_error"/>
                             </group>
                         </page>
                     </notebook>

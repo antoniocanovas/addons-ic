@@ -98,8 +98,8 @@
                             </page>
                             <page string="Seguimiento">
                                 <group name="viafirma_others">
-                                    <field name="attachment_signed_id"/>
-                                    <field name="attachment_trail_url"/>
+                                    <field name="document_signed_id"/>
+                                    <field name="document_trail_id"/>
                                     <field name="viafirma_groupcode_id"/>
                                     <field name="police_code"/>
                                     <field name="res_model"/>
@@ -114,6 +114,11 @@
                             <button name="firma_web" string="Send" type="object" class="oe_highlight oe_read_only"/>
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
 
                 </form>
             </field>

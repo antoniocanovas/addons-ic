@@ -230,8 +230,7 @@ class ResCompany(models.Model):
                         partner = self.get_partner_by_vat(partner_vat)
                         partner_name_value = partner_vat.value
                     else:
-                        partner = self.env['res.partner'].search([('vat', "=", 'ES00000000Z'),('active', "=", False)])
-                        print(partner)
+                        partner = self.env['res.partner'].search([('vat', "=", 'ES00000000Z'),'|',('active', "=", False),('active', "=", True)])
                         #partner = False
                         #partner_name_value = self.random_with_N_digits(8)
                         #partner_name_value = str(partner_name_value) + "Z"
