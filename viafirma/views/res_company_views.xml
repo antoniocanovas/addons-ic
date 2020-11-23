@@ -12,6 +12,7 @@
                     <group>
                         <field name="user_viafirma"/>
                         <field name="pass_viafirma" password="True"/>
+                        <field name="group_viafirma"/>
                     </group>
 
                     <group>

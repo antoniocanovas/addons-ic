@@ -16,6 +16,7 @@ class ResCompany(models.Model):
     last_connection_date = fields.Datetime('Last connection dates')
     user_viafirma = fields.Char('User')
     pass_viafirma = fields.Char('Passwd')
+    group_viafirma = fields.Char('Group')
 
     @api.multi
     def force_sync_viafirma(self):
