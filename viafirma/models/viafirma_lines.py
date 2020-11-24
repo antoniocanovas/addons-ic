@@ -4,6 +4,21 @@ import base64
 
 from odoo import fields, models, api
 
+
+STATE = [
+    ('borrador', 'Borrador'),
+    ('RECEIVED', 'RECEIVED'),
+    ('ERROR', 'ERROR'),
+    ('WAITING', 'WAITING'),
+    ('WAITING_CHECK', 'WAITING_CHECK'),
+    ('WAITING_CLIENT_SIGNATURE', 'WAITING_CLIENT_SIGNATURE'),
+    ('REJECTED', 'REJECTED'),
+    ('EXPIRED', 'EXPIRED'),
+    ('DELETED', 'DELETED'),
+    ('SENT', 'SENT'),
+    ('RESPONSED', 'RESPONSED')
+]
+
 # la consulta a tecdoc devuelve todos los coches de la serie, por lo que deberia de haber un modelo coche, quye pertenezca a una marca, modelo y serie determinada
 class ViafirmaLines(models.Model):
     _name = 'viafirma.lines'
@@ -16,17 +31,9 @@ class ViafirmaLines(models.Model):
         'res.partner',
     )
     signed_date = fields.Date(string='Signed date')
-    status = fields.Selection(selection=[
-        ('borrador','Borrador'),
-        ('RECEIVED','RECEIVED'),
-        ('ERROR','ERROR'),
-        ('WAITING','WAITING'),
-        ('WAITING_CHECK','WAITING_CHECK'),
-        ('WAITING_CLIENT_SIGNATURE','WAITING_CLIENT_SIGNATURE'),
-        ('REJECTED','REJECTED'),
-        ('EXPIRED','EXPIRED'),
-        ('DELETED','DELETED'),
-        ('SENT','SENT'),
-        ('RESPONSED','RESPONSED')
-        ],string="Estado",default='borrador')
+    state = fields.Selection(
+        selection=STATE,
+        string="Estado",
+        default='borrador'
+    )
     viafirma_id = fields.Many2one('viafirma')

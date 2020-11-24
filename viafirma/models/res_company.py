@@ -13,7 +13,10 @@ _logger = logging.getLogger(__name__)
 
 class ResCompany(models.Model):
     _inherit = 'res.company'
+
+
     last_connection_date = fields.Datetime('Last connection dates')
+    #last_conn_date = fields.Datetime('Last connection date')
     user_viafirma = fields.Char('User')
     pass_viafirma = fields.Char('Passwd')
     group_viafirma = fields.Char('Group')
