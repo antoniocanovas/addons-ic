@@ -91,27 +91,26 @@
                                         <field name="email" readonly="1"/>
                                         <field name="mobile" readonly="1"/>
                                         <field name="signed_date" readonly="1"/>
-                                        <field name="status" readonly="1"/>
+                                        <field name="state" readonly="1"/>
                                     </tree>
                                 </field>
                             </page>
                             <page string="Seguimiento">
                                 <group name="viafirma_data" col="4">
-                                    <field name="status"/>
                                     <field name="document_formRequired"/>
                                     <field name="res_id_name"/>
-                                    <field name="document_signed_id"/>
-                                    <field name="document_trail_id"/>
+                                    <field name="document_signed"/>
+                                    <field name="document_trail"/>
                                     <field name="completed_date"/>
                                 </group>
                                 <group name="viafirma_tecnico" col="4" groups="base.group_system">
-                                    <field name="status_id"/>
+                                    <field name="tracking_code"/>
                                     <!--<field name="police_code"/>
                                     <field name="viafirma_groupcode_id"/>-->
                                     <field name="res_model"/>
                                     <field name="res_id"/>
                                     <field name="template_type"/>
-                                    <field name="binary_to_encode_64" readonly="1"/>
+                                    <field name="document_to_send" readonly="1"/>
                                 </group>
                             </page>
                         </notebook>
@@ -144,9 +143,9 @@
                 <tree string="Viafirma">
                     <field name="name"/>
                     <field name="res_model"/>
-                    <field name="status"/>
-                    <field name="document_signed_id"/>
-                    <field name="document_trail_id"/>
+                    <field name="state"/>
+                    <field name="document_signed"/>
+                    <field name="document_trail"/>
                     <field name="error_text"/>
                 </tree>
             </field>

@@ -81,7 +81,7 @@ class ViafirmaOperations(models.Model):
         ''' Esta funcion ha de obtener el estado de la peticion'''
 
         header = self.get_uploader_header()
-        response_code = self.env('viafirma').status_id
+        response_code = self.env('viafirma').tracking_code
 
         search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/status/'+ response_code
 
@@ -133,7 +133,7 @@ class ViafirmaOperations(models.Model):
         ''' solo firma web y un solo firmante, la mas simple de todas, de momento selecciono todos los registros que tenga en el modelo viafirma y que haga el proceso
          de envio para cada uno de ellos, aunque no coge ningun valor de estos, ni emqail ni adjunto'''
 
-        envios = self.env['viafirma'].search([('status', '=', 'Borrador')])
+        envios = self.env['viafirma'].search([('state', '=', 'Borrador')])
         for envio in envios:
             header = self.get_uploader_header()
             search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
@@ -142,4 +142,4 @@ class ViafirmaOperations(models.Model):
             if response_firmweb.ok:
                 resp_firmweb = json.loads(response_firmweb.content)
                 # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
-                self.env('viafirma').status_id = resps_firmweb
+                self.env('viafirma').tracking_code = resps_firmweb
