@@ -138,7 +138,7 @@ class Viafirma(models.Model):
         for recipient in line_ids:
             recipient_n = {
                  "key": "FIRMANTE_01_NAME",
-                "value": "Luismi"
+                 "value": "Luismi"
             }
             metadatalist.append(recipient_n)
 
@@ -243,7 +243,7 @@ class Viafirma(models.Model):
         recipients = {
             "recipients" : recip,
         }
-        metadata = self.compose_metadatallist(self.line_ids)
+        metadata = self.compose_metadatalist(self.line_ids)
         metadatalist = {
             "metadatalist" : metadata,
         }
@@ -254,6 +254,15 @@ class Viafirma(models.Model):
                 "requestSmsBody": "En el siguiente link puedes revisar y firmar el contrato"
             },
         }
+        document = {
+            "document": {
+                "templateType": self.template_type,
+                # "templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
+                "templateReference": str(self.document_to_send.decode('ascii')),
+                "templateCode": self.template_id.code
+            },
+        }
+
         messages = {
             "messages": [{
                 "document": {
@@ -263,8 +272,8 @@ class Viafirma(models.Model):
                     "templateCode": self.template_id.code
                 },
                 "metadataList": [{
-                    "key": "metadata_doc01_01",
-                    "value": "test_value_doc01_01"
+                    "key": "FIRMANTE_01_NAME",
+                    "value": "Luismi"
                 }]
             }]
         }
@@ -272,7 +281,8 @@ class Viafirma(models.Model):
             "callbackMails": self.env.user.email,
         }
 
-        data = {**groupCode, **workflow, **recipients, **metadatalist, **customization, **messages, **callbackmails}
+        data = {**groupCode, **workflow, **recipients, **metadatalist, **customization, **document, **callbackmails}
+        print("DATAS", data)
         return data
 
 
@@ -400,16 +410,19 @@ class Viafirma(models.Model):
                     print("Init CALL")
                     header = self.get_uploader_header()
                     search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
-                    datas = self.compose_call()
-
+                    #datas = self.compose_call()
+                    datas = self.compose_call_multiple()
                     response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
                                                      auth=(viafirma_user, viafirma_pass))
+
+                    print(response_firmweb.content)
                     if response_firmweb.ok:
                         #resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
                         resp_firmweb = response_firmweb.content.decode('utf-8')
                         # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
                         self.tracking_code =  resp_firmweb
                         self.status_response_firmweb()
+
             else:
                 raise ValidationError(
                             "You must set Viafirma login Api credentials")

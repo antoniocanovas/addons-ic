@@ -30,7 +30,7 @@
                     <field name="viafirma_ids" nolabel="1" widget="section_and_note_one2many" mode="tree">
                         <tree string="Viafirma" editable="bottom">
                             <field name="name"/>
-                            <field name="status"/>
+                            <field name="state"/>
                         </tree>
                     </field>
                 </page>
