@@ -26,5 +26,5 @@ class ResCompany(models.Model):
         viafirmatemplates = self.env['viafirma.templates'].sudo()
         conn = viafirmatemplates.updated_templates()
 
-        time = datetime.now()
-        self.last_connection_date = time
+        #time = datetime.now()
+        #self.last_connection_date = time
