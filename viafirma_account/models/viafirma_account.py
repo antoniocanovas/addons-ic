@@ -52,7 +52,7 @@ class ViafirmaAccount(models.Model):
                 'default_name': str(self.env.user.name) + '-' + str(self.sequence_number_next_prefix) + str(self.sequence_number_next),
                 'default_noti_text': str(self.env.user.name) + '-' + str(self.sequence_number_next_prefix) + str(self.sequence_number_next),
                 'default_noti_subject': str(self.env.user.name) + '-' + str(self.sequence_number_next_prefix) + str(self.sequence_number_next),
-                'default_binary_to_encode_64': base64.encodebytes(pdf),
+                'default_document_to_send': base64.encodebytes(pdf),
                 'default_template_type': 'base64',
                 'default_line_ids': [(6,0,line_ids)],
                 #'noti_text': 'texto',
