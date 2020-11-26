@@ -146,7 +146,7 @@
                     <field name="state"/>
                     <field name="document_signed"/>
                     <field name="document_trail"/>
-                    <field name="error_text"/>
+                    <field name="error_code"/>
                 </tree>
             </field>
             <field name="field_parent" eval="False"/>
