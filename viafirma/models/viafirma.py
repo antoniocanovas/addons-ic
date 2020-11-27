@@ -122,6 +122,7 @@ class Viafirma(models.Model):
         x = 0
         y = 1
         for recipient in line_ids:
+            print(recipient)
             recipient_n = {
                 "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY"),
                 "mail": recipient.email,
