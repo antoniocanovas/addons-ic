@@ -235,7 +235,7 @@ class Viafirma(models.Model):
         callbackurl = {
             "callbackURL": ""
         }
-
+        print(notification)
         data = {**groupCode, **workflow, **notification, **metadatalist, **document, **callbackmails, **callbackurl }
         print(data)
         return data
