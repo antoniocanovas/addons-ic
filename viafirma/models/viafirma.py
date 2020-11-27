@@ -235,9 +235,9 @@ class Viafirma(models.Model):
         callbackurl = {
             "callbackURL": ""
         }
-        print(notification)
+
         data = {**groupCode, **workflow, **notification, **metadatalist, **document, **callbackmails, **callbackurl }
-        print(data)
+
         return data
 
     def compose_call_multiple(self):
@@ -289,6 +289,7 @@ class Viafirma(models.Model):
         }
 
         data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
+        print(data)
         return data
 
 
