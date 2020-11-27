@@ -133,7 +133,7 @@ class Viafirma(models.Model):
             y+=1
             if y == 10:
                 y = 0
-                x+=x
+                x+=1
 
             recipients.append(recipient_n)
 
@@ -146,6 +146,7 @@ class Viafirma(models.Model):
         x = 0
         y = 1
         for recipient in line_ids:
+            print(y)
             recipient_n = {
                  "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
                  "value":  recipient.name,
@@ -154,8 +155,8 @@ class Viafirma(models.Model):
             y += 1
             if y == 10:
                 y = 0
-                x += x
-
+                x += 1
+        print(metadatalist)
         return metadatalist
 
     @api.multi
