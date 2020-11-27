@@ -136,7 +136,7 @@ class Viafirma(models.Model):
                 x+=x
 
             recipients.append(recipient_n)
-
+        print(recipients)
         return recipients
 
     @api.multi
@@ -155,6 +155,7 @@ class Viafirma(models.Model):
             if y == 10:
                 y = 0
                 x += x
+        print(metadatalist)
         return metadatalist
 
     @api.multi
@@ -447,7 +448,8 @@ class Viafirma(models.Model):
                         print(envio)
                         header = self.get_uploader_header()
                         search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
-                        datas = self.compose_call()
+                        #datas = self.compose_call()
+                        datas = self.compose_call_multiple()
                         print(datas)
 
                         response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
