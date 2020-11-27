@@ -122,7 +122,6 @@ class Viafirma(models.Model):
         x = 0
         y = 1
         for recipient in line_ids:
-            print(y)
             recipient_n = {
                 "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY"),
                 "mail": recipient.email,
@@ -131,13 +130,13 @@ class Viafirma(models.Model):
             }
             if self.noti_tipo == "MAIL_SMS" or self.noti_tipo == "SMS":
                 recipient_n.update({"phone": recipient.mobile,})
-            y+=y
+            y+=1
             if y == 10:
                 y = 0
                 x+=x
 
             recipients.append(recipient_n)
-        print(recipients)
+
         return recipients
 
     @api.multi
@@ -152,11 +151,11 @@ class Viafirma(models.Model):
                  "value":  recipient.name,
             }
             metadatalist.append(recipient_n)
-            y += y
+            y += 1
             if y == 10:
                 y = 0
                 x += x
-        print(metadatalist)
+
         return metadatalist
 
     @api.multi
