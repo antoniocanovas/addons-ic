@@ -10,6 +10,8 @@ from odoo import fields, models, api
 from datetime import datetime
 #import wget
 
+
+
 STATE = [
     ('borrador', 'Borrador'),
     ('RECEIVED', 'RECEIVED'),
@@ -103,7 +105,6 @@ class Viafirma(models.Model):
         actualizar su estado cada cierto tiempo y ver si ha habido algun error'''
 
         viafirmas =self.env['viafirma'].search([('state', '!=', 'RESPONSED')])
-        print(viafirmas)
         for via in viafirmas:
             via.status_response_firmweb()
 
@@ -121,7 +122,6 @@ class Viafirma(models.Model):
         x = 0
         y = 1
         for recipient in line_ids:
-            print(recipient.name, recipient)
             recipient_n = {
                 "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY"),
                 "mail": recipient.email,
@@ -134,7 +134,6 @@ class Viafirma(models.Model):
             if y == 10:
                 y = 0
                 x+=x
-            print("VALORES X, Y", y, x)
 
             recipients.append(recipient_n)
 
@@ -156,7 +155,6 @@ class Viafirma(models.Model):
             if y == 10:
                 y = 0
                 x += x
-            print("VALORES X, Y", y, x)
         return metadatalist
 
     @api.multi
@@ -259,14 +257,6 @@ class Viafirma(models.Model):
         recipients = {
             "recipients" : recip,
         }
-        notification = {
-            "notification": {
-                "text": self.noti_text,
-                "detail": self.noti_detail,
-                "notificationType": "MAIL",
-                "metadatalist": metadata
-            },
-        }
         metadata = self.compose_metadatalist(self.line_ids)
         metadatalist = {
             "metadatalist" : metadata,
@@ -278,13 +268,15 @@ class Viafirma(models.Model):
                 "requestSmsBody": "En el siguiente link puedes revisar y firmar el contrato"
             },
         }
-        document = {
-            "document": {
-                "templateType": self.template_type,
-                #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
-                "templateReference": str(self.document_to_send.decode('ascii')),
-                "templateCode": self.template_id.code
-            },
+        messages ={
+            "messages":[{
+                "document": {
+                    "templateType": self.template_type,
+                    #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
+                    "templateReference": str(self.document_to_send.decode('ascii')),
+                    "templateCode": self.template_id.code
+                },
+            }]
         }
         metadata2 = self.compose_metadatalist(self.line_ids)
         metadatalist2 = {
@@ -294,8 +286,7 @@ class Viafirma(models.Model):
             "callbackMails": self.env.user.email,
         }
 
-        data = {**groupCode, **workflow, **recipients,**notification,**customization, **document, **metadatalist, **callbackmails}
-        print("DATAS", data)
+        data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
         return data
 
 
@@ -303,11 +294,12 @@ class Viafirma(models.Model):
     def download_document(self, url, header, response_code, viafirma_user, viafirma_pass):
 
         r_doc = requests.get(url, headers=header, auth=(viafirma_user, viafirma_pass))
+        print("RDOC", r_doc)
         if r_doc.ok:
             rr_doc = json.loads(r_doc.content.decode('utf-8'))
 
         response = requests.get(rr_doc["link"], headers=header)
-
+        print("link", rr_doc["link"])
         if response.status_code == 200:
             img_file_encode = base64.b64encode(response.content)
             return img_file_encode
@@ -319,9 +311,7 @@ class Viafirma(models.Model):
 
         header = self.get_uploader_header()
         response_code = self.tracking_code
-
         search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/status/' + str(response_code)
-        #print(search_url)
 
         viafirma_user = self.env.user.company_id.user_viafirma
         viafirma_pass = self.env.user.company_id.pass_viafirma
@@ -333,12 +323,14 @@ class Viafirma(models.Model):
                 if stat_firmweb.ok:
                     statu_firmweb = json.loads(stat_firmweb.content.decode('utf-8'))
                     # de momento lo hago con la primera line_ids que hay
+                    print(statu_firmweb, statu_firmweb["status"])
                     for line in self.line_ids:
                         line.state = statu_firmweb["status"]
                     # El estado de viafirma depende de los estados de las líneas
                     self.state = statu_firmweb["status"]
                     # statu_firmweb["status"] contiene el estado actual de la peticion y que me puede servir para cambiar el campo viafirma.status
                     if statu_firmweb["status"] == 'RESPONSED':
+                        print("Descargar documentes")
                         # ya ha sido firmada me puedo descargar el documento firmado y el trail de la firma
                         # empezamos por el documento firmado
                         url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/signed/' + response_code
@@ -352,7 +344,7 @@ class Viafirma(models.Model):
                         # guardar el resultado de error en un campo para su visualizacion
                         url = 'https://sandbox.viafirma.com/documents/api/v3/messages/' + response_code
                         r_error = requests.get(url, headers=header, auth=(viafirma_user, viafirma_pass))
-                        #print("R_error", r_error, url)
+
                         if r_error.ok:
                             rr_error = json.loads(r_error.content)
                             print("Pedro Error", rr_error)
@@ -395,25 +387,39 @@ class Viafirma(models.Model):
             if not self.document_to_send:
                 raise ValidationError(
                     "Need a binary to send")
-            print("DEBUG1")
+
             viafirma_user = self.env.user.company_id.user_viafirma
             viafirma_pass = self.env.user.company_id.pass_viafirma
 
             if viafirma_user:
                 if viafirma_pass:
                     header = self.get_uploader_header()
-                    search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
+                    #search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
+                    search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
                     #datas = self.compose_call()
                     datas = self.compose_call_multiple()
                     response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
                                                      auth=(viafirma_user, viafirma_pass))
-                    print("DEBUG2")
+
+                    print("Depurando Codigos lineas")
                     print(response_firmweb.content)
                     if response_firmweb.ok:
-                        #resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
-                        resp_firmweb = response_firmweb.content.decode('utf-8')
+                        resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
+                        #resp_firmweb = response_firmweb.content.decode('utf-8')
+
+                        print("Depurando mensaje completo")
+                        print(resp_firmweb)
+                        print("Depurando un codigo")
+                        print(resp_firmweb['messages'][0]['code'])
+
+
+
+
+
                         # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
-                        self.tracking_code =  resp_firmweb
+                        self.tracking_code =  resp_firmweb['messages'][0]['code']
+                        print("Depurando tracking")
+                        print(self.tracking_code)
                         self.status_response_firmweb()
                     else:
                         self.error_code = json.loads(response_firmweb.content.decode('utf-8'))
