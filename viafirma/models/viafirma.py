@@ -289,7 +289,6 @@ class Viafirma(models.Model):
         }
 
         data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
-        print(data)
         return data
 
 
