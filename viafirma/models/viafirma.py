@@ -202,9 +202,7 @@ class Viafirma(models.Model):
     def compose_policies(self):
 
         evidences = {
-            "evidences": [{
-                self.compose_evidences(self.line_ids)
-            }]
+            "evidences": self.compose_evidences(self.line_ids)
        }
 
         signatures = {
