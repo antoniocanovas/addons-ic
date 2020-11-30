@@ -352,6 +352,7 @@ class Viafirma(models.Model):
                     "templateReference": str(self.document_to_send.decode('ascii')),
                     "templateCode": self.template_id.code
                 },
+            self.compose_policies()
             }]
         }
         metadata2 = self.compose_metadatalist(self.line_ids)
