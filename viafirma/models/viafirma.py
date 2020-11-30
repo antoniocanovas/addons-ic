@@ -475,6 +475,7 @@ class Viafirma(models.Model):
                                                      auth=(viafirma_user, viafirma_pass))
 
                     print("Depurando Codigos lineas")
+                    print(response_firmweb)
                     print(response_firmweb.content)
                     if response_firmweb.ok:
                         resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
