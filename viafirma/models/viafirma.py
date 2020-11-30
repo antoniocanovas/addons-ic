@@ -347,6 +347,7 @@ class Viafirma(models.Model):
                     "templateReference": str(self.document_to_send.decode('ascii')),
                     "templateCode": self.template_id.code
                 },
+            # add un if si la template code que viene es plantilla_para_n_firmantes
             "policies": self.compose_policies()
             }]
         }
