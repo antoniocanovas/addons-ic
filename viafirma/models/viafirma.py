@@ -201,11 +201,6 @@ class Viafirma(models.Model):
     @api.multi
     def compose_policies(self):
 
-        cabecera = {
-            "policies":  [{
-            }]
-        }
-
         evidences = {
             "evidences": [{
                 self.compose_evidences(self.line_ids)
@@ -228,7 +223,7 @@ class Viafirma(models.Model):
             }]
         }
 
-        data = {**cabecera, **evidences, **signatures}
+        data = {**evidences, **signatures}
         print(data)
         return data
 
@@ -352,7 +347,7 @@ class Viafirma(models.Model):
                     "templateReference": str(self.document_to_send.decode('ascii')),
                     "templateCode": self.template_id.code
                 },
-            self.compose_policies()
+            "policies": self.compose_policies(self)
             }]
         }
         metadata2 = self.compose_metadatalist(self.line_ids)
@@ -364,6 +359,7 @@ class Viafirma(models.Model):
         }
 
         data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
+        print(data)
         return data
 
 
