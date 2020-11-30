@@ -198,7 +198,7 @@ class Viafirma(models.Model):
 
         return theEvidences
 
-@api.multi
+    @api.multi
     def compose_policies(self):
 
         cabecera = {
