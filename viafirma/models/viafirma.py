@@ -188,7 +188,7 @@ class Viafirma(models.Model):
                     "width": 125,
                     "height": 90
                     }],
-                "recipientKey": str({{"FIRMANTE_") + str(x) + str(y) + str("_KEY"}})
+                "recipientKey": str("{{\"FIRMANTE_\"") + str(x) + str(y) + str("\"_KEY\"}}")
             }
             theEvidences.append(recipient_n)
             y += 1
