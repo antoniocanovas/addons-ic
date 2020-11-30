@@ -130,10 +130,10 @@ class Viafirma(models.Model):
             }
             if self.noti_tipo == "MAIL_SMS" or self.noti_tipo == "SMS":
                 recipient_n.update({"phone": recipient.mobile,})
-            y+=y
+            y+=1
             if y == 10:
                 y = 0
-                x+=x
+                x+=1
 
             recipients.append(recipient_n)
 
@@ -151,11 +151,81 @@ class Viafirma(models.Model):
                  "value":  recipient.name,
             }
             metadatalist.append(recipient_n)
-            y += y
+            y += 1
             if y == 10:
                 y = 0
-                x += x
+                x += 1
+
         return metadatalist
+
+    @api.multi
+    def compose_evidences(self, line_ids):
+
+        ''' El maximo en Anchura es 596 puntos y en altura 838, teniendo en cuenta esta medidas por pagina, hay que divir el numero de firmantes entre este espacio'''
+
+        theEvidences = []
+        x = 0
+        y = 1
+        numSignatures = len(line_ids)
+        # quito 30 de cada margen horizontal, para que la firma se imprima sin problemas
+        forWidth = (596-60) // numSignatures
+        # para este caso la altura siempre la misma 90
+        forHigh = 90
+        for recipient in line_ids:
+            numEvidence = 400 + (x * 1) + (y * 10)
+            posMatch = 1000 + (x * 1) + (y * 10)
+            recipient_n = {
+                "type": "SIGNATURE",
+                "id": "evidence_" + str(numEvidence),
+                "enabledExpression": str("formItemIsNotEmpty(\'{{\"FIRMANTE_\") + str(x) + str(y) + str(\"_NAME\"\)\}\}\',\'\'\) "),
+                "helptest": str("{{\"FIRMANTE_\"") + str(x) + str(y) + str("_NAME\"}}"),
+                "helpdetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
+                "positionsMatch" : [{
+                    "id": "positionmatch_" + str(posMatch),
+                    "text": "la firma " + str(x) + str(y),
+                    "xoffset": 100,
+                    "yoffset": -20,
+                    "width": 125,
+                    "height": 90
+                    }],
+                "recipientKey": str("{{\"FIRMANTE_\"") + str(x) + str(y) + str("\"_KEY\"}}")
+            }
+            theEvidences.append(recipient_n)
+            y += 1
+            if y == 10:
+                y = 0
+                x += 1
+
+        return theEvidences
+
+    @api.multi
+    def compose_policies(self):
+
+        evidences = {
+            "evidences": [{
+                self.compose_evidences(self.line_ids)
+            }]
+       }
+
+        signatures = {
+            "signatures": [{
+                "type": "SERVER",
+                "typeFormatSign": "PADES_B",
+                "stampers": [{
+                    "type": "QR_BARCODE128",
+                    "width": 300,
+                    "height": 38,
+                    "xAxis": 0,
+                    "yAxis": 0,
+                    "page": -1
+                }],
+                "lastUpdated": 0
+            }]
+        }
+
+        data = {**evidences, **signatures}
+        print(data)
+        return data
 
     @api.multi
     def compose_call(self):
@@ -236,6 +306,7 @@ class Viafirma(models.Model):
         }
 
         data = {**groupCode, **workflow, **notification, **metadatalist, **document, **callbackmails, **callbackurl }
+
         return data
 
     def compose_call_multiple(self):
@@ -276,6 +347,8 @@ class Viafirma(models.Model):
                     "templateReference": str(self.document_to_send.decode('ascii')),
                     "templateCode": self.template_id.code
                 },
+            # add un if si la template code que viene es plantilla_para_n_firmantes
+            "policies": self.compose_policies()
             }]
         }
         metadata2 = self.compose_metadatalist(self.line_ids)
@@ -287,6 +360,7 @@ class Viafirma(models.Model):
         }
 
         data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
+        print(data)
         return data
 
 
@@ -447,7 +521,8 @@ class Viafirma(models.Model):
                         print(envio)
                         header = self.get_uploader_header()
                         search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
-                        datas = self.compose_call()
+                        #datas = self.compose_call()
+                        datas = self.compose_call_multiple()
                         print(datas)
 
                         response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
