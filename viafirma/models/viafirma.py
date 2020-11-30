@@ -159,6 +159,80 @@ class Viafirma(models.Model):
         return metadatalist
 
     @api.multi
+    def compose_evidences(self, line_ids):
+
+        ''' El maximo en Anchura es 596 puntos y en altura 838, teniendo en cuenta esta medidas por pagina, hay que divir el numero de firmantes entre este espacio'''
+
+        theEvidences = []
+        x = 0
+        y = 1
+        numSignatures = len(line_ids)
+        # quito 30 de cada margen horizontal, para que la firma se imprima sin problemas
+        forWidth = (596-60) // numSignatures
+        # para este caso la altura siempre la misma 90
+        forHigh = 90
+        for recipient in line_ids:
+            numEvidence = 400 + (x * 1) + (y * 10)
+            posMatch = 1000 + (x * 1) + (y * 10)
+            recipient_n = {
+                "type": "SIGNATURE",
+                "id": "evidence_" + str(numEvidence),
+                "enabledExpression": "formItemIsNotEmpty('{{str("FIRMANTE_") + str(x) + str(y) + str("_NAME")}}','') ",
+                "helptest": str({{"FIRMANTE_") + str(x) + str(y) + str("_NAME"}}),
+                "helpdetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
+                "positionsMatch" : [{
+                    "id": "positionmatch_" + str(posMatch),
+                    "text": "la firma " + str(x) + str(y),
+                    "xoffset": 100,
+                    "yoffset": -20,
+                    "width": 125,
+                    "height": 90
+                    }],
+                "recipientKey": str({{"FIRMANTE_") + str(x) + str(y) + str("_KEY"}})
+            }
+            theEvidences.append(recipient_n)
+            y += 1
+            if y == 10:
+                y = 0
+                x += 1
+
+        return theEvidences
+
+@api.multi
+    def compose_policies(self):
+
+        cabecera = {
+            "policies":  [{
+            }]
+        }
+
+        evidences = {
+            "evidences": [{
+                self.compose_evidences(self.line_ids)
+            }]
+       }
+
+        signatures = {
+            "signatures": [{
+                "type": "SERVER",
+                "typeFormatSign": "PADES_B",
+                "stampers": [{
+                    "type": "QR_BARCODE128",
+                    "width": 300,
+                    "height": 38,
+                    "xAxis": 0,
+                    "yAxis": 0,
+                    "page": -1
+                }],
+                "lastUpdated": 0
+            }]
+        }
+
+        data = {**cabecera, **evidences, **signatures}
+        print(data)
+        return data
+
+    @api.multi
     def compose_call(self):
         ''' tenemos que componer la llamada a la firma, por lo que tenemos que conocer el groupcode, el texto de la notificacion
             y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
