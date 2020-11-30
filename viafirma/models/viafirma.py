@@ -222,7 +222,7 @@ class Viafirma(models.Model):
             }]
         }
 
-        data = {**evidences, **signatures}
+        data = [{**evidences, **signatures}]
         print(data)
         return data
 
