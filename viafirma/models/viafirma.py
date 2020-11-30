@@ -177,7 +177,7 @@ class Viafirma(models.Model):
             recipient_n = {
                 "type": "SIGNATURE",
                 "id": "evidence_" + str(numEvidence),
-                "enabledExpression": "formItemIsNotEmpty('{{str("FIRMANTE_") + str(x) + str(y) + str("_NAME")}}','') ",
+                "enabledExpression": str("formItemIsNotEmpty('{{str("FIRMANTE_") + str(x) + str(y) + str("_NAME")}}','') "),
                 "helptest": str({{"FIRMANTE_") + str(x) + str(y) + str("_NAME"}}),
                 "helpdetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
                 "positionsMatch" : [{
