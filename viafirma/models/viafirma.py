@@ -483,14 +483,15 @@ class Viafirma(models.Model):
                         print("Depurando mensaje completo")
                         print(resp_firmweb)
                         print("Depurando un codigo")
-                        print(resp_firmweb['messages'])
+                        #print(resp_firmweb['messages'])
 
 
 
 
 
                         # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
-                        self.tracking_code =  resp_firmweb['messages'][0]['code']
+                        #self.tracking_code =  resp_firmweb['messages'][0]['code']
+                        self.tracking_code = resp_firmweb['code']
                         print("Depurando tracking")
                         print(self.tracking_code)
                         self.status_response_firmweb()
