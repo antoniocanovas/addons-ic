@@ -346,7 +346,7 @@ class Viafirma(models.Model):
                     "templateCode": self.template_id.code
                 },
             # add un if si la template code que viene es plantilla_para_n_firmantes
-            "policies": self.compose_policies()
+            #"policies": self.compose_policies()
             }]
         }
         metadata2 = self.compose_metadatalist(self.line_ids)
