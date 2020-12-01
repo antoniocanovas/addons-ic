@@ -186,7 +186,7 @@ class Viafirma(models.Model):
                 "helptest": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
                 "helpdetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
                 #"positionsMatch" : [{
-                "positions": [{}]
+                "positions": [{
                     #"id": "positionmatch_" + str(posMatch),
                     #"text": "la firma " + str(x) + str(y),
                     "rectangle": {
