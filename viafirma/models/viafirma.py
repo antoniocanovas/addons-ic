@@ -175,7 +175,7 @@ class Viafirma(models.Model):
         for recipient in line_ids:
             numEvidence = 400 + (x * 1) + (y * 10)
             posMatch = 1000 + (x * 1) + (y * 10)
-            positionX = 60 + (forWidth * y * 1)
+            positionX = 60 + (forWidth * (y - 1) * 1)
             recipient_n = {
                 "type": "SIGNATURE",
                 "id": "evidence_" + str(numEvidence),
@@ -183,21 +183,22 @@ class Viafirma(models.Model):
                 "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
                 "enabled": "true",
                 "visible": "true",
-                "helptest": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
-                "helpdetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
+                "helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
+                "helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
                 #"positionsMatch" : [{
                 "positions": [{
                     #"id": "positionmatch_" + str(posMatch),
                     #"text": "la firma " + str(x) + str(y),
                     "rectangle": {
                         "x": positionX,
-                        "y": 700,
+                        "y": 68,
                         "width": forWidth,
                         "height": forHigh
                     },
                     "page": -1
                     }],
-                "recipientKey": "{{FIRMANTE_" + str(x) + str(y) + "_KEY}}"
+                "typeFormatSign": "XADES_B",
+                "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
             }
             theEvidences.append(recipient_n)
             y += 1
@@ -217,14 +218,16 @@ class Viafirma(models.Model):
         signatures = {
             "signatures": [{
                 "type": "SERVER",
-                "typeFormatSign": "PADES_B",
+                "helpText": "Sello Electrónico",
+                "typeFormatSign": "PADES_LTA",
                 "stampers": [{
-                    "type": "QR_BARCODE128",
+                    "type": "TEXT",
                     "width": 300,
                     "height": 38,
                     "xAxis": 0,
                     "yAxis": 0,
-                    "page": -1
+                    "page": -1,
+                    "timeZoneId": "Europe/Madrid"
                 }],
                 "lastUpdated": 0
             }]
