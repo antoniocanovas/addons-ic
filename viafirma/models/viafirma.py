@@ -177,7 +177,8 @@ class Viafirma(models.Model):
             recipient_n = {
                 "type": "SIGNATURE",
                 "id": "evidence_" + str(numEvidence),
-                "enabledExpression": str("formItemIsNotEmpty(\'{{\"FIRMANTE_\") + str(x) + str(y) + str(\"_NAME\"\)\}\}\',\'\'\) "),
+                #"enabledExpression": str("formItemIsNotEmpty(\'{{\"FIRMANTE_\") + str(x) + str(y) + str(\"_NAME\"\)\}\}\',\'\'\) "),
+                "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
                 "helptest": str("{{\"FIRMANTE_\"") + str(x) + str(y) + str("_NAME\"}}"),
                 "helpdetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
                 "positionsMatch" : [{
@@ -202,9 +203,7 @@ class Viafirma(models.Model):
     def compose_policies(self):
 
         evidences = {
-            "evidences": [{
-                self.compose_evidences(self.line_ids)
-            }]
+            "evidences": self.compose_evidences(self.line_ids)
        }
 
         signatures = {
@@ -223,7 +222,7 @@ class Viafirma(models.Model):
             }]
         }
 
-        data = {**evidences, **signatures}
+        data = [{**evidences, **signatures}]
         print(data)
         return data
 
@@ -476,6 +475,7 @@ class Viafirma(models.Model):
                                                      auth=(viafirma_user, viafirma_pass))
 
                     print("Depurando Codigos lineas")
+                    print(response_firmweb)
                     print(response_firmweb.content)
                     if response_firmweb.ok:
                         resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
