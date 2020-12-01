@@ -89,6 +89,10 @@ class ViafirmaTemplates(models.Model):
                         self.create_templates(resu_template)
                         if resu_template["code"] == checkCode:
                             canLaunch = True
+                    self.deleteOldTemplates(listAllTemplatesAPI)
+                else:
+                    raise ValidationError(
+                        "Problemas en el sistema Viafirma")
+                    return False
 
-        self.deleteOldTemplates(listAllTemplatesAPI)
         return canLaunch
