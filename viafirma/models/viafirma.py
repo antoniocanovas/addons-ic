@@ -170,23 +170,32 @@ class Viafirma(models.Model):
         forWidth = (596-60) // numSignatures
         # para este caso la altura siempre la misma 90
         forHigh = 90
+        # a partir de donde en horizontal se fijan las firmas
+        positionX = 60
         for recipient in line_ids:
             numEvidence = 400 + (x * 1) + (y * 10)
             posMatch = 1000 + (x * 1) + (y * 10)
+            positionX = 60 + (forWidth * y * 1)
             recipient_n = {
                 "type": "SIGNATURE",
                 "id": "evidence_" + str(numEvidence),
                 #"enabledExpression": str("formItemIsNotEmpty(\'{{\"FIRMANTE_\") + str(x) + str(y) + str(\"_NAME\"\)\}\}\',\'\'\) "),
                 "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
+                "enabled": "true",
+                "visible": "true",
                 "helptest": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
                 "helpdetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
-                "positionsMatch" : [{
-                    "id": "positionmatch_" + str(posMatch),
-                    "text": "la firma " + str(x) + str(y),
-                    "xoffset": 100,
-                    "yoffset": -20,
-                    "width": 125,
-                    "height": 90
+                #"positionsMatch" : [{
+                "positions": [{}]
+                    #"id": "positionmatch_" + str(posMatch),
+                    #"text": "la firma " + str(x) + str(y),
+                    "rectangle": {
+                        "x": positionX,
+                        "y": 700,
+                        "width": forWidth,
+                        "height": forHigh
+                    },
+                    "page": -1
                     }],
                 "recipientKey": "{{FIRMANTE_" + str(x) + str(y) + "_KEY}}"
             }
