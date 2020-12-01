@@ -178,7 +178,7 @@ class Viafirma(models.Model):
                 "id": "evidence_" + str(numEvidence),
                 #"enabledExpression": str("formItemIsNotEmpty(\'{{\"FIRMANTE_\") + str(x) + str(y) + str(\"_NAME\"\)\}\}\',\'\'\) "),
                 "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
-                "helptest": str("{{\"FIRMANTE_\"") + str(x) + str(y) + str("_NAME\"}}"),
+                "helptest": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
                 "helpdetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
                 "positionsMatch" : [{
                     "id": "positionmatch_" + str(posMatch),
@@ -188,7 +188,7 @@ class Viafirma(models.Model):
                     "width": 125,
                     "height": 90
                     }],
-                "recipientKey": str("{{\"FIRMANTE_\"") + str(x) + str(y) + str("\"_KEY\"}}")
+                "recipientKey": "{{FIRMANTE_" + str(x) + str(y) + "_KEY}}"
             }
             theEvidences.append(recipient_n)
             y += 1
