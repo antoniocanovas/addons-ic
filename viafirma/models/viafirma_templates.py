@@ -5,6 +5,7 @@
 from odoo import fields, models, api
 import json
 import requests
+from odoo.exceptions import ValidationError
 
 # la consulta a tecdoc devuelve todos los coches de la serie, por lo que deberia de haber un modelo coche, quye pertenezca a una marca, modelo y serie determinada
 class ViafirmaTemplates(models.Model):
@@ -89,6 +90,10 @@ class ViafirmaTemplates(models.Model):
                         self.create_templates(resu_template)
                         if resu_template["code"] == checkCode:
                             canLaunch = True
+                    self.deleteOldTemplates(listAllTemplatesAPI)
+                else:
+                    raise ValidationError(
+                        "Problemas en el sistema Viafirma")
+                    return False
 
-        self.deleteOldTemplates(listAllTemplatesAPI)
         return canLaunch

@@ -8,7 +8,6 @@ import requests
 from odoo.exceptions import ValidationError
 from odoo import fields, models, api
 from datetime import datetime
-#import wget
 
 
 
