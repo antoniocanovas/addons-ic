@@ -483,7 +483,7 @@ class Viafirma(models.Model):
                         print("Depurando mensaje completo")
                         print(resp_firmweb)
                         print("Depurando un codigo")
-                        print(resp_firmweb['messages'][0]['code'])
+                        print(resp_firmweb['messages'])
 
 
 
