@@ -356,7 +356,7 @@ class Viafirma(models.Model):
                     "templateType": self.template_type,
                     #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
                     "templateReference": str(self.document_to_send.decode('ascii')),
-                    #"templateCode": self.template_id.code
+                    "templateCode": self.template_id.code
                 },
             "metadatalist": metadata2,
             # add un if si la template code que viene es plantilla_para_n_firmantes
