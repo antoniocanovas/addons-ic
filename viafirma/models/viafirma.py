@@ -501,9 +501,9 @@ class Viafirma(models.Model):
                         # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
                         try:
                             if resp_firmweb["messages"][0]["code"] != '':
-                                envio.tracking_code = resp_firmweb["messages"][0]["code"]
+                                self.tracking_code = resp_firmweb["messages"][0]["code"]
                         except:
-                            envio.tracking_code = resp_firmweb
+                            self.tracking_code = resp_firmweb
                         print("Depurando tracking")
                         print(self.tracking_code)
                         self.status_response_firmweb()
