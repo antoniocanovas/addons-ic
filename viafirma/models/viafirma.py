@@ -175,7 +175,7 @@ class Viafirma(models.Model):
         for recipient in line_ids:
             numEvidence = 400 + (x * 1) + (y * 10)
             posMatch = 1000 + (x * 1) + (y * 10)
-            positionX = 60 + (forWidth * (y - 1) * 1)
+            positionX = 30 + (forWidth * (y - 1) * 1)
             recipient_n = {
                 "type": "SIGNATURE",
                 "id": "evidence_" + str(numEvidence),
@@ -356,7 +356,7 @@ class Viafirma(models.Model):
                     "templateType": self.template_type,
                     #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
                     "templateReference": str(self.document_to_send.decode('ascii')),
-                    #"templateCode": self.template_id.code
+                    "templateCode": self.template_id.code
                 },
             "metadatalist": metadata2,
             # add un if si la template code que viene es plantilla_para_n_firmantes
