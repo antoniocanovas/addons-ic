@@ -500,7 +500,7 @@ class Viafirma(models.Model):
 
                         # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
                         try:
-                            if resp_firmweb["messages"][0]["code"] <> '':
+                            if resp_firmweb["messages"][0]["code"] != '':
                                 envio.tracking_code = resp_firmweb["messages"][0]["code"]
                         except:
                             envio.tracking_code = resp_firmweb
@@ -548,7 +548,7 @@ class Viafirma(models.Model):
                             # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
                             # si compones en tu llamada por messages, ya no vale el primer codigo que manda, es el primero dentro del array messages
                             try:
-                                if resp_firmweb["messages"][0]["code"] <> '':
+                                if resp_firmweb["messages"][0]["code"] != '':
                                     envio.tracking_code = resp_firmweb["messages"][0]["code"]
                             except:
                                 envio.tracking_code = resp_firmweb
