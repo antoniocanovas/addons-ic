@@ -360,7 +360,7 @@ class Viafirma(models.Model):
                 },
             "metadatalist": metadata2,
             # add un if si la template code que viene es plantilla_para_n_firmantes
-            "policies": self.compose_policies()
+            #"policies": self.compose_policies()
             }]
         }
         metadatalist2 = {
