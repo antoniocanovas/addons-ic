@@ -349,6 +349,7 @@ class Viafirma(models.Model):
                 "requestSmsBody": "En el siguiente link puedes revisar y firmar el contrato"
             },
         }
+        metadata2 = self.compose_metadatalist(self.line_ids)
         messages ={
             "messages":[{
                 "document": {
@@ -357,13 +358,13 @@ class Viafirma(models.Model):
                     "templateReference": str(self.document_to_send.decode('ascii')),
                     "templateCode": self.template_id.code
                 },
+            "metadatalist": metadata2,
             # add un if si la template code que viene es plantilla_para_n_firmantes
             "policies": self.compose_policies()
             }]
         }
-        metadata2 = self.compose_metadatalist(self.line_ids)
         metadatalist2 = {
-            "metadatalist": metadata,
+            "metadatalist": metadata2,
         }
         callbackmails = {
             "callbackMails": self.env.user.email,
