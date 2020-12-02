@@ -498,13 +498,12 @@ class Viafirma(models.Model):
                         print("Depurando un codigo")
                         #print(resp_firmweb['messages'])
 
-
-
-
-
                         # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
-                        #self.tracking_code =  resp_firmweb['messages'][0]['code']
-                        self.tracking_code = resp_firmweb['code']
+                        try:
+                            if resp_firmweb["messages"][0]["code"] <> '':
+                                envio.tracking_code = resp_firmweb["messages"][0]["code"]
+                        except:
+                            envio.tracking_code = resp_firmweb
                         print("Depurando tracking")
                         print(self.tracking_code)
                         self.status_response_firmweb()
@@ -547,7 +546,12 @@ class Viafirma(models.Model):
                             resp_firmweb = response_firmweb.content.decode('utf-8')
                             print(resp_firmweb)
                             # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
-                            envio.tracking_code = resp_firmweb
+                            # si compones en tu llamada por messages, ya no vale el primer codigo que manda, es el primero dentro del array messages
+                            try:
+                                if resp_firmweb["messages"][0]["code"] <> '':
+                                    envio.tracking_code = resp_firmweb["messages"][0]["code"]
+                            except:
+                                envio.tracking_code = resp_firmweb
                             # ya puedo hacer la primera consulta para saber si ha habido algun error
                             self.status_response_firmweb()
             else:
