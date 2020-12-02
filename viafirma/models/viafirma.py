@@ -170,25 +170,35 @@ class Viafirma(models.Model):
         forWidth = (596-60) // numSignatures
         # para este caso la altura siempre la misma 90
         forHigh = 90
+        # a partir de donde en horizontal se fijan las firmas
+        positionX = 60
         for recipient in line_ids:
             numEvidence = 400 + (x * 1) + (y * 10)
             posMatch = 1000 + (x * 1) + (y * 10)
+            positionX = 60 + (forWidth * (y - 1) * 1)
             recipient_n = {
                 "type": "SIGNATURE",
                 "id": "evidence_" + str(numEvidence),
                 #"enabledExpression": str("formItemIsNotEmpty(\'{{\"FIRMANTE_\") + str(x) + str(y) + str(\"_NAME\"\)\}\}\',\'\'\) "),
                 "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
-                "helptest": str("{{\"FIRMANTE_\"") + str(x) + str(y) + str("_NAME\"}}"),
-                "helpdetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
-                "positionsMatch" : [{
-                    "id": "positionmatch_" + str(posMatch),
-                    "text": "la firma " + str(x) + str(y),
-                    "xoffset": 100,
-                    "yoffset": -20,
-                    "width": 125,
-                    "height": 90
+                "enabled": "true",
+                "visible": "true",
+                "helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
+                "helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
+                #"positionsMatch" : [{
+                "positions": [{
+                    #"id": "positionmatch_" + str(posMatch),
+                    #"text": "la firma " + str(x) + str(y),
+                    "rectangle": {
+                        "x": positionX,
+                        "y": 68,
+                        "width": forWidth,
+                        "height": forHigh
+                    },
+                    "page": -1
                     }],
-                "recipientKey": str("{{\"FIRMANTE_\"") + str(x) + str(y) + str("\"_KEY\"}}")
+                "typeFormatSign": "XADES_B",
+                "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
             }
             theEvidences.append(recipient_n)
             y += 1
@@ -208,14 +218,16 @@ class Viafirma(models.Model):
         signatures = {
             "signatures": [{
                 "type": "SERVER",
-                "typeFormatSign": "PADES_B",
+                "helpText": "Sello Electrónico",
+                "typeFormatSign": "PADES_LTA",
                 "stampers": [{
-                    "type": "QR_BARCODE128",
+                    "type": "TEXT",
                     "width": 300,
                     "height": 38,
                     "xAxis": 0,
                     "yAxis": 0,
-                    "page": -1
+                    "page": -1,
+                    "timeZoneId": "Europe/Madrid"
                 }],
                 "lastUpdated": 0
             }]
@@ -337,21 +349,22 @@ class Viafirma(models.Model):
                 "requestSmsBody": "En el siguiente link puedes revisar y firmar el contrato"
             },
         }
+        metadata2 = self.compose_metadatalist(self.line_ids)
         messages ={
             "messages":[{
                 "document": {
                     "templateType": self.template_type,
                     #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
                     "templateReference": str(self.document_to_send.decode('ascii')),
-                    "templateCode": self.template_id.code
+                    #"templateCode": self.template_id.code
                 },
+            "metadatalist": metadata2,
             # add un if si la template code que viene es plantilla_para_n_firmantes
             "policies": self.compose_policies()
             }]
         }
-        metadata2 = self.compose_metadatalist(self.line_ids)
         metadatalist2 = {
-            "metadatalist": metadata,
+            "metadatalist": metadata2,
         }
         callbackmails = {
             "callbackMails": self.env.user.email,
@@ -483,14 +496,14 @@ class Viafirma(models.Model):
                         print("Depurando mensaje completo")
                         print(resp_firmweb)
                         print("Depurando un codigo")
-                        print(resp_firmweb['messages'][0]['code'])
-
-
-
-
+                        #print(resp_firmweb['messages'])
 
                         # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
-                        self.tracking_code =  resp_firmweb['messages'][0]['code']
+                        try:
+                            if resp_firmweb["messages"][0]["code"] != '':
+                                self.tracking_code = resp_firmweb["messages"][0]["code"]
+                        except:
+                            self.tracking_code = resp_firmweb
                         print("Depurando tracking")
                         print(self.tracking_code)
                         self.status_response_firmweb()
@@ -533,7 +546,12 @@ class Viafirma(models.Model):
                             resp_firmweb = response_firmweb.content.decode('utf-8')
                             print(resp_firmweb)
                             # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
-                            envio.tracking_code = resp_firmweb
+                            # si compones en tu llamada por messages, ya no vale el primer codigo que manda, es el primero dentro del array messages
+                            try:
+                                if resp_firmweb["messages"][0]["code"] != '':
+                                    envio.tracking_code = resp_firmweb["messages"][0]["code"]
+                            except:
+                                envio.tracking_code = resp_firmweb
                             # ya puedo hacer la primera consulta para saber si ha habido algun error
                             self.status_response_firmweb()
             else:
