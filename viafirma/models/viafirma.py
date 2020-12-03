@@ -216,6 +216,7 @@ class Viafirma(models.Model):
                     nIterac = numberIter - numSignatures
                     x = str(nIterac // 10)
                     y = str(nIterac % 10)
+                    print(x,y)
                     recipient_n = {
                         "type": "OTP_SMS",
                         "id": "evidence_" + str(numEvidence),
