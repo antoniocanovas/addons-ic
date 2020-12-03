@@ -214,8 +214,8 @@ class Viafirma(models.Model):
                 else:
                     numberIter = int ((int(x) * 10) + int(y))
                     nIterac = numberIter - numSignatures
-                    x = str(nIterac // 10)
-                    y = str(nIterac % 10)
+                    x = nIterac // 10
+                    y = nIterac % 10
                     print(x,y)
                     recipient_n = {
                         "type": "OTP_SMS",
