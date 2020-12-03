@@ -214,20 +214,20 @@ class Viafirma(models.Model):
                 else:
                     numberIter = int ((int(x) * 10) + int(y))
                     nIterac = numberIter - numSignatures
-                    x = nIterac // 10
-                    y = nIterac % 10
-                    print(x,y)
+                    newx = nIterac // 10
+                    newy = nIterac % 10
+                    print(x,y,newx,newy)
                     recipient_n = {
                         "type": "OTP_SMS",
                         "id": "evidence_" + str(numEvidence),
-                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
+                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(newx) + str(newy) + "_NAME}}','') ",
                         "enabled": "true",
                         "visible": "true",
-                        "helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}} Verificación SMS",
+                        "helpText": "{{FIRMANTE_" + str(newx) + str(newy) + "_NAME}} Verificación SMS",
                         # "positionsMatch" : [{
                         "positions": [{
                             # "id": "positionmatch_" + str(posMatch),
-                            # "text": "la firma " + str(x) + str(y),
+                            # "text": "la firma " + str(newx) + str(newy),
                             "rectangle": {
                                 "x": positionX,
                                 "y": positionY,
@@ -238,14 +238,14 @@ class Viafirma(models.Model):
                         }],
                         "metadataList": [{
                             "key": "phoneNumber",
-                            "value": "{{MOBILE_SMS_" + str(x) + str(y) + "}}",
+                            "value": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
                             "internal": "false"
                         }, {
                             "key": "smsText",
                             "internal": "false"
                         }],
                         "typeFormatSign": "XADES_B",
-                        "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
+                        "recipientKey": "FIRMANTE_" + str(newx) + str(newy) + "_KEY"
                     }
                 theEvidences.append(recipient_n)
                 y += 1
