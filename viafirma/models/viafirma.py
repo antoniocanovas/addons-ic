@@ -212,6 +212,10 @@ class Viafirma(models.Model):
                         "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
                     }
                 else:
+                    numberIter = int ((int(x) * 10) + int(y))
+                    nIterac = numberIter - numSignatures
+                    x = str(nIterac // 10)
+                    y = str(nIterac % 10)
                     recipient_n = {
                         "type": "OTP_SMS",
                         "id": "evidence_" + str(numEvidence),
