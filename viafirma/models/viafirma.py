@@ -368,8 +368,9 @@ class Viafirma(models.Model):
 
         # def_check_template_type
         theTemplate = self.template_id
-        print(theTemplate)
-        print(theTemplate.firma_ids)
+        print(theTemplate.name)
+        for firma in theTemplate.firma_ids:
+            print(firma.value, firma.name, firma.type)
         raise ValidationError ("Hasta aqui hemos llegado")
         groupCode = {
             "groupCode": self.env.user.company_id.group_viafirma
