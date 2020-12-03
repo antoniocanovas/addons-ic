@@ -158,7 +158,7 @@ class Viafirma(models.Model):
         return metadatalist
 
     @api.multi
-    def compose_evidences(self, line_ids, typeEvidence):
+    def compose_evidences(self, line_ids):
 
         ''' El maximo en Anchura es 596 puntos y en altura 838, teniendo en cuenta esta medidas por pagina, hay que divir el numero de firmantes entre este espacio'''
 
@@ -402,7 +402,7 @@ class Viafirma(models.Model):
                 },
             "metadatalist": metadata2,
             # add un if si la template code que viene es plantilla_para_n_firmantes
-            "policies": self.compose_policies(theTemplate.firma_ids)
+            "policies": self.compose_policies()
             }]
         }
         metadatalist2 = {
