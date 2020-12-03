@@ -419,7 +419,7 @@ class Viafirma(models.Model):
 
         data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
         print(data)
-        raise ValidationError ("fin")
+        #raise ValidationError ("fin")
         return data
 
 
