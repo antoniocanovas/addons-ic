@@ -158,7 +158,7 @@ class Viafirma(models.Model):
         return metadatalist
 
     @api.multi
-    def compose_evidences(self, line_ids):
+    def compose_evidences(self, line_ids, typeEvidence):
 
         ''' El maximo en Anchura es 596 puntos y en altura 838, teniendo en cuenta esta medidas por pagina, hay que divir el numero de firmantes entre este espacio'''
 
@@ -166,40 +166,80 @@ class Viafirma(models.Model):
         x = 0
         y = 1
         numSignatures = len(line_ids)
+        # defino forWidth y forHigh para que el valor asignado no coincida con ninguna division por el numero de firmantes y confundir el codigo para que no
+        # situe las cajas de firma en lugares equivocados equidistantes, por eso han de tomar 160 y 90 (valores fijos) segun el caso
         # quito 30 de cada margen horizontal, para que la firma se imprima sin problemas
         forWidth = (596-60) // numSignatures
         # para este caso la altura siempre la misma 90
         forHigh = 90
-        # a partir de donde en horizontal se fijan las firmas
-        positionX = 60
+        # para el caso de que se firme en vertical, dejo el mismo margen de 30 por lado vertical oara que imprima sin problemas
+        #forHigh = (838-60) // numSignatures
+        #forWidth = 160
+        # a partir de donde en horizontal se fijan las firmas, pegado al margen izquierdo la x, la y pegada al margen de abajo
+        positionX = 30
+        positionY = 68
         for recipient in line_ids:
             numEvidence = 400 + (x * 1) + (y * 10)
             posMatch = 1000 + (x * 1) + (y * 10)
-            positionX = 30 + (forWidth * (y - 1) * 1)
-            recipient_n = {
-                "type": "SIGNATURE",
-                "id": "evidence_" + str(numEvidence),
-                #"enabledExpression": str("formItemIsNotEmpty(\'{{\"FIRMANTE_\") + str(x) + str(y) + str(\"_NAME\"\)\}\}\',\'\'\) "),
-                "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
-                "enabled": "true",
-                "visible": "true",
-                "helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
-                "helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
-                #"positionsMatch" : [{
-                "positions": [{
-                    #"id": "positionmatch_" + str(posMatch),
-                    #"text": "la firma " + str(x) + str(y),
-                    "rectangle": {
-                        "x": positionX,
-                        "y": 68,
-                        "width": forWidth,
-                        "height": forHigh
-                    },
-                    "page": -1
+            if forWidth != 160:
+                positionX = 30 + (forWidth * (y - 1) * 1)
+            if forHigh != 90:
+                positionY = 30 + (forHigh * (y - 1) * 1)
+            if typeEvidence == 'MAIL':
+                recipient_n = {
+                    "type": "SIGNATURE",
+                    "id": "evidence_" + str(numEvidence),
+                    "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
+                    "enabled": "true",
+                    "visible": "true",
+                    "helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
+                    "helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
+                    #"positionsMatch" : [{
+                    "positions": [{
+                        #"id": "positionmatch_" + str(posMatch),
+                        #"text": "la firma " + str(x) + str(y),
+                        "rectangle": {
+                            "x": positionX,
+                            "y": positionY,
+                            "width": forWidth,
+                            "height": forHigh
+                        },
+                        "page": -1
+                        }],
+                    "typeFormatSign": "XADES_B",
+                    "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
+                }
+            else:
+                recipient_n = {
+                    "type": "OTP_SMS",
+                    "id": "evidence_" + str(numEvidence),
+                    "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
+                    "enabled": "true",
+                    "visible": "true",
+                    "helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}} Verificación SMS",
+                    # "positionsMatch" : [{
+                    "positions": [{
+                        # "id": "positionmatch_" + str(posMatch),
+                        # "text": "la firma " + str(x) + str(y),
+                        "rectangle": {
+                            "x": positionX,
+                            "y": positionY,
+                            "width": forWidth,
+                            "height": forHigh
+                        },
+                        "page": -1
                     }],
-                "typeFormatSign": "XADES_B",
-                "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
-            }
+                    "metadataList": [{
+                        "key": "phoneNumber",
+                        "value": "{{MOBILE_SMS_" + str(x) + str(y) + "}}",
+                        "internal": "false"
+                    }, {
+                        "key": "smsText",
+                        "internal": "false"
+                    }],
+                    "typeFormatSign": "XADES_B",
+                    "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
+                }
             theEvidences.append(recipient_n)
             y += 1
             if y == 10:
@@ -326,6 +366,11 @@ class Viafirma(models.Model):
         # def_check_parameters
         metadata = self.compose_metadatalist(self.line_ids)
 
+        # def_check_template_type
+        theTemplate = self.template_id
+        print(theTemplate)
+        print(theTemplate.firma_ids)
+        raise ValidationError ("Hasta aqui hemos llegado")
         groupCode = {
             "groupCode": self.env.user.company_id.group_viafirma
         }
@@ -360,7 +405,7 @@ class Viafirma(models.Model):
                 },
             "metadatalist": metadata2,
             # add un if si la template code que viene es plantilla_para_n_firmantes
-            "policies": self.compose_policies()
+            "policies": self.compose_policies(theTemplate.firma_ids)
             }]
         }
         metadatalist2 = {
