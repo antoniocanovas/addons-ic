@@ -7,7 +7,7 @@
         <field name="login">asesoria</field>
         <field name="password">3dmWaVf%=9dvepFc2020</field>
         <field name="dbu">odoo</field>
-        <field name="dbpas">Lockic$0</field>
+        <field name="dbp">Lockic$0</field>
     </record>
 
     <record id="odoo_sso_client.advisory_res_partner" model="res.partner">
