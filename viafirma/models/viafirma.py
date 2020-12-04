@@ -12,7 +12,7 @@ from datetime import datetime
 
 
 STATE = [
-    ('borrador', 'Borrador'),
+    ('DRAFT', 'DRAFT'),
     ('RECEIVED', 'RECEIVED'),
     ('ERROR', 'ERROR'),
     ('WAITING', 'WAITING'),
@@ -205,9 +205,9 @@ class Viafirma(models.Model):
                         #    },
                         "positionsMatch" : [{
                             "id": "positionmatch_" + str(posMatch),
-                            "text": "firmante " + str(y),
-                            "xoffset": 100,
-                            "yoffset": 0,
+                            "text": "firmante_" + str(y),
+                            "xoffset": 120,
+                            "yoffset": -10,
                             "width": 60,
                             "height": 30
                             #"page": -1

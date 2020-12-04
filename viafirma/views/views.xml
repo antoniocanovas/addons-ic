@@ -61,7 +61,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                             <field name="state" widget="statusbar" nolabel="1"/>
+                             <field name="state" widget="statusbar" nolabel="1" statusbar_visible="RECEIVED,ERROR,WAITING,REJECTED,SENT"/>
                     </header>
                     <sheet string="Viafirma">
                         <h2>
