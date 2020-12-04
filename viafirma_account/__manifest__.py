@@ -25,6 +25,7 @@
 
     # always loaded
     'data': [
+        'views/viafirma_account_invoice_report.xml',
         'views/views_account_invoice.xml',
     ],
     # only loaded in demonstration mode

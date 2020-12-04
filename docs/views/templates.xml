@@ -19,6 +19,7 @@
                 </div>
             </t>
         </template>
+
         <template id="docs_report_document_report">
             <t t-call="docs.external_document_layout">
                 <t t-set="o" t-value="o.with_context(lang=lang)"/>
