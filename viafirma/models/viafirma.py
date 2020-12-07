@@ -164,8 +164,9 @@ class Viafirma(models.Model):
         x = 0
         y = 1
         theTemplate = self.template_id
-        for firma in theTemplate.firma_ids:
-            for recipient in line_ids:
+
+        for recipient in line_ids:
+            for firma in theTemplate.firma_ids:
                 if firma.value == 'email':
                     recipient_n = {
                         "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
@@ -174,8 +175,6 @@ class Viafirma(models.Model):
                     metadatalist.append(recipient_n)
                 else:
                     recipient_n = {
-                        "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
-                        "value": recipient.name,
                         "key": str("MOBILE_SMS_") + str(x) + str(y),
                         "value": recipient.mobile,
                     }
