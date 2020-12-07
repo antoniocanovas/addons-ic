@@ -170,15 +170,19 @@ class Viafirma(models.Model):
                 if firma.value == 'email':
                     recipient_n = {
                         "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
-                        "value": recipient.name,
-                        "internal": "true"
+                        "value": recipient.name
+                    }
+                    metadatalist.append(recipient_n)
+                    recipient_n = {
+                        "key": "customer_name",
+                        "value": recipient.name
                     }
                     metadatalist.append(recipient_n)
                 else:
                     recipient_n = {
-                        "key": str("MOBILE_SMS_") + str(x) + str(y),
-                        "value": recipient.mobile,
-                        "internal": "true"
+                        #"key": str("MOBILE_SMS_") + str(x) + str(y),
+                        "key": "customer_mobile",
+                        "value": recipient.mobile
                     }
                     metadatalist.append(recipient_n)
             y += 1
