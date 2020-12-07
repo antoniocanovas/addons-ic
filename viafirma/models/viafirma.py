@@ -179,10 +179,10 @@ class Viafirma(models.Model):
                         "value": recipient.mobile,
                     }
                     metadatalist.append(recipient_n)
-                y += 1
-                if y == 10:
-                    y = 0
-                    x += 1
+            y += 1
+            if y == 10:
+                y = 0
+                x += 1
 
         return metadatalist
 
