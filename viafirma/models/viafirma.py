@@ -173,15 +173,9 @@ class Viafirma(models.Model):
                         "value": recipient.name
                     }
                     metadatalist.append(recipient_n)
-                    recipient_n = {
-                        "key": "customer_name",
-                        "value": recipient.name
-                    }
-                    metadatalist.append(recipient_n)
                 else:
                     recipient_n = {
-                        #"key": str("MOBILE_SMS_") + str(x) + str(y),
-                        "key": "customer_mobile",
+                        "key": str("MOBILE_SMS_") + str(x) + str(y),
                         "value": recipient.mobile
                     }
                     metadatalist.append(recipient_n)
@@ -438,8 +432,8 @@ class Viafirma(models.Model):
                 "document": {
                     "templateType": self.template_type,
                     #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
-                    "templateReference": str(self.document_to_send.decode('ascii')),
-                    "templateCode": self.template_id.code
+                    "templateReference": str(self.document_to_send.decode('ascii'))
+                    #"templateCode": self.template_id.code
                 },
                 "metadatalist": metadata2,
             # add un if si la template code que viene es plantilla_para_n_firmantes
