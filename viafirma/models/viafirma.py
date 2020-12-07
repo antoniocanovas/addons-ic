@@ -158,6 +158,36 @@ class Viafirma(models.Model):
         return metadatalist
 
     @api.multi
+    def compose_metadatalist_messages(self, line_ids):
+
+        metadatalist = []
+        x = 0
+        y = 1
+        theTemplate = self.template_id
+        for firma in theTemplate.firma_ids:
+            for recipient in line_ids:
+                if firma.value == 'email':
+                    recipient_n = {
+                        "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
+                        "value": recipient.name,
+                    }
+                    metadatalist.append(recipient_n)
+                else:
+                    recipient_n = {
+                        "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
+                        "value": recipient.name,
+                        "key": str("MOBILE_SMS_") + str(x) + str(y),
+                        "value": recipient.mobile,
+                    }
+                    metadatalist.append(recipient_n)
+                y += 1
+                if y == 10:
+                    y = 0
+                    x += 1
+
+        return metadatalist
+
+    @api.multi
     def compose_evidences(self, line_ids):
 
         ''' El maximo en Anchura es 596 puntos y en altura 838, teniendo en cuenta esta medidas por pagina, hay que divir el numero de firmantes entre este espacio'''
@@ -285,7 +315,7 @@ class Viafirma(models.Model):
         }
 
         data = [{**evidences, **signatures}]
-        print(data)
+        #print(data)
         return data
 
     @api.multi
@@ -374,9 +404,6 @@ class Viafirma(models.Model):
         ''' tenemos que componer la llamada a la firma, por lo que tenemos que conocer el groupcode, el texto de la notificacion
             y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
 
-        # def_check_parameters
-        metadata = self.compose_metadatalist(self.line_ids)
-
         groupCode = {
             "groupCode": self.env.user.company_id.group_viafirma
         }
@@ -400,7 +427,7 @@ class Viafirma(models.Model):
                 "requestSmsBody": "En el siguiente link puedes revisar y firmar el contrato"
             },
         }
-        metadata2 = self.compose_metadatalist(self.line_ids)
+        metadata2 = self.compose_metadatalist_messages(self.line_ids)
         messages ={
             "messages":[{
                 "document": {
