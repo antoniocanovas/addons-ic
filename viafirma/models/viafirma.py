@@ -124,7 +124,8 @@ class Viafirma(models.Model):
             recipient_n = {
                 "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY"),
                 "mail": recipient.email,
-                "name": recipient.name
+                "name": recipient.name,
+                "phone": recipient.mobile,
                 #"id": recipient.vat,
             }
             if self.noti_tipo == "MAIL_SMS" or self.noti_tipo == "SMS":
@@ -340,7 +341,7 @@ class Viafirma(models.Model):
                     "notificationType": "MAIL_SMS",
                     "sharedLink": {
                         "appCode": "com.viafirma.documents",
-                        "email": self.line_ids.partner_id.email,  #
+                        "email": self.line_ids.partner_id.email,
                         "phone": self.line_ids.partner_id.mobile,
                         "subject": self.noti_subject
                     }
@@ -440,6 +441,7 @@ class Viafirma(models.Model):
             "policies": self.compose_policies()
             }]
         }
+        # no se utiliza se puede borrar
         metadatalist2 = {
             "metadatalist": metadata2,
         }
