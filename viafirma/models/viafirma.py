@@ -125,7 +125,6 @@ class Viafirma(models.Model):
                 "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY"),
                 "mail": recipient.email,
                 "name": recipient.name,
-                "phone": recipient.mobile,
                 #"id": recipient.vat,
             }
             if self.noti_tipo == "MAIL_SMS" or self.noti_tipo == "SMS":
@@ -172,12 +171,14 @@ class Viafirma(models.Model):
                     recipient_n = {
                         "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
                         "value": recipient.name,
+                        "internal": "true"
                     }
                     metadatalist.append(recipient_n)
                 else:
                     recipient_n = {
                         "key": str("MOBILE_SMS_") + str(x) + str(y),
                         "value": recipient.mobile,
+                        "internal": "true"
                     }
                     metadatalist.append(recipient_n)
             y += 1
@@ -436,20 +437,17 @@ class Viafirma(models.Model):
                     "templateReference": str(self.document_to_send.decode('ascii')),
                     "templateCode": self.template_id.code
                 },
-            "metadatalist": metadata2,
+                "metadatalist": metadata2,
             # add un if si la template code que viene es plantilla_para_n_firmantes
             "policies": self.compose_policies()
             }]
-        }
-        # no se utiliza se puede borrar
-        metadatalist2 = {
-            "metadatalist": metadata2,
         }
         callbackmails = {
             "callbackMails": self.env.user.email,
         }
 
-        data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
+        #data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
+        data = {**groupCode, **workflow, **recipients, **customization, **messages, **callbackmails}
         print(data)
         #raise ValidationError ("fin")
         return data
