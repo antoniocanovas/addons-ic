@@ -255,7 +255,7 @@ class Viafirma(models.Model):
                     recipient_n = {
                         "type": "OTP_SMS",
                         "id": "evidence_" + str(numEvidence),
-                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(newx) + str(newy) + "_KEY}}','') ",
+                        "enabledExpression": str("formItemIsNotEmpty('MOBILE_SMS_") + str(newx) + str(newy) + ")','') ",
                         "enabled": "true",
                         "visible": "true",
                         #"helpText": "{{FIRMANTE_" + str(newx) + str(newy) + "_NAME}} Verificación SMS",
