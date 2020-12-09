@@ -169,7 +169,8 @@ class Viafirma(models.Model):
             for firma in theTemplate.firma_ids:
                 if firma.value == 'email':
                     recipient_n = {
-                        #"key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
+                        "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
+                        "value": recipient.name,
                         "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY.name"),
                         "value": recipient.name
                     }
@@ -245,8 +246,8 @@ class Viafirma(models.Model):
                             #"page": -1
                             }],
                         "typeFormatSign": "XADES_B",
-                        #"recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
-                        "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY.name"
+                        "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
+                        #"recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY.name"
                     }
                 else:
                     numberIter = int ((int(x) * 10) + int(y))
