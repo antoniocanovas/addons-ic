@@ -275,9 +275,8 @@ class Viafirma(models.Model):
                             "page": -1
                         }],
                         "metadataList": [{
-                            #"key": "phoneNumber",
-                            #"value": recipient.mobile,
-                            "key": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
+                            "key": "phoneNumber",
+                            #"key": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
                             "value": recipient.mobile,
                             "internal": "false"
                         }, {
