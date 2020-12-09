@@ -343,7 +343,7 @@ class Viafirma(models.Model):
                 "notification": {
                     "text": self.noti_text,
                     "detail": self.noti_detail,
-                    "notificationType": "MAIL_SMS",
+                    #"notificationType": "MAIL_SMS",
                     "sharedLink": {
                         "appCode": "com.viafirma.documents",
                         "email": self.line_ids.partner_id.email,
@@ -357,7 +357,7 @@ class Viafirma(models.Model):
                 "notification": {
                     "text": self.noti_text,
                     "detail": self.noti_detail,
-                    "notificationType": self.noti_tipo[0].name,
+                    #"notificationType": self.noti_tipo[0].name,
                     "sharedLink": {
                         "appCode": "com.viafirma.documents",
                         #"email": self.line_ids.partner_id.email,  #
@@ -371,11 +371,11 @@ class Viafirma(models.Model):
                 "notification": {
                     "text": self.noti_text,
                     "detail": self.noti_detail,
-                    "notificationType": self.noti_tipo[0].name,
+                    #"notificationType": self.noti_tipo[0].name,
                     "sharedLink": {
                         "appCode": "com.viafirma.documents",
-                        "email": self.line_ids.partner_id.email,  #
-                        #"phone": self.line_ids.partner_id.mobile,
+                        "email": self.line_ids.partner_id.email,
+                        "phone": self.line_ids.partner_id.mobile,
                         "subject": self.noti_subject
                     }
                 },
