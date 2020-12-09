@@ -124,7 +124,7 @@ class Viafirma(models.Model):
             recipient_n = {
                 "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY"),
                 "mail": recipient.email,
-                "name": recipient.name
+                "name": recipient.name,
                 #"id": recipient.vat,
             }
             if self.noti_tipo == "MAIL_SMS" or self.noti_tipo == "SMS":
@@ -150,6 +150,37 @@ class Viafirma(models.Model):
                  "value":  recipient.name,
             }
             metadatalist.append(recipient_n)
+            y += 1
+            if y == 10:
+                y = 0
+                x += 1
+
+        return metadatalist
+
+    @api.multi
+    def compose_metadatalist_messages(self, line_ids):
+
+        metadatalist = []
+        x = 0
+        y = 1
+        theTemplate = self.template_id
+
+        for recipient in line_ids:
+            for firma in theTemplate.firma_ids:
+                if firma.value == 'email':
+                    recipient_n = {
+                        "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
+                        "value": recipient.name,
+                        #"key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY.name"),
+                        #"value": recipient.name
+                    }
+                    metadatalist.append(recipient_n)
+                else:
+                    recipient_n = {
+                        "key": str("MOBILE_SMS_") + str(x) + str(y),
+                        "value": recipient.mobile
+                    }
+                    metadatalist.append(recipient_n)
             y += 1
             if y == 10:
                 y = 0
@@ -191,10 +222,12 @@ class Viafirma(models.Model):
                     recipient_n = {
                         "type": "SIGNATURE",
                         "id": "evidence_" + str(numEvidence),
-                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
+                        #"enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
+                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_KEY.name}}','') ",
                         "enabled": "true",
                         "visible": "true",
                         "helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
+                        #"helpText": "{{FIRMANTE_" + str(x) + str(y) + "_KEY.name}}",
                         "helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
                         #"positions": [{
                         #    "rectangle": {
@@ -214,6 +247,7 @@ class Viafirma(models.Model):
                             }],
                         "typeFormatSign": "XADES_B",
                         "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
+                        #"recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY.name"
                     }
                 else:
                     numberIter = int ((int(x) * 10) + int(y))
@@ -285,7 +319,7 @@ class Viafirma(models.Model):
         }
 
         data = [{**evidences, **signatures}]
-        print(data)
+        #print(data)
         return data
 
     @api.multi
@@ -311,7 +345,7 @@ class Viafirma(models.Model):
                     "notificationType": "MAIL_SMS",
                     "sharedLink": {
                         "appCode": "com.viafirma.documents",
-                        "email": self.line_ids.partner_id.email,  #
+                        "email": self.line_ids.partner_id.email,
                         "phone": self.line_ids.partner_id.mobile,
                         "subject": self.noti_subject
                     }
@@ -374,9 +408,6 @@ class Viafirma(models.Model):
         ''' tenemos que componer la llamada a la firma, por lo que tenemos que conocer el groupcode, el texto de la notificacion
             y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
 
-        # def_check_parameters
-        metadata = self.compose_metadatalist(self.line_ids)
-
         groupCode = {
             "groupCode": self.env.user.company_id.group_viafirma
         }
@@ -400,7 +431,7 @@ class Viafirma(models.Model):
                 "requestSmsBody": "En el siguiente link puedes revisar y firmar el contrato"
             },
         }
-        metadata2 = self.compose_metadatalist(self.line_ids)
+        metadata2 = self.compose_metadatalist_messages(self.line_ids)
         messages ={
             "messages":[{
                 "document": {
@@ -409,19 +440,17 @@ class Viafirma(models.Model):
                     "templateReference": str(self.document_to_send.decode('ascii')),
                     "templateCode": self.template_id.code
                 },
-            "metadatalist": metadata2,
+                "metadatalist": metadata2,
             # add un if si la template code que viene es plantilla_para_n_firmantes
             "policies": self.compose_policies()
             }]
-        }
-        metadatalist2 = {
-            "metadatalist": metadata2,
         }
         callbackmails = {
             "callbackMails": self.env.user.email,
         }
 
-        data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
+        #data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
+        data = {**groupCode, **workflow, **recipients, **customization, **messages, **callbackmails}
         print(data)
         #raise ValidationError ("fin")
         return data
