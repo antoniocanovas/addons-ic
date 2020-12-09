@@ -194,7 +194,7 @@ class Viafirma(models.Model):
         theEvidences = []
         x = 0
         y = 1
-        numSignatures = len(line_ids)+1
+        numSignatures = len(line_ids)
         # defino forWidth y forHigh para que el valor asignado no coincida con ninguna division por el numero de firmantes y confundir el codigo para que no
         # situe las cajas de firma en lugares equivocados equidistantes, por eso han de tomar 160 y 90 (valores fijos) segun el caso
         # quito 30 de cada margen horizontal, para que la firma se imprima sin problemas
@@ -270,7 +270,7 @@ class Viafirma(models.Model):
                                 #"width": forWidth,
                                 #"height": forHigh
                                 "width": 60,
-                                # "height": 30
+                                "height": 30
                             },
                             "page": -1
                         }],
