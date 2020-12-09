@@ -169,10 +169,8 @@ class Viafirma(models.Model):
             for firma in theTemplate.firma_ids:
                 if firma.value == 'email':
                     recipient_n = {
-                        "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
-                        "value": recipient.name,
-                        #"key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY.name"),
-                        #"value": recipient.name
+                        "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY"),
+                        "value": recipient.name
                     }
                     metadatalist.append(recipient_n)
                 else:
@@ -222,13 +220,13 @@ class Viafirma(models.Model):
                     recipient_n = {
                         "type": "SIGNATURE",
                         "id": "evidence_" + str(numEvidence),
-                        #"enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
-                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_KEY.name}}','') ",
+                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_KEY}}','') ",
                         "enabled": "true",
                         "visible": "true",
-                        "helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
-                        #"helpText": "{{FIRMANTE_" + str(x) + str(y) + "_KEY.name}}",
-                        "helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
+                        #"helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
+                        "helpText": recipient.name,
+                        "helpDetail": "Yo, " + recipient.name + ", acepto y firmo este documento.",
+                        #"helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
                         #"positions": [{
                         #    "rectangle": {
                         #        "x": positionX,
@@ -247,7 +245,6 @@ class Viafirma(models.Model):
                             }],
                         "typeFormatSign": "XADES_B",
                         "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
-                        #"recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY.name"
                     }
                 else:
                     numberIter = int ((int(x) * 10) + int(y))
@@ -258,32 +255,35 @@ class Viafirma(models.Model):
                     recipient_n = {
                         "type": "OTP_SMS",
                         "id": "evidence_" + str(numEvidence),
-                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(newx) + str(newy) + "_NAME}}','') ",
                         "enabled": "true",
                         "visible": "true",
-                        "helpText": "{{FIRMANTE_" + str(newx) + str(newy) + "_NAME}} Verificación SMS",
+                        #"helpText": "{{FIRMANTE_" + str(newx) + str(newy) + "_NAME}} Verificación SMS",
+                        "helpText": recipient.name + " Verificación SMS",
                         # "positionsMatch" : [{
                         "positions": [{
                             # "id": "positionmatch_" + str(posMatch),
                             # "text": "la firma " + str(newx) + str(newy),
                             "rectangle": {
-                                "x": positionX,
+                                #"x": positionX,
+                                "x": 60,
                                 "y": positionY,
-                                "width": forWidth,
-                                "height": forHigh
+                                #"width": forWidth,
+                                #"height": forHigh
+                                "width": 30,
+                                "height": 30
                             },
                             "page": -1
                         }],
                         "metadataList": [{
                             "key": "phoneNumber",
-                            "value": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
+                            #"key": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
+                            "value": recipient.mobile,
                             "internal": "false"
                         }, {
                             "key": "smsText",
                             "internal": "false"
                         }],
-                        "typeFormatSign": "XADES_B",
-                        "recipientKey": "FIRMANTE_" + str(newx) + str(newy) + "_KEY"
+                        "typeFormatSign": "XADES_B"
                     }
                 theEvidences.append(recipient_n)
                 y += 1
@@ -373,7 +373,7 @@ class Viafirma(models.Model):
                     "notificationType": self.noti_tipo[0].name,
                     "sharedLink": {
                         "appCode": "com.viafirma.documents",
-                        "email": self.line_ids.partner_id.email,  #
+                        "email": self.line_ids.partner_id.email,
                         #"phone": self.line_ids.partner_id.mobile,
                         "subject": self.noti_subject
                     }
@@ -390,7 +390,7 @@ class Viafirma(models.Model):
                 "templateType": self.template_type,
                 #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
                 "templateReference": str(self.document_to_send.decode('ascii')),
-                #"templateCode": self.template_id.code
+                "templateCode": self.template_id.code
             },
         }
         callbackmails = {
@@ -401,6 +401,7 @@ class Viafirma(models.Model):
         }
 
         data = {**groupCode, **workflow, **notification, **metadatalist, **document, **callbackmails, **callbackurl }
+        print(data)
 
         return data
 
@@ -422,13 +423,13 @@ class Viafirma(models.Model):
         }
         metadata = self.compose_metadatalist(self.line_ids)
         metadatalist = {
-            "metadatalist" : metadata,
+            "metadataList" : metadata,
         }
         customization = {
             "customization": {
-                "requestMailSubject": "Contrato listo para firmar",
-                "requestMailBody": "Hola {{recipient.name}}. <br /><br />Ya puedes revisar y firmar el contrato. Haz click en el siguiente enlace y sigue las instrucciones.",
-                "requestSmsBody": "En el siguiente link puedes revisar y firmar el contrato"
+                "requestMailSubject": "Documento listo para firmar",
+                "requestMailBody": "Hola {{recipient.name}}. <br /><br />Ya puedes revisar y firmar el documento. Haz click en el siguiente enlace y sigue las instrucciones.",
+                "requestSmsBody": "En el siguiente link puedes revisar y firmar el documento"
             },
         }
         metadata2 = self.compose_metadatalist_messages(self.line_ids)
@@ -436,12 +437,10 @@ class Viafirma(models.Model):
             "messages":[{
                 "document": {
                     "templateType": self.template_type,
-                    #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
                     "templateReference": str(self.document_to_send.decode('ascii')),
                     "templateCode": self.template_id.code
                 },
-                "metadatalist": metadata2,
-            # add un if si la template code que viene es plantilla_para_n_firmantes
+                "metadataList": metadata2,
             "policies": self.compose_policies()
             }]
         }
@@ -561,8 +560,8 @@ class Viafirma(models.Model):
                 if viafirma_pass:
                     header = self.get_uploader_header()
                     #search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
-                    search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
                     #datas = self.compose_call()
+                    search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
                     datas = self.compose_call_multiple()
                     response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
                                                      auth=(viafirma_user, viafirma_pass))
