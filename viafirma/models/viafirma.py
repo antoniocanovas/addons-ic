@@ -265,7 +265,8 @@ class Viafirma(models.Model):
                             # "id": "positionmatch_" + str(posMatch),
                             # "text": "la firma " + str(newx) + str(newy),
                             "rectangle": {
-                                "x": positionX,
+                                #"x": positionX,
+                                "x": 60,
                                 "y": positionY,
                                 #"width": forWidth,
                                 #"height": forHigh
