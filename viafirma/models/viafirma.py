@@ -269,7 +269,7 @@ class Viafirma(models.Model):
                                 "y": positionY,
                                 #"width": forWidth,
                                 #"height": forHigh
-                                "width": 60,
+                                "width": 30,
                                 "height": 30
                             },
                             "page": -1
@@ -427,8 +427,8 @@ class Viafirma(models.Model):
         customization = {
             "customization": {
                 "requestMailSubject": "Contrato listo para firmar",
-                "requestMailBody": "Hola {{recipient.name}}. <br /><br />Ya puedes revisar y firmar el contrato. Haz click en el siguiente enlace y sigue las instrucciones.",
-                "requestSmsBody": "En el siguiente link puedes revisar y firmar el contrato"
+                "requestMailBody": "Hola {{recipient.name}}. <br /><br />Ya puedes revisar y firmar el documento. Haz click en el siguiente enlace y sigue las instrucciones.",
+                "requestSmsBody": "En el siguiente link puedes revisar y firmar el documento"
             },
         }
         metadata2 = self.compose_metadatalist_messages(self.line_ids)
