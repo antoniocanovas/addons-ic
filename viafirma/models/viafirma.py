@@ -282,8 +282,8 @@ class Viafirma(models.Model):
                             "key": "smsText",
                             "internal": "false"
                         }],
-                        "typeFormatSign": "XADES_B",
-                        "recipientKey": "MOBILE_SMS_" + str(newx) + str(newy)
+                        "typeFormatSign": "XADES_B"
+                        #"recipientKey": "MOBILE_SMS_" + str(newx) + str(newy)
                     }
                 theEvidences.append(recipient_n)
                 y += 1
