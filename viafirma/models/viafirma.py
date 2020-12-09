@@ -169,7 +169,8 @@ class Viafirma(models.Model):
             for firma in theTemplate.firma_ids:
                 if firma.value == 'email':
                     recipient_n = {
-                        "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
+                        #"key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
+                        "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY.name"),
                         "value": recipient.name
                     }
                     metadatalist.append(recipient_n)
