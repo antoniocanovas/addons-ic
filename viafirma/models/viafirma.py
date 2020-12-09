@@ -563,8 +563,8 @@ class Viafirma(models.Model):
                     header = self.get_uploader_header()
                     #search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
                     search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
-                    #datas = self.compose_call()
-                    datas = self.compose_call_multiple()
+                    datas = self.compose_call()
+                    #datas = self.compose_call_multiple()
                     response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
                                                      auth=(viafirma_user, viafirma_pass))
 
