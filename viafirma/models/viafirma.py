@@ -245,7 +245,8 @@ class Viafirma(models.Model):
                             #"page": -1
                             }],
                         "typeFormatSign": "XADES_B",
-                        "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
+                        #"recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
+                        "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY.name"
                     }
                 else:
                     numberIter = int ((int(x) * 10) + int(y))
