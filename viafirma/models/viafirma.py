@@ -169,10 +169,8 @@ class Viafirma(models.Model):
             for firma in theTemplate.firma_ids:
                 if firma.value == 'email':
                     recipient_n = {
-                        "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
-                        "value": recipient.name,
-                        #"key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY.name"),
-                        #"value": recipient.name
+                        "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY"),
+                        "value": recipient.name
                     }
                     metadatalist.append(recipient_n)
                 else:
@@ -222,13 +220,13 @@ class Viafirma(models.Model):
                     recipient_n = {
                         "type": "SIGNATURE",
                         "id": "evidence_" + str(numEvidence),
-                        #"enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
-                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_KEY.name}}','') ",
+                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_KEY}}','') ",
                         "enabled": "true",
                         "visible": "true",
-                        "helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
-                        #"helpText": "{{FIRMANTE_" + str(x) + str(y) + "_KEY.name}}",
-                        "helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
+                        #"helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
+                        "helpText": recipient.name,
+                        "helpDetail": "Yo, " + recipient.name + ", acepto y firmo este documento.",
+                        #"helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
                         #"positions": [{
                         #    "rectangle": {
                         #        "x": positionX,
@@ -247,7 +245,6 @@ class Viafirma(models.Model):
                             }],
                         "typeFormatSign": "XADES_B",
                         "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
-                        #"recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY.name"
                     }
                 else:
                     numberIter = int ((int(x) * 10) + int(y))
@@ -258,10 +255,11 @@ class Viafirma(models.Model):
                     recipient_n = {
                         "type": "OTP_SMS",
                         "id": "evidence_" + str(numEvidence),
-                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(newx) + str(newy) + "_NAME}}','') ",
+                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(newx) + str(newy) + "_KEY}}','') ",
                         "enabled": "true",
                         "visible": "true",
-                        "helpText": "{{FIRMANTE_" + str(newx) + str(newy) + "_NAME}} Verificación SMS",
+                        #"helpText": "{{FIRMANTE_" + str(newx) + str(newy) + "_NAME}} Verificación SMS",
+                        "helpText": recipient.name + " Verificación SMS",
                         # "positionsMatch" : [{
                         "positions": [{
                             # "id": "positionmatch_" + str(posMatch),
@@ -276,14 +274,14 @@ class Viafirma(models.Model):
                         }],
                         "metadataList": [{
                             "key": "phoneNumber",
-                            "value": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
+                            "value": recipient.mobile,
                             "internal": "false"
                         }, {
                             "key": "smsText",
                             "internal": "false"
                         }],
                         "typeFormatSign": "XADES_B",
-                        "recipientKey": "FIRMANTE_" + str(newx) + str(newy) + "_KEY"
+                        "recipientKey": "MOBILE_SMS_" + str(newx) + str(newy)
                     }
                 theEvidences.append(recipient_n)
                 y += 1
