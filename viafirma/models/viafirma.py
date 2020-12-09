@@ -279,7 +279,7 @@ class Viafirma(models.Model):
                             #"value": recipient.mobile,
                             "key": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
                             "value": recipient.mobile,
-                            #"internal": "false"
+                            "internal": "false"
                         }, {
                             "key": "smsText",
                             "internal": "false"
