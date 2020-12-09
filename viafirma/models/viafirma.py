@@ -275,10 +275,11 @@ class Viafirma(models.Model):
                             "page": -1
                         }],
                         "metadataList": [{
-                            "key": "phoneNumber",
+                            #"key": "phoneNumber",
                             #"value": recipient.mobile,
-                            "value": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
-                            "internal": "false"
+                            "key": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
+                            "value": recipient.mobile,
+                            #"internal": "false"
                         }, {
                             "key": "smsText",
                             "internal": "false"
