@@ -402,6 +402,7 @@ class Viafirma(models.Model):
         }
 
         data = {**groupCode, **workflow, **notification, **metadatalist, **document, **callbackmails, **callbackurl }
+        print(data)
 
         return data
 
