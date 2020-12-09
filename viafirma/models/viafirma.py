@@ -422,7 +422,7 @@ class Viafirma(models.Model):
         }
         metadata = self.compose_metadatalist(self.line_ids)
         metadatalist = {
-            "metadatalist" : metadata,
+            "metadataList" : metadata,
         }
         customization = {
             "customization": {
@@ -440,7 +440,7 @@ class Viafirma(models.Model):
                     "templateReference": str(self.document_to_send.decode('ascii')),
                     "templateCode": self.template_id.code
                 },
-                "metadatalist": metadata2,
+                "metadataList": metadata2,
             # add un if si la template code que viene es plantilla_para_n_firmantes
             "policies": self.compose_policies()
             }]
