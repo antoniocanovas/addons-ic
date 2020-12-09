@@ -171,8 +171,8 @@ class Viafirma(models.Model):
                     recipient_n = {
                         "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
                         "value": recipient.name,
-                        "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY.name"),
-                        "value": recipient.name
+                        #"key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY.name"),
+                        #"value": recipient.name
                     }
                     metadatalist.append(recipient_n)
                 else:
@@ -226,8 +226,8 @@ class Viafirma(models.Model):
                         "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_KEY.name}}','') ",
                         "enabled": "true",
                         "visible": "true",
-                        #"helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
-                        "helpText": "{{FIRMANTE_" + str(x) + str(y) + "_KEY.name}}",
+                        "helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
+                        #"helpText": "{{FIRMANTE_" + str(x) + str(y) + "_KEY.name}}",
                         "helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
                         #"positions": [{
                         #    "rectangle": {
