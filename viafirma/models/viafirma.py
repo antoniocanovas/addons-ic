@@ -421,9 +421,13 @@ class Viafirma(models.Model):
         recipients = {
             "recipients" : recip,
         }
-        metadata = self.compose_metadatalist(self.line_ids)
+        #metadata = self.compose_metadatalist(self.line_ids)
+        #metadatalist = {
+        #    "metadataList": metadata,
+        #}
+        metadata = self.compose_metadatalist_messages(self.line_ids)
         metadatalist = {
-            "metadataList" : metadata,
+            "metadataList": metadata,
         }
         customization = {
             "customization": {
@@ -448,8 +452,8 @@ class Viafirma(models.Model):
             "callbackMails": self.env.user.email,
         }
 
-        #data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
-        data = {**groupCode, **workflow, **recipients, **customization, **messages, **callbackmails}
+        data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
+        #data = {**groupCode, **workflow, **recipients, **customization, **messages, **callbackmails}
         print(data)
         #raise ValidationError ("fin")
         return data
