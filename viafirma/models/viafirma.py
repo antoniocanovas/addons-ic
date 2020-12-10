@@ -449,8 +449,8 @@ class Viafirma(models.Model):
             "callbackMails": self.env.user.email,
         }
 
-        data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
-        #data = {**groupCode, **workflow, **recipients, **customization, **messages, **callbackmails}
+        #data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
+        data = {**groupCode, **workflow, **recipients, **customization, **messages, **callbackmails}
         print(data)
         #raise ValidationError ("fin")
         return data
