@@ -8,4 +8,4 @@ from odoo import fields, models, api
 class ViafirmaExtend(models.Model):
     _inherit = 'viafirma'
 
-    invoice_id = fields.Many2one('account.invoice', string='Factura')
+    document_id = fields.Many2one('ir.attachment', string='Factura')
