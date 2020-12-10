@@ -258,14 +258,18 @@
                             </tr>
                         </thead>
                         <tbody class="invoice_tbody">
-                            <!--<t t-foreach="o.signatures_ids" t-as="signature">-->
-                            <tr>
-
-                                <td ><span t-field="o.partner_id.name"/></td>
-                                <td><span t-field="o.partner_id.vat"/></td>
-                                <td><p>firmante_1</p></td>
-
-                            </tr>
+                            <t t-set="n" t-value="len(o.viafirma_ids)"/>
+                            <t t-set="index" t-value="n - 1"/>
+                            <t t-set="x" t-value="0"/>
+                            <t t-set="y" t-value="1"/>
+                            <t t-foreach="o.viafirma_ids[index].line_ids" t-as="signature">
+                                <tr>
+                                    <td ><span t-field="o.partner_id.name"/></td>
+                                    <td><span t-field="o.partner_id.vat"/></td>
+                                    <td><span class="oe_inline">firmante_</span><span t-esc="x" class="oe_inline"/><span t-esc="y" class="oe_inline"/></td>
+                                </tr>
+                                <t t-set="y" t-value=" y + 1 "/>
+                            </t>
                         </tbody>
                     </table>
 
