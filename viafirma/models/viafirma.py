@@ -279,9 +279,6 @@ class Viafirma(models.Model):
                             #"key": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
                             "value": recipient.mobile,
                             "internal": "false"
-                        }, {
-                            "key": "smsText",
-                            "internal": "false"
                         }],
                         "typeFormatSign": "XADES_B"
                     }
@@ -421,9 +418,13 @@ class Viafirma(models.Model):
         recipients = {
             "recipients" : recip,
         }
-        metadata = self.compose_metadatalist(self.line_ids)
+        #metadata = self.compose_metadatalist(self.line_ids)
+        #metadatalist = {
+        #    "metadataList": metadata,
+        #}
+        metadata = self.compose_metadatalist_messages(self.line_ids)
         metadatalist = {
-            "metadataList" : metadata,
+            "metadataList": metadata,
         }
         customization = {
             "customization": {
