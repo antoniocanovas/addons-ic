@@ -6,7 +6,7 @@ from odoo import fields, models, api
 
 
 STATE = [
-    ('borrador', 'Borrador'),
+    ('DRAFT', 'DRAFT'),
     ('RECEIVED', 'RECEIVED'),
     ('ERROR', 'ERROR'),
     ('WAITING', 'WAITING'),
@@ -34,6 +34,6 @@ class ViafirmaLines(models.Model):
     state = fields.Selection(
         selection=STATE,
         string="Estado",
-        default='borrador'
+        default='DRAFT'
     )
     viafirma_id = fields.Many2one('viafirma')

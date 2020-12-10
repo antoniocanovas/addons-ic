@@ -32,28 +32,19 @@ class Viafirma(models.Model):
 
 
     name = fields.Char('Name')
-    #res_model = fields.Reference(src_model, 'Modelo del documento origen')
-    #res_id = fields.Reference(res_model.id, 'Id origen')
-    #res_id_name = fields.Reference(res_model, 'Nombre del documento origen')
     res_model = fields.Char('Modelo origen')
     res_id = fields.Char('Id origen')
     res_id_name = fields.Char('Documento origen')
-    #attachment_id = fields.Many2one('ir.attachment')
-    #attachment_signed_id = fields.Many2one('ir.attachment')
-    #attachment_trail_url = fields.Char('Url Trail')
 
     create_date = fields.Date(string="Fecha creacion")
     completed_date = fields.Date(string='Ultima modificacion')
 
-    #status = fields.Selection(String='Estado', related='viafirma_lines.status')
     state = fields.Selection(
         selection=STATE,
         string="Estado",
-        default='borrador',
+        default='DRAFT',
         track_visibility='onchange'
     )
-
-    #status = fields.Char('Estado', default = 'Borrador')
 
     template_id = fields.Many2one('viafirma.templates')
     line_ids = fields.One2many(
@@ -64,13 +55,12 @@ class Viafirma(models.Model):
     tracking_code = fields.Char(string='Código seguimiento')
     noti_text = fields.Char(string='Titulo')
     noti_detail = fields.Char(string='Descripcion')
-    noti_tipo = fields.Many2many(
+    notification_type_ids = fields.Many2many(
         comodel_name="viafirma.notification.signature",
         string="Tipo Notificacion",
         domain=[('type', '=', 'notification')],
     )
     noti_subject = fields.Char(string='Asunto')
-    #police_code = fields.Char(string='Codigo politica',default='test002')
     template_type = fields.Selection(selection=[('url','URL'),('base64','BASE64'),('message','MESSAGE')],string="Tipo de teemplate",default='base64')
     templareReference = fields.Char(defautl='"templateReference": ')  # este campo sirve para construir la linea que puede ser una url, base65 o un codigo
     document_readRequired = fields.Boolean(string='Lectura obligatoria',default=False)
@@ -86,13 +76,6 @@ class Viafirma(models.Model):
     document_signed = fields.Binary("Documento firmado")
     document_trail = fields.Binary("Documento Trail")
     error_code = fields.Char('Error')
-
-
-    @api.multi
-    def compose_name(self):
-        self.compose_name = ir.model + ir.model.name + str(datetime.utcnow().strftime('%d-%m-%Y'))
-
-    # name = fields.Char('Name', compute='compose_name')
 
     @api.multi
     def send_viafirma(self):
@@ -127,7 +110,7 @@ class Viafirma(models.Model):
                 "name": recipient.name,
                 #"id": recipient.vat,
             }
-            if self.noti_tipo == "MAIL_SMS" or self.noti_tipo == "SMS":
+            if self.notification_type_ids == "MAIL_SMS" or self.notification_type_ids == "SMS":
                 recipient_n.update({"phone": recipient.mobile,})
             y+=1
             if y == 10:
@@ -334,7 +317,7 @@ class Viafirma(models.Model):
                 "type": "WEB",
             },
         }
-        if len(self.noti_tipo) > 1:
+        if len(self.notification_type_ids) > 1:
             notification = {
                 "notification": {
                     "text": self.noti_text,
@@ -348,12 +331,12 @@ class Viafirma(models.Model):
                     }
                 },
             }
-        elif self.noti_tipo[0].name == "SMS":
+        elif self.notification_type_ids[0].name == "SMS":
             notification = {
                 "notification": {
                     "text": self.noti_text,
                     "detail": self.noti_detail,
-                    "notificationType": self.noti_tipo[0].name,
+                    "notificationType": self.notification_type_ids[0].name,
                     "sharedLink": {
                         "appCode": "com.viafirma.documents",
                         #"email": self.line_ids.partner_id.email,  #
@@ -367,7 +350,7 @@ class Viafirma(models.Model):
                 "notification": {
                     "text": self.noti_text,
                     "detail": self.noti_detail,
-                    "notificationType": self.noti_tipo[0].name,
+                    "notificationType": self.notification_type_ids[0].name,
                     "sharedLink": {
                         "appCode": "com.viafirma.documents",
                         "email": self.line_ids.partner_id.email,
@@ -548,7 +531,7 @@ class Viafirma(models.Model):
             for line in self.line_ids:
 
                 self.check_mandatory_attr(self.template_id.firma_ids, line.partner_id)
-                self.check_mandatory_attr(self.noti_tipo, line.partner_id)
+                self.check_mandatory_attr(self.notification_type_ids, line.partner_id)
 
             if not self.document_to_send:
                 raise ValidationError(
@@ -562,8 +545,17 @@ class Viafirma(models.Model):
                     header = self.get_uploader_header()
                     #search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
                     #datas = self.compose_call()
-                    search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
-                    datas = self.compose_call_multiple()
+
+
+                    #En función del template envaremos policy o no
+
+                    if self.template_id.send_policy == True:
+                        search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
+                        datas = self.compose_call_multiple()
+                    else:
+                        search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
+                        datas = self.compose_call()
+
                     response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
                                                      auth=(viafirma_user, viafirma_pass))
 
@@ -571,25 +563,44 @@ class Viafirma(models.Model):
                     print(response_firmweb)
                     print(response_firmweb.content)
                     if response_firmweb.ok:
-                        resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
-                        #resp_firmweb = response_firmweb.content.decode('utf-8')
+                        if self.template_id.send_policy == True:
 
-                        print("Depurando mensaje completo")
-                        print(resp_firmweb)
-                        print("Depurando un codigo")
-                        #print(resp_firmweb['messages'])
+                            resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
 
-                        # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
-                        try:
-                            if resp_firmweb["messages"][0]["code"] != '':
-                                self.tracking_code = resp_firmweb["messages"][0]["code"]
-                        except:
-                            self.tracking_code = resp_firmweb
-                        print("Depurando tracking")
-                        print(self.tracking_code)
-                        self.status_response_firmweb()
+                            print("Depurando mensaje completo")
+                            print(resp_firmweb)
+                            print("Depurando un codigo")
+                            #print(resp_firmweb['messages'])
+
+                            # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
+                            try:
+                                if resp_firmweb["messages"][0]["code"] != '':
+                                    self.tracking_code = resp_firmweb["messages"][0]["code"]
+                            except:
+                                self.tracking_code = resp_firmweb
+                            print("Depurando tracking")
+                            print(self.tracking_code)
+                            self.status_response_firmweb()
+                        else:
+                            resp_firmweb = response_firmweb.content.decode('utf-8')
+
+                            print("Depurando mensaje completo")
+                            print(resp_firmweb)
+                            print("Depurando un codigo")
+                            # print(resp_firmweb['messages'])
+                            # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
+                            try:
+                                if resp_firmweb != '':
+                                    self.tracking_code = resp_firmweb
+                            except:
+                                self.tracking_code = resp_firmweb
+                            print("Depurando tracking")
+                            print(self.tracking_code)
+                            self.status_response_firmweb()
+
                     else:
                         self.error_code = json.loads(response_firmweb.content.decode('utf-8'))
+
 
             else:
                 raise ValidationError(
@@ -609,7 +620,7 @@ class Viafirma(models.Model):
             if viafirma_user:
                 if viafirma_pass:
                     print("Inicio commm")
-                    envios = self.env['viafirma'].search([('state', '=', 'borrador')])
+                    envios = self.env['viafirma'].search([('state', '=', 'DRAFT')])
                     for envio in envios:
                         print(envio)
                         header = self.get_uploader_header()

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="ir_attachment_send_viafirma" model="ir.actions.server">
+            <field name="name">=> Viafirma</field>
+            <field ref="model_ir_attachment" name="model_id" />
+            <field eval="True" name="active" />
+            <!--<field name="user_id" ref="base.user_root" />-->
+            <field name="binding_model_id" ref="model_ir_attachment"/>
+            <field name="state">code</field>
+            <field name="code">records.do_viafirma_context()</field>
+        </record>
+
+    </data>
+</odoo>

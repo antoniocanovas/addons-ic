@@ -133,7 +133,7 @@ class ViafirmaOperations(models.Model):
         ''' solo firma web y un solo firmante, la mas simple de todas, de momento selecciono todos los registros que tenga en el modelo viafirma y que haga el proceso
          de envio para cada uno de ellos, aunque no coge ningun valor de estos, ni emqail ni adjunto'''
 
-        envios = self.env['viafirma'].search([('state', '=', 'Borrador')])
+        envios = self.env['viafirma'].search([('state', '=', 'DRAFT')])
         for envio in envios:
             header = self.get_uploader_header()
             search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
