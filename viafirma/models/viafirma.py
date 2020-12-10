@@ -279,9 +279,6 @@ class Viafirma(models.Model):
                             #"key": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
                             "value": recipient.mobile,
                             "internal": "false"
-                        }, {
-                            "key": "smsText",
-                            "internal": "false"
                         }],
                         "typeFormatSign": "XADES_B"
                     }
