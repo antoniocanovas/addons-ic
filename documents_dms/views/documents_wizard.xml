@@ -1,0 +1,106 @@
+<odoo>
+    <!-- WIZARD -->
+    <record id="view_document_kanban_inh" model="ir.ui.view">
+        <field name="name">Document form button</field>
+        <field name="model">ir.attachment</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="documents.documents_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_kanban_bottom_right']" position="inside">
+                <a type="button">
+                    <button class="btn btn-primary" string="Formulario" name="documents_form_button" type="action">
+                        <span>Formulario</span>
+                    </button>
+                </a>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="documents_form_button" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <form>
+                <sheet string="Documents">
+
+                </sheet>
+            </form>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">ir.attachment</field>
+        <field name="name">Default form view for Documents button form</field>
+        <field name="priority">16</field>
+        <field name="type">form</field>
+    </record>
+
+    <!-- Actions -->
+
+    <record model="ir.actions.act_window" id="documents_viafirma">
+        <field name="name">Viafirma</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">viafirma</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{
+            'module': 'documents',
+            'message_main_attachment_id': [(4, '428']
+            }</field>
+    </record>
+
+    <!-- Menu ELements -->
+
+    <menuitem name="Management" id="documents.Management" parent="documents.menu_root" sequence="1"/>
+     <menuitem name="Viafirma" id="documents.Viafirma" parent="documents.Management" action="documents_viafirma" sequence="0"/>
+
+    <!-- Custom Views -->
+
+     <record id="documents__viafirma_form" model="ir.ui.view">
+        <field name="name">Documents Viafirma</field>
+        <field name="model">ir.attachment</field>
+        <field name="priority">15</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="folder_id"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                            <field name="datas" filename="datas_fname" attrs="{'invisible':[('type','=','url')]}"/>
+                            <field name="datas_fname" invisible="1" attrs="{'invisible':[('type','=','url')]}" class="oe_inline oe_right"/>
+                            <field name="owner_id"/>
+                            <field name="partner_id"/>
+                            <field name="file_size" attrs="{ 'invisible' : [('type', '!=', 'binary')]}"/>
+                            <field name="type" readonly="1"/>
+                            <field name="url" attrs="{ 'invisible' : [('type', '!=', 'url')]}"/>
+                        </group>
+                        <group>
+                            <group attrs="{ 'invisible' : [('thumbnail', '=', False)]}">
+                                <field name="thumbnail" nolabel="1" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;:&quot;thumbnail&quot;}"/>
+                            </group>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="res_model" readonly="1" attrs="{'invisible':[('res_model','=', False)]}"/>
+                        <field name="res_model_name" readonly="1" attrs="{ 'invisible' : [('res_model_name', '=', False)]}"/>
+                        <field name="create_date" readonly="1"/>
+                        <field name="create_uid" readonly="1"/>
+                        <field name="company_id" readonly="1"/>
+                        <field name="mimetype" readonly="1"/>
+                    </group>
+                </sheet>
+                <div class="o_attachment_preview"/>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+</odoo>
