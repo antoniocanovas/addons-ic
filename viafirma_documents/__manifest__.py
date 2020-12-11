@@ -17,7 +17,7 @@
     # Check https://github.com/odoo/odoo/blob/13.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Digital Signature',
-    'version': '0.1',
+    'version': '12.0.0.1.0.0',
 
     # any module necessary for this one to work correctly
     'depends': ['documents_dms',
