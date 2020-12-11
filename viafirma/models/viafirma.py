@@ -203,7 +203,8 @@ class Viafirma(models.Model):
                     recipient_n = {
                         "type": "SIGNATURE",
                         "id": "evidence_" + str(numEvidence),
-                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_KEY}}','') ",
+                        #"enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_KEY}}','') ",
+                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
                         "enabled": "true",
                         "visible": "true",
                         #"helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
