@@ -281,7 +281,7 @@ class Viafirma(models.Model):
 
         evidences = {
             "evidences": self.compose_evidences(self.line_ids)
-       }
+        }
 
         signatures = {
             "signatures": [{
@@ -290,10 +290,11 @@ class Viafirma(models.Model):
                 "typeFormatSign": "PADES_LTA",
                 "stampers": [{
                     "type": "TEXT",
-                    "width": 300,
-                    "height": 38,
-                    "xAxis": 0,
-                    "yAxis": 0,
+                    "rotation": "ROTATE_270",
+                    "width": 38,
+                    "height": 300,
+                    "xAxis": 30,
+                    "yAxis": 546,
                     "page": -1,
                     "timeZoneId": "Europe/Madrid"
                 }],
@@ -302,7 +303,6 @@ class Viafirma(models.Model):
         }
 
         data = [{**evidences, **signatures}]
-        #print(data)
         return data
 
     @api.multi
