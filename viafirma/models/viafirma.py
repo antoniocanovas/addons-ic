@@ -219,7 +219,7 @@ class Viafirma(models.Model):
                         #    },
                         "positionsMatch" : [{
                             "id": "positionmatch_" + str(posMatch),
-                            "text": "firmante_" + str(y),
+                            "text": "firmante_" + str(x) + str(y),
                             "xoffset": 120,
                             "yoffset": -10,
                             "width": 60,
