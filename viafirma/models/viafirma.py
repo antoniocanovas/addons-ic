@@ -290,7 +290,7 @@ class Viafirma(models.Model):
                 "typeFormatSign": "PADES_LTA",
                 "stampers": [{
                     "type": "TEXT",
-                    "rotation": "ROTATE_270",
+                    #"rotation": "ROTATE_270",
                     "width": 38,
                     "height": 300,
                     "xAxis": 30,
