@@ -27,7 +27,6 @@ class ViafirmaDocuments(models.Model):
     viafirma_state = fields.Selection(selection=STATE)
 
 
-
     @api.multi
     def do_viafirma_context(self):
         for record in self:
@@ -51,10 +50,10 @@ class ViafirmaDocuments(models.Model):
                     "You must set default template for Viafirma documents")
 
             viafirma = self.env['viafirma'].sudo().create({
-                                'name': str(record.env.user.name) + '-' + str(record.name),
-                                'noti_text': str(record.env.user.name) + '-' + str(record.name),
-                                'noti_subject': str(record.env.user.name) + '-' + str(record.name),
-                                'noti_tipo': [(6,0,notifications)],
+                                'name': str(self.env.user.name) + '-' + str(record.name),
+                                'noti_text': str(self.env.user.name) + '-' + str(record.name),
+                                'noti_subject': str(self.env.user.name) + '-' + str(record.name),
+                                'notification_type_ids': [(6,0,notifications)],
                                 'document_to_send': record.datas,
                                 'template_type': 'base64',
                                 'template_id': template.id,

@@ -266,7 +266,9 @@
                                 <tr>
                                     <td ><span t-field="o.partner_id.name"/></td>
                                     <td><span t-field="o.partner_id.vat"/></td>
-                                    <td><span class="oe_inline">firmante_</span><span t-esc="x" class="oe_inline"/><span t-esc="y" class="oe_inline"/></td>
+                                    <td>
+                                        <span class="oe_inline" style="color: white;">firmante_</span><span t-esc="x" class="oe_inline" style="color: white;" /><span t-esc="y" class="oe_inline" style="color: white;"/>
+                                    </td>
                                 </tr>
                                 <t t-set="y" t-value=" y + 1 "/>
                             </t>

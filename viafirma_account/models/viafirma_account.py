@@ -29,7 +29,9 @@ class ViafirmaAccount(models.Model):
     def do_viafirma(self):
 
         #pdf = self.env.ref('account.account_invoices').sudo().render_qweb_pdf([self.id])[0]
+
         pdf = self.env.ref('viafirma_account.viafirma_account_report').sudo().render_qweb_pdf([self.id])[0]
+
         line_ids=[]
         line_id = self.env['viafirma.lines'].create({
             'partner_id': self.partner_id.id,
