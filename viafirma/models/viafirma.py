@@ -208,8 +208,8 @@ class Viafirma(models.Model):
                         "visible": "true",
                         #"helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
                         "helpText": recipient.name,
-                        "helpDetail": "Yo, " + recipient.name + ", acepto y firmo este documento.",
-                        #"helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
+                        #"helpDetail": "Yo, " + recipient.name + ", acepto y firmo este documento.",
+                        "helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_KEY}}, acepto y firmo este documento.",
                         #"positions": [{
                         #    "rectangle": {
                         #        "x": positionX,
@@ -287,10 +287,11 @@ class Viafirma(models.Model):
                 "typeFormatSign": "PADES_LTA",
                 "stampers": [{
                     "type": "TEXT",
-                    "width": 300,
-                    "height": 38,
-                    "xAxis": 0,
-                    "yAxis": 0,
+                    "rotation" : "ROTATE_270",
+                    "width" : 38,
+                    "height" : 300,
+                    "xAxis" : 44,
+                    "yAxis" : 445,
                     "page": -1,
                     "timeZoneId": "Europe/Madrid"
                 }],
