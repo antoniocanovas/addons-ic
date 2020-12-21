@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fleet_vehicle_form_inherit" model="ir.ui.view">
+        <field name="name">fleet vehicle form inherit</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[1]/group[2]" position="after">
+                <notebook name="Analytic entries">
+                    <page name="page_fleet_analytic_entries" string="Analytic entries">
+                        <group name="fleet_group_analytic_lines">
+                            <field name="analytic_tag_id"/>
+                        </group>
+                        <field name="analytic_line_ids" nolabel="1">
+                            <tree>
+                                <field name="date"/>
+                                <field name="name"/>
+                                <field name="account_id"/>
+                                <field name="tag_ids" widget="many2many_tags"/>
+                                <field name="amount" sum="Total"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
