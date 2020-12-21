@@ -264,13 +264,17 @@
                             <t t-set="y" t-value="1"/>
                             <t t-foreach="o.viafirma_ids[index].line_ids" t-as="signature">
                                 <tr>
-                                    <td ><span t-field="o.partner_id.name"/></td>
-                                    <td><span t-field="o.partner_id.vat"/></td>
+                                    <td ><span t-field="signature.partner_id.name"/></td>
+                                    <td><span t-field="signature.partner_id.vat"/></td>
                                     <td>
-                                        <span class="oe_inline" style="color: white;">firmante_</span><span t-esc="x" class="oe_inline" style="color: white;" /><span t-esc="y" class="oe_inline" style="color: white;"/>
+                                        <span class="oe_inline" style="color: white;">firmante_</span><span t-esc="x" class="oe_inline" style="color: white;"/><span t-esc="y" class="oe_inline" style="color: white;"/>
                                     </td>
                                 </tr>
                                 <t t-set="y" t-value=" y + 1 "/>
+                                <t t-if="y == 10">
+                                    <t t-set="y" t-value="0"/>
+                                    <t t-set="x" t-value="x + 1"/>
+                                </t>
                             </t>
                         </tbody>
                     </table>

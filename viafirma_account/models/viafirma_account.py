@@ -36,9 +36,11 @@ class ViafirmaAccount(models.Model):
         line_id = self.env['viafirma.lines'].create({
             'partner_id': self.partner_id.id,
         })
+        line_id_2 = self.env['viafirma.lines'].create({
+            'partner_id': self.user_id.id,
+        })
         line_ids.append(line_id.id)
-
-        print(line_ids)
+        line_ids.append(line_id_2.id)
 
         view_id = self.env.ref('viafirma.viafirma_form').id
 
