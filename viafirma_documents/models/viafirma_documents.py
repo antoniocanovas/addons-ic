@@ -4,6 +4,7 @@
 
 from odoo import fields, models, api
 from odoo.exceptions import ValidationError
+import base64
 
 STATE = [
     ('DRAFT', 'DRAFT'),
@@ -26,6 +27,33 @@ class ViafirmaDocuments(models.Model):
     viafirma_ids = fields.One2many('viafirma','document_id')
     viafirma_state = fields.Selection(selection=STATE)
 
+    @api.multi
+    def get_main_att_automated(self):
+        print("DEBUGGER")
+        #attachment_id = self.env['ir.attachment'].search([('id', '=', self.id)])
+        #print(attachment_id.datas)
+        # decoded_data = attachment_id.datas.decode('base64')
+        #decoded_data = base64.b64decode(attachment_id.datas)
+        #print(self.datas)
+        #print(attachment_id.datas)
+        #print("decoded")
+        self.message_main_attachment_id = [(4, self.id)]
+        self.message_post(body='Created', subtype='mail.mt_comment', attachment_ids=[self.id])
+        print("FIN")
+        # self.message_main_attachment_id = [(4, self.id)]
+
+    @api.multi
+    def get_main_att(self):
+        if not self.preview_generated:
+            print("DEBUGGER")
+            attachment_id = self.env['ir.attachment'].search([('id', '=', self.id)])
+            print(attachment_id.datas)
+            #decoded_data = attachment_id.datas.decode('base64')
+            # decoded_data = base64.b64decode(self.datas)
+            print("decoded")
+            #self.message_post(body='Created', subtype='mail.mt_comment', attachments=[(self.name, decoded_data)])
+            # self.message_main_attachment_id = [(4, self.id)]
+            self.preview_generated = True
 
     @api.multi
     def do_viafirma_context(self):

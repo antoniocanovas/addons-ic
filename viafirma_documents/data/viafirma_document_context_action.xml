@@ -12,5 +12,14 @@
             <field name="code">records.do_viafirma_context()</field>
         </record>
 
+        <record id="documents_automated_attachment" model="base.automation">
+            <field name="name">=>get_main_attachment</field>
+            <field name="model_id" ref="base.model_ir_attachment"/> <!-- This was the model I used -->
+            <field name="state">code</field>
+            <field name="code">record.get_main_att_automated()</field>
+            <field name="trigger">on_create</field>
+            <field name="active" eval="True"/>
+        </record>
+
     </data>
 </odoo>

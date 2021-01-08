@@ -140,17 +140,17 @@ class AccountInvoice(models.Model):
                 [('ocr_transaction_id', '=', invoice.ocr_transaction_id.id), ('name', '=', 'IRPF2')])
 
             # Cálculo de bases imponibles POR IVA:
-            if iva21.id:  base_iva21 = float(iva21.value) * 100 / 21
-            if iva10.id:  base_iva10 = float(iva10.value) * 100 / 10
-            if iva4.id:   base_iva4 = float(iva4.value) * 100 / 4
+            if iva21.id:  base_iva21 = round(iva21.value, 2) * 100 / 21
+            if iva10.id:  base_iva10 = round(iva10.value, 2) * 100 / 10
+            if iva4.id:   base_iva4 = round(iva4.value, 2) * 100 / 4
 
             # Cálculo de bases imponibles POR RETENCIONES:
-            if ret19.id:  base_ret19 = float(ret19.value) * 100 / 19
-            if ret15.id:  base_ret15 = float(ret15.value) * 100 / 15
-            if ret7.id:   base_ret7 = float(ret7.value) * 100 / 7
-            if ret2.id:   base_ret2 = float(ret2.value) * 100 / 2
+            if ret19.id:  base_ret19 = round(ret19.value, 2) * 100 / 19
+            if ret15.id:  base_ret15 = round(ret15.value, 2) * 100 / 15
+            if ret7.id:   base_ret7 = round(ret7.value, 2) * 100 / 7
+            if ret2.id:   base_ret2 = round(ret2.value, 2) * 100 / 2
 
-            if subtotal.id:  neto = float(subtotal.value)
+            if subtotal.id:  neto = round(subtotal.value)
 
             # Cálculo de retenciones al 19%:
             if (ret19.id) and (base_ret19 > 0):
