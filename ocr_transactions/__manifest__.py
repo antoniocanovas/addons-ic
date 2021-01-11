@@ -1,6 +1,6 @@
 {
     'name': 'OCR transactions',
-    'version': '12.0.10.0.9',
+    'version': '12.0.11.0.0',
     'category': '',
     'description': u"""
 

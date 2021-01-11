@@ -15,6 +15,26 @@
         <field name="type">tree</field>
     </record>
 
+    <record id="credentials_tree_search" model="ir.ui.view">
+        <field name="name">partner.credentials.search</field>
+        <field name="model">partner.credentials</field>
+        <field name="arch" type="xml">
+            <search string="Partner Credentials">
+                <field name="name" modifiers="{}"/>
+                <field name="partner_id"/>
+                <field name="user"/>
+                <field name="url"/>
+                <group name="studio_group_by">
+                    <filter context="{'group_by': 'partner_id'}" name="credentials_group_by_partner" string="Partner"/>
+                    <filter context="{'group_by': 'user'}" name="credentials_group_by_user" string="User"/>
+                </group>
+                <filter domain="[[&quot;active&quot;,&quot;=&quot;,False]]" name="credentials_filter_active" string="Archived"/>
+                <filter domain="[[&quot;public&quot;,&quot;=&quot;,True]]" name="credentials_filter_public" string="Public"/>
+                <filter domain="[[&quot;public&quot;,&quot;=&quot;,False]]" name="credentials_filter_private" string="Private"/>
+            </search>
+        </field>
+    </record>
+
     <record id="credentials_form" model="ir.ui.view">
         <field name="arch" type="xml">
             <form>
