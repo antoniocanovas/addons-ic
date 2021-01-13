@@ -15,5 +15,5 @@ class ResCompany(models.Model):
     _inherit = 'res.company'
 
 
-    template_viafirma_documents = fields.Many2one('viafirma.templates',string='Plantilla para nóminas')
+    template_viafirma_documents = fields.Many2one('viafirma.templates',string='Plantilla firma simple')
 

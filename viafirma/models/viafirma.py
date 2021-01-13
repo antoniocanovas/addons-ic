@@ -279,7 +279,7 @@ class Viafirma(models.Model):
 
         evidences = {
             "evidences": self.compose_evidences(self.line_ids)
-       }
+        }
 
         signatures = {
             "signatures": [{
@@ -288,11 +288,12 @@ class Viafirma(models.Model):
                 "typeFormatSign": "PADES_LTA",
                 "stampers": [{
                     "type": "TEXT",
-                    "rotation" : "ROTATE_270",
-                    "width" : 38,
-                    "height" : 300,
-                    "xAxis" : 44,
-                    "yAxis" : 445,
+                    #"rotation": "ROTATE_270",
+                    "width": 38,
+                    "height": 300,
+                    "xAxis": 30,
+                    "yAxis": 546,
+
                     "page": -1,
                     "timeZoneId": "Europe/Madrid"
                 }],
@@ -301,7 +302,6 @@ class Viafirma(models.Model):
         }
 
         data = [{**evidences, **signatures}]
-        #print(data)
         return data
 
     @api.multi
@@ -569,28 +569,17 @@ class Viafirma(models.Model):
 
                             resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
 
-                            print("Depurando mensaje completo")
-                            print(resp_firmweb)
-                            print("Depurando un codigo")
-                            #print(resp_firmweb['messages'])
-
                             # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
                             try:
                                 if resp_firmweb["messages"][0]["code"] != '':
                                     self.tracking_code = resp_firmweb["messages"][0]["code"]
                             except:
                                 self.tracking_code = resp_firmweb
-                            print("Depurando tracking")
-                            print(self.tracking_code)
+
                             self.status_response_firmweb()
                         else:
                             resp_firmweb = response_firmweb.content.decode('utf-8')
 
-                            print("Depurando mensaje completo")
-                            print(resp_firmweb)
-                            print("Depurando un codigo")
-                            # print(resp_firmweb['messages'])
-                            # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
                             try:
                                 if resp_firmweb != '':
                                     self.tracking_code = resp_firmweb
