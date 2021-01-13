@@ -203,13 +203,14 @@ class Viafirma(models.Model):
                     recipient_n = {
                         "type": "SIGNATURE",
                         "id": "evidence_" + str(numEvidence),
-                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_KEY}}','') ",
+                        #"enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_KEY}}','') ",
+                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_NAME}}','') ",
                         "enabled": "true",
                         "visible": "true",
                         #"helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
                         "helpText": recipient.name,
-                        "helpDetail": "Yo, " + recipient.name + ", acepto y firmo este documento.",
-                        #"helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
+                        #"helpDetail": "Yo, " + recipient.name + ", acepto y firmo este documento.",
+                        "helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_KEY}}, acepto y firmo este documento.",
                         #"positions": [{
                         #    "rectangle": {
                         #        "x": positionX,
@@ -292,6 +293,7 @@ class Viafirma(models.Model):
                     "height": 300,
                     "xAxis": 30,
                     "yAxis": 546,
+
                     "page": -1,
                     "timeZoneId": "Europe/Madrid"
                 }],
