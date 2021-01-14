@@ -59,7 +59,7 @@ class AccountInvoice(models.Model):
             # Comprobamos que el partner tiene asignadas cuentas contables por defecto para crear las líneas de factura:
             if (not invoice.partner_id.ocr_sale_account_id.id) or (not invoice.partner_id.ocr_purchase_account_id.id):
                 raise ValidationError(
-                    'Asigne las cuentas contables por defecto para OCR en la ficha de esta empresa, antes de intentar crear las líneas de factura.')
+                    'Asigne los productos o cuentas contables por defecto para OCR en la ficha de esta empresa, antes de intentar crear las líneas de factura.')
 
             # Inicializando:
             base_iva21 = 0
@@ -86,7 +86,6 @@ class AccountInvoice(models.Model):
                 taxiva4 = self.env['ocr.dictionary'].search([('name', '=', 'IVA4'), ('type', '=', 'out_invoice')]).tax_id
                 taxiva0 = self.env['ocr.dictionary'].search([('name', '=', 'IVA0'), ('type', '=', 'out_invoice')]).tax_id
                 # Diccionario de retenciones para ventas:
-
                 taxret19 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF19'), ('type', '=', 'out_invoice')]).tax_id
                 taxret15 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF15'), ('type', '=', 'out_invoice')]).tax_id
                 taxret7 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF7'), ('type', '=', 'out_invoice')]).tax_id
@@ -138,20 +137,27 @@ class AccountInvoice(models.Model):
                 [('ocr_transaction_id', '=', invoice.ocr_transaction_id.id), ('name', '=', 'IRPF7')])
             ret2 = self.env['ocr.values'].search(
                 [('ocr_transaction_id', '=', invoice.ocr_transaction_id.id), ('name', '=', 'IRPF2')])
+            BaseImponible0 = self.env['ocr.values'].search(
+                [('ocr_transaction_id', '=', invoice.ocr_transaction_id.id), ('name', '=', 'BaseImponible0')])
+            BaseImponible4 = self.env['ocr.values'].search(
+                [('ocr_transaction_id', '=', invoice.ocr_transaction_id.id), ('name', '=', 'BaseImponible4')])
+            BaseImponible10 = self.env['ocr.values'].search(
+                [('ocr_transaction_id', '=', invoice.ocr_transaction_id.id), ('name', '=', 'BaseImponible10')])
+            BaseImponible21 = self.env['ocr.values'].search(
+                [('ocr_transaction_id', '=', invoice.ocr_transaction_id.id), ('name', '=', 'BaseImponible21')])
 
-            # Cálculo de bases imponibles POR IVA:
-            print(iva21.value)
-            if iva21.id:  base_iva21 = round(float(iva21.value), 2) * 100 / 21
-            if iva10.id:  base_iva10 = round(float(iva10.value), 2) * 100 / 10
-            if iva4.id:   base_iva4 = round(float(iva4.value), 2) * 100 / 4
-            print("DEBUG2")
+            # Cálculo de bases imponibles POR IVA (ESTO ES UN PROBLEMA PORQUE LOS REDONDEOS SE MULTIPLICAN POR 5 para el 21% y por 10 para 10%):
+            if iva21.id:  base_iva21 = float(BaseImponible21.value)
+            if iva10.id:  base_iva10 = float(BaseImponible21.value)
+            if iva4.id:   base_iva4 = float(BaseImponible21.value)
+
             # Cálculo de bases imponibles POR RETENCIONES:
-            if ret19.id:  base_ret19 = round(float(ret19.value), 2) * 100 / 19
-            if ret15.id:  base_ret15 = round(float(ret15.value), 2) * 100 / 15
-            if ret7.id:   base_ret7 = round(float(ret7.value), 2) * 100 / 7
-            if ret2.id:   base_ret2 = round(float(ret2.value), 2) * 100 / 2
+            if ret19.id:  base_ret19 = float(ret19.value) * 100 / 19
+            if ret15.id:  base_ret15 = float(ret15.value) * 100 / 15
+            if ret7.id:   base_ret7 = float(ret7.value) * 100 / 7
+            if ret2.id:   base_ret2 = float(ret2.value) * 100 / 2
 
-            if subtotal.id:  neto = round(float(subtotal.value))
+            if subtotal.id:  neto = float(subtotal.value)
 
             # Cálculo de retenciones al 19%:
             if (ret19.id) and (base_ret19 > 0):
@@ -324,6 +330,7 @@ class AccountInvoice(models.Model):
             # Reculcalate Taxes
             if invoice.invoice_line_ids.ids:
                 invoice.compute_taxes()
+
 
 
 
