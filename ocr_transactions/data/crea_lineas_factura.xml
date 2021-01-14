@@ -1,7 +1,7 @@
 <odoo>
 
     <record id="autocomplete_invoice_lines" model="ir.actions.server">
-            <field name="name">=> Completa líneas factura</field>
+            <field name="name">=> OCR Completa líneas factura</field>
             <field name="model_id" ref="model_account_invoice"/>
             <field name="active" eval="True"/>
             <field name="state">code</field>
