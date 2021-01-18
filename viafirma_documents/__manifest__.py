@@ -21,7 +21,7 @@
 
     # any module necessary for this one to work correctly
     'depends': ['documents_dms',
-                'base_action_rule',
+                'base_automation',
                 'viafirma'],
 
     # always loaded
