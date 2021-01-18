@@ -13,7 +13,7 @@ class AccountInvoice(models.Model):
     to_correct = fields.Boolean("For correction portal", default=False)
     is_ocr = fields.Boolean('De OCR')
     ocr_delivery_invoice = fields.Boolean(string='Es Gestor OCR',
-                                         default=lambda self: self.env.user.company_id.ocr_delivery_company)
+                                          default=lambda self: self.env.user.company_id.ocr_delivery_company)
     ocr_transaction_error = fields.Char("Error OCR", related='ocr_transaction_id.transaction_error')
 
     @api.multi
@@ -74,7 +74,7 @@ class AccountInvoice(models.Model):
                     cc = producto.property_account_income_id.id
                     descrip = producto.name
                 elif (not producto.property_account_income_id.id) and (
-                producto.categ_id.property_account_income_categ_id.id):
+                        producto.categ_id.property_account_income_categ_id.id):
                     cc = producto.categ_id.property_account_income_categ_id.id
                     descrip = producto.name
                 else:
@@ -99,7 +99,7 @@ class AccountInvoice(models.Model):
                     cc = producto.property_account_expense_id.id
                     descrip = producto.name
                 elif (not producto.property_account_expense_id.id) and (
-                producto.categ_id.property_account_expense_categ_id.id):
+                        producto.categ_id.property_account_expense_categ_id.id):
                     cc = producto.categ_id.property_account_expense_categ_id.id
                     descrip = producto.name
                 else:
@@ -147,17 +147,36 @@ class AccountInvoice(models.Model):
                 [('ocr_transaction_id', '=', invoice.ocr_transaction_id.id), ('name', '=', 'BaseImponible21')])
 
             # Cálculo de bases imponibles POR IVA (ESTO ES UN PROBLEMA PORQUE LOS REDONDEOS SE MULTIPLICAN POR 5 para el 21% y por 10 para 10%):
+            if subtotal.id:  neto = float(subtotal.value)
             if iva21.id:  base_iva21 = float(BaseImponible21.value)
             if iva10.id:  base_iva10 = float(BaseImponible21.value)
             if iva4.id:   base_iva4 = float(BaseImponible21.value)
 
-            # Cálculo de bases imponibles POR RETENCIONES:
-            if ret19.id:  base_ret19 = float(ret19.value) * 100 / 19
-            if ret15.id:  base_ret15 = float(ret15.value) * 100 / 15
-            if ret7.id:   base_ret7 = float(ret7.value) * 100 / 7
-            if ret2.id:   base_ret2 = float(ret2.value) * 100 / 2
-
-            if subtotal.id:  neto = float(subtotal.value)
+            # Cálculo de bases imponibles POR RETENCIONES (para desviaciones por decimales se considera la opción de que sea por el neto completo):
+            if (ret19.id) and (subtotal.id):
+                irpf19_del_neto = round(neto * 19 / 100, 2)
+                if (float(ret19.value) == irpf19_del_neto):
+                    base_ret19 = neto
+                else:
+                    base_ret19 = round(float(ret19.value) * 100 / 19, 2)
+            if (ret15.id) and (subtotal.id):
+                irpf15_del_neto = round(neto * 15 / 100, 2)
+                if (float(ret15.value) == irpf15_del_neto):
+                    base_ret15 = neto
+                else:
+                    base_ret15 = round(float(ret15.value) * 100 / 15, 2)
+            if (ret7.id) and (subtotal.id):
+                irpf7_del_neto = round(neto * 7 / 100, 2)
+                if (float(ret7.value) == irpf7_del_neto):
+                    base_ret7 = neto
+                else:
+                    base_ret7 = round(float(ret7.value) * 100 / 19, 2)
+            if (ret2.id) and (subtotal.id):
+                irpf2_del_neto = round(neto * 2 / 100, 2)
+                if (float(ret2.value) == irpf2_del_neto):
+                    base_ret2 = neto
+                else:
+                    base_ret2 = round(float(ret2.value) * 100 / 2, 2)
 
             # Cálculo de retenciones al 19%:
             if (ret19.id) and (base_ret19 > 0):
