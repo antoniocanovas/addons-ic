@@ -99,7 +99,7 @@ class Viafirma(models.Model):
 
     @api.multi
     def compose_recipients(self, line_ids):
-
+        print("compose recipients")
         recipients = []
         x = 0
         y = 1
@@ -123,7 +123,7 @@ class Viafirma(models.Model):
 
     @api.multi
     def compose_metadatalist(self, line_ids):
-
+        print("compose metadatalist ")
         metadatalist = []
         x = 0
         y = 1
@@ -142,7 +142,7 @@ class Viafirma(models.Model):
 
     @api.multi
     def compose_metadatalist_messages(self, line_ids):
-
+        print("compose metadatalist messages")
         metadatalist = []
         x = 0
         y = 1
@@ -171,7 +171,7 @@ class Viafirma(models.Model):
 
     @api.multi
     def compose_evidences(self, line_ids):
-
+        print("compose evidences")
         ''' El maximo en Anchura es 596 puntos y en altura 838, teniendo en cuenta esta medidas por pagina, hay que divir el numero de firmantes entre este espacio'''
 
         theEvidences = []
@@ -275,7 +275,7 @@ class Viafirma(models.Model):
 
     @api.multi
     def compose_policies(self):
-
+        print("compose policies")
         evidences = {
             "evidences": self.compose_evidences(self.line_ids)
         }
@@ -308,7 +308,7 @@ class Viafirma(models.Model):
             y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
 
         # def_check_parameters
-
+        print("compose call simple IN")
         groupCode = {
             "groupCode": self.env.user.company_id.group_viafirma
         }
@@ -381,7 +381,6 @@ class Viafirma(models.Model):
         }
 
         data = {**groupCode, **workflow, **notification, **metadatalist, **document, **callbackmails, **callbackurl }
-        print(data)
 
         return data
 
@@ -434,7 +433,6 @@ class Viafirma(models.Model):
 
         #data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
         data = {**groupCode, **workflow, **recipients, **customization, **messages, **callbackmails}
-        print(data)
         #raise ValidationError ("fin")
         return data
 
@@ -527,16 +525,18 @@ class Viafirma(models.Model):
             raise ValidationError(
                 "Template no existe")
 
+        print("DEBUGG INIT")
+
         if self.line_ids:
             for line in self.line_ids:
-
+                print("linea",line)
                 self.check_mandatory_attr(self.template_id.firma_ids, line.partner_id)
                 self.check_mandatory_attr(self.notification_type_ids, line.partner_id)
 
             if not self.document_to_send:
                 raise ValidationError(
                     "Need a binary to send")
-
+            print("after line")
             viafirma_user = self.env.user.company_id.user_viafirma
             viafirma_pass = self.env.user.company_id.pass_viafirma
 
@@ -546,15 +546,20 @@ class Viafirma(models.Model):
                     #search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
                     #datas = self.compose_call()
 
-
+                    print("before compose call")
                     #En función del template envaremos policy o no
 
                     if self.template_id.send_policy == True:
+                        print("compose multiple")
                         search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
                         datas = self.compose_call_multiple()
                     else:
                         search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
+                        print("compose simple")
                         datas = self.compose_call()
+
+
+                    print("after compose call")
 
                     response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
                                                      auth=(viafirma_user, viafirma_pass))
