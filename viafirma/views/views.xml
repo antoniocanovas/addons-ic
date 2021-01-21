@@ -40,18 +40,18 @@
                                 <group name="viafirma_data" col="4">
                                     <field name="document_formRequired"/>
                                     <field name="res_id_name"/>
-                                    <field name="document_signed"/>
-                                    <field name="document_trail"/>
+                                    <field name="document_signed" readonly="1"/>
+                                    <field name="document_trail" readonly="1"/>
                                     <field name="completed_date"/>
                                 </group>
                                 <group name="viafirma_tecnico" col="4" groups="base.group_system">
-                                    <field name="tracking_code"/>
+                                    <field name="tracking_code" readonly="1"/>
                                     <!--<field name="police_code"/>
                                     <field name="viafirma_groupcode_id"/>-->
                                     <field name="res_model"/>
                                     <field name="res_id"/>
                                     <field name="template_type"/>
-                                    <field name="document_to_send" readonly="1"/>
+                                    <field name="document_to_send" />
                                 </group>
                             </page>
                         </notebook>

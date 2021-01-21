@@ -479,7 +479,6 @@ class Viafirma(models.Model):
                     self.state = statu_firmweb["status"]
                     # statu_firmweb["status"] contiene el estado actual de la peticion y que me puede servir para cambiar el campo viafirma.status
                     if statu_firmweb["status"] == 'RESPONSED':
-                        print("Descargar documentes")
                         # ya ha sido firmada me puedo descargar el documento firmado y el trail de la firma
                         # empezamos por el documento firmado
                         url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/signed/' + response_code
@@ -527,18 +526,15 @@ class Viafirma(models.Model):
             raise ValidationError(
                 "Template no existe")
 
-        print("DEBUGG INIT")
-
         if self.line_ids:
             for line in self.line_ids:
-                print("linea",line)
                 self.check_mandatory_attr(self.template_id.firma_ids, line.partner_id)
                 self.check_mandatory_attr(self.notification_type_ids, line.partner_id)
 
             if not self.document_to_send:
                 raise ValidationError(
                     "Need a binary to send")
-            print("after line")
+
             viafirma_user = self.env.user.company_id.user_viafirma
             viafirma_pass = self.env.user.company_id.pass_viafirma
 
@@ -552,23 +548,19 @@ class Viafirma(models.Model):
                     #En función del template envaremos policy o no
 
                     if self.template_id.send_policy == True:
-                        print("compose multiple")
                         search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
                         datas = self.compose_call_multiple()
                     else:
-                        search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
-                        print("compose simple")
-                        datas = self.compose_call()
-
-
-                    print("after compose call")
+                        if len(self.line_ids) > 1:
+                            raise ValidationError(
+                                "Esta plantilla no soporta más de un firmante")
+                        else:
+                            search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
+                            datas = self.compose_call()
 
                     response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
                                                      auth=(viafirma_user, viafirma_pass))
 
-                    print("Depurando Codigos lineas")
-                    print(response_firmweb)
-                    print(response_firmweb.content)
                     if response_firmweb.ok:
                         if self.template_id.send_policy == True:
 
@@ -590,8 +582,6 @@ class Viafirma(models.Model):
                                     self.tracking_code = resp_firmweb
                             except:
                                 self.tracking_code = resp_firmweb
-                            print("Depurando tracking")
-                            print(self.tracking_code)
                             self.status_response_firmweb()
 
                     else:
