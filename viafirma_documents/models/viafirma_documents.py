@@ -93,7 +93,7 @@ class ViafirmaDocuments(models.Model):
                             })
 
 
-            viafirma.firma_web()
+            viafirma.call_viafirma()
             record.viafirma_state = viafirma.state
 
 

@@ -129,7 +129,7 @@ class ViafirmaOperations(models.Model):
             for resu_template in resu_templates:
                 self.create_templates(resu_template)
 
-    def firma_web(self):
+    def call_viafirma(self):
         ''' solo firma web y un solo firmante, la mas simple de todas, de momento selecciono todos los registros que tenga en el modelo viafirma y que haga el proceso
          de envio para cada uno de ellos, aunque no coge ningun valor de estos, ni emqail ni adjunto'''
 
