@@ -344,17 +344,8 @@ class Viafirma(models.Model):
                         "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_KEY}}','') ",
                         "enabled": "true",
                         "visible": "true",
-                        # "helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
                         "helpText": recipient.name,
                         "helpDetail": "Yo, " + recipient.name + ", acepto y firmo este documento.",
-                        # "helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
-                        # "positions": [{
-                        #    "rectangle": {
-                        #        "x": positionX,
-                        #        "y": positionY,
-                        #        "width": forWidth,
-                        #        "height": forHigh
-                        #    },
                         "positionsMatch": [{
                             "id": "positionmatch_" + str(posMatch),
                             "text": "firmante_" + str(x) + str(y),
@@ -362,7 +353,6 @@ class Viafirma(models.Model):
                             "yoffset": -10,
                             "width": 60,
                             "height": 30
-                            # "page": -1
                         }],
                         "typeFormatSign": "XADES_B",
                         "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
