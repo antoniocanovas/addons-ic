@@ -56,7 +56,7 @@
                             </page>
                         </notebook>
                         <group>
-                            <button name="firma_web" string="Send" type="object" class="oe_highlight oe_read_only"/>
+                            <button name="call_viafirma" string="Send" type="object" class="oe_highlight oe_read_only"/>
                         </group>
                     </sheet>
                     <div class="oe_chatter">
@@ -113,7 +113,7 @@
                             <field name="description"/>
                             <field name="code"/>
                             <field name="num_firmantes"/>
-                            <field name="send_policy"/>
+                            <field name="multiple_signatures"/>
                         </group>
                         <group name="notifications" col="4">
                             <field name="firma_ids" widget="many2many_tags"/>

@@ -55,6 +55,7 @@ class ViafirmaAccount(models.Model):
             'res_model': 'Facturas',
             'res_id': self.id,
             'res_id_name': str(self.sequence_number_next_prefix) + str(self.sequence_number_next),
+            'document_policies': True,
         })
 
         pdf = self.env.ref('viafirma_account.viafirma_account_report').sudo().render_qweb_pdf([self.id])[0]
@@ -72,67 +73,5 @@ class ViafirmaAccount(models.Model):
             'domain':[('id','=',viafirma_id)],
             'target': 'new',
         }
-
-        #return {
-        #    'name': "Nuevo Viafirma",
-        #    'type': 'ir.actions.act_window',
-        #    'view_type': 'form',
-        #    'view_mode': 'form',
-        #    'res_model': 'viafirma',
-        #    'view_id': view_id,
-        #    'target': 'new',
-        #    'context': {
-        #        'default_name': str(self.env.user.name) + '-' + str(self.sequence_number_next_prefix) + str(self.sequence_number_next),
-        #        'default_noti_text': str(self.env.user.name) + '-' + str(self.sequence_number_next_prefix) + str(self.sequence_number_next),
-        #        'default_noti_subject': str(self.env.user.name) + '-' + str(self.sequence_number_next_prefix) + str(self.sequence_number_next),
-        #        'default_document_to_send': base64.encodebytes(pdf),
-        #        'default_template_type': 'base64',
-        #        'default_line_ids': [(6,0,line_ids)],
-                #'noti_text': 'texto',
-                #'noti_subject': 'subject',
-        #        'default_invoice_id': self.id,
-        #        'default_res_model':'Facturas',
-        #        'default_res_id':self.id,
-        #        'default_res_id_name':str(self.sequence_number_next_prefix) + str(self.sequence_number_next),
-        #        'domain': [('id', '=', viafirma_id)],
-        #    }
-        #}
-        #viafirma_id = self.env['viafirma'].create({
-            #'name': str(self.env.user.name) + '-' + str(self.sequence_number_next_prefix) + str(self.sequence_number_next),
-            #'binary_to_encode_64': base64.encodebytes(pdf),
-            #'template_type': 'base64',
-            #'line_ids': [(6,0,line_ids)],
-            #'noti_text': 'texto',
-            #'noti_subject': 'subject',
-            #'invoice_id': self.id,
-            #'res_model':'Facturas',
-            #'res_id':self.id,
-            #'res_id_name':str(self.sequence_number_next_prefix) + str(self.sequence_number_next),
-
-        #})
-
-
-        #self.go_viafirma(viafirma_id)
-
-    #@api.multi
-    #def go_viafirma(self, viafirma_id):
-    #    print("Wizard")
-    #    view_id = self.env.ref('viafirma.viafirma_form').id
-
-    #    return {
-    #        'name': "Nuevo Viafirma",
-    #        'type': 'ir.actions.act_window',
-    #        'view_type': 'form',
-    #        'view_mode': 'form',
-    #        'res_model': 'viafirma',
-    #        'view_id': view_id,
-    #        'target': 'new',
-    #        'context': {
-    #            'default_id': viafirma_id,
-            #    'default_invoice_id_link': ocr_transaction_id.invoice_id.id,
-            #    'default_attachment_datas': attachment,
-            #    'default_original_ocr_transaction_id': self.original_ocr_transaction_id.id,
-    #        }
-    #    }
 
 

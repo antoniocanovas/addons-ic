@@ -21,7 +21,8 @@ class ViafirmaTemplates(models.Model):
         domain=[('type', '=', 'signature')],
     )
     num_firmantes = fields.Integer('Numero firmantes')
-    send_policy = fields.Boolean('Incluir tabla de firmantes')
+    send_policy = fields.Boolean('Envía políticas') # A eliminar
+    multiple_signatures = fields.Boolean('Multiples firmantes')
 
     models_use = fields.Many2many(
         comodel_name="ir.model",

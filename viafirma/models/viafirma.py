@@ -63,9 +63,11 @@ class Viafirma(models.Model):
     noti_subject = fields.Char(string='Asunto')
     template_type = fields.Selection(selection=[('url','URL'),('base64','BASE64'),('message','MESSAGE')],string="Tipo de teemplate",default='base64')
     templareReference = fields.Char(defautl='"templateReference": ')  # este campo sirve para construir la linea que puede ser una url, base65 o un codigo
+
     document_readRequired = fields.Boolean(string='Lectura obligatoria',default=False)
     document_watermarkText = fields.Char(string='Marca de agua')
     document_formRequired = fields.Boolean(string='Formulario',default=False)
+    document_policies = fields.Boolean(string='Politicas en Documento')
 
     viafirma_groupcode_id = fields.Many2one(
         'viafirma.groups',
@@ -168,139 +170,6 @@ class Viafirma(models.Model):
                 x += 1
 
         return metadatalist
-
-    @api.multi
-    def compose_evidences(self, line_ids):
-        print("compose evidences")
-        ''' El maximo en Anchura es 596 puntos y en altura 838, teniendo en cuenta esta medidas por pagina, hay que divir el numero de firmantes entre este espacio'''
-
-        theEvidences = []
-        x = 0
-        y = 1
-        numSignatures = len(line_ids)
-        # defino forWidth y forHigh para que el valor asignado no coincida con ninguna division por el numero de firmantes y confundir el codigo para que no
-        # situe las cajas de firma en lugares equivocados equidistantes, por eso han de tomar 160 y 90 (valores fijos) segun el caso
-        # quito 30 de cada margen horizontal, para que la firma se imprima sin problemas
-        forWidth = (596-60) // numSignatures
-        # para este caso la altura siempre la misma 90
-        forHigh = 90
-        # para el caso de que se firme en vertical, dejo el mismo margen de 30 por lado vertical oara que imprima sin problemas
-        #forHigh = (838-60) // numSignatures
-        #forWidth = 160
-        # a partir de donde en horizontal se fijan las firmas, pegado al margen izquierdo la x, la y pegada al margen de abajo
-        positionX = 30
-        positionY = 68
-        theTemplate = self.template_id
-        for firma in theTemplate.firma_ids:
-            for recipient in line_ids:
-                numEvidence = 400 + (x * 1) + (y * 10)
-                posMatch = 1000 + (x * 1) + (y * 10)
-                if forWidth != 160:
-                    positionX = 30 + (forWidth * (y - 1) * 1)
-                if forHigh != 90:
-                    positionY = 30 + (forHigh * (y - 1) * 1)
-                if firma.value == 'email':
-                    recipient_n = {
-                        "type": "SIGNATURE",
-                        "id": "evidence_" + str(numEvidence),
-                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(y) + "_KEY}}','') ",
-                        "enabled": "true",
-                        "visible": "true",
-                        #"helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
-                        "helpText": recipient.name,
-                        "helpDetail": "Yo, " + recipient.name + ", acepto y firmo este documento.",
-                        #"helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
-                        #"positions": [{
-                        #    "rectangle": {
-                        #        "x": positionX,
-                        #        "y": positionY,
-                        #        "width": forWidth,
-                        #        "height": forHigh
-                        #    },
-                        "positionsMatch" : [{
-                            "id": "positionmatch_" + str(posMatch),
-                            "text": "firmante_" + str(x) + str(y),
-                            "xoffset": 120,
-                            "yoffset": -10,
-                            "width": 60,
-                            "height": 30
-                            #"page": -1
-                            }],
-                        "typeFormatSign": "XADES_B",
-                        "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
-                    }
-                else:
-                    numberIter = int ((int(x) * 10) + int(y))
-                    nIterac = numberIter - numSignatures
-                    newx = nIterac // 10
-                    newy = nIterac % 10
-                    print(x,y,newx,newy)
-                    recipient_n = {
-                        "type": "OTP_SMS",
-                        "id": "evidence_" + str(numEvidence),
-                        "enabled": "true",
-                        "visible": "true",
-                        #"helpText": "{{FIRMANTE_" + str(newx) + str(newy) + "_NAME}} Verificación SMS",
-                        "helpText": recipient.name + " Verificación SMS",
-                        # "positionsMatch" : [{
-                        "positions": [{
-                            # "id": "positionmatch_" + str(posMatch),
-                            # "text": "la firma " + str(newx) + str(newy),
-                            "rectangle": {
-                                #"x": positionX,
-                                "x": 60,
-                                "y": positionY,
-                                #"width": forWidth,
-                                #"height": forHigh
-                                "width": 30,
-                                "height": 30
-                            },
-                            "page": -1
-                        }],
-                        "metadataList": [{
-                            "key": "phoneNumber",
-                            #"key": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
-                            "value": recipient.mobile,
-                            "internal": "false"
-                        }],
-                        "typeFormatSign": "XADES_B"
-                    }
-                theEvidences.append(recipient_n)
-                y += 1
-                if y == 10:
-                    y = 0
-                    x += 1
-
-        return theEvidences
-
-    @api.multi
-    def compose_policies(self):
-        print("compose policies")
-        evidences = {
-            "evidences": self.compose_evidences(self.line_ids)
-        }
-
-        signatures = {
-            "signatures": [{
-                "type": "SERVER",
-                "helpText": "Sello Electrónico",
-                "typeFormatSign": "PADES_LTA",
-                "stampers": [{
-                    "type": "TEXT",
-                    #"rotation": "ROTATE_270",
-                    "width": 38,
-                    "height": 300,
-                    "xAxis": 30,
-                    "yAxis": 546,
-                    "page": -1,
-                    "timeZoneId": "Europe/Madrid"
-                }],
-                "lastUpdated": 0
-            }]
-        }
-
-        data = [{**evidences, **signatures}]
-        return data
 
     @api.multi
     def compose_call(self):
@@ -424,7 +293,7 @@ class Viafirma(models.Model):
                     "templateCode": self.template_id.code
                 },
                 "metadataList": metadata2,
-            "policies": self.compose_policies()
+            #"policies": self.compose_policies() #comentado demo multiple sin enviar claves en blanco
             }]
         }
         callbackmails = {
@@ -433,9 +302,196 @@ class Viafirma(models.Model):
 
         #data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
         data = {**groupCode, **workflow, **recipients, **customization, **messages, **callbackmails}
+
         #raise ValidationError ("fin")
         return data
 
+        # Envío de poíticas para documentos self generated
+
+    @api.multi
+    def compose_evidences(self, line_ids):
+        ''' El maximo en Anchura es 596 puntos y en altura 838, teniendo en cuenta esta medidas por pagina, hay que divir el numero de firmantes entre este espacio'''
+
+        theEvidences = []
+        x = 0
+        y = 1
+        numSignatures = len(line_ids)
+        # defino forWidth y forHigh para que el valor asignado no coincida con ninguna division por el numero de firmantes y confundir el codigo para que no
+        # situe las cajas de firma en lugares equivocados equidistantes, por eso han de tomar 160 y 90 (valores fijos) segun el caso
+        # quito 30 de cada margen horizontal, para que la firma se imprima sin problemas
+        forWidth = (596 - 60) // numSignatures
+        # para este caso la altura siempre la misma 90
+        forHigh = 90
+        # para el caso de que se firme en vertical, dejo el mismo margen de 30 por lado vertical oara que imprima sin problemas
+        # forHigh = (838-60) // numSignatures
+        # forWidth = 160
+        # a partir de donde en horizontal se fijan las firmas, pegado al margen izquierdo la x, la y pegada al margen de abajo
+        positionX = 30
+        positionY = 68
+        theTemplate = self.template_id
+        for firma in theTemplate.firma_ids:
+            for recipient in line_ids:
+                numEvidence = 400 + (x * 1) + (y * 10)
+                posMatch = 1000 + (x * 1) + (y * 10)
+                if forWidth != 160:
+                    positionX = 30 + (forWidth * (y - 1) * 1)
+                if forHigh != 90:
+                    positionY = 30 + (forHigh * (y - 1) * 1)
+                if firma.value == 'email':
+                    recipient_n = {
+                        "type": "SIGNATURE",
+                        "id": "evidence_" + str(numEvidence),
+                        "enabledExpression": str("formItemIsNotEmpty('{{FIRMANTE_") + str(0) + str(
+                            y) + "_KEY}}','') ",
+                        "enabled": "true",
+                        "visible": "true",
+                        # "helpText": "{{FIRMANTE_" + str(x) + str(y) + "_NAME}}",
+                        "helpText": recipient.name,
+                        "helpDetail": "Yo, " + recipient.name + ", acepto y firmo este documento.",
+                        # "helpDetail": "Yo, {{FIRMANTE_" + str(0) + str(y) + "_NAME}}, acepto y firmo este documento.",
+                        # "positions": [{
+                        #    "rectangle": {
+                        #        "x": positionX,
+                        #        "y": positionY,
+                        #        "width": forWidth,
+                        #        "height": forHigh
+                        #    },
+                        "positionsMatch": [{
+                            "id": "positionmatch_" + str(posMatch),
+                            "text": "firmante_" + str(x) + str(y),
+                            "xoffset": 120,
+                            "yoffset": -10,
+                            "width": 60,
+                            "height": 30
+                            # "page": -1
+                        }],
+                        "typeFormatSign": "XADES_B",
+                        "recipientKey": "FIRMANTE_" + str(x) + str(y) + "_KEY"
+                    }
+                else:
+                    numberIter = int((int(x) * 10) + int(y))
+                    nIterac = numberIter - numSignatures
+                    newx = nIterac // 10
+                    newy = nIterac % 10
+                    print(x, y, newx, newy)
+                    recipient_n = {
+                        "type": "OTP_SMS",
+                        "id": "evidence_" + str(numEvidence),
+                        "enabled": "true",
+                        "visible": "true",
+                        # "helpText": "{{FIRMANTE_" + str(newx) + str(newy) + "_NAME}} Verificación SMS",
+                        "helpText": recipient.name + " Verificación SMS",
+                        # "positionsMatch" : [{
+                        "positions": [{
+                            # "id": "positionmatch_" + str(posMatch),
+                            # "text": "la firma " + str(newx) + str(newy),
+                            "rectangle": {
+                                # "x": positionX,
+                                "x": 60,
+                                "y": positionY,
+                                # "width": forWidth,
+                                # "height": forHigh
+                                "width": 30,
+                                "height": 30
+                            },
+                            "page": -1
+                        }],
+                        "metadataList": [{
+                            "key": "phoneNumber",
+                            # "key": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
+                            "value": recipient.mobile,
+                            "internal": "false"
+                        }],
+                        "typeFormatSign": "XADES_B"
+                    }
+                theEvidences.append(recipient_n)
+                y += 1
+                if y == 10:
+                    y = 0
+                    x += 1
+
+        return theEvidences
+
+    @api.multi
+    def compose_policies(self):
+        evidences = {
+            "evidences": self.compose_evidences(self.line_ids)
+        }
+
+        signatures = {
+            "signatures": [{
+                "type": "SERVER",
+                "helpText": "Sello Electrónico",
+                "typeFormatSign": "PADES_LTA",
+                "stampers": [{
+                    "type": "TEXT",
+                    # "rotation": "ROTATE_270",
+                    "width": 38,
+                    "height": 300,
+                    "xAxis": 30,
+                    "yAxis": 546,
+                    "page": -1,
+                    "timeZoneId": "Europe/Madrid"
+                }],
+                "lastUpdated": 0
+            }]
+        }
+
+        data = [{**evidences, **signatures}]
+        return data
+
+    def compose_call_policies(self):
+        ''' tenemos que componer la llamada a la firma, por lo que tenemos que conocer el groupcode, el texto de la notificacion
+            y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
+
+        groupCode = {
+            "groupCode": self.env.user.company_id.group_viafirma
+        }
+        workflow = {
+            "workflow": {
+                "type": "WEB",
+            },
+        }
+        recip = self.compose_recipients(self.line_ids)
+        recipients = {
+            "recipients": recip,
+        }
+        # metadata = self.compose_metadatalist(self.line_ids)
+        # metadatalist = {
+        #    "metadataList": metadata,
+        # }
+        metadata = self.compose_metadatalist_messages(self.line_ids)
+        metadatalist = {
+            "metadataList": metadata,
+        }
+        customization = {
+            "customization": {
+                "requestMailSubject": "Documento listo para firmar",
+                "requestMailBody": "Hola {{recipient.name}}. <br /><br />Ya puedes revisar y firmar el documento. Haz click en el siguiente enlace y sigue las instrucciones.",
+                "requestSmsBody": "En el siguiente link puedes revisar y firmar el documento"
+            },
+        }
+        metadata2 = self.compose_metadatalist_messages(self.line_ids)
+        messages = {
+            "messages": [{
+                "document": {
+                    "templateType": self.template_type,
+                    "templateReference": str(self.document_to_send.decode('ascii')),
+                    "templateCode": self.template_id.code
+                },
+                "metadataList": metadata2,
+                "policies": self.compose_policies()
+            }]
+        }
+        callbackmails = {
+            "callbackMails": self.env.user.email,
+        }
+
+        # data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
+        data = {**groupCode, **workflow, **recipients, **customization, **messages, **callbackmails}
+
+        # raise ValidationError ("fin")
+        return data
 
     @api.multi
     def download_document(self, url, header, response_code, viafirma_user, viafirma_pass):
@@ -515,7 +571,7 @@ class Viafirma(models.Model):
                    "%s is mandatory for this template" % attr.value)
 
     @api.multi
-    def firma_web(self):
+    def call_viafirma(self):
         ''' solo firma web y un solo firmante, la mas simple de todas, de momento selecciono todos los registros que tenga en el modelo viafirma y que haga el proceso
          de envio para cada uno de ellos, aunque no coge ningun valor de estos, ni emqail ni adjunto'''
 
@@ -542,13 +598,18 @@ class Viafirma(models.Model):
                     #search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
                     #datas = self.compose_call()
 
-                    print("before compose call")
                     #En función del template envaremos policy o no
 
-                    if self.template_id.send_policy == True:
+                    if self.document_policies:
+                        print("polici")
+                        search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
+                        datas = self.compose_call_policies()
+                    elif self.template_id.multiple_signatures:
+                        print("multiple")
                         search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
                         datas = self.compose_call_multiple()
                     else:
+                        print("simple")
                         if len(self.line_ids) > 1:
                             raise ValidationError(
                                 "Esta plantilla no soporta más de un firmante")
@@ -560,7 +621,7 @@ class Viafirma(models.Model):
                                                      auth=(viafirma_user, viafirma_pass))
 
                     if response_firmweb.ok:
-                        if self.template_id.send_policy == True:
+                        if self.template_id.send_policy or self.template_id.multiple_signatures:
 
                             resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
 
@@ -593,43 +654,3 @@ class Viafirma(models.Model):
             raise ValidationError(
                 "No hay firmantes seleccionados")
 
-
-        # Esto para multiples records desde interfaz
-        def firma_web_multi(self):
-            ''' solo firma web y un solo firmante, la mas simple de todas, de momento selecciono todos los registros que tenga en el modelo viafirma y que haga el proceso
-             de envio para cada uno de ellos, aunque no coge ningun valor de estos, ni emqail ni adjunto'''
-            viafirma_user = self.env.user.company_id.user_viafirma
-            viafirma_pass = self.env.user.company_id.pass_viafirma
-
-            if viafirma_user:
-                if viafirma_pass:
-                    print("Inicio commm")
-                    envios = self.env['viafirma'].search([('state', '=', 'DRAFT')])
-                    for envio in envios:
-                        print(envio)
-                        header = self.get_uploader_header()
-                        search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
-                        #datas = self.compose_call()
-                        datas = self.compose_call_multiple()
-                        print(datas)
-
-                        response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
-                                                         auth=(viafirma_user, viafirma_pass))
-
-                        print(response_firmweb, response_firmweb.content.decode('utf-8'), response_firmweb.ok)
-                        if response_firmweb.ok:
-                            # resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
-                            resp_firmweb = response_firmweb.content.decode('utf-8')
-                            print(resp_firmweb)
-                            # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
-                            # si compones en tu llamada por messages, ya no vale el primer codigo que manda, es el primero dentro del array messages
-                            try:
-                                if resp_firmweb["messages"][0]["code"] != '':
-                                    envio.tracking_code = resp_firmweb["messages"][0]["code"]
-                            except:
-                                envio.tracking_code = resp_firmweb
-                            # ya puedo hacer la primera consulta para saber si ha habido algun error
-                            self.status_response_firmweb()
-            else:
-                raise ValidationError(
-                    "You must set Viafirma login Api credentials")
