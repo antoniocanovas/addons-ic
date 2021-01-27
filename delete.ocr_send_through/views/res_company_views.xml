@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_company_ocr2invoice" model="ir.ui.view">
+        <field name="name">OCR company controller</field>
+        <field name="model">res.company</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[1]" position="after">
+                <page name="OCR" string="OCR">
+                    <group>
+                        <field name="api_key"/>
+                        <field name="api_domain"/>
+                    </group>
+                    <group>
+                        <field name="ocr_disable_queue_jobs"/>
+
+                    </group>
+                    <group>
+                        <button name="action_get_invoices" string="Get Documents" type="object" class="oe_highlight oe_read_only"/>
+                        <field name="last_connection_date" readonly="True"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//notebook/page[@name='OCR']" position="after">
+                <page string="Job state" name="job_state">
+                    <group>
+                        <field name="ocr_transactions_jobs_ids"
+                               options="{'reload_on_button': true}"
+                               nolabel="1"
+                               readonly="1"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

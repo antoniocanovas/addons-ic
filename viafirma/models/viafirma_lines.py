@@ -37,3 +37,4 @@ class ViafirmaLines(models.Model):
         default='DRAFT'
     )
     viafirma_id = fields.Many2one('viafirma')
+    viafirma_doc_id = fields.Many2one('docs.docs')

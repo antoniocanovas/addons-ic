@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <template id="redirect_correction_form" name="correction form">
+
+        <div class="row">
+            <div class="col-md-12 mt8">
+                <h3 class="heading_title mt16 text-center">Acces to correction form</h3>
+            </div>
+            <div t-att-data-id="invoice.id">
+                <form name="correction" t-att-action="action" method="POST">
+                    <div class="action-buttons" id="correctionportal">
+                        <input type="hidden" name="apikey" t-att-value="apikey"/>
+                    </div>
+                </form>
+                <script type="text/javascript">
+                    document.correction.submit();
+                </script>
+            </div>
+        </div>
+
+    </template>
+
+</odoo>

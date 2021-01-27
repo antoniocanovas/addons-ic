@@ -1,0 +1,327 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+
+        <record id="baseimponible_0_out_invoice" model="ocr.dictionary">
+            <field name="name">BaseImponible0</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="baseimponible_4_out_invoice" model="ocr.dictionary">
+            <field name="name">BaseImponible4</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="baseimponible_10_out_invoice" model="ocr.dictionary">
+            <field name="name">BaseImponible10</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="baseimponible_21_out_invoice" model="ocr.dictionary">
+            <field name="name">BaseImponible21</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="baseimponible_0_in_invoice" model="ocr.dictionary">
+            <field name="name">BaseImponible0</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="baseimponible_4_in_invoice" model="ocr.dictionary">
+            <field name="name">BaseImponible4</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="baseimponible_10_in_invoice" model="ocr.dictionary">
+            <field name="name">BaseImponible10</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="baseimponible_21_in_invoice" model="ocr.dictionary">
+            <field name="name">BaseImponible21</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        #################### IMPUESTOS ##########################333
+
+        <record id="iva_0_out" model="ocr.dictionary">
+            <field name="name">IVA0</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_p_iva0_bc</field>
+        </record>
+
+        <record id="iva_0_in" model="ocr.dictionary">
+            <field name="name">IVA0</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_s_iva0</field>
+        </record>
+
+        <record id="iva_4_out" model="ocr.dictionary">
+            <field name="name">IVA4</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_p_iva4_bc</field>
+        </record>
+
+        <record id="iva_4_in" model="ocr.dictionary">
+            <field name="name">IVA4</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_s_iva4b</field>
+        </record>
+
+        <record id="iva_10_out" model="ocr.dictionary">
+            <field name="name">IVA10</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_p_iva10_bc</field>
+        </record>
+
+        <record id="iva_10_in" model="ocr.dictionary">
+            <field name="name">IVA10</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_s_iva10b</field>
+        </record>
+
+        <record id="iva_21_out" model="ocr.dictionary">
+            <field name="name">IVA21</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_p_iva21_bc</field>
+        </record>
+
+        <record id="iva_21_in" model="ocr.dictionary">
+            <field name="name">IVA21</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_s_iva21b</field>
+        </record>
+
+        <record id="tipoiva_0_out" model="ocr.dictionary">
+            <field name="name">TipoIVA0</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="tipoiva_4_out" model="ocr.dictionary">
+            <field name="name">TipoIVA4</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+        <record id="tipoiva_10_out" model="ocr.dictionary">
+            <field name="name">TipoIVA10</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+        <record id="tipoiva_21_out" model="ocr.dictionary">
+            <field name="name">TipoIVA21</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="tipoiva_0_in" model="ocr.dictionary">
+            <field name="name">TipoIVA0</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="tipoiva_4_in" model="ocr.dictionary">
+            <field name="name">TipoIVA4</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+        <record id="tipoiva_10_in" model="ocr.dictionary">
+            <field name="name">TipoIVA10</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+        <record id="tipoiva_21_in" model="ocr.dictionary">
+            <field name="name">TipoIVA21</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        #################### TOTALES ################
+
+        <record id="total_out" model="ocr.dictionary">
+            <field name="name">TOTAL</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model">account.invoice</field>
+            <field name="res_field">amount_total</field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="total_in" model="ocr.dictionary">
+            <field name="name">TOTAL</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model">account.invoice</field>
+            <field name="res_field">amount_total</field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="subtotal_in" model="ocr.dictionary">
+            <field name="name">SubTotal</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model">account.invoice</field>
+            <field name="res_field">amount_untaxed</field>
+            <field name="res_id"></field>
+        </record>
+        <record id="subtotal_out" model="ocr.dictionary">
+            <field name="name">SubTotal</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model">account.invoice</field>
+            <field name="res_field">amount_untaxed</field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="fecha_value_out" model="ocr.dictionary">
+            <field name="name">Fecha</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model">account.invoice</field>
+            <field name="res_field">date_invoice</field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="fecha_value_in" model="ocr.dictionary">
+            <field name="name">Fecha</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model">account.invoice</field>
+            <field name="res_field">date_invoice</field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="forma_pago_out" model="ocr.dictionary">
+            <field name="name"></field>
+            <field name="type">out_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="forma_pago_in" model="ocr.dictionary">
+            <field name="name"></field>
+            <field name="type">in_invoice</field>
+            <field name="res_model"></field>
+            <field name="res_field"></field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="cif_value" model="ocr.dictionary">
+            <field name="name">CIF</field>
+            <field name="type"></field>
+            <field name="res_model">account.invoice</field>
+            <field name="res_field">vat</field>
+            <field name="res_id"></field>
+        </record>
+
+        <record id="irpf2_out" model="ocr.dictionary">
+            <field name="name">IRPF2</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_s_irpf2</field>
+        </record>
+        <record id="irpf2_in" model="ocr.dictionary">
+            <field name="name">IRPF2</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_p_irpf2</field>
+        </record>
+        <record id="irpf7_out" model="ocr.dictionary">
+            <field name="name">IRPF7</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_s_irpf7</field>
+        </record>
+        <record id="irpf7_in" model="ocr.dictionary">
+            <field name="name">IRPF7</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_p_irpf7</field>
+        </record>
+        <record id="irpf15_out" model="ocr.dictionary">
+            <field name="name">IRPF15</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_s_irpf15</field>
+        </record>
+        <record id="irpf15_in" model="ocr.dictionary">
+            <field name="name">IRPF15</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_p_irpf15</field>
+        </record>
+        <record id="irpf19_out" model="ocr.dictionary">
+            <field name="name">IRPF19</field>
+            <field name="type">out_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_s_irpf19</field>
+        </record>
+        <record id="irpf19_in" model="ocr.dictionary">
+            <field name="name">IRPF19</field>
+            <field name="type">in_invoice</field>
+            <field name="res_model">account.tax</field>
+            <field name="res_field"></field>
+            <field name="res_id">l10n_es.1_account_tax_template_p_irpf19</field>
+        </record>
+
+
+    </data>
+</odoo>

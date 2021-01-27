@@ -1,0 +1,18 @@
+<odoo>
+
+    <record id="view_account_invoice_supplier_form_inh" model="ir.ui.view">
+        <field name="name">Supplier form inh ocr transactions</field>
+        <field name="model">account.invoice</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header" position="inside">
+                <field name="message_main_attachment_id" invisible="1"/>
+                <button name="send_through" string="Send to OCR" type="object" class="oe_highlight"
+                        groups="account.group_account_invoice"
+                        attrs="{'invisible':[('message_main_attachment_id','=',False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
