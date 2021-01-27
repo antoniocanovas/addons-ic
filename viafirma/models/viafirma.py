@@ -101,7 +101,6 @@ class Viafirma(models.Model):
 
     @api.multi
     def compose_recipients(self, line_ids):
-        print("compose recipients")
         recipients = []
         x = 0
         y = 1
@@ -125,7 +124,6 @@ class Viafirma(models.Model):
 
     @api.multi
     def compose_metadatalist(self, line_ids):
-        print("compose metadatalist ")
         metadatalist = []
         x = 0
         y = 1
@@ -144,7 +142,6 @@ class Viafirma(models.Model):
 
     @api.multi
     def compose_metadatalist_messages(self, line_ids):
-        print("compose metadatalist messages")
         metadatalist = []
         x = 0
         y = 1
@@ -177,7 +174,6 @@ class Viafirma(models.Model):
             y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
 
         # def_check_parameters
-        print("compose call simple IN")
         groupCode = {
             "groupCode": self.env.user.company_id.group_viafirma
         }
@@ -362,7 +358,6 @@ class Viafirma(models.Model):
                     nIterac = numberIter - numSignatures
                     newx = nIterac // 10
                     newy = nIterac % 10
-                    print(x, y, newx, newy)
                     recipient_n = {
                         "type": "OTP_SMS",
                         "id": "evidence_" + str(numEvidence),
@@ -486,12 +481,10 @@ class Viafirma(models.Model):
     def download_document(self, url, header, response_code, viafirma_user, viafirma_pass):
 
         r_doc = requests.get(url, headers=header, auth=(viafirma_user, viafirma_pass))
-        print("RDOC", r_doc)
         if r_doc.ok:
             rr_doc = json.loads(r_doc.content.decode('utf-8'))
 
         response = requests.get(rr_doc["link"], headers=header)
-        print("link", rr_doc["link"])
         if response.status_code == 200:
             img_file_encode = base64.b64encode(response.content)
             return img_file_encode
@@ -515,7 +508,6 @@ class Viafirma(models.Model):
                 if stat_firmweb.ok:
                     statu_firmweb = json.loads(stat_firmweb.content.decode('utf-8'))
                     # de momento lo hago con la primera line_ids que hay
-                    print(statu_firmweb, statu_firmweb["status"])
                     for line in self.line_ids:
                         line.state = statu_firmweb["status"]
                     # El estado de viafirma depende de los estados de las líneas
@@ -538,7 +530,6 @@ class Viafirma(models.Model):
 
                         if r_error.ok:
                             rr_error = json.loads(r_error.content)
-                            print("Pedro Error", rr_error)
                             # los dos campos de este dictionary interesantes son message y trace
                             self.error_code =  rr_error["workflow"]["history"]
                 else:
@@ -590,15 +581,12 @@ class Viafirma(models.Model):
                     #En función del template envaremos policy o no
 
                     if self.document_policies:
-                        print("polici")
                         search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
                         datas = self.compose_call_policies()
                     elif self.template_id.multiple_signatures:
-                        print("multiple")
                         search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
                         datas = self.compose_call_multiple()
                     else:
-                        print("simple")
                         if len(self.line_ids) > 1:
                             raise ValidationError(
                                 "Esta plantilla no soporta más de un firmante")
