@@ -60,6 +60,7 @@ class OcrUploads(models.Model):
     )
     ocr_delivery_upload = fields.Boolean(string='Es Gestor OCR',
                                    default=lambda self: self.env.user.company_id.ocr_delivery_company)
+    invoice_origin_id = fields.Many2one('account.invoice')
 
     @api.constrains('attachment_ids')
     def _get_upload_name(self):
@@ -148,7 +149,7 @@ class OcrUploads(models.Model):
             return False
 
     @api.multi
-    def create_ocr_transaction(self, token, key, attachment, pre, nxt, upload, list):
+    def create_ocr_transaction(self, token, key, attachment, pre, nxt, upload, list, ):
 
         if upload.type == "emitida":
             type_doc = "out_invoice"
@@ -159,19 +160,36 @@ class OcrUploads(models.Model):
         if upload.type == "recibida_batch":
             type_doc = "in_invoice"
 
-        ocr_transaction_id = self.env['ocr.transactions'].create({
-            'state': "Enviado",
-            'ocr_upload_id': upload.id,
-            'type': type_doc,
-            'name': upload.partner_id.vat,
-            'token': token,
-            'customer_api_key': key,
-            'attachment_id': attachment.id,
-            'previus_token': pre,
-            'next_token': nxt,
-            'token_list': list,
-            #'create_date': transactions_by_state['created_at'],
-        })
+        if self.invoice_origin_id:
+            ocr_transaction_id = self.env['ocr.transactions'].create({
+                'state': "Enviado",
+                'ocr_upload_id': upload.id,
+                'type': type_doc,
+                'name': upload.partner_id.vat,
+                'token': token,
+                'customer_api_key': key,
+                'attachment_id': attachment.id,
+                'previus_token': pre,
+                'next_token': nxt,
+                'token_list': list,
+                'invoice_id': self.invoice_origin_id.id
+                #'create_date': transactions_by_state['created_at'],
+            })
+        else:
+            if not self.invoice_origin_id:
+                ocr_transaction_id = self.env['ocr.transactions'].create({
+                    'state': "Enviado",
+                    'ocr_upload_id': upload.id,
+                    'type': type_doc,
+                    'name': upload.partner_id.vat,
+                    'token': token,
+                    'customer_api_key': key,
+                    'attachment_id': attachment.id,
+                    'previus_token': pre,
+                    'next_token': nxt,
+                    'token_list': list,
+                    # 'create_date': transactions_by_state['created_at'],
+                })
         return ocr_transaction_id
 
     @api.multi
@@ -268,6 +286,7 @@ class OcrUploads(models.Model):
                         ocr_transaction_id = self.create_ocr_transaction(
                             res['token'], api_key, attachment, False, False, self, False
                         )
+                        print(res['token'])
                         self.ocr_transaction_ids = [(4, ocr_transaction_id.id)]
                 else:
                     self.state = "error"
