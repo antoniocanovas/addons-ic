@@ -16,7 +16,6 @@ class ResCompany(models.Model):
 
 
     last_connection_date = fields.Datetime('Last connection dates')
-    #last_conn_date = fields.Datetime('Last connection date')
     user_viafirma = fields.Char('User')
     pass_viafirma = fields.Char('Passwd')
     group_viafirma = fields.Char('Group')
@@ -26,5 +25,5 @@ class ResCompany(models.Model):
         viafirmatemplates = self.env['viafirma.templates'].sudo()
         conn = viafirmatemplates.updated_templates()
 
-        #time = datetime.now()
-        #self.last_connection_date = time
+        time = datetime.now()
+        self.last_connection_date = time
