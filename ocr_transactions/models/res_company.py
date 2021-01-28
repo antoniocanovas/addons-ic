@@ -30,8 +30,8 @@ class ResCompany(models.Model):
         default='https://ocr.biyectiva.com:6000',
         string='Api Url'
     )
-    last_connection_date = fields.Date('Last connection date')
-    #last_connection_date_char = fields.Char('Last connection')
+    last_connection_date = fields.Date('Last connection date') # Pendiente de Eliminar
+    last_conn_date = fields.Datetime('Last connection')
     ocr_transactions_jobs_ids = fields.Many2many(
         comodel_name='queue.job', column1='company_id', column2='job_id',
         string="Connector Jobs", copy=False,
@@ -433,7 +433,7 @@ class ResCompany(models.Model):
                 self.mark_uploads_done(transactions_processed)
 
             time = datetime.now()
-            self.last_connection_date = time.strftime('%Y-%m-%d %H:%M:%S')
+            self.last_conn_date = time.strftime('%Y-%m-%d %H:%M:%S')
 
     @api.multi
     def ocr_delete_old_transactions(self):

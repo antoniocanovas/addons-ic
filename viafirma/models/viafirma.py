@@ -56,7 +56,7 @@ class Viafirma(models.Model):
     noti_text = fields.Char(string='Titulo')
     noti_detail = fields.Char(string='Descripcion')
     notification_type_ids = fields.Many2many(
-        comodel_name="viafirma.notification.signature",
+        comodel_name="viafirma.notification",
         string="Tipo Notificacion",
         domain=[('type', '=', 'notification')],
     )
@@ -64,8 +64,8 @@ class Viafirma(models.Model):
     template_type = fields.Selection(selection=[('url','URL'),('base64','BASE64'),('message','MESSAGE')],string="Tipo de teemplate",default='base64')
     templareReference = fields.Char(defautl='"templateReference": ')  # este campo sirve para construir la linea que puede ser una url, base65 o un codigo
 
-    document_readRequired = fields.Boolean(string='Lectura obligatoria',default=False)
-    document_watermarkText = fields.Char(string='Marca de agua')
+    #document_readRequired = fields.Boolean(string='Lectura obligatoria',default=False)
+    #document_watermarkText = fields.Char(string='Marca de agua')
     document_formRequired = fields.Boolean(string='Formulario',default=False)
     document_policies = fields.Boolean(string='Politicas en Documento')
 
@@ -111,7 +111,7 @@ class Viafirma(models.Model):
                 "name": recipient.name,
                 #"id": recipient.vat,
             }
-            if self.notification_type_ids == "MAIL_SMS" or self.notification_type_ids == "SMS":
+            if str(self.notification_type_ids) == "MAIL_SMS" or str(self.notification_type_ids) == "SMS":
                 recipient_n.update({"phone": recipient.mobile,})
             y+=1
             if y == 10:
@@ -539,8 +539,8 @@ class Viafirma(models.Model):
                 "You must set Viafirma login Api credentials")
 
     @api.multi
-    def check_mandatory_attr(self, signot, partner_id):
-        for attr in signot:
+    def check_mandatory_attr(self, method, partner_id):
+        for attr in method:
             try:
                 value = getattr(partner_id, attr.value)
             except Exception as e:
@@ -551,11 +551,24 @@ class Viafirma(models.Model):
                    "%s is mandatory for this template" % attr.value)
 
     @api.multi
+    def check_template(self):
+        if self.template_id:
+            if not self.template_id.firma_ids:
+                raise ValidationError(
+                    "Please select a signature method on Viafirma Template")
+        else:
+            raise ValidationError(
+                "Please select a Viafirma Template")
+
+
+    @api.multi
     def call_viafirma(self):
         ''' solo firma web y un solo firmante, la mas simple de todas, de momento selecciono todos los registros que tenga en el modelo viafirma y que haga el proceso
          de envio para cada uno de ellos, aunque no coge ningun valor de estos, ni emqail ni adjunto'''
 
         #Comprobamos todas las restricciones para informar al ususario antes de iniciar ejecución
+        self.check_template()
+
         if not self.env['viafirma.templates'].updated_templates(self.template_id.code):
             raise ValidationError(
                 "Template no existe")

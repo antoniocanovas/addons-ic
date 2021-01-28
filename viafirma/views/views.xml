@@ -14,13 +14,11 @@
                         </h2>
                         <group name="cabecera">
                             <group>
-                                <field name="template_id"/>
+                                <field name="template_id" required="1"/>
                                 <field name="noti_detail"/>
-                                <field name="document_watermarkText"/>
                             </group>
                             <group>
                                 <field name="notification_type_ids" widget="many2many_tags" required="1"/>
-                                <field name="document_readRequired"/>
                                 <field name="create_date"/>
                             </group>
                         </group>
@@ -112,7 +110,6 @@
                         <group name="basic_params" col="4">
                             <field name="description"/>
                             <field name="code"/>
-                            <field name="num_firmantes"/>
                             <field name="multiple_signatures"/>
                         </group>
                         <group name="notifications" col="4">
