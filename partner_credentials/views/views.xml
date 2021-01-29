@@ -59,6 +59,11 @@
                             <field name="public"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description" class="field_description" placeholder="Description..."/>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
