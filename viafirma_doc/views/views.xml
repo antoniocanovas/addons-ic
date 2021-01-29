@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="viafirma_docs_form" model="ir.ui.view">
+        <field name="name">viafirma docs form</field>
+        <field name="model">docs.docs</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="docs_base.docs_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header" position="inside">
+                   <button name="do_viafirma_doc" class="oe_highlight" string="Enviar Viafirma" type="object"/>
+            </xpath>
+            <xpath expr="//form/sheet" position="replace">
+                <sheet string="Docs">
+                    <h2>
+                        <field name="name" required="True"/>
+                    </h2>
+                    <group col="4">
+                        <field name="type_id" on_change="1" can_create="true" can_write="true" required="True" placeholder="Nombre del documento ..."
+                              />
+                        <field name="is_public"/>
+                    </group>
+                    <notebook>
+                        <page string="Doc">
+                            <group col="2" attrs="{'invisible':[('id','=',False)]}">
+
+                                <h4><b><i>El documento queda así, puedes editarlo:</i></b></h4>
+                            </group>
+                            <group col="4" attrs="{'invisible':[('id','=',False)]}">
+                                <field name="type_id" string="Subject"/>
+                                <field name="company_signed"/>
+                            </group>
+                            <group attrs="{'invisible':[('id','=',False)]}">
+                                <field name="header" colspan="4" can_write="true" modifiers="{}"/>
+                                <field name="body" colspan="4" can_write="true" modifiers="{}"/>
+                                <field name="footer" colspan="4" can_write="true" modifiers="{}"/>
+                            </group>
+                        </page>
+                        <page string="Firmas">
+                            <field name="line_ids">
+                                <tree editable="top">
+                                    <field name="partner_id" required="1"/>
+                                    <field name="email" readonly="1"/>
+                                    <field name="mobile" readonly="1"/>
+                                    <field name="signed_date" readonly="1" invisible="1"/>
+                                    <field name="state" readonly="1" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </xpath>
+        </field>
+    </record>
+
+
+
+
+</odoo>

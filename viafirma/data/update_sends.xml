@@ -17,18 +17,6 @@
             <field name="code">model.upd_viafirma()</field>
         </record>
 
-        <!--<record id="ir_viafirma_send_viafirma" model="ir.cron">
-            <field name="name">=> Enviar a Viafirma</field>
-            <field ref="viafirma" name="model_id" />
-            <field eval="True" name="active" />
-            <field name="user_id" ref="base.user_root" />
-            <field name="binding_model_id" ref="viafirma"/>
-            <field name="state">code</field>
-            <field name="code">model.send_viafirma()</field>
-        </record> -->
-
-
-
     </data>
 
 </odoo>

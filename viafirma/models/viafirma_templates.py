@@ -16,11 +16,11 @@ class ViafirmaTemplates(models.Model):
     code = fields.Char('Code')
     description = fields.Char('Description')
     firma_ids = fields.Many2many(
-        comodel_name="viafirma.notification.signature",
+        comodel_name="viafirma.signature",
         string="Firmas",
         domain=[('type', '=', 'signature')],
     )
-    num_firmantes = fields.Integer('Numero firmantes')
+    #num_firmantes = fields.Integer('Numero firmantes')
     send_policy = fields.Boolean('Envía políticas') # A eliminar
     multiple_signatures = fields.Boolean('Multiples firmantes')
 

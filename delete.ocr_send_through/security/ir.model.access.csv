@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ocr_transactions, OCR Transactions,model_ocr_transactions,base.group_user,1,1,1,1
+access_ocr_values, OCR Values,model_ocr_values,base.group_user,1,1,1,1
+access_ocr_dictionary, OCR Dictionary,model_ocr_dictionary,base.group_user,1,1,0,0
+access_ocr_dictionary_admin, OCR Dictionary Admin,model_ocr_dictionary,base.group_system,1,1,1,1
+access_ocr_uploads, OCR Uploads,model_ocr_uploads,base.group_user,1,1,1,1
+

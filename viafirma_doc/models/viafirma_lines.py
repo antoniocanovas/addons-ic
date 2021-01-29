@@ -4,11 +4,9 @@ import base64
 
 from odoo import fields, models, api
 
-# la consulta a tecdoc devuelve todos los coches de la serie, por lo que deberia de haber un modelo coche, quye pertenezca a una marca, modelo y serie determinada
-class ViafirmaNotificationSignature(models.Model):
-    _name = 'viafirma.notification.signature'
-    _description = 'Viafirma Notification and Signature'
 
-    type = fields.Char('Type')
-    name = fields.Char('Name')
-    value = fields.Char('Value')
+# la consulta a tecdoc devuelve todos los coches de la serie, por lo que deberia de haber un modelo coche, quye pertenezca a una marca, modelo y serie determinada
+class ViafirmaLines(models.Model):
+    _inherit = 'viafirma.lines'
+
+    viafirma_doc_id = fields.Many2one('docs.docs')

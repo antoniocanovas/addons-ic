@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<odoo>
+    <data>
+
+        <template id="external_document_layout">
+            <t t-name="docs_base.external_document_layout">
+                <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                    <t t-call="web.address_layout"/>
+                    <t t-raw="0"/>
+                </div>
+                <div class="footer o_standard_footer">
+                    <div class="text-center" style="border-top: 1px solid black;">
+                        <div t-if="report_type == 'pdf'" class="text-muted">
+                            Page: <span class="page"/> / <span class="topage"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="viafirma_docs_report_document_report">
+            <t t-call="viafirma_doc.external_document_layout">
+                <t t-set="o" t-value="o.with_context(lang=lang)"/>
+                <div class="page">
+                    <div class="header text-center">
+                        <span t-field="o.header" widget="html" />
+                    </div>
+                    <div>
+                        <span t-field="o.body" widget="html" />
+                    </div>
+                    <div>
+                        <table style="width:60%;border-collapse: collapse;border: 1px solid black;
+                        margin-left: auto; margin-right: auto;" name="signature_table">
+                            <thead>
+                                <tr>
+                                    <!-- TODO: remove in master -->
+                                    <t t-set="colspan" t-value="3"/>
+                                    <th style="border: 1px solid black;" class="text-center"><span>Nombre</span></th>
+                                    <th style="border: 1px solid black;" class="text-center"><span>DNI</span></th>
+                                    <th style="border: 1px solid black;" class="text-center"><span>Firma</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="n" t-value="len(o.viafirma_ids)"/>
+                                <t t-set="index" t-value="n - 1"/>
+                                <t t-set="x" t-value="0"/>
+                                <t t-set="y" t-value="1"/>
+                                <t t-set="z" t-value="len(o.viafirma_ids[index].line_ids) - 1"/>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="o.viafirma_ids[index].line_ids" t-as="signature">
+                                    <t t-if="o.company_signed">
+                                        <t t-if="i &lt; z">
+                                            <tr>
+                                                <td class="text-center" style="padding-top: 20px;padding-bottom: 20px;border: 1px solid black;"><span t-field="signature.partner_id.name"/></td>
+                                                <td class="text-center" style="padding-top: 20px;padding-bottom: 20px;border: 1px solid black;"><span t-field="signature.partner_id.vat"/></td>
+                                                <td class="text-center" style="padding-top: 20px;padding-bottom: 20px;border: 1px solid black;">
+                                                    <span class="oe_inline" style="color: white;">firmante_</span><span t-esc="x" class="oe_inline" style="color: white;"/><span t-esc="y" class="oe_inline" style="color: white;"/>
+                                                </td>
+                                            </tr>
+                                            <t t-set="i" t-value=" i + 1 "/>
+                                            <t t-set="y" t-value=" y + 1 "/>
+                                            <t t-if="y == 10">
+                                                <t t-set="y" t-value="0"/>
+                                                <t t-set="x" t-value="x + 1"/>
+                                            </t>
+                                        </t>
+                                    </t>
+                                    <t t-if="not o.company_signed">
+                                        <tr>
+                                            <td class="text-center" style="padding-top: 20px;padding-bottom: 20px;border: 1px solid black;"><span t-field="signature.partner_id.name"/></td>
+                                            <td class="text-center" style="padding-top: 20px;padding-bottom: 20px;border: 1px solid black;"><span t-field="signature.partner_id.vat"/></td>
+                                            <td class="text-center" style="padding-top: 20px;padding-bottom: 20px;border: 1px solid black;">
+                                                <span class="oe_inline" style="color: white;">firmante_</span><span t-esc="x" class="oe_inline" style="color: white;"/><span t-esc="y" class="oe_inline" style="color: white;"/>
+                                            </td>
+                                        </tr>
+                                        <t t-set="y" t-value=" y + 1 "/>
+                                        <t t-if="y == 10">
+                                            <t t-set="y" t-value="0"/>
+                                            <t t-set="x" t-value="x + 1"/>
+                                        </t>
+                                    </t>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                    <t t-if="o.company_signed">
+                    <div>
+                        <p>Y para que conste firmo el presente documento en OSUNA, a </p><p><span t-field="o.viafirma_ids[index].write_date"/></p>
+                        <span class="oe_inline" style="color: white;">firmante_</span><span t-esc="x" class="oe_inline" style="color: white;"/><span t-esc="y" class="oe_inline" style="color: white;"/>
+                    </div>
+                    </t>
+                    <div class="footer o_standard_footer">
+                        <span t-field="o.footer" widget="html" />
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="viafirma_doc_report_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="viafirma_doc.viafirma_docs_report_document_report" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
