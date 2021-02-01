@@ -1,6 +1,5 @@
 # Copyright
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
-import base64
 
 from odoo import fields, models, api
 
@@ -24,7 +23,6 @@ class ResCompany(models.Model):
             company.master_db_name = self.env.cr.dbname
         elif company.master_db_name != self.env.cr.dbname:
             fetchmail_servers = self.env['fetchmail.server'].sudo().search([])
-            print(fetchmail_servers)
             for server in fetchmail_servers:
                 server.active = False
 
