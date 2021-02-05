@@ -97,21 +97,4 @@
     </record>
 
 
-    <!--<record id="action_viafirma_update_templates" model="ir.actions.act_window">
-            <field name="name">=> Actualizar Plantillas</field>
-            <field ref="viafirma.templates" name="model_id"/>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">viafirma.templates.updated_templates</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-    </record>
-
-    <menuitem
-            id="menu_viafirma_update_templates"
-            name="Actualizar Plantillas"
-            parent="viafirma.templates.menu_viafirma_templates"
-            sequence="30"
-            action="viafirma_update_templates"
-            /> -->
-
 </odoo>

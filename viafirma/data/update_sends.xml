@@ -17,6 +17,15 @@
             <field name="code">model.upd_viafirma()</field>
         </record>
 
+       <!-- <record id="action_viafirma_wizard" model="ir.actions.server">
+            <field name="name">Viafirma Wizard</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_viafirma" />
+            <field name="state">code</field>
+            <field name="code">model.viafirma_wizard()</field>
+        </record>-->
+
     </data>
 
 </odoo>

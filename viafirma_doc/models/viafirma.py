@@ -10,9 +10,6 @@ from odoo import fields, models, api
 from datetime import datetime
 
 
-
-
-
 class Viafirma(models.Model):
     _inherit = 'viafirma'
 

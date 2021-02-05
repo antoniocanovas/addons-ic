@@ -3,12 +3,13 @@
 
 import base64
 import json
-from datetime import datetime
 import requests
 from odoo.exceptions import ValidationError
 from odoo import fields, models, api
-from datetime import datetime
 
+
+import logging
+_logger = logging.getLogger(__name__)
 
 
 STATE = [
@@ -32,16 +33,17 @@ class Viafirma(models.Model):
 
 
     name = fields.Char('Name')
-    res_model = fields.Char('Modelo origen')
-    res_id = fields.Char('Id origen')
-    res_id_name = fields.Char('Documento origen')
+    res_model = fields.Char('Origin Model')
+    res_id = fields.Char('Origin ID')
 
-    create_date = fields.Date(string="Fecha creacion")
-    completed_date = fields.Date(string='Ultima modificacion')
+    #res_id_name = fields.Char('Documento origen')
+
+    create_date = fields.Date(string="Create date")
+    completed_date = fields.Date(string='Last change')
 
     state = fields.Selection(
         selection=STATE,
-        string="Estado",
+        string="State",
         default='DRAFT',
         track_visibility='onchange'
     )
@@ -50,34 +52,61 @@ class Viafirma(models.Model):
     line_ids = fields.One2many(
         'viafirma.lines',
         'viafirma_id',
-        string='Firmantes'
+        string='Signants'
     )
-    tracking_code = fields.Char(string='Código seguimiento')
-    noti_text = fields.Char(string='Titulo')
-    noti_detail = fields.Char(string='Descripcion')
+    tracking_code = fields.Char(string='Tracking code')
+    noti_text = fields.Char(string='Title')
+    noti_detail = fields.Char(string='Description')
     notification_type_ids = fields.Many2many(
         comodel_name="viafirma.notification",
-        string="Tipo Notificacion",
+        string="Notification Type",
         domain=[('type', '=', 'notification')],
     )
-    noti_subject = fields.Char(string='Asunto')
-    template_type = fields.Selection(selection=[('url','URL'),('base64','BASE64'),('message','MESSAGE')],string="Tipo de teemplate",default='base64')
-    templareReference = fields.Char(defautl='"templateReference": ')  # este campo sirve para construir la linea que puede ser una url, base65 o un codigo
 
+    noti_subject = fields.Char(string='Subject')
+
+    template_type = fields.Selection(selection=[('url','URL'),('base64','BASE64'),('message','MESSAGE')],string="Template Type",default='base64')
+
+    #templareReference = fields.Char(defautl='"templateReference": ')  # este campo sirve para construir la linea que puede ser una url, base65 o un codigo
     #document_readRequired = fields.Boolean(string='Lectura obligatoria',default=False)
     #document_watermarkText = fields.Char(string='Marca de agua')
-    document_formRequired = fields.Boolean(string='Formulario',default=False)
-    document_policies = fields.Boolean(string='Politicas en Documento')
+    #document_formRequired = fields.Boolean(string='Formulario',default=False)
+
+    document_policies = fields.Boolean(string='Send Policy')
 
     viafirma_groupcode_id = fields.Many2one(
         'viafirma.groups',
-        string="Grupo",
+        string="Group",
     )
 
-    document_to_send = fields.Binary("Documento")
-    document_signed = fields.Binary("Documento firmado")
-    document_trail = fields.Binary("Documento Trail")
+    document_to_send = fields.Binary("Document")
+    document_signed = fields.Binary("Signed document")
+    document_trail = fields.Binary("Trail document")
     error_code = fields.Char('Error')
+
+
+    @api.multi
+    def viafirma_wizard(self):
+
+        view_id = self.env.ref('viafirma.viafirma_wizard_view').id
+
+        print("debug")
+        return {
+            'name': "Wizard Viafirma",
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'viafirma.wizard',
+            'view_id': view_id,
+            'target': 'new',
+            'context': {
+                #'default_name': 'Wizard -',
+                #'default_invoice_id_link': self.ocr_transaction_id.invoice_id.id,
+                #'default_attachment_datas': self.message_main_attachment_id.datas,
+                #'default_attachment_datas': attachment,
+                #'default_original_ocr_transaction_id': self.ocr_transaction_id.id,
+            }
+        }
 
     @api.multi
     def send_viafirma(self):

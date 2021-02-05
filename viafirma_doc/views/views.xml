@@ -8,7 +8,7 @@
         <field name="inherit_id" ref="docs_base.docs_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form/header" position="inside">
-                   <button name="do_viafirma_doc" class="oe_highlight" string="Enviar Viafirma" type="object"/>
+                   <button name="viafirma_wizard" class="oe_highlight" string="Enviar Viafirma" type="object"/>
             </xpath>
             <xpath expr="//form/sheet" position="replace">
                 <sheet string="Docs">
@@ -39,11 +39,9 @@
                         <page string="Firmas">
                             <field name="line_ids">
                                 <tree editable="top">
-                                    <field name="partner_id" required="1"/>
+                                    <field name="name" required="1"/>
                                     <field name="email" readonly="1"/>
                                     <field name="mobile" readonly="1"/>
-                                    <field name="signed_date" readonly="1" invisible="1"/>
-                                    <field name="state" readonly="1" invisible="1"/>
                                 </tree>
                             </field>
                         </page>
