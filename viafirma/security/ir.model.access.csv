@@ -5,4 +5,5 @@ access_viafirma_lines_user,viafirma.lines,model_viafirma_lines,base.group_user,1
 access_viafirma_groups_user,viafirma.groups,model_viafirma_groups,base.group_user,1,1,1,1
 access_viafirma_notification_user,viafirma.notification,model_viafirma_notification,base.group_user,1,1,1,1
 access_viafirma_signature_user,viafirma.signature,model_viafirma_signature,base.group_user,1,1,1,1
+access_viafirma_wizard_user,viafirma.wizard,model_viafirma_wizard,base.group_user,1,1,1,1
 

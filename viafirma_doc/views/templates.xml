@@ -30,7 +30,7 @@
                         <span t-field="o.body" widget="html" />
                     </div>
                     <div>
-                        <table style="width:60%;border-collapse: collapse;border: 1px solid black;
+                        <table style="width:100%;border-collapse: collapse;border: 1px solid black;
                         margin-left: auto; margin-right: auto;" name="signature_table">
                             <thead>
                                 <tr>
@@ -41,7 +41,7 @@
                                     <th style="border: 1px solid black;" class="text-center"><span>Firma</span></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <!--<tbody>
                                 <t t-set="n" t-value="len(o.viafirma_ids)"/>
                                 <t t-set="index" t-value="n - 1"/>
                                 <t t-set="x" t-value="0"/>
@@ -81,12 +81,54 @@
                                         </t>
                                     </t>
                                 </t>
+                            </tbody>-->
+                            <tbody>
+                                <t t-set="n" t-value="len(o.line_ids)"/>
+                                <t t-set="index" t-value="n - 1"/>
+                                <t t-set="x" t-value="0"/>
+                                <t t-set="y" t-value="1"/>
+                                <t t-set="i" t-value="0"/>
+                                <t t-foreach="o.line_ids" t-as="signature">
+                                    <t t-if="o.company_signed">
+                                        <t t-if="i &lt; index">
+                                            <tr>
+                                                <td class="text-center" style="padding-top: 20px;padding-bottom: 20px;border: 1px solid black;"><span t-field="signature.name"/></td>
+                                                <td class="text-center" style="padding-top: 20px;padding-bottom: 20px;border: 1px solid black;"><span t-field="signature.vat"/></td>
+                                                <td class="text-center" style="padding-top: 20px;padding-bottom: 20px;border: 1px solid black;">
+                                                    <span class="oe_inline" style="color: white;">firmante_</span><span t-esc="x" class="oe_inline" style="color: white;"/><span t-esc="y" class="oe_inline" style="color: white;"/>
+                                                </td>
+                                            </tr>
+                                            <t t-set="i" t-value=" i + 1 "/>
+                                            <t t-set="y" t-value=" y + 1 "/>
+                                            <t t-if="y == 10">
+                                                <t t-set="y" t-value="0"/>
+                                                <t t-set="x" t-value="x + 1"/>
+                                            </t>
+                                        </t>
+                                    </t>
+                                    <t t-if="not o.company_signed">
+                                        <tr>
+                                            <td class="text-center" style="padding-top: 20px;padding-bottom: 20px;border: 1px solid black;"><span t-field="signature.name"/></td>
+                                            <td class="text-center" style="padding-top: 20px;padding-bottom: 20px;border: 1px solid black;"><span t-field="signature.vat"/></td>
+                                            <td class="text-center" style="padding-top: 20px;padding-bottom: 20px;border: 1px solid black;">
+                                                <span class="oe_inline" style="color: white;">firmante_</span><span t-esc="x" class="oe_inline" style="color: white;"/><span t-esc="y" class="oe_inline" style="color: white;"/>
+                                            </td>
+                                        </tr>
+                                        <t t-set="y" t-value=" y + 1 "/>
+                                        <t t-if="y == 10">
+                                            <t t-set="y" t-value="0"/>
+                                            <t t-set="x" t-value="x + 1"/>
+                                        </t>
+                                    </t>
+                                </t>
                             </tbody>
                         </table>
                     </div>
+
                     <t t-if="o.company_signed">
                     <div>
-                        <p>Y para que conste firmo el presente documento en OSUNA, a </p><p><span t-field="o.viafirma_ids[index].write_date"/></p>
+                        <br/>
+                        <p>Y para que conste firmo el presente documento en OSUNA, a <![CDATA[&nbsp;]]> <span t-field="o.write_date"/></p>
                         <span class="oe_inline" style="color: white;">firmante_</span><span t-esc="x" class="oe_inline" style="color: white;"/><span t-esc="y" class="oe_inline" style="color: white;"/>
                     </div>
                     </t>

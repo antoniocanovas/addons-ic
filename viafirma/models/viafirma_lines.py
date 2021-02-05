@@ -24,7 +24,7 @@ class ViafirmaLines(models.Model):
     _name = 'viafirma.lines'
     _description = 'Viafirma Lines'
 
-    name = fields.Char(string='Nombre',related='partner_id.name', store=False)
+    name = fields.Char(string='Name',related='partner_id.name', store=False)
     email = fields.Char(string='Email',related='partner_id.email', store=False)
     mobile = fields.Char(string='Mobile', related='partner_id.mobile', store=False)
     partner_id = fields.Many2one(
@@ -33,7 +33,7 @@ class ViafirmaLines(models.Model):
     signed_date = fields.Date(string='Signed date')
     state = fields.Selection(
         selection=STATE,
-        string="Estado",
+        string="State",
         default='DRAFT'
     )
     viafirma_id = fields.Many2one('viafirma')

@@ -25,6 +25,7 @@
             <field name="name">SMS</field>
             <field name="value">mobile</field>
         </record>
+
         <record id="viafirma_mail_notification" model="viafirma.notification">
             <field name="type">notification</field>
             <field name="name">MAIL</field>

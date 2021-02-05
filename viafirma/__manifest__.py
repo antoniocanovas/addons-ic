@@ -21,19 +21,17 @@
 
     # any module necessary for this one to work correctly
     'depends': ['base',
-               'mail',],
+                'contacts',
+                'mail',],
 
     # always loaded
     'data': [
+        'data/update_sends.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/views_menu.xml',
         'views/res_company_views.xml',
-        'data/update_sends.xml',
         'data/data_notification_signature.xml',
-    ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
+        'wizards/viafirma_wizard_view.xml'
     ],
 }

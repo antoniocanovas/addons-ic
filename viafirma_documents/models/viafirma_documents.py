@@ -29,7 +29,6 @@ class ViafirmaDocuments(models.Model):
 
     @api.multi
     def get_main_att_automated(self):
-        print("DEBUGGER")
         #attachment_id = self.env['ir.attachment'].search([('id', '=', self.id)])
         #print(attachment_id.datas)
         # decoded_data = attachment_id.datas.decode('base64')
@@ -39,7 +38,6 @@ class ViafirmaDocuments(models.Model):
         #print("decoded")
         self.message_main_attachment_id = [(4, self.id)]
         self.message_post(body='Created', subtype='mail.mt_comment', attachment_ids=[self.id])
-        print("FIN")
         # self.message_main_attachment_id = [(4, self.id)]
 
     @api.multi

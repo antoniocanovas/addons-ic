@@ -21,13 +21,13 @@ class ViafirmaTemplates(models.Model):
         domain=[('type', '=', 'signature')],
     )
     #num_firmantes = fields.Integer('Numero firmantes')
-    send_policy = fields.Boolean('Envía políticas') # A eliminar
-    multiple_signatures = fields.Boolean('Multiples firmantes')
+    #send_policy = fields.Boolean('Envía políticas') # A eliminar
+    multiple_signatures = fields.Boolean('Multiple Signatures')
 
-    models_use = fields.Many2many(
-        comodel_name="ir.model",
-        string="Modelos usados"
-    )
+    #models_use = fields.Many2many(
+    #    comodel_name="ir.model",
+    #    string="Used Models"
+    #)
 
     def get_uploader_header(self):
 

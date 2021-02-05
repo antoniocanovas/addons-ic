@@ -9,5 +9,5 @@ class ViafirmaGroups(models.Model):
     _description = 'Viafirma GroupCodes'
 
     name = fields.Char(
-        string='Código de grupo'
+        string='Group code'
     )
