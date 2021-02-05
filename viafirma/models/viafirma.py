@@ -52,7 +52,7 @@ class Viafirma(models.Model):
     line_ids = fields.One2many(
         'viafirma.lines',
         'viafirma_id',
-        string='Signants'
+        string='Signers'
     )
     tracking_code = fields.Char(string='Tracking code')
     noti_text = fields.Char(string='Title')

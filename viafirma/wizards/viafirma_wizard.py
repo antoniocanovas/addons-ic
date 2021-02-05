@@ -45,7 +45,7 @@ class ViafirmaWizard(models.TransientModel):
     document_to_send = fields.Binary("Document")
 
     res_model = fields.Char('Model')
-    company_signed = fields.Boolean("Firma empresa")
+    company_signed = fields.Boolean("Company signed")
 
     viafirma_doc_id = fields.Integer('Viafirma doc id')
 
