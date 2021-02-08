@@ -3,5 +3,6 @@ access_ocr_transactions, OCR Transactions,model_ocr_transactions,base.group_user
 access_ocr_values, OCR Values,model_ocr_values,base.group_user,1,1,1,1
 access_ocr_dictionary, OCR Dictionary,model_ocr_dictionary,base.group_user,1,1,0,0
 access_ocr_dictionary_admin, OCR Dictionary Admin,model_ocr_dictionary,base.group_system,1,1,1,1
+access_ocr_dictionary_user, OCR Dictionary User,model_ocr_dictionary,account.group_account_manager,1,1,0,0
 access_ocr_uploads, OCR Uploads,model_ocr_uploads,base.group_user,1,1,1,1
 
