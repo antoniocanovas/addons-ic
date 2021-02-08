@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
-    ocr_transaction_id = fields.Many2one('ocr.transactions', string='OCR')
+    ocr_transaction_id = fields.Many2one('ocr.transactions', string='OCR', readonly=True)
     customer_id = fields.Many2one('res.partner', readonly=True, string='Customer')
     to_correct = fields.Boolean("For correction portal", default=False)
     is_ocr = fields.Boolean('De OCR')
