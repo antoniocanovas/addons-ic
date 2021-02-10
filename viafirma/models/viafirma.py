@@ -640,7 +640,7 @@ class Viafirma(models.Model):
                                                      auth=(viafirma_user, viafirma_pass))
 
                     if response_firmweb.ok:
-                        if self.template_id.send_policy or self.template_id.multiple_signatures:
+                        if self.document_policies or self.template_id.multiple_signatures:
 
                             resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
 
