@@ -25,14 +25,14 @@ class CorrectionPortal(http.Controller):
         values = dict()
 
         values = {
-            'action': "http://facturas.biyectiva.com/facturas/%s" % invoice.ocr_transaction_id.token,
+            'action': "https://facturas.biyectiva.com/facturas/%s" % invoice.ocr_transaction_id.token,
             'apikey': apikey,
             'invoice': invoice,
         }
 
         params = {'apikey': values['apikey']}
         r = requests.post(values['action'], params)
-
+        print(r)
         if str(r) == "<Response [500]>":
             raise ValidationError(
                 "Server Error, please contact with your administrator.")
