@@ -1,313 +1,134 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* docs
+# 	* viafirma_doc
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-13 15:59+0000\n"
-"PO-Revision-Date: 2020-01-13 17:03+0100\n"
+"POT-Creation-Date: 2021-02-11 06:39+0000\n"
+"PO-Revision-Date: 2021-02-11 07:40+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"Language: es\n"
+"Language: pt\n"
 "X-Generator: Poedit 2.2.3\n"
 
-#. module: docs
-#: model:mail.template,report_name:docs.email_template_edi_docs
-msgid "${('DOCS'+(str(object.type_id.name) or '')+'.pdf')}"
-msgstr ""
-
-#. module: docs
-#: model:mail.template,subject:docs.email_template_edi_docs
-msgid "${object.type_id.name}"
-msgstr ""
-
-#. module: docs
-#: model_terms:ir.ui.view,arch_db:docs.docs_form
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.viafirma_docs_form
 msgid "<b><i>El documento queda así, puedes editarlo:</i></b>"
 msgstr ""
 
-#. module: docs
-#: model:mail.template,body_html:docs.email_template_edi_docs
-msgid ""
-"<div style=\"margin: 0px; padding: 0px;\">\n"
-"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
-"                        Dear\n"
-"                        <br/><br/>\n"
-"                        Here is your\n"
-"                        % if object.name:\n"
-"                        Document <strong>${object.name}</strong>\n"
-"                        % else:\n"
-"                        Document\n"
-"                        %endif\n"
-"                        % if object.project_id:\n"
-"                        (for project: ${object.project_id.name})\n"
-"                        % endif\n"
-"\n"
-"                        from ${object.user_id.company_id.name}.\n"
-"\n"
-"                        <br/><br/>\n"
-"                        Do not hesitate to contact us if you have any question.\n"
-"                    </p>\n"
-"                </div>\n"
-"            "
-msgstr ""
-"<div style=\"margin: 0px; padding: 0px;\">\n"
-"<p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
-"Estimado\n"
-"<br /><br />\n"
-"Envío adjunto el\n"
-"% if object.name:\n"
-"Documento <strong>${object.name}</strong>\n"
-"% else:\n"
-"Documento\n"
-"%endif\n"
-"% if object.project_id:\n"
-"(for project: ${object.project_id.name})\n"
-"% endif\n"
-"\n"
-"de ${object.user_id.company_id.name}.\n"
-"\n"
-"<br /><br />\n"
-"Cualquier duda quedamos a su disposición.\n"
-"</p>\n"
-"</div>\n"
-"           "
-
-#. module: docs
-#: model_terms:ir.ui.view,arch_db:docs.docs_report_document_report
-msgid "<span>Interesados</span>"
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.viafirma_docs_report_document_report
+msgid "<span class=\"oe_inline\" style=\"color: white;\">firmante_</span>"
 msgstr ""
 
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_texts__active
-#: model:ir.model.fields,field_description:docs.field_docs_types__active
-msgid "Active"
-msgstr "Activo"
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.viafirma_docs_report_document_report
+msgid "<span>DNI</span>"
+msgstr ""
 
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_docs__body
-#: model:ir.model.fields,field_description:docs.field_docs_types__body_id
-#: model:ir.model.fields,field_description:docs.field_docs_types__body_text
-msgid "Body"
-msgstr "Contenido"
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.viafirma_docs_report_document_report
+msgid "<span>Firma</span>"
+msgstr ""
 
-#. module: docs
-#: selection:docs.texts,type:0
-msgid "Body of message"
-msgstr "Cuerpo del mensaje"
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.viafirma_docs_report_document_report
+msgid "<span>Nombre</span>"
+msgstr ""
 
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_docs__create_uid
-#: model:ir.model.fields,field_description:docs.field_docs_texts__create_uid
-#: model:ir.model.fields,field_description:docs.field_docs_types__create_uid
-msgid "Created by"
-msgstr "Creado por"
+#. module: viafirma_doc
+#: model:ir.model.fields,field_description:viafirma_doc.field_docs_docs__company_signed
+msgid "Company signed"
+msgstr "Firma empresa"
 
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_docs__create_date
-#: model:ir.model.fields,field_description:docs.field_docs_texts__create_date
-#: model:ir.model.fields,field_description:docs.field_docs_types__create_date
-msgid "Created on"
-msgstr "Creado el"
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.viafirma_docs_form
+msgid "Doc"
+msgstr ""
 
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_docs__display_name
-#: model:ir.model.fields,field_description:docs.field_docs_texts__display_name
-#: model:ir.model.fields,field_description:docs.field_docs_types__display_name
-msgid "Display Name"
-msgstr "Nombre mostrado"
-
-#. module: docs
-#: model:ir.actions.act_window,name:docs.action_docs
-#: model:ir.actions.act_window,name:docs.action_task_docs
-#: model:ir.actions.act_window,name:docs.action_task_project_docs
-#: model:ir.actions.report,name:docs.docs_report
-#: model:ir.model.fields,field_description:docs.field_project_task__docs_count
-#: model:ir.ui.menu,name:docs.menu_docs
-#: model:ir.ui.menu,name:docs.menu_docs_docs
-#: model_terms:ir.ui.view,arch_db:docs.docs_form
-#: model_terms:ir.ui.view,arch_db:docs.project_task_docs_form
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.viafirma_docs_form
 msgid "Docs"
-msgstr "Documento"
-
-#. module: docs
-#: model_terms:ir.ui.view,arch_db:docs.types_docs_form
-msgid "Docs - tipos"
 msgstr ""
 
-#. module: docs
-#: model:ir.model,name:docs.model_docs_texts
-msgid "Docs Text bloqs"
-msgstr "Docs - Bloques de texto"
-
-#. module: docs
-#: model:ir.model,name:docs.model_docs_types
-msgid "Docs Types od documents"
-msgstr "Docs - Tipos de documentos"
-
-#. module: docs
-#: model_terms:ir.actions.act_window,help:docs.action_task_docs
-msgid "Docs asociados a la tarea"
-msgstr ""
-
-#. module: docs
-#: model_terms:ir.ui.view,arch_db:docs.docs_texts_form
-msgid "Docs bloques de textos"
-msgstr ""
-
-#. module: docs
-#: model:ir.model,name:docs.model_docs_docs
+#. module: viafirma_doc
+#: model:ir.model,name:viafirma_doc.model_docs_docs
 msgid "Docs for Expedients"
-msgstr "Documentos para Expedientes"
+msgstr ""
 
-#. module: docs
-#: selection:docs.texts,type:0
-#: model:ir.model.fields,field_description:docs.field_docs_docs__footer
-#: model:ir.model.fields,field_description:docs.field_docs_types__footer_id
-#: model:ir.model.fields,field_description:docs.field_docs_types__footer_text
-msgid "Footer"
-msgstr "Pié de página"
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.viafirma_docs_form
+msgid "Enviar Viafirma"
+msgstr ""
 
-#. module: docs
-#: selection:docs.texts,type:0
-#: model:ir.model.fields,field_description:docs.field_docs_docs__header
-#: model:ir.model.fields,field_description:docs.field_docs_types__header_id
-#: model:ir.model.fields,field_description:docs.field_docs_types__header_text
-msgid "Header"
-msgstr "Cabecera"
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.viafirma_docs_form
+msgid "Firmas"
+msgstr ""
 
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_docs__id
-#: model:ir.model.fields,field_description:docs.field_docs_texts__id
-#: model:ir.model.fields,field_description:docs.field_docs_types__id
-msgid "ID"
-msgstr "Id"
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.viafirma_docs_form
+msgid "Nombre del documento ..."
+msgstr ""
 
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_docs__implied_ids
-msgid "Implied"
-msgstr "Implicados"
-
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_docs____last_update
-#: model:ir.model.fields,field_description:docs.field_docs_texts____last_update
-#: model:ir.model.fields,field_description:docs.field_docs_types____last_update
-msgid "Last Modified on"
-msgstr "Última modificación en"
-
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_docs__write_uid
-#: model:ir.model.fields,field_description:docs.field_docs_texts__write_uid
-#: model:ir.model.fields,field_description:docs.field_docs_types__write_uid
-msgid "Last Updated by"
-msgstr "Última actualización por"
-
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_docs__write_date
-#: model:ir.model.fields,field_description:docs.field_docs_texts__write_date
-#: model:ir.model.fields,field_description:docs.field_docs_types__write_date
-msgid "Last Updated on"
-msgstr "Última actualización el"
-
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_docs__name
-#: model:ir.model.fields,field_description:docs.field_docs_texts__name
-#: model:ir.model.fields,field_description:docs.field_docs_types__name
-msgid "Name"
-msgstr "Nombre"
-
-#. module: docs
-#: model_terms:ir.ui.view,arch_db:docs.external_document_layout
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.external_document_layout
 msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
 msgstr "Página: <span class=\"page\"/>/<span class=\"topage\"/>"
 
-#. module: docs
-#: model_terms:ir.ui.view,arch_db:docs.types_docs_form
-msgid "Previsualización:"
-msgstr ""
+#. module: viafirma_doc
+#: model:ir.model.fields,field_description:viafirma_doc.field_docs_docs__line_ids
+msgid "Signers"
+msgstr "Firmantes"
 
-#. module: docs
-#: model:ir.model,name:docs.model_project_project
-#: model:ir.model.fields,field_description:docs.field_docs_docs__project_id
-msgid "Project"
-msgstr "Proyecto"
-
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_docs__user_id
-msgid "Salesman"
-msgstr "Comercial"
-
-#. module: docs
-#: model_terms:ir.ui.view,arch_db:docs.docs_form
-msgid "Send"
-msgstr "Enviar"
-
-#. module: docs
-#: model_terms:ir.ui.view,arch_db:docs.docs_form
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.viafirma_docs_form
 msgid "Subject"
 msgstr "Asunto"
 
-#. module: docs
-#: model:ir.model,name:docs.model_project_task
-#: model:ir.model.fields,field_description:docs.field_docs_docs__task_id
-msgid "Task"
-msgstr "Tarea"
-
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_texts__text
-msgid "Text"
-msgstr "Texto"
-
-#. module: docs
-#: model_terms:ir.ui.view,arch_db:docs.docs_texts_tree
-msgid "Textos"
+#. module: viafirma_doc
+#: model:ir.model.fields,field_description:viafirma_doc.field_docs_docs__viafirmas_count
+msgid "Tickets"
 msgstr ""
 
-#. module: docs
-#: model:ir.ui.menu,name:docs.menu_docs_texts
-msgid "Texts"
-msgstr "Textos"
-
-#. module: docs
-#: model:ir.actions.act_window,name:docs.action_docs_texts
-msgid "Texts for expedients"
-msgstr "Textos para Expedientes"
-
-#. module: docs
-#: model_terms:ir.ui.view,arch_db:docs.types_docs_tree
-msgid "Tipos de docs"
+#. module: viafirma_doc
+#: model:ir.actions.act_window,name:viafirma_doc.action_view_viafirmas
+#: model:ir.model.fields,field_description:viafirma_doc.field_docs_docs__viafirma_ids
+msgid "Viafirma"
 msgstr ""
 
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_docs_docs__type_id
-#: model:ir.model.fields,field_description:docs.field_docs_texts__type
-msgid "Type"
-msgstr "Tipo"
+#. module: viafirma_doc
+#: model:ir.model.fields,field_description:viafirma_doc.field_viafirma__viafirma_doc_id
+msgid "Viafirma Doc"
+msgstr ""
 
-#. module: docs
-#: model:ir.ui.menu,name:docs.menu_docs_types
-msgid "Types"
-msgstr "Tipos"
+#. module: viafirma_doc
+#: model:ir.actions.report,name:viafirma_doc.viafirma_doc_report
+msgid "Viafirma Docs"
+msgstr ""
 
-#. module: docs
-#: model:ir.actions.act_window,name:docs.action_docs_types
-msgid "Types of documents"
-msgstr "Tipos de documentos"
+#. module: viafirma_doc
+#: model:ir.model,name:viafirma_doc.model_viafirma
+msgid "Viafirma Model"
+msgstr ""
 
-#. module: docs
-#: model:ir.model.fields,field_description:docs.field_project_project__docs_count
-#: model_terms:ir.ui.view,arch_db:docs.docs_tree
-#: model_terms:ir.ui.view,arch_db:docs.project_task_docs_proyect_form
-msgid "docs"
-msgstr "Documentos"
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.view_viafirmas_count
+msgid "Viafirmas"
+msgstr ""
 
-#. module: docs
-#: model_terms:ir.actions.act_window,help:docs.action_task_project_docs
-msgid "docs asociados al proyecto"
+#. module: viafirma_doc
+#: model_terms:ir.actions.act_window,help:viafirma_doc.action_view_viafirmas
+msgid "Viafirmas asociados al DOC"
+msgstr ""
+
+#. module: viafirma_doc
+#: model_terms:ir.ui.view,arch_db:viafirma_doc.viafirma_docs_report_document_report
+msgid "Y para que conste firmo el presente documento en OSUNA, a &amp;nbsp;"
 msgstr ""
