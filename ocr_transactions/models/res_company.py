@@ -2,6 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 import base64
+from time import sleep
 from datetime import datetime, timedelta
 import json
 from random import randint
@@ -405,7 +406,7 @@ class ResCompany(models.Model):
         api_transaction_url = "%s/facturas/" % self.env.user.company_id.api_domain
         ########## Hacemos una consulta por cada ApiKey ################
         for key in ApiKeys:
-            print("KEY",key)
+            print("KEY - ",key)
             header = self.get_header(key)
 
             transactions_by_state = self.get_documents_data(api_transaction_url, header)
@@ -437,6 +438,8 @@ class ResCompany(models.Model):
 
             time = datetime.now()
             self.last_conn_date = time.strftime('%Y-%m-%d %H:%M:%S')
+            print("SLEEP")
+            sleep(10)
 
     @api.multi
     def ocr_delete_old_transactions(self):
