@@ -250,12 +250,13 @@ class OcrUploads(models.Model):
             djson = self.prepare_attachment(attachment, self)
             if not djson:
                 self.state = "error"
+                self.upload_transaction_error = str(self.upload_transaction_error) + \
+                                                "Error from OCR server  image type not supported"
                 _logger.info(
                     "Error from OCR server  image type not supported"
                 )
             else:
                 response = requests.post(api_transaction_url, headers=header, data=djson)
-
                 if response.status_code == 200:
                     res = json.loads(response.content.decode('utf-8'))
                     # Ahora nos puede mandar una lista
@@ -286,7 +287,6 @@ class OcrUploads(models.Model):
                         ocr_transaction_id = self.create_ocr_transaction(
                             res['token'], api_key, attachment, False, False, self, False
                         )
-                        print(res['token'])
                         self.ocr_transaction_ids = [(4, ocr_transaction_id.id)]
                 else:
                     self.state = "error"

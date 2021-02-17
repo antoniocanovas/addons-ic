@@ -126,7 +126,7 @@ class ResCompany(models.Model):
             # No se Borran facturas, solo actualizamos el transaction si no hay líneas de factura
             # Si hay lineas no debe actualizar estado
             if exist.token:
-
+                print("EXIST",exist.token)
                 if exist.state != transactions_by_state['FACTURAS'][i]['status']:
                     exist.state = transactions_by_state['FACTURAS'][i]['status']
             else:
@@ -405,10 +405,11 @@ class ResCompany(models.Model):
         api_transaction_url = "%s/facturas/" % self.env.user.company_id.api_domain
         ########## Hacemos una consulta por cada ApiKey ################
         for key in ApiKeys:
+            print("KEY",key)
             header = self.get_header(key)
 
             transactions_by_state = self.get_documents_data(api_transaction_url, header)
-
+            print("FACTURAS",transactions_by_state)
             ############### Control status donwloaded #######################
             if transactions_by_state:
                 self.create_queue_invoice_transactions(transactions_by_state, key)
@@ -417,11 +418,13 @@ class ResCompany(models.Model):
                                                                             ("state", "=", 'processed'),
                                                                             ("customer_api_key", "=", key),
                                                                         ], limit=30)
+            print("PROCESADAS",transactions_processed)
             transactions_with_errors = self.env['ocr.transactions'].search([
                                                                         ("state", "=", 'error'),
                                                                         ("customer_api_key", "=", key),
                                                                         ("cleared", "=", False),
                                                                           ], limit=10)
+            print("ERRORES",transactions_with_errors)
             if transactions_with_errors:
                 self.update_transactions_error_code(transactions_with_errors, api_transaction_url, header)
                 self.create_invoices(transactions_with_errors, api_transaction_url, header)
