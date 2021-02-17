@@ -32,7 +32,6 @@ class CorrectionPortal(http.Controller):
 
         params = {'apikey': values['apikey']}
         r = requests.post(values['action'], params)
-        print(r)
         if str(r) == "<Response [500]>":
             raise ValidationError(
                 "Server Error, please contact with your administrator.")
