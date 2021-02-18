@@ -82,8 +82,8 @@ BaseImponible21 = env['ocr.values'].search([('ocr_transaction_id','=',record.ocr
 # Cálculo de bases imponibles POR IVA (ESTO ES UN PROBLEMA PORQUE LOS REDONDEOS SE MULTIPLICAN POR 5 para el 21% y por 10 para 10%):
 if subtotal.id:  neto = float(subtotal.value)
 if iva21.id:  base_iva21 = float(BaseImponible21.value)
-if iva10.id:  base_iva10 = float(BaseImponible21.value)
-if iva4.id:   base_iva4 = float(BaseImponible21.value)
+if iva10.id:  base_iva10 = float(BaseImponible10.value)
+if iva4.id:   base_iva4 = float(BaseImponible4.value)
 
 # Cálculo de bases imponibles POR RETENCIONES (para desviaciones por decimales se considera la opción de que sea por el neto completo):
 if (ret19.id) and (subtotal.id):
