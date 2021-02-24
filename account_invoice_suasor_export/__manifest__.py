@@ -7,6 +7,8 @@
 """,
     'author': 'Serincloud',
     'depends': [
+        'sql_export',
+        'sql_request_abstract',
         'base_automation',
         'account',
     ],
