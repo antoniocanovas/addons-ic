@@ -10,11 +10,12 @@
         'sql_export',
         'sql_request_abstract',
         'base_automation',
-        'account',
+        'account_cancel',
     ],
     'data': [
         'views/suasor_invoice_views.xml',
         'data/create_suasor_invoice.xml',
+        'data/export_suasor_invoice_sql.xml',
         'security/ir.model.access.csv',
     ],
     'installable': True,
