@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="view_saleorder_sections" model="ir.ui.view">
+        <field name="name">Sections</field>
+        <field name="model">sale.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" icon="fa-spinner" type="object" name="action_view_sections">
+                    <field widget="statinfo" name="section_lines_count" string="Secciones"/>
+                </button>
+                <button class="oe_stat_butt" string="Ordena Secciones" type="object" name="order_sections">
+
+                </button>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="sol_sections_tree" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <tree string="Sections">
+                <field name="name"/>
+                <field name="total_section"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">sale.order.line</field>
+        <field name="name">SOL Set Tree</field>
+        <field name="priority">99</field>
+        <field name="type">tree</field>
+    </record>
+
+    <record id="sol_sections_form" model="ir.ui.view">
+        <field name="name">SOL Set Form</field>
+        <field name="model">sale.order.line</field>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <form string="Sections">
+                <group>
+                    <field name="name"/>
+                    <field name="total_section"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_sections" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="context">{'search_default_order_id': active_id,'default_order_id': active_id, 'default_display_type': 'line_section'}</field>
+        <field name="domain">[('order_id', '=', active_id),('display_type','=','line_section')]</field>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="help"><![CDATA[<p>Sections</p>]]></field>
+        <field name="limit">80</field>
+        <field name="name">Sections</field>
+        <field name="res_model">sale.order.line</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <!--<field name="view_id" ref="helpdesk.helpdesk_tickets_view_tree"/>-->
+        <field name="usage" eval="False"/>
+        <!--<field name="view_id" eval="ocr_account_invoice_tree"/>-->
+        <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('sol_sections_tree')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('sol_sections_form')})]"/>
+        <!--<field name="view_mode">tree,form</field>
+        <field name="view_type">tree</field>-->
+    </record>
+
+</odoo>
