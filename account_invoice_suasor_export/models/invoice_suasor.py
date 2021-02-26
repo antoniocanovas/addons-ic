@@ -17,7 +17,7 @@ class SuasorInvoice(models.Model):
         )
 
     name = fields.Char('Name')
-    fecha_emision = fields.Char('fecha_emision')
+    fecha_emision = fields.Date('fecha_emision')
     tipo_factura = fields.Char('tipo_factura')
     n_documento = fields.Char('n_documento')
     total_factura = fields.Char('total_factura')

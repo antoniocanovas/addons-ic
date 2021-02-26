@@ -193,7 +193,7 @@ if record.state in ['open'] and not record.suasor_invoice_id.id:
     else:
       suasor_invoice_id = env['suasor.invoice'].create({
               'name': 'Suasor' + str(record.number),
-              'fecha_emision': str(record.date_invoice),
+              'fecha_emision': record.date_invoice,
               'tipo_factura': record.type,
               'n_documento': record.number,
               'total_factura': str(record.amount_total),
@@ -424,7 +424,7 @@ if (record.state in ['open']) and (record.suasor_invoice_id.id):
     else:
       record.suasor_invoice_id.write({
               'name': 'Suasor' + str(record.number),
-              'fecha_emision': str(record.date_invoice),
+              'fecha_emision': record.date_invoice,
               'tipo_factura': record.type,
               'n_documento': record.number,
               'total_factura': str(record.amount_total),

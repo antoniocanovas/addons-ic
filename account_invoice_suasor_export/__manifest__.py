@@ -1,6 +1,6 @@
 {
     'name': 'Account Invoice Suasor Export',
-    'version': '12.0.0.0.1',
+    'version': '12.0.0.0.2',
     'category': '',
     'description': u"""
 
