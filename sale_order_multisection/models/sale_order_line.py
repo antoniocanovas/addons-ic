@@ -21,7 +21,7 @@ class SaleOrderLine(models.Model):
                         record.section != record.name.split()[0]):
                     print("IF 1", record.section , record.name, record.name.split()[0])
                     record.section = record.name.split()[0]
-                elif not record.display_type:
+                else:
                     parar = False
                     lineas = record.order_id.order_line.sorted(key=lambda r: r.sequence)
                     print("Lineas")
