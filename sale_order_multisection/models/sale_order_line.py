@@ -7,38 +7,50 @@ _logger = logging.getLogger(__name__)
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
+    partner_id = fields.Many2one('res.partner', related='order_id.partner_id', readonly=True)
+    pricelist_id = fields.Many2one('product.pricelist', related='order_id.pricelist_id', readonly=True)
+    section_line_ids = fields.One2many('sale.order.line', 'section_id', store=True, string='Section Lines')
+
     @api.depends('name', 'sequence', 'section_id.section')
     def _get_section(self):
+        print("DEBUG section")
         for record in self:
             seccion = ''
-            if (record.display_type == 'line_section') and (record.name[:1] == '$') and (
-                    record.section != record.name.split()[0]):
-                record.section = record.name.split()[0]
-            elif not record.display_type:
-                parar = False
-                lineas = record.order_id.order_line.sorted(key=lambda r: r.sequence)
-                for li in lineas:
-                    if not parar and (li.display_type == 'line_section'):
-                        seccion = li.section
-                    if (li.id == record.id): parar = True
-                if (record.section != seccion):
-                    record.section = seccion
+            if record.name:
+                if (record.display_type == 'line_section') and (record.name[:1] == '$') and (
+                        record.section != record.name.split()[0]):
+                    print("IF 1", record.section , record.name, record.name.split()[0])
+                    record.section = record.name.split()[0]
+                elif not record.display_type:
+                    parar = False
+                    lineas = record.order_id.order_line.sorted(key=lambda r: r.sequence)
+                    print("Lineas")
+                    for li in lineas:
+                        if not parar and (li.display_type == 'line_section'):
+                            seccion = li.section
+                            print(seccion)
+                        if (li.id == record.id): parar = True
+                    if (record.section != seccion):
+                        print("seccion !=")
+                        record.section = seccion
 
     section = fields.Char('Section', store=True, compute=_get_section)
 
     @api.depends('section')
     def _get_section_id(self):
+        print("DEBUG section id")
         for record in self:
-            # Este campo que sea calculado al modificarse x_seccion:
-            if not record.display_type and record.section:
-                record.section_id = self.env['sale.order.line'].search(
+            # Este campo que sea calculado al modificarse o crearse x_seccion:
+            if (record.display_type != 'line_section') and (record.section):
+                record['section_id'] = self.env['sale.order.line'].search(
                     [('order_id', '=', record.order_id.id), ('section', '=', record.section),
-                     ('id', '!=', record.id)]).id
+                     ('id', '!=', record.id), ('display_type', '=', 'line_section')]).id
 
     section_id = fields.Many2one('sale.order.line', readonly=True, store=True, compute=_get_section_id)
 
     @api.depends('create_date')
     def _get_total_section(self):
+        print("DEBUG section total")
         for record in self:
             total = 0
             if record.display_type == 'line_section':
@@ -54,10 +66,11 @@ class SaleOrderLine(models.Model):
         compute=_get_total_section,
     )
 
-    @api.depends('father_ids')
+    @api.depends('parent_ids')
     def _get_level(self):
+        print("DEBUG level")
         for record in self:
-            record.level = len(record.father_ids) + 1
+            record.level = len(record.parent_ids) + 1
 
     level = fields.Integer(
         'Level',
@@ -68,6 +81,7 @@ class SaleOrderLine(models.Model):
 
     @api.depends('name')
     def _get_child_ids(self):
+        print("DEBUG child")
         for record in self:
             if record.name:
                 hijos = []
@@ -83,14 +97,15 @@ class SaleOrderLine(models.Model):
     child_ids = fields.Many2many(
         'sale.order.line',
         relation='sections_rel',
-        column1='father_section_id',
+        column1='parent_section_id',
         column2='child_section_id',
         readonly=True,
         store=True,
         compute=_get_child_ids)
 
     @api.depends('name')
-    def _get_father_ids(self):
+    def _get_parent_ids(self):
+        print("DEBUG father")
         for record in self:
             if record.name:
                 padres = []
@@ -103,15 +118,15 @@ class SaleOrderLine(models.Model):
                         largoli = len(li.section)
                         if (li.section) and (li.section == record.section[:largoli]):
                             padres.append(li.id)
-                record.write({'father_ids': [(6, 0, padres)]})
+                record.write({'parent_ids': [(6, 0, padres)]})
 
-    father_ids = fields.Many2many(
+    parent_ids = fields.Many2many(
         'sale.order.line',
         relation='sections_rel',
         column1='child_section_id',
-        column2='father_section_id',
+        column2='parent_section_id',
         readonly=True,
         store=True,
-        compute=_get_father_ids)
+        compute=_get_parent_ids)
 
 

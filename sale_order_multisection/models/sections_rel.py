@@ -12,6 +12,6 @@ class SectionRel(models.Model):
     child_section_id = fields.Many2one(
         'sale.order.line'
     )
-    father_section_id = fields.Many2one(
+    parent_section_id = fields.Many2one(
        'sale.order.line'
     )
