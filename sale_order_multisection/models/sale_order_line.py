@@ -11,30 +11,7 @@ class SaleOrderLine(models.Model):
     pricelist_id = fields.Many2one('product.pricelist', related='order_id.pricelist_id', readonly=True)
     section_line_ids = fields.One2many('sale.order.line', 'section_id', store=True, string='Section Lines')
 
-    #@api.depends('name', 'sequence', 'section_id.section')
-    #def _get_section(self):
-    #    for record in self:
-    #        seccion = str(record.sequence)
-    #        if (record.display_type == 'line_section') and (record.name) and (record.name[:1] == '$'):
-    #            seccion = record.name.split()[0]
-    #        elif (record.display_type != 'line_section'):
-    #            parar = False
-    #            lineas = record.order_id.order_line.sorted(key=lambda r: r.sequence)
-    #            for li in lineas:
-    #                if (parar == False) and (li.display_type == 'line_section'):
-    #                    seccion = li.section
-    #                if (li.id == record.id): parar = True
-    #        record['seccion'] = seccion
-
     section = fields.Char('Section')
-
-    #@api.depends('section','sequence','create_date')
-    #def _get_section_id(self):
-    #    for record in self:
-    #        if (record.display_type != 'line_section') and (record.section):
-    #            record['section_id'] = self.env['sale.order.line'].search(
-    #                [('order_id', '=', record.order_id.id), ('section', '=', record.section),
-    #                 ('id', '!=', record.id), ('display_type', '=', 'line_section')]).id
 
     section_id = fields.Many2one('sale.order.line', readonly=True)
 
