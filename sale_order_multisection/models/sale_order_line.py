@@ -33,7 +33,7 @@ class SaleOrderLine(models.Model):
         for record in self:
             if (record.display_type != 'line_section') and (record.section):
                 record['section_id'] = self.env['sale.order.line'].search(
-                    [('order_id', '=', record.order_id.id), ('section', '=', record.x_seccion),
+                    [('order_id', '=', record.order_id.id), ('section', '=', record.section),
                      ('id', '!=', record.id), ('display_type', '=', 'line_section')]).id
 
     section_id = fields.Many2one('sale.order.line', readonly=True, store=True, compute=_get_section_id)
