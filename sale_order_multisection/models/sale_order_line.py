@@ -46,46 +46,13 @@ class SaleOrderLine(models.Model):
         compute=_get_level,
     )
 
-    @api.depends('name')
-    def _get_child_ids(self):
-        print("DEBUG child")
-        for record in self:
-            if record.name:
-                hijos = []
-                if (record.display_type == 'line_section') and (record.name[:1] == '$'):
-                    largosec = len(record.section)
-                    lineas = self.env['sale.order.line'].search(
-                        [('order_id', '=', record.order_id.id), ('display_type', '=', 'line_section'), ('id', '!=', record.id)])
-                    for li in lineas:
-                        if (li.section) and (record.section == li.section[:largosec]):
-                            hijos.append(li.id)
-                record.write({'child_ids': [(6, 0, hijos)]})
-
     child_ids = fields.Many2many(
         'sale.order.line',
         relation='sections_rel',
         column1='parent_section_id',
         column2='child_section_id',
         readonly=True,
-        store=True,
-        compute=_get_child_ids)
-
-    @api.depends('name')
-    def _get_parent_ids(self):
-        print("DEBUG father")
-        for record in self:
-            if record.name:
-                padres = []
-                if (record.display_type == 'line_section') and (record.name[:1] == '$'):
-                    largosec = len(record.section)
-                    lineas = self.env['sale.order.line'].search(
-                        [('order_id', '=', record.order_id.id), ('display_type', '=', 'line_section'),
-                         ('id', '!=', record.id)])
-                    for li in lineas:
-                        largoli = len(li.section)
-                        if (li.section) and (li.section == record.section[:largoli]):
-                            padres.append(li.id)
-                record.write({'parent_ids': [(6, 0, padres)]})
+        )
 
     parent_ids = fields.Many2many(
         'sale.order.line',
@@ -93,7 +60,6 @@ class SaleOrderLine(models.Model):
         column1='child_section_id',
         column2='parent_section_id',
         readonly=True,
-        store=True,
-        compute=_get_parent_ids)
+    )
 
 
