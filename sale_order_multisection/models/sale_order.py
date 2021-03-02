@@ -22,19 +22,16 @@ class SaleOrderSets(models.Model):
         return action
 
     def order_sections(self):
-        print("DEBUG IN")
-        for record in self:
-            for li in record.order_line:
-                li.sequence = li.sequence + 1000
-                print("DEBUGG", li.sequence)
-            # Ordenar secciones alfabéticamente por 'sección', y continuar con sus líneas:
-            secciones = self.env['sale.order.line'].search(
-                [('order_id', '=', record.id), ('display_type', '=', 'line_section')]).sorted(key=lambda r: r.section)
-            print("DEBUGG 2", secciones )
-            contador = 1
-            for se in secciones:
-                for li in record.order_line:
-                    print("DEBUG 3", li.id, se.id, li.section_id)
-                    if (li.id == se.id) or (li.section_id.id == se.id):
-                        li['sequence'] = contador
-                        contador += 1
+        # Ordenar secciones alfabéticamente por 'sección', y continuar con sus líneas en un array:
+        secciones = self.env['sale.order.line'].search(
+            [('order_id', '=', self.id), ('display_type', '=', 'line_section')]).sorted(key=lambda r: r.section)
+        lineas = []
+        for se in secciones:
+            for li in self.record.order_line:
+                if (li.id == se.id) or (li.section_id.id == se.id):
+                    lineas.append(li)
+        # Asignar nueva secuencia según array:
+        contador = 1
+        for li in lineas:
+            li['sequence'] = contador
+            contador += 1
