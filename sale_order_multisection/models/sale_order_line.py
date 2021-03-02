@@ -13,37 +13,27 @@ class SaleOrderLine(models.Model):
 
     @api.depends('name', 'sequence', 'section_id.section')
     def _get_section(self):
-        print("DEBUG section")
         for record in self:
-            seccion = ''
-            if record.name:
-                if (record.display_type == 'line_section') and (record.name[:1] == '$') and (
-                        record.section != record.name.split()[0]):
-                    print("IF 1", record.section , record.name, record.name.split()[0])
-                    record.section = record.name.split()[0]
-                else:
-                    parar = False
-                    lineas = record.order_id.order_line.sorted(key=lambda r: r.sequence)
-                    print("Lineas")
-                    for li in lineas:
-                        if not parar and (li.display_type == 'line_section'):
-                            seccion = li.section
-                            print(seccion)
-                        if (li.id == record.id): parar = True
-                    if (record.section != seccion):
-                        print("seccion !=")
-                        record.section = seccion
+            seccion = str(record.sequence)
+            if (record.display_type == 'line_section') and (record.name) and (record.name[:1] == '$'):
+                seccion = record.name.split()[0]
+            elif (record.display_type != 'line_section'):
+                parar = False
+                lineas = record.order_id.order_line.sorted(key=lambda r: r.sequence)
+                for li in lineas:
+                    if (parar == False) and (li.display_type == 'line_section'):
+                        seccion = li.seccion
+                    if (li.id == record.id): parar = True
+            record['seccion'] = seccion
 
     section = fields.Char('Section', store=True, compute=_get_section)
 
-    @api.depends('section')
+    @api.depends('section','sequence','create_date')
     def _get_section_id(self):
-        print("DEBUG section id")
         for record in self:
-            # Este campo que sea calculado al modificarse o crearse x_seccion:
             if (record.display_type != 'line_section') and (record.section):
                 record['section_id'] = self.env['sale.order.line'].search(
-                    [('order_id', '=', record.order_id.id), ('section', '=', record.section),
+                    [('order_id', '=', record.order_id.id), ('section', '=', record.x_seccion),
                      ('id', '!=', record.id), ('display_type', '=', 'line_section')]).id
 
     section_id = fields.Many2one('sale.order.line', readonly=True, store=True, compute=_get_section_id)
@@ -70,7 +60,7 @@ class SaleOrderLine(models.Model):
     def _get_level(self):
         print("DEBUG level")
         for record in self:
-            record.level = len(record.parent_ids) + 1
+            record.level = len(record.parent_ids)
 
     level = fields.Integer(
         'Level',
