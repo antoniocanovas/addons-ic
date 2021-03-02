@@ -27,7 +27,7 @@ class SaleOrderSets(models.Model):
             [('order_id', '=', self.id), ('display_type', '=', 'line_section')]).sorted(key=lambda r: r.section)
         lineas = []
         for se in secciones:
-            for li in self.record.order_line:
+            for li in self.order_line:
                 if (li.id == se.id) or (li.section_id.id == se.id):
                     lineas.append(li)
         # Asignar nueva secuencia según array:
