@@ -8,12 +8,12 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//div[@name='button_box']" position="inside">
-                <button class="oe_stat_button" icon="fa-spinner" type="object" name="action_view_sections">
+                <button class="oe_stat_button oe_read_only" icon="fa-spinner" type="object" name="action_view_sections">
                     <field widget="statinfo" name="section_lines_count" string="Secciones"/>
                 </button>
             </xpath>
             <xpath expr="//header/button[@name='action_draft']" position="after">
-                <button class="oe_stat_butt" string="Ordena Secciones" type="object" name="order_sections">
+                <button class="oe_stat_butt" string="Reordenar Secciones" type="object" name="order_sections">
 
                 </button>
             </xpath>
@@ -55,39 +55,25 @@
                         <field name="child_ids" widget="many2many_tags"/>
                     </group>
 
-                    <field name="section_line_ids"  widget="section_and_note_one2many" mode="tree" attrs="{'readonly': [('state', 'in', ('done','cancel'))]}" nolabel="1" context="{'default_section':section}">
-                        <tree editable="bottom">
+                    <field name="section_line_ids" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': [('state', 'in', ('done','cancel'))]}" nolabel="1" context="{'section_id':active_id}">
+                        <tree editable="top">
                             <control>
-                                <create name="add_product_control" string="Add a product" context="{'default_display_type': False}"/>
-                                <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                <create name="add_product_control" string="Add a product" context="{'default_display_type': False, 'default_section_id':active_id}"/>
+                                <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note', 'default_section_id':active_id}"/>
                             </control>
                             <field name="sequence" widget="handle"/>
+                            <field name="section_id" invisible="1"/> <!-- Campo de control se puede eliminar -->
                             <!-- We do not display the type because we don't want the user to be bothered with that information if he has no section or note. -->
                             <field name="display_type" invisible="1"/>
                             <field name="product_uom_category_id" invisible="1"/>
 
                             <field name="product_updatable" invisible="1"/>
-                            <field name="product_id" attrs="{'readonly': [('product_updatable', '=', False)],'required': [('display_type', '=', False)],}"
-                                   options="{'no_open': True}" force_save="1"
-                                   context="{'partner_id': parent.partner_id, 'quantity': product_uom_qty,'pricelist': parent.pricelist_id,
-                                    'uom':product_uom,'company_id': parent.company_id, 'default_lst_price': price_unit, 'default_description_sale': name}"
-                                   domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" widget="product_configurator"/>
-                            <field name="product_template_id" string="Product" invisible="1"
-                                   attrs="{'readonly': [('product_updatable', '=', False)],'required': [('display_type', '=', False)],}"
-                                   options="{'no_open': True}"
-                                   context="{'partner_id': parent.partner_id, 'quantity': product_uom_qty, 'pricelist': parent.pricelist_id,
-                                    'uom':product_uom, 'company_id': parent.company_id, 'default_list_price': price_unit, 'default_description_sale': name}"
-                                   domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" widget="product_configurator"/>
+                            <field name="product_id" attrs="{'readonly': [('product_updatable', '=', False)],'required': [('display_type', '=', False)],}" options="{'no_open': True}" force_save="1" context="{'partner_id': parent.partner_id, 'quantity': product_uom_qty,'pricelist': parent.pricelist_id,                                     'uom':product_uom,'company_id': parent.company_id, 'default_lst_price': price_unit, 'default_description_sale': name}" domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" widget="product_configurator"/>
+                            <field name="product_template_id" string="Product" invisible="1" attrs="{'readonly': [('product_updatable', '=', False)],'required': [('display_type', '=', False)],}" options="{'no_open': True}" context="{'partner_id': parent.partner_id, 'quantity': product_uom_qty, 'pricelist': parent.pricelist_id,                                     'uom':product_uom, 'company_id': parent.company_id, 'default_list_price': price_unit, 'default_description_sale': name}" domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" widget="product_configurator"/>
                             <field name="name" widget="section_and_note_text" optional="show"/>
-                            <field name="analytic_tag_ids" optional="hide" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}"
-                                   domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
-                            <field name="product_uom_qty" decoration-info="(not display_type and invoice_status == 'to invoice')"
-                                   decoration-bf="(not display_type and invoice_status == 'to invoice')"
-                                   context="{'partner_id': parent.partner_id, 'quantity': product_uom_qty,
-                                   'pricelist': parent.pricelist_id,'uom': product_uom, 'company_id': parent.company_id}"/>
-                            <field name="qty_delivered" decoration-info="(not display_type and invoice_status == 'to invoice')"
-                                   decoration-bf="(not display_type and invoice_status == 'to invoice')" string="Delivered"
-                                   attrs="{'column_invisible': [('parent.state', 'not in', ['sale', 'done'])], 'readonly': [('qty_delivered_method', '!=', 'manual')]}" optional="show"/>
+                            <field name="analytic_tag_ids" optional="hide" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}" domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
+                            <field name="product_uom_qty" decoration-info="(not display_type and invoice_status == 'to invoice')" decoration-bf="(not display_type and invoice_status == 'to invoice')" context="{'partner_id': parent.partner_id, 'quantity': product_uom_qty,                                    'pricelist': parent.pricelist_id,'uom': product_uom, 'company_id': parent.company_id}"/>
+                            <field name="qty_delivered" decoration-info="(not display_type and invoice_status == 'to invoice')" decoration-bf="(not display_type and invoice_status == 'to invoice')" string="Delivered" attrs="{'column_invisible': [('parent.state', 'not in', ['sale', 'done'])], 'readonly': [('qty_delivered_method', '!=', 'manual')]}" optional="show"/>
                             <field name="qty_delivered_manual" invisible="1"/>
                             <field name="qty_delivered_method" invisible="1"/>
                             <field name="qty_invoiced" decoration-info="(not display_type and invoice_status == 'to invoice')" decoration-bf="(not display_type and invoice_status == 'to invoice')" string="Invoiced" attrs="{'column_invisible': [('parent.state', 'not in', ['sale', 'done'])]}" optional="show"/>

@@ -20,23 +20,44 @@ if (record.display_type == 'line_section') and (record.name[:1] == '$'):
             <field name="active" eval="True"/>
         </record>
 
-        <record id="sol_multisection_calculate" model="base.automation">
-            <field name="name">=>SOL Multisection</field>
+        <record id="so_multisection_calculate" model="base.automation">
+            <field name="name">=>SO Multisection</field>
             <field name="model_id" ref="sale.model_sale_order"/>
             <field name="state">code</field>
             <field name="code">
+# Ejecutar sólo si hay secciones y estamos en modo DRAFT:
 hay_secciones = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
-if hay_secciones:
-  seccion = 0
-  for li in record.order_line:
-    if (li.display_type == 'line_section') and (record.name):
+if (hay_secciones) and (record.state == 'draft'):
+  lineas = record.order_line.sorted(key=lambda r: r.sequence)
+  seccion_id = 0                                                  # <= Inicializar variable
+    # Asingar 'section' en Secciones y 'section_id' en el resto de líneas, en base a la secuencia de orden de líneas:
+  for li in lineas:
+    if (li.display_type == 'line_section') and (li.name):
       seccion_id = li.id
-      seccion = str(record.sequence)
-      if (record.name[:1] == '$'):
-        seccion = record.name.split()[0]
-      record['section'] = seccion
-    elif (li.display_type != 'line_section') and (seccion > 0):
-      li['section_id'] = seccion_id
+      seccion = str(li.sequence)
+      if (li.name[:1] == '$'):
+        seccion = li.name.split()[0]
+      li.write({'section':seccion})
+    elif (li.display_type != 'line_section') and (seccion_id > 0):
+      li.write({'section_id':seccion_id})
+    else:
+      li.write({'section_id':False})
+
+    # Cálculo de 'parent_ids', 'child_ids' y 'level' por sección, si hay multinivel ($):
+  secciones = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
+  for se in secciones:
+    padres, hijos, nivel = [], [], 1
+    lineas = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section'),('id','!=',se.id)])
+    if  (se.name[:1] == '$'):
+      for li in lineas:
+        largoli = len(li.section)
+        if (li.section == se.section[:largoli]):
+          padres.append(li.id)
+          nivel = len(padres) +1
+        largosec = len(se.section)
+        if (se.section == li.section[:largosec]):
+          hijos.append(li.id)
+    se.write({'parent_ids':[(6,0,padres)], 'child_ids':[(6,0,hijos)], 'level':nivel})
             </field>
             <field name="trigger">on_create_or_write</field>
             <!--<field name="on_change_fields">state</field>-->
