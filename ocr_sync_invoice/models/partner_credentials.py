@@ -122,6 +122,7 @@ class ConfigClient(models.Model):
                                                            'partner_id': partner_id,
                                                            'type': type_for_remote,
                                                            'date_invoice': invoice.date_invoice,
+                                                           'date_due': invoice.date_due,
                                                        }])
             except Exception as e:
                 invoice.invoice_sync_error = ("Error al crear la factura: %s\n" % invoice.reference)

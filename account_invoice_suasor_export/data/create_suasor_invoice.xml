@@ -34,158 +34,158 @@ if record.state in ['open'] and not record.suasor_invoice_id.id:
       cod_provincia = provincias[cod_provincia]
 
     for li in lineas_ids:
+      if not li.display_type:
+          # Para el primer grupo de SUASOR:
+          if (li.id not in revisadas) and (contador == 1) and (lineas_num > 0):
+            impuestos = li.invoice_line_tax_ids.ids
+            impuestos.sort()  # Ordenamos para poder comparar (por si se han introducido en otro orden en otras líneas)
+            revisadas.append(li.id)
+            cc1 = li.account_id.code
+            if li.asset_id.id: activo1="X"
+            lineas_num -= 1
 
-      # Para el primer grupo de SUASOR:
-      if (li.id not in revisadas) and (contador == 1) and (lineas_num > 0):
-        impuestos = li.invoice_line_tax_ids.ids
-        impuestos.sort()  # Ordenamos para poder comparar (por si se han introducido en otro orden en otras líneas)
-        revisadas.append(li.id)
-        cc1 = li.account_id.code
-        if li.asset_id.id: activo1="X"
-        lineas_num -= 1
+            neto = li.price_subtotal
+            if (li.product_id.type == "service"):   serv1="X"
 
-        neto = li.price_subtotal
-        if (li.product_id.type == "service"):   serv1="X"
+              # Ver el tipo de impuestos de la línea, y sus futuras similares:
+            for im in impuestos:
+              tax = env['account.tax'].search([('id','=',im)])
+              id_externo = env['ir.model.data'].search([('model','=','account.tax'),('res_id','=',tax.id)]).name
+              if   (id_externo.find('iva')  != -1) :
+                iva1  = True
+                iva_neto1    = neto
+                iva_percent1 = tax.amount
+                iva_tax1     = neto * tax.amount / 100
+              elif (id_externo.find('irpf') != -1) :
+                irpf1 = True
+                irpf_neto1    = neto
+                irpf_percent1 = tax.amount
+                irpf_tax1     = neto * tax.amount / 100
+              elif (id_externo.find('req')  != -1) :
+                req1  = True
+                req_neto1    = neto
+                req_percent1 = tax.amount
+                req_tax1     = neto * tax.amount / 100
 
-          # Ver el tipo de impuestos de la línea, y sus futuras similares:
-        for im in impuestos:
-          tax = env['account.tax'].search([('id','=',im)])
-          id_externo = env['ir.model.data'].search([('model','=','account.tax'),('res_id','=',tax.id)]).name
-          if   (id_externo.find('iva')  != -1) :
-            iva1  = True
-            iva_neto1    = neto
-            iva_percent1 = tax.amount
-            iva_tax1     = neto * tax.amount / 100
-          elif (id_externo.find('irpf') != -1) :
-            irpf1 = True
-            irpf_neto1    = neto
-            irpf_percent1 = tax.amount
-            irpf_tax1     = neto * tax.amount / 100
-          elif (id_externo.find('req')  != -1) :
-            req1  = True
-            req_neto1    = neto
-            req_percent1 = tax.amount
-            req_tax1     = neto * tax.amount / 100
+            for li1 in lineas_ids:
+              impg1 = li1.invoice_line_tax_ids.ids
+              impg1.sort()
+              if (li1.id not in revisadas) and (impg1 == impuestos):
+                revisadas.append(li1.id)
+                if (iva1 == True):
+                  iva_neto1    += li1.price_subtotal
+                  iva_tax1     += li1.price_subtotal  * iva_percent1 / 100
+                if (irpf1 == True):
+                  irpf_neto1    += li1.price_subtotal
+                  irpf_tax1     += li1.price_subtotal * irpf_percent1 / 100
+                if (req1 == True):
+                  req_neto1    += li1.price_subtotal
+                  req_tax1     += li1.price_subtotal  * req_percent1 / 100
+            if iva_tax1:  iva_tax1  = round(iva_tax1,2)
+            if irpf_tax1: irpf_tax1 = round(irpf_tax1,2)
+            if req_tax1:  req_tax1  = round(req_tax1,2)
+            contador = 2
+          # Para el segundo grupo de SUASOR:
+          if (li.id not in revisadas) and (contador == 2) and (lineas_num > 0):
+            impuestos = li.invoice_line_tax_ids.ids
+            impuestos.sort()  # Ordenamos para poder comparar (por si se han introducido en otro orden en otras líneas)
+            revisadas.append(li.id)
+            cc2 = li.account_id.code
+            if li.asset_id.id: activo2="X"
+            lineas_num -= 1
 
-        for li1 in lineas_ids:
-          impg1 = li1.invoice_line_tax_ids.ids
-          impg1.sort()
-          if (li1.id not in revisadas) and (impg1 == impuestos):
-            revisadas.append(li1.id)
-            if (iva1 == True):
-              iva_neto1    += li1.price_subtotal
-              iva_tax1     += li1.price_subtotal  * iva_percent1 / 100
-            if (irpf1 == True):
-              irpf_neto1    += li1.price_subtotal
-              irpf_tax1     += li1.price_subtotal * irpf_percent1 / 100
-            if (req1 == True):
-              req_neto1    += li1.price_subtotal
-              req_tax1     += li1.price_subtotal  * req_percent1 / 100
-        if iva_tax1:  iva_tax1  = round(iva_tax1,2)
-        if irpf_tax1: irpf_tax1 = round(irpf_tax1,2)
-        if req_tax1:  req_tax1  = round(req_tax1,2)
-        contador = 2
-      # Para el segundo grupo de SUASOR:
-      if (li.id not in revisadas) and (contador == 2) and (lineas_num > 0):
-        impuestos = li.invoice_line_tax_ids.ids
-        impuestos.sort()  # Ordenamos para poder comparar (por si se han introducido en otro orden en otras líneas)
-        revisadas.append(li.id)
-        cc2 = li.account_id.code
-        if li.asset_id.id: activo2="X"
-        lineas_num -= 1
+            neto = li.price_subtotal
+            if (li.product_id.type == "service"):   serv2="X"
 
-        neto = li.price_subtotal
-        if (li.product_id.type == "service"):   serv2="X"
+              # Ver el tipo de impuestos de la línea, y sus futuras similares:
+            for im in impuestos:
+              tax = env['account.tax'].search([('id','=',im)])
+              id_externo = env['ir.model.data'].search([('model','=','account.tax'),('res_id','=',tax.id)]).name
+              if   (id_externo.find('iva')  != -1) :
+                iva2  = True
+                iva_neto2    = neto
+                iva_percent2 = tax.amount
+                iva_tax2     = neto * tax.amount / 100
+              elif (id_externo.find('irpf') != -1) :
+                irpf2 = True
+                irpf_neto2    = neto
+                irpf_percent2 = tax.amount
+                irpf_tax2     = neto * tax.amount / 100
+              elif (id_externo.find('req')  != -1) :
+                req2  = True
+                req_neto2    = neto
+                req_percent2 = tax.amount
+                req_tax2     = neto * tax.amount / 100
 
-          # Ver el tipo de impuestos de la línea, y sus futuras similares:
-        for im in impuestos:
-          tax = env['account.tax'].search([('id','=',im)])
-          id_externo = env['ir.model.data'].search([('model','=','account.tax'),('res_id','=',tax.id)]).name
-          if   (id_externo.find('iva')  != -1) :
-            iva2  = True
-            iva_neto2    = neto
-            iva_percent2 = tax.amount
-            iva_tax2     = neto * tax.amount / 100
-          elif (id_externo.find('irpf') != -1) :
-            irpf2 = True
-            irpf_neto2    = neto
-            irpf_percent2 = tax.amount
-            irpf_tax2     = neto * tax.amount / 100
-          elif (id_externo.find('req')  != -1) :
-            req2  = True
-            req_neto2    = neto
-            req_percent2 = tax.amount
-            req_tax2     = neto * tax.amount / 100
+            for li1 in lineas_ids:
+              impg1 = li1.invoice_line_tax_ids.ids
+              impg1.sort()
+              if (li1.id not in revisadas) and (impg1 == impuestos):
+                revisadas.append(li1.id)
+                if (iva2 == True):
+                  iva_neto2    += li1.price_subtotal
+                  iva_tax2     += li1.price_subtotal  * iva_percent2 / 100
+                if (irpf2 == True):
+                  irpf_neto2    += li1.price_subtotal
+                  irpf_tax2     += li1.price_subtotal * irpf_percent2 / 100
+                if (req2 == True):
+                  req_neto2    += li1.price_subtotal
+                  req_tax2     += li1.price_subtotal  * req_percent2 / 100
+            if iva_tax2:  iva_tax2  = round(iva_tax2,2)
+            if irpf_tax2: irpf_tax2 = round(irpf_tax2,2)
+            if req_tax2:  req_tax2  = round(req_tax2,2)
+            contador = 3
 
-        for li1 in lineas_ids:
-          impg1 = li1.invoice_line_tax_ids.ids
-          impg1.sort()
-          if (li1.id not in revisadas) and (impg1 == impuestos):
-            revisadas.append(li1.id)
-            if (iva2 == True):
-              iva_neto2    += li1.price_subtotal
-              iva_tax2     += li1.price_subtotal  * iva_percent2 / 100
-            if (irpf2 == True):
-              irpf_neto2    += li1.price_subtotal
-              irpf_tax2     += li1.price_subtotal * irpf_percent2 / 100
-            if (req2 == True):
-              req_neto2    += li1.price_subtotal
-              req_tax2     += li1.price_subtotal  * req_percent2 / 100
-        if iva_tax2:  iva_tax2  = round(iva_tax2,2)
-        if irpf_tax2: irpf_tax2 = round(irpf_tax2,2)
-        if req_tax2:  req_tax2  = round(req_tax2,2)
-        contador = 3
+          # Para el tercer  grupo de SUASOR:
+          if (li.id not in revisadas) and (contador == 3) and (lineas_num > 0):
+            impuestos = li.invoice_line_tax_ids.ids
+            impuestos.sort()  # Ordenamos para poder comparar (por si se han introducido en otro orden en otras líneas)
+            revisadas.append(li.id)
+            cc3 = li.account_id.code
+            if li.asset_id.id: activo3="X"
+            lineas_num -= 1
 
-      # Para el tercer  grupo de SUASOR:
-      if (li.id not in revisadas) and (contador == 3) and (lineas_num > 0):
-        impuestos = li.invoice_line_tax_ids.ids
-        impuestos.sort()  # Ordenamos para poder comparar (por si se han introducido en otro orden en otras líneas)
-        revisadas.append(li.id)
-        cc3 = li.account_id.code
-        if li.asset_id.id: activo3="X"
-        lineas_num -= 1
+            neto = li.price_subtotal
+            if (li.product_id.type == "service"):   serv3="X"
 
-        neto = li.price_subtotal
-        if (li.product_id.type == "service"):   serv3="X"
+              # Ver el tipo de impuestos de la línea, y sus futuras similares:
+            for im in impuestos:
+              tax = env['account.tax'].search([('id','=',im)])
+              id_externo = env['ir.model.data'].search([('model','=','account.tax'),('res_id','=',tax.id)]).name
+              if   (id_externo.find('iva')  != -1) :
+                iva3  = True
+                iva_neto3    = neto
+                iva_percent3 = tax.amount
+                iva_tax3     = neto * tax.amount / 100
+              elif (id_externo.find('irpf') != -1) :
+                irpf3 = True
+                irpf_neto3    = neto
+                irpf_percent3 = tax.amount
+                irpf_tax3     = neto * tax.amount / 100
+              elif (id_externo.find('req')  != -1) :
+                req3  = True
+                req_neto3    = neto
+                req_percent3 = tax.amount
+                req_tax3     = neto * tax.amount / 100
 
-          # Ver el tipo de impuestos de la línea, y sus futuras similares:
-        for im in impuestos:
-          tax = env['account.tax'].search([('id','=',im)])
-          id_externo = env['ir.model.data'].search([('model','=','account.tax'),('res_id','=',tax.id)]).name
-          if   (id_externo.find('iva')  != -1) :
-            iva3  = True
-            iva_neto3    = neto
-            iva_percent3 = tax.amount
-            iva_tax3     = neto * tax.amount / 100
-          elif (id_externo.find('irpf') != -1) :
-            irpf3 = True
-            irpf_neto3    = neto
-            irpf_percent3 = tax.amount
-            irpf_tax3     = neto * tax.amount / 100
-          elif (id_externo.find('req')  != -1) :
-            req3  = True
-            req_neto3    = neto
-            req_percent3 = tax.amount
-            req_tax3     = neto * tax.amount / 100
-
-        for li1 in lineas_ids:
-          impg1 = li1.invoice_line_tax_ids.ids
-          impg1.sort()
-          if (li1.id not in revisadas) and (impg1 == impuestos):
-            revisadas.append(li1.id)
-            if (iva3 == True):
-              iva_neto3    += li1.price_subtotal
-              iva_tax3     += li1.price_subtotal  * iva_percent3 / 100
-            if (irpf3 == True):
-              irpf_neto3    += li1.price_subtotal
-              irpf_tax3     += li1.price_subtotal * irpf_percent3 / 100
-            if (req3 == True):
-              req_neto3    += li1.price_subtotal
-              req_tax3     += li1.price_subtotal  * req_percent3 / 100
-        if iva_tax3:  iva_tax3  = round(iva_tax3,2)
-        if irpf_tax3: irpf_tax3 = round(irpf_tax3,2)
-        if req_tax3:  req_tax3  = round(req_tax3,2)
-        contador = 4
+            for li1 in lineas_ids:
+              impg1 = li1.invoice_line_tax_ids.ids
+              impg1.sort()
+              if (li1.id not in revisadas) and (impg1 == impuestos):
+                revisadas.append(li1.id)
+                if (iva3 == True):
+                  iva_neto3    += li1.price_subtotal
+                  iva_tax3     += li1.price_subtotal  * iva_percent3 / 100
+                if (irpf3 == True):
+                  irpf_neto3    += li1.price_subtotal
+                  irpf_tax3     += li1.price_subtotal * irpf_percent3 / 100
+                if (req3 == True):
+                  req_neto3    += li1.price_subtotal
+                  req_tax3     += li1.price_subtotal  * req_percent3 / 100
+            if iva_tax3:  iva_tax3  = round(iva_tax3,2)
+            if irpf_tax3: irpf_tax3 = round(irpf_tax3,2)
+            if req_tax3:  req_tax3  = round(req_tax3,2)
+            contador = 4
 
       # Finalizar: Comprobamos que hemos pasado por todas las líneas, y escribimos el registro oportuno:
     if (len(lineas_ids) - len(revisadas) > 0):
@@ -265,158 +265,158 @@ if (record.state in ['open']) and (record.suasor_invoice_id.id):
       cod_provincia = provincias[cod_provincia]
 
     for li in lineas_ids:
+      if not li.display_type:
+          # Para el primer grupo de SUASOR:
+          if (li.id not in revisadas) and (contador == 1) and (lineas_num > 0):
+            impuestos = li.invoice_line_tax_ids.ids
+            impuestos.sort()  # Ordenamos para poder comparar (por si se han introducido en otro orden en otras líneas)
+            revisadas.append(li.id)
+            cc1 = li.account_id.code
+            if li.asset_id.id: activo1="X"
+            lineas_num -= 1
 
-      # Para el primer grupo de SUASOR:
-      if (li.id not in revisadas) and (contador == 1) and (lineas_num > 0):
-        impuestos = li.invoice_line_tax_ids.ids
-        impuestos.sort()  # Ordenamos para poder comparar (por si se han introducido en otro orden en otras líneas)
-        revisadas.append(li.id)
-        cc1 = li.account_id.code
-        if li.asset_id.id: activo1="X"
-        lineas_num -= 1
+            neto = li.price_subtotal
+            if (li.product_id.type == "service"):   serv1="X"
 
-        neto = li.price_subtotal
-        if (li.product_id.type == "service"):   serv1="X"
+              # Ver el tipo de impuestos de la línea, y sus futuras similares:
+            for im in impuestos:
+              tax = env['account.tax'].search([('id','=',im)])
+              id_externo = env['ir.model.data'].search([('model','=','account.tax'),('res_id','=',tax.id)]).name
+              if   (id_externo.find('iva')  != -1) :
+                iva1  = True
+                iva_neto1    = neto
+                iva_percent1 = tax.amount
+                iva_tax1     = neto * tax.amount / 100
+              elif (id_externo.find('irpf') != -1) :
+                irpf1 = True
+                irpf_neto1    = neto
+                irpf_percent1 = tax.amount
+                irpf_tax1     = neto * tax.amount / 100
+              elif (id_externo.find('req')  != -1) :
+                req1  = True
+                req_neto1    = neto
+                req_percent1 = tax.amount
+                req_tax1     = neto * tax.amount / 100
 
-          # Ver el tipo de impuestos de la línea, y sus futuras similares:
-        for im in impuestos:
-          tax = env['account.tax'].search([('id','=',im)])
-          id_externo = env['ir.model.data'].search([('model','=','account.tax'),('res_id','=',tax.id)]).name
-          if   (id_externo.find('iva')  != -1) :
-            iva1  = True
-            iva_neto1    = neto
-            iva_percent1 = tax.amount
-            iva_tax1     = neto * tax.amount / 100
-          elif (id_externo.find('irpf') != -1) :
-            irpf1 = True
-            irpf_neto1    = neto
-            irpf_percent1 = tax.amount
-            irpf_tax1     = neto * tax.amount / 100
-          elif (id_externo.find('req')  != -1) :
-            req1  = True
-            req_neto1    = neto
-            req_percent1 = tax.amount
-            req_tax1     = neto * tax.amount / 100
+            for li1 in lineas_ids:
+              impg1 = li1.invoice_line_tax_ids.ids
+              impg1.sort()
+              if (li1.id not in revisadas) and (impg1 == impuestos):
+                revisadas.append(li1.id)
+                if (iva1 == True):
+                  iva_neto1    += li1.price_subtotal
+                  iva_tax1     += li1.price_subtotal  * iva_percent1 / 100
+                if (irpf1 == True):
+                  irpf_neto1    += li1.price_subtotal
+                  irpf_tax1     += li1.price_subtotal * irpf_percent1 / 100
+                if (req1 == True):
+                  req_neto1    += li1.price_subtotal
+                  req_tax1     += li1.price_subtotal  * req_percent1 / 100
+            if iva_tax1:  iva_tax1  = round(iva_tax1,2)
+            if irpf_tax1: irpf_tax1 = round(irpf_tax1,2)
+            if req_tax1:  req_tax1  = round(req_tax1,2)
+            contador = 2
+          # Para el segundo grupo de SUASOR:
+          if (li.id not in revisadas) and (contador == 2) and (lineas_num > 0):
+            impuestos = li.invoice_line_tax_ids.ids
+            impuestos.sort()  # Ordenamos para poder comparar (por si se han introducido en otro orden en otras líneas)
+            revisadas.append(li.id)
+            cc2 = li.account_id.code
+            if li.asset_id.id: activo2="X"
+            lineas_num -= 1
 
-        for li1 in lineas_ids:
-          impg1 = li1.invoice_line_tax_ids.ids
-          impg1.sort()
-          if (li1.id not in revisadas) and (impg1 == impuestos):
-            revisadas.append(li1.id)
-            if (iva1 == True):
-              iva_neto1    += li1.price_subtotal
-              iva_tax1     += li1.price_subtotal  * iva_percent1 / 100
-            if (irpf1 == True):
-              irpf_neto1    += li1.price_subtotal
-              irpf_tax1     += li1.price_subtotal * irpf_percent1 / 100
-            if (req1 == True):
-              req_neto1    += li1.price_subtotal
-              req_tax1     += li1.price_subtotal  * req_percent1 / 100
-        if iva_tax1:  iva_tax1  = round(iva_tax1,2)
-        if irpf_tax1: irpf_tax1 = round(irpf_tax1,2)
-        if req_tax1:  req_tax1  = round(req_tax1,2)
-        contador = 2
-      # Para el segundo grupo de SUASOR:
-      if (li.id not in revisadas) and (contador == 2) and (lineas_num > 0):
-        impuestos = li.invoice_line_tax_ids.ids
-        impuestos.sort()  # Ordenamos para poder comparar (por si se han introducido en otro orden en otras líneas)
-        revisadas.append(li.id)
-        cc2 = li.account_id.code
-        if li.asset_id.id: activo2="X"
-        lineas_num -= 1
+            neto = li.price_subtotal
+            if (li.product_id.type == "service"):   serv2="X"
 
-        neto = li.price_subtotal
-        if (li.product_id.type == "service"):   serv2="X"
+              # Ver el tipo de impuestos de la línea, y sus futuras similares:
+            for im in impuestos:
+              tax = env['account.tax'].search([('id','=',im)])
+              id_externo = env['ir.model.data'].search([('model','=','account.tax'),('res_id','=',tax.id)]).name
+              if   (id_externo.find('iva')  != -1) :
+                iva2  = True
+                iva_neto2    = neto
+                iva_percent2 = tax.amount
+                iva_tax2     = neto * tax.amount / 100
+              elif (id_externo.find('irpf') != -1) :
+                irpf2 = True
+                irpf_neto2    = neto
+                irpf_percent2 = tax.amount
+                irpf_tax2     = neto * tax.amount / 100
+              elif (id_externo.find('req')  != -1) :
+                req2  = True
+                req_neto2    = neto
+                req_percent2 = tax.amount
+                req_tax2     = neto * tax.amount / 100
 
-          # Ver el tipo de impuestos de la línea, y sus futuras similares:
-        for im in impuestos:
-          tax = env['account.tax'].search([('id','=',im)])
-          id_externo = env['ir.model.data'].search([('model','=','account.tax'),('res_id','=',tax.id)]).name
-          if   (id_externo.find('iva')  != -1) :
-            iva2  = True
-            iva_neto2    = neto
-            iva_percent2 = tax.amount
-            iva_tax2     = neto * tax.amount / 100
-          elif (id_externo.find('irpf') != -1) :
-            irpf2 = True
-            irpf_neto2    = neto
-            irpf_percent2 = tax.amount
-            irpf_tax2     = neto * tax.amount / 100
-          elif (id_externo.find('req')  != -1) :
-            req2  = True
-            req_neto2    = neto
-            req_percent2 = tax.amount
-            req_tax2     = neto * tax.amount / 100
+            for li1 in lineas_ids:
+              impg1 = li1.invoice_line_tax_ids.ids
+              impg1.sort()
+              if (li1.id not in revisadas) and (impg1 == impuestos):
+                revisadas.append(li1.id)
+                if (iva2 == True):
+                  iva_neto2    += li1.price_subtotal
+                  iva_tax2     += li1.price_subtotal  * iva_percent2 / 100
+                if (irpf2 == True):
+                  irpf_neto2    += li1.price_subtotal
+                  irpf_tax2     += li1.price_subtotal * irpf_percent2 / 100
+                if (req2 == True):
+                  req_neto2    += li1.price_subtotal
+                  req_tax2     += li1.price_subtotal  * req_percent2 / 100
+            if iva_tax2:  iva_tax2  = round(iva_tax2,2)
+            if irpf_tax2: irpf_tax2 = round(irpf_tax2,2)
+            if req_tax2:  req_tax2  = round(req_tax2,2)
+            contador = 3
 
-        for li1 in lineas_ids:
-          impg1 = li1.invoice_line_tax_ids.ids
-          impg1.sort()
-          if (li1.id not in revisadas) and (impg1 == impuestos):
-            revisadas.append(li1.id)
-            if (iva2 == True):
-              iva_neto2    += li1.price_subtotal
-              iva_tax2     += li1.price_subtotal  * iva_percent2 / 100
-            if (irpf2 == True):
-              irpf_neto2    += li1.price_subtotal
-              irpf_tax2     += li1.price_subtotal * irpf_percent2 / 100
-            if (req2 == True):
-              req_neto2    += li1.price_subtotal
-              req_tax2     += li1.price_subtotal  * req_percent2 / 100
-        if iva_tax2:  iva_tax2  = round(iva_tax2,2)
-        if irpf_tax2: irpf_tax2 = round(irpf_tax2,2)
-        if req_tax2:  req_tax2  = round(req_tax2,2)
-        contador = 3
+          # Para el tercer  grupo de SUASOR:
+          if (li.id not in revisadas) and (contador == 3) and (lineas_num > 0):
+            impuestos = li.invoice_line_tax_ids.ids
+            impuestos.sort()  # Ordenamos para poder comparar (por si se han introducido en otro orden en otras líneas)
+            revisadas.append(li.id)
+            cc3 = li.account_id.code
+            if li.asset_id.id: activo3="X"
+            lineas_num -= 1
 
-      # Para el tercer  grupo de SUASOR:
-      if (li.id not in revisadas) and (contador == 3) and (lineas_num > 0):
-        impuestos = li.invoice_line_tax_ids.ids
-        impuestos.sort()  # Ordenamos para poder comparar (por si se han introducido en otro orden en otras líneas)
-        revisadas.append(li.id)
-        cc3 = li.account_id.code
-        if li.asset_id.id: activo3="X"
-        lineas_num -= 1
+            neto = li.price_subtotal
+            if (li.product_id.type == "service"):   serv3="X"
 
-        neto = li.price_subtotal
-        if (li.product_id.type == "service"):   serv3="X"
+              # Ver el tipo de impuestos de la línea, y sus futuras similares:
+            for im in impuestos:
+              tax = env['account.tax'].search([('id','=',im)])
+              id_externo = env['ir.model.data'].search([('model','=','account.tax'),('res_id','=',tax.id)]).name
+              if   (id_externo.find('iva')  != -1) :
+                iva3  = True
+                iva_neto3    = neto
+                iva_percent3 = tax.amount
+                iva_tax3     = neto * tax.amount / 100
+              elif (id_externo.find('irpf') != -1) :
+                irpf3 = True
+                irpf_neto3    = neto
+                irpf_percent3 = tax.amount
+                irpf_tax3     = neto * tax.amount / 100
+              elif (id_externo.find('req')  != -1) :
+                req3  = True
+                req_neto3    = neto
+                req_percent3 = tax.amount
+                req_tax3     = neto * tax.amount / 100
 
-          # Ver el tipo de impuestos de la línea, y sus futuras similares:
-        for im in impuestos:
-          tax = env['account.tax'].search([('id','=',im)])
-          id_externo = env['ir.model.data'].search([('model','=','account.tax'),('res_id','=',tax.id)]).name
-          if   (id_externo.find('iva')  != -1) :
-            iva3  = True
-            iva_neto3    = neto
-            iva_percent3 = tax.amount
-            iva_tax3     = neto * tax.amount / 100
-          elif (id_externo.find('irpf') != -1) :
-            irpf3 = True
-            irpf_neto3    = neto
-            irpf_percent3 = tax.amount
-            irpf_tax3     = neto * tax.amount / 100
-          elif (id_externo.find('req')  != -1) :
-            req3  = True
-            req_neto3    = neto
-            req_percent3 = tax.amount
-            req_tax3     = neto * tax.amount / 100
-
-        for li1 in lineas_ids:
-          impg1 = li1.invoice_line_tax_ids.ids
-          impg1.sort()
-          if (li1.id not in revisadas) and (impg1 == impuestos):
-            revisadas.append(li1.id)
-            if (iva3 == True):
-              iva_neto3    += li1.price_subtotal
-              iva_tax3     += li1.price_subtotal  * iva_percent3 / 100
-            if (irpf3 == True):
-              irpf_neto3    += li1.price_subtotal
-              irpf_tax3     += li1.price_subtotal * irpf_percent3 / 100
-            if (req3 == True):
-              req_neto3    += li1.price_subtotal
-              req_tax3     += li1.price_subtotal  * req_percent3 / 100
-        if iva_tax3:  iva_tax3  = round(iva_tax3,2)
-        if irpf_tax3: irpf_tax3 = round(irpf_tax3,2)
-        if req_tax3:  req_tax3  = round(req_tax3,2)
-        contador = 4
+            for li1 in lineas_ids:
+              impg1 = li1.invoice_line_tax_ids.ids
+              impg1.sort()
+              if (li1.id not in revisadas) and (impg1 == impuestos):
+                revisadas.append(li1.id)
+                if (iva3 == True):
+                  iva_neto3    += li1.price_subtotal
+                  iva_tax3     += li1.price_subtotal  * iva_percent3 / 100
+                if (irpf3 == True):
+                  irpf_neto3    += li1.price_subtotal
+                  irpf_tax3     += li1.price_subtotal * irpf_percent3 / 100
+                if (req3 == True):
+                  req_neto3    += li1.price_subtotal
+                  req_tax3     += li1.price_subtotal  * req_percent3 / 100
+            if iva_tax3:  iva_tax3  = round(iva_tax3,2)
+            if irpf_tax3: irpf_tax3 = round(irpf_tax3,2)
+            if req_tax3:  req_tax3  = round(req_tax3,2)
+            contador = 4
 
       # Finalizar: Comprobamos que hemos pasado por todas las líneas, y escribimos el registro oportuno:
     if (len(lineas_ids) - len(revisadas) > 0):

@@ -72,6 +72,7 @@
     <menuitem
             action="action_suasor_invoice"
             id="menu_suasor"
+            groups="base.group_system"
             name="Suasor"
             sequence="10"
             web_icon=""
