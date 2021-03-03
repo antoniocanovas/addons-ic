@@ -11,9 +11,27 @@ class SaleOrderLine(models.Model):
     pricelist_id = fields.Many2one('product.pricelist', related='order_id.pricelist_id', readonly=True)
     section_line_ids = fields.One2many('sale.order.line', 'section_id', store=True, string='Section Lines')
 
-    section = fields.Char('Section')
-
+    section = fields.Char('Section', readonly=True)
     section_id = fields.Many2one('sale.order.line', readonly=True)
+    level = fields.Integer(
+        'Level',
+        readonly=True,
+    )
+    child_ids = fields.Many2many(
+        'sale.order.line',
+        relation='sections_rel',
+        column1='parent_section_id',
+        column2='child_section_id',
+        readonly=True,
+    )
+
+    parent_ids = fields.Many2many(
+        'sale.order.line',
+        relation='sections_rel',
+        column1='child_section_id',
+        column2='parent_section_id',
+        readonly=True,
+    )
 
     @api.depends('create_date')
     def _get_total_section(self):
@@ -33,33 +51,6 @@ class SaleOrderLine(models.Model):
         compute=_get_total_section,
     )
 
-    @api.depends('parent_ids')
-    def _get_level(self):
-        print("DEBUG level")
-        for record in self:
-            record.level = len(record.parent_ids)
 
-    level = fields.Integer(
-        'Level',
-        readonly=True,
-        store=True,
-        compute=_get_level,
-    )
-
-    child_ids = fields.Many2many(
-        'sale.order.line',
-        relation='sections_rel',
-        column1='parent_section_id',
-        column2='child_section_id',
-        readonly=True,
-        )
-
-    parent_ids = fields.Many2many(
-        'sale.order.line',
-        relation='sections_rel',
-        column1='child_section_id',
-        column2='parent_section_id',
-        readonly=True,
-    )
 
 

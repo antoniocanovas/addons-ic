@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="isets_form" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <form create="false" edit="false" delete="false">
+                <sheet string="iSets">
+                    <h2>
+                        <field name="name"/>
+                    </h2>
+                    <group name="basic_params" col="4">
+                        <field name="date"/>
+                        <field name="start "/>
+                        <field name="end"/>
+                        <field name="type_id"/>
+                        <field name="employee_ids"/>
+                        <field name="repair_id"/>
+                        <field name="workorder_id"/>
+                        <field name="timesheet_ids"/>
+                        <field name="productivity_ids"/>
+                        <field name="repair_fee_ids"/>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">isets</field>
+        <field name="name">iSets form view</field>
+        <field name="priority">16</field>
+        <field name="type">form</field>
+    </record>
+
+    <record id="isets_tree" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <tree string="iSets">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="type_id"/>
+                <field name="employee_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">isets</field>
+        <field name="name">iSets Tree View</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
+    </record>
+
+
+</odoo>
