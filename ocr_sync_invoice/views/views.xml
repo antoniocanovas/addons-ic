@@ -59,7 +59,7 @@
             <xpath expr="//sheet/group/group/field[@name='reference']" position="after">
                 <field name="remote_type"/>
             </xpath>
-            <xpath expr="//sheet/group/group/field[@name='date_invoice']" position="after">
+            <xpath expr="//sheet/group/group/field[@name='date_due']" position="after">
                 <field name="customer_id"/>
                 <field name="remote_state"/>
             </xpath>
