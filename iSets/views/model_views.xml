@@ -4,25 +4,45 @@
     <record id="isets_form" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-            <form create="false" edit="false" delete="false">
-                <sheet string="iSets">
-                    <h2>
+            <form>
+                <header>
+                    <!--
+                          <button name="999999" string="Mark as done" type="object"/>
+                    -->
+                </header>
+                <sheet>
+                    <h1>
                         <field name="name"/>
-                    </h2>
-                    <group name="basic_params" col="4">
+                    </h1>
+                    <group>
                         <field name="date"/>
-                        <field name="start "/>
-                        <field name="end"/>
+                        <field name="start" widget="timesheet_uom"/>
+                        <field name="end" widget="timesheet_uom"/>
                         <field name="type_id"/>
-                        <field name="employee_ids"/>
+                        <field name="employee_ids" widget="many2many_tags"/>
+                    </group>
+                    <group name="repair_data" attrs="{'invisible':[('type','!=','repair')]}">
                         <field name="repair_id"/>
-                        <field name="workorder_id"/>
-                        <field name="timesheet_ids"/>
-                        <field name="productivity_ids"/>
                         <field name="repair_fee_ids"/>
                     </group>
+                    <group name="task_data" attrs="{'invisible':[('type','!=','project')]}">
+                        <field name="project_id"/>
+                        <field name="task_id" domain="[('project_id','=',project_id)]"/>
+                        <field name="timesheet_ids"/>
+                    </group>
+                    <group name="workorder_data" attrs="{'invisible':[('type','!=','production')]}">
+                        <field name="workorder_id"/>
+                        <field name="productivity_ids"/>
+                    </group>
+                    <field name="type" invisible="1"/>
                 </sheet>
-
+                <!--
+                  <div class="oe_chatter">
+                      <field name="message_follower_ids"/>
+                      <field name="activity_ids"/>
+                      <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                  </div>
+                -->
             </form>
         </field>
         <field name="field_parent" eval="False"/>
@@ -39,11 +59,10 @@
     <record id="isets_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-            <tree string="iSets">
+            <tree name="iSet_tree" string="iSets">
                 <field name="name"/>
-                <field name="date"/>
                 <field name="type_id"/>
-                <field name="employee_ids" widget="many2many_tags"/>
+                <field name="date"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -53,6 +72,28 @@
         <field name="mode">primary</field>
         <field name="model">isets</field>
         <field name="name">iSets Tree View</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
+    </record>
+
+
+    <record id="isets_types_tree" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <tree string="iSets Types" sample="1" multi_edit="1" editable="bottom">
+                <field name="name"/>
+                <field name="type"/>
+                <field name="partner_id"/>
+                <field name="product_id"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">iset.types</field>
+        <field name="name">iSets Types Tree View</field>
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>

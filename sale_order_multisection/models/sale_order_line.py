@@ -33,6 +33,8 @@ class SaleOrderLine(models.Model):
         readonly=True,
     )
 
+    review = fields.Boolean('Review')
+
     @api.depends('create_date')
     def _get_total_section(self):
         print("DEBUG section total")

@@ -20,6 +20,19 @@ if (record.display_type == 'line_section') and (record.name[:1] == '$'):
             <field name="active" eval="True"/>
         </record>
 
+        <record id="sol_sequence_review" model="base.automation">
+            <field name="name">=>SOL Sequence Review</field>
+            <field name="model_id" ref="sale.model_sale_order_line"/>
+            <field name="state">code</field>
+            <field name="code">
+if (record.review == True):
+ record.write({'sequence':record.sequence -1, 'review':False})
+            </field>
+            <field name="trigger">on_create</field>
+            <!--<field name="on_change_fields">state</field>-->
+            <field name="active" eval="True"/>
+        </record>
+
         <record id="so_multisection_calculate" model="base.automation">
             <field name="name">=>SO Multisection</field>
             <field name="model_id" ref="sale.model_sale_order"/>
