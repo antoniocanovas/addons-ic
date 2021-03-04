@@ -25,8 +25,15 @@ if (record.display_type == 'line_section') and (record.name[:1] == '$'):
             <field name="model_id" ref="sale.model_sale_order_line"/>
             <field name="state">code</field>
             <field name="code">
-if (record.review == True):
- record.write({'sequence':record.sequence -1, 'review':False})
+# Sequence en las que se han creado desde "secciones" (están las últimas) en vez de por section_id
+if record.review:
+  seq = record.section_id.sequence
+  lines = env['sale.order.line'].search([('section_id','=',record.section_id.id),('id','!=',record.id),('create_date','<',record.create_date)])
+  if lines:
+    lines_sorted = lines.sorted(key=lambda r: r.sequence)
+    seq = env['sale.order.line'].search([('id','=',lines_sorted.ids.pop())]).sequence
+  record.write({'sequence':seq, 'review':False})
+
             </field>
             <field name="trigger">on_create</field>
             <!--<field name="on_change_fields">state</field>-->

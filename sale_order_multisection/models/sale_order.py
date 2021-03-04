@@ -22,16 +22,23 @@ class SaleOrderSets(models.Model):
         return action
 
     def order_sections(self):
-        # Ordenar secciones alfabéticamente por 'sección', y continuar con sus líneas en un array:
-        secciones = self.env['sale.order.line'].search(
+        # Reorder sections and lines by section:
+        sections = self.env['sale.order.line'].search(
             [('order_id', '=', self.id), ('display_type', '=', 'line_section')]).sorted(key=lambda r: r.section)
-        lineas = []
-        for se in secciones:
+        lineas, counter = [], 0
+        # Previous lines with no section:
+        lines_no_section = self.env['sale.order.line'].search(
+            [('order_id', '=', self.id), ('section_id', '=', False), ('display_type', '!=', 'line_section')])
+        for li in lines_no_section:
+            if li.sequence > counter: counter = li.sequence
+        counter = counter + 1
+        # Ordering sections:
+        for se in sections:
             for li in self.order_line:
                 if (li.id == se.id) or (li.section_id.id == se.id):
                     lineas.append(li)
-        # Asignar nueva secuencia según array:
-        contador = 1
+        # New sequence to array lines:
         for li in lineas:
-            li['sequence'] = contador
-            contador += 1
+            li['sequence'] = counter
+            counter += 1
+
