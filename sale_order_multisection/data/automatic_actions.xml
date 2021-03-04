@@ -28,7 +28,7 @@ if (record.display_type == 'line_section') and (record.name[:1] == '$'):
 # Sequence en las que se han creado desde "secciones" (están las últimas) en vez de por section_id
 if record.review:
   seq = record.section_id.sequence
-  lines = env['sale.order.line'].search([('section_id','=',record.section_id.id),('id','!=',record.id),('create_date','<',record.create_date)])
+  lines = env['sale.order.line'].search([('section_id','=',record.section_id.id),('id','!=',record.id),('create_date','&lt;',record.create_date)])
   if lines:
     lines_sorted = lines.sorted(key=lambda r: r.sequence)
     seq = env['sale.order.line'].search([('id','=',lines_sorted.ids.pop())]).sequence
