@@ -55,14 +55,14 @@
                         <field name="child_ids" widget="many2many_tags"/>
                     </group>
 
-                    <field name="section_line_ids" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': [('state', 'in', ('done','cancel'))]}" nolabel="1" context="{'section_id':active_id}">
-                        <tree editable="top">
+                    <field name="section_line_ids" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': [('state', 'in', ('done','cancel'))]}" nolabel="1" context="{'default_review':True}">
+                        <tree editable="bottom">
                             <control>
                                 <create name="add_product_control" string="Add a product" context="{'default_display_type': False, 'default_section_id':active_id}"/>
                                 <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note', 'default_section_id':active_id}"/>
                             </control>
                             <field name="sequence" widget="handle"/>
-                            <field name="section_id" invisible="1"/> <!-- Campo de control se puede eliminar -->
+                            <field name="section_id" invisible="1"/>
                             <!-- We do not display the type because we don't want the user to be bothered with that information if he has no section or note. -->
                             <field name="display_type" invisible="1"/>
                             <field name="product_uom_category_id" invisible="1"/>
@@ -92,6 +92,7 @@
                             <field name="price_tax" invisible="1"/>
                             <field name="section_id" invisible="1"/>
                             <field name="company_id" invisible="1"/>
+                            <field name="review" invisible="1"/>
                         </tree>
                     </field>
 

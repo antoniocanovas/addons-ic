@@ -5,12 +5,13 @@ _logger = logging.getLogger(__name__)
 
 
 TYPES = [
-    ('proyect', 'Proyect'),
+    ('project', 'Project'),
     ('repair', 'Repair'),
     ('production', 'Production'),
 ]
 
-class iSetsTypes(models.Model):
+
+class IsetsTypes(models.Model):
     _name = 'iset.types'
     _description = 'iSet Types'
 
