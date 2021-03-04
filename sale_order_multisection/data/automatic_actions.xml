@@ -42,7 +42,7 @@ if (record.review == True):
 hay_secciones = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
 if (hay_secciones) and (record.state == 'draft'):
   lineas = record.order_line.sorted(key=lambda r: r.sequence)
-  seccion_id = 0                                                  # <= Inicializar variable
+  seccion_id = 0
     # Asingar 'section' en Secciones y 'section_id' en el resto de líneas, en base a la secuencia de orden de líneas:
   for li in lineas:
     if (li.display_type == 'line_section') and (li.name):
