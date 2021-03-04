@@ -1,5 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_isets_types, iSets types, model_isets_types, base.group_user, 1,1,1,1
-access_isets, iSets , model_isets, base.group_user, 1,1,1,1
-
+access_isets,isets user,iSets.model_isets,base.group_user,1,1,1,1
+access_isets_types,isets types user,iSets.model_iset_types,base.group_user,1,1,1,1
 

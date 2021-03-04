@@ -18,8 +18,8 @@ class Isets(models.Model):
     date = fields.Date('Date')
     start = fields.Float('Start')
     end = fields.Float('End')
-    type_id = fields.Many2one('iset_types')
-
+    type_id = fields.Many2one('iset.types')
+    type = fields.Selection(selection=TYPES, string='Type', related='type_id.type')
     employee_ids = fields.Many2many('hr.employee')
     repair_id = fields.Many2one('repair.order')
     project_id = fields.Many2one('project.project')
@@ -31,9 +31,3 @@ class Isets(models.Model):
     repair_fee_ids = fields.One2many('repair.fee', 'iset_id', string='Horas asistencias')
     repair_line_ids = fields.One2many('repair.line', 'iset_id', string='Productos RL')
     stock_move_ids = fields.One2many('stock.move', 'iset_id', string='Productos SM')
-
-    @api.depends('type_id')
-    def _set_type(self):
-        for record in self:
-            record.type = record.type_id.type
-    type = fields.Selection(selection=TYPES, string='Type', compute=_set_type)
