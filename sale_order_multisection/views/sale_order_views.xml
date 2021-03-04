@@ -12,11 +12,11 @@
                     <field widget="statinfo" name="section_lines_count" string="Secciones"/>
                 </button>
             </xpath>
-            <xpath expr="//header/button[@name='action_draft']" position="after">
+            <!--<xpath expr="//header/button[@name='action_draft']" position="after">
                 <button class="oe_stat_butt" string="Reordenar Secciones" type="object" name="order_sections">
 
                 </button>
-            </xpath>
+            </xpath>-->
 
         </field>
     </record>
