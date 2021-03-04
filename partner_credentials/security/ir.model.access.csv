@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_partner_credentials, Partner Credentials,model_partner_credentials,base.group_user,1,1,1,1
-access_partner_credentials_admin, Partner Credentials Admin,model_partner_credentials,partner_credentials.admin_credentials,1,1,1,1

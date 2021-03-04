@@ -1,8 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-acces_x_rgpd_legales,x_rgpd_legales,model_x_rgpd_legales,,1,1,1,1
-acces_x_rgpd_medidas,x_rgpd_medidas,model_x_rgpd_medidas,,1,1,1,1
-acces_x_rgpd_opciones,x_rgpd_opciones,model_x_rgpd_opciones,,1,1,1,1
-acces_x_rgpd_grupos,x_rgpd_grupos,model_x_rgpd_grupos,,1,1,1,1
-acces_x_rgpd_rats,x_rgpd_rats,model_x_rgpd_rats,,1,1,1,1
-rgpd_manager, rgpd manager access,model_x_rgpd_legales,RGPD.group_manager,1,1,1,1
-rgpd_user, rgpd user access,model_x_rgpd_legales,RGPD.group_user,1,0,0,0
