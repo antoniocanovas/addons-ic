@@ -189,7 +189,56 @@ if record.state in ['open'] and not record.suasor_invoice_id.id:
 
       # Finalizar: Comprobamos que hemos pasado por todas las líneas, y escribimos el registro oportuno:
     if (len(lineas_ids) - len(revisadas) > 0):
-      raise Warning("Esta factura es muy compleja para SUASOR, tiene más de 3 combinaciones de impuestos")
+      suasor_invoice_id = env['suasor.invoice'].create({
+              'name': 'Suasor' + str(record.number) + 'No procesada',
+              'fecha_emision': record.date_invoice,
+              'tipo_factura': record.type,
+              'n_documento': record.number,
+              'total_factura': str(record.amount_total),
+              'cuenta': record.account_id.code,
+              'nif': str(record.partner_id.vat),
+              'nombre': record.partner_id.name,
+              'provincia': str(cod_provincia),
+              'pais': (str(record.partner_id.country_id.code)),
+              'terminos_pago': str(record.payment_term_id.name),
+              'grupo': str(record.account_id.group_id.code_prefix),
+
+              'base_iva1': str(0),
+              'iva_percent1': str(0),
+              'iva_tax1': str(0),
+              'imp_irpf1': str(0),
+              'irpf_percent1': str(0),
+              'imp_recargo1': str(0),
+              'req_percent1': str(0),
+              'servicios1': 0,
+              'bien_inversion1': 0,
+              'cta_contrapartida1': str(0),
+
+              'base_iva2': str(0),
+              'iva_percent2': str(0),
+              'iva_tax2': str(0),
+              'imp_irpf2': str(0),
+              'irpf_percent2': str(0),
+              'imp_recargo2': str(0),
+              'req_percent2': str(0),
+              'servicios2': 0,
+              'bien_inversion2': 0,
+              'cta_contrapartida2': str(0),
+
+              'base_iva3': str(0),
+              'iva_percent3': str(0),
+              'iva_tax3': str(0),
+              'imp_irpf3': str(0),
+              'irpf_percent3': str(0),
+              'imp_recargo3': str(0),
+              'req_percent3': str(0),
+              'servicios3': 0,
+              'bien_inversion3': 0,
+              'cta_contrapartida3': str(0),
+
+              'invoice_id': record.id,
+      })
+      record['suasor_invoice_id']=suasor_invoice_id.id
     else:
       suasor_invoice_id = env['suasor.invoice'].create({
               'name': 'Suasor' + str(record.number),
@@ -420,7 +469,56 @@ if (record.state in ['open']) and (record.suasor_invoice_id.id):
 
       # Finalizar: Comprobamos que hemos pasado por todas las líneas, y escribimos el registro oportuno:
     if (len(lineas_ids) - len(revisadas) > 0):
-      raise Warning("Esta factura es muy compleja para SUASOR, tiene más de 3 combinaciones de impuestos")
+      suasor_invoice_id = env['suasor.invoice'].create({
+              'name': 'Suasor' + str(record.number) + 'No procesada',
+              'fecha_emision': record.date_invoice,
+              'tipo_factura': record.type,
+              'n_documento': record.number,
+              'total_factura': str(record.amount_total),
+              'cuenta': record.account_id.code,
+              'nif': str(record.partner_id.vat),
+              'nombre': record.partner_id.name,
+              'provincia': str(cod_provincia),
+              'pais': (str(record.partner_id.country_id.code)),
+              'terminos_pago': str(record.payment_term_id.name),
+              'grupo': str(record.account_id.group_id.code_prefix),
+
+              'base_iva1': str(0),
+              'iva_percent1': str(0),
+              'iva_tax1': str(0),
+              'imp_irpf1': str(0),
+              'irpf_percent1': str(0),
+              'imp_recargo1': str(0),
+              'req_percent1': str(0),
+              'servicios1': 0,
+              'bien_inversion1': 0,
+              'cta_contrapartida1': str(0),
+
+              'base_iva2': str(0),
+              'iva_percent2': str(0),
+              'iva_tax2': str(0),
+              'imp_irpf2': str(0),
+              'irpf_percent2': str(0),
+              'imp_recargo2': str(0),
+              'req_percent2': str(0),
+              'servicios2': 0,
+              'bien_inversion2': 0,
+              'cta_contrapartida2': str(0),
+
+              'base_iva3': str(0),
+              'iva_percent3': str(0),
+              'iva_tax3': str(0),
+              'imp_irpf3': str(0),
+              'irpf_percent3': str(0),
+              'imp_recargo3': str(0),
+              'req_percent3': str(0),
+              'servicios3': 0,
+              'bien_inversion3': 0,
+              'cta_contrapartida3': str(0),
+
+              'invoice_id': record.id,
+      })
+      record['suasor_invoice_id']=suasor_invoice_id.id
     else:
       record.suasor_invoice_id.write({
               'name': 'Suasor' + str(record.number),
