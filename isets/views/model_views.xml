@@ -35,7 +35,7 @@
 <!-- ORIGINAL:
                         <field name="operations" context="{'default_product_uom_qty': product_qty, 'default_company_id': company_id}">
 -->
-                            <field name="repair_service_ids" context="{'default_repair_id':repair_id}">
+                            <field name="repair_product_ids" context="{'default_repair_id':repair_id}">
                                 <tree string="Operations" editable="bottom">
                                     <field name="company_id" invisible="1" force_save="1"/>
                     <!--
@@ -56,7 +56,7 @@
                                     <field name="currency_id" invisible="1"/>
                                 </tree>
                             </field>
-                            <field name="repair_product_ids">
+                            <field name="repair_service_ids">
                             </field>
                         </group>
                     </div>
