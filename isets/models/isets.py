@@ -21,13 +21,32 @@ class Isets(models.Model):
     type_id = fields.Many2one('iset.types')
     type = fields.Selection(selection=TYPES, string='Type', related='type_id.type')
     employee_ids = fields.Many2many('hr.employee')
-    repair_id = fields.Many2one('repair.order')
+    repair_id = fields.Many2one('repair.order', string="Reparación")
     project_id = fields.Many2one('project.project')
     task_id = fields.Many2one('project.task')
     workorder_id = fields.Many2one('mrp.workorder')
 
-    timesheet_ids = fields.One2many('account.analytic.line', 'iset_id', string='Imputaciones')
-    productivity_ids = fields.One2many('mrp.workcenter.productivity', 'iset_id', string='Partes producción')
-    repair_fee_ids = fields.One2many('repair.fee', 'iset_id', string='Horas asistencias')
-    repair_line_ids = fields.One2many('repair.line', 'iset_id', string='Productos RL')
-    stock_move_ids = fields.One2many('stock.move', 'iset_id', string='Productos SM')
+    repair_location_id = fields.Many2one('repair.order', related='repair_id.location_id', string='R.Localización')
+
+    project_service_ids = fields.One2many(
+        'account.analytic.line',
+        'iset_id',
+        domain="[('product_id.type','=','service')]",
+        string='Imputaciones'
+    )
+    project_product_ids = fields.One2many(
+        'account.analytic.line',
+        'iset_id',
+        domain="[('product_id.type','!=','service')]",
+        string='Productos'
+    )
+    task_sale_order_id = fields.Many2one('sale.order',related='task_id.sale_order_id', string='Venta')
+
+    mrp_id = fields.Many2one('mrp.production', string='Mrp')
+
+
+    repair_product_ids = fields.One2many('repair.fee', 'iset_id', string='Horas asistencias')
+    repair_service_ids = fields.One2many('repair.line', 'iset_id', string='Productos RL')
+    mrp_product_ids = fields.One2many('stock.move', 'iset_id', string='Productos SM')
+    mrp_service_ids = fields.One2many('mrp.workcenter.productivity', 'iset_id', string='Partes producción')
+

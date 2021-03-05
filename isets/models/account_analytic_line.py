@@ -8,3 +8,4 @@ class AccountAnalyticLine(models.Model):
     _inherit = 'account.analytic.line'
 
     iset_id = fields.Many2one('isets')
+    iset_so_line_id = fields.Many2one('sale.order.line')
