@@ -26,7 +26,7 @@ class Isets(models.Model):
     task_id = fields.Many2one('project.task')
     workorder_id = fields.Many2one('mrp.workorder')
 
-    repair_location_id = fields.Many2one('repair.order', related='repair_id.location_id', string='Origin location')
+    repair_location_id = fields.Many2one('stock.location', related='repair_id.location_id', string='Origin location')
 
     project_service_ids = fields.One2many(
         'account.analytic.line',
