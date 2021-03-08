@@ -9,3 +9,4 @@ class AccountAnalyticLine(models.Model):
 
     iset_id = fields.Many2one('isets')
     iset_so_line_id = fields.Many2one('sale.order.line')
+    sale_id = fields.Many2one('sale.order', related='so_line.order_id', store=False)
