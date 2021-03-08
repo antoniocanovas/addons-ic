@@ -25,8 +25,37 @@ class Isets(models.Model):
     project_id = fields.Many2one('project.project')
     task_id = fields.Many2one('project.task')
     workorder_id = fields.Many2one('mrp.workorder')
+    mrp_id = fields.Many2one('mrp.production', string='Work Order')
 
-    repair_location_id = fields.Many2one('stock.location', related='repair_id.location_id', string='Origin location')
+    repair_location_id = fields.Many2one('stock.location', related='repair_id.location_id', string='Origin Location')
+
+    company_id = fields.Many2one(
+        'res.company',
+        'Company',
+        default=lambda self: self.env.user.company_id
+    )
+    project_analytic_id = fields.Many2one(
+        'account.analytic.account',
+        string='Proj. Analytic',
+        related='project_id.analytic_account_id'
+    )
+    project_so_id = fields.Many2one('sale.order', related='project_id.sale_order_id', store=True, string='Sale Order')
+    mrp_is_locked = fields.Boolean(string='MRP is Locked', related='mrp_id.is_locked')
+    mrp_state = fields.Selection(
+        string='MRP State', related='mrp_id.state', store=False)
+    mrp_date_planned_start = fields.Datetime(
+        string='MRP Planned Start',
+        store='False',
+        related='mrp_id.date_planned_start'
+    )
+    mrp_date_deadline = fields.Datetime(
+        string='MRP deadline',
+        store='False',
+        related='mrp_id.date_deadline'
+    )
+    mrp_location_src_id = fields.Many2one('stock.location', string='MRP Location src', store=False, related='mrp_id.location_src_id')
+    mrp_location_id = fields.Many2one('stock.location', store=False, related='mrp_id.production_location_id')
+    mrp_picking_type_id = fields.Many2one('stock.picking.type', related='mrp_id.picking_type_id', store=False)
 
     project_service_ids = fields.One2many(
         'account.analytic.line',
@@ -40,10 +69,7 @@ class Isets(models.Model):
         domain="[('product_id.type','!=','service')]",
         string='Productos'
     )
-    task_sale_order_id = fields.Many2one('sale.order',related='task_id.sale_order_id', string='Sale Order')
-
-    mrp_id = fields.Many2one('mrp.production', string='Work Order')
-
+    task_sale_order_id = fields.Many2one('sale.order', related='task_id.sale_order_id', string='Sale Order')
 
     repair_service_ids = fields.One2many('repair.fee', 'iset_id', string='Tech. Services')
     repair_product_ids = fields.One2many('repair.line', 'iset_id', string='Parts')
