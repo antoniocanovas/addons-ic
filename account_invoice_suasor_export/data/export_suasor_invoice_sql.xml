@@ -2,16 +2,23 @@
 <odoo>
     <data>
 
-        <record id="suasor_invoice_export" model="sql.export">
-            <field name="name">Suasor Exportar Facturas</field>
+        <record id="suasor_out_invoice_export" model="sql.export">
+            <field name="name">Suasor Exportar Facturas Venta</field>
             <field name="state">sql_valid</field>
-            <field name="query">select * from suasor_invoice WHERE fecha_emision >= %(sql_date_compare)s </field>
+            <field name="query">select * from suasor_invoice WHERE fecha_emision >= %(sql_date_compare)s AND tipo_factura IN ('out_invoice','out_refund') </field>
+            <field name="copy_options">CSV HEADER DELIMITER ';'</field>
+            <field name="encoding">utf-8</field>
+            <field name="field_ids" eval="[(6, 0, [ref('account_invoice_suasor_export.field_sql_file_wizard__sql_date_compare')])]"/>
+        </record>
+
+        <record id="suasor_in_invoice_export" model="sql.export">
+            <field name="name">Suasor Exportar Facturas Compra</field>
+            <field name="state">sql_valid</field>
+            <field name="query">select * from suasor_invoice WHERE fecha_emision >= %(sql_date_compare)s AND tipo_factura IN ('in_invoice','in_refund') </field>
             <field name="copy_options">CSV HEADER DELIMITER ';'</field>
             <field name="encoding">utf-8</field>
             <field name="file_format">csv</field>
-            <!--<field name="field_ids" eval="[(5, 0, 0),
-        (0, 0, {'view_mode': 'tree', 'view_id': ref('sol_set_tree')}),
-        (0, 0, {'view_mode': 'form', 'view_id': ref('sol_set_form')})]"/>-->
+            <field name="field_ids" eval="[(6, 0, [ref('account_invoice_suasor_export.field_sql_file_wizard__sql_date_compare')])]"/>
         </record>
 
     </data>
