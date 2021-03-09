@@ -12,6 +12,7 @@ TYPES = [
 
 class Isets(models.Model):
     _name = 'isets'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'iSets'
 
     name = fields.Char('Name')
@@ -25,7 +26,7 @@ class Isets(models.Model):
     project_id = fields.Many2one('project.project')
     task_id = fields.Many2one('project.task')
     workorder_id = fields.Many2one('mrp.workorder')
-    mrp_id = fields.Many2one('mrp.production', string='Work Order')
+    mrp_id = fields.Many2one('mrp.production', string='Production')
 
     repair_location_id = fields.Many2one('stock.location', related='repair_id.location_id', string='Origin Location')
 
@@ -60,13 +61,15 @@ class Isets(models.Model):
     project_service_ids = fields.One2many(
         'account.analytic.line',
         'iset_id',
-        domain="[('product_id.type','=','service')]",
+        domain=[('product_id','=',False),('iset_so_line_id','=',False)],
+        store=True,
         string='Imputaciones'
     )
     project_product_ids = fields.One2many(
         'account.analytic.line',
         'iset_id',
-        domain="[('product_id.type','!=','service')]",
+        domain=['|',('product_id','!=',False),('iset_so_line_id','!=',False)],
+        store=True,
         string='Productos'
     )
     task_sale_order_id = fields.Many2one('sale.order', related='task_id.sale_order_id', string='Sale Order')
