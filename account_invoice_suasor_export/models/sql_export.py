@@ -8,7 +8,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-class SqlExportSuasor(models.Model):
+class SqlExportSuasor(models.TransientModel):
     _inherit = 'sql.file.wizard'
 
     sql_date_compare = fields.Date(
