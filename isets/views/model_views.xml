@@ -8,28 +8,25 @@
                 <header/>
                 <sheet>
                     <h1><field name="name"/></h1>
-                    <group>
-                      <group>
+                    <group><group>
                         <field name="date"/>
                         <field name="type_id" widget="selection"/>
-                      </group>
-                      <group>
+                    </group><group>
                         <field name="start" widget="timesheet_uom"/>
                         <field name="end" widget="timesheet_uom"/>
-                      </group>
-                      <group>
+                    </group><group>
                         <field name="employee_ids" widget="many2many_tags"/>
-                      </group>
-                    </group>
+                    </group></group>
 
-                    <div name="workorder" attrs="{'invisible':[('type','!=','production')]}">
+                    <div name="workorder_product_service" attrs="{'invisible':[('type','!=','production')]}">
                         <group>
                             <field name="mrp_id"/>
                             <field name="workorder_id" attrs="{'invisible':[('mrp_id','=',False)]}"/>
                         </group>
-                        <h2>Services:</h2>
-                        <field name="mrp_service_ids" context="{'default_production_id':mrp_id,
-                            'default_workorder_id':workorder_id}">
+                        <h2>Services: </h2><i>(Workorder REQUIRED)</i>
+                        <field name="mrp_service_ids"
+                               attrs="{'readonly':[('workorder_id','=',False)]}"
+                               context="{'default_production_id':mrp_id, 'default_workorder_id':workorder_id, 'default_company_id': company_id}">
                             <tree editable="bottom">
                                 <field name="production_id" invisible="1"/>
                                 <field name="workorder_id" invisible="1"/>
@@ -43,15 +40,13 @@
                                 <field name="description"/>
                             </tree>
                         </field>
-                        <h2>Products:</h2>
-      <!--
-      Linea original:
-                        <field name="move_raw_ids" context="{'default_product_uom_qty': 1.0, 'default_date': date_planned_start, 'default_date_deadline': date_deadline, 'default_location_id': location_src_id, 'default_location_dest_id': production_location_id, 'default_state': 'draft', 'default_raw_material_production_id': id, 'default_picking_type_id': picking_type_id, 'default_company_id': company_id}" attrs="{'readonly': ['|', ('state', '=', 'cancel'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)]}" options="{'delete': [('state', '=', 'draft')]}">
-      Línea operativa:
-                        <field name="mrp_product_ids" context="{'default_production_id':mrp_id, 'default_product_uom_qty': 1.0, 'default_date': mrp_date_planned_start, 'default_date_deadline': mrp_date_deadline, 'default_location_id': mrp_location_src_id, 'default_location_dest_id': mrp_location_id, 'default_state': 'draft', 'default_raw_material_production_id': mrp_id, 'default_picking_type_id': mrp_picking_type_id, 'default_company_id': company_id}" attrs="{'readonly': ['|', ('mrp_state', '=', 'cancel'), '&amp;', ('mrp_state', '=', 'done'), ('mrp_is_locked', '=', True)]}" options="{'delete': [('mrp_state', '=', 'draft')]}">
-      Línea que permite borrar:
-      -->
-                        <field name="mrp_product_ids" context="{'default_production_id':mrp_id, 'default_product_uom_qty': 1.0, 'default_date': mrp_date_planned_start, 'default_date_deadline': mrp_date_deadline, 'default_location_id': mrp_location_src_id, 'default_location_dest_id': mrp_location_id, 'default_state': 'draft', 'default_raw_material_production_id': mrp_id, 'default_picking_type_id': mrp_picking_type_id, 'default_company_id': company_id}" attrs="{'readonly': ['|', ('mrp_state', '=', 'cancel'), '&amp;', ('mrp_state', '=', 'done'), ('mrp_is_locked', '=', True)]}">
+                        <h2>Products:</h2><i>(Production REQUIRED)</i>
+                        <field name="mrp_product_ids"
+                               context="{'default_production_id':mrp_id, 'default_product_uom_qty': 1.0, 'default_date': mrp_date_planned_start,
+                                'default_date_deadline': mrp_date_deadline, 'default_location_id': mrp_location_src_id, 'default_location_dest_id': mrp_location_id,
+                                'default_state': 'draft', 'default_raw_material_production_id': mrp_id, 'default_picking_type_id': mrp_picking_type_id,
+                                'default_company_id': company_id}"
+                               attrs="{'readonly': ['|', '|',('mrp_state', '=', 'cancel'), '&amp;', ('mrp_state', '=', 'done'), ('mrp_is_locked', '=', True),('mrp_id','=',False)]}">
                             <tree default_order="is_done,sequence" editable="bottom">
                                 <field name="product_id" force_save="1" required="1" context="{'default_type': 'product'}" attrs="{'readonly': ['|', '|', ('has_move_lines', '=', True), ('state', '=', 'cancel'), '&amp;', ('state', '!=', 'draft'), ('additional', '=', False) ]}"/>
                                 <field name="production_id" invisible="1"/>
@@ -102,78 +97,84 @@
                                 <field name="reserved_availability" invisible="1"/>
                                 <field name="forecast_expected_date" invisible="1"/>
                                 <field name="is_quantity_done_editable" invisible="1"/>
-                        <!--
-                                <field name="forecast_availability" string="Reserved" attrs="{'column_invisible': [('mrp_state', 'in', ['draft', 'done'])]}" widget="forecast_widget"/>
-                                <field name="quantity_done" string="Consumed" decoration-success="not is_done and (quantity_done - should_consume_qty == 0)" decoration-warning="not is_done and (quantity_done - should_consume_qty &gt; 0.0001)" attrs="{'column_invisible': [('x_mrp_state', '=', 'draft')], 'readonly': [('show_details_visible', '=', True)]}"/>
-                        -->
                                 <field name="product_uom" attrs="{'readonly': [('state', '!=', 'draft')]}" options="{'no_open': True, 'no_create': True}" groups="uom.group_uom"/>
                                 <field name="show_details_visible" invisible="1"/>
-          <!--
-                                <field name="lot_ids" widget="many2many_tags" groups="stock.group_production_lot" optional="hide" attrs="{'invisible': ['|', '|', ('show_details_visible', '=', False), ('has_tracking', '!=', 'serial'), ('parent.state', '=', 'draft')], 'column_invisible': [('parent.show_lot_ids', '=',  False)]}" options="{'create': [('parent.use_create_components_lots', '!=', False)]}" context="{'default_company_id': company_id, 'default_product_id': product_id}" domain="[('product_id','=',product_id)]"/>
-                                <button name="action_show_details" type="object" icon="fa-list" context="{'default_product_uom_qty': 0}" attrs="{'invisible': [('show_details_visible', '=', False)]}" options="{&quot;warn&quot;: true}"/>
-          -->
+                                <!--
+                                                      <field name="lot_ids" widget="many2many_tags" groups="stock.group_production_lot" optional="hide" attrs="{'invisible': ['|', '|', ('show_details_visible', '=', False), ('has_tracking', '!=', 'serial'), ('parent.state', '=', 'draft')], 'column_invisible': [('parent.show_lot_ids', '=',  False)]}" options="{'create': [('parent.use_create_components_lots', '!=', False)]}" context="{'default_company_id': company_id, 'default_product_id': product_id}" domain="[('product_id','=',product_id)]"/>
+                                                      <button name="action_show_details" type="object" icon="fa-list" context="{'default_product_uom_qty': 0}" attrs="{'invisible': [('show_details_visible', '=', False)]}" options="{&quot;warn&quot;: true}"/>
+                                -->
                                 <field name="mrp_state" invisible="1"/>
                                 <field name="mrp_is_locked" invisible="1"/>
                             </tree>
-
                         </field>
-
-
                     </div>
-<!-- por aquí voy -->
-
-
 
                     <div name="project_product_service" attrs="{'invisible':[('type','!=','project')]}">
-                            <group>
-                                <field name="project_id"/>
-                                <field name="task_id" domain="[('project_id','=',project_id)]" attrs="{'invisible':[('project_id','=',False)]}"/>
-                            </group>
-                            <h2>Services:</h2>
-                            <field name="project_service_ids"
-                              context="{'default_project_id':project_id, 'default_task_id':task_id,
-                                        'default_account_id':project_analytic_id, 'default_name':'/'}">
-                                <tree editable="bottom" string="Timesheet Activities" default_order="date">
-                                    <field name="date"/>
-                                    <field name="user_id" invisible="1"/>
-                                    <field name="employee_id" required="1" widget="many2one_avatar_employee"/>
-                                    <field name="name" required="0"/>
-                                    <field name="unit_amount" widget="timesheet_uom" decoration-danger="unit_amount &gt; 24"/>
-                                    <field name="project_id" invisible="1"/>
-                                    <field name="task_id" invisible="1"/>
-                                    <field name="account_id" invisible="1"/>
-                                    <field name="company_id" invisible="1"/>
-                                </tree>
-                            </field>
-                            <h2>Products:</h2>
-                            <field name="project_product_ids"
-                              context="{'default_project_id':project_id, 'default_sale_id':project_so_id,
-                                        'default_account_id':project_analytic_id}">
-                                <tree editable="bottom" string="Products consumed">
-                                    <field name="iset_so_line_id" attrs="{'readonly':[('product_id','!=',False)]}" domain="[('order_id','=',sale_id),('product_id.type','!=','service')]"/>
-                                    <field name="user_id" invisible="1"/>
-                                    <field name="product_id" attrs="{'readonly':[('iset_so_line_id','!=',False)]}"/>
-                                    <field name="name" required="0" invisible="1"/>
-                                    <field name="unit_amount" widget="timesheet_uom" decoration-danger="unit_amount &gt; 24"/>
-                                    <field name="date"/>
-                                    <field name="project_id" invisible="1"/>
-                                    <field name="account_id" invisible="1"/>
-                                    <field name="sale_id" invisible="1"/>
-                                    <field name="company_id" invisible="1"/>
-                                </tree>
-
-                            </field>
+                        <group>
+                            <field name="project_id"/>
+                            <field name="task_id" domain="[('project_id','=',project_id)]" attrs="{'invisible':[('project_id','=',False)]}"/>
+                        </group>
+                        <h2>Services: </h2><i>(Project REQUIRED, optional task)</i>
+                        <field name="project_service_ids"
+                               attrs="{'readonly':[('project_id','=',False)]}"
+                               context="{'default_project_id':project_id, 'default_task_id':task_id,'default_account_id':project_analytic_id, 'default_name':'/','default_company_id': company_id}">
+                            <tree editable="bottom" string="Timesheet Activities" default_order="date">
+                                <field name="task_id"/>
+                                <field name="user_id" invisible="1"/>
+                                <field name="employee_id" required="1" widget="many2one_avatar_employee"/>
+                                <field name="name" required="0"/>
+                                <field name="unit_amount" widget="timesheet_uom" decoration-danger="unit_amount &gt; 24"/>
+                                <field name="project_id" invisible="1"/>
+                                <field name="date"/>
+                                <field name="account_id" invisible="1"/>
+                                <field name="company_id" invisible="1"/>
+                            </tree>
+                        </field>
+                        <h2>Products:</h2><i>(Project REQUIRED, optional task)</i>
+                        <field name="project_product_ids"
+                               attrs="{'readonly':[('project_id','=',False)]}"
+                               context="{'default_project_id':project_id, 'default_sale_id':project_so_id,'default_account_id':project_analytic_id, 'default_company_id': company_id}">
+                            <tree editable="bottom" string="Products consumed">
+                                <field name="iset_so_line_id" options="{'no_create': True}" attrs="{'readonly':[('product_id','!=',False)]}" domain="[('order_id','=',sale_id),('product_id.type','!=','service')]"/>
+                                <field name="user_id" invisible="1"/>
+                                <field name="product_id" domain="[('type','!=','service')]" attrs="{'readonly':[('iset_so_line_id','!=',False)]}"/>
+                                <field name="name" required="0" invisible="1"/>
+                                <field name="unit_amount"/>
+                                <field name="date"/>
+                                <field name="project_id" invisible="1"/>
+                                <field name="account_id" invisible="1"/>
+                                <field name="sale_id" invisible="1"/>
+                                <field name="company_id" invisible="1"/>
+                            </tree>
+                        </field>
                     </div>
-
 
                     <div name="repair" attrs="{'invisible':[('type','!=','repair')]}">
                         <group>
                             <field name="repair_id"/>
                         </group>
-                    </div>
-                    <div name="repair_product_service" attrs="{'invisible':[('type','!=','repair')]}">
-                <!--   <field name="operations" context="{'default_product_uom_qty': product_qty, 'default_company_id': company_id}">-->
-                        <field name="repair_product_ids" context="{'default_repair_id':repair_id, 'default_location_id':repair_location_id}">
+                        <h2>Services:</h2><i>(Repair REQUIRED)</i>
+                        <field name="repair_service_ids"
+                               attrs="{'readonly':[('repair_id','=',False)]}"
+                               context="{'default_repair_id':repair_id, 'default_company_id':company_id}">
+                            <tree string="repair_services" editable="bottom">
+                                <field name="company_id" invisible="1" force_save="1"/>
+                                <field name="product_id" required="True"/>
+                                <field name="name" optional="show"/>
+                                <field name="product_uom_qty" string="Quantity"/>
+                                <field name="product_uom_category_id" invisible="1"/>
+                                <field name="product_uom" string="Unit of Measure" groups="uom.group_uom" optional="show"/>
+                                <field name="price_unit" invisible="1"/>
+                                <field name="tax_id" widget="many2many_tags" optional="show" invisible="1"/>
+                                <field name="price_subtotal" widget="monetary" invisible="1"/>
+                                <field name="repair_id" invisible="1"/>
+                                <field name="currency_id" invisible="1"/>
+                            </tree>
+                        </field>
+                        <h2>Parts:</h2><i>(Repair REQUIRED)</i>
+                        <field name="repair_product_ids"
+                               attrs="{'readonly':[('repair_id','=',False)]}"
+                               context="{'default_repair_id':repair_id, 'default_location_id':repair_location_id, 'default_company_id': company_id}">
                             <tree string="Operations" editable="bottom">
                                 <field name="company_id" invisible="1" force_save="1"/>
                                 <field name="type"/>
@@ -193,24 +194,8 @@
                                 <field name="currency_id" invisible="1"/>
                             </tree>
                         </field>
-
-                  <!--  <field name="repair_service_ids" context="{'default_company_id': company_id}"> -->
-                        <field name="repair_service_ids" context="{'default_repair_id':repair_id}">
-                            <tree string="repair_services" editable="bottom">
-                                <field name="company_id" invisible="1" force_save="1"/>
-                                <field name="product_id" required="True"/>
-                                <field name="name" optional="show"/>
-                                <field name="product_uom_qty" string="Quantity"/>
-                                <field name="product_uom_category_id" invisible="1"/>
-                                <field name="product_uom" string="Unit of Measure" groups="uom.group_uom" optional="show"/>
-                                <field name="price_unit" invisible="1"/>
-                                <field name="tax_id" widget="many2many_tags" optional="show" invisible="1"/>
-                                <field name="price_subtotal" widget="monetary" invisible="1"/>
-                                <field name="repair_id" invisible="1"/>
-                                <field name="currency_id" invisible="1"/>
-                            </tree>
-                        </field>
                     </div>
+
                     <field name="type" invisible="1"/>
                     <field name="repair_location_id" invisible="1"/>
                     <field name="project_analytic_id" invisible="1"/>
@@ -222,15 +207,15 @@
                     <field name="mrp_picking_type_id" invisible="1"/>
                     <field name="mrp_state" invisible="1"/>
                     <field name="mrp_is_locked" invisible="1"/>
-                    <field name="company_id"/>
+                    <field name="company_id" invisible="1"/>
                 </sheet>
-                <!--
-                  <div class="oe_chatter">
-                      <field name="message_follower_ids"/>
-                      <field name="activity_ids"/>
-                      <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
-                  </div>
-                -->
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+
             </form>
         </field>
         <field name="field_parent" eval="False"/>
