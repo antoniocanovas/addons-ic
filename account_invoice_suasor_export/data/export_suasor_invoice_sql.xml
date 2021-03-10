@@ -8,7 +8,7 @@
             <field name="query">select * from suasor_invoice WHERE fecha_emision >= %(sql_date_compare)s AND tipo_factura IN ('out_invoice','out_refund') </field>
             <field name="copy_options">CSV HEADER DELIMITER ';'</field>
             <field name="encoding">utf-8</field>
-            <field name="field_ids" eval="[(6, 0, [ref('account_invoice_suasor_export.field_sql_file_wizard__sql_date_compare')])]"/>
+            <!--<field name="field_ids" eval="[(6, 0, [ref('account_invoice_suasor_export.field_sql_file_wizard__sql_date_compare')])]"/>-->
         </record>
 
         <record id="suasor_in_invoice_export" model="sql.export">
@@ -18,7 +18,7 @@
             <field name="copy_options">CSV HEADER DELIMITER ';'</field>
             <field name="encoding">utf-8</field>
             <field name="file_format">csv</field>
-            <field name="field_ids" eval="[(6, 0, [ref('account_invoice_suasor_export.field_sql_file_wizard__sql_date_compare')])]"/>
+            <!--<field name="field_ids" eval="[(6, 0, [ref('account_invoice_suasor_export.field_sql_file_wizard__sql_date_compare')])]"/>-->
         </record>
 
     </data>
