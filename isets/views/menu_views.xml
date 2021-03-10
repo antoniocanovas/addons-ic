@@ -5,6 +5,7 @@
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="domain" eval="False"/>
+        <field name="context" eval="{'default_loss_id':7}"/>
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
@@ -49,53 +50,33 @@
         <field name="web_icon" eval="False"/>
     </record>
 
-    <record id="menu_isets_times" model="ir.ui.menu">
-        <field name="action" ref="action_isets"/>
+    <record id="menu_isets_task" model="ir.ui.menu">
+        <field name="action" ref="project.action_view_all_task"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
-        <field name="name">Times</field>
+        <field name="name">Task</field>
         <field name="parent_id" ref="menu_isets"/>
         <field name="sequence">2</field>
         <field name="web_icon" eval="False"/>
     </record>
 
-    <record id="menu_isets_tickets" model="ir.ui.menu">
-        <field name="action" ref="action_isets"/>
+    <record id="menu_isets_repairs" model="ir.ui.menu">
+        <field name="action" ref="repair.action_repair_order_tree"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
-        <field name="name">Tickets</field>
+        <field name="name">Repairs</field>
         <field name="parent_id" ref="menu_isets"/>
         <field name="sequence">3</field>
         <field name="web_icon" eval="False"/>
     </record>
 
-    <record id="menu_isets_task" model="ir.ui.menu">
-        <field name="action" ref="action_isets"/>
-        <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
-        <field name="name">Task</field>
-        <field name="parent_id" ref="menu_isets"/>
-        <field name="sequence">4</field>
-        <field name="web_icon" eval="False"/>
-    </record>
-
-    <record id="menu_isets_repairs" model="ir.ui.menu">
-        <field name="action" ref="action_isets"/>
-        <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
-        <field name="name">Repairs</field>
-        <field name="parent_id" ref="menu_isets"/>
-        <field name="sequence">5</field>
-        <field name="web_icon" eval="False"/>
-    </record>
-
     <record id="menu_isets_mrp" model="ir.ui.menu">
-        <field name="action" ref="action_isets"/>
+        <field name="action" ref="mrp.mrp_production_action"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
         <field name="name">MRP</field>
         <field name="parent_id" ref="menu_isets"/>
-        <field name="sequence">6</field>
+        <field name="sequence">4</field>
         <field name="web_icon" eval="False"/>
     </record>
 
@@ -105,7 +86,7 @@
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
         <field name="name">Config</field>
         <field name="parent_id" ref="menu_isets"/>
-        <field name="sequence">7</field>
+        <field name="sequence">5</field>
         <field name="web_icon" eval="False"/>
     </record>
 
