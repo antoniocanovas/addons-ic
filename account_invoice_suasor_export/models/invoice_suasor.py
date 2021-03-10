@@ -21,7 +21,7 @@ class SuasorInvoice(models.Model):
     tipo_factura = fields.Char('tipo_factura')
     n_documento = fields.Char('n_documento')
     total_factura = fields.Char('total_factura')
-    cuenta = fields.Char('cuenta')
+    #cuenta = fields.Char('cuenta')
     nif = fields.Char('nif')
     nombre = fields.Char('nombre')
     provincia = fields.Char('Provincia')

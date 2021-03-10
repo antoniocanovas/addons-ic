@@ -1,10 +1,10 @@
 {
     'name': 'Account Invoice Suasor Export',
-    'version': '12.0.0.0.2',
+    'version': '12.0.2.0.1',
     'category': '',
-    'description': u"""
-
-""",
+    'summary': """
+            Exporta facturas de Odoo a formato Suasor
+        """,
     'author': 'Serincloud',
     'depends': [
         'sql_export',
