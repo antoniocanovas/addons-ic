@@ -18,7 +18,7 @@ class Isets(models.Model):
     name = fields.Char('Name')
     date = fields.Date('Date')
     start = fields.Float('Start')
-    end = fields.Float('End')
+    stop = fields.Float('Stop')
     type_id = fields.Many2one('iset.types')
     type = fields.Selection(selection=TYPES, string='Type', related='type_id.type')
     employee_ids = fields.Many2many('hr.employee')
@@ -78,4 +78,9 @@ class Isets(models.Model):
     repair_product_ids = fields.One2many('repair.line', 'iset_id', string='Parts')
     mrp_product_ids = fields.One2many('stock.move', 'iset_id', string='Products')
     mrp_service_ids = fields.One2many('mrp.workcenter.productivity', 'iset_id', string='Time consumed')
+
+    loss_id = fields.Many2one('mrp.workcenter.productivity.loss',)
+
+    def create_lot_services_iset(self):
+        print("DEBUG")
 

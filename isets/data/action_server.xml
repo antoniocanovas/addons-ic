@@ -1,0 +1,50 @@
+<odoo>
+
+    <record id="create_lot_services_iset" model="ir.actions.server">
+            <field name="name">=> Create Lot Services for iSet</field>
+            <field name="model_id" ref="model_iset"/>
+            <field name="active" eval="True"/>
+            <field name="state">code</field>
+            <field name="code">
+# hour/min str format to include in "name":
+start = str(datetime.timedelta(hours=record.start))
+if (record.start >= 10): start = start[:5]
+else: start = start[:4]
+
+# CASE PROJECT:
+if (record.type_id.type == "project") and (record.employee_ids.ids) and (record.project_id.id):
+  for li in record.employee_ids:
+    name = record.name + " - " + start
+    new = env['account.analytic.line'].create({'iset_id':record.id, 'name': name, 'project_id':record.project_id.id,
+          'task_id':record.task_id.id, 'date':record.date, 'account_id': record.project_analytic_id.id, 'company_id':record.company_id.id,
+          'employee_id':li.id, 'unit_amount': (record.stop - record.start)
+    })
+
+# CASE REPAIR:
+elif (record.type_id.type == "repair") and (record.employee_ids.ids) and (record.repair_id.id):
+  if (record.type_id.product_id.id):
+    product_id = record.type_id.product_id
+    for li in record.employee_ids:
+        name = product_id.name + " - " + start + " - " + li.name
+        new = env['repair.fee'].create({'iset_id':record.id, 'product_id':product_id.id,
+        'name': name, 'repair_id':record.repair_id.id, 'company_id':record.company_id.id,
+        'create_uid':li.user_id.id, 'product_uom_qty':(record.stop - record.start), 'price_unit':product_id.list_price,
+        'product_uom':product_id.uom_id.id
+        })
+  else: raise Warning('Se requiere definir el PRODUCTO el el tipo de asistencia para poder crear las imputaciones !!')
+
+# CASE PRODUCTION:
+elif (record.type_id.type == "production") and (record.employee_ids.ids) and (record.workorder_id.id):
+  date_start = datetime.datetime(year=record.date.year,  month=record.date.month, day=record.date.day, hour=int(record.start), minute=int((record.start - int(record.start))*60))
+  date_end = datetime.datetime(year=record.date.year,  month=record.date.month, day=record.date.day, hour=int(record.stop), minute=int((record.stop-int(record.stop))*60))
+  for li in record.employee_ids:
+    name = record.workorder_id.name + " - " + start + " - " + li.name
+    new = env['mrp.workcenter.productivity'].create({'iset_id':record.id, 'description': name, 'production_id':record.mrp_id.id,
+          'workorder_id':record.workorder_id.id, 'workcenter_id':record.workorder_id.workcenter_id.id, 'company_id':record.company_id.id,
+          'loss_id':record.x_loss_id.id, 'date_start':date_start, 'date_end':date_end
+    })
+
+            </field>
+        </record>
+
+</odoo>
