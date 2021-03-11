@@ -18,5 +18,5 @@ class IsetsTypes(models.Model):
     name = fields.Char('Name', required=True)
     partner_id = fields.Many2one('res.partner', string='Partner')
     product_id = fields.Many2one('product.product', string='Product')
-
+    production_loss_id = fields.Many2one('mrp.workcenter.productivity.loss', string='Loss')
     type = fields.Selection(selection=TYPES, required=True, string='Types')
