@@ -6,8 +6,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="create_lot_services_iset" string="Create lot services" type="object" class="btn-primary"
-                        attrs="{'invisible':[('project_id','=',False),('repair_id','=',False),('workorder_id','=',False)]}"/>
+                    <button name="create_lot_services_iset" string="Create lot services" type="object" class="btn-primary" attrs="{'invisible':[('project_id','=',False),('repair_id','=',False),('workorder_id','=',False)]}"/>
                 </header>
                 <sheet>
                     <h1><field name="name"/></h1>
@@ -23,7 +22,7 @@
 
                     <div name="workorder_product_service" attrs="{'invisible':[('type','!=','production')]}">
                         <group>
-                            <field name="mrp_id"/>
+                            <field name="mrp_id" attrs="{'required':[('type','=','production')]}"/>
                             <field name="workorder_id" domain="[('production_id','=',mrp_id)]" attrs="{'invisible':[('mrp_id','=',False)]}"/>
                             <field name="loss_id" attrs="{'invisible':[('mrp_id','=',False)]}"/>
                         </group>
@@ -108,11 +107,11 @@
 
                     <div name="project_product_service" attrs="{'invisible':[('type','!=','project')]}">
                         <group>
-                            <field name="project_id"/>
+                            <field name="project_id" attrs="{'required':[('type','=','project')]}"/>
                             <field name="task_id" domain="[('project_id','=',project_id)]" attrs="{'invisible':[('project_id','=',False)]}"/>
                         </group>
-                        <h2>Services: </h2><i>(Project REQUIRED, optional task)</i>
-                        <field name="project_service_ids" attrs="{'readonly':[('project_id','=',False)]}" context="{'default_project_id':project_id, 'default_task_id':task_id,'default_account_id':project_analytic_id, 'default_name':'/','default_company_id': company_id}">
+                        <h2>Services: </h2><i>(Project and task REQUIRED)</i>
+                        <field name="project_service_ids" attrs="{'readonly':[('task_id','=',False)]}" context="{'default_project_id':project_id, 'default_task_id':task_id,'default_account_id':project_analytic_id, 'default_name':'/','default_company_id': company_id}">
                             <tree editable="bottom" string="Timesheet Activities" default_order="date">
                                 <field name="task_id"/>
                                 <field name="user_id" invisible="1"/>
@@ -144,7 +143,7 @@
 
                     <div name="repair" attrs="{'invisible':[('type','!=','repair')]}">
                         <group>
-                            <field name="repair_id"/>
+                            <field name="repair_id" attrs="{'required':[('type','=','repair')]}"/>
                         </group>
                         <h2>Services:</h2><i>(Repair REQUIRED)</i>
                         <field name="repair_service_ids" attrs="{'readonly':[('repair_id','=',False)]}" context="{'default_repair_id':repair_id, 'default_company_id':company_id}">
@@ -248,6 +247,7 @@
                 <field name="type"/>
                 <field name="partner_id"/>
                 <field name="product_id"/>
+                <field name="production_loss_id" attrs="{'readonly':[('type', '!=', 'production')]}"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>

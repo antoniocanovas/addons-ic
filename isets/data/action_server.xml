@@ -1,11 +1,16 @@
 <odoo>
 
     <record id="create_lot_services_iset" model="ir.actions.server">
-            <field name="name">=> Create Lot Services for iSet</field>
+            <field name="name">=> Create Lot Services from iSet</field>
             <field name="model_id" ref="model_isets"/>
             <field name="state">code</field>
             <field name="code">
-# hour/min str format to include in "name":
+# Calculate local time diference with UTC:
+date_today = datetime.datetime(year=record.date.year, month=record.date.month, day=record.date.day, hour=12, minute=0)
+date_utc = date_today.astimezone(timezone(user.tz))
+inc = date_utc.hour - date_today.hour
+
+# Change 'hour/min' in record.start to string format to include in fields "name":
 start = str(datetime.timedelta(hours=record.start))
 if (record.start >= 10): start = start[:5]
 else: start = start[:4]
@@ -34,13 +39,15 @@ elif (record.type_id.type == "repair") and (record.employee_ids.ids) and (record
 
 # CASE PRODUCTION:
 elif (record.type_id.type == "production") and (record.employee_ids.ids) and (record.workorder_id.id):
-  date_start = datetime.datetime(year=record.date.year,  month=record.date.month, day=record.date.day, hour=int(record.start), minute=int((record.start - int(record.start))*60))
-  date_end = datetime.datetime(year=record.date.year,  month=record.date.month, day=record.date.day, hour=int(record.stop), minute=int((record.stop-int(record.stop))*60))
+  date_start = datetime.datetime(year=record.date.year,  month=record.date.month, day=record.date.day,
+      hour=int(record.start - inc), minute=int((record.start - int(record.start))*60))
+  date_end = datetime.datetime(year=record.date.year,  month=record.date.month, day=record.date.day,
+      hour=int(record.stop - inc), minute=int((record.stop-int(record.stop))*60))
   for li in record.employee_ids:
     name = record.workorder_id.name + " - " + start + " - " + li.name
     new = env['mrp.workcenter.productivity'].create({'iset_id':record.id, 'description': name, 'production_id':record.mrp_id.id,
           'workorder_id':record.workorder_id.id, 'workcenter_id':record.workorder_id.workcenter_id.id, 'company_id':record.company_id.id,
-          'loss_id':record.x_loss_id.id, 'date_start':date_start, 'date_end':date_end
+          'loss_id':record.loss_id.id, 'date_start':date_start, 'date_end':date_end
     })
 
             </field>
