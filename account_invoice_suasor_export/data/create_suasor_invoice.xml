@@ -203,39 +203,6 @@ if record.state in ['open'] and not record.suasor_invoice_id.id:
               'terminos_pago': str(record.payment_term_id.name),
               'grupo': str(record.account_id.group_id.code_prefix),
 
-              'base_iva1': str(0),
-              'iva_percent1': str(0),
-              'iva_tax1': str(0),
-              'imp_irpf1': str(0),
-              'irpf_percent1': str(0),
-              'imp_recargo1': str(0),
-              'req_percent1': str(0),
-              'servicios1': 0,
-              'bien_inversion1': 0,
-              'cta_contrapartida1': str(0),
-
-              'base_iva2': str(0),
-              'iva_percent2': str(0),
-              'iva_tax2': str(0),
-              'imp_irpf2': str(0),
-              'irpf_percent2': str(0),
-              'imp_recargo2': str(0),
-              'req_percent2': str(0),
-              'servicios2': 0,
-              'bien_inversion2': 0,
-              'cta_contrapartida2': str(0),
-
-              'base_iva3': str(0),
-              'iva_percent3': str(0),
-              'iva_tax3': str(0),
-              'imp_irpf3': str(0),
-              'irpf_percent3': str(0),
-              'imp_recargo3': str(0),
-              'req_percent3': str(0),
-              'servicios3': 0,
-              'bien_inversion3': 0,
-              'cta_contrapartida3': str(0),
-
               'invoice_id': record.id,
       })
       record['suasor_invoice_id']=suasor_invoice_id.id
@@ -264,6 +231,7 @@ if record.state in ['open'] and not record.suasor_invoice_id.id:
               'servicios1': serv1,
               'bien_inversion1': activo1,
               'cta_contrapartida1': str(cc1),
+              'base_retencion1': str(iva_neto1),
 
               'base_iva2': str(iva_neto2),
               'iva_percent2': str(iva_percent2),
@@ -275,6 +243,7 @@ if record.state in ['open'] and not record.suasor_invoice_id.id:
               'servicios2': serv2,
               'bien_inversion2': activo2,
               'cta_contrapartida2': str(cc2),
+              'base_retencion2': str(iva_neto2),
 
               'base_iva3': str(iva_neto3),
               'iva_percent3': str(iva_percent3),
@@ -286,6 +255,7 @@ if record.state in ['open'] and not record.suasor_invoice_id.id:
               'servicios3': serv3,
               'bien_inversion3': activo3,
               'cta_contrapartida3': str(cc3),
+              'base_retencion3': str(iva_neto3),
 
               'invoice_id': record.id,
       })
@@ -483,38 +453,6 @@ if (record.state in ['open']) and (record.suasor_invoice_id.id):
               'terminos_pago': str(record.payment_term_id.name),
               'grupo': str(record.account_id.group_id.code_prefix),
 
-              'base_iva1': str(0),
-              'iva_percent1': str(0),
-              'iva_tax1': str(0),
-              'imp_irpf1': str(0),
-              'irpf_percent1': str(0),
-              'imp_recargo1': str(0),
-              'req_percent1': str(0),
-              'servicios1': 0,
-              'bien_inversion1': 0,
-              'cta_contrapartida1': str(0),
-
-              'base_iva2': str(0),
-              'iva_percent2': str(0),
-              'iva_tax2': str(0),
-              'imp_irpf2': str(0),
-              'irpf_percent2': str(0),
-              'imp_recargo2': str(0),
-              'req_percent2': str(0),
-              'servicios2': 0,
-              'bien_inversion2': 0,
-              'cta_contrapartida2': str(0),
-
-              'base_iva3': str(0),
-              'iva_percent3': str(0),
-              'iva_tax3': str(0),
-              'imp_irpf3': str(0),
-              'irpf_percent3': str(0),
-              'imp_recargo3': str(0),
-              'req_percent3': str(0),
-              'servicios3': 0,
-              'bien_inversion3': 0,
-              'cta_contrapartida3': str(0),
 
               'invoice_id': record.id,
       })

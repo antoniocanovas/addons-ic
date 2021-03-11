@@ -32,7 +32,7 @@ class SuasorInvoice(models.Model):
     concurso_acreedores = fields.Char('CONCURSO ACREEDORES')
     cod_seccion_analitica = fields.Char('CÓD. SECCIÓN ANALÍTICA')
     cod_proyecto_analitica = fields.Char('CÓD. PROYECTO ANALÍTICA')
-    ruta_iamgen = fields.Char('RUTA IMAGEN')
+    ruta_imagen = fields.Char('RUTA IMAGEN')
 
     base_iva1 = fields.Char('BASE IVA')
     iva_percent1 = fields.Char('%IVA')
