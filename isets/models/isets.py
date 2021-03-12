@@ -19,15 +19,17 @@ class Isets(models.Model):
     date = fields.Date('Date')
     start = fields.Float('Start')
     stop = fields.Float('Stop')
-    type_id = fields.Many2one('iset.types')
-    type = fields.Selection(selection=TYPES, string='Type', related='type_id.type')
+    work_id = fields.Many2one('iset.work')
+    type = fields.Selection(string='Type', related='work_id.type')
     employee_ids = fields.Many2many('hr.employee')
     repair_id = fields.Many2one('repair.order', string="Repair Order")
-    project_id = fields.Many2one('project.project')
+    project_id = fields.Many2one('project.project', related='work_id.project_id')
     task_id = fields.Many2one('project.task')
+    partner_id = fields.Many2one('res.partner', related='work_id.partner_id')
     workorder_id = fields.Many2one('mrp.workorder')
     mrp_id = fields.Many2one('mrp.production', string='Production')
-
+    repair_service_id = fields.Many2one('product.product', related='work_id.repair_service_id')
+    production_loss_id = fields.Many2one('mrp.workcenter.productivity.loss', related='work_id.production_loss_id')
     repair_location_id = fields.Many2one('stock.location', related='repair_id.location_id', string='Origin Location')
 
     company_id = fields.Many2one(

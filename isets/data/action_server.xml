@@ -16,7 +16,7 @@ if (record.start >= 10): start = start[:5]
 else: start = start[:4]
 
 # CASE PROJECT:
-if (record.type_id.type == "project") and (record.employee_ids.ids) and (record.project_id.id):
+if (record.work_id.type == "project") and (record.employee_ids.ids) and (record.project_id.id):
   for li in record.employee_ids:
     name = record.name + " - " + start
     new = env['account.analytic.line'].create({'iset_id':record.id, 'name': name, 'project_id':record.project_id.id,
@@ -25,9 +25,9 @@ if (record.type_id.type == "project") and (record.employee_ids.ids) and (record.
     })
 
 # CASE REPAIR:
-elif (record.type_id.type == "repair") and (record.employee_ids.ids) and (record.repair_id.id):
-  if (record.type_id.product_id.id):
-    product_id = record.type_id.product_id
+elif (record.work_id.type == "repair") and (record.employee_ids.ids) and (record.repair_id.id):
+  if (record.work_id.product_id.id):
+    product_id = record.work_id.product_id
     for li in record.employee_ids:
         name = product_id.name + " - " + start + " - " + li.name
         new = env['repair.fee'].create({'iset_id':record.id, 'product_id':product_id.id,
@@ -38,7 +38,7 @@ elif (record.type_id.type == "repair") and (record.employee_ids.ids) and (record
   else: raise Warning('Se requiere definir el PRODUCTO el el tipo de asistencia para poder crear las imputaciones !!')
 
 # CASE PRODUCTION:
-elif (record.type_id.type == "production") and (record.employee_ids.ids) and (record.workorder_id.id):
+elif (record.work_id.type == "production") and (record.employee_ids.ids) and (record.workorder_id.id):
   date_start = datetime.datetime(year=record.date.year,  month=record.date.month, day=record.date.day,
       hour=int(record.start - inc), minute=int((record.start - int(record.start))*60))
   date_end = datetime.datetime(year=record.date.year,  month=record.date.month, day=record.date.day,
