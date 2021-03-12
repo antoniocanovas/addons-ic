@@ -7,15 +7,14 @@
 """,
     'author': 'Serincloud',
     'depends': [
-        'hr',
-        'inventory',
-        'maintenance.equipment',
+        'hr.maintenance',
+        'stock',
 
     ],
     'data': [
         #'views/menu_views.xml',
         #'security/ir.model.access.csv',
-        #'views/model_views.xml',
+        'views/model_views.xml',
         #'data/action_server.xml',
     ],
     'installable': True,

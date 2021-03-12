@@ -12,7 +12,7 @@
                     <h1><field name="name"/></h1>
                     <group><group>
                         <field name="date"/>
-                        <field name="type_id" widget="selection"/>
+                        <field name="work_id" widget="selection"/>
                     </group><group>
                         <field name="start" widget="timesheet_uom"/>
                         <field name="stop" widget="timesheet_uom"/>
@@ -223,7 +223,7 @@
         <field name="arch" type="xml">
             <tree name="iSet_tree" string="iSets">
                 <field name="name"/>
-                <field name="type_id"/>
+                <field name="work_id"/>
                 <field name="date"/>
             </tree>
         </field>
@@ -239,14 +239,14 @@
     </record>
 
 
-    <record id="isets_types_tree" model="ir.ui.view">
+    <record id="isets_work_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-            <tree string="iSets Types" sample="1" multi_edit="1" editable="bottom">
+            <tree string="iSets Types" sample="1">
                 <field name="name"/>
                 <field name="type"/>
                 <field name="partner_id"/>
-                <field name="product_id"/>
+                <field name="repair_service_id"/>
                 <field name="production_loss_id" attrs="{'readonly':[('type', '!=', 'production')]}"/>
             </tree>
         </field>
@@ -255,10 +255,44 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">iset.types</field>
-        <field name="name">iSets Types Tree View</field>
+        <field name="model">iset.work</field>
+        <field name="name">iSets Work Tree View</field>
         <field name="priority">16</field>
         <field name="type">tree</field>
+    </record>
+
+    <record id="isets_work_form" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1><field name="name"/></h1>
+                    <group>
+                        <field name="type" widget="selection"/>
+                        <field name="partner_id"/>
+                    </group>
+                    <group name="project" attrs="{'invisible':[('type','!=','project')]}">
+                        <field name="project_id"/>
+                    </group>
+                    <group name="production" attrs="{'invisible':[('type','!=','production')]}">
+                        <field name="production_sale_id"/>
+                        <field name="production_loss_id" attrs="{'required':[('type','=','production')]}"/>
+                    </group>
+                    <group name="repair" attrs="{'invisible':[('type','!=','repair')]}">
+                        <field name="repair_service_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">iset.work</field>
+        <field name="name">iSets Work form View</field>
+        <field name="priority">16</field>
+        <field name="type">form</field>
     </record>
 
 
