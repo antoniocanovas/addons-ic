@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="credentials_tree" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <tree string="Credentials">
+                <field name="name" modifiers="{}"/>
+                <field name="partner_id"/>
+                <field name="type"/>
+                <field name="public"/>
+            </tree>
+        </field>
+        <field name="model">partner.credentials</field>
+        <field name="name">Default tree view for partner credentials</field>
+        <field name="type">tree</field>
+    </record>
+
+    <record id="credentials_tree_search" model="ir.ui.view">
+        <field name="name">partner.credentials.search</field>
+        <field name="model">partner.credentials</field>
+        <field name="arch" type="xml">
+            <search string="Partner Credentials">
+                <field name="name" modifiers="{}"/>
+                <field name="partner_id"/>
+                <field name="user"/>
+                <field name="url"/>
+                <group name="studio_group_by">
+                    <filter context="{'group_by': 'partner_id'}" name="credentials_group_by_partner" string="Partner"/>
+                    <filter context="{'group_by': 'user'}" name="credentials_group_by_user" string="User"/>
+                </group>
+                <filter domain="[['active','=','False']]" name="credentials_filter_active" string="Archived"/>
+                <filter domain="[['public','=','True']]" name="credentials_filter_public" string="Public"/>
+                <filter domain="[['public','=','False']]" name="credentials_filter_private" string="Private"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="credentials_form" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <form>
+                <sheet name="main" string="Credentials">
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" name="toggle_active" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options="{'terminology': 'archive'}"/>
+                        </button>
+                    </div>
+                    <h2>
+                        <field name="name"/>
+                    </h2>
+                    <group name="basic_params">
+                        <group>
+                            <field name="url" widget="url" placeholder="https://www.ejemplos.com"/>
+                            <field name="partner_id"/>
+                            <field name="type"/>
+                        </group>
+                        <group>
+                            <field name="user"/>
+                            <field name="password"/>
+                            <field name="public"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description" class="field_description" placeholder="Description..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh':'recipients'}"/>
+                </div>
+            </form>
+        </field>
+        <field name="model">partner.credentials</field>
+        <field name="name">Default form view for partner credentials</field>
+        <field name="type">form</field>
+    </record>
+
+
+</odoo>
