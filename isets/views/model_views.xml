@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="create_lot_services_iset" string="Create lot services" type="object" class="btn-primary" attrs="{'invisible':[('project_id','=',False),('repair_id','=',False),('workorder_id','=',False)]}"/>
+                    <button name="create_lot_services_iset" string="Create lot services" type="object" class="btn-primary" attrs="{'invisible':[('allow_services','=',False)]}"/>
                 </header>
                 <sheet>
                     <h1><field name="name"/></h1>
@@ -22,17 +22,18 @@
 
                     <div name="workorder_product_service" attrs="{'invisible':[('type','!=','production')]}">
                         <group>
-                            <field name="mrp_id" attrs="{'required':[('type','=','production')]}"/>
-                            <field name="workorder_id" domain="[('production_id','=',mrp_id)]" attrs="{'invisible':[('mrp_id','=',False)]}"/>
-                            <field name="loss_id" attrs="{'invisible':[('mrp_id','=',False)]}"/>
+                            <field name="mrp_id" domain="[('id','in',production_ids)]" attrs="{'required':[('type','=','production')]}" options="{'no_create': True}"/>
+                            <field name="workorder_id" domain="[('production_id','=',mrp_id)]" attrs="{'invisible':[('mrp_id','=',False)]}" options="{'no_create': True}"/>
+                            <field name="production_loss_id" attrs="{'invisible':[('mrp_id','=',False)]}" options="{'no_create': True}"/>
+                            <field name="production_loss_id" options="{'no_create': True}" attrs="{'invisible':[('mrp_id','=',False)]}"/>
                         </group>
                         <h2>Services: </h2><i>(Workorder REQUIRED)</i>
                         <field name="mrp_service_ids" attrs="{'readonly':[('workorder_id','=',False)]}" context="{'default_production_id':mrp_id, 'default_workorder_id':workorder_id, 'default_company_id': company_id}">
                             <tree editable="bottom">
                                 <field name="production_id" invisible="1"/>
                                 <field name="workorder_id" invisible="1"/>
-                                <field name="workcenter_id"/>
-                                <field name="loss_id"/>
+                                <field name="workcenter_id" options="{'no_create': True}"/>
+                                <field name="loss_id" options="{'no_create': True}"/>
                                 <field name="company_id" invisible="1"/>
                                 <field name="date_start"/>
                                 <field name="date_end"/>
@@ -44,7 +45,7 @@
                         <h2>Products:</h2><i>(Production REQUIRED)</i>
                         <field name="mrp_product_ids" context="{'default_production_id':mrp_id, 'default_product_uom_qty': 1.0, 'default_date': mrp_date_planned_start,                                 'default_date_deadline': mrp_date_deadline, 'default_location_id': mrp_location_src_id, 'default_location_dest_id': mrp_location_id,                                 'default_state': 'draft', 'default_raw_material_production_id': mrp_id, 'default_picking_type_id': mrp_picking_type_id,                                 'default_company_id': company_id}" attrs="{'readonly': ['|', '|',('mrp_state', '=', 'cancel'), '&amp;', ('mrp_state', '=', 'done'), ('mrp_is_locked', '=', True),('mrp_id','=',False)]}">
                             <tree default_order="is_done,sequence" editable="bottom">
-                                <field name="product_id" force_save="1" required="1" context="{'default_type': 'product'}" attrs="{'readonly': ['|', '|', ('has_move_lines', '=', True), ('state', '=', 'cancel'), '&amp;', ('state', '!=', 'draft'), ('additional', '=', False) ]}"/>
+                                <field name="product_id" force_save="1" required="1" context="{'default_type': 'product'}" attrs="{'readonly': ['|', '|', ('has_move_lines', '=', True), ('state', '=', 'cancel'), '&amp;', ('state', '!=', 'draft'), ('additional', '=', False) ]}" options="{'no_create': True}"/>
                                 <field name="production_id" invisible="1"/>
                                 <field name="raw_material_production_id" invisible="1"/>
                                 <field name="move_line_ids" invisible="1">
@@ -107,15 +108,16 @@
 
                     <div name="project_product_service" attrs="{'invisible':[('type','!=','project')]}">
                         <group>
-                            <field name="project_id" attrs="{'required':[('type','=','project')]}"/>
-                            <field name="task_id" domain="[('project_id','=',project_id)]" attrs="{'invisible':[('project_id','=',False)]}"/>
+                            <field name="project_id" options="{'no_create': True}"/>
+                            <field name="project_id" options="{'no_create': True}" domain="[('id','in',project_ids)]" attrs="{'required':[('type','=','project')]}"/>
+                            <field name="task_id" options="{'no_create': True}" domain="[('project_id','=',project_id)]" attrs="{'invisible':[('project_id','=',False)]}"/>
                         </group>
                         <h2>Services: </h2><i>(Project and task REQUIRED)</i>
                         <field name="project_service_ids" attrs="{'readonly':[('task_id','=',False)]}" context="{'default_project_id':project_id, 'default_task_id':task_id,'default_account_id':project_analytic_id, 'default_name':'/','default_company_id': company_id}">
                             <tree editable="bottom" string="Timesheet Activities" default_order="date">
-                                <field name="task_id"/>
+                                <field name="task_id" options="{'no_create': True}"/>
                                 <field name="user_id" invisible="1"/>
-                                <field name="employee_id" required="1" widget="many2one_avatar_employee"/>
+                                <field name="employee_id" required="1" widget="many2one_avatar_employee" options="{'no_create': True}"/>
                                 <field name="name" required="0"/>
                                 <field name="unit_amount" widget="timesheet_uom" decoration-danger="unit_amount &gt; 24"/>
                                 <field name="project_id" invisible="1"/>
@@ -129,7 +131,7 @@
                             <tree editable="bottom" string="Products consumed">
                                 <field name="iset_so_line_id" options="{'no_create': True}" attrs="{'readonly':[('product_id','!=',False)]}" domain="[('order_id','=',sale_id),('product_id.type','!=','service')]"/>
                                 <field name="user_id" invisible="1"/>
-                                <field name="product_id" domain="[('type','!=','service')]" attrs="{'readonly':[('iset_so_line_id','!=',False)]}"/>
+                                <field name="product_id" domain="[('type','!=','service')]" attrs="{'readonly':[('iset_so_line_id','!=',False)]}" options="{'no_create': True}"/>
                                 <field name="name" required="0" invisible="1"/>
                                 <field name="unit_amount"/>
                                 <field name="date"/>
@@ -143,13 +145,13 @@
 
                     <div name="repair" attrs="{'invisible':[('type','!=','repair')]}">
                         <group>
-                            <field name="repair_id" attrs="{'required':[('type','=','repair')]}"/>
+                            <field name="repair_id" domain="[('id','in',repair_ids)]" attrs="{'required':[('type','=','repair')]}" options="{'no_create': True}"/>
                         </group>
                         <h2>Services:</h2><i>(Repair REQUIRED)</i>
                         <field name="repair_service_ids" attrs="{'readonly':[('repair_id','=',False)]}" context="{'default_repair_id':repair_id, 'default_company_id':company_id}">
                             <tree string="repair_services" editable="bottom">
                                 <field name="company_id" invisible="1" force_save="1"/>
-                                <field name="product_id" required="True"/>
+                                <field name="product_id" required="True" options="{'no_create': True}"/>
                                 <field name="name" optional="show"/>
                                 <field name="product_uom_qty" string="Quantity"/>
                                 <field name="product_uom_category_id" invisible="1"/>
@@ -165,8 +167,8 @@
                         <field name="repair_product_ids" attrs="{'readonly':[('repair_id','=',False)]}" context="{'default_repair_id':repair_id, 'default_location_id':repair_location_id, 'default_company_id': company_id}">
                             <tree string="Operations" editable="bottom">
                                 <field name="company_id" invisible="1" force_save="1"/>
-                                <field name="type"/>
-                                <field name="product_id"/>
+                                <field name="type" options="{'no_create': True}"/>
+                                <field name="product_id" options="{'no_create': True}"/>
                                 <field name="name" optional="show"/>
                                 <field name="product_uom_category_id" invisible="1"/>
                                 <field name="lot_id" context="{'default_product_id': product_id, 'default_company_id': company_id}" groups="stock.group_production_lot"/>
@@ -185,6 +187,7 @@
                     </div>
 
                     <field name="type" invisible="1"/>
+                    <field name="allow_services" invisible="1"/>
                     <field name="repair_location_id" invisible="1"/>
                     <field name="project_analytic_id" invisible="1"/>
                     <field name="project_so_id" invisible="1"/>
@@ -196,6 +199,9 @@
                     <field name="mrp_state" invisible="1"/>
                     <field name="mrp_is_locked" invisible="1"/>
                     <field name="company_id" invisible="1"/>
+                    <field name="project_ids" invisible="1"/>
+                    <field name="repair_ids" invisible="1"/>
+                    <field name="production_ids"/>
                 </sheet>
 
                 <div class="oe_chatter">
@@ -279,7 +285,7 @@
                         <field name="production_loss_id" attrs="{'required':[('type','=','production')]}"/>
                     </group>
                     <group name="repair" attrs="{'invisible':[('type','!=','repair')]}">
-                        <field name="repair_service_id"/>
+                        <field name="repair_service_id" attrs="{'required':[('type','=','repair')]}"/>
                     </group>
                 </sheet>
             </form>
