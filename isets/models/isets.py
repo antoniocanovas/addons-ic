@@ -15,7 +15,7 @@ class Isets(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'iSets'
 
-    name = fields.Char('Name')
+    name = fields.Char('Name', required=True)
     date = fields.Date('Date')
     start = fields.Float('Start')
     stop = fields.Float('Stop')
@@ -23,7 +23,7 @@ class Isets(models.Model):
     type = fields.Selection(string='Type', related='work_id.type')
     employee_ids = fields.Many2many('hr.employee')
     repair_id = fields.Many2one('repair.order', string="Repair Order")
-    project_id = fields.Many2one('project.project', related='work_id.project_id')
+    project_id = fields.Many2one('project.project')
     task_id = fields.Many2one('project.task')
     partner_id = fields.Many2one('res.partner', related='work_id.partner_id')
     workorder_id = fields.Many2one('mrp.workorder')
@@ -81,7 +81,69 @@ class Isets(models.Model):
     mrp_product_ids = fields.One2many('stock.move', 'iset_id', string='Products')
     mrp_service_ids = fields.One2many('mrp.workcenter.productivity', 'iset_id', string='Time consumed')
 
-    loss_id = fields.Many2one('mrp.workcenter.productivity.loss',)
+    @api.onchange('work_id')
+    def get_productions(self):
+        for record in self:
+            sale_id = record.work_id.production_sale_id
+            productions = []
+            if (record.partner_id.id) and (not sale_id.id) and (record.type == 'production'):
+                productions = self.env['mrp.production'].search([('x_partner_id', '=', record.partner_id.id)]).ids
+            elif (not record.partner_id.id) and (sale_id.id) and (record.type == 'production'):
+                productions = self.env['mrp.production'].search([('sale_id', '=', sale_id.id)]).ids
+            elif (record.partner_id.id) and (sale_id.id) and (record.type == 'production'):
+                productions = self.env['mrp.production'].search([('sale_id', '=', sale_id.id)]).ids
+            elif (not record.partner_id.id) and not (sale_id.id) and (record.type == 'production'):
+                productions = self.env['mrp.production'].search([]).ids
+            record.production_ids = [(6, 0, productions)]
+
+    production_ids = fields.Many2many('project.project', compute=get_productions, store=False)
+
+    @api.onchange('work_id')
+    def get_repairs(self):
+        for record in self:
+            repairs = []
+            if (record.partner_id.id) and (record.type == 'repair'):
+                repairs = self.env['repair.order'].search([('partner_id', '=', record.partner_id.id)]).ids
+            elif (not record.partner_id.id) and (record.type == 'repair'):
+                repairs = self.env['repair.order'].search([]).ids
+            record.repair_ids = [(6, 0, repairs)]
+
+    repair_ids = fields.Many2many('project.project', compute=get_repairs, store=False)
+
+    @api.onchange('work_id')
+    def get_projects(self):
+        for record in self:
+            projects = []
+            if (record.partner_id.id) and (not record.project_id.id) and (record.type == 'project'):
+                projects = self.env['project.project'].search([('partner_id', '=', record.partner_id.id)]).ids
+            elif (not record.partner_id.id) and (record.project_id.id) and (record.type == 'project'):
+                projects = self.env['project.project'].search([('id', '=', record.project_id.id)]).ids
+            elif (record.partner_id.id) and (record.project_id.id) and (record.type == 'project'):
+                projects = self.env['project.project'].search([('id', '=', record.project_id.id)]).ids
+            elif (not record.partner_id.id) and not (record.project_id.id) and (record.type == 'project'):
+                projects = self.env['project.project'].search([]).ids
+            record.project_ids = [(6, 0, projects)]
+
+    project_ids = fields.Many2many('project.project', compute=get_projects, store=False)
+
+    @api.onchange('work_id', 'workorder_id')
+    def get_allow_services(self):
+        for record in self:
+            allow = False
+            if (record.type == 'project') and (record.project_id.id != False): allow = True
+            if (record.type == 'production') and (record.workorder_id.id != False): allow = True
+            if (record.type == 'repair') and (record.repair_id.id != False): allow = True
+            record.allow_services = allow
+
+    allow_services = fields.Boolean(store=True, compute=get_allow_services)
+
+    @api.onchange('work_id')
+    def get_production_loss(self):
+        for record in self:
+            record.production_loss_id = record.work_id.production_loss_id.id
+
+    production_loss_id = fields.Many2one('mrp.workcenter.productivity.loss', string='Loss', readonly=False,
+                                         compute=get_production_loss)
 
     def create_lot_services_iset(self):
         print("DEBUG")

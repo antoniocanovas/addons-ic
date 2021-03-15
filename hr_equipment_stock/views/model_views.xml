@@ -1,21 +1,116 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
+    <record id="hr_equipment_view_hr_employee" model="ir.ui.view">
+        <field name="name">equipment.view.hr.employee</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_quant" class="o_stat_button" icon="fa-cubes" type="object">
+                    <field name="quant_ids" widget="statinfo"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
 
-    <record id="hr_equipment_maintenance_stock" model="ir.ui.view">
-        <field name="name"> inh Stock Quant </field>>
+    <record id="action_quant_hr_employee" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <!--<field name="context">{'search_default_equipment_id': active_id,'default_equipment_id': active_id}</field>
+        <field name="domain">[('equipment_id', '=',active_id)]</field>-->
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="help"><![CDATA[<p> Quant </p>]]></field>
+        <field name="limit">80</field>
+        <field name="name">Stock Quant</field>
+        <field name="res_model">stock.quant</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="stock.view_stock_quant_tree"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="hr_equipment_view_hr_department" model="ir.ui.view">
+        <field name="name">equipment.view.hr.department</field>
+        <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr.hr_department_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='container o_kanban_card_content']" position="after">
+                <div class="container o_kanban_card_content" t-if="!selection_mode">
+                    <div class="row o_kanban_card_upper_content">
+                        <div class="col-4 o_kanban_primary_left">
+                            <button class="btn btn-primary" name="action_view_quant" type="object">Quant</button>
+                        </div>
+                        <div class="col-8 o_kanban_primary_right">
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_quant_hr_department" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <!--<field name="context">{'search_default_equipment_id': active_id,'default_equipment_id': active_id}</field>
+        <field name="domain">[('equipment_id', '=',active_id)]</field>-->
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="help"><![CDATA[<p> Quant </p>]]></field>
+        <field name="limit">80</field>
+        <field name="name">Stock Quant</field>
+        <field name="res_model">stock.quant</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="stock.view_stock_quant_tree"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_stock_location_equipment_inh" model="ir.ui.view">
+        <field name="name">stock location equipment</field>
+        <field name="model">stock.location</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="stock.view_location_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='return_location']" position="after">
+                <field name="employee_id"/>
+                <field name="department_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_stock_quant_equipment_inh" model="ir.ui.view">
+        <field name="name">stock quant equipment</field>
         <field name="model">stock.quant</field>
         <field name="type">form</field>
         <field name="inherit_id" ref="stock.view_stock_quant_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='product_uom_id']" position="after">
-                <field name="employee_id"/>
-                <field name="department_id"/>
+            <xpath expr="//field[@name='owner_id']" position="after">
                 <field name="equipment_id"/>
             </xpath>
-
         </field>
     </record>
 
+    <!--<record id="view_hr_employee_equipment_inh" model="ir.ui.view">
+         <field name="name">hr employee equipment</field>
+         <field name="model">hr.employee</field>
+         <field name="type">form</field>
+         <field name="inherit_id" ref="hr.view_employee_form"/>
+         <field name="arch" type="xml">
+             <xpath expr="//field[@name='owner_id']" position="after">
+                     <field name="equipment_id"/>
+                 </xpath>
+         </field>
+    </record>
+    <record id="view_hr_department_equipment_inh" model="ir.ui.view">
+         <field name="name">hr employee department</field>
+         <field name="model">hr.department</field>
+         <field name="type">form</field>
+         <field name="inherit_id" ref="hr.view_department_form"/>
+         <field name="arch" type="xml">
+             <xpath expr="//field[@name='owner_id']" position="after">
+                     <field name="equipment_id"/>
+                 </xpath>
+         </field>
+     </record>-->
 
 </odoo>

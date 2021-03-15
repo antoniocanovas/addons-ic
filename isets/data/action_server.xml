@@ -47,7 +47,7 @@ elif (record.work_id.type == "production") and (record.employee_ids.ids) and (re
     name = record.workorder_id.name + " - " + start + " - " + li.name
     new = env['mrp.workcenter.productivity'].create({'iset_id':record.id, 'description': name, 'production_id':record.mrp_id.id,
           'workorder_id':record.workorder_id.id, 'workcenter_id':record.workorder_id.workcenter_id.id, 'company_id':record.company_id.id,
-          'loss_id':record.loss_id.id, 'date_start':date_start, 'date_end':date_end
+          'production_loss_id':record.loss_id.id, 'date_start':date_start, 'date_end':date_end
     })
 
             </field>

@@ -7,7 +7,7 @@
 """,
     'author': 'Serincloud',
     'depends': [
-        'hr.maintenance',
+        'hr_maintenance',
         'stock',
 
     ],

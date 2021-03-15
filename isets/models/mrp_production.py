@@ -7,6 +7,8 @@ _logger = logging.getLogger(__name__)
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
+    partner_id = fields.Many2one('res.partner', related='sale_id.partner_id')
+
     @api.depends('origin')
     def get_sale_id(self):
         for record in self:
