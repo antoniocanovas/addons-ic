@@ -24,7 +24,6 @@
                         <group>
                             <field name="mrp_id" domain="[('id','in',production_ids)]" attrs="{'required':[('type','=','production')]}" options="{'no_create': True}"/>
                             <field name="workorder_id" domain="[('production_id','=',mrp_id)]" attrs="{'invisible':[('mrp_id','=',False)]}" options="{'no_create': True}"/>
-                            <field name="production_loss_id" attrs="{'invisible':[('mrp_id','=',False)]}" options="{'no_create': True}"/>
                             <field name="production_loss_id" options="{'no_create': True}" attrs="{'invisible':[('mrp_id','=',False)]}"/>
                         </group>
                         <h2>Services: </h2><i>(Workorder REQUIRED)</i>
@@ -108,7 +107,6 @@
 
                     <div name="project_product_service" attrs="{'invisible':[('type','!=','project')]}">
                         <group>
-                            <field name="project_id" options="{'no_create': True}"/>
                             <field name="project_id" options="{'no_create': True}" domain="[('id','in',project_ids)]" attrs="{'required':[('type','=','project')]}"/>
                             <field name="task_id" options="{'no_create': True}" domain="[('project_id','=',project_id)]" attrs="{'invisible':[('project_id','=',False)]}"/>
                         </group>
@@ -199,9 +197,9 @@
                     <field name="mrp_state" invisible="1"/>
                     <field name="mrp_is_locked" invisible="1"/>
                     <field name="company_id" invisible="1"/>
-                    <field name="project_ids" invisible="1"/>
-                    <field name="repair_ids" invisible="1"/>
-                    <field name="production_ids"/>
+                    <field name="project_ids" groups="base.group_system"/>
+                    <field name="repair_ids" groups="base.group_system"/>
+                    <field name="production_ids" groups="base.group_system"/>
                 </sheet>
 
                 <div class="oe_chatter">
