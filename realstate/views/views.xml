@@ -1,0 +1,180 @@
+<odoo>
+  <data>
+   <record id="realstate_property_form" model="ir.ui.view">
+            <field name="active" eval="True"/>
+            <field name="arch" type="xml">
+                <form>
+                  <header>
+                    <field name="state" widget="statusbar" nolabel="1" statusbar_visible="RECEIVED,WAITING,REJECTED,EXECUTE"/>
+                  </header>
+                  <sheet string="Inmuebles">
+                    <group name="Ppal Inmueble">
+                      <group name="PpalInmuebleIzquierda">
+                          <field name="type" can_create="true" can_write="true" modifiers="{}"/>
+                          <field name="realstate_area"/>
+                          <field name="user_id" can_create="true" can_write="true" modifiers="{}"/>
+                      </group>
+                      <group name="PpalInmuebleDerecha">
+                          <field name="photo" string="Foto" widget="image" class="oe_right oe_avatar"/>
+                      </group>
+                    </group>
+                    <group col="4">
+                      <field name="to_sale" modifiers="{}"/>
+                      <field name="to_holiday"/>
+                      <field name="to_rent"/>
+                      <newline/>
+                      <field name="outgoing_date"/>
+                      <field name="incoming_date"/>
+                    </group>
+                    <notebook name="characters">
+                      <page name="character_page" string="Características">
+                          <group name="group_RoVFx">
+                              <group name="group_RoVFx_left" string="Vivienda">
+                                  <field name="city"/>
+                                  <field name="street"/>
+                                  <field name="number"/>
+                                  <field name="floor"/>
+                                  <field name="inhabited"/>
+                                  <field name="useful_space"/>
+                                  <field name="built_space"/>
+                                  <field name="origin"/>
+                                  <field name="built_date"/>
+                                  <field name="furnished"/>
+                                  <field name="alarm"/>
+                                  <field name="security"/>
+                                  <field name="note"/>
+                              </group>
+                              <group name="group_RoVFx_right" string="Oferta">
+                                  <field name="sale_price"/>
+                                  <field name="rental_price"/>
+                                  <field name="advance_price"/>
+                                  <field name="community_price"/>
+                                  <field name="date"/>
+                                  <field name="last_change"/>
+                                  <field name="exclusivity"/>
+                                  <field name="owner_id"/>
+                              </group>
+                          </group>
+                      </page>
+                      <page name="studio_page_xRYtC" string="Habitabilidad">
+                          <group name="studio_group_xRYtC">
+                              <group name="group_xRYtC_left">
+                                  <field name="room_qty"/>
+                                  <field name="built-in_wardroble"/>
+                                  <field name="living_room_qty"/>
+                                  <field name="kitchen"/>
+                                  <field name="bathroom_qty"/>
+                                  <field name="bathroom_bedroom"/>
+                                  <field name="parking"/>
+                                  <field name="storage_room"/>
+                                  <field name="balcony"/>
+                                  <field name="solarium"/>
+                                  <field name="garden"/>
+                                  <field name="patio"/>
+                              </group>
+                              <group name="group_xRYtC_right">
+                                  <field name="heating_id"/>
+                                  <field name="air_id"/>
+                                  <field name="energy_certificate"/>
+                                  <field name="environment_id"/>
+                                  <field name="elevator"/>
+                                  <field name="phone"/>
+                                  <field name="satellite_tv"/>
+                                  <field name="internet_id"/>
+                                  <field name="orientation"/>
+                                  <field name="conservation"/>
+                                  <field name="pool"/>
+                                  <field name="barbecue"/>
+                                  <field name="hearth"/>
+                              </group>
+                          </group>
+                      </page>
+                      <page name="page_23zGI" string="Suministros">
+                        <group name="group_23zGI">
+                            <group name="group_23zGI_left">
+                                <field name="x_ref_electricidad"/>
+                                <field name="x_energia"/>
+                                <field name="x_ref_gas"/>
+                                <field name="x_ref_agua"/>
+                                <field name="x_ref_seguro_hogar"/>
+                                <field name="x_fecha_ee"/>
+                                <field name="x_codigo_ee"/>
+                            </group>
+                            <group name="group_23zGI_right">
+                                <field name="x_pago_comunidad"/>
+                                <field name="x_escritura"/>
+                                <field name="x_seguro_hogar"/>
+                                <field name="x_ibi"/>
+                                <field name="x_mto_piscina"/>
+                                <field name="x_administrador_id"/>
+                            </group>
+                        </group>
+                      </page>
+                  <!--    <page name="page_BmZwA" string="Varios">
+                          <group name="group_BmZwA">
+                              <group name="group_BmZwA_left">
+                                  <field name="x_pvp_min_alquiler"/>
+                                  <field name="x_pvp_min_venta"/>
+                                  <field name="x_referencia_catastral"/>
+                                  <field name="x_finca_registral"/>
+                                  <field name="x_n_llaves"/>
+                                  <field name="x_notas_internas"/>
+                              </group>
+                              <group name="group_BmZwA_right" string="Inicio de Contrato">
+                                  <field name="x_amueblar"/>
+                                  <field name="x_alta_suministro"/>
+                                  <field name="x_ofertar_seguro_hogar"/>
+                                  <field name="x_ofertar_reforma"/>
+                                  <field name="x_ofertar_ee"/>
+                                  <field name="x_contrato_iniciado" invisible="1"/>
+                              </group>
+                          </group>
+                      </page>
+                      <page name="page_mb705" string="Comercialización">
+                          <group name="group_mb705">
+                              <group name="group_mb705_left" string="Publicación">
+                                  <field name="x_autorizados_publicar_fotos"/>
+                                  <field name="x_medio_ids" widget="many2many_tags"/>
+                              </group>
+                              <group name="group_mb705_right" string="Preventa">
+                                  <field name="x_cartel"/>
+                                  <field name="x_reservado"/>
+                                  <field name="x_comercial_id"/>
+                                  <field name="x_notas_caracteristicas"/>
+                              </group>
+                          </group>
+                      </page> -->
+
+                    </notebook>
+                  </sheet>
+                  <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                  </div>
+                 </form>
+            </field>
+    </record>
+
+    <record id="realstate_property_tree" model="ir.ui.view">
+            <field name="active" eval="True"/>
+            <field name="arch" type="xml">
+                <tree string="Inmueble">
+                  <field name="name"/>
+                  <field name="city"/>
+                  <field name="realstate_area"/>
+                  <field name="type"/>
+                  <field name="income_date"/>
+                  <field name="outgoing_date"/>
+                  <field name="rental_price"/>
+                  <field name="to_rent"/>
+                  <field name="to_sale"/>
+
+                </tree>
+            </field>
+    </record>
+
+
+
+
+  </data>
+</odoo>
