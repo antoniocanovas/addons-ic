@@ -9,14 +9,14 @@
     'category': 'Tools',
     'version': '14.0.1.0.0',
     'depends': [
-        #'contacts',
+        'crm',
     ],
     'data': [
-        #'views/views.xml',
-        #'views/view_menu.xml',
+        'views/views.xml',
+        'views/view_menu.xml',
         #'views/view_partner_credentials.xml',
         #'security/user_groups.xml',
-        #'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         #'data/default_rules.xml',
     ],
     'installable': True,

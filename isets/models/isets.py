@@ -104,9 +104,9 @@ class Isets(models.Model):
             repairs = []
             partner = record.work_id.partner_id
             if (partner.id) and (record.type == 'repair'):
-                repairs = self.env['repair.order'].search([('partner_id', '=', partner.id)]).ids
+                repairs = self.env['repair.order'].search([('partner_id', '=', partner.id), ('state', 'not in', ['draft', 'done', 'cancel'])]).ids
             elif (not partner.id) and (record.type == 'repair'):
-                repairs = self.env['repair.order'].search([]).ids
+                repairs = self.env['repair.order'].search([('state', 'not in', ['draft', 'done', 'cancel'])]).ids
             record.repair_ids = [(6, 0, repairs)]
 
     repair_ids = fields.Many2many('repair.order', compute=get_repairs, store=False)
@@ -130,7 +130,7 @@ class Isets(models.Model):
 
     project_ids = fields.Many2many('project.project', compute=get_projects, store=False)
 
-    @api.onchange('work_id', 'workorder_id')
+    @api.onchange('work_id', 'workorder_id', 'project_id', 'repair_id')
     def get_allow_services(self):
         for record in self:
             allow = False

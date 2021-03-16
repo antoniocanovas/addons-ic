@@ -1,79 +1,121 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="credentials_tree" model="ir.ui.view">
-        <field name="arch" type="xml">
-            <tree string="Credentials">
-                <field name="name" modifiers="{}"/>
-                <field name="partner_id"/>
-                <field name="type"/>
-                <field name="public"/>
-            </tree>
-        </field>
-        <field name="model">partner.credentials</field>
-        <field name="name">Default tree view for partner credentials</field>
-        <field name="type">tree</field>
-    </record>
-
-    <record id="credentials_tree_search" model="ir.ui.view">
-        <field name="name">partner.credentials.search</field>
-        <field name="model">partner.credentials</field>
-        <field name="arch" type="xml">
-            <search string="Partner Credentials">
-                <field name="name" modifiers="{}"/>
-                <field name="partner_id"/>
-                <field name="user"/>
-                <field name="url"/>
-                <group name="studio_group_by">
-                    <filter context="{'group_by': 'partner_id'}" name="credentials_group_by_partner" string="Partner"/>
-                    <filter context="{'group_by': 'user'}" name="credentials_group_by_user" string="User"/>
-                </group>
-                <filter domain="[['active','=','False']]" name="credentials_filter_active" string="Archived"/>
-                <filter domain="[['public','=','True']]" name="credentials_filter_public" string="Public"/>
-                <filter domain="[['public','=','False']]" name="credentials_filter_private" string="Private"/>
-            </search>
-        </field>
-    </record>
-
-    <record id="credentials_form" model="ir.ui.view">
+    <record id="contest_form" model="ir.ui.view">
         <field name="arch" type="xml">
             <form>
-                <sheet name="main" string="Credentials">
-                    <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" type="object" name="toggle_active" icon="fa-archive">
-                            <field name="active" widget="boolean_button" options="{'terminology': 'archive'}"/>
-                        </button>
-                    </div>
-                    <h2>
-                        <field name="name"/>
-                    </h2>
-                    <group name="basic_params">
-                        <group>
-                            <field name="url" widget="url" placeholder="https://www.ejemplos.com"/>
-                            <field name="partner_id"/>
-                            <field name="type"/>
+                <h1>
+                    <field name="name"/>
+                </h1>
+                <group name="General_data" col="4">
+                    <field name="customer_id"/>
+                    <field name="max_price"/>
+                    <field name="opportunity_id"/>
+                    <field name="date_limit"/>
+                </group>
+                <notebook>
+                    <page string="Documents">
+                        <group col="4">
+                            <field name="cloud_doc" widget="url"/>
+                            <field name="cloud_folder" widget="url"/>
+                            <field name="note" widget="html" colspan="4"/>
                         </group>
+                    </page>
+                    <page string="Advertisment">
                         <group>
-                            <field name="user"/>
-                            <field name="password"/>
-                            <field name="public"/>
+                            <group>
+                                <field name="date"/>
+                                <field name="type_id"/>
+                                <field name="category_id"/>
+                                <field name="contract_type" string="Contract type"/>
+                                <field name="contractor"/>
+                                <field name="place"/>
+                            </group>
+                            <group>
+                                <field name="advise_url" widget="url"/>
+                                <field name="advise_file"/>
+                                <field name="cost_evaluation" string="Economical %"/>
+                                <field name="project_evaluation" string="Project %"/>
+                                <field name="min_price"/>
+                                <field name="lowerprice_allowed"/>
+                            </group>
                         </group>
-                    </group>
-                    <notebook>
-                        <page string="Description">
-                            <field name="description" class="field_description" placeholder="Description..."/>
-                        </page>
-                    </notebook>
-                </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="activity_ids" widget="mail_activity"/>
-                    <field name="message_ids" widget="mail_thread" options="{'post_refresh':'recipients'}"/>
-                </div>
+                    </page>
+                    <page string="Competitors">
+                        <group col="4">
+                            <field name="winner_id"/>
+                            <field name="competitor_num"/>
+                            <field name="winner_price"/>
+                        </group>
+                        <field name="competitor_ids"/>
+                    </page>
+                </notebook>
             </form>
         </field>
-        <field name="model">partner.credentials</field>
-        <field name="name">Default form view for partner credentials</field>
+        <field name="model">contest</field>
+        <field name="name">Default form view for Contest</field>
+        <field name="type">form</field>
+    </record>
+
+    <record id="competitor_form" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <form>
+
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                        <field name="contest_id"/>
+                    </group>
+
+            </form>
+        </field>
+        <field name="model">competitor</field>
+        <field name="name">Default form view for Competitor</field>
+        <field name="type">form</field>
+    </record>
+
+    <record id="contest_category" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <form>
+
+                    <group col="4">
+                        <field name="name"/>
+                    </group>
+
+            </form>
+        </field>
+        <field name="model">contest.category</field>
+        <field name="name">Default form view for Contest category</field>
+        <field name="type">form</field>
+    </record>
+
+    <record id="contest_contract_type" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <form>
+
+                    <group col="4">
+                        <field name="name"/>
+                    </group>
+
+            </form>
+        </field>
+        <field name="model">contest.contract.type</field>
+        <field name="name">Default form view for Contest Contract Type</field>
+        <field name="type">form</field>
+    </record>
+
+    <record id="contest_type" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <form>
+
+                    <group col="4">
+                        <field name="name"/>
+                    </group>
+
+            </form>
+        </field>
+        <field name="model">contest.type</field>
+        <field name="name">Default form view for Contest Type</field>
         <field name="type">form</field>
     </record>
 

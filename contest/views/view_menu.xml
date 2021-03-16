@@ -1,24 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="action_credentials" model="ir.actions.act_window">
-        <field name="auto_search" eval="True"/>
+    <record id="action_contest" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="domain" eval="False"/>
         <field name="filter" eval="False"/>
         <field name="limit">80</field>
-        <field name="multi" eval="False"/>
-        <field name="name">Credentials</field>
-        <field name="res_model">partner.credentials</field>
-        <field name="search_view_id" ref="credentials_tree_search"/>
-        <field name="src_model" eval="False"/>
+        <field name="name">Contest</field>
+        <field name="res_model">contest</field>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
         <field name="view_id" eval="False"/>
         <field name="view_mode">tree,form</field>
-        <field name="view_type">form</field>
+    </record>
+
+    <record id="action_contest_competitor" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="domain" eval="False"/>
+        <field name="filter" eval="False"/>
+        <field name="limit">80</field>
+        <field name="name">Competitor</field>
+        <field name="res_model">competitor</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="usage" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_contest_configuration_type" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="domain" eval="False"/>
+        <field name="filter" eval="False"/>
+        <field name="limit">80</field>
+        <field name="name">Type</field>
+        <field name="res_model">contest.type</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="usage" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_contest_configuration_category" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="domain" eval="False"/>
+        <field name="filter" eval="False"/>
+        <field name="limit">80</field>
+        <field name="name">Contest Category</field>
+        <field name="res_model">contest.category</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="usage" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_contest_configuration_contracts" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="domain" eval="False"/>
+        <field name="filter" eval="False"/>
+        <field name="limit">80</field>
+        <field name="name">Contest Contract Type</field>
+        <field name="res_model">contest.contract.type</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="usage" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="view_mode">tree,form</field>
     </record>
 
     <!--<record id="menu_partner_credentials" model="ir.ui.menu">
@@ -31,20 +86,60 @@
     </record>-->
 
     <menuitem
-            action="action_credentials"
-            id="menu_partner_credentials"
-            name="Credentials"
+            action="action_contest"
+            id="menu_contest"
+            name="Contest"
             sequence="1"
-            web_icon="partner_credentials,static/description/credentials.png"
+            web_icon=""
     />
 
-    <record id="menu_main_partner_credentials" model="ir.ui.menu">
-        <field name="action" ref="action_credentials"/>
+    <record id="menu_main_contest" model="ir.ui.menu">
+        <field name="action" ref="action_contest"/>
         <field name="active" eval="True"/>
-        <field name="name">Credentials</field>
-        <field name="parent_id" ref="menu_partner_credentials"/>
-        <field name="sequence">10</field>
+        <field name="name">Contest</field>
+        <field name="parent_id" ref="menu_contest"/>
+        <field name="sequence">1</field>
         <field name="web_icon" eval="False"/>
+    </record>
+
+    <record id="menu_contest_competitors" model="ir.ui.menu">
+        <field name="action" ref="action_contest_competitor"/>
+        <field name="active" eval="True"/>
+        <field name="name">Competitor</field>
+        <field name="parent_id" ref="menu_contest"/>
+        <field name="sequence">2</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+    <record id="menu_contest_configuration" model="ir.ui.menu">
+        <field name="active" eval="True"/>
+        <field name="name">Configuration</field>
+        <field name="parent_id" ref="menu_contest"/>
+        <field name="sequence">3</field>
+    </record>
+
+    <record id="menu_contest_configuration_type" model="ir.ui.menu">
+        <field name="action" ref="action_contest_configuration_type"/>
+        <field name="active" eval="True"/>
+        <field name="name">Type</field>
+        <field name="parent_id" ref="menu_contest_configuration"/>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="menu_contest_configuration_category" model="ir.ui.menu">
+        <field name="action" ref="action_contest_configuration_category"/>
+        <field name="active" eval="True"/>
+        <field name="name">Category</field>
+        <field name="parent_id" ref="menu_contest_configuration"/>
+        <field name="sequence">2</field>
+    </record>
+
+    <record id="menu_contest_configuration_contracts" model="ir.ui.menu">
+        <field name="action" ref="action_contest_configuration_contracts"/>
+        <field name="active" eval="True"/>
+        <field name="name">Contract Types</field>
+        <field name="parent_id" ref="menu_contest_configuration"/>
+        <field name="sequence">3</field>
     </record>
 
 

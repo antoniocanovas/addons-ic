@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_partner_credentials, Partner Credentials,model_partner_credentials,base.group_user,1,1,1,1
-access_partner_credentials_admin, Partner Credentials Admin,model_partner_credentials,partner_credentials.admin_credentials,1,1,1,1
+access_competitor,Competitor,model_competitor,base.group_user,1,1,1,1
+access_contest,Contest,model_contest,base.group_user,1,1,1,1
+access_contest_category,Contest Category,model_contest_category,base.group_user,1,1,1,1
+access_contest_contract_type,Contest contract type,model_contest_contract_type,base.group_user,1,1,1,1
+access_contest_type,Contest type,model_contest_type,base.group_user,1,1,1,1
