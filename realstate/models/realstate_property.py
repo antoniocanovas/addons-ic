@@ -28,7 +28,7 @@ class RealstateProperty(models.Model):
           string='Visits'
      )
      user_id = fields.Many2one(
-          'res.user',
+          'res.users',
           string='Comercial'
      )
      to_sale = fields.Boolean()
