@@ -82,7 +82,7 @@ class RealstateProperty(models.Model):
      heating_id = fields.Many2one('realstate.heating', string='Heating')
      air_id = fields.Many2one('realstate.air', string='Air')
      energy_certificate = fields.Binary(string='Energy certificate')
-     environment_id = fields.Many2one('realstate.enviroment'string='Enviroment id')
+     environment_id = fields.Many2one('realstate.enviroment', string='Enviroment id')
      elevator = fields.Boolean(string='Elevator')
      phone = fields.Boolean(string='Phone')
      satellite_tv = fields.Boolean(string='Satellite TV')
