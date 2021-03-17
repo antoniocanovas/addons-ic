@@ -8,9 +8,9 @@ class Contest(models.Model):
     _name = 'contest'
     _description = 'Contests'
 
-    name = fields.Char(string='Name')
+    name = fields.Char(string='Name', required=True)
     advise_url = fields.Char(string='URL')
-    customer_id = fields.Many2one('res.partner')
+    customer_id = fields.Many2one('res.partner', required=True)
     date = fields.Datetime(string='Publication date')
     date_limit = fields.Datetime(string='Expiration')
     place = fields.Char(string='Ubication')
@@ -22,9 +22,9 @@ class Contest(models.Model):
     competitor_ids = fields.One2many('competitor', 'contest_id', string='Competitors')
     winner_id = fields.Many2one('competitor', string='Winner')
 
-    type_id = fields.Many2one('contest.type', string='Type of contest')
-    category_id = fields.Many2one('contest.category', string='Category of contest')
-    contract_type = fields.Many2one('contest.contract.type', string='Contest contract type')
+    type_id = fields.Many2one('contest.type', string='Type')
+    category_id = fields.Many2one('contest.category', string='Category')
+    contract_type = fields.Many2one('contest.contract.type', string='Contract')
 
     max_price = fields.Float(string='Max. Price')
     winner_price = fields.Float(string='Adjudication')
@@ -35,8 +35,8 @@ class Contest(models.Model):
 
     note = fields.Text(string='Note')
 
-    min_price = fields.Float('Quotation')
-    user_id = fields.Many2one('crm.lead', related='opportunity_id.user_id', string='User')
+    min_price = fields.Float('Min.Price')
+    user_id = fields.Many2one('res.users', related='opportunity_id.user_id', string='Salesperson')
 
     cloud_doc = fields.Char('Cloud Doc')
     cloud_folder = fields.Char('Cloud Folder')

@@ -26,8 +26,8 @@ if (record.work_id.type == "project") and (record.employee_ids.ids) and (record.
 
 # CASE REPAIR:
 elif (record.work_id.type == "repair") and (record.employee_ids.ids) and (record.repair_id.id):
-  if (record.work_id.product_id.id):
-    product_id = record.work_id.product_id
+  if (record.work_id.repair_service_id.id):
+    product_id = record.work_id.repair_service_id
     for li in record.employee_ids:
         name = product_id.name + " - " + start + " - " + li.name
         new = env['repair.fee'].create({'iset_id':record.id, 'product_id':product_id.id,
@@ -47,9 +47,8 @@ elif (record.work_id.type == "production") and (record.employee_ids.ids) and (re
     name = record.workorder_id.name + " - " + start + " - " + li.name
     new = env['mrp.workcenter.productivity'].create({'iset_id':record.id, 'description': name, 'production_id':record.mrp_id.id,
           'workorder_id':record.workorder_id.id, 'workcenter_id':record.workorder_id.workcenter_id.id, 'company_id':record.company_id.id,
-          'production_loss_id':record.loss_id.id, 'date_start':date_start, 'date_end':date_end
+          'loss_id':record.production_loss_id.id, 'date_start':date_start, 'date_end':date_end
     })
-
             </field>
         </record>
 

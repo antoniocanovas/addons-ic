@@ -4,52 +4,54 @@
     <record id="contest_form" model="ir.ui.view">
         <field name="arch" type="xml">
             <form>
-                <h1>
-                    <field name="name"/>
-                </h1>
-                <group name="General_data" col="4">
-                    <field name="customer_id"/>
-                    <field name="max_price"/>
-                    <field name="opportunity_id"/>
-                    <field name="date_limit"/>
-                </group>
-                <notebook>
-                    <page string="Documents">
-                        <group col="4">
-                            <field name="cloud_doc" widget="url"/>
-                            <field name="cloud_folder" widget="url"/>
-                            <field name="note" widget="html" colspan="4"/>
-                        </group>
-                    </page>
-                    <page string="Advertisment">
-                        <group>
-                            <group>
-                                <field name="date"/>
-                                <field name="type_id"/>
-                                <field name="category_id"/>
-                                <field name="contract_type" string="Contract type"/>
-                                <field name="contractor"/>
-                                <field name="place"/>
+                <sheet>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group name="General_data" col="4">
+                        <field name="customer_id"/>
+                        <field name="max_price"/>
+                        <field name="opportunity_id"/>
+                        <field name="date_limit"/>
+                    </group>
+                    <notebook>
+                        <page string="Documents">
+                            <group col="4">
+                                <field name="cloud_doc" widget="url"/>
+                                <field name="cloud_folder" widget="url"/>
+                                <field name="note" widget="html" colspan="4"/>
                             </group>
+                        </page>
+                        <page string="Advertisment">
                             <group>
-                                <field name="advise_url" widget="url"/>
-                                <field name="advise_file"/>
-                                <field name="cost_evaluation" string="Economical %"/>
-                                <field name="project_evaluation" string="Project %"/>
-                                <field name="min_price"/>
-                                <field name="lowerprice_allowed"/>
+                                <group>
+                                    <field name="date"/>
+                                    <field name="type_id"/>
+                                    <field name="category_id"/>
+                                    <field name="contract_type" string="Contract type"/>
+                                    <field name="contractor"/>
+                                    <field name="place"/>
+                                </group>
+                                <group>
+                                    <field name="advise_url" widget="url"/>
+                                    <field name="advise_file"/>
+                                    <field name="cost_evaluation" string="Economical %"/>
+                                    <field name="project_evaluation" string="Project %"/>
+                                    <field name="min_price"/>
+                                    <field name="lowerprice_allowed"/>
+                                </group>
                             </group>
-                        </group>
-                    </page>
-                    <page string="Competitors">
-                        <group col="4">
-                            <field name="winner_id"/>
-                            <field name="competitor_num"/>
-                            <field name="winner_price"/>
-                        </group>
-                        <field name="competitor_ids"/>
-                    </page>
-                </notebook>
+                        </page>
+                        <page string="Competitors">
+                            <group col="4">
+                                <field name="winner_id"/>
+                                <field name="competitor_num"/>
+                                <field name="winner_price"/>
+                            </group>
+                            <field name="competitor_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
             </form>
         </field>
         <field name="model">contest</field>
@@ -57,16 +59,29 @@
         <field name="type">form</field>
     </record>
 
+    <record id="contest_tree" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <tree name="Contest_Tree" string="Contests">
+                <field name="name"/>
+                <field name="customer_id"/>
+                <field name="user_id"/>
+                <field name="max_price"/>
+                <field name="date_limit"/>
+            </tree>
+        </field>
+        <field name="model">contest</field>
+        <field name="name">Default tree view for Contest</field>
+        <field name="type">tree</field>
+    </record>
+
     <record id="competitor_form" model="ir.ui.view">
         <field name="arch" type="xml">
             <form>
-
-                    <group col="4">
-                        <field name="name"/>
-                        <field name="partner_id"/>
-                        <field name="contest_id"/>
-                    </group>
-
+                <group col="4">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="contest_id"/>
+                </group>
             </form>
         </field>
         <field name="model">competitor</field>
@@ -74,49 +89,48 @@
         <field name="type">form</field>
     </record>
 
-    <record id="contest_category" model="ir.ui.view">
+     <record id="competitor_tree" model="ir.ui.view">
         <field name="arch" type="xml">
-            <form>
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+        <field name="model">competitor</field>
+        <field name="name">Default tree view for Competitor</field>
+        <field name="type">tree</field>
+    </record>
 
-                    <group col="4">
-                        <field name="name"/>
-                    </group>
-
-            </form>
+     <record id="contest_category_tree" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <tree name="Contest_category_tree" string="Contest Category" editable="bottom">
+                <field name="name" required="1"/>
+            </tree>
         </field>
         <field name="model">contest.category</field>
-        <field name="name">Default form view for Contest category</field>
-        <field name="type">form</field>
+        <field name="name">Default tree view for Contest category</field>
+        <field name="type">tree</field>
     </record>
 
-    <record id="contest_contract_type" model="ir.ui.view">
+    <record id="contest_contract_type_tree" model="ir.ui.view">
         <field name="arch" type="xml">
-            <form>
-
-                    <group col="4">
-                        <field name="name"/>
-                    </group>
-
-            </form>
+            <tree name="Contest_contract_type_tree" string="Contest Contracts" editable="bottom">
+                <field name="name" required="1"/>
+            </tree>
         </field>
         <field name="model">contest.contract.type</field>
-        <field name="name">Default form view for Contest Contract Type</field>
-        <field name="type">form</field>
+        <field name="name">Default tree view for Contest Contract Type</field>
+        <field name="type">tree</field>
     </record>
 
-    <record id="contest_type" model="ir.ui.view">
+    <record id="contest_type_tree" model="ir.ui.view">
         <field name="arch" type="xml">
-            <form>
-
-                    <group col="4">
-                        <field name="name"/>
-                    </group>
-
-            </form>
+            <tree name="Contest_type_tree" string="Contest Types" editable="bottom">
+                <field name="name" required="1"/>
+            </tree>
         </field>
         <field name="model">contest.type</field>
-        <field name="name">Default form view for Contest Type</field>
-        <field name="type">form</field>
+        <field name="name">Default tree view for Contest Type</field>
+        <field name="type">tree</field>
     </record>
 
 
