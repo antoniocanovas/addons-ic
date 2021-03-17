@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="action_realstate_property" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="filter" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="limit">80</field>
+        <field name="name">Inmuebles</field>
+        <field name="res_model">realstate.property</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="usage" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <menuitem
+            action="action_realstate_property"
+            id="realstate_property_main"
+            name="INMUEBLES"
+            sequence="10"
+            web_icon=""
+    />
+
+    <record id="menu_realstate_property" model="ir.ui.menu">
+        <field name="action" ref="action_realstate_property"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        <field name="name">Inmuebles</field>
+        <field name="parent_id" ref="realstate_property_main"/>
+        <field name="sequence">1</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+</odoo>
