@@ -60,7 +60,7 @@
                           <group name="studio_group_xRYtC">
                               <group name="group_xRYtC_left">
                                   <field name="room_qty"/>
-                                  <field name="built-in_wardroble"/>
+                                  <field name="builtin_wardroble"/>
                                   <field name="living_room_qty"/>
                                   <field name="kitchen"/>
                                   <field name="bathroom_qty"/>
