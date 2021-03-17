@@ -65,7 +65,7 @@ class RealstateProperty(models.Model):
      owner_id = fields.Many2one('res.partner')
      # HABITABILITY
      room_qty = fields.Integer()
-     built-in_wardroble = fields.Boolean()
+     builtin_wardroble = fields.Boolean()
      living_room_qty = fields.Integer()
      kitchen = fields.Selection(selection=[('kitchen','KITCHEN'),('office','OFFICE')],string="Kitchen",default='kitchen')
      bathroom_qty = fields.Integer()
