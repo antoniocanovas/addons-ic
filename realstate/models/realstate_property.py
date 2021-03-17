@@ -39,7 +39,7 @@ class RealstateProperty(models.Model):
      customer_id = fields.Many2one('res.partner')
      active = fields.Boolean()
      #state = fields.Selection([('new','NEW'),('publish','PUBLISH'),('sale','SALE'),('done','DONE'),('cancel','CANCEL')], string='State', default='new')
-     state = fields.Selection(
+     state = fields.Selection(selection=
           [('new', 'NEW'), ('publish', 'PUBLISH'), ('sale', 'SALE'), ('done', 'DONE'), ('cancel', 'CANCEL')])
      photo = fields.Binary()
      # Vivienda
