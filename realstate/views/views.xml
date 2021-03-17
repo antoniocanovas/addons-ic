@@ -89,7 +89,7 @@
                               </group>
                           </group>
                       </page>
-                      <page name="page_23zGI" string="Suministros">
+                      <!--<page name="page_23zGI" string="Suministros">
                         <group name="group_23zGI">
                             <group name="group_23zGI_left">
                                 <field name="x_ref_electricidad"/>
@@ -110,7 +110,7 @@
                             </group>
                         </group>
                       </page>
-                  <!--    <page name="page_BmZwA" string="Varios">
+                      <page name="page_BmZwA" string="Varios">
                           <group name="group_BmZwA">
                               <group name="group_BmZwA_left">
                                   <field name="x_pvp_min_alquiler"/>
