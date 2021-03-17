@@ -24,7 +24,7 @@
                       <field name="to_rent"/>
                       <newline/>
                       <field name="outgoing_date"/>
-                      <field name="incoming_date"/>
+                      <field name="income_date"/>
                     </group>
                     <notebook name="characters">
                       <page name="character_page" string="Características">
