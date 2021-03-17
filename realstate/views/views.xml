@@ -83,7 +83,7 @@
                                   <field name="internet_id"/>
                                   <field name="orientation"/>
                                   <field name="conservation"/>
-                                  <field name="pool"/>
+                                  <!--<field name="pool"/>-->
                                   <field name="barbecue"/>
                                   <field name="hearth"/>
                               </group>
