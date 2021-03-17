@@ -11,7 +11,7 @@ class RealstateVisit(models.Model):
      name = fields.Char('Name')
      opportunity_id = fields.Char()
      date = fields.Date()
-     property_id = fields.Many2one(realstate.property='visit_ids')
+     property_id = fields.Many2one('realstate.property')
      done = fields.Boolean()
      note = fields.Char()
 

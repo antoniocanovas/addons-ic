@@ -9,6 +9,6 @@ class RealstateAuditory(models.Model):
      _description = 'Realstate Audiitory Model'
 
      name = fields.Char('Visita de captación')
-     property_id = fields.Many2one(realstate.property='auditory_ids')
+     property_id = fields.Many2one('realstate.property')
 
 
