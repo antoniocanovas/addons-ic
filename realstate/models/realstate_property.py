@@ -87,7 +87,7 @@ class RealstateProperty(models.Model):
      phone = fields.Boolean(string='Phone')
      satellite_tv = fields.Boolean(string='Satellite TV')
      internet_id = fields.Many2one('realstate.internet', string='Internet')
-     orientationfields.Boolean(string='Phone')
+     orientation = fields.Boolean(string='Phone')
      #orientation = fields.Selection(selection=[('sur'),('sureste'),('este'),('noreste'),('norte'),('noroeste'),('oeste'),('suroeste')],string="State",default='este')
      conservation = fields.Char(string='Conservation')
      pool = fields.Boolean(string='Phone')
