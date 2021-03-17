@@ -8,6 +8,9 @@
                     <field name="state" widget="statusbar" nolabel="1" statusbar_visible="RECEIVED,WAITING,REJECTED,EXECUTE"/>
                   </header>
                   <sheet string="Inmuebles">
+                    <h2>
+                          <field name="name" placeholder="Referencia o nombre del inmueble"/>
+                    </h2>
                     <group name="Ppal Inmueble">
                       <group name="PpalInmuebleIzquierda">
                           <field name="type" can_create="true" can_write="true" modifiers="{}"/>
@@ -188,7 +191,7 @@
             <field name="model">realstate.property</field>
             <field name="name">Default form view for Realstate</field>
             <field name="priority">16</field>
-            <field name="type">form</field>
+            <field name="type">tree</field>
     </record>
 
 
