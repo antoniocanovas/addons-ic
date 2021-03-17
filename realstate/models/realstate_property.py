@@ -38,7 +38,7 @@ class RealstateProperty(models.Model):
      outgoing_date = fields.Date()
      customer_id = fields.Many2one('res.partner')
      active = fields.Boolean()
-     state = fields.Selection(selection=[('new','NEW'),('publish','PUBLISH'),('sale','SALE'),('done','DONE'),('cancel','CANCEL')],string='State',default='NEW')
+     state = fields.Selection([('new','NEW'),('publish','PUBLISH'),('sale','SALE'),('done','DONE'),('cancel','CANCEL')], string='State', default='new')
      photo = fields.Binary()
      # Vivienda
      city = fields.Char()
@@ -48,7 +48,7 @@ class RealstateProperty(models.Model):
      inhabited = fields.Boolean()
      useful_space = fields.Char()
      built_space = fields.Char()
-     origin = fields.Selection(selection=[],string="State",default='new')
+     origin = fields.Selection(selection=[('new','NEW'),('second hand','2HAND')],string="Origin",default='new')
      built_date = fields.Date()
      furnished = fields.Boolean()
      alarm = fields.Boolean()
