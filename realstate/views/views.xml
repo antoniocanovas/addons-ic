@@ -25,7 +25,8 @@
                       <field name="to_sale" modifiers="{}"/>
                       <field name="to_holiday"/>
                       <field name="to_rent"/>
-                      <newline/>
+                      <!--<newline/>-->
+                      <field name="active"/>
                       <field name="outgoing_date"/>
                       <field name="income_date"/>
                     </group>
