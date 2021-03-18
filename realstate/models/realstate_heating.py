@@ -4,9 +4,9 @@
 
 from odoo import models, fields, api
 
+
 class RealstateHeating(models.Model):
-     _name = 'realstate.heating'
-     _description = 'Realstate Heating Model'
+    _name = 'realstate.heating'
+    _description = 'Realstate Heating Model'
 
-     name = fields.Char('Name')
-
+    name = fields.Char('Name')

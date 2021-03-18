@@ -4,9 +4,9 @@
 
 from odoo import models, fields, api
 
+
 class RealstateParking(models.Model):
-     _name = 'realstate.parking'
-     _description = 'Realstate Parking Model'
+    _name = 'realstate.parking'
+    _description = 'Realstate Parking Model'
 
-     name = fields.Char('Name')
-
+    name = fields.Char('Name')

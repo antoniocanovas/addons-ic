@@ -4,10 +4,10 @@
 
 from odoo import models, fields, api
 
+
 # ( 1ª línea de playa, residencial, ...)
 class RealstateEnviroment(models.Model):
-     _name = 'realstate.enviroment'
-     _description = 'Realstate Enviroment Model'
+    _name = 'realstate.enviroment'
+    _description = 'Realstate Enviroment Model'
 
-     name = fields.Char('Name')
-
+    name = fields.Char('Name')
