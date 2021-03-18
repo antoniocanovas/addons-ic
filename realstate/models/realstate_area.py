@@ -4,10 +4,10 @@
 
 from odoo import models, fields, api
 
+
 # (murcia centro, playa, …)
 class RealstateArea(models.Model):
-     _name = 'realstate.area'
-     _description = 'Realstate Area Model'
+    _name = 'realstate.area'
+    _description = 'Realstate Area Model'
 
-     name = fields.Char('Name')
-
+    name = fields.Char('Name')

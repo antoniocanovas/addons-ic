@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from . import realstate_property
 from . import realstate_advice
 from . import realstate_air
