@@ -73,11 +73,9 @@
         </field>
     </record>
 
-    <record id="action_quant_hr_department" model="ir.actions.act_window">
+    <!--<record id="action_quant_hr_department" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
-        <!--<field name="context">{'search_default_equipment_id': active_id,'default_equipment_id': active_id}</field>
-        <field name="domain">[('equipment_id', '=',active_id)]</field>-->
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="help"><![CDATA[<p> Quant </p>]]></field>
         <field name="limit">80</field>
@@ -87,7 +85,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="view_id" ref="hr_equipment_stock.stock_quant_editable_tree_equipment"/>
         <field name="view_mode">tree,form</field>
-    </record>
+    </record>-->
 
     <record id="view_stock_location_equipment_inh" model="ir.ui.view">
         <field name="name">stock location equipment</field>
