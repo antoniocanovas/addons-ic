@@ -1,81 +1,74 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-     <record id="stock_quant_editable_tree_equipment" model="ir.ui.view">
-        <field name="active" eval="True"/>
-        <field name="arch" type="xml">
-            <tree editable="bottom" create="0" edit="1" import="0" js_class="singleton_list" sample="1">
-                <field name="id" invisible="1"/>
-                <field name="tracking" invisible="1"/>
-                <field name="product_id" attrs="{'readonly': [('id', '!=', False)]}" invisible="context.get('single_product', False)" readonly="context.get('single_product', False)" force_save="1" options="{'no_create': True}"/>
-                <field name="location_id" attrs="{'readonly': [('id', '!=', False)]}" invisible="context.get('hide_location', False)" options="{'no_create': True}"/>
-                <field name="employee_id" options="{'no_create': True}"/>
-                <field name="department_id" options="{'no_create': True}"/>
-                <field name="lot_id" groups="stock.group_production_lot" attrs="{                             'readonly': ['|', ('id', '!=', False), ('tracking', 'not in', ['serial', 'lot'])],                             'required': [('tracking', '!=', 'none')]                        }" invisible="context.get('hide_lot', False)" context="{'default_product_id': product_id, 'default_company_id': company_id}"/>
-                <field name="equipment_id"/>
-                <field name="package_id" groups="stock.group_tracking_lot" attrs="{'readonly': [('id', '!=', False)]}"/>
-                <field name="quantity" string="On Hand Quantity"/>
-                <field name="product_uom_id" groups="uom.group_uom"/>
-                <field name="company_id" groups="base.group_multi_company" optional="show"/>
-            </tree>
-        </field>
-        <field name="field_parent" eval="False"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="inherit_id" eval="False"/>
-        <field name="key" eval="False"/>
-        <field name="mode">primary</field>
-        <field name="model">stock.quant</field>
-        <field name="name">Quant editable Tree View equipment</field>
-        <field name="priority">9999</field>
-        <field name="type">tree</field>
-    </record>
+    <!-- <record id="stock_quant_editable_tree_equipment" model="ir.ui.view">
+         <field name="active" eval="True"/>
+         <field name="arch" type="xml">
+             <tree editable="bottom" create="0" edit="1" import="0" js_class="singleton_list" sample="1">
+                 <field name="id" invisible="1"/>
+                 <field name="tracking" invisible="1"/>
+                 <field name="product_id" attrs="{'readonly': [('id', '!=', False)]}" invisible="context.get('single_product', False)" readonly="context.get('single_product', False)" force_save="1" options="{'no_create': True}"/>
+                 <field name="location_id" attrs="{'readonly': [('id', '!=', False)]}" invisible="context.get('hide_location', False)" options="{'no_create': True}"/>
+                 <field name="employee_id" options="{'no_create': True}"/>
+                 <field name="department_id" options="{'no_create': True}"/>
+                 <field name="lot_id" groups="stock.group_production_lot" attrs="{                             'readonly': ['|', ('id', '!=', False), ('tracking', 'not in', ['serial', 'lot'])],                             'required': [('tracking', '!=', 'none')]                        }" invisible="context.get('hide_lot', False)" context="{'default_product_id': product_id, 'default_company_id': company_id}"/>
+                 <field name="equipment_id"/>
+                 <field name="package_id" groups="stock.group_tracking_lot" attrs="{'readonly': [('id', '!=', False)]}"/>
+                 <field name="quantity" string="On Hand Quantity"/>
+                 <field name="product_uom_id" groups="uom.group_uom"/>
+                 <field name="company_id" groups="base.group_multi_company" optional="show"/>
+             </tree>
+         </field>
+         <field name="field_parent" eval="False"/>
+         <field name="groups_id" eval="[(6, 0, [])]"/>
+         <field name="inherit_id" eval="False"/>
+         <field name="key" eval="False"/>
+         <field name="mode">primary</field>
+         <field name="model">stock.quant</field>
+         <field name="name">Quant editable Tree View equipment</field>
+         <field name="priority">9999</field>
+         <field name="type">tree</field>
+     </record>-->
 
     <record id="hr_equipment_view_hr_employee" model="ir.ui.view">
         <field name="name">equipment.view.hr.employee</field>
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@name='button_box']" position="inside">
-                <button name="action_view_quant" class="o_stat_button" icon="fa-cubes" type="object"
-                        context="{'search_default_employee_id': id, 'default_employee_id': id}">
-                    <field name="quant_ids" widget="statinfo" />
-                </button>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                <page name="hr_employee_stock" string="Stock">
+                    <field name="quant_ids">
+                        <tree editable="bottom" create="0" edit="1" import="0" js_class="singleton_list" sample="1">
+                            <field name="product_id"/>
+                            <field name="lot_id"/>
+                            <field name="quantity"/>
+                            <field name="product_uom_id"/>
+                            <field name="equipment_id"/>
+                            <field name="value"/>
+                        </tree>
+                    </field>
+                </page>
             </xpath>
         </field>
     </record>
 
-    <record id="action_quant_hr_employee" model="ir.actions.act_window">
-        <field name="binding_model_id" eval="False"/>
-        <field name="binding_type">action</field>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="help"><![CDATA[<p> Quant </p>]]></field>
-        <field name="limit">80</field>
-        <field name="name">Stock Quant</field>
-        <field name="res_model">stock.quant</field>
-        <field name="target">current</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="view_id" ref="hr_equipment_stock.stock_quant_editable_tree_equipment"/>
-        <field name="view_mode">tree,form</field>
-    </record>
 
-    <record id="hr_equipment_view_hr_department" model="ir.ui.view">
+    <record id="hr_equipment_view_hr_department_form_inh" model="ir.ui.view">
         <field name="name">equipment.view.hr.department</field>
         <field name="model">hr.department</field>
-        <field name="inherit_id" ref="hr.hr_department_view_kanban"/>
+        <field name="inherit_id" ref="hr.view_department_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@class='container o_kanban_card_content']" position="after">
-                <div class="container o_kanban_card_content" t-if="!selection_mode" >
-                    <div class="row o_kanban_card_upper_content">
-                        <div class="col-4 o_kanban_primary_left">
-                            <button class="btn btn-primary" name="action_view_quant"
-                                    type="object"
-                                    context="{'search_default_employee_id': id,'default_employee_id': id}">
-                                Quant
-                            </button>
-                        </div>
-                        <div class="col-8 o_kanban_primary_right">
-                        </div>
-                    </div>
-                </div>
+            <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+                <h3>Stock:</h3>
+                <field name="quant_ids">
+                    <tree editable="bottom" create="0" edit="1" import="0" js_class="singleton_list" sample="1">
+                        <field name="product_id"/>
+                        <field name="lot_id"/>
+                        <field name="quantity"/>
+                        <field name="product_uom_id"/>
+                        <field name="equipment_id"/>
+                        <field name="value"/>
+                    </tree>
+                </field>
             </xpath>
         </field>
     </record>

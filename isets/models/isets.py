@@ -1,4 +1,5 @@
 from odoo import _, api, fields, models
+from datetime import datetime, timezone
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -135,17 +136,6 @@ class Isets(models.Model):
 
     project_ids = fields.Many2many('project.project', compute=get_projects, store=False)
 
-    @api.depends('work_id', 'workorder_id', 'project_id', 'repair_id')
-    def get_allow_services(self):
-        for record in self:
-            allow = False
-            if (record.type == 'project') and (record.project_id.id != False): allow = True
-            if (record.type == 'production') and (record.workorder_id.id != False): allow = True
-            if (record.type == 'repair') and (record.repair_id.id != False): allow = True
-            record['allow_services'] = allow
-
-    allow_services = fields.Boolean(string='Allow', compute=get_allow_services, store=True)
-
     @api.depends('work_id')
     def get_production_loss(self):
         for record in self:
@@ -155,5 +145,70 @@ class Isets(models.Model):
                                          compute=get_production_loss)
 
     def create_lot_services_iset(self):
-        print("DEBUG")
+        # Check required fields:
+        for record in self:
+            if (record.type == 'project') and not (record.project_id.id != False): raise Warning(
+                'Project is required, please select one !!')
+            if (record.type == 'production') and not (record.workorder_id.id != False): raise Warning(
+                'Workorder is required, please select one !!')
+            if (record.type == 'repair') and (record.repair_id.id != False): raise Warning(
+                'Asistance is required, please select one !!')
+
+            # Calculate local time diference with UTC:
+            date_today = datetime.datetime(year=record.date.year, month=record.date.month, day=record.date.day, hour=12,
+                                           minute=0)
+            date_utc = date_today.astimezone(timezone(user.tz))
+            inc = date_utc.hour - date_today.hour
+
+            # Change 'hour/min' in record.start to string format to include in fields "name":
+            start = str(datetime.timedelta(hours=record.start))
+            if (record.start >= 10):
+                start = start[:5]
+            else:
+                start = start[:4]
+
+            # CASE PROJECT:
+            if (record.work_id.type == "project") and (record.employee_ids.ids) and (record.project_id.id):
+                for li in record.employee_ids:
+                    name = record.name + " - " + start
+                    new = self.env['account.analytic.line'].create(
+                        {'iset_id': record.id, 'name': name, 'project_id': record.project_id.id,
+                         'task_id': record.task_id.id, 'date': record.date, 'account_id': record.project_analytic_id.id,
+                         'company_id': record.company_id.id,
+                         'employee_id': li.id, 'unit_amount': (record.stop - record.start)
+                         })
+
+            # CASE REPAIR:
+            elif (record.work_id.type == "repair") and (record.employee_ids.ids) and (record.repair_id.id):
+                if (record.work_id.repair_service_id.id):
+                    product_id = record.work_id.repair_service_id
+                    for li in record.employee_ids:
+                        name = product_id.name + " - " + start + " - " + li.name
+                        new = self.env['repair.fee'].create({'iset_id': record.id, 'product_id': product_id.id,
+                                                        'name': name, 'repair_id': record.repair_id.id,
+                                                        'company_id': record.company_id.id,
+                                                        'create_uid': li.user_id.id,
+                                                        'product_uom_qty': (record.stop - record.start),
+                                                        'price_unit': product_id.list_price,
+                                                        'product_uom': product_id.uom_id.id
+                                                        })
+                else:
+                    raise Warning(
+                        'Se requiere definir el PRODUCTO el el tipo de asistencia para poder crear las imputaciones !!')
+
+            # CASE PRODUCTION:
+            elif (record.work_id.type == "production") and (record.employee_ids.ids) and (record.workorder_id.id):
+                date_start = datetime.datetime(year=record.date.year, month=record.date.month, day=record.date.day,
+                                               hour=int(record.start - inc),
+                                               minute=int((record.start - int(record.start)) * 60))
+                date_end = datetime.datetime(year=record.date.year, month=record.date.month, day=record.date.day,
+                                             hour=int(record.stop - inc), minute=int((record.stop - int(record.stop)) * 60))
+                for li in record.employee_ids:
+                    name = record.workorder_id.name + " - " + start + " - " + li.name
+                    new = self.env['mrp.workcenter.productivity'].create(
+                        {'iset_id': record.id, 'description': name, 'production_id': record.mrp_id.id,
+                         'workorder_id': record.workorder_id.id, 'workcenter_id': record.workorder_id.workcenter_id.id,
+                         'company_id': record.company_id.id,
+                         'loss_id': record.production_loss_id.id, 'date_start': date_start, 'date_end': date_end
+                         })
 
