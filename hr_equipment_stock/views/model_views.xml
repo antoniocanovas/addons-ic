@@ -112,6 +112,29 @@
         </field>
     </record>
 
+    <record id="view_maintenance_equipment_inh" model="ir.ui.view">
+        <field name="name">Maintenance equipment stock</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook/page[@name='maintenance']" position="after">
+                <page name="stock">
+                    <field name="quant_ids" domain="[('id','in',available_quant_ids)]">
+                        <tree>
+                            <field name="product_id"/>
+                            <field name="location_id"/>
+                            <field name="lot_id"/>
+                            <field name="quantity"/>
+                            <field name="product_uom_id"/>
+                        </tree>
+                    </field>
+                    <field name="available_quant_ids" invisible="1"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
 
     <!--<record id="view_hr_employee_equipment_inh" model="ir.ui.view">
          <field name="name">hr employee equipment</field>
