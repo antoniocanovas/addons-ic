@@ -306,7 +306,7 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form/sheet/notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='qty_invoiced']" position="after">
-                <field name="timesheet_qty" string='i' attrs="{'invisible':[('project_id','=',False)]}"/>
+                <field name="timesheet_qty" string='i' attrs="{'invisible':[('parent.project_id','=',False)]}"/>
             </xpath>
         </field>
     </record>
