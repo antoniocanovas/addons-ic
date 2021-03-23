@@ -7,7 +7,7 @@ _logger = logging.getLogger(__name__)
 class MaintenanceEquipment(models.Model):
     _inherit = 'maintenance.equipment'
 
-    quant_ids = fields.Many2many('equipment.quant.rel', 'equipment_id', 'quant_id',  store=True)
+    quant_ids = fields.Many2many('stock.quant', store=True)
 
     @api.onchange('equipment_assign_to', 'department_id', 'employee_id')
     def get_quant_ids(self):
@@ -33,5 +33,5 @@ class MaintenanceEquipment(models.Model):
                     [('employee_id', '=', record.employee_id.id), ('id', 'not in', used_quants)]).ids
 
             record['quant_available_ids'] = [(6, 0, quants)]
-    quant_available_ids = fields.Many2many('stock.quant', compute=get_quant_ids, store=False)
+    available_quant_ids = fields.Many2many('stock.quant', compute=get_quant_ids, store=False)
 
