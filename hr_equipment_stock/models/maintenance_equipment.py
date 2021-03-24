@@ -15,9 +15,9 @@ class MaintenanceEquipment(models.Model):
             type = record.equipment_assign_to
             quants = []
             used_quants = []
-            rel = self.env['equipment_quant_rel'].search([])
+            rel = self.env['equipment.quant.rel'].search([])
             for r in rel:
-                used_quants.append(r.x_quant_id.id)
+                used_quants.append(r.quant_id.id)
             if (type == 'employee') and (record.employee_id.id):
                 quants = self.env['stock.quant'].search(
                     [('employee_id', '=', record.employee_id.id), ('id', 'not in', used_quants)]).ids
@@ -31,7 +31,6 @@ class MaintenanceEquipment(models.Model):
             elif (type == 'other') and not (record.department_id.id) and (record.employee_id.id):
                 quants = self.env['stock.quant'].search(
                     [('employee_id', '=', record.employee_id.id), ('id', 'not in', used_quants)]).ids
-
             record['quant_available_ids'] = [(6, 0, quants)]
     available_quant_ids = fields.Many2many('stock.quant', compute=get_quant_ids, store=False)
 
