@@ -6,6 +6,7 @@ from odoo import fields, models, api
 
 class Contest(models.Model):
     _name = 'contest'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Contests'
 
     name = fields.Char(string='Name', required=True)
@@ -19,8 +20,8 @@ class Contest(models.Model):
     advise_file = fields.Binary(string='Advise')
     competitor_num = fields.Integer(string='Competitors')
 
-    competitor_ids = fields.One2many('competitor', 'contest_id', string='Competitors')
-    winner_id = fields.Many2one('competitor', string='Winner')
+    competitor_ids = fields.One2many('contest.competitor', 'contest_id', string='Competitors')
+    winner_id = fields.Many2one('contest.competitor', string='Winner')
 
     type_id = fields.Many2one('contest.type', string='Type')
     category_id = fields.Many2one('contest.category', string='Category')
@@ -45,4 +46,9 @@ class Contest(models.Model):
     #    if self.amount_max & self.amount_winner:
     #        discount_percent = self.amount_max - self.amount_winner
     discount_percent = fields.Float(string='Discount %' )#compute=_calculate_discount_percent)
+
+    def _get_competitor_count(self):
+        self.competitor_count = len(self.competitor_ids)
+
+    competitor_count = fields.Integer('Attachments', compute=_get_competitor_count, stored=False)
 

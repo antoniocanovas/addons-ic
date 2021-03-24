@@ -23,7 +23,7 @@
         <field name="filter" eval="False"/>
         <field name="limit">80</field>
         <field name="name">Competitor</field>
-        <field name="res_model">competitor</field>
+        <field name="res_model">contest.competitor</field>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
@@ -141,6 +141,9 @@
         <field name="parent_id" ref="menu_contest_configuration"/>
         <field name="sequence">3</field>
     </record>
+
+
+
 
 
 </odoo>
