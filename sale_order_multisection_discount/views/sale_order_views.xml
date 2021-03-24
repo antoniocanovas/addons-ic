@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="view_saleorder_sections_key" model="ir.ui.view">
+        <field name="name">Multisection Key</field>
+        <field name="model">sale.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='opportunity_id']" position="after">
+                <field name="multisection_key"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
