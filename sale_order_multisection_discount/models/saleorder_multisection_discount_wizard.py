@@ -12,7 +12,6 @@ class SaleOrderMultisectionDiscountWizard(models.TransientModel):
 
     #Campos con duda
     name = fields.Char('Name')
-    internal_name = fields.Char('Internal name')
     #Campos
     discount = fields.Float('Discount')
     childs = fields.Boolean('Childs')

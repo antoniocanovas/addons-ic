@@ -31,6 +31,6 @@ class MaintenanceEquipment(models.Model):
             elif (type == 'other') and not (record.department_id.id) and (record.employee_id.id):
                 quants = self.env['stock.quant'].search(
                     [('employee_id', '=', record.employee_id.id), ('id', 'not in', used_quants)]).ids
-            record['quant_available_ids'] = [(6, 0, quants)]
+            record['available_quant_ids'] = [(6, 0, quants)]
     available_quant_ids = fields.Many2many('stock.quant', compute=get_quant_ids, store=False)
 

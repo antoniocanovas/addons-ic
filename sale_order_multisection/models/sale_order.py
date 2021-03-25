@@ -7,6 +7,16 @@ _logger = logging.getLogger(__name__)
 class SaleOrderSets(models.Model):
     _inherit = 'sale.order'
 
+    @api.depends('create_date')
+    def get_key(self):
+        for record in self:
+            key = "$"
+            reg = self.env['ir.config_parameter'].search([('key', '=', 'multisection_key')])
+            if reg.id: key = reg.value
+            record['multisection_key'] = key
+
+    multisection_key = fields.Char('Multisection Key', compute=get_key)
+
     def _get_lines_count(self):
         results = self.env['sale.order.line'].search([
             ('order_id', '=', self.id),
