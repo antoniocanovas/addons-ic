@@ -7,7 +7,7 @@ _logger = logging.getLogger(__name__)
 class SaleOrderInh(models.Model):
     _inherit = 'sale.order'
 
-    multisection_key = fields.Char('Multisection Key', Default='$')
+
 
 
 
