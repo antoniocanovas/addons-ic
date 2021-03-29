@@ -15,7 +15,7 @@ class SaleOrderSets(models.Model):
             if reg.id: key = reg.value
             record['multisection_key'] = key
 
-    multisection_key = fields.Char('Multisection Key', compute=get_key)
+    multisection_key = fields.Char('Multisection Key', compute=get_key, readonly=False, required=True)
 
     def _get_lines_count(self):
         results = self.env['sale.order.line'].search([

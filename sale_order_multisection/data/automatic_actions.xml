@@ -7,7 +7,7 @@
             <field name="model_id" ref="sale.model_sale_order_line"/>
             <field name="state">code</field>
             <field name="code">
-if (record.display_type == 'line_section') and (record.name[:1] == '$'):
+if (record.display_type == 'line_section') and (record.name[:1] == record.order_id.multisection_key):
   seccion = record.name.split()[0]
   lineas = env['sale.order.line'].search([('order_id','=',record.order_id.id),('display_type','=','line_section'),('section','!=',False),('id','!=',record.id)])
   for li in lineas:
@@ -55,7 +55,7 @@ if (hay_secciones) and (record.state == 'draft'):
     if (li.display_type == 'line_section') and (li.name):
       seccion_id = li.id
       seccion = str(li.sequence)
-      if (li.name[:1] == '$'):
+      if (li.name[:1] == record.multisection_key):
         seccion = li.name.split()[0]
       li.write({'section':seccion})
     elif (li.display_type != 'line_section') and (seccion_id > 0):
@@ -63,12 +63,12 @@ if (hay_secciones) and (record.state == 'draft'):
     else:
       li.write({'section_id':False})
 
-    # Cálculo de 'parent_ids', 'child_ids' y 'level' por sección, si hay multinivel ($):
+    # Cálculo de 'parent_ids', 'child_ids' y 'level' por sección, si hay multinivel ($ o multisection_key):
   secciones = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
   for se in secciones:
     padres, hijos, nivel = [], [], 1
     lineas = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section'),('id','!=',se.id)])
-    if  (se.name[:1] == '$'):
+    if  (se.name[:1] == record.mulisection_key):
       for li in lineas:
         largoli = len(li.section)
         if (li.section == se.section[:largoli]):

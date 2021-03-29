@@ -9,7 +9,6 @@ class ContestCompetitor(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Competitor fileds'
 
-
     partner_id = fields.Many2one('res.partner', string='Competitor', required=True)
     contest_id = fields.Many2one('contest', required=True)
     opportunity_id = fields.Many2one('crm.lead', related='contest_id.opportunity_id')
