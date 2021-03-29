@@ -229,7 +229,7 @@ class ResCompany(models.Model):
                         partner = self.get_partner_by_vat(partner_vat)
                         partner_name_value = partner_vat.value
                     else:
-                        partner = self.env['res.partner'].search([('vat', "=", 'ES00000000Z'),'|',('active', "=", False),('active', "=", True)])
+                        partner = self.env['res.partner'].search([('vat', "=", 'ES12345678Z'),'|',('active', "=", False),('active', "=", True)])
                         #partner = False
                         #partner_name_value = self.random_with_N_digits(8)
                         #partner_name_value = str(partner_name_value) + "Z"
@@ -440,7 +440,7 @@ class ResCompany(models.Model):
         ## DOMAIN : '|', ("state", "=", 'downloaded'), ("state", "=", 'error')
         for transaction in transactions:
             if (datetime.utcnow() - transaction.write_date) > timedelta(days=25):
-                transaction.sudo().unlink()
+                transaction.cleared = True
 
     @api.multi
     def ocr_restart_halted_queue_jobs(self):
