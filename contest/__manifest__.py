@@ -13,6 +13,8 @@
     ],
     'data': [
         'views/views.xml',
+        'views/views_crm.xml',
+        'views/views_res_partner.xml',
         'views/view_menu.xml',
         #'views/view_partner_credentials.xml',
         #'security/user_groups.xml',

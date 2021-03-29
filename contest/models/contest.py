@@ -50,5 +50,5 @@ class Contest(models.Model):
     def _get_competitor_count(self):
         self.competitor_count = len(self.competitor_ids)
 
-    competitor_count = fields.Integer('Attachments', compute=_get_competitor_count, stored=False)
+    competitor_count = fields.Integer('Attachments', compute=_get_competitor_count, store=False)
 

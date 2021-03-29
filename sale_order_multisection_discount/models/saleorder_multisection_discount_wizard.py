@@ -1,8 +1,8 @@
 from odoo import _, api, fields, models
 
 TYPE = [
-    ('services', 'services'),
-    ('discount', 'discount'),
+    ('services', 'Final price applying discounts on services'),
+    ('discount', 'Discount'),
 ]
 
 
