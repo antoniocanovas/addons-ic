@@ -9,6 +9,4 @@ class EquipmentQuantRel(models.Model):
     _description = 'Equipment Quant Relational Table'
 
     quant_id = fields.Many2one('stock.quant')
-    equipmnet_id = fields.Many2one('maintenance.equipment')
-
-
+    equipment_id = fields.Many2one('maintenance.equipment')
