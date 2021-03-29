@@ -118,8 +118,8 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//form[1]/sheet[1]/notebook[1]" position="after">
-                <page name="stock">
+            <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                <page name="stock" string="Stock">
                     <field name="quant_ids" domain="[('id','in',available_quant_ids)]">
                         <tree>
                             <field name="product_id"/>
