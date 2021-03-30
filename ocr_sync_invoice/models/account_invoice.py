@@ -74,11 +74,24 @@ class AccountInvoice(models.Model):
                 ('state', '=', 'pending'), ('state', '=', 'enqueued')
             ])
             eta = 20 + (len(jobs)*20)
-            # Tomar VAT del usuario que envía a OCR y sea tipo Odoo
+            #Tomar VAT del usuario que envía a OCR y sea tipo Odoo
             pc = self.env['partner.credentials'].sudo().search([
                 ('client_api_key', '=', self.ocr_transaction_id.customer_api_key),
                 ('type', '=', 'odoo'),
-            ])
+            ])[0]
+
+            if len(invoice.partner_id.vat) < 11:
+                raise Warning((
+                                  "El CIF de proveedor no está en formato VIES"
+                ))
+            if not pc.url or not pc.db or not pc.remote_company_id:
+                raise Warning((
+                                  "Revise los datos de Credencial, falta Url Base de datos o Id de empresa"
+                ))
+            if pc.url[-1] == '/':
+                raise Warning((
+                                  "La Url de Credencial no puede acabar en '/'"
+                ))
             if len(pc) > 1:
                 raise Warning((
                     "Hay dos Partner Credentials con mismo VAT o Número de documento de identificación"
