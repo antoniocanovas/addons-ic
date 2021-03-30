@@ -64,21 +64,26 @@ class ResCompany(models.Model):
             }
             return header
 
-    @api.multi
-    def random_with_N_digits(self, n):
-        range_start = 10 ** (n - 1)
-        range_end = (10 ** n) - 1
-        return randint(range_start, range_end)
+    #@api.multi
+    #def random_with_N_digits(self, n):
+    #    range_start = 10 ** (n - 1)
+    #    range_end = (10 ** n) - 1
+    #    return randint(range_start, range_end)
 
 
     @api.multi
     def clean_vat(self, vat):
-        vat_cleaned = vat.replace('-', '')
-        vat_cleaned = vat_cleaned.replace(" ", "")
-        vat_cleaned = vat_cleaned.replace('ES', '')
-        vat_cleaned = vat_cleaned.replace('FR', '')
-        vat_cleaned = vat_cleaned.replace('IT', '')
-        vat_cleaned = vat_cleaned.replace('PR', '')
+        if len(vat) > 9:
+            vat_cleaned = vat[2:9]
+        else:
+            vat_cleaned = vat
+        #vat_cleaned = vat.replace('-', '')
+        #vat_cleaned = vat_cleaned.replace(" ", "")
+        #vat_cleaned = vat_cleaned.replace('ES', '')
+        #vat_cleaned = vat_cleaned.replace('FR', '')
+        #vat_cleaned = vat_cleaned.replace('IT', '')
+        #vat_cleaned = vat_cleaned.replace('PR', '')
+        #vat_cleaned = vat_cleaned.replace('DE', '')
         vat_cleaned.upper()
         return vat_cleaned
 
@@ -226,13 +231,16 @@ class ResCompany(models.Model):
                     ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
 
                     if partner_vat:
+                        if len(partner_vat.value) != 11:
+                            partner_vat = False
+
+                    if partner_vat:
                         partner = self.get_partner_by_vat(partner_vat)
                         partner_name_value = partner_vat.value
+                        if len(partner_name_value) < 11:
+                            partner_name_value = 'ES' + str(partner_name_value)
                     else:
                         partner = self.env['res.partner'].search([('vat', "=", 'ES12345678Z'),'|',('active', "=", False),('active', "=", True)])
-                        #partner = False
-                        #partner_name_value = self.random_with_N_digits(8)
-                        #partner_name_value = str(partner_name_value) + "Z"
                     if not partner:
                         account600_id = self.env['ir.model.data'].search([
                             ('name', '=', '1_account_common_600'),
