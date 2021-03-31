@@ -7,7 +7,13 @@ _logger = logging.getLogger(__name__)
 class MaintenanceEquipment(models.Model):
     _inherit = 'maintenance.equipment'
 
-    quant_ids = fields.Many2many('stock.quant', store=True)
+    quant_ids = fields.Many2many(
+        comodel_name='stock.quant',
+        relation='equipment_quant_rel',
+        column1='equipment_id',
+        column2='quant_id',
+        store=True,
+    )
 
     @api.onchange('equipment_assign_to', 'department_id', 'employee_id')
     def get_quant_ids(self):
