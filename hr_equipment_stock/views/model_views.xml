@@ -14,7 +14,7 @@
                             <field name="lot_id"/>
                             <field name="quantity"/>
                             <field name="product_uom_id"/>
-                            <field name="equipment_id"/>
+
                             <field name="value"/>
                         </tree>
                     </field>
@@ -37,7 +37,7 @@
                         <field name="lot_id"/>
                         <field name="quantity"/>
                         <field name="product_uom_id"/>
-                        <field name="equipment_id"/>
+
                         <field name="value"/>
                     </tree>
                 </field>

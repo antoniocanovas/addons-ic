@@ -9,9 +9,6 @@ class MaintenanceEquipment(models.Model):
 
     quant_ids = fields.Many2many(
         comodel_name='stock.quant',
-        relation='equipment_quant_rel',
-        column1='equipment_id',
-        column2='quant_id',
         store=True,
     )
 
