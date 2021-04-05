@@ -64,12 +64,11 @@ class ResCompany(models.Model):
             }
             return header
 
-    #@api.multi
-    #def random_with_N_digits(self, n):
-    #    range_start = 10 ** (n - 1)
-    #    range_end = (10 ** n) - 1
-    #    return randint(range_start, range_end)
-
+    @api.multi
+    def random_with_n_digits(self, n):
+        range_start = 10 ** (n - 1)
+        range_end = (10 ** n) - 1
+        return randint(range_start, range_end)
 
     @api.multi
     def clean_vat(self, vat):
@@ -227,35 +226,43 @@ class ResCompany(models.Model):
                             'ocr_transaction_id': t.id,
                         })
 
+                    account600_id = self.env['ir.model.data'].search([
+                        ('name', '=', '1_account_common_600'),
+                        ('model', '=', 'account.account')
+                    ])
+                    account600 = self.env['account.account'].search([('id', '=', account600_id.res_id)])
+                    account700_id = self.env['ir.model.data'].search([
+                        ('name', '=', '1_account_common_7000'),
+                        ('model', '=', 'account.account')
+                    ])
+                    account700 = self.env['account.account'].search([('id', '=', account700_id.res_id)])
+
                     partner_vat = self.env['ocr.values'].sudo().search([
-                    ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
+                        ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
 
                     if partner_vat:
                         if len(partner_vat.value) != 11:
+                            partner_name_value = "NIF_no_valido_" + str(partner_vat.value)
                             partner_vat = False
+                    else:
+                        random = self.random_with_n_digits(11)
+                        partner_name_value = "NIF_no_válido_" + str(random)
 
                     if partner_vat:
                         partner = self.get_partner_by_vat(partner_vat)
-                        partner_name_value = partner_vat.value
-                        if len(partner_name_value) < 11:
-                            partner_name_value = 'ES' + str(partner_name_value)
                     else:
-                        partner = self.env['res.partner'].search([('vat', "=", 'ES12345678Z'),'|',('active', "=", False),('active', "=", True)])
-                    if not partner:
-                        account600_id = self.env['ir.model.data'].search([
-                            ('name', '=', '1_account_common_600'),
-                            ('model', '=', 'account.account')
-                        ])
-                        account600 = self.env['account.account'].search([('id', '=', account600_id.res_id)])
-                        account700_id = self.env['ir.model.data'].search([
-                            ('name', '=', '1_account_common_7000'),
-                            ('model', '=', 'account.account')
-                        ])
-                        account700 = self.env['account.account'].search([('id', '=', account700_id.res_id)])
-
                         partner = self.env['res.partner'].sudo().create({
                             'name': str(partner_name_value),
-                            'vat': str(partner_name_value),
+                            # 'vat': str(partner_name_value),
+                            'company_type': 'company',
+                            'ocr_sale_account_id': account700.id,
+                            'ocr_purchase_account_id': account600.id,
+                        })
+                        #partner = self.env['res.partner'].search([('vat', "=", 'ES12345678Z'),'|',('active', "=", False),('active', "=", True)])
+                    if not partner:
+                        partner = self.env['res.partner'].sudo().create({
+                            'name': str(partner_name_value),
+                            #'vat': str(partner_name_value),
                             'company_type': 'company',
                             'ocr_sale_account_id': account700.id,
                             'ocr_purchase_account_id': account600.id,
