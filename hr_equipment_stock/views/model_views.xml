@@ -8,15 +8,7 @@
         <field name="arch" type="xml">
             <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
                 <page name="hr_employee_stock" string="Stock">
-                    <field name="quant_ids">
-                        <tree editable="bottom" create="0" edit="0" import="0" js_class="singleton_list" sample="1">
-                            <field name="product_id"/>
-                            <field name="lot_id"/>
-                            <field name="quantity"/>
-                            <field name="product_uom_id"/>
-                            <field name="value"/>
-                        </tree>
-                    </field>
+                    <field name="quant_ids"/>
                 </page>
             </xpath>
         </field>
@@ -30,15 +22,7 @@
         <field name="arch" type="xml">
             <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
                 <h3>Stock:</h3>
-                <field name="quant_ids">
-                    <tree editable="bottom" create="0" edit="0" import="0" js_class="singleton_list" sample="1">
-                        <field name="product_id"/>
-                        <field name="lot_id"/>
-                        <field name="quantity"/>
-                        <field name="product_uom_id"/>
-                        <field name="value"/>
-                    </tree>
-                </field>
+                <field name="quant_ids"/>
             </xpath>
         </field>
     </record>
