@@ -1,4 +1,5 @@
 from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -33,6 +34,7 @@ class ResPartner(models.Model):
                 return vat
             else:
                 return False
+
 
     #@api.multi
     #def check_ocr_vat(self, vat):
