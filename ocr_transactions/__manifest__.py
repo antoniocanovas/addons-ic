@@ -1,6 +1,6 @@
 {
     'name': 'OCR transactions',
-    'version': '12.0.11.0.0',
+    'version': '12.0.1.1.0',
     'category': '',
     'description': u"""
 
@@ -22,7 +22,7 @@
         'views/res_partner_views.xml',
         'views/views_account_invoice.xml',
         'data/ocr_queue_job.xml',
-        #'data/default_ocr_user.xml',
+        'data/default_ocr_user.xml',
         'data/ocr_dbcopy_post_actions_job.xml',
         'data/dictionary_data.xml',
         'views/template.xml',
