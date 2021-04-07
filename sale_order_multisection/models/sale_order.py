@@ -7,12 +7,13 @@ _logger = logging.getLogger(__name__)
 class SaleOrderSets(models.Model):
     _inherit = 'sale.order'
 
-    @api.depends('create_date')
+    @api.depends('partner_id')
     def get_key(self):
         for record in self:
             key = "$"
             reg = self.env['ir.config_parameter'].search([('key', '=', 'multisection_key')])
             if reg.id: key = reg.value
+            if record.multisection_key: key = record.multisection_key
             record['multisection_key'] = key
 
     multisection_key = fields.Char('Multisection Key', compute=get_key, readonly=False, required=True)
