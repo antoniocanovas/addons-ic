@@ -68,7 +68,7 @@ if (hay_secciones) and (record.state == 'draft'):
   for se in secciones:
     padres, hijos, nivel = [], [], 1
     lineas = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section'),('id','!=',se.id)])
-    if  (se.name[:1] == record.mulisection_key):
+    if  (se.name[:1] == record.multisection_key):
       for li in lineas:
         largoli = len(li.section)
         if (li.section == se.section[:largoli]):
