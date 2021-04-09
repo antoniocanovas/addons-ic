@@ -138,7 +138,7 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='opportunity_id']" position="after">
+            <xpath expr="//field[@name='origin_id']" position="after">
                 <field name="multisection_key"/>
             </xpath>
         </field>
