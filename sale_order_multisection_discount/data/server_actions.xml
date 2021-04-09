@@ -26,7 +26,7 @@ elif (record.all_quotation == False) and (record.childs == True):
   secciones = env['sale.order.line'].search([('id','in',record.sale_id.order_line.ids),('section','like',record.name)]).ids
   lineas = env['sale.order.line'].search([('id','in',record.sale_id.order_line.ids),('section_id','in',secciones)])
 elif (record.all_quotation == False) and (record.childs == False):
-  lineas = env['sale.order.line'].search([('section_id','=',record.section_id)])
+  lineas = env['sale.order.line'].search([('section_id','=',record.section_id.id)])
 # Lo que había antes en v12:  lineas = record.section_id.x_lineaudo_ids
 
 # CASO DE DESCUENTO EN SERVICIOS CON PRECIO FINAL FIJADO A MANO:
