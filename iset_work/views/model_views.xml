@@ -68,6 +68,9 @@
                         </group>
                         <field name="quant_ids" domain="[('location_id','=',location_id)]"/>
                     </page>
+                    <page string="Employees" name="work_employees">
+                        <field name="employee_line_ids"/>
+                    </page>
                     <page string="Documents" name="work_protection">
                     </page>
                 </notebook>
