@@ -42,6 +42,34 @@
                     </button>
                 </div>
             </xpath>
+            <xpath expr="//form/sheet/group[@name='repair']" position="after">
+                <notebook>
+                    <page string="General" name="work_general">
+                        <group col="4">
+                            <field name="user_id"/>
+                            <field name="saleperson_id"/>
+                        </group>
+                        <field name="note" widget="html"/>
+                    </page>
+                    <page string="Protection" name="work_protection">
+                        <field name="protection_product_ids">
+                            <tree>
+                                <field name="default_code"/>
+                                <field name="name"/>
+                                <field name="product_template_attribute_value_ids" widget="many2many_tags"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Tools" name="work_protection">
+                    </page>
+                    <page string="Stock" name="work_protection">
+                        <field name="location_id"/>
+                        <field name="quant_ids" domain="[('location_id','=',location_id)]"/>
+                    </page>
+                    <page string="Documents" name="work_protection">
+                    </page>
+                </notebook>
+            </xpath>
             <xpath expr="//form/sheet" position="after">
                 <div class="oe_button_box" name="button_box">
                     <div class="oe_chatter">
