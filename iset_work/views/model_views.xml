@@ -69,7 +69,13 @@
                         <field name="quant_ids" domain="[('location_id','=',location_id)]"/>
                     </page>
                     <page string="Employees" name="work_employees">
-                        <field name="employee_line_ids"/>
+                        <field name="employee_line_ids">
+                            <tree editable="bottom">
+                                <field name="employee_id"/>
+                                <field name="function_ids" widget="many2many_tags"/>
+                                <field name="iset_work_id" invisible="1"/>
+                            </tree>
+                        </field>
                     </page>
                     <page string="Documents" name="work_protection">
                     </page>
