@@ -12,6 +12,10 @@ class iSetsWork(models.Model):
     saleperson_id = fields.Many2one('res.users', string='Salesman')
     sale_order_ids = fields.One2many('sale.order', 'iset_work_id')
     project_ids = fields.One2many('project.project', 'iset_work_id')
+    note = fields.Text('Note')
+    protection_product_ids = fields.Many2many('product.product', string='Protection')
+    #tool_product_ids = fields.Many2many('product.product', string='Tools')
+    #quant_ids = fields.One2many('stock.quant', 'iset_work_id')
 
     def _get_sale_order_count(self):
         self.sale_order_count = len(self.sale_order_ids)
