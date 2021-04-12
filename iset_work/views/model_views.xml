@@ -63,7 +63,9 @@
                     <page string="Tools" name="work_protection">
                     </page>
                     <page string="Stock" name="work_protection">
-                        <field name="location_id"/>
+                        <group col="2">
+                            <field name="location_id"/>
+                        </group>
                         <field name="quant_ids" domain="[('location_id','=',location_id)]"/>
                     </page>
                     <page string="Documents" name="work_protection">
