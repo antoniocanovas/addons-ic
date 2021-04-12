@@ -10,5 +10,5 @@ class iSetWorkEmployee(models.Model):
 
     employee_id = fields.Many2one('hr.employee', 'Employee')
     iset_work_id = fields.Many2one('iset.work', 'iSet Work')
-    function_ids = fields.Many2many('hr.job', 'Function')
+    function_ids = fields.Many2many('hr.job')
 
