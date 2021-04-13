@@ -42,6 +42,45 @@
                     </button>
                 </div>
             </xpath>
+            <xpath expr="//form/sheet/group[@name='repair']" position="after">
+                <notebook>
+                    <page string="General" name="work_general">
+                        <group col="4">
+                            <field name="user_id"/>
+                            <field name="saleperson_id"/>
+                        </group>
+                        <field name="note" widget="html"/>
+                    </page>
+                    <page string="Protection" name="work_protection">
+                        <field name="protection_product_ids">
+                            <tree>
+                                <field name="default_code"/>
+                                <field name="name"/>
+                                <field name="product_template_attribute_value_ids" widget="many2many_tags"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Tools" name="work_protection">
+                    </page>
+                    <page string="Stock" name="work_protection">
+                        <group col="2">
+                            <field name="location_id"/>
+                        </group>
+                        <field name="quant_ids" domain="[('location_id','=',location_id)]"/>
+                    </page>
+                    <page string="Employees" name="work_employees">
+                        <field name="employee_line_ids">
+                            <tree editable="bottom">
+                                <field name="employee_id"/>
+                                <field name="function_ids" widget="many2many_tags"/>
+                                <field name="iset_work_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Documents" name="work_protection">
+                    </page>
+                </notebook>
+            </xpath>
             <xpath expr="//form/sheet" position="after">
                 <div class="oe_button_box" name="button_box">
                     <div class="oe_chatter">
