@@ -51,7 +51,7 @@
                         </group>
                         <field name="note" widget="html"/>
                     </page>
-                    <page string="Protection" name="work_protection">
+                    <page string="Protection" name="work_protection" domain="[('type','!=','service')]">
                         <field name="protection_product_ids">
                             <tree>
                                 <field name="default_code"/>
@@ -60,11 +60,18 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Tools" name="work_protection">
+                    <page string="Tools" name="work_tools">
+                        <field name="tool_product_ids" domain="[('type','!=','service')]">
+                            <tree>
+                                <field name="default_code"/>
+                                <field name="name"/>
+                                <field name="product_template_attribute_value_ids" widget="many2many_tags"/>
+                            </tree>
+                        </field>
                     </page>
-                    <page string="Stock" name="work_protection">
+                    <page string="Stock" name="work_stock_location">
                         <group col="2">
-                            <field name="location_id"/>
+                            <field name="location_id" groups="stock.group_adv_location"/>
                         </group>
                         <field name="quant_ids" domain="[('location_id','=',location_id)]"/>
                     </page>
@@ -77,7 +84,7 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Documents" name="work_protection">
+                    <page string="Documents" name="work_documental_tasks">
                     </page>
                 </notebook>
             </xpath>
