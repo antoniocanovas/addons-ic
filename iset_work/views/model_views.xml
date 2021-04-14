@@ -84,7 +84,8 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Documents" name="work_documental_tasks">
+                    <page string="Administrative management" name="work_documental_tasks">
+                        <field name="task_ids"/>
                     </page>
                 </notebook>
             </xpath>
