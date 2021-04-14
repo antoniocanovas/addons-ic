@@ -16,7 +16,7 @@ class iSetsWork(models.Model):
     note = fields.Text('Note')
     protection_product_ids = fields.Many2many('product.product', string='Protection')
     location_id = fields.Many2one('stock.location', string='Location')
-
+    task_ids = fields.One2many('project.task', 'iset_work_id', string='Task')
     tool_product_ids = fields.Many2many('product.product', 'rel_product_iset_work', 'iset_work_id', 'product_id', string='Tools')
 
     def _get_sale_order_count(self):
