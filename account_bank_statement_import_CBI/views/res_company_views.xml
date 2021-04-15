@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_company_n43_service" model="ir.ui.view">
+        <field name="name">N43 Service</field>
+        <field name="model">res.company</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[1]" position="after">
+                <page name="cbi" string="cbi">
+                    <group>
+                        <field name="ftp_url_cbi"/>
+                        <field name="ftp_port_cbi"/>
+                        <field name="ftp_user_cbi"/>
+                        <field name="ftp_passwd_cbi" password="True"/>
+                    </group>
+                    <group>
+                        <field name="cbi_autoimport"/>
+                    </group>
+                    <group>
+                        <button name="force_sync_cbi" string="Force Sync" type="object" class="oe_highlight oe_read_only"/>
+                        <field name="cbi_last_connection_date" readonly="True"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
