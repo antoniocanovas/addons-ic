@@ -151,8 +151,8 @@ class Isets(models.Model):
                 'Project is required, please select one !!')
             if (record.type == 'production') and not (record.workorder_id.id != False): raise Warning(
                 'Workorder is required, please select one !!')
-            if (record.type == 'repair') and (record.repair_id.id != False): raise Warning(
-                'Asistance is required, please select one !!')
+            if (record.type == 'repair') and not (record.repair_id.id != False): raise Warning(
+                'Asisstance is required, please select one !!')
 
             # Calculate local time diference with UTC:
             date_today = datetime.datetime(year=record.date.year, month=record.date.month, day=record.date.day, hour=12,
