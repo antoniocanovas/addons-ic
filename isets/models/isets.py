@@ -1,5 +1,6 @@
 from odoo import _, api, fields, models
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
+import pytz
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -147,21 +148,17 @@ class Isets(models.Model):
     def create_lot_services_iset(self):
         # Check required fields:
         for record in self:
-            if (record.type == 'project') and not (record.project_id.id != False): raise Warning(
-                'Project is required, please select one !!')
-            if (record.type == 'production') and not (record.workorder_id.id != False): raise Warning(
-                'Workorder is required, please select one !!')
-            if (record.type == 'repair') and not (record.repair_id.id != False): raise Warning(
-                'Asisstance is required, please select one !!')
 
             # Calculate local time diference with UTC:
-            date_today = datetime.datetime(year=record.date.year, month=record.date.month, day=record.date.day, hour=12,
+            date_today = datetime(year=record.date.year, month=record.date.month, day=record.date.day, hour=12,
                                            minute=0)
-            date_utc = date_today.astimezone(timezone(user.tz))
+
+            tz = pytz.timezone(self.env.user.tz)
+            date_utc = date_today.astimezone(tz)
             inc = date_utc.hour - date_today.hour
 
             # Change 'hour/min' in record.start to string format to include in fields "name":
-            start = str(datetime.timedelta(hours=record.start))
+            start = str(timedelta(hours=record.start))
             if (record.start >= 10):
                 start = start[:5]
             else:
