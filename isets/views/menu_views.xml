@@ -36,7 +36,7 @@
             id="menu_isets"
             name="iSets"
             sequence="10"
-            web_icon=""
+            web_icon="isets,static/iset.png"
     />
 
     <record id="menu_isets_bar" model="ir.ui.menu">
