@@ -15,7 +15,12 @@ class RepairOrder(models.Model):
         )
         self.purchase_order_count = len(results)
 
-    purchase_order_count = fields.Integer('Lines', compute=_get_purchase_order_count)
+    purchase_order_count = fields.Integer('Purchases', compute=_get_purchase_order_count)
+
+    def action_view_purchases(self):
+        action = self.env.ref(
+            'purchase_repair.action_view_purchases').read()[0]
+        return action
 
 
 
