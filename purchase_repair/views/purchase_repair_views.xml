@@ -1,23 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="view_repair_purchase_order_form" model="ir.ui.view">
-        <field name="name">Purchases</field>
-        <field name="model">repair.order</field>
-        <field name="type">form</field>
-        <field name="inherit_id" ref="repair.view_repair_order_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//sheet/div[@name='button_box']" position="inside">
-                    <!--<field widget="statinfo" name="purchase_order_count" string="Compras"/>
-                    <button class="oe_stat_button oe_read_only" icon="fa-spinner" type="object" name="action_view_purchases">
-                        <field widget="statinfo" name="purchase_order_count" string="Compras"/>
-                    </button>-->
-            </xpath>
-        </field>
-    </record>
-
-
-    <record id="view_purchase_repair_order_form" model="ir.ui.view">
+     <record id="view_purchase_repair_order_form" model="ir.ui.view">
         <field name="name">Repairs</field>
         <field name="model">purchase.order</field>
         <field name="type">form</field>
@@ -44,6 +28,21 @@
         <!--<field name="view_id" ref="helpdesk.helpdesk_tickets_view_tree"/>-->
         <field name="usage" eval="False"/>
         <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_repair_purchase_order_form" model="ir.ui.view">
+        <field name="name">Purchases</field>
+        <field name="model">repair.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="repair.view_repair_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/div[@name='button_box']" position="inside">
+
+                    <button class="oe_stat_button oe_read_only" icon="fa-spinner" type="object" name="action_view_purchases">
+                        <field widget="statinfo" name="purchase_order_count" string="Compras"/>
+                    </button>
+            </xpath>
+        </field>
     </record>
 
 </odoo>
