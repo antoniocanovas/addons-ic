@@ -18,6 +18,7 @@
                         <field name="stop" widget="timesheet_uom"/>
                     </group><group>
                         <field name="employee_ids" widget="many2many_tags" colspan="4"/>
+                        <field name="type_id"/>
                     </group></group>
 
                     <div name="workorder_product_service" attrs="{'invisible':[('type','!=','production')]}">
@@ -156,6 +157,7 @@
                     <div name="repair" attrs="{'invisible':[('type','!=','repair')]}">
                         <group>
                             <field name="repair_id" domain="[('id','in',repair_ids)]" attrs="{'required':[('type','=','repair')]}" options="{'no_create': True}"/>
+                            <field name="repair_service_id" domain="[('type','=','service')]" attrs="{'required':[('type','=','repair')]}" options="{'no_create': True}"/>
                         </group>
                         <div  attrs="{'invisible':[('repair_id','!=',False)]}">
                             <h2>Active repairs:</h2>

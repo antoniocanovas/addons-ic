@@ -1,6 +1,6 @@
 {
     'name': 'iSets',
-    'version': '14.0.5.0.0',
+    'version': '14.0.6.0.0',
     'category': '',
     'description': u"""
 
@@ -17,6 +17,7 @@
         'security/ir.model.access.csv',
         'views/model_views.xml',
         'data/action_server.xml',
+        'data/data.xml',
     ],
     'installable': True,
 }
