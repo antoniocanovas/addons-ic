@@ -29,9 +29,16 @@ class Isets(models.Model):
     task_id = fields.Many2one('project.task')
     workorder_id = fields.Many2one('mrp.workorder')
     mrp_id = fields.Many2one('mrp.production', string='Production')
-    repair_service_id = fields.Many2one('product.product', related='work_id.repair_service_id')
+
     production_loss_id = fields.Many2one('mrp.workcenter.productivity.loss', related='work_id.production_loss_id')
     repair_location_id = fields.Many2one('stock.location', related='repair_id.location_id', string='Origin Location')
+    type_id = fields.Many2one('working.type', 'Work')
+
+    @api.depends('repair_id')
+    def get_service_id(self):
+        for record in self:
+            record['repair_service_id'] = record.work_id.repair_service_id.id
+    repair_service_id = fields.Many2one('product.product', readonly=False, compute='get_service_id')
 
     company_id = fields.Many2one(
         'res.company',
