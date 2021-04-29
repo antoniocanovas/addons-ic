@@ -6,7 +6,7 @@
         <field name="model">maintenance.equipment</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//button[@name='toggle_active']" position="after">
+            <xpath expr="//div[@name='button_box']" position="inside">
                 <button class="oe_stat_button" icon="fa-diamond" type="object" name="action_view_credentials">
                     <field name="credential_count" string="Credenciales" widget="statinfo"/>
                 </button>
@@ -15,7 +15,6 @@
     </record>
 
     <record id="action_maintenance_equipment_credentials" model="ir.actions.act_window">
-        <field name="auto_search" eval="True"/>
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="context">{'search_default_equipment_id': active_id,'default_equipment_id': active_id}</field>
@@ -29,7 +28,6 @@
         <field name="type">ir.actions.act_window</field>
         <field name="view_id" ref="partner_credentials.credentials_tree"/>
         <field name="view_mode">tree,form</field>
-        <field name="view_type">form</field>
     </record>
 
     <record id="partner_credentials_form_equipment" model="ir.ui.view">
