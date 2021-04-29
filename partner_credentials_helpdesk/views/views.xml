@@ -14,7 +14,6 @@
     </record>
 
     <record id="action_view_tickets" model="ir.actions.act_window">
-        <field name="auto_search" eval="True"/>
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="context">{'search_default_partner_credentials_id': active_id,'default_partner_credentials_id': active_id}</field>
@@ -28,7 +27,6 @@
         <field name="type">ir.actions.act_window</field>
         <field name="view_id" ref="helpdesk.helpdesk_tickets_view_tree"/>
         <field name="view_mode">tree,form</field>
-        <field name="view_type">form</field>
     </record>
 
     <record id="view_credentials_ticket_count" model="ir.ui.view">
@@ -36,7 +34,7 @@
         <field name="model">partner.credentials</field>
         <field name="inherit_id" ref="partner_credentials.credentials_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//button[@name='toggle_active']" position="after">
+            <xpath expr="//div[@name='button_box']" position="after">
                 <button class="oe_stat_button" icon="fa-info" type="object" name="action_view_tickets">
                     <field name="tickets_count" string="Tickets" widget="statinfo"/>
                 </button>

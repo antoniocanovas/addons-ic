@@ -13,7 +13,7 @@ class MaintenanceEquipmentCredentials(models.Model):
         results = self.env['partner.credentials'].search([('equipment_id', '=', self.id)])
         self.credential_count = len(results)
 
-    credential_count = fields.Integer('Credentials', compute=_get_credentials_equipment, stored=False)
+    credential_count = fields.Integer('Credentials', compute=_get_credentials_equipment, store=False)
 
     def action_view_credentials(self):
         action = self.env.ref(
