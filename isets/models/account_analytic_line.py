@@ -10,4 +10,4 @@ class AccountAnalyticLine(models.Model):
     iset_id = fields.Many2one('isets')
     iset_so_line_id = fields.Many2one('sale.order.line')
     sale_id = fields.Many2one('sale.order', store=False)
-    type_id = fields.Many2one('working.type', 'Work')
+    type_id = fields.Many2one('working.type', 'Type')

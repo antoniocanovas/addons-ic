@@ -26,7 +26,7 @@ if (record.work_id.type == "project") and (record.employee_ids.ids) and (record.
     name = record.name + " - " + start
     new = env['account.analytic.line'].create({'iset_id':record.id, 'name': name, 'project_id':record.project_id.id,
           'task_id':record.task_id.id, 'date':record.date, 'account_id': record.project_analytic_id.id, 'company_id':record.company_id.id,
-          'employee_id':li.id, 'unit_amount': (record.stop - record.start)
+          'employee_id':li.id, 'unit_amount': (record.stop - record.start), 'type_id':record.type_id.id
     })
 
 # CASE REPAIR:
@@ -38,7 +38,7 @@ elif (record.work_id.type == "repair") and (record.employee_ids.ids) and (record
         new = env['repair.fee'].create({'iset_id':record.id, 'product_id':product_id.id,
         'name': name, 'repair_id':record.repair_id.id, 'company_id':record.company_id.id,
         'create_uid':li.user_id.id, 'product_uom_qty':(record.stop - record.start), 'price_unit':product_id.list_price,
-        'product_uom':product_id.uom_id.id
+        'product_uom':product_id.uom_id.id, 'type_id':record.type_id.id
         })
   else: raise Warning('Se requiere definir el PRODUCTO el el tipo de asistencia para poder crear las imputaciones !!')
 
@@ -52,7 +52,7 @@ elif (record.work_id.type == "production") and (record.employee_ids.ids) and (re
     name = record.workorder_id.name + " - " + start + " - " + li.name
     new = env['mrp.workcenter.productivity'].create({'iset_id':record.id, 'description': name, 'production_id':record.mrp_id.id,
           'workorder_id':record.workorder_id.id, 'workcenter_id':record.workorder_id.workcenter_id.id, 'company_id':record.company_id.id,
-          'loss_id':record.production_loss_id.id, 'date_start':date_start, 'date_end':date_end
+          'loss_id':record.production_loss_id.id, 'date_start':date_start, 'date_end':date_end, 'type_id':record.type_id.id
     })
             </field>
         </record>

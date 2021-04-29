@@ -13,11 +13,10 @@
                     <group><group>
                         <field name="date"/>
                         <field name="work_id" widget="selection"/>
+                        <field name="employee_ids" widget="many2many_tags"/>
                     </group><group>
                         <field name="start" widget="timesheet_uom"/>
                         <field name="stop" widget="timesheet_uom"/>
-                    </group><group>
-                        <field name="employee_ids" widget="many2many_tags" colspan="4"/>
                         <field name="type_id"/>
                     </group></group>
 

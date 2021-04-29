@@ -8,4 +8,4 @@ class MrpWorkcenterProductivity(models.Model):
     _inherit = 'mrp.workcenter.productivity'
 
     iset_id = fields.Many2one('isets')
-    type_id = fields.Many2one('working.type', 'Work')
+    type_id = fields.Many2one('working.type', 'Type')
