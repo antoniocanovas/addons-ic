@@ -32,13 +32,12 @@ class Isets(models.Model):
 
     production_loss_id = fields.Many2one('mrp.workcenter.productivity.loss', related='work_id.production_loss_id')
     repair_location_id = fields.Many2one('stock.location', related='repair_id.location_id', string='Origin Location')
-    type_id = fields.Many2one('working.type', 'Work')
+    type_id = fields.Many2one('working.type', 'Schedule', required=True)
 
     @api.depends('repair_id')
     def get_service_id(self):
-        for record in self:
-            record['repair_service_id'] = record.work_id.repair_service_id.id
-    repair_service_id = fields.Many2one('product.product', readonly=False, compute='get_service_id')
+        self.repair_service_id = self.work_id.repair_service_id.id
+    repair_service_id = fields.Many2one('product.product', readonly=False, compute='get_service_id', store=True)
 
     company_id = fields.Many2one(
         'res.company',
@@ -179,7 +178,7 @@ class Isets(models.Model):
                         {'iset_id': record.id, 'name': name, 'project_id': record.project_id.id,
                          'task_id': record.task_id.id, 'date': record.date, 'account_id': record.project_analytic_id.id,
                          'company_id': record.company_id.id,
-                         'employee_id': li.id, 'unit_amount': (record.stop - record.start)
+                         'employee_id': li.id, 'unit_amount': (record.stop - record.start), 'type_id': record.type_id.id,
                          })
 
             # CASE REPAIR:
@@ -194,7 +193,8 @@ class Isets(models.Model):
                                                         'create_uid': li.user_id.id,
                                                         'product_uom_qty': (record.stop - record.start),
                                                         'price_unit': product_id.list_price,
-                                                        'product_uom': product_id.uom_id.id
+                                                        'product_uom': product_id.uom_id.id,
+                                                        'type_id': record.type_id.id,
                                                         })
                 else:
                     raise Warning(
@@ -213,6 +213,7 @@ class Isets(models.Model):
                         {'iset_id': record.id, 'description': name, 'production_id': record.mrp_id.id,
                          'workorder_id': record.workorder_id.id, 'workcenter_id': record.workorder_id.workcenter_id.id,
                          'company_id': record.company_id.id,
-                         'loss_id': record.production_loss_id.id, 'date_start': date_start, 'date_end': date_end
+                         'loss_id': record.production_loss_id.id, 'date_start': date_start, 'date_end': date_end,
+                         'type_id': record.type_id.id,
                          })
 
