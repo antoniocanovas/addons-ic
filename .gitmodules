@@ -1,4 +1,4 @@
 [submodule "addons-ic"]
 	path = addons-ic
-	url = https://github.com/lmmar-ic/addons-ic.git
+	url = https://github.com/antoniocanovas/addons-ic.git
 	branch = 14.0
