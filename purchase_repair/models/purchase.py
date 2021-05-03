@@ -10,5 +10,5 @@ class PurchaseOrder(models.Model):
     repair_id = fields.Many2one(
         'repair.order',
         string="Reparaciones",
-        domain="[('state','in',['confirmed','under_repair','ready'])]"
+        domain="[('state','in',['draft','confirmed','under_repair','ready'])]"
     )

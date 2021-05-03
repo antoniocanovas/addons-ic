@@ -26,11 +26,11 @@
                             <field name="workorder_id" domain="[('production_id','=',mrp_id)]" attrs="{'invisible':[('mrp_id','=',False)]}" options="{'no_create': True}"/>
                             <field name="production_loss_id" options="{'no_create': True}" attrs="{'invisible':[('mrp_id','=',False)]}"/>
                         </group>
-                        <div  attrs="{'invisible':[('mrp_id','!=',False)]}">
+                        <div attrs="{'invisible':[('mrp_id','!=',False)]}">
                             <h2>Active productions:</h2>
                             <field name="production_ids"/>
                         </div>
-                        <div  attrs="{'invisible':[('mrp_id','=',False)]}">
+                        <div attrs="{'invisible':[('mrp_id','=',False)]}">
                             <h2>Services: </h2><i>(Workorder REQUIRED)</i>
                             <field name="mrp_service_ids" attrs="{'readonly':[('workorder_id','=',False)]}" context="{'default_production_id':mrp_id, 'default_workorder_id':workorder_id, 'default_company_id': company_id}">
                                 <tree editable="bottom">
@@ -42,6 +42,7 @@
                                     <field name="date_start"/>
                                     <field name="date_end"/>
                                     <field name="duration"/>
+                                    <field name="type_id"/>
                                     <field name="company_id" invisible="1"/>
                                     <field name="description"/>
                                 </tree>
@@ -116,11 +117,11 @@
                             <field name="project_id" options="{'no_create': True}" domain="[('id','in',project_ids)]" attrs="{'required':[('type','=','project')]}"/>
                             <field name="task_id" options="{'no_create': True}" domain="[('project_id','=',project_id)]" attrs="{'invisible':[('project_id','=',False)]}"/>
                         </group>
-                        <div  attrs="{'invisible':[('project_id','!=',False)]}">
+                        <div attrs="{'invisible':[('project_id','!=',False)]}">
                             <h2>Active projects:</h2>
                             <field name="project_ids"/>
                         </div>
-                        <div  attrs="{'invisible':[('project_id','=',False)]}">
+                        <div attrs="{'invisible':[('project_id','=',False)]}">
                             <h2>Services: </h2><i>(Project and task REQUIRED)</i>
                             <field name="project_service_ids" attrs="{'readonly':[('task_id','=',False)]}" context="{'default_project_id':project_id, 'default_task_id':task_id,'default_account_id':project_analytic_id, 'default_name':'/','default_company_id': company_id}">
                                 <tree editable="bottom" string="Timesheet Activities" default_order="date">
@@ -129,6 +130,7 @@
                                     <field name="employee_id" required="1" widget="many2one_avatar_employee" options="{'no_create': True}"/>
                                     <field name="name" required="0"/>
                                     <field name="unit_amount" widget="timesheet_uom" decoration-danger="unit_amount &gt; 24"/>
+                                    <field name="type_id"/>
                                     <field name="project_id" invisible="1"/>
                                     <field name="date"/>
                                     <field name="account_id" invisible="1"/>
@@ -158,11 +160,11 @@
                             <field name="repair_id" domain="[('id','in',repair_ids)]" attrs="{'required':[('type','=','repair')]}" options="{'no_create': True}"/>
                             <field name="repair_service_id" domain="[('type','=','service')]" attrs="{'required':[('type','=','repair')]}" options="{'no_create': True}"/>
                         </group>
-                        <div  attrs="{'invisible':[('repair_id','!=',False)]}">
+                        <div attrs="{'invisible':[('repair_id','!=',False)]}">
                             <h2>Active repairs:</h2>
                             <field name="repair_ids"/>
                         </div>
-                        <div  attrs="{'invisible':[('repair_id','=',False)]}">
+                        <div attrs="{'invisible':[('repair_id','=',False)]}">
                             <h2>Services:</h2><i>(Repair REQUIRED)</i>
                             <field name="repair_service_ids" attrs="{'readonly':[('repair_id','=',False)]}" context="{'default_repair_id':repair_id, 'default_company_id':company_id}">
                                 <tree string="repair_services" editable="bottom">
@@ -172,6 +174,7 @@
                                     <field name="product_uom_qty" string="Quantity"/>
                                     <field name="product_uom_category_id" invisible="1"/>
                                     <field name="product_uom" string="Unit of Measure" groups="uom.group_uom" optional="show"/>
+                                    <field name="type_id"/>
                                     <field name="price_unit" invisible="1"/>
                                     <field name="tax_id" widget="many2many_tags" optional="show" invisible="1"/>
                                     <field name="price_subtotal" widget="monetary" invisible="1"/>
