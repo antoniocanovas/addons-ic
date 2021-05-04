@@ -18,7 +18,7 @@ class Isets(models.Model):
     _description = 'iSets'
 
     name = fields.Char('Name', required=True)
-    date = fields.Date('Date')
+    date = fields.Date('Date', required=True)
     start = fields.Float('Start')
     stop = fields.Float('Stop')
     work_id = fields.Many2one('iset.work')
