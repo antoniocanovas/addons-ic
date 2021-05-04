@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<odoo>
+    <data>
+
+        <template id="external_document_layout">
+            <t t-name="docs_base.external_document_layout">
+                <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                    <t t-call="web.address_layout"/>
+                    <t t-raw="0"/>
+                </div>
+
+                <div class="footer o_standard_footer">
+                    <div class="text-center" style="border-top: 1px solid black;">
+                        <div t-if="report_type == 'pdf'" class="text-muted">
+                            Page: <span class="page"/> / <span class="topage"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="docs_report_document_report">
+            <t t-call="docs_base.external_document_layout">
+                <t t-set="o" t-value="o.with_context(lang=lang)"/>
+                <div class="page">
+                    <div class="text-center">
+                        <h2><span t-field="o.type_id"/></h2>
+                    </div>
+                    <div class="header">
+                        <span t-field="o.header" widget="html" />
+                    </div>
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <tr>
+                                <t t-set="colspan" t-value="3"/>
+                                <th class="text-left"><span>Interesados</span></th>
+                                <th class="text-left"><span></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="o.implied_ids" t-as="contact">
+                                <tr t-att-class="'bg-200 font-weight-bold'">
+                                    <t>
+                                        <td><span t-field="contact.partner_id"/></td>
+                                        <td><span t-field="contact.rol_id"/></td>
+                                    </t>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <div>
+                        <span t-field="o.body" widget="html" />
+                    </div>
+                    <div class="footer o_standard_footer">
+                        <span t-field="o.footer" widget="html" />
+                    </div>
+
+                </div>
+            </t>
+        </template>
+
+        <template id="docs_report_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="docs_base.docs_report_document_report" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

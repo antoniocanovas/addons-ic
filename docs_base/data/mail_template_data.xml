@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="email_template_edi_docs" model="mail.template">
+            <field name="name">Docs: Send by email</field>
+            <field name="model_id" ref="docs_base.model_docs_docs"/>
+            <field name="email_from">${object.user_id.email_formatted |safe}</field>
+            <field name="partner_to"></field>
+            <field name="subject">${object.type_id.name}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear
+                        <br /><br />
+                        Here is your
+                        % if object.name:
+                        Document <strong>${object.name}</strong>
+                        % else:
+                        Document
+                        %endif
+                        % if object.project_id:
+                        (for project: ${object.project_id.name})
+                        % endif
+
+                        from ${object.user_id.company_id.name}.
+
+                        <br /><br />
+                        Do not hesitate to contact us if you have any question.
+                    </p>
+                </div>
+            </field>
+            <!--<field name="report_template" ref="docs.docs_report"/>
+            <field name="report_name">${((str(object.type_id.name) or '')+'.pdf')}</field>-->
+            <field name="lang">${object.user_id.company_id.lang}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+
+    </data>
+</odoo>
