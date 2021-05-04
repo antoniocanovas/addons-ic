@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+  <record id="action_docs_types" model="ir.actions.act_window">
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'default_active':1}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="limit">80</field>
+    <field name="name">Types of documents</field>
+    <field name="res_model">docs.types</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <record id="action_docs" model="ir.actions.act_window">
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="limit">80</field>
+    <field name="name">Docs</field>
+    <field name="res_model">docs.docs</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <record id="action_docs_texts" model="ir.actions.act_window">
+    <field name="binding_model_id" eval="False"/>
+    <field name="binding_type">action</field>
+    <field name="context">{'default_active':1}</field>
+    <field name="domain" eval="False"/>
+    <field name="filter" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="limit">80</field>
+    <field name="name">Texts</field>
+    <field name="res_model">docs.texts</field>
+    <field name="search_view_id" eval="False"/>
+    <field name="target">current</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="usage" eval="False"/>
+    <field name="view_id" eval="False"/>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem
+          action="action_docs"
+          id="menu_docs"
+          name="Docs"
+          sequence="10"
+          web_icon="docs_base,static/description/docs.png"
+  />
+
+  <record id="menu_docs_types" model="ir.ui.menu">
+    <field name="action" ref="action_docs_types"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Types</field>
+    <field name="parent_id" ref="menu_docs"/>
+    <field name="sequence">2</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+
+  <record id="menu_docs_texts" model="ir.ui.menu">
+    <field name="action" ref="action_docs_texts"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Texts</field>
+    <field name="parent_id" ref="menu_docs"/>
+    <field name="sequence">3</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+
+  <record id="menu_docs_docs" model="ir.ui.menu">
+    <field name="action" ref="action_docs"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Docs</field>
+    <field name="parent_id" ref="menu_docs"/>
+    <field name="sequence">1</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+
+
+</odoo>

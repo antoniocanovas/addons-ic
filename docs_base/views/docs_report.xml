@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="docs_report" model="ir.actions.report">
+            <field name="name">Docs</field>
+            <field name="model">docs.docs</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">docs_base.docs_report_document</field>
+            <field name="report_file">docs_base.docs_report_document</field>
+            <field name="print_report_name">((str(object.type_id.name) or ''))</field>
+            <field name="attachment">((str(object.type_id.name) or '')+'.pdf')</field>
+            <field name="binding_model_id" ref="model_docs_docs"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>
