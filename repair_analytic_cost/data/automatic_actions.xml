@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="automatic_repair_analytic" model="base.automation">
+            <field name="name">=>Repair Analytic</field>
+            <field name="model_id" ref="repair.model_repair_order"/>
+            <field name="state">code</field>
+            <field name="code">
+if (record.state in ['draft','cancel']) and (record.analytic_line_id.id):
+  record.analytic_line_id.unlink()
+elif (record.state not in ['draft','cancel']) and (record.analytic_id.id) and (record.analytic_line_id.id):
+  record.analytic_line_id.write({'amount':-record.analytic_cost})
+elif (record.state not in ['draft','cancel']) and (record.analytic_id.id) and not (record.analytic_line_id.id):
+  new = env['account.analytic.line'].create({'name':record.name, 'account_id':record.x_analytic_id.id, 'amount':-record.analytic_cost})
+  record['analytic_line_id'] = new.id
+
+            </field>
+            <field name="trigger">on_create_or_write</field>
+            <field name="filter_pre_domain"></field>
+            <field name="filter_domain"></field>
+            <field name="active" eval="True"/>
+        </record>
+
+    </data>
+
+</odoo>
