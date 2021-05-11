@@ -8,10 +8,10 @@ class PartnerCredentials(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Partner Credentials'
 
-    name = fields.Char(string='Nombre')
+    name = fields.Char(string='Nombre', required=True)
     type = fields.Selection([
         ('odoo', 'Odoo'), ('web', 'Web'), ('other', 'Other')
-    ])
+    ],  required=True)
     partner_id = fields.Many2one('res.partner', string='Partner')
     user = fields.Char('User')
     password = fields.Char('Password')

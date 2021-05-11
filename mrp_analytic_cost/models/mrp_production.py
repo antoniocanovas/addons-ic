@@ -12,11 +12,10 @@ class MrpProduction(models.Model):
     def get_analytic_cost(self):
         total = 0
         for record in self:
-            for li in record.operations:
-                if li.type == 'add':
-                    total += li.product_uom_qty * li.product_id.standard_price
-            for li in record.fees_lines:
-                total += li.product_uom_qty * li.product_id.standard_price
-            record['analytic_cost'] = total
+            for li in record.move_raw_ids:
+                total += li.quantity_done * li.product_id.standard_price
+        for li in record.workorder_ids:
+            total += li.workcenter_id.costs_hour * li.duration / 60
+        record['analytic_cost'] = total
 
     analytic_cost = fields.Float('Analytic cost', compute=get_analytic_cost)
