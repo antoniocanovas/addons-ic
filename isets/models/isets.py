@@ -34,6 +34,9 @@ class Isets(models.Model):
     repair_location_id = fields.Many2one('stock.location', related='repair_id.location_id', string='Origin Location')
     type_id = fields.Many2one('working.type', 'Schedule', required=True)
 
+    set_start_stop = fields.Boolean(related='work_id.set_start_stop', string='Set start & stop time')
+    duration = fields.Float('Duration')
+
     @api.depends('repair_id')
     def get_service_id(self):
         self.repair_service_id = self.work_id.repair_service_id.id

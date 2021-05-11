@@ -7,6 +7,8 @@ from odoo import fields, models
 class MrpProduction(models.Model):
     _inherit = "mrp.production"
 
+    analytic_line_id = fields.Many2one('account.analytic.line', readonly=True, string='Analytic line')
+
     def get_analytic_cost(self):
         total = 0
         for record in self:
@@ -17,4 +19,4 @@ class MrpProduction(models.Model):
                 total += li.product_uom_qty * li.product_id.standard_price
             record['analytic_cost'] = total
 
-    analytic_cost = fields.Float('Analytic_cost', compute=get_analytic_cost)
+    analytic_cost = fields.Float('Analytic cost', compute=get_analytic_cost)

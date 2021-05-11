@@ -18,4 +18,5 @@ class PartnerCredentials(models.Model):
     public = fields.Boolean('Public')
     url = fields.Char('Url')
     active = fields.Boolean('Active', default='True')
+    description = fields.Text("Description")
 

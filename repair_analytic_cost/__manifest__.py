@@ -10,7 +10,7 @@
     "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "license": "AGPL-3",
-    "depends": ["repair_analytic"],
+    "depends": ["repair_analytic","base_automation"],
     "data": ["views/repair_view.xml","data/automatic_actions.xml"],
     "installable": True,
 }
