@@ -10,7 +10,7 @@
     "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "license": "AGPL-3",
-    "depends": ["mrp_analytic"],
+    "depends": ["mrp_analytic", "base_automation"],
     "data": ["views/mrp_view.xml", "data/automatic_actions.xml"],
     "installable": True,
 }

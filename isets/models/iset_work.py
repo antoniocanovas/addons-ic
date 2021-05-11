@@ -22,4 +22,5 @@ class IsetsTypes(models.Model):
     production_sale_id = fields.Many2one('sale.order')
     project_id = fields.Many2one('project.project')
     production_loss_id = fields.Many2one('mrp.workcenter.productivity.loss', string='Loss')
+    set_start_stop = fields.Boolean('Set start & stop time')
 
