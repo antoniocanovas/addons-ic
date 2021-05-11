@@ -9,10 +9,10 @@
             <field name="code">
 if (record.state in ['draft','cancel']) and (record.analytic_line_id.id):
   record.analytic_line_id.unlink()
-elif (record.state not in ['draft','cancel']) and (record.analytic_id.id) and (record.analytic_line_id.id):
+elif (record.state not in ['draft','cancel']) and (record.analytic_account_id.id) and (record.analytic_line_id.id):
   record.analytic_line_id.write({'amount':-record.analytic_cost})
-elif (record.state not in ['draft','cancel']) and (record.analytic_id.id) and not (record.analytic_line_id.id):
-  new = env['account.analytic.line'].create({'name':record.name, 'account_id':record.x_analytic_id.id, 'amount':-record.analytic_cost})
+elif (record.state not in ['draft','cancel']) and (record.analytic_account_id.id) and not (record.analytic_line_id.id):
+  new = env['account.analytic.line'].create({'name':record.name, 'account_id':record.analytic_account_id.id, 'amount':-record.analytic_cost})
   record['analytic_line_id'] = new.id
 
             </field>
