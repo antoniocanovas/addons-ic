@@ -2,7 +2,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
-    "name": "Repair cost Analytic",
+    "name": "Repair Analytic Cost",
     "summary": "Adds the analytic account to the production order",
     "version": "14.0.1.0.0",
     "category": "Manufacturing",

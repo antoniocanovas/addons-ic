@@ -158,30 +158,43 @@ class Isets(models.Model):
         # Check required fields:
         for record in self:
 
-            # Calculate local time diference with UTC:
-            date_today = datetime(year=record.date.year, month=record.date.month, day=record.date.day, hour=12,
-                                           minute=0)
+            # Check required fields:
+            if (record.type == 'project') and not (record.project_id.id != False): raise Warning(
+                'Project is required, please select one !!')
+            if (record.type == 'production') and not (record.workorder_id.id != False): raise Warning(
+                'Workorder is required, please select one !!')
+            if (record.type == 'repair') and not (record.repair_id.id != False): raise Warning(
+                'Asistance is required, please select one !!')
 
-            tz = pytz.timezone(self.env.user.tz)
-            date_utc = date_today.astimezone(tz)
-            inc = date_utc.hour - date_today.hour
+            # Required start to concatenate later, required duration to change later if start&stop:
+            start = ""
+            duration = record.duration
 
-            # Change 'hour/min' in record.start to string format to include in fields "name":
-            start = str(timedelta(hours=record.start))
-            if (record.start >= 10):
-                start = start[:5]
-            else:
-                start = start[:4]
+            # Only if production or set_start_stop = True:
+            if (record.type == 'production') or (record.set_start_stop == True):
+                duration = (record.stop - record.start)
+                # Calculate local time diference with UTC:
+                date_today = datetime.datetime(year=record.date.year, month=record.date.month, day=record.date.day,
+                                               hour=12, minute=0)
+                date_utc = date_today.astimezone(timezone(self.env.user.tz))
+                inc = date_utc.hour - date_today.hour
+
+                # Change 'hour/min' in record.start to string format to include in fields "name":
+                start = str(datetime.timedelta(hours=record.start))
+                if (record.start >= 10):
+                    start = start[:5]
+                else:
+                    start = " - " + start[:4]
 
             # CASE PROJECT:
             if (record.work_id.type == "project") and (record.employee_ids.ids) and (record.project_id.id):
                 for li in record.employee_ids:
-                    name = record.name + " - " + start
+                    name = record.name + start
                     new = self.env['account.analytic.line'].create(
                         {'iset_id': record.id, 'name': name, 'project_id': record.project_id.id,
                          'task_id': record.task_id.id, 'date': record.date, 'account_id': record.project_analytic_id.id,
                          'company_id': record.company_id.id,
-                         'employee_id': li.id, 'unit_amount': (record.stop - record.start), 'type_id': record.type_id.id,
+                         'employee_id': li.id, 'unit_amount': duration, 'type_id': record.type_id.id
                          })
 
             # CASE REPAIR:
@@ -189,15 +202,14 @@ class Isets(models.Model):
                 if (record.work_id.repair_service_id.id):
                     product_id = record.work_id.repair_service_id
                     for li in record.employee_ids:
-                        name = product_id.name + " - " + start + " - " + li.name
+                        name = product_id.name + start + " - " + li.name
                         new = self.env['repair.fee'].create({'iset_id': record.id, 'product_id': product_id.id,
                                                         'name': name, 'repair_id': record.repair_id.id,
                                                         'company_id': record.company_id.id,
-                                                        'create_uid': li.user_id.id,
-                                                        'product_uom_qty': (record.stop - record.start),
+                                                        'create_uid': li.user_id.id, 'product_uom_qty': duration,
                                                         'price_unit': product_id.list_price,
                                                         'product_uom': product_id.uom_id.id,
-                                                        'type_id': record.type_id.id,
+                                                        'type_id': record.type_id.id
                                                         })
                 else:
                     raise Warning(
@@ -209,7 +221,8 @@ class Isets(models.Model):
                                                hour=int(record.start - inc),
                                                minute=int((record.start - int(record.start)) * 60))
                 date_end = datetime.datetime(year=record.date.year, month=record.date.month, day=record.date.day,
-                                             hour=int(record.stop - inc), minute=int((record.stop - int(record.stop)) * 60))
+                                             hour=int(record.stop - inc),
+                                             minute=int((record.stop - int(record.stop)) * 60))
                 for li in record.employee_ids:
                     name = record.workorder_id.name + " - " + start + " - " + li.name
                     new = self.env['mrp.workcenter.productivity'].create(
@@ -217,6 +230,9 @@ class Isets(models.Model):
                          'workorder_id': record.workorder_id.id, 'workcenter_id': record.workorder_id.workcenter_id.id,
                          'company_id': record.company_id.id,
                          'loss_id': record.production_loss_id.id, 'date_start': date_start, 'date_end': date_end,
-                         'type_id': record.type_id.id,
+                         'type_id': record.type_id.id
                          })
+
+
+            
 
