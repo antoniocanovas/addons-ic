@@ -16,6 +16,7 @@ class ResCompany(models.Model):
 
 
     last_connection_date = fields.Datetime('Last connection date')
+    api_viafirma = fields.Char('Api Url')
     user_viafirma = fields.Char('User')
     pass_viafirma = fields.Char('Passwd')
     group_viafirma = fields.Char('Group')

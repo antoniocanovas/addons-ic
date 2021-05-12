@@ -10,6 +10,7 @@
             <xpath expr="//notebook/page[1]" position="after">
                 <page name="Viafirma" string="Viafirma">
                     <group>
+                        <field name="api_viafirma"/>
                         <field name="user_viafirma"/>
                         <field name="pass_viafirma" password="True"/>
                         <field name="group_viafirma"/>

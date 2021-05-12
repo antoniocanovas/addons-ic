@@ -202,7 +202,7 @@ class ConfigClient(models.Model):
                                                           'store_fname': invoice_attachment.store_fname,
                                                           'res_model': 'account.invoice',
                                                           'res_id': invoice_id,
-                                                          'mimetype': 'image/jpeg'
+                                                          'mimetype': invoice_attachment.mimetype
                                                       }])
             return attachment_id
         except Exception as e:

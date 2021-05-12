@@ -134,7 +134,6 @@ class OcrUploads(models.Model):
                     image = "data:image/tiff;base64," + str(attachment.datas.decode('ascii'))
                 else:
                     return False
-
                 djson = {
                     "type": upload.type,
                     "image": image,

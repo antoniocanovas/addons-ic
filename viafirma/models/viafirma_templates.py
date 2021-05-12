@@ -84,7 +84,7 @@ class ViafirmaTemplates(models.Model):
             if viafirma_pass:
 
                 header = self.get_uploader_header()
-                search_url = 'https://sandbox.viafirma.com/documents/api/v3/template/list/antonio.canovas@ingenieriacloud.com'
+                search_url = 'https://services.viafirma.com/documents/api/v3/template/list/antonio.canovas@ingenieriacloud.com'
                 response_template = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
                 if response_template.ok:
                     resu_templates = json.loads(response_template.content)
