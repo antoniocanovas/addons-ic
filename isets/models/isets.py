@@ -234,5 +234,5 @@ class Isets(models.Model):
                          })
 
 
-            
+
 
