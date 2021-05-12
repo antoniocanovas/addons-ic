@@ -525,7 +525,7 @@ class Viafirma(models.Model):
 
         header = self.get_uploader_header()
         response_code = self.tracking_code
-        search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/status/' + str(response_code)
+        search_url = 'https://services.viafirma.com/documents/api/v3/messages/status/' + str(response_code)
 
         viafirma_user = self.env.user.company_id.user_viafirma
         viafirma_pass = self.env.user.company_id.pass_viafirma
@@ -545,16 +545,16 @@ class Viafirma(models.Model):
                     if statu_firmweb["status"] == 'RESPONSED':
                         # ya ha sido firmada me puedo descargar el documento firmado y el trail de la firma
                         # empezamos por el documento firmado
-                        url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/signed/' + response_code
+                        url = 'https://services.viafirma.com/documents/api/v3/documents/download/signed/' + response_code
 
                         self.document_signed  = self.download_document(  url,  header, response_code, viafirma_user, viafirma_pass)
                         # ahora le toca el turno al documento de trail, pero para este documento no hay campo en el modelo viafirma, lo dejo preparado
-                        url = 'https://sandbox.viafirma.com/documents/api/v3/documents/download/trail/' + response_code
+                        url = 'https://services.viafirma.com/documents/api/v3/documents/download/trail/' + response_code
                         self.document_trail = self.download_document(url, header, response_code, viafirma_user,
                                                                          viafirma_pass)
                     elif statu_firmweb['status'] == 'ERROR':
                         # guardar el resultado de error en un campo para su visualizacion
-                        url = 'https://sandbox.viafirma.com/documents/api/v3/messages/' + response_code
+                        url = 'https://services.viafirma.com/documents/api/v3/messages/' + response_code
                         r_error = requests.get(url, headers=header, auth=(viafirma_user, viafirma_pass))
 
                         if r_error.ok:
@@ -623,17 +623,17 @@ class Viafirma(models.Model):
                     #En función del template envaremos policy o no
 
                     if self.document_policies:
-                        search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
+                        search_url = 'https://services.viafirma.com/documents/api/v3/set/'
                         datas = self.compose_call_policies()
                     elif self.template_id.multiple_signatures:
-                        search_url = 'https://sandbox.viafirma.com/documents/api/v3/set/'
+                        search_url = 'https://services.viafirma.com/documents/api/v3/set/'
                         datas = self.compose_call_multiple()
                     else:
                         if len(self.line_ids) > 1:
                             raise ValidationError(
                                 "Esta plantilla no soporta más de un firmante")
                         else:
-                            search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
+                            search_url = 'https://services.viafirma.com/documents/api/v3/messages/'
                             datas = self.compose_call()
 
                     response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,

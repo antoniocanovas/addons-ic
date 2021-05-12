@@ -74,7 +74,7 @@ class ResCompany(models.Model):
     @api.multi
     def clean_vat(self, vat):
         if len(vat) > 9:
-            vat_cleaned = vat[2:9]
+            vat_cleaned = vat[2:11]
         else:
             vat_cleaned = vat
         #vat_cleaned = vat.replace('-', '')
@@ -90,23 +90,24 @@ class ResCompany(models.Model):
     @api.multi
     def get_partner_by_vat(self, vat):
         vat_cleaned = self.clean_vat(vat.value)
-
         partner = self.env['res.partner'].search(["|",
-                                                  ("vat", "=", vat.value),
-                                                  ("vat", "=", vat_cleaned),
+                                                  ('vat', '=', vat.value),
+                                                  ('vat', '=', vat_cleaned),
                                                   ], limit=1)
 
         if partner:
             return partner
         else:
-
             partners = self.env['res.partner'].search([])
             for p in partners:
                 if p.vat != False:
                     p_vat = self.clean_vat(p.vat)
                     if p_vat == vat_cleaned:
-                        return p
-            return False
+                        partner = p
+            if partner:
+                return partner
+            else:
+                return False
 
     @api.multi
     def get_documents_data(self, api_transaction_url, headers):
@@ -242,23 +243,13 @@ class ResCompany(models.Model):
 
                 if partner_vat:
                     if len(partner_vat.value) != 11:
+                        partner = self.get_partner_by_vat(partner_vat)
                         partner_name_value = "NIF_no_valido_" + str(partner_vat.value)
                         partner_vat = False
                 else:
                     random = self.random_with_n_digits(11)
                     partner_name_value = "NIF_no_válido_" + str(random)
 
-                if partner_vat:
-                    partner = self.get_partner_by_vat(partner_vat)
-                else:
-                    partner = self.env['res.partner'].sudo().create({
-                        'name': str(partner_name_value),
-                        #'vat': False,
-                        'company_type': 'company',
-                        'ocr_sale_account_id': account700.id,
-                        'ocr_purchase_account_id': account600.id,
-                    })
-                    #partner = self.env['res.partner'].search([('vat', "=", 'ES12345678Z'),'|',('active', "=", False),('active', "=", True)])
                 if not partner:
                     partner = self.env['res.partner'].sudo().create({
                         'name': str(partner_name_value),
@@ -267,6 +258,8 @@ class ResCompany(models.Model):
                         'ocr_sale_account_id': account700.id,
                         'ocr_purchase_account_id': account600.id,
                     })
+                    #partner = self.env['res.partner'].search([('vat', "=", 'ES12345678Z'),'|',('active', "=", False),('active', "=", True)])
+
                 if partner:
                     date = self.env['ocr.values'].sudo().search([
                         ('token', '=', t.token), ('name', '=', 'Fecha')], limit=1)
@@ -309,7 +302,14 @@ class ResCompany(models.Model):
                 if invoice:
                     t.state = 'downloaded'
                     t.invoice_id = invoice.id
-                    attachment = self.generate_attachment(ocr_document_data['image'], header, invoice, t)
+
+                    if "document" in ocr_document_data:
+                        link = ocr_document_data['document']
+                        file_type = 'application/pdf'
+                    else:
+                        link = ocr_document_data['image']
+                        file_type = 'image/jpeg'
+                    attachment = self.generate_attachment(link, header, invoice, t, file_type)
                     body = "<p>created with OCR Documents</p>"
                     if attachment:
                         invoice.message_post(body=body, attachment_ids=[attachment.id])
@@ -319,7 +319,7 @@ class ResCompany(models.Model):
                 t.state = 'downloaded'
 
     @api.multi
-    def generate_attachment(self, api_img_url, headers, document, ocr_document):
+    def generate_attachment(self, api_img_url, headers, document, ocr_document, file_type):
 
         response = requests.get(api_img_url, headers=headers)
 
@@ -328,15 +328,15 @@ class ResCompany(models.Model):
             img_file_encode = base64.b64encode(response.content)
 
             return self.env['ir.attachment'].sudo().create({
-                    'name': str(ocr_document.name) + "_" + str(ocr_document.id),
-                    'type': 'binary',
-                    'datas': img_file_encode,
-                    'datas_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
-                    'store_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
-                    'res_model': 'account.invoice',
-                    'res_id': document.id,
-                    'mimetype': 'image/jpeg'
-                })
+                'name': str(ocr_document.name) + "_" + str(ocr_document.id),
+                'type': 'binary',
+                'datas': img_file_encode,
+                'datas_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
+                'store_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
+                'res_model': 'account.invoice',
+                'res_id': document.id,
+                'mimetype': file_type
+            })
 
         elif response.status_code == 400:
             ocr_document.transaction_error = "Error 400"
