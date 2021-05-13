@@ -6,6 +6,8 @@
             <tree string="Credentials">
                 <field name="name" modifiers="{}"/>
                 <field name="partner_id"/>
+                <field name="create_uid" widget="many2one_avatar_user" optional="show"/>
+                <field name="activity_ids" widget="list_activity" optional="show"/>
                 <field name="type"/>
                 <field name="public"/>
             </tree>
@@ -21,7 +23,7 @@
                 <sheet name="main" string="Credentials">
                     <div class="oe_button_box" name="button_box">
                         <button class="oe_stat_button" type="object" name="toggle_active" icon="fa-archive">
-                            <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                            <field name="active" widget="boolean_button" options="{'terminology': 'archive'}"/>
                         </button>
                     </div>
                     <h2>
@@ -39,6 +41,11 @@
                             <field name="public"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description" class="field_description" placeholder="Description..."/>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
