@@ -9,3 +9,5 @@ class RepairFee(models.Model):
 
     iset_id = fields.Many2one('isets')
     type_id = fields.Many2one('working.type', 'Type')
+    employee_id = fields.Many2one('hr.employee', string="Employee")
+    date = fields.Date(string='Date')
