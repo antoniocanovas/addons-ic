@@ -209,7 +209,9 @@ class Isets(models.Model):
                                                         'create_uid': li.user_id.id, 'product_uom_qty': duration,
                                                         'price_unit': product_id.list_price,
                                                         'product_uom': product_id.uom_id.id,
-                                                        'type_id': record.type_id.id
+                                                        'type_id': record.type_id.id,
+                                                        'employee_id': li.id,
+                                                        'date': record.date,
                                                         })
                 else:
                     raise Warning(

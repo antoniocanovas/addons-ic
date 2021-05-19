@@ -46,7 +46,7 @@ elif (record.work_id.type == "repair") and (record.employee_ids.ids) and (record
         new = env['repair.fee'].create({'iset_id':record.id, 'product_id':product_id.id,
         'name': name, 'repair_id':record.repair_id.id, 'company_id':record.company_id.id,
         'create_uid':li.user_id.id, 'product_uom_qty':duration, 'price_unit':product_id.list_price,
-        'product_uom':product_id.uom_id.id, 'type_id':record.type_id.id
+        'product_uom':product_id.uom_id.id, 'type_id':record.type_id.id, 'employee_id':li.id, 'date':record.date
         })
   else: raise Warning('Se requiere definir el PRODUCTO el el tipo de asistencia para poder crear las imputaciones !!')
 
