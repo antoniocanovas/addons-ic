@@ -7,6 +7,9 @@ from datetime import datetime, timedelta
 import json
 from random import randint
 import requests
+import img2pdf
+from PIL import Image
+import io
 from odoo import fields, models, api
 from odoo.exceptions import ValidationError
 
@@ -306,10 +309,13 @@ class ResCompany(models.Model):
                     if "document" in ocr_document_data:
                         link = ocr_document_data['document']
                         file_type = 'application/pdf'
+                        attachment = self.generate_attachment(link, header, invoice, t, file_type)
                     else:
                         link = ocr_document_data['image']
                         file_type = 'image/jpeg'
-                    attachment = self.generate_attachment(link, header, invoice, t, file_type)
+                        attachment = self.img_2_pdf(link, header, invoice, t, file_type)
+                    #attachment = self.generate_attachment(link, header, invoice, t, file_type)
+
                     body = "<p>created with OCR Documents</p>"
                     if attachment:
                         invoice.message_post(body=body, attachment_ids=[attachment.id])
@@ -317,6 +323,43 @@ class ResCompany(models.Model):
 
             else:
                 t.state = 'downloaded'
+
+    @api.multi
+    def img_2_pdf(self, api_img_url, headers, document, ocr_document, file_type):
+
+        response = requests.get(api_img_url, headers=headers)
+
+        if response.status_code == 200:
+
+            with open('/tmp/img.jpg', 'wb') as f:
+                f.write(response.content)
+
+            img = Image.open('/tmp/img.jpg')
+            pdf_bytes = img2pdf.convert(img.filename)
+
+            img_file_encode = base64.b64encode(pdf_bytes)
+
+            return self.env['ir.attachment'].sudo().create({
+                'name': str(ocr_document.name) + "_" + str(ocr_document.id),
+                'type': 'binary',
+                'datas': img_file_encode,
+                'datas_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
+                'store_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
+                'res_model': 'account.invoice',
+                'res_id': document.id,
+                'mimetype': 'application/pdf'
+            })
+
+        elif response.status_code == 400:
+            ocr_document.transaction_error = "Error 400"
+            _logger.info(
+                "Error from OCR server  %s" % ocr_document.transaction_error
+            )
+        else:
+            ocr_document.transaction_error = json.loads(response.content.decode('utf-8'))
+            _logger.info(
+                "Error from OCR server  %s" % ocr_document.transaction_error
+            )
 
     @api.multi
     def generate_attachment(self, api_img_url, headers, document, ocr_document, file_type):
@@ -419,7 +462,7 @@ class ResCompany(models.Model):
         ########## Hacemos una consulta por cada ApiKey ################
         for key in ApiKeys:
             header = self.get_header(key)
-
+            print("key", key)
             transactions_by_state = self.get_documents_data(api_transaction_url, header)
             ############### Control status donwloaded #######################
             if transactions_by_state:

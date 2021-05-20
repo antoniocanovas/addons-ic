@@ -49,6 +49,15 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <record id="update_templates" model="ir.actions.server">
+            <field name="name">Update Templates</field>
+            <field name="model_id" ref="viafirma.model_viafirma_templates"/>
+            <field name="state">code</field>
+            <field name="code">
+                action = model.updated_templates()
+            </field>
+       </record>
+
     <menuitem
             action="action_viafirma"
             id="viafirma_main"
@@ -67,12 +76,31 @@
         <field name="web_icon" eval="False"/>
     </record>
 
+    <record id="menu_viafirma_templates_menu" model="ir.ui.menu">
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        <field name="name">Templates</field>
+        <field name="parent_id" ref="viafirma_main"/>
+        <field name="sequence">2</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
     <record id="menu_viafirma_templates" model="ir.ui.menu">
         <field name="action" ref="action_viafirma_templates"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
         <field name="name">Templates</field>
-        <field name="parent_id" ref="viafirma_main"/>
+        <field name="parent_id" ref="menu_viafirma_templates_menu"/>
+        <field name="sequence">1</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+    <record id="menu_viafirma_templates_update" model="ir.ui.menu">
+        <field name="action" ref="update_templates"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        <field name="name">Update Templates</field>
+        <field name="parent_id" ref="menu_viafirma_templates_menu"/>
         <field name="sequence">2</field>
         <field name="web_icon" eval="False"/>
     </record>

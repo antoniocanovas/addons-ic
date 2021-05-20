@@ -7,6 +7,7 @@ import json
 import requests
 from odoo.exceptions import ValidationError
 
+
 # la consulta a tecdoc devuelve todos los coches de la serie, por lo que deberia de haber un modelo coche, quye pertenezca a una marca, modelo y serie determinada
 class ViafirmaTemplates(models.Model):
     _name = 'viafirma.templates'
