@@ -190,7 +190,7 @@ class Isets(models.Model):
             if (record.work_id.type == "project") and (record.employee_ids.ids) and (record.project_id.id):
                 for li in record.employee_ids:
                     name = record.name + start
-                    new = env['account.analytic.line'].create(
+                    new = self.env['account.analytic.line'].create(
                         {'iset_id': record.id, 'name': name, 'project_id': record.project_id.id,
                          'task_id': record.task_id.id, 'date': record.date, 'account_id': record.project_analytic_id.id,
                          'company_id': record.company_id.id,
@@ -203,7 +203,7 @@ class Isets(models.Model):
                     product_id = record.work_id.repair_service_id
                     for li in record.employee_ids:
                         name = product_id.name + start + " - " + li.name
-                        new = env['repair.fee'].create({'iset_id': record.id, 'product_id': product_id.id,
+                        new = self.env['repair.fee'].create({'iset_id': record.id, 'product_id': product_id.id,
                                                         'name': name, 'repair_id': record.repair_id.id,
                                                         'company_id': record.company_id.id,
                                                         'create_uid': li.user_id.id, 'product_uom_qty': duration,
@@ -226,7 +226,7 @@ class Isets(models.Model):
                                              minute=int((record.stop - int(record.stop)) * 60))
                 for li in record.employee_ids:
                     name = record.workorder_id.name + start + " - " + li.name
-                    new = env['mrp.workcenter.productivity'].create(
+                    new = self.env['mrp.workcenter.productivity'].create(
                         {'iset_id': record.id, 'description': name, 'production_id': record.mrp_id.id,
                          'workorder_id': record.workorder_id.id, 'workcenter_id': record.workorder_id.workcenter_id.id,
                          'company_id': record.company_id.id,
