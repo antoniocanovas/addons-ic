@@ -16,35 +16,41 @@ class iSetTimesheet(models.Model):
     analytic_line_ids = fields.One2many('account.analytic.line', 'iset_timesheet_id', string="Analytic line")
 
     def calculate_project_time(self):
-        time = 0
-        for line in self.analytic_line_ids:
-            if line.unit_amount:
-                time = time + line.unit_amount
-        self.project_time = time
+        for record in self:
+            time = 0
+            for line in record.analytic_line_ids:
+                if line.unit_amount:
+                    time += line.unit_amount
+            record.project_time = time
 
     project_time = fields.Float("Project Time", store=False, compute="calculate_project_time")
 
     repair_fee_ids = fields.One2many('repair.fee', 'iset_timesheet_id', string="Repair fee")
-    repair_time = fields.Float("Repair Time")
+
+    def calculate_repair_time(self):
+        for record in self:
+            time = 0
+            for line in record.repair_fee_ids:
+                if line.uom_product_qty:
+                    time += line.uom_product_qty
+            record.project_time = time
+    repair_time = fields.Float("Repair Time", store=False, compute="calculate_repair_time")
 
     mrp_productivity_ids = fields.One2many('mrp.workcenter.productivity', 'iset_timesheet_id', string="MRP")
 
     def calculate_mrp_time(self):
-        time = 0
-        for line in self.mrp_productivity_ids:
-            if line.duration:
-                time = time + line.duration
-        self.mrp_time = time
+        for record in self:
+            time = 0
+            for line in record.mrp_productivity_ids:
+                if line.duration:
+                    time += line.duration
+            record.mrp_time = time/60
 
     mrp_time = fields.Float("MRP Time", store=False, compute="calculate_mrp_time")
 
     def calculate_total_time(self):
-        time = 0
-        if self.project_time:
-            time = time + self.project_time
-        if self.mrp_time:
-            time = time + self.mrp_time
-        self.time = time
+        for record in self:
+            record.time = record.mrp_time + record.project_time + record.repair_time
 
     time = fields.Float("Total Time", store=False, compute="calculate_total_time")
 

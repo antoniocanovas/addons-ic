@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="update_project_timesheet" model="base.automation">
+            <field name="name">=> Update project iset_timesheet</field>
+            <field name="model_id" ref="account.model_account_analytic_line"/>
+            <field name="state">code</field>
+            <field name="code">
+if (record.date) and (record.employee_id.id):
+  iset_ts = env['iset.timesheet'].search([('date','=',record.date),('employee_id','=',record.employee_id.id)])
+  if not iset_ts.id:
+    name = record.employee_id.name + " - " + str(record.date)
+    iset_ts = env['iset.timesheet'].create({'name':name, 'date':record.date, 'employee_id':record.employee_id.id})
+  record['iset_timesheet_id'] = iset_ts.id
+            </field>
+            <field name="trigger">on_create_or_write</field>
+            <!--<field name="trigger_field_ids">(6, 0, [2608,6938])</field>-->
+            <field name="filter_pre_domain"></field>
+            <field name="filter_domain"></field>
+            <field name="active" eval="True"/>
+        </record>
+
+
+        <record id="update_repair_timesheet" model="base.automation">
+            <field name="name">=> Update repair iset_timesheet</field>
+            <field name="model_id" ref="repair.model_repair_fee"/>
+            <field name="state">code</field>
+            <field name="code">
+if (record.date) and (record.employee_id.id):
+  iset_ts = env['iset.timesheet'].search([('date','=',record.date),('employee_id','=',record.employee_id.id)])
+  if not iset_ts.id:
+    name = record.employee_id.name + " - " + str(record.date)
+    iset_ts = env['iset.timesheet'].create({'name':name, 'date':record.date, 'employee_id':record.employee_id.id})
+  record['iset_timesheet_id'] = iset_ts.id
+            </field>
+            <field name="trigger">on_create_or_write</field>
+            <!--<field name="trigger_field_ids">(6, 0, [2608,6938])</field>-->
+            <field name="filter_pre_domain"></field>
+            <field name="filter_domain"></field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="update_mrp_timesheet" model="base.automation">
+            <field name="name">=> Update mrp iset_timesheet</field>
+            <field name="model_id" ref="mrp.model_mrp_workcenter_productivity"/>
+            <field name="state">code</field>
+            <field name="code">
+if (record.date_start) and (record.user_id.id):
+  date = record.date_start.date()
+  iset_ts = env['iset.timesheet'].search([('date','=',date),('employee_id','=',record.user_id.employee_id.id)])
+  if not iset_ts.id:
+    name = record.user_id.name + " - " + str(date)
+    iset_ts = env['iset.timesheet'].create({'name':name, 'date':date, 'employee_id':record.user_id.employee_id.id})
+  record['iset_timesheet_id'] = iset_ts.id
+            </field>
+            <field name="trigger">on_create_or_write</field>
+            <!--<field name="trigger_field_ids">(6, 0, [2608,6938])</field>-->
+            <field name="filter_pre_domain"></field>
+            <field name="filter_domain"></field>
+            <field name="active" eval="True"/>
+        </record>
+
+    </data>
+
+</odoo>
