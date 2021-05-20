@@ -15,9 +15,9 @@
                         <field name="work_id" widget="selection"/>
                         <field name="employee_ids" widget="many2many_tags"/>
                     </group><group>
-                        <field name="start" widget="timesheet_uom" attrs="{'invisible':[('set_start_stop','=',False)]}"/>
-                        <field name="stop" widget="timesheet_uom" attrs="{'invisible':[('set_start_stop','=',False)]}"/>
-                        <field name="duration" widget="timesheet_uom" attrs="{'invisible':[('set_start_stop','=',True)]}"/>
+                        <field name="start" widget="timesheet_uom" attrs="{'invisible':['|',('type','=','production'),('set_start_stop','=',False),('type','!=','production')]}"/>
+                        <field name="stop" widget="timesheet_uom" attrs="{'invisible':['|',('type','=','production'),('set_start_stop','=',False),('type','!=','production')]}"/>
+                        <field name="duration" widget="timesheet_uom" attrs="{'invisible':['|',('set_start_stop','=',True),('type','=','production')]}"/>
                         <field name="type_id"/>
                     </group></group>
 
@@ -33,7 +33,7 @@
                         </div>
                         <div attrs="{'invisible':[('mrp_id','=',False)]}">
                             <h2>Services: </h2><i>(Workorder REQUIRED)</i>
-                            <field name="mrp_service_ids" attrs="{'readonly':[('workorder_id','=',False)]}" context="{'default_production_id':mrp_id, 'default_workorder_id':workorder_id, 'default_company_id': company_id}">
+                            <field name="mrp_service_ids" require="1" attrs="{'readonly':[('workorder_id','=',False)]}" context="{'default_production_id':mrp_id, 'default_workorder_id':workorder_id, 'default_company_id': company_id}">
                                 <tree editable="bottom">
                                     <field name="production_id" invisible="1"/>
                                     <field name="workorder_id" invisible="1"/>

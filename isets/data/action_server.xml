@@ -48,7 +48,7 @@ elif (record.work_id.type == "repair") and (record.employee_ids.ids) and (record
         'create_uid':li.user_id.id, 'product_uom_qty':duration, 'price_unit':product_id.list_price,
         'product_uom':product_id.uom_id.id, 'type_id':record.type_id.id, 'employee_id':li.id, 'date':record.date
         })
-  else: raise Warning('Se requiere definir el PRODUCTO el el tipo de asistencia para poder crear las imputaciones !!')
+  else: raise Warning('Se requiere definir el PRODUCTO en el tipo de asistencia para poder crear las imputaciones !!')
 
 # CASE PRODUCTION:
 elif (record.work_id.type == "production") and (record.employee_ids.ids) and (record.workorder_id.id):
@@ -57,11 +57,13 @@ elif (record.work_id.type == "production") and (record.employee_ids.ids) and (re
   date_end = datetime.datetime(year=record.date.year,  month=record.date.month, day=record.date.day,
       hour=int(record.stop - inc), minute=int((record.stop-int(record.stop))*60))
   for li in record.employee_ids:
-    name = record.workorder_id.name + " - " + start + " - " + li.name
+    name = record.workorder_id.name  + start + " - " + li.name
     new = env['mrp.workcenter.productivity'].create({'iset_id':record.id, 'description': name, 'production_id':record.mrp_id.id,
           'workorder_id':record.workorder_id.id, 'workcenter_id':record.workorder_id.workcenter_id.id, 'company_id':record.company_id.id,
-          'loss_id':record.production_loss_id.id, 'date_start':date_start, 'date_end':date_end, 'type_id':record.type_id.id
+          'loss_id':record.production_loss_id.id, 'date_start':date_start, 'date_end':date_end, 'type_id':record.type_id.id,
+          'user_id':li.user_id.id
     })
+
             </field>
         </record>
 
