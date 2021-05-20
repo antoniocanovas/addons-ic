@@ -1,6 +1,6 @@
 {
     'name': 'OCR transactions',
-    'version': '12.0.1.1.0',
+    'version': '12.0.2.1.0',
     'category': '',
     'description': u"""
 
@@ -12,6 +12,7 @@
         'contacts',
         'dbcopy_post_actions',
         'queue_job_cron',
+        'partner_credentials',
     ],
     'data': [
         'security/ir.model.access.csv',
