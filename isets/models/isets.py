@@ -176,11 +176,11 @@ class Isets(models.Model):
                 # Calculate local time diference with UTC:
                 date_today = datetime(year=record.date.year, month=record.date.month, day=record.date.day,
                                                hour=12, minute=0)
-                date_utc = date_today.astimezone(datetime.timezone(self.env.user.tz))
+                date_utc = date_today.astimezone(timezone(self.env.user.tz))
                 inc = date_utc.hour - date_today.hour
 
                 # Change 'hour/min' in record.start to string format to include in fields "name":
-                start = str(datetime.timedelta(hours=record.start))
+                start = str(timedelta(hours=record.start))
                 if (record.start >= 10):
                     start = start[:5]
                 else:
