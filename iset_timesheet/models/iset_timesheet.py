@@ -33,7 +33,7 @@ class iSetTimesheet(models.Model):
             for line in record.repair_fee_ids:
                 if line.uom_product_qty:
                     time += line.uom_product_qty
-            record.project_time = time
+            record.repair_time = time
     repair_time = fields.Float("Repair Time", store=False, compute="calculate_repair_time")
 
     mrp_productivity_ids = fields.One2many('mrp.workcenter.productivity', 'iset_timesheet_id', string="MRP")
