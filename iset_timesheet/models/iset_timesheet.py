@@ -31,8 +31,8 @@ class iSetTimesheet(models.Model):
         for record in self:
             time = 0
             for line in record.repair_fee_ids:
-                if line.uom_product_qty:
-                    time += line.uom_product_qty
+                if line.product_uom_qty:
+                    time += line.product_uom_qty
             record.repair_time = time
     repair_time = fields.Float("Repair Time", store=False, compute="calculate_repair_time")
 
