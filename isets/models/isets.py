@@ -1,6 +1,7 @@
 from odoo import _, api, fields, models
 from datetime import datetime, timezone, timedelta
 import pytz
+from odoo.exceptions import ValidationError
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -159,11 +160,14 @@ class Isets(models.Model):
         for record in self:
 
             # Check required fields:
-            if (record.type == 'project') and not (record.project_id.id != False): raise Warning(
+            if (record.type == 'project') and not (record.project_id.id != False):
+                raise ValidationError(
                 'Project is required, please select one !!')
-            if (record.type == 'production') and not (record.workorder_id.id != False): raise Warning(
+            if (record.type == 'production') and not (record.workorder_id.id != False):
+                raise ValidationError(
                 'Workorder is required, please select one !!')
-            if (record.type == 'repair') and not (record.repair_id.id != False): raise Warning(
+            if (record.type == 'repair') and not (record.repair_id.id != False):
+                raise ValidationError(
                 'Asistance is required, please select one !!')
 
             # Required start to concatenate later, required duration to change later if startstop:
@@ -176,7 +180,8 @@ class Isets(models.Model):
                 # Calculate local time diference with UTC:
                 date_today = datetime(year=record.date.year, month=record.date.month, day=record.date.day,
                                                hour=12, minute=0)
-                date_utc = date_today.astimezone(timezone(self.env.user.tz))
+
+                date_utc = date_today.astimezone(pytz.timezone(self.env.user.tz))
                 inc = date_utc.hour - date_today.hour
 
                 # Change 'hour/min' in record.start to string format to include in fields "name":
@@ -213,7 +218,7 @@ class Isets(models.Model):
                                                         'date': record.date
                                                         })
                 else:
-                    raise Warning(
+                    raise ValidationError(
                         'Se requiere definir el PRODUCTO en el tipo de asistencia para poder crear las imputaciones !!')
 
             # CASE PRODUCTION:
