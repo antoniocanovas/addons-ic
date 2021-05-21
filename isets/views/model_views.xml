@@ -259,6 +259,28 @@
         <field name="type">tree</field>
     </record>
 
+    <record id="isets_tree_search" model="ir.ui.view">
+        <field name="name">iset.tree.search</field>
+        <field name="model">isets</field>
+        <field name="arch" type="xml">
+            <search string="Search iSets">
+                <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                <field name="type" filter_domain="[('type_id', 'ilike', self)]"/>
+                <field name="work_id" filter_domain="[('work_id', 'ilike', self)]"/>
+                <separator/>
+                <filter string="Repairs" name="type_repair" domain="[('type', '=', 'repair')]"/>
+                <filter string="Projects" name="type_project" domain="[('type', '=', 'project')]"/>
+                <filter string="Productions" name="type_production" domain="[('type', '=', 'production')]"/>
+                <separator/>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="schedule" string="Schedule" domain="[]" context="{'group_by' : 'type_id'}"/>
+                    <filter name="work_type" string="Work" context="{'group_by': 'work_id'}"/>
+                    <filter name="date" string="Date" context="{'group_by': 'date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
 
     <record id="isets_work_tree" model="ir.ui.view">
         <field name="active" eval="True"/>

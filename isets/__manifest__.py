@@ -15,9 +15,10 @@
 
     ],
     'data': [
-        'views/menu_views.xml',
+
         'security/ir.model.access.csv',
         'views/model_views.xml',
+        'views/menu_views.xml',
         'data/action_server.xml',
         'data/data.xml',
     ],

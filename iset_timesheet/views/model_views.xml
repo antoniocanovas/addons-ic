@@ -24,6 +24,26 @@
         <field name="type">tree</field>
     </record>
 
+    <record id="isets_timesheet_tree_search" model="ir.ui.view">
+        <field name="name">iset.timesheet.tree.search</field>
+        <field name="model">iset.timesheet</field>
+        <field name="arch" type="xml">
+            <search string="Search Timesheet iSets">
+                    <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                    <field name="employee_id" filter_domain="[('employee_id', 'ilike', self)]"/>
+  <!--
+                    <separator/>
+                    <filter string="Under 8h" name="under_8_hours" domain="[('time', '&lt;', 8)]"/>
+                    <separator/>
+  -->
+                    <group expand="0" name="group_by" string="Group By">
+                        <filter name="employee" string="Employee" domain="[]" context="{'group_by' : 'employee_id'}"/>
+                        <filter name="date" string="Date" domain="[]" context="{'group_by' : 'date'}"/>
+                    </group>
+                </search>
+        </field>
+    </record>
+
     <record id="isets_timesheet_form" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
