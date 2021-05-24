@@ -7,11 +7,11 @@ _logger = logging.getLogger(__name__)
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    purchase_order_ids = fields.One2many('purchase.order', 'so_id')
+    purchase_order_ids = fields.One2many('purchase.order', 'sale_id')
 
     def _get_purchase_order_count(self):
         results = self.env['purchase.order'].search([
-            ('so_id', '=', self.id), ]
+            ('sale_id', '=', self.id), ]
         )
         self.purchase_order_count = len(results)
 
