@@ -22,7 +22,7 @@
         <field name="help"><![CDATA[<p>Compras</p>]]></field>
         <field name="limit">80</field>
         <field name="name">Compras</field>
-        <field name="res_model">purchase.order</field>
+        <field name="res_model">sale.order</field>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <!--<field name="view_id" ref="helpdesk.helpdesk_tickets_view_tree"/>-->
@@ -38,8 +38,8 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet/div[@name='button_box']" position="inside">
 
-                    <button class="oe_stat_button oe_read_only" icon="fa-spinner" type="object" name="action_view_purchases">
-                        <field widget="statinfo" name="purchase_order_count" string="Compras"/>
+                    <button class="oe_stat_button oe_read_only" icon="fa-shopping-cart" type="object" name="action_view_purchases">
+                        <field string="Compras" widget="statinfo" name="purchase_order_count" />
                     </button>
             </xpath>
         </field>
