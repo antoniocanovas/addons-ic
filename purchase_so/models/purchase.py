@@ -10,6 +10,6 @@ class PurchaseOrder(models.Model):
     so_id = fields.Many2one(
         'sale.order',
         string="Sale Order",
-        domain="[('state','in','draft')]"
+        domain="[('state','not in',['draft','cancel'])]"
 
     )
