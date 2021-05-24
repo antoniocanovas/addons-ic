@@ -19,7 +19,7 @@ class SaleOrder(models.Model):
 
     def action_view_purchases(self):
         action = self.env.ref(
-            'purchase_so.action_view_purchases').read()[0]
+            'purchase_so.action_view_purchases_so').read()[0]
         return action
 
 
