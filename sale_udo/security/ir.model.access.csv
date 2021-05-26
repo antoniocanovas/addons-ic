@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_udo_quality,udo_quality user,sale_udo.model_udo_quality,base.group_user,1,0,0,0
+access_udo_style,udo_style user,sale_udo.model_udo_style,base.group_user,1,0,0,0
+access_udo_target,udo_target user,sale_udo.model_udo_target,base.group_user,1,0,0,0
+access_udo_type,udo_type user,sale_udo.model_udo_type,base.group_user,1,0,0,0
+access_udo_quality_manager,udo_quality manager,sale_udo.model_udo_quality,sales_team.group_sale_manager,1,1,1,1
+access_udo_style_manager,udo_style manager,sale_udo.model_udo_style,sales_team.group_sale_manager,1,1,1,1
+access_udo_target_manager,udo_target manager,sale_udo.model_udo_target,sales_team.group_sale_manager,1,1,1,1
+access_udo_type_manager,udo_type manager,sale_udo.model_udo_type,sales_team.group_sale_manager,1,1,1,1
