@@ -18,4 +18,4 @@ class UdoTemplate(models.Model):
     type_id = fields.Many2one('udo.type',  string='Type')
     product_brand_id = fields.Many2one('product.brand', string='Product brand')
 
-    line_ids = fields.One2many('udo.line', 'order_line_id')
+    line_ids = fields.One2many('udo.template.line', 'template_id')
