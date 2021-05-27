@@ -7,8 +7,9 @@
 """,
     'author': 'Serincloud',
     'depends': [
-        'sale',
-        'stock',
+        'sale_management',
+        'product_brand',
+        'hr',
 
 
     ],
@@ -17,6 +18,8 @@
         'security/ir.model.access.csv',
         #'views/model_views.xml',
         'views/menu_views.xml',
+        'views/menu_udo_line.xml',
+        #'views/menu_views.xml',
         #'data/action_server.xml',
         #'data/data.xml',
     ],
