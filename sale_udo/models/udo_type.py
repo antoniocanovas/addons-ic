@@ -8,4 +8,4 @@ class UdoType(models.Model):
     _name = 'udo.type'
     _description = 'UDO Type '
 
-    name = fields.Char(string='Type')
+    name = fields.Char(string='Type', required=True)
