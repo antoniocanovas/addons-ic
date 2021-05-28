@@ -19,4 +19,16 @@ class UdoSaleOrderLine(models.Model):
 
     udo_cost_amount = fields.Monetary('UDO Cost', store=False, compute='get_udo_cost_amount')
 
-
+    def action_open_sol(self):
+        return {
+            'name': _('SOL'),
+            'view_type': 'tree',
+            'view_mode': 'form',
+            'res_model': 'sale.order.line',
+            'type': 'ir.actions.act_window',
+            'view_id':
+                self.env.ref('sale_udo.sale_order_line_udo_form').id,
+            'context': dict(self.env.context),
+            'target': 'new',
+            'res_id': self.id,
+        }
