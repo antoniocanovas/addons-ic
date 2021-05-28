@@ -58,33 +58,50 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <record id="action_sale_udo_template" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="domain" eval="False"/>
+        <field name="filter" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="limit">80</field>
+        <field name="name">UdO Templates</field>
+        <field name="res_model">udo.template</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
-     <menuitem id="menu_sale_udo_config"
-            name="UDO"
-            parent="sale.menu_sale_config"
-            sequence="6"
-    />
-
+    <menuitem id="menu_sale_udo_config"
+              name="UdO"
+              parent="sale.menu_sale_config"
+              sequence="6"/>
+    <menuitem id="sale_udo_template_menu"
+              name="Template"
+              parent="sale_udo.menu_sale_udo_config"
+              action="action_sale_udo_template"
+              sequence="1"/>
     <menuitem id="menu_sale_udo_target"
-        name="Target"
-        parent="sale_udo.menu_sale_udo_config"
-        action="sale_udo.sale_udo_target"
-        sequence="1"/>
+              name="Target"
+              parent="sale_udo.menu_sale_udo_config"
+              action="sale_udo.sale_udo_target"
+              sequence="2"/>
     <menuitem id="menu_sale_udo_quality"
-        name="Quality"
-        parent="sale_udo.menu_sale_udo_config"
-        action="sale_udo.sale_udo_quality"
-        sequence="2"/>
+              name="Quality"
+              parent="sale_udo.menu_sale_udo_config"
+              action="sale_udo.sale_udo_quality"
+              sequence="3"/>
     <menuitem id="menu_sale_udo_type"
-        name="Type"
-        parent="sale_udo.menu_sale_udo_config"
-        action="sale_udo.sale_udo_type"
-        sequence="3"/>
+              name="Type"
+              parent="sale_udo.menu_sale_udo_config"
+              action="sale_udo.sale_udo_type"
+              sequence="4"/>
     <menuitem id="menu_sale_udo_style"
-        name="Style"
-        parent="sale_udo.menu_sale_udo_config"
-        action="sale_udo.sale_udo_style"
-        sequence="4"/>
+              name="Style"
+              parent="sale_udo.menu_sale_udo_config"
+              action="sale_udo.sale_udo_style"
+              sequence="5"/>
 
 
 

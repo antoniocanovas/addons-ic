@@ -8,4 +8,4 @@ class UdoTarget(models.Model):
     _name = 'udo.target'
     _description = 'UDO Target '
 
-    name = fields.Char(string='Target')
+    name = fields.Char(string='Target', required=True)

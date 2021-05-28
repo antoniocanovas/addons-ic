@@ -8,4 +8,4 @@ class UdoQuality(models.Model):
     _name = 'udo.quality'
     _description = 'UDO Quality '
 
-    name = fields.Char(string='Quality')
+    name = fields.Char(string='Quality', required=True)

@@ -8,4 +8,4 @@ class UdoStyle(models.Model):
     _name = 'udo.style'
     _description = 'UDO Style '
 
-    name = fields.Char(string='Style')
+    name = fields.Char(string='Style', required=True)
