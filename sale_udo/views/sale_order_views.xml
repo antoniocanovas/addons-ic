@@ -34,7 +34,7 @@
                             <field name="udo_qty"/>
                         </group>
                         <group>
-                            <button class="oe_highlight oe_edit_only" type="action" name="512" string="Add UdOs"/>
+                            <button class="oe_highlight oe_edit_only" type="action" name="%(sale_udo.sale_order_line_from_udo_template)d" string="Add UdOs"/>
                         </group>
                     </group>
                     <field name="udo_line_ids">
