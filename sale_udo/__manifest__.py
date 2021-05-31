@@ -10,6 +10,7 @@
         'sale_management',
         'product_brand',
         'hr',
+        'base_automation',
 
 
     ],
@@ -19,7 +20,9 @@
         'views/model_views.xml',
         'views/menu_views.xml',
         'views/sale_order_views.xml',
+        'views/product_views.xml',
         'data/server_action.xml',
+        'data/automated_action.xml',
         #'data/data.xml',
     ],
     'installable': True,

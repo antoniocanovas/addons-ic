@@ -1,0 +1,78 @@
+<odoo>
+    <data>
+        <record id="sale_order_recalculate_sd" model="ir.actions.server">
+                <field name="name">=> recalculate special discounts</field>
+                <field name="model_id" ref="model_sale_order"/>
+                <field name="state">code</field>
+                <field name="code">
+# FALTA ROUND() EN TODOS LOS CÁLCULOS DE FLOAT, LOS RESUTADOS MONETARIOS LOS HACE POR DEFECTO.
+# El precio de coste se escribe en cada cálculo, si hay un cambio manual de cantidad en udos, se pierde.
+
+# CASE "TARGER_PRICE":
+if record.discount_type == 'target_price':
+  # Calculating real total cost and sale without discount:
+  cost_amount, price_amount, margin = 0,0,0
+  for li in record.order_line:
+    if (len(li.udo_line_ids.ids) == 0) and (li.product_uom_qty > 0):
+      cost_amount += li.price_unit_cost * li.product_uom_qty
+      price_amount += li.price_unit * li.product_uom_qty
+    elif (len(li.udo_line_ids.ids) > 0) and (li.product_uom_qty > 0):
+      cost_amount  += li.udo_cost_amount
+      price_amount += li.price_subtotal / (1-li.discount/100)
+
+  if (record.arget_price &lt; cost_amount):
+    raise Warning('Saling under cost, not allowed.')
+  else:
+    margin = (1 - (record.target_price / price_amount)) * 100
+  for li in record.order_line:
+    li['discount'] = margin
+  diference = round(record.target_price - record.amount_untaxed,2)
+  if diference != 0:
+    review = True
+    for li in record.order_line:
+      if (li.product_uom_qty == 1) and (review == True):
+        li['price_unit'] = li.price_unit + diference
+        review = False
+
+
+# CASES INTEGRALIA  MARGIN_OVER_COST:
+else:
+  for li in record.order_line:
+    # If we use type, there is not line discount:
+    if (li.discount != 0):
+      li['discount'] = 0
+
+    # Line NOT UDO:
+    if (len(li.udo_line_ids.ids) == 0) and (li.product_uom_qty > 0):
+      if li.product_uom.uom_type == 'reference':
+        qty_uom = li.product_uom_qty
+      elif li.product_uom.uom_type == 'bigger':
+        qty_uom = li.product_uom_qty * li.product_uom.factor_inv
+      elif li.product_uom.uom_type == 'smaller':
+        qty_uom = li.product_uom_qty / li.product_uom.factor
+
+      if (li.product_id.product_tmpl_id.our_service == True) and (record.discount_type == 'integralia'):
+        li.write({'price_unit':record.price_our_service * qty_oum, 'lst_price':li.product_id.lst_price * qty_uom})
+      else:
+        if (record.margin &lt; 100):
+          li.write({'price_unit':(li.product_id.standard_price / (1 - record.margin / 100) * qty_uom), 'lst_price':li.product_id.lst_price * qty_uom})
+        else:
+          li.write({'price_unit':(li.product_id.standard_price  * (1 + record.margin / 100) * qty_uom), 'lst_price':li.product_id.lst_price * qty_uom})
+
+    elif (len(li.udo_line_ids.ids) > 0):
+      for liudo in li.udo_line_ids:
+        if (liudo.product_id.product_tmpl_id.our_service == True) and (record.discount_type == 'integralia'):
+          liudo['price_unit'] = record.price_our_service
+        else:
+          if (record.margin &lt; 100):
+            liudo.write({'price_unit':(liudo.product_id.standard_price / (1 - record.margin / 100)),
+              'price_unit_cost': liudo.product_id.standard_price})
+          else:
+            liudo.write({'price_unit':(liudo.product_id.standard_price * (1 + record.margin / 100)),
+              'price_unit_cost': liudo.product_id.standard_price})
+
+
+                </field>
+        </record>
+    </data>
+</odoo>
