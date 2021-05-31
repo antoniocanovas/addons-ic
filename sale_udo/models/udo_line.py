@@ -19,36 +19,41 @@ class UdoLine(models.Model):
 
     @api.depends('price_unit', 'product_uom_qty')
     def get_subtotal(self):
-        self.subtotal = self.price_unit * self.product_uom_qty
+        for record in self:
+            record.subtotal = record.price_unit * record.product_uom_qty
 
     subtotal = fields.Monetary('Subtotal', currency_field='currency_id', compute="get_subtotal")
 
     @api.depends('product_id')
     def get_lst_price(self):
-        self.lst_price = self.product_id.lst_price
+        for record in self:
+            record.lst_price = record.product_id.lst_price
 
     lst_price = fields.Monetary('List Price', currency_field='currency_id', compute="get_lst_price")
 
     @api.depends('product_id', 'price_unit')
     def get_lst_price_discount(self):
-        if self.price_unit > self.lst_price:
-            discount = 0
-        else:
-            discount = (1 - (self.price_unit / self.lst_price)) * 100
-        self.lst_price_discount = discount
+        for record in self:
+            if record.price_unit > record.lst_price:
+                discount = 0
+            else:
+                discount = (1 - (record.price_unit / record.lst_price)) * 100
+            record.lst_price_discount = discount
 
     lst_price_discount = fields.Monetary('Discount', currency_field='currency_id',
                                         store=False, compute="get_lst_price_discount")
 
     @api.depends('product_id')
     def get_price_unit_cost(self):
-        self.price_unit_cost = self.product_id.standard_price
+        for record in self:
+            record.price_unit_cost = record.product_id.standard_price
 
     price_unit_cost = fields.Monetary('Cost Price', currency_field='currency_id', compute="get_price_unit_cost")
 
     @api.depends('product_id')
     def get_price_unit(self):
-        self.price_unit = self.product_id.lst_price
+        for record in self:
+            record.price_unit = record.product_id.lst_price
 
     price_unit = fields.Monetary('Price Unit', currency_field='currency_id',  compute="get_price_unit")
 

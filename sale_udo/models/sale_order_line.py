@@ -12,16 +12,18 @@ class UdoSaleOrderLine(models.Model):
     udo_line_ids = fields.One2many('udo.line', 'sale_line_id', string='UDO Line')
 
     def get_udo_cost_amount(self):
-        cost = 0
-        for line in self.udo_line_ids:
-            cost += line.price_unit_cost * line.product_uom_qty
-        self.udo_cost_amount = cost
+        for record in self:
+            cost = 0
+            for line in record.udo_line_ids:
+                cost += line.price_unit_cost * line.product_uom_qty
+            record.udo_cost_amount = cost
 
     udo_cost_amount = fields.Monetary('UDO Cost', store=False, compute='get_udo_cost_amount')
 
     @api.depends('product_id')
     def get_lst_price(self):
-        self.lst_price = self.product_id.lst_price
+        for record in self:
+            record.lst_price = record.product_id.lst_price
 
     lst_price = fields.Monetary('List Price', currency_field='currency_id', compute="get_lst_price")
 
@@ -44,7 +46,7 @@ class UdoSaleOrderLine(models.Model):
                     discount = 0
                 else:
                     discount = (1 - (price_unit_with_discount / qty_uom / lst_price)) * 100
-        self.lst_price_discount = discount
+            record.lst_price_discount = discount
 
     lst_price_discount = fields.Monetary('Discount', currency_field='currency_id',
                                          store=False, compute="get_lst_price_discount")
