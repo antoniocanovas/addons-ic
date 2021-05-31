@@ -48,12 +48,12 @@ class UdoLine(models.Model):
         for record in self:
             record.price_unit_cost = record.product_id.standard_price
 
-    price_unit_cost = fields.Monetary('Cost Price', currency_field='currency_id', compute="get_price_unit_cost")
+    price_unit_cost = fields.Monetary('Cost Price', currency_field='currency_id', readonly=False, compute="get_price_unit_cost")
 
     @api.depends('product_id')
     def get_price_unit(self):
         for record in self:
             record.price_unit = record.product_id.lst_price
 
-    price_unit = fields.Monetary('Price Unit', currency_field='currency_id',  compute="get_price_unit")
+    price_unit = fields.Monetary('Price Unit', currency_field='currency_id', readonly=False, compute="get_price_unit")
 
