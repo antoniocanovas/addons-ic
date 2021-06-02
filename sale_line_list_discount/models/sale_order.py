@@ -4,7 +4,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 VALUES = [
-    ('integralia', 'Integralia'),
+    ('fixed_service_margin_over_cost', 'Fixed'),
     ('margin_over_cost', 'Margin over cost'),
     ('target_price', 'Target price'),
 ]
