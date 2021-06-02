@@ -92,10 +92,10 @@
             <xpath expr="//page/field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
                 <button name="action_open_sol" icon="fa-tasks" class="oe_stat_button" string="UdO" type="object"/>
             </xpath>
-            <xpath expr="//field[@name='price_unit']" position="after">
-                <field name="lst_price" optional="show"/>
-                <field name="lst_price_discount" optional="show"/>
-                <field name="udo_cost_amount" optional="show"/>
+            <xpath expr="//page/field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+                <field name="lst_price" optional="hide"/>
+                <field name="lst_price_discount" optional="hide"/>
+                <field name="udo_cost_amount" optional="hide"/>
             </xpath>
         </field>
     </record>

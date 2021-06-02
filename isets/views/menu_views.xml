@@ -31,6 +31,31 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <record id="action_iset_working_type" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="domain" eval="False"/>
+        <field name="filter" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="limit">80</field>
+        <field name="name">iSets Schedule</field>
+        <field name="res_model">working.type</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="menu_isets_working_type" model="ir.ui.menu">
+        <field name="action" ref="action_iset_working_type"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        <field name="name">Schedule</field>
+        <field name="parent_id" ref="isets.menu_isets"/>
+        <field name="sequence">7</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+
     <menuitem
             action="action_isets"
             id="menu_isets"

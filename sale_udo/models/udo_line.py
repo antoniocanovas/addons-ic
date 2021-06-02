@@ -14,6 +14,7 @@ class UdoLine(models.Model):
     currency_id = fields.Many2one('res.currency')
     sale_line_id = fields.Many2one('sale.order.line', string='Líneas')
     name = fields.Char(string='Description')
+    sale_id = fields.Many2one('sale.order', related='sale_line_id.order_id', string='Sale')
 
     @api.depends('price_unit', 'product_uom_qty')
     def get_subtotal(self):

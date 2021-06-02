@@ -15,6 +15,19 @@ class iSetTimesheet(models.Model):
 
     analytic_line_ids = fields.One2many('account.analytic.line', 'iset_timesheet_id', string="Analytic line")
 
+    def _get_extra_time(self):
+        for record in self:
+            extra = 0
+            for li in record.analytic_line_ids:
+                if li.type_id.extra == True: extra += li.unit_amount
+            for li in record.repair_fee_ids:
+                if li.type_id.extra == True: extra += li.product_uom_qty
+            for li in record.mrp_productivity_ids:
+                if li.type_id.extra == True: extra += li.duration
+            record['extra_time'] = extra
+
+    extra_time = fields.Float(store=False, compute="_get_extra_time")
+
     def calculate_project_time(self):
         for record in self:
             time = 0

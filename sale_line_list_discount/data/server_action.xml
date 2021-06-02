@@ -51,7 +51,7 @@ else:
       elif li.product_uom.uom_type == 'smaller':
         qty_uom = li.product_uom_qty / li.product_uom.factor
 
-      if (li.product_id.product_tmpl_id.our_service == True) and (record.discount_type == 'integralia'):
+      if (li.product_id.product_tmpl_id.our_service == True) and (record.discount_type == 'fixed_service_margin_over_cost'):
         li.write({'price_unit':record.price_our_service * qty_oum, 'lst_price':li.product_id.lst_price * qty_uom})
       else:
         if (record.margin &lt; 100):
@@ -61,7 +61,7 @@ else:
 
     elif (len(li.udo_line_ids.ids) > 0):
       for liudo in li.udo_line_ids:
-        if (liudo.product_id.product_tmpl_id.our_service == True) and (record.discount_type == 'integralia'):
+        if (liudo.product_id.product_tmpl_id.our_service == True) and (record.discount_type == 'fixed_service_margin_over_cost'):
           liudo['price_unit'] = record.price_our_service
         else:
           if (record.margin &lt; 100):

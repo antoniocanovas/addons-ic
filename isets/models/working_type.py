@@ -9,3 +9,4 @@ class WorkingType(models.Model):
     _description = 'Types of jobs/works'
 
     name = fields.Char('Name')
+    extra_time = fields.Boolean('Extra')
