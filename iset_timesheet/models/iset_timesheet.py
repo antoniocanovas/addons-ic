@@ -19,11 +19,11 @@ class iSetTimesheet(models.Model):
         for record in self:
             extra = 0
             for li in record.analytic_line_ids:
-                if li.type_id.extra == True: extra += li.unit_amount
+                if li.type_id.extra_time == True: extra += li.unit_amount
             for li in record.repair_fee_ids:
-                if li.type_id.extra == True: extra += li.product_uom_qty
+                if li.type_id.extra_time == True: extra += li.product_uom_qty
             for li in record.mrp_productivity_ids:
-                if li.type_id.extra == True: extra += li.duration
+                if li.type_id.extra_time == True: extra += li.duration
             record['extra_time'] = extra
 
     extra_time = fields.Float(store=False, compute="_get_extra_time")

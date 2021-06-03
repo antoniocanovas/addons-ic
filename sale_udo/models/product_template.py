@@ -7,4 +7,4 @@ _logger = logging.getLogger(__name__)
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    our_service = fields.Boolean(string='Our Service')
+    our_service = fields.Boolean(string='Our Service',  store=True)

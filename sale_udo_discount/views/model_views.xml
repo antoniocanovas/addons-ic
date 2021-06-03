@@ -11,14 +11,14 @@
                 <page string="Special discounts" name="special_discounts" attrs="{'invisible': [('state', 'not in', ['draft'])]}">
                     <group>
                         <field name="discount_type"/>
-                        <field name="margin" attrs="{'invisible':[('discount_type','not in',['integralia','margin_over_cost'])]}"/>
-                        <field name="price_our_service" attrs="{'invisible':[('discount_type','not in',['integralia'])]}"/>
+                        <field name="margin" attrs="{'invisible':[('discount_type','not in',['fixed_service_margin_over_cost','margin_over_cost'])]}"/>
+                        <field name="price_our_service" attrs="{'invisible':[('discount_type','not in',['fixed_service_margin_over_cost'])]}"/>
                         <field name="target_price" attrs="{'invisible':[('discount_type','not in',['target_price'])]}"/>
                     </group>
                     <group>
                         <button class="oe_highlight oe_edit_only"
                                 type="action"
-                                name="%(sale_line_list_discount.sale_order_recalculate_sd)d"
+                                name="%(sale_udo_discount.sale_order_recalculate_sd)d"
                                 string="Recalculate"
                         />
                     </group>
