@@ -4,6 +4,25 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
+class UdoSaleOrder(models.Model):
+    _inherit = 'sale.order'
+
+    udo_line_ids = fields.One2many('udo.line','sale_id', string='UdO')
+
+    def _get_udo_line_count(self):
+        results = self.env['purchase.order'].search([
+            ('sale_id', '=', self.id), ]
+        )
+        self.purchase_order_count = len(results)
+
+    purchase_order_count = fields.Integer('Purchases', compute=_get_udo_line_count)
+
+    def action_view_udo_line(self):
+        action = self.env.ref(
+            'purchase_so.action_view_purchases_so').read()[0]
+        return action
+
+
 class UdoSaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
@@ -20,33 +39,28 @@ class UdoSaleOrderLine(models.Model):
 
     udo_cost_amount = fields.Monetary('UDO Cost', store=False, compute='get_udo_cost_amount')
 
-    @api.depends('product_id')
+    @api.depends('product_id', 'product_uom', 'discount', 'price_unit')
     def get_lst_price(self):
         for record in self:
-            record.lst_price = record.product_id.lst_price
+            lst_price = 0
+            if record.product_uom.uom_type == 'reference':
+                lst_price = record.product_id.lst_price
+            elif record.product_uom.uom_type == 'bigger':
+                lst_price = record.product_id.lst_price * record.product_uom.factor_inv
+            elif record.product_uom.uom_type == 'smaller':
+                lst_price = record.product_id.standard_price / record.product_uom.factor
+            record['lst_price'] = lst_price
 
-    lst_price = fields.Monetary('List Price', currency_field='currency_id', compute="get_lst_price")
+    lst_price = fields.Monetary('List Price', currency_field='currency_id', compute="get_lst_price",  store=True)
 
-    @api.depends('product_uom', 'price_unit')
+    @api.depends('product_uom_qty', 'product_id')
     def get_lst_price_discount(self):
         for record in self:
-            discount, qty_uom = 0, 0
-            lst_price = record.product_id.lst_price
-
-            if record.product_id.id and (record.product_uom_qty > 0):
-                if record.product_uom.uom_type == 'reference':
-                    qty_uom = record.product_uom_qty
-                elif record.product_uom.uom_type == 'bigger':
-                    qty_uom = record.product_uom_qty * record.product_uom.factor_inv
-                elif record.product_uom.uom_type == 'smaller':
-                    qty_uom = record.product_uom_qty / record.product_uom.factor
-
-                price_unit_with_discount = record.price_unit * (1 - record.discount / 100)
-                if price_unit_with_discount / qty_uom > lst_price:
-                    discount = 0
-                else:
-                    discount = (1 - (price_unit_with_discount / qty_uom / lst_price)) * 100
-            record.lst_price_discount = discount
+            discount = 0
+            if (record.product_uom_qty > 0) and (record.lst_price > 0):
+                if (record.price_unit < record.lst_price):
+                    discount = (1 - (record.price_unit / record.lst_price)) * 100
+            record['lst_price_discount'] = discount
 
     lst_price_discount = fields.Monetary('Discount', currency_field='currency_id',
                                          store=False, compute="get_lst_price_discount")

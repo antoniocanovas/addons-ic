@@ -8,14 +8,14 @@ class UdoTemplate(models.Model):
     _name = 'udo.template'
     _description = 'UDO Template'
 
-    name = fields.Char(string='Name')
-    ref = fields.Char(string='Ref')
-    description = fields.Text(string='Description')
-    department_id = fields.Many2one('hr.department', string='Department')
-    target_id = fields.Many2one('udo.target', help='Office, Residential', string='Target')
-    quality_id = fields.Many2one('udo.quality', string='Quality')
-    style_id = fields.Many2one('udo.style', string='Style')
-    type_id = fields.Many2one('udo.type',  string='Type')
-    product_brand_id = fields.Many2one('product.brand', string='Product brand')
+    name = fields.Char(string='Name',  store=True)
+    ref = fields.Char(string='Ref',  store=True)
+    description = fields.Text(string='Description',  store=True)
+    department_id = fields.Many2one('hr.department', string='Department',  store=True)
+    target_id = fields.Many2one('udo.target', help='Office, Residential', string='Target',  store=True)
+    quality_id = fields.Many2one('udo.quality', string='Quality',  store=True)
+    style_id = fields.Many2one('udo.style', string='Style',  store=True)
+    type_id = fields.Many2one('udo.type',  string='Type',  store=True)
+    product_brand_id = fields.Many2one('product.brand', string='Product brand',  store=True)
 
-    line_ids = fields.One2many('udo.template.line', 'template_id')
+    line_ids = fields.One2many('udo.template.line', 'template_id', string='Line', store=True)

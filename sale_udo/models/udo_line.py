@@ -21,14 +21,14 @@ class UdoLine(models.Model):
         for record in self:
             record.subtotal = record.price_unit * record.product_uom_qty
 
-    subtotal = fields.Monetary('Subtotal', currency_field='currency_id', compute="get_subtotal")
+    subtotal = fields.Monetary('Subtotal', currency_field='currency_id', compute="get_subtotal",  store=True )
 
     @api.depends('product_id')
     def get_lst_price(self):
         for record in self:
             record.lst_price = record.product_id.lst_price
 
-    lst_price = fields.Monetary('List Price', currency_field='currency_id', compute="get_lst_price")
+    lst_price = fields.Monetary('List Price', currency_field='currency_id', compute="get_lst_price", store=True)
 
     @api.depends('product_id', 'price_unit')
     def get_lst_price_discount(self):
@@ -41,7 +41,7 @@ class UdoLine(models.Model):
                 record.lst_price_discount = discount
 
     lst_price_discount = fields.Monetary('Discount', currency_field='currency_id',
-                                        store=False, compute="get_lst_price_discount")
+                                         store=False, compute="get_lst_price_discount")
 
     @api.depends('product_id')
     def get_price_unit_cost(self):
