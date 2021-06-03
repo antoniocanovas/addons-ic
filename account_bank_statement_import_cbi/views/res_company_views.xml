@@ -27,4 +27,16 @@
         </field>
     </record>
 
+    <record id="view_bank_help_field" model="ir.ui.view">
+        <field name="name">Bank exmple for CBI</field>
+        <field name="model">account.journal</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/notebook/page[@name='bank_account']/group/group/field[@name='bank_account_id']" position="attributes">
+                 <attribute name="placeholder">ES00 0000 0000 0000 0000 0000</attribute>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

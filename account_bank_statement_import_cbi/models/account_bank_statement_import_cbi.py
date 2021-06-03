@@ -69,7 +69,7 @@ class AccountBankStatementCBI(models.Model):
 
             return sftp
         except Exception as e:
-            print('An error occurred creating SFTP client: %s: %s' % (e.__class__, e))
+            _logger.debug('An error occurred creating SFTP client: %s: %s' % (e.__class__, e))
             if sftp is not None:
                 sftp.close()
             if transport is not None:
@@ -87,12 +87,13 @@ class AccountBankStatementCBI(models.Model):
     @api.multi
     def move_file_to_downloaded_dir(self, sftpclient, file):
         try:
-            sftpclient.rename(file, 'downloaded/%s' % file)  # At this point, you are in remote_path in either case
+            sftpclient.rename(file, 'Historico/%s' % file)  # At this point, you are in remote_path in either case
         except IOError:
-            print("ERROR", IOError)
+            _logger.debug("ERROR", IOError)
 
     @api.multi
     def automated_ftp_get_n43_files(self):
+
         company_id = self.env.user.company_id
         if company_id.ftp_url_cbi and company_id.ftp_port_cbi and company_id.ftp_user_cbi and company_id.ftp_passwd_cbi:
             try:
@@ -103,86 +104,63 @@ class AccountBankStatementCBI(models.Model):
 
                 imported_n43_list = self.get_n43_list()
 
+
                 for d in dirlist:
-                    print('DEBUG', d)
                     path = "/%s" % d
                     result = sftpclient.chdir(path=path)
-                    print('Path', path)
                     filelist = sftpclient.listdir('.')
-                    print(filelist)
 
                     for f in filelist:
-                        print('DEBUG 2', f)
                         if f != 'Historico':
                             if f not in imported_n43_list:
                                 file = sftpclient.file(f, mode='r', bufsize=-1)
                                 file_first = file.readline()
-                                print("FILE", file_first)
-                                bank_number = file_first[12:20]
-                                print(bank_number)
-                                rename = sftpclient.rename(f,(str(bank_number) + str(f)+ '.n43'))
-
-                                raise ValidationError("HASTA AQUÍ")
+                                bsa_bank_number = file_first[2:20]
+                                #rename = sftpclient.rename(f,(str(bank_number) + str(f)+ '.n43'))
 
                                 sftpclient.get(f, '/tmp/%s' % f)
+
                                 try:
-                                    bsa_bank_number = f[:24]
-                                    raise ValidationError(bsa_bank_number)
+                                    journal = self.env['account.journal'].sudo().search([])
+                                    for journal_id in journal:
+                                        if journal_id.bank_account_id.acc_number:
+                                            bank_account_number = journal_id.bank_account_id.acc_number
+                                            bank_mnt_account_number = bank_account_number.replace(' ', '')
+                                            first_bank_sequence = bank_mnt_account_number[4:14]
+                                            second_bank_secuence = bank_mnt_account_number[16:]
+                                            bank_account_number = first_bank_sequence + second_bank_secuence
+
+                                            if bank_account_number == bsa_bank_number:
+                                                with open('/tmp/%s' % f, "r+b") as file:
+                                                    data = file.read()
+                                                    file.close()
+                                                    attachment_id = self.env['ir.attachment'].sudo().create({
+                                                        'name': f,
+                                                        'type': 'binary',
+                                                        'datas': base64.b64encode(data),
+                                                        'datas_fname': f,
+                                                        'store_fname': f,
+                                                        'res_model': 'account.bank.statement.cbi',
+                                                        # 'res_id': self.id,
+                                                        'mimetype': 'text/plain'
+                                                    })
+
+                                                self.env['account.bank.statement.cbi'].sudo().create({
+                                                    'name': f,
+                                                    'journal_id': journal_id.id,
+                                                    'bank_statement_attachment_id': attachment_id.id,
+                                                })
+                                                self.move_file_to_downloaded_dir(sftpclient, f)
+
                                 except Exception as e:
                                     raise ValidationError('Server Error: %s' % e)
 
-
-
-                #if 'downloaded' not in dirlist:
-                #    try:
-                #        sftpclient.mkdir("downloaded")  # Create remote_path
-                #    except IOError:
-                #        print("ERROR", IOError)
-
-                for row in dirlist:
-                    if row != 'Historico':
-                        if row not in imported_n43_list:
-                            sftpclient.get(row, '/tmp/%s' % row)
-                            try:
-                                bsa_bank_number = row[:24]
-                                raise ValidationError(bsa_bank_number)
-                                journal = self.env['account.journal'].sudo().search([])
-                                for journal_id in journal:
-                                    if journal_id.bank_account_id.acc_number:
-                                        bank_account_number = journal_id.bank_account_id.acc_number
-                                        bank_account_number = bank_account_number[:29]
-                                        bank_account_number = bank_account_number.replace(' ', '')
-
-                                        if bank_account_number == bsa_bank_number:
-                                            with open('/tmp/%s' % row, "r+b") as file:
-                                                data = file.read()
-                                                file.close()
-                                                attachment_id = self.env['ir.attachment'].sudo().create({
-                                                    'name': row,
-                                                    'type': 'binary',
-                                                    'datas': base64.b64encode(data),
-                                                    'datas_fname': row,
-                                                    'store_fname': row,
-                                                    'res_model': 'account.bank.statement.cbi',
-                                                    # 'res_id': self.id,
-                                                    'mimetype': 'text/plain'
-                                                })
-
-                                            self.env['account.bank.statement.cbi'].sudo().create({
-                                                'name': row,
-                                                'journal_id': journal_id.id,
-                                                'bank_statement_attachment_id': attachment_id.id,
-                                            })
-                                            self.move_file_to_downloaded_dir(sftpclient, row)
-
-                            except Exception as e:
-                                raise ValidationError('Server Error: %s' % e)
                 sftpclient.close()
                 time = datetime.now()
                 company_id.cbi_last_connection_date = time
 
             except Exception as e:
-                raise ValidationError('Server Error: %s' % e)
+                _logger.debug('Server Error: %s' % e)
 
         if company_id.cbi_autoimport:
             self.automated_import_files()
@@ -226,5 +204,5 @@ class AccountBankStatementCBI(models.Model):
                     bsa.state = 'completed'
                 except Exception as e:
                     bsa.state = 'error'
-                    raise ValidationError('Server Error: %s' % e)
+                    _logger.debug('Server Error: %s' % e)
 
