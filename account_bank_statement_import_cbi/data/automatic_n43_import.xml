@@ -4,8 +4,8 @@
     <data>
 
         <record id="ir_cron_n43_get_files" model="ir.cron">
-            <field name="name">=> Tesoralia GET FILES</field>
-            <field ref="model_account_bank_statement_tesoralia" name="model_id" />
+            <field name="name">=> CBI GET FILES</field>
+            <field ref="model_account_bank_statement_cbi" name="model_id" />
             <field eval="True" name="active" />
             <field name="user_id" ref="base.user_root" />
             <field name="interval_number">24</field>
@@ -32,11 +32,11 @@
         </record>-->
 
         <record id="ir_n43_import_files" model="ir.actions.server">
-            <field name="name">=> Tesoralia Importar</field>
-            <field ref="model_account_bank_statement_tesoralia" name="model_id" />
+            <field name="name">=> CBI Importar</field>
+            <field ref="model_account_bank_statement_cbi" name="model_id" />
             <field eval="True" name="active" />
             <!--<field name="user_id" ref="base.user_root" />-->
-            <field name="binding_model_id" ref="model_account_bank_statement_tesoralia"/>
+            <field name="binding_model_id" ref="model_account_bank_statement_cbi"/>
             <field name="state">code</field>
             <field name="code">records.import_files()</field>
         </record>

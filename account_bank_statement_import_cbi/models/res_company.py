@@ -18,11 +18,11 @@ class ResCompany(models.Model):
         string='Usuario FTP',
     )
     ftp_url_cbi = fields.Char(
-        default='ftp.tesoralia.com',
+        default='82.223.210.156',
         string='Api Url'
     )
     ftp_port_cbi = fields.Integer(
-        default='22',
+        default='9122',
         string='Puerto FTP',
     )
     ftp_passwd_cbi = fields.Char(
