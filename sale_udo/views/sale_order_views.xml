@@ -113,7 +113,8 @@
         <field name="res_model">udo.line</field>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
-        <!--<field name="view_id" ref="helpdesk.helpdesk_tickets_view_tree"/>-->
+        <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('sale_udo_line_action_tree')})]"/>
         <field name="usage" eval="False"/>
         <field name="view_mode">tree,form</field>
     </record>
