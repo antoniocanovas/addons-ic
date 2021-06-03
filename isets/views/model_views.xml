@@ -18,7 +18,7 @@
                         <field name="start" widget="timesheet_uom" attrs="{'invisible':['|',('type','=','production'),('set_start_stop','=',False),('type','!=','production')]}"/>
                         <field name="stop" widget="timesheet_uom" attrs="{'invisible':['|',('type','=','production'),('set_start_stop','=',False),('type','!=','production')]}"/>
                         <field name="duration" widget="timesheet_uom" attrs="{'invisible':['|',('set_start_stop','=',True),('type','=','production')]}"/>
-                        <field name="type_id"/>
+                        <field name="type_id" widget='selection'/>
                     </group></group>
 
                     <div name="workorder_product_service" attrs="{'invisible':[('type','!=','production')]}">

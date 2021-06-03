@@ -10,16 +10,16 @@ class UdoSaleOrder(models.Model):
     udo_line_ids = fields.One2many('udo.line','sale_id', string='UdO')
 
     def _get_udo_line_count(self):
-        results = self.env['purchase.order'].search([
+        results = self.env['udo.line'].search([
             ('sale_id', '=', self.id), ]
         )
-        self.purchase_order_count = len(results)
+        self.udo_line_count = len(results)
 
-    purchase_order_count = fields.Integer('Purchases', compute=_get_udo_line_count)
+    udo_line_count = fields.Integer('UdOs', compute=_get_udo_line_count)
 
     def action_view_udo_line(self):
         action = self.env.ref(
-            'purchase_so.action_view_purchases_so').read()[0]
+            'sale_udo.action_view_udos').read()[0]
         return action
 
 
