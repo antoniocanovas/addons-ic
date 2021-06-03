@@ -38,7 +38,7 @@ class Isets(models.Model):
     set_start_stop = fields.Boolean(related='work_id.set_start_stop', string='Set start & stop time')
     duration = fields.Float('Duration')
 
-    active = fields.Boolean('Active')
+    #active = fields.Boolean('Active')
 
     @api.depends('repair_id')
     def get_service_id(self):
