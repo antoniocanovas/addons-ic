@@ -45,15 +45,7 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <record id="menu_isets_working_type" model="ir.ui.menu">
-        <field name="action" ref="action_iset_working_type"/>
-        <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
-        <field name="name">Schedule</field>
-        <field name="parent_id" ref="menu_isets"/>
-        <field name="sequence">7</field>
-        <field name="web_icon" eval="False"/>
-    </record>
+
 
 
     <menuitem
@@ -114,6 +106,14 @@
         <field name="web_icon" eval="False"/>
     </record>
 
-
+    <record id="menu_isets_working_type" model="ir.ui.menu">
+        <field name="action" ref="action_iset_working_type"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        <field name="name">Schedule</field>
+        <field name="parent_id" ref="menu_isets"/>
+        <field name="sequence">7</field>
+        <field name="web_icon" eval="False"/>
+    </record>
 
 </odoo>

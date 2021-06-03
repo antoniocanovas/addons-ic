@@ -18,7 +18,7 @@
                         <field name="start" widget="timesheet_uom" attrs="{'invisible':['|',('type','=','production'),('set_start_stop','=',False),('type','!=','production')]}"/>
                         <field name="stop" widget="timesheet_uom" attrs="{'invisible':['|',('type','=','production'),('set_start_stop','=',False),('type','!=','production')]}"/>
                         <field name="duration" widget="timesheet_uom" attrs="{'invisible':['|',('set_start_stop','=',True),('type','=','production')]}"/>
-                        <field name="type_id"/>
+                        <field name="type_id" widget='selection'/>
                     </group></group>
 
                     <div name="workorder_product_service" attrs="{'invisible':[('type','!=','production')]}">
@@ -273,7 +273,7 @@
                 <filter string="Productions" name="type_production" domain="[('type', '=', 'production')]"/>
                 <separator/>
                 <group expand="0" name="group_by" string="Group By">
-                    <filter name="schedule" string="Schedule" domain="[]" context="{'group_by' : 'type_id'}" widget="selection"/>
+                    <filter name="schedule" string="Schedule" domain="[]" context="{'group_by' : 'type_id'}" />
                     <filter name="work_type" string="Work" context="{'group_by': 'work_id'}"/>
                     <filter name="date" string="Date" context="{'group_by': 'date'}"/>
                 </group>
