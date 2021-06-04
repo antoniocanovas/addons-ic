@@ -7,6 +7,7 @@
 """,
     'author': 'Serincloud',
     'depends': [
+        'base_automation',
         'purchase',
         'sale',
 
