@@ -9,8 +9,7 @@
 for li in record.order_line:
   li['order_line'] = record.sale_id.id
             </field>
-            <field name="trigger">on_change</field>
-           <!-- <field name="trigger_field_ids">[(6, 0, [account.field_account_analytic_line__code])]</field>-->
+            <field name="trigger">on_write</field>
             <field name="filter_pre_domain"></field>
             <field name="filter_domain"></field>
             <field name="active" eval="True"/>
