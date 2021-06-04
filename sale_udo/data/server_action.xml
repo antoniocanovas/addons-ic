@@ -18,5 +18,25 @@ else:
   raise Warning('Remove udos not allowed, you can do it manually.')
                 </field>
         </record>
+
+        <record id="udo_line_create_purchase_request" model="ir.actions.server">
+                <field name="name">=> Create purchase request</field>
+                <field name="model_id" ref="model_udo_line"/>
+                <field name="binding_model_id" ref="model_udo_line"/>
+                <field name="state">code</field>
+                <field name="code">
+new_purchase = 0
+for li in records:
+  if not li.purchase_request_id.id:
+    if new_purchase == 0:
+      name = str(datetime.datetime.today().date()) + " " + li.sale_id.name + " " + li.sale_id.partner_id.name
+      new_purchase = env['purchase.request'].create({'name':name, 'requested_by':env.user.id, 'origin':li.sale_id.name})
+
+    new_line = env['purchase.request.line'].create({'product_id':li.product_id.id, 'name':li.product_id.name, 'request_id':new_purchase.id,
+      'product_qty': li.product_uom_qty, 'product_uom_id': li.product_uom.id, 'estimated_cost':li.price_unit_cost})
+    li['purchase_request_id'] = new_purchase.id
+
+                </field>
+        </record>
     </data>
 </odoo>
