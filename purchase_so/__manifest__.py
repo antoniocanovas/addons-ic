@@ -13,6 +13,7 @@
     ],
     'data': [
         'views/purchase_so_views.xml',
+        'data/server_action.xml',
     ],
     'installable': True,
 }
