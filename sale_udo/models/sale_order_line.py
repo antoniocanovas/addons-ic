@@ -62,7 +62,7 @@ class UdoSaleOrderLine(models.Model):
                     discount = (1 - (record.price_unit / record.lst_price)) * 100
             record['lst_price_discount'] = discount
 
-    lst_price_discount = fields.Monetary('List price discount', currency_field='currency_id',
+    lst_price_discount = fields.Float('List price discount %', currency_field='currency_id',
                                          store=False, compute="get_lst_price_discount")
 
     @api.depends('product_id')
