@@ -20,7 +20,7 @@ if record.discount_type == 'target_price':
       cost_amount  += li.udo_cost_amount
       price_amount += li.price_subtotal / (1-li.discount/100)
 
-  if (record.arget_price &lt; cost_amount):
+  if (record.target_price &lt; cost_amount):
     raise Warning('Saling under cost, not allowed.')
   else:
     margin = (1 - (record.target_price / price_amount)) * 100
