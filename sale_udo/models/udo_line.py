@@ -13,8 +13,15 @@ class UdoLine(models.Model):
     product_uom = fields.Many2one('uom.uom', string='Unit', related='product_id.uom_id')
     currency_id = fields.Many2one('res.currency')
     sale_line_id = fields.Many2one('sale.order.line', string='Líneas')
-    name = fields.Char(string='Description')
     sale_id = fields.Many2one('sale.order', related='sale_line_id.order_id', string='Sale')
+    purchase_request_id = fields.Many2one('purchase.request', string='Purchase Request')
+    sale_line_name = fields.Char(string='Sale line', related='sale_line_id.name')
+
+    @api.depends('product_id')
+    def get_product_id_name(self):
+        for record in self:
+            record.name = record.product_id.name
+    name = fields.Char(string='Description', readonly=False, store=True, compute='get_product_id_name')
 
     @api.depends('price_unit', 'product_uom_qty')
     def get_subtotal(self):
@@ -33,12 +40,10 @@ class UdoLine(models.Model):
     @api.depends('product_id', 'price_unit')
     def get_lst_price_discount(self):
         for record in self:
-            if record.lst_price > 0:
-                if record.price_unit > record.lst_price:
-                    discount = 0
-                else:
-                    discount = (1 - (record.price_unit / record.lst_price)) * 100
-                record.lst_price_discount = discount
+            discount = 0
+            if (record.lst_price > 0) and (record.price_unit < record.lst_price):
+                discount = (1 - (record.price_unit / record.lst_price)) * 100
+            record['lst_price_discount'] = discount
 
     lst_price_discount = fields.Monetary('Discount', currency_field='currency_id',
                                          store=False, compute="get_lst_price_discount")
