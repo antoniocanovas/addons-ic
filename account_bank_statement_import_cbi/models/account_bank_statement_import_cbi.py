@@ -37,6 +37,7 @@ class AccountBankStatementCBI(models.Model):
                                       #domain=[('is_bank_statement', '=', True)],
                                     )
     last_connection_date = fields.Datetime(string="Last Connection")
+    error_logger = fields.Text('Error')
 
     @api.multi
     def create_sftp_client(self, host, port, username, password, keyfilepath, keyfiletype):
@@ -103,14 +104,15 @@ class AccountBankStatementCBI(models.Model):
                 dirlist = sftpclient.listdir('.')
 
                 imported_n43_list = self.get_n43_list()
-
+                print("DEBUG", dirlist)
 
                 for d in dirlist:
                     path = "/%s" % d
                     result = sftpclient.chdir(path=path)
                     filelist = sftpclient.listdir('.')
-
+                    print("filelist", filelist)
                     for f in filelist:
+                        print("dir", d)
                         if f != 'Historico':
                             if f not in imported_n43_list:
                                 file = sftpclient.file(f, mode='r', bufsize=-1)
@@ -129,7 +131,7 @@ class AccountBankStatementCBI(models.Model):
                                             first_bank_sequence = bank_mnt_account_number[4:14]
                                             second_bank_secuence = bank_mnt_account_number[16:]
                                             bank_account_number = first_bank_sequence + second_bank_secuence
-
+                                            print(bank_account_number, bsa_bank_number)
                                             if bank_account_number == bsa_bank_number:
                                                 with open('/tmp/%s' % f, "r+b") as file:
                                                     data = file.read()
@@ -181,8 +183,10 @@ class AccountBankStatementCBI(models.Model):
                     try:
                         bank_statement.import_file()
                         record.state = 'completed'
+                        #bank_statement.name = str(bank_statement.date)
                     except Exception as e:
                         record.state = 'error'
+                        record.error_logger = e
                         raise ValidationError('Server Error: %s' % e)
 
     @api.multi
@@ -202,7 +206,9 @@ class AccountBankStatementCBI(models.Model):
                 try:
                     bank_statement.import_file()
                     bsa.state = 'completed'
+                    #bank_statement.name = str(bank_statement.date)
                 except Exception as e:
                     bsa.state = 'error'
+                    bsa.error_logger = e
                     _logger.debug('Server Error: %s' % e)
 
