@@ -132,6 +132,12 @@
                         <field string="UdOs" widget="statinfo" name="udo_line_count" />
                     </button>
             </xpath>
+            <xpath expr="//sheet/notebook/page[@name='order_lines']/field/tree" position="inside">
+                    <field name="udo_line_ids" invisible="1"/>
+            </xpath>
+            <xpath expr="//sheet/notebook/page[@name='order_lines']/field/tree" position="attributes">
+                    <attribute name="decoration-primary">udo_line_ids</attribute>
+            </xpath>
         </field>
     </record>
 
