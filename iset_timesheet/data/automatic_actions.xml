@@ -61,6 +61,52 @@ if (record.date_start) and (record.user_id.id):
             <field name="active" eval="True"/>
         </record>
 
+        <record id="refresh_iset_timesheet_daily" model="ir.cron">
+            <field name="name">=> Refresh iSet Timesheet</field>
+            <field ref="model_iset_timesheet" name="model_id" />
+            <field eval="True" name="active" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">1</field>
+            <field name="channel_id">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall" />
+            <field name="state">code</field>
+            <field name="code">
+# timesheets review to assign iset.timesheet:
+
+# Project timesheets:
+lines = env['account.analytic.line'].search([('iset_timesheet_id','=',False),('employee_id','!=',False)])
+for li in lines:
+  iset_timesheet = env['iset.timesheet'].search([('employee_id','=',li.employee_id.id),('date','=',li.date)])
+  if not iset_timesheet.id:
+    iset_timesheet = env['iset.timesheet'].create({'employee_id':li.employee_id.id, 'date':li.date})
+  li['iset_timesheet_id'] = iset_timesheet.id
+
+
+# Repair fees:
+lines = env['repair.fee'].search([('iset_timesheet_id','=',False),('employee_id','!=',False)])
+raise Warning(lines)
+for li in lines:
+  iset_timesheet = env['iset.timesheet'].search([('employee_id','=',li.employee_id.id),('date','=',li.date)])
+  if not iset_timesheet.id:
+    iset_timesheet = env['iset.timesheet'].create({'employee_id':li.employee_id.id, 'date':li.date})
+  li['iset_timesheet_id'] = iset_timesheet.id
+
+
+# Production:
+lines = env['mrp.workcenter.productivity'].search([('iset_timesheet_id','=',False),('user_id','!=',False)])
+raise Warning(lines)
+for li in lines:
+  employee = env['hr.employee'].search([('user_id','=',li.user_id.id)])
+  date = li.date_start.date()
+  iset_timesheet = env['iset.timesheet'].search([('employee_id','=',employee.id),('date','=',date)])
+  if not iset_timesheet.id:
+    iset_timesheet = env['iset.timesheet'].create({'employee_id':employee.id, 'date':date})
+  li['iset_timesheet_id'] = iset_timesheet.id
+            </field>
+        </record>
+
     </data>
 
 </odoo>
