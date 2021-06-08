@@ -28,6 +28,12 @@ class iSetTimesheet(models.Model):
 
     extra_time = fields.Float(store=False, compute="_get_extra_time")
 
+    def _get_standard_time(self):
+        for record in self:
+            record.standard_time = record.time - record.extra_time
+
+    standard_time = fields.Float(store=False, compute="_get_standard_time")
+
     def calculate_project_time(self):
         for record in self:
             time = 0

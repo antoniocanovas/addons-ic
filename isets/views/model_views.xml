@@ -242,7 +242,7 @@
     <record id="isets_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-            <tree name="iSet_tree" string="iSets">
+            <tree name="iSet_tree" string="iSets"  default_order='create_date desc'>
                 <field name="name"/>
                 <field name="work_id"/>
                 <field name="date"/>
@@ -285,7 +285,7 @@
     <record id="isets_work_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-            <tree string="iSets Types" sample="1">
+            <tree string="iSets Types" sample="1"  default_order='create_date desc'>
                 <field name="name"/>
                 <field name="type"/>
                 <field name="partner_id"/>
