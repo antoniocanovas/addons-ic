@@ -63,14 +63,14 @@ if (record.date_start) and (record.user_id.id):
 
         <record id="refresh_iset_timesheet_daily" model="ir.cron">
             <field name="name">=> Refresh iSet Timesheet</field>
-            <field ref="model_iset_timesheet" name="model_id" />
-            <field eval="True" name="active" />
-            <field name="user_id" ref="base.user_root" />
+            <field ref="model_iset_timesheet" name="model_id"/>
+            <field eval="True" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
             <field name="interval_number">1</field>
             <field name="channel_id">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
-            <field eval="False" name="doall" />
+            <field eval="False" name="doall"/>
             <field name="state">code</field>
             <field name="code">
 # timesheets review to assign iset.timesheet:
