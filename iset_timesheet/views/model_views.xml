@@ -55,17 +55,38 @@
                         <field name="name"/>
                     </h1>
                     <h3>Projects:</h3>
-                    <field name="analytic_line_ids"/>
+                    <field name="analytic_line_ids">
+                        <tree>
+                            <field name="project_id"/>
+                            <field name="task_id"/>
+                            <field name="name"/>
+                            <field name="unit_amount"/>
+                            <field name="type_id"/>
+                        </tree>
+                    </field>
                     <h3>Repairs:</h3>
                     <field name="repair_fee_ids">
                         <tree>
                             <field name="repair_id"/>
                             <field name="product_id"/>
+                            <field name="name"/>
                             <field name="product_uom_qty"/>
+                            <field name="product_uom"/>
+                            <field name="type_id"/>
                         </tree>
                     </field>
                     <h3>MRP:</h3>
-                    <field name="mrp_productivity_ids"/>
+                    <field name="mrp_productivity_ids">
+                        <tree>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="workcenter_id"/>
+                            <field name="loss_id"/>
+                            <field name="description"/>
+                            <field name="duration"/>
+                            <field name="type_id"/>
+                        </tree>
+                    </field>
                 </sheet>
             </form>
         </field>
