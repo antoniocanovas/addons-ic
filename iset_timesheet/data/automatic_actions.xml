@@ -60,7 +60,7 @@ if (record.date_start) and (record.user_id.id):
             <field name="filter_domain"></field>
             <field name="active" eval="True"/>
         </record>
-
+<!--
         <record id="refresh_iset_timesheet_daily" model="ir.cron">
             <field name="name">=> Refresh iSet Timesheet</field>
             <field ref="model_iset_timesheet" name="model_id"/>
@@ -106,7 +106,7 @@ for li in lines:
   li['iset_timesheet_id'] = iset_timesheet.id
             </field>
         </record>
-
+-->
     </data>
 
 </odoo>
