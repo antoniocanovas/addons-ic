@@ -1,5 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_isets_timesheet,isets timesheet user,iset_timesheet.model_iset_timesheet,project.group_project_user,1,0,0,0
-access_isets_Manager_timesheet,isets timesheet manager,iset_timesheet.model_iset_timesheet,project.group_project_manager,1,1,1,0
+access_isets_timesheet,isets timesheet user,iset_timesheet.model_iset_timesheet,hr_timesheet.group_hr_timesheet_user,1,1,1,0
+access_isets_Manager_timesheet,isets timesheet manager,iset_timesheet.model_iset_timesheet,hr_timesheet.group_hr_timesheet_approver,1,1,1,1
 access_isets_System_timesheet,isets timesheet sytem,iset_timesheet.model_iset_timesheet,base.group_system,1,1,1,1
 

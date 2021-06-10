@@ -9,6 +9,7 @@
     'depends': [
         'isets',
         'base_menu_visibility_restriction',
+        'contacts',
 
     ],
     'data': [
