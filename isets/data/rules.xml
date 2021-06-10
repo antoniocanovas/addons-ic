@@ -1,0 +1,26 @@
+<odoo>
+
+    <record id="personal_isets" model="ir.rule">
+        <field name="name">See own iSets</field>
+        <field name="model_id" ref='isets.model_isets'/>
+        <field name="groups" eval="[(6,0, [ref('hr_timesheet.group_hr_timesheet_user')])]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="domain_force">[('create_uid','=',user.id)]</field>
+    </record>
+
+    <record id="admin_isets_all" model="ir.rule">
+        <field name="name">See all iSets</field>
+        <field name="model_id" ref='isets.model_isets'/>
+        <field name="groups" eval="[(6,0, [ref('hr_timesheet.group_hr_timesheet_approver')])]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="domain_force">[]</field>
+    </record>
+
+
+</odoo>

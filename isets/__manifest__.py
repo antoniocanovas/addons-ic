@@ -20,6 +20,7 @@
         'views/menu_views.xml',
         'data/action_server.xml',
         'data/data.xml',
+        'data/rules.xml',
     ],
     'installable': True,
 }
