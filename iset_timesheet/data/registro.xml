@@ -1,0 +1,15 @@
+<odoo>
+
+    <record id="personal_timesheet" model="ir.rule">
+        <field name="name">Personal Timesheet</field>
+        <field name="model_id" ref='iset_timesheet.model_iset_timesheet'/>
+        <field name="groups" eval="[(6,0, [ref('iset_basic_user.iset_basic_user')])]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="domain_force">[('create_uid','=',user.id)]</field>
+    </record>
+
+
+</odoo>

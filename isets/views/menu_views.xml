@@ -69,7 +69,7 @@
     <record id="menu_isets_work" model="ir.ui.menu">
         <field name="action" ref="action_isets_work"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_timesheet.group_hr_timesheet_approver')])]"/>
         <field name="name">Work</field>
         <field name="parent_id" ref="menu_isets"/>
         <field name="sequence">2</field>
@@ -79,7 +79,7 @@
     <record id="menu_isets_task" model="ir.ui.menu">
         <field name="action" ref="project.action_view_all_task"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_timesheet.group_hr_timesheet_approver')])]"/>
         <field name="name">Task</field>
         <field name="parent_id" ref="menu_isets"/>
         <field name="sequence">3</field>
@@ -89,7 +89,7 @@
     <record id="menu_isets_repairs" model="ir.ui.menu">
         <field name="action" ref="repair.action_repair_order_tree"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_timesheet.group_hr_timesheet_approver')])]"/>
         <field name="name">Repairs</field>
         <field name="parent_id" ref="menu_isets"/>
         <field name="sequence">4</field>
@@ -99,7 +99,7 @@
     <record id="menu_isets_mrp" model="ir.ui.menu">
         <field name="action" ref="mrp.mrp_workorder_todo"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_timesheet.group_hr_timesheet_approver')])]"/>
         <field name="name">MRP</field>
         <field name="parent_id" ref="menu_isets"/>
         <field name="sequence">5</field>
@@ -109,7 +109,7 @@
     <record id="menu_isets_working_type" model="ir.ui.menu">
         <field name="action" ref="action_iset_working_type"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_timesheet.group_hr_timesheet_approver')])]"/>
         <field name="name">Schedule</field>
         <field name="parent_id" ref="menu_isets"/>
         <field name="sequence">7</field>

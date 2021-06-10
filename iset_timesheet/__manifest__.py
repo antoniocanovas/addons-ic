@@ -19,6 +19,7 @@
         'views/model_views.xml',
         'views/menu_views.xml',
         'data/automatic_actions.xml',
+        'data/registro.xml',
     ],
     'installable': True,
 }
