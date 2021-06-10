@@ -3,7 +3,7 @@
     <data>
 
         <record id="iset_work_type_estandar" model="working.type">
-            <field name="name">Entándar</field>
+            <field name="name">Estándar</field>
         </record>
         <record id="iset_work_type_extra" model="working.type">
             <field name="name">Extra</field>
