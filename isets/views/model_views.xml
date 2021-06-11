@@ -13,7 +13,7 @@
                     <group><group>
                         <field name="date"/>
                         <field name="work_id" widget="selection"/>
-                        <field name="employee_ids" widget="many2many_tags"/>
+                        <field name="employee_ids" widget="many2many_tags" groups="hr_timesheet.group_hr_timesheet_approver"/>
                     </group><group>
                         <field name="start" widget="timesheet_uom" attrs="{'invisible':['|',('type','=','production'),('set_start_stop','=',False),('type','!=','production')]}"/>
                         <field name="stop" widget="timesheet_uom" attrs="{'invisible':['|',('type','=','production'),('set_start_stop','=',False),('type','!=','production')]}"/>
@@ -116,7 +116,7 @@
                     <div name="project_product_service" attrs="{'invisible':[('type','!=','project')]}">
                         <group>
                             <field name="project_id" options="{'no_create': True}" domain="[('id','in',project_ids)]" attrs="{'required':[('type','=','project')]}"/>
-                            <field name="task_id" options="{'no_create': True}" domain="[('project_id','=',project_id)]" attrs="{'invisible':[('project_id','=',False)]}"/>
+                            <field name="task_id" options="{'no_create': True}" domain="[('project_id','=',project_id)]" attrs="{'required':[('type','=','project')], 'invisible':[('project_id','=',False)]}"/>
                         </group>
                         <div attrs="{'invisible':[('project_id','!=',False)]}">
                             <h2>Active projects:</h2>

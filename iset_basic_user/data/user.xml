@@ -29,9 +29,13 @@
         <field name="excluded_group_ids" eval="[(4, ref('iset_basic_user.iset_basic_user'))]"/>
     </record>
 
-    <!--<record id="maintenance.menu_maintenance_title" model="ir.ui.menu">
+    <record id="hr.menu_hr_root" model="ir.ui.menu">
         <field name="excluded_group_ids" eval="[(4, ref('iset_basic_user.iset_basic_user'))]"/>
-    </record>-->
+    </record>
+
+    <record id="maintenance.menu_maintenance_title" model="ir.ui.menu">
+        <field name="excluded_group_ids" eval="[(4, ref('iset_basic_user.iset_basic_user'))]"/>
+    </record>
 
     <record id="hr_timesheet.timesheet_menu_root" model="ir.ui.menu">
         <field name="excluded_group_ids" eval="[(4, ref('iset_basic_user.iset_basic_user'))]"/>
