@@ -160,21 +160,15 @@ class Isets(models.Model):
     def create_lot_services_iset(self):
         # Check required fields:
         for record in self:
-
-            # Check required fields:
-            if (record.type == 'project') and not (record.project_id.id != False):
-                raise ValidationError(
-                'Project is required, please select one !!')
-            if (record.type == 'production') and not (record.workorder_id.id != False):
-                raise ValidationError(
-                'Workorder is required, please select one !!')
-            if (record.type == 'repair') and not (record.repair_id.id != False):
-                raise ValidationError(
-                'Asistance is required, please select one !!')
-
             # Required start to concatenate later, required duration to change later if startstop:
             start = ""
             duration = record.duration
+
+            # Chek time consumed:
+            if (record.set_start_stop == False) and (record.duration == 0):
+                raise Warning('Please, set the time consumed in Duration.')
+            elif (record.set_start_stop == True) and ((record.stop - record.start) <= 0):
+                raise Warning('Please review start & stop time consumed.')
 
             # Only if production or set_start_stop = True:
             if (record.type == 'production') or (record.set_start_stop == True):
@@ -193,9 +187,15 @@ class Isets(models.Model):
                 else:
                     start = " - " + start[:4]
 
+            # CASE USER NOT ADMINISTRATOR, CAN'T SEE FIELD employee_ids => Self timesheet:
+            if record.employee_ids.ids:
+                employee_ids = record.employee_ids
+            else:
+                employee_ids = [self.env.user.employee_id]
+
             # CASE PROJECT:
-            if (record.work_id.type == "project") and (record.employee_ids.ids) and (record.project_id.id):
-                for li in record.employee_ids:
+            if (record.work_id.type == "project") and (record.project_id.id):
+                for li in employee_ids:
                     name = record.name + start
                     new = self.env['account.analytic.line'].create(
                         {'iset_id': record.id, 'name': name, 'project_id': record.project_id.id,
@@ -205,10 +205,10 @@ class Isets(models.Model):
                          })
 
             # CASE REPAIR:
-            elif (record.work_id.type == "repair") and (record.employee_ids.ids) and (record.repair_id.id):
+            elif (record.work_id.type == "repair") and (record.repair_id.id):
                 if (record.work_id.repair_service_id.id):
                     product_id = record.work_id.repair_service_id
-                    for li in record.employee_ids:
+                    for li in employee_ids:
                         name = product_id.name + start + " - " + li.name
                         new = self.env['repair.fee'].create({'iset_id': record.id, 'product_id': product_id.id,
                                                         'name': name, 'repair_id': record.repair_id.id,
@@ -224,14 +224,15 @@ class Isets(models.Model):
                         'Se requiere definir el PRODUCTO en el tipo de asistencia para poder crear las imputaciones !!')
 
             # CASE PRODUCTION:
-            elif (record.work_id.type == "production") and (record.employee_ids.ids) and (record.workorder_id.id):
+            elif (record.work_id.type == "production") and (record.workorder_id.id):
+
                 date_start = datetime(year=record.date.year, month=record.date.month, day=record.date.day,
                                                hour=int(record.start - inc),
                                                minute=int((record.start - int(record.start)) * 60))
                 date_end = datetime(year=record.date.year, month=record.date.month, day=record.date.day,
                                              hour=int(record.stop - inc),
                                              minute=int((record.stop - int(record.stop)) * 60))
-                for li in record.employee_ids:
+                for li in employee_ids:
                     name = record.workorder_id.name + start + " - " + li.name
                     new = self.env['mrp.workcenter.productivity'].create(
                         {'iset_id': record.id, 'description': name, 'production_id': record.mrp_id.id,
