@@ -166,9 +166,9 @@ class Isets(models.Model):
 
             # Chek time consumed:
             if (record.set_start_stop == False) and (record.duration == 0):
-                raise Warning('Please, set the time consumed in Duration.')
+                raise ValidationError('Please, set the time consumed in Duration.')
             elif (record.set_start_stop == True) and ((record.stop - record.start) <= 0):
-                raise Warning('Please review start & stop time consumed.')
+                raise ValidationError('Please review start & stop time consumed.')
 
             # Only if production or set_start_stop = True:
             if (record.type == 'production') or (record.set_start_stop == True):

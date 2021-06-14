@@ -146,6 +146,9 @@
                                     <field name="product_id" domain="[('type','!=','service')]" attrs="{'readonly':[('iset_so_line_id','!=',False)]}" options="{'no_create': True}"/>
                                     <field name="name" required="0" invisible="1"/>
                                     <field name="unit_amount"/>
+                                    <field name="amount" invisible="1"/>
+                                    <field name="product_uom_id"/>
+                                    <field name="product_uom_category_id" invisible="1"/>
                                     <field name="date"/>
                                     <field name="project_id" invisible="1"/>
                                     <field name="account_id" invisible="1"/>
