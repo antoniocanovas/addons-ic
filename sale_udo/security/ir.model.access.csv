@@ -9,4 +9,5 @@ access_udo_target_manager,udo_target manager,sale_udo.model_udo_target,sales_tea
 access_udo_type_manager,udo_type manager,sale_udo.model_udo_type,sales_team.group_sale_manager,1,1,1,1
 access_udo_template,udo_template user,sale_udo.model_udo_template,sales_team.group_sale_manager,1,1,1,1
 access_udo_template_line,udo_template_line user,sale_udo.model_udo_template_line,sales_team.group_sale_manager,1,1,1,1
-access_udo_line,udo_line user,sale_udo.model_udo_line,sales_team.group_sale_manager,1,1,1,1
+access_udo_line_manager,udo_line Manager,sale_udo.model_udo_line,sales_team.group_sale_manager,1,1,1,1
+access_udo_line,udo_line user,sale_udo.model_udo_line,sales_team.group_sale_salesman,1,1,1,1
