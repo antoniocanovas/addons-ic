@@ -14,6 +14,10 @@
     ],
     'data': [
         'data/user.xml',
+        'data/automatic_actions.xml',
+        'data/rules.xml',
+        'views/menu_views.xml',
+        'views/model_views.xml',
     ],
     'installable': True,
 }
