@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_ocr_data" model="ir.ui.view">
+        <field name="name">OCR account assigment</field>
+        <field name="model">res.partner</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='internal_notes']" position="after">
+                <page attrs='{"invisible": [("company_type", "=", "person")]}' name="ocr_account" string="OCR Account">
+                    <group>
+
+                        <field name="ocr_sale_account_id"/>
+                        <field name="ocr_purchase_account_id"/>
+                        <field name="ocr_sale_product_id"/>
+                        <field name="ocr_purchase_product_id"/>
+
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
