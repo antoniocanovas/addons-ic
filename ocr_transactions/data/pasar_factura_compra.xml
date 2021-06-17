@@ -1,0 +1,19 @@
+<odoo>
+
+    <record id="out_invoice_to_in" model="ir.actions.server">
+            <field name="name">=>Pasar a factura compra</field>
+            <field name="model_id" ref="model_account_move"/>
+            <field name="binding_model_id" ref="model_account_move"/>
+            <field name="state">code</field>
+            <field name="code">
+for invoice in records:
+  invoice['type'] = 'in_invoice'
+
+  reference = env['ocr.values'].sudo().search([
+      ('token', '=', invoice.ocr_transaction_id.token), ('name', '=', 'NumFactura')], limit=1)
+  if reference:
+      invoice['reference'] = reference.value
+            </field>
+        </record>
+
+</odoo>
