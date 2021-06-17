@@ -2,7 +2,6 @@
 <odoo>
 
     <record id="action_ocr_transactions" model="ir.actions.act_window">
-        <field name="auto_search" eval="True"/>
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <!--<field name="context" eval="False"></field>-->
@@ -11,21 +10,17 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="multi" eval="False"/>
         <field name="name">OCR</field>
         <field name="res_model">ocr.transactions</field>
         <field name="search_view_id" eval="False"/>
-        <field name="src_model" eval="False"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
         <field name="view_id" eval="False"/>
         <field name="view_mode">tree,form</field>
-        <field name="view_type">form</field>
     </record>
 
     <record id="action_ocr_transactions_downloaded" model="ir.actions.act_window">
-        <field name="auto_search" eval="True"/>
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <!--<field name="context" eval="False"></field>-->
@@ -33,61 +28,49 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="multi" eval="False"/>
         <field name="name">Downloads</field>
         <field name="res_model">ocr.transactions</field>
         <field name="search_view_id" eval="False"/>
-        <field name="src_model" eval="False"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
         <field name="view_id" eval="False"/>
         <field name="view_mode">tree,form</field>
-        <field name="view_type">form</field>
     </record>
 
     <record id="action_ocr_documents" model="ir.actions.act_window">
-        <field name="auto_search" eval="True"/>
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="multi" eval="False"/>
         <field name="name">Documents</field>
-        <field name="res_model">account.invoice</field>
+        <field name="res_model">account.move</field>
         <field name="search_view_id" eval="False"/>
-        <field name="src_model" eval="False"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
         <field name="view_id" eval="False"/>
         <field name="view_mode">tree,form</field>
-        <field name="view_type">tree</field>
     </record>
 
     <record id="action_ocr_uploads" model="ir.actions.act_window">
-        <field name="auto_search" eval="True"/>
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="multi" eval="False"/>
         <field name="name">Uploads</field>
         <field name="res_model">ocr.uploads</field>
         <field name="search_view_id" eval="False"/>
-        <field name="src_model" eval="False"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
         <field name="view_id" eval="False"/>
         <field name="view_mode">tree,form</field>
-        <field name="view_type">form</field>
     </record>
 
     <record id="action_ocr_in_invoice" model="ir.actions.act_window">
-        <field name="auto_search" eval="True"/>
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="context" eval="{'type':'in_invoice'}"></field>
@@ -95,11 +78,9 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="multi" eval="False"/>
         <field name="name">Facturas de proveedor</field>
-        <field name="res_model">account.invoice</field>
+        <field name="res_model">account.move</field>
         <field name="search_view_id" eval="False"/>
-        <field name="src_model" eval="False"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
@@ -112,7 +93,6 @@
     </record>
 
     <record id="action_ocr_out_invoice" model="ir.actions.act_window">
-        <field name="auto_search" eval="True"/>
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="context" eval="{'type':'out_invoice'}"></field>
@@ -120,21 +100,17 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="multi" eval="False"/>
         <field name="name">Facturas a clientes</field>
-        <field name="res_model">account.invoice</field>
+        <field name="res_model">account.move</field>
         <field name="search_view_id" eval="False"/>
-        <field name="src_model" eval="False"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
         <field name="view_id" eval="False"/>
         <field name="view_mode">tree,form</field>
-        <field name="view_type">tree</field>
     </record>
 
     <record id="action_ocr_dictionary" model="ir.actions.act_window">
-        <field name="auto_search" eval="True"/>
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="context">{}</field>
@@ -142,17 +118,14 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="multi" eval="False"/>
         <field name="name">Dictionary</field>
         <field name="res_model">ocr.dictionary</field>
         <field name="search_view_id" eval="False"/>
-        <field name="src_model" eval="False"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
         <field name="view_id" eval="False"/>
         <field name="view_mode">tree,form</field>
-        <field name="view_type">form</field>
     </record>
 
     <menuitem

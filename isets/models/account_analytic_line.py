@@ -7,7 +7,8 @@ _logger = logging.getLogger(__name__)
 class AccountAnalyticLine(models.Model):
     _inherit = 'account.analytic.line'
 
-    iset_id = fields.Many2one('isets')
-    iset_so_line_id = fields.Many2one('sale.order.line')
-    sale_id = fields.Many2one('sale.order', store=False)
-    type_id = fields.Many2one('working.type', 'Type')
+    iset_id = fields.Many2one('isets', store=True)
+    iset_so_line_id = fields.Many2one('sale.order.line', store=True)
+    sale_id = fields.Many2one('sale.order', store=True)
+    type_id = fields.Many2one('working.type', 'Type', store=True)
+
