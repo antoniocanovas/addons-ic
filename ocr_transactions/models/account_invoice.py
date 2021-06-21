@@ -80,7 +80,7 @@ class AccountMove(models.Model):
                 base_iva4 = 0
 
                 # Diccionario de impuestos para ventas:
-                if invoice.type in ['out_invoice', 'out_refund']:
+                if invoice.move_type in ['out_invoice', 'out_refund']:
                     # Si hay producto en la configuración OCR del partner, se utiliza; en otro caso sólo la cuenta contable:
                     producto = invoice.partner_id.ocr_sale_product_id
                     if (producto.property_account_income_id.id):
@@ -94,18 +94,18 @@ class AccountMove(models.Model):
                         cc = invoice.partner_id.ocr_sale_account_id.id
                         descrip = invoice.partner_id.ocr_sale_account_id.name
 
-                    taxiva21 = self.env['ocr.dictionary'].search([('name', '=', 'IVA21'), ('type', '=', 'out_invoice')]).tax_id
-                    taxiva10 = self.env['ocr.dictionary'].search([('name', '=', 'IVA10'), ('type', '=', 'out_invoice')]).tax_id
-                    taxiva4 = self.env['ocr.dictionary'].search([('name', '=', 'IVA4'), ('type', '=', 'out_invoice')]).tax_id
-                    taxiva0 = self.env['ocr.dictionary'].search([('name', '=', 'IVA0'), ('type', '=', 'out_invoice')]).tax_id
+                    taxiva21 = self.env['ocr.dictionary'].search([('name', '=', 'IVA21'), ('move_type', '=', 'out_invoice')]).tax_id
+                    taxiva10 = self.env['ocr.dictionary'].search([('name', '=', 'IVA10'), ('move_type', '=', 'out_invoice')]).tax_id
+                    taxiva4 = self.env['ocr.dictionary'].search([('name', '=', 'IVA4'), ('move_type', '=', 'out_invoice')]).tax_id
+                    taxiva0 = self.env['ocr.dictionary'].search([('name', '=', 'IVA0'), ('move_type', '=', 'out_invoice')]).tax_id
                     # Diccionario de retenciones para ventas:
-                    taxret19 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF19'), ('type', '=', 'out_invoice')]).tax_id
-                    taxret15 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF15'), ('type', '=', 'out_invoice')]).tax_id
-                    taxret7 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF7'), ('type', '=', 'out_invoice')]).tax_id
-                    taxret2 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF2'), ('type', '=', 'out_invoice')]).tax_id
+                    taxret19 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF19'), ('move_type', '=', 'out_invoice')]).tax_id
+                    taxret15 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF15'), ('move_type', '=', 'out_invoice')]).tax_id
+                    taxret7 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF7'), ('move_type', '=', 'out_invoice')]).tax_id
+                    taxret2 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF2'), ('move_type', '=', 'out_invoice')]).tax_id
 
                 # Diccionario de impuestos para compras:
-                elif invoice.type in ['in_invoice', 'in_refund']:
+                elif invoice.move_type in ['in_invoice', 'in_refund']:
                     # Si hay producto en la configuración OCR del partner, se utiliza; en otro caso sólo la cuenta contable:
                     producto = invoice.partner_id.ocr_purchase_product_id
                     if (producto.property_account_expense_id.id):
@@ -119,15 +119,15 @@ class AccountMove(models.Model):
                         cc = invoice.partner_id.ocr_purchase_account_id.id
                         descrip = invoice.partner_id.ocr_purchase_account_id.name
 
-                    taxiva21 = self.env['ocr.dictionary'].search([('name', '=', 'IVA21'), ('type', '=', 'in_invoice')]).tax_id
-                    taxiva10 = self.env['ocr.dictionary'].search([('name', '=', 'IVA10'), ('type', '=', 'in_invoice')]).tax_id
-                    taxiva4 = self.env['ocr.dictionary'].search([('name', '=', 'IVA4'), ('type', '=', 'in_invoice')]).tax_id
-                    taxiva0 = self.env['ocr.dictionary'].search([('name', '=', 'IVA0'), ('type', '=', 'in_invoice')]).tax_id
+                    taxiva21 = self.env['ocr.dictionary'].search([('name', '=', 'IVA21'), ('move_type', '=', 'in_invoice')]).tax_id
+                    taxiva10 = self.env['ocr.dictionary'].search([('name', '=', 'IVA10'), ('move_type', '=', 'in_invoice')]).tax_id
+                    taxiva4 = self.env['ocr.dictionary'].search([('name', '=', 'IVA4'), ('move_type', '=', 'in_invoice')]).tax_id
+                    taxiva0 = self.env['ocr.dictionary'].search([('name', '=', 'IVA0'), ('move_type', '=', 'in_invoice')]).tax_id
                     # Diccionario de retenciones para compras:
-                    taxret19 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF19'), ('type', '=', 'in_invoice')]).tax_id
-                    taxret15 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF15'), ('type', '=', 'in_invoice')]).tax_id
-                    taxret7 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF7'), ('type', '=', 'in_invoice')]).tax_id
-                    taxret2 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF2'), ('type', '=', 'in_invoice')]).tax_id
+                    taxret19 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF19'), ('move_type', '=', 'in_invoice')]).tax_id
+                    taxret15 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF15'), ('move_type', '=', 'in_invoice')]).tax_id
+                    taxret7 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF7'), ('move_type', '=', 'in_invoice')]).tax_id
+                    taxret2 = self.env['ocr.dictionary'].search([('name', '=', 'IRPF2'), ('move_type', '=', 'in_invoice')]).tax_id
 
                 # Valores:
                 subtotal = self.env['ocr.values'].search(

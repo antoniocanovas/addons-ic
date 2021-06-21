@@ -34,8 +34,12 @@ class OcrTransactions(models.Model):
     @api.depends('invoice_id')
     def _get_invoice_reference(self):
         for record in self:
-            if record.invoice_id.reference:
-                record.invoice_reference = record.invoice_id.reference
+            print("DEBUG", record.invoice_id.ref)
+            if record.invoice_id.ref:
+                record.invoice_reference = record.invoice_id.ref
+                #record.invoice_reference = record.invoice_id.ref
+            else:
+                record.invoice_reference = "None"
 
     invoice_reference = fields.Char('Referencia', compute=_get_invoice_reference)
 
