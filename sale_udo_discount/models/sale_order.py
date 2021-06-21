@@ -4,9 +4,9 @@ import logging
 _logger = logging.getLogger(__name__)
 
 VALUES = [
-    ('fixed_service_margin_over_cost', 'Fixed'),
-    ('margin_over_cost', 'Margin over cost'),
-    ('target_price', 'Target price'),
+    ('fixed_service_margin_over_cost', 'Our services with fixed price, and margin over cost for others.'),
+    ('margin_over_cost', 'Margin over cost.'),
+    ('target_price', 'Target price.'),
 ]
 
 
