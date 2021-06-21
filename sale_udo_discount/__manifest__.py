@@ -13,14 +13,7 @@
     ],
     'data': [
         'data/server_action.xml',
-        #'security/ir.model.access.csv',
         'views/model_views.xml',
-        #'views/menu_views.xml',
-        #'views/sale_order_views.xml',
-        #'views/product_views.xml',
-
-        #'data/automated_action.xml',
-        #'data/data.xml',
     ],
     'installable': True,
 }
