@@ -10,6 +10,6 @@ class UdoLine(models.Model):
     fixed_cost = fields.Boolean(
         string='Fixed',
         help="If active this price will not be recalculated with product cost",
-        store="True",
-        readonly="False"
+        store=True,
+        readonly=False,
     )
