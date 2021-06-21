@@ -68,7 +68,7 @@ else:
         li.write({'price_unit':record.price_our_service * qty_oum, 'lst_price':li.product_id.lst_price * qty_uom})
       # ... others:
       else:
-        if (record.margin < 100):
+        if (record.margin &lt; 100):
           li.write({'price_unit':(li.product_id.standard_price / (1 - record.margin / 100) * qty_uom), 'lst_price':li.product_id.lst_price * qty_uom})
         else:
           li.write({'price_unit':(li.product_id.standard_price  * (1 + record.margin / 100) * qty_uom), 'lst_price':li.product_id.lst_price * qty_uom})
@@ -87,7 +87,7 @@ else:
         elif (liudo.fix_price_unit_sale == False) and (liudo.product_id.product_tmpl_id.our_service == True) and (record.discount_type == 'fixed_service_margin_over_cost'):
           price_unit = record.price_our_service
         else:
-          if (record.margin < 100):
+          if (record.margin &lt; 100):
             price_unit = round(price_unit_cost / (1 - record.margin / 100), monetary_precision)
           else:            
             price_unit = round(price_unit_cost * (1 + record.margin / 100),monetary_precision)
