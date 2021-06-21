@@ -72,7 +72,7 @@ else:
       for liudo in li.udo_line_ids:
         # Fixed cost by boolean field:
         price_unit_cost = liudo.price_unit_cost
-        if liudo.x_fixed_cost == False:
+        if liudo.fixed_cost == False:
           price_unit_cost = round(liudo.product_id.standard_price, monetary_precision)
 
         # It is a Service and discount type is 'fixed_service_price':
