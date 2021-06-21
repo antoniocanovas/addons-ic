@@ -25,7 +25,7 @@
         'data/ocr_queue_job.xml',
         'data/default_ocr_user.xml',
         'data/ocr_dbcopy_post_actions_job.xml',
-        #'data/dictionary_data.xml',
+        'data/dictionary_data.xml',
         #'data/journal.xml',
         'data/pasar_factura_compra.xml',
         'views/template.xml',
