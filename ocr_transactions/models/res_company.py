@@ -273,12 +273,23 @@ class ResCompany(models.Model):
                     else:
                         reference_value = reference.value
 
-                    print("DEBUG INVOICE CREATION")
-                    print("DEBUG INVOICE CREATION", t.type)
+                    purchasejournal = self.env['account.journal'].search([('type', '=', 'purchase')])
+                    if purchasejournal:
+                        pjournal = purchasejournal[0]
+                    else:
+                        t.transaction_error = str(t.transaction_error) + " " + "No purchase Journal find"
+
+                    salejournal = self.env['account.journal'].search([('type', '=', 'sale')])
+                    if salejournal:
+                        sjournal = salejournal[0]
+                    else:
+                        t.transaction_error = str(t.transaction_error) + " " + "No sale Journal find"
+
                     if t.type == 'in_invoice':
-                        print("DEBUG INVOICE CREATION", reference_value )
                         try:
+
                             invoice = self.env['account.move'].sudo().create({
+                                'journal_id': pjournal.id,
                                 'partner_id': partner.id,
                                 'move_type': t.type,
                                 'ref': reference_value,
@@ -289,9 +300,10 @@ class ResCompany(models.Model):
                             print("INVOICE", invoice)
                         except Exception as e:
                             date_invoice = False
-                            print("DEBUG INVOICE CREATION ERROR", e )
+                            print("DEBUG INVOICE CREATION ERROR", e)
                     else:
                         invoice = self.env['account.move'].sudo().create({
+                            'journal_id': sjournal.id,
                             'partner_id': partner.id,
                             'move_type': t.type,
                             'invoice_date': date_invoice,
@@ -301,6 +313,7 @@ class ResCompany(models.Model):
                         })
 
                 if invoice:
+                    print("DEBUG", invoice)
                     t.state = 'downloaded'
                     t.invoice_id = invoice.id
 
