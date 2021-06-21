@@ -273,21 +273,30 @@ class ResCompany(models.Model):
                     else:
                         reference_value = reference.value
 
+                    print("DEBUG INVOICE CREATION")
+                    print("DEBUG INVOICE CREATION", t.type)
                     if t.type == 'in_invoice':
-                        invoice = self.env['account.move'].sudo().create({
-                            'partner_id': partner.id,
-                            'type': t.type,
-                            'reference': reference_value,
-                            'date_invoice': date_invoice,
-                            'ocr_transaction_id': t.id,
-                            'is_ocr': True,
-                        })
+                        print("DEBUG INVOICE CREATION", reference_value )
+                        try:
+                            invoice = self.env['account.move'].sudo().create({
+                                'partner_id': partner.id,
+                                'move_type': t.type,
+                                'ref': reference_value,
+                                'invoice_date': date_invoice,
+                                'ocr_transaction_id': t.id,
+                                'is_ocr': True,
+                            })
+                            print("INVOICE", invoice)
+                        except Exception as e:
+                            date_invoice = False
+                            print("DEBUG INVOICE CREATION ERROR", e )
                     else:
                         invoice = self.env['account.move'].sudo().create({
                             'partner_id': partner.id,
-                            'type': t.type,
-                            'date_invoice': date_invoice,
+                            'move_type': t.type,
+                            'invoice_date': date_invoice,
                             'ocr_transaction_id': t.id,
+                            ''
                             'is_ocr': True,
                         })
 
@@ -505,7 +514,7 @@ class ResCompany(models.Model):
                 job.state = 'pending'
 
     def ocr_mark_invoice_as_ocr(self):
-        invoices = self.env['account.move'].sudo().search([('type', '=', 'in_invoice')])
+        invoices = self.env['account.move'].sudo().search([('move_type', '=', 'in_invoice')])
         for invoice in invoices:
             invoice.is_ocr = True
 
