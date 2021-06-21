@@ -271,8 +271,8 @@ class OcrOperations(models.Model):
                     if t.type == 'in_invoice':
                         invoice = self.env['account.invoice'].sudo().create({
                             'partner_id': partner.id,
-                            'type': t.type,
-                            'reference': reference_value,
+                            'move_type': t.type,
+                            'ref': reference_value,
                             'date_invoice': date_invoice,
                             'ocr_transaction_id': t.id,
                             'is_ocr': True,
@@ -280,7 +280,7 @@ class OcrOperations(models.Model):
                     else:
                         invoice = self.env['account.invoice'].sudo().create({
                             'partner_id': partner.id,
-                            'type': t.type,
+                            'move_type': t.type,
                             'date_invoice': date_invoice,
                             'ocr_transaction_id': t.id,
                             'is_ocr': True,
@@ -512,7 +512,7 @@ class OcrOperations(models.Model):
 
     @api.multi
     def ocr_mark_invoice_as_ocr(self):
-        invoices = self.env['account.invoice'].sudo().search([('type', '=', 'in_invoice')])
+        invoices = self.env['account.invoice'].sudo().search([('move_type', '=', 'in_invoice')])
         for invoice in invoices:
             invoice.is_ocr = True
 

@@ -101,7 +101,7 @@ class OcrUploads(models.Model):
 
         vat = upload.partner_id.get_ocr_vat()
 
-        strname = str(attachment.datas_fname)
+        strname = str(attachment.display_name)
         strlen = len(strname)
 
         if attachment.datas:
@@ -271,7 +271,7 @@ class OcrUploads(models.Model):
                             else:
                                 self.upload_transaction_error = str(self.upload_transaction_error) + \
                                                                 " Error " + \
-                                                                str(attachment.datas_fname) + 'OCR post NULL'
+                                                                str(attachment.display_name) + 'OCR post NULL'
                     else:
                         ocr_transaction_id = self.create_ocr_transaction(
                             res['token'], api_key, attachment, False, False, self, False
@@ -283,11 +283,11 @@ class OcrUploads(models.Model):
                         res = json.loads(response.content.decode('utf-8'))
                         self.upload_transaction_error = str(self.upload_transaction_error) +\
                                                         " Error " +\
-                                                        str(attachment.datas_fname) + str(res)
+                                                        str(attachment.display_name) + str(res)
                     except Exception as e:
                         self.upload_transaction_error = str(self.upload_transaction_error) +\
                                                         " Error " + \
-                                                        str(attachment.datas_fname)
+                                                        str(attachment.display_name)
                     _logger.info(
                         "Error from OCR server  %s" % self.upload_transaction_error
                     )
