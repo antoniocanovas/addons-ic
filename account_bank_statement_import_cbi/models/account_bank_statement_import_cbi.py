@@ -149,7 +149,7 @@ class AccountBankStatementCBI(models.Model):
                                                     'name': f,
                                                     'journal_id': journal_id.id,
                                                     'bank_statement_attachment_id': attachment_id.id,
-                                                    'company_id':journal_id.company_id,
+                                                    'company_id': journal_id.company_id.id,
                                                 })
                                                 self.move_file_to_downloaded_dir(sftpclient, f)
 
