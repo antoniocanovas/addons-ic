@@ -7,8 +7,8 @@
 """,
     'author': 'Serincloud',
     'depends': [
+        'base_automation',
         'sale_timesheet',
-        #'hr_timesheet',
         'repair',
         'mrp',
 
