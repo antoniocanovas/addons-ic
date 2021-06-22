@@ -102,6 +102,7 @@ if record.timesheet_ids.ids or record.iset_consumed_ids.ids:
       newsol = env['sale.order.line'].create({'order_id':neworder.id, 'partner_id':record.partner_id.id,
         'product_id':li.so_line.product_id.id, 'product_uom_qty':li.unit_amount, 'price_unit':li.so_line.price_unit, 
         'product_uom':li.product_uom_id.id, 'name':name})
+  record.write({'new_sale_id':neworder.id})
 else:
   raise Warning('No products or services consumed.')
             </field>
