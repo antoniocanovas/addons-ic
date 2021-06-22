@@ -16,6 +16,7 @@
                             <field name="product_uom" readonly="1"/>
                             <field name="udo_cost_amount"/>
                             <field name="display_type" invisible="1"/>
+                            <field name="state" invisible="1"/>
                         </group>
                         <group>
                             <field name="price_unit" readonly="1"/>
