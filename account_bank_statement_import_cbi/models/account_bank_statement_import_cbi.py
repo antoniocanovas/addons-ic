@@ -28,6 +28,7 @@ class AccountBankStatementCBI(models.Model):
     state = fields.Selection(
         selection=STATE, string="State", default='draft', track_visibility='onchange'
     )
+    company_id = fields.Many2one('res.company')
     bank_statement_attachment_id = fields.Many2one('ir.attachment')
     bank_statement_attachment_ids = fields.Many2many(comodel_name="ir.attachment",
                                       relation="m2m_ocr_attachments_rel",
@@ -104,15 +105,13 @@ class AccountBankStatementCBI(models.Model):
                 dirlist = sftpclient.listdir('.')
 
                 imported_n43_list = self.get_n43_list()
-                print("DEBUG", dirlist)
 
                 for d in dirlist:
                     path = "/%s" % d
                     result = sftpclient.chdir(path=path)
                     filelist = sftpclient.listdir('.')
-                    print("filelist", filelist)
+
                     for f in filelist:
-                        print("dir", d)
                         if f != 'Historico':
                             if f not in imported_n43_list:
                                 file = sftpclient.file(f, mode='r', bufsize=-1)
@@ -128,10 +127,9 @@ class AccountBankStatementCBI(models.Model):
                                         if journal_id.bank_account_id.acc_number:
                                             bank_account_number = journal_id.bank_account_id.acc_number
                                             bank_mnt_account_number = bank_account_number.replace(' ', '')
-                                            first_bank_sequence = bank_mnt_account_number[4:14]
-                                            second_bank_secuence = bank_mnt_account_number[16:]
+                                            first_bank_sequence = bank_mnt_account_number[4:12]
+                                            second_bank_secuence = bank_mnt_account_number[14:]
                                             bank_account_number = first_bank_sequence + second_bank_secuence
-                                            print(bank_account_number, bsa_bank_number)
                                             if bank_account_number == bsa_bank_number:
                                                 with open('/tmp/%s' % f, "r+b") as file:
                                                     data = file.read()
@@ -151,6 +149,7 @@ class AccountBankStatementCBI(models.Model):
                                                     'name': f,
                                                     'journal_id': journal_id.id,
                                                     'bank_statement_attachment_id': attachment_id.id,
+                                                    'company_id':journal_id.company_id,
                                                 })
                                                 self.move_file_to_downloaded_dir(sftpclient, f)
 
