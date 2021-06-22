@@ -145,8 +145,8 @@
                                     <field name="user_id" invisible="1"/>
                                     <field name="product_id" domain="[('type','!=','service')]" attrs="{'readonly':[('iset_so_line_id','!=',False)]}" options="{'no_create': True}"/>
                                     <field name="name"/>
-                                    <field name="unit_amount" attrs="{'readonly':[('iset_so_line_id','!=',False)]}"/>
-                                    <field name="amount" groups="hr_timesheet.group_hr_timesheet_approver"/>
+                                    <field name="unit_amount"/>
+                                    <field name="amount" groups="hr_timesheet.group_hr_timesheet_approver" attrs="{'readonly':[('iset_so_line_id','!=',False)]}"/>
                                     <field name="product_uom_id" attrs="{'readonly':[('iset_so_line_id','!=',False),('product_uom_id','=',False)]}" options="{'no_create': True}"/>
                                     <field name="product_uom_category_id" invisible="1"/>
                                     <field name="date"/>
