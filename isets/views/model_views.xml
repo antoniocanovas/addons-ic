@@ -407,7 +407,7 @@
                     </field>
 <!--
                     <group col="1">
-                        <button class="oe_highlight" type="action" name="%(recalculate_special_discounts)d" string="Create quotation from real products and works"/>
+
                     </group>
 -->
                 </page>
