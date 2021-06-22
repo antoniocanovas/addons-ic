@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--<record id="view_company_dbcopy_dbname" model="ir.ui.view">
+        <field name="name">dbcopy show dbname</field>
+        <field name="model">res.company</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[1]" position="after">
+                <page name="dbcopy" string="DBCOpY">
+                    <group>
+                        <field name="master_db_name"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>-->
+
+</odoo>

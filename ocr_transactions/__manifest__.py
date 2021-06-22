@@ -1,6 +1,6 @@
 {
     'name': 'OCR transactions',
-    'version': '12.0.2.1.0',
+    'version': '14.0.2.1.0',
     'category': '',
     'description': u"""
 
@@ -10,8 +10,8 @@
         'account',
         'l10n_es_account_asset',
         'contacts',
-        #'dbcopy_post_actions',
         'queue_job_cron',
+        'dbcopy_post_actions',
         'partner_credentials',
     ],
     'data': [
@@ -26,7 +26,6 @@
         'data/default_ocr_user.xml',
         'data/ocr_dbcopy_post_actions_job.xml',
         'data/dictionary_data.xml',
-        #'data/journal.xml',
         'data/pasar_factura_compra.xml',
         'views/template.xml',
         'wizards/ocr_invoice_combination.xml',

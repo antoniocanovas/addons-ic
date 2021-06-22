@@ -124,7 +124,7 @@
                         </div>
                         <div attrs="{'invisible':[('project_id','=',False)]}">
                             <h2>Services: </h2><i>(Project and task REQUIRED)</i>
-                            <field name="project_service_ids" attrs="{'readonly':[('task_id','=',False)]}" context="{'default_project_id':project_id, 'default_task_id':task_id,'default_account_id':project_analytic_id, 'default_name':'/', 'default_company_id': company_id}">
+                            <field name="project_service_ids" attrs="{'readonly':[('task_id','=',False)]}" context="{'default_project_id':project_id, 'default_task_id':task_id,'default_account_id':project_analytic_id, 'default_name':'/', 'default_sale_id':project_so_id, 'default_company_id': company_id}">
                                 <tree editable="bottom" string="Timesheet Activities" default_order="date">
                                     <field name="task_id" options="{'no_create': True}"/>
                                     <field name="user_id" invisible="1"/>
@@ -145,9 +145,9 @@
                                     <field name="user_id" invisible="1"/>
                                     <field name="product_id" domain="[('type','!=','service')]" attrs="{'readonly':[('iset_so_line_id','!=',False)]}" options="{'no_create': True}"/>
                                     <field name="name"/>
-                                    <field name="unit_amount" attrs="{'readonly':[('iset_so_line_id','!=',False)]}"/>
+                                    <field name="unit_amount"/>
                                     <field name="amount" groups="hr_timesheet.group_hr_timesheet_approver"/>
-                                    <field name="product_uom_id" attrs="{'readonly':[('iset_so_line_id','!=',False),('product_uom_id','=',False)]}" options="{'no_create': True}"/>
+                                    <field name="product_uom_id"/>
                                     <field name="product_uom_category_id" invisible="1"/>
                                     <field name="date"/>
                                     <field name="project_id" invisible="1"/>
@@ -383,6 +383,33 @@
         <field name="name">working type tree View</field>
         <field name="priority">16</field>
         <field name="type">tree</field>
+    </record>
+
+
+    <record id="sale_order_iset_consumed" model="ir.ui.view">
+        <field name="name">sale.order.iset_consumed</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="	sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page/field[@name='order_line']/.." position="after">
+                <page string="iSet Consumed" name="iset_consumed" attrs="{'invisible': [('state', 'in', ['draft'])]}">
+                    <field name="iset_consumed_ids" readonly="1">
+                      <tree>
+                        <field name="date"/>
+                        <field name="iset_so_line_id"/>
+                        <field name="product_id"/>
+                        <field name="name"/>
+                        <field name="unit_amount"/>
+                        <field name="product_uom_id"/>
+                        <field name="amount"/>
+                      </tree>
+                    </field>
+                    <group col="1">
+                        <button class="oe_highlight" type="action" name="%(recalculate_special_discounts)d" string="Create quotation from real products and works"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
     </record>
 
 </odoo>

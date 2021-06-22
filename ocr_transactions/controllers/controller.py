@@ -13,7 +13,7 @@ class CorrectionPortal(http.Controller):
     @http.route(['/invoice/correction'], type='http', auth="user", website=True)
     def correction_portal(self, **post):
         ## sustituir api_key de customer por company si ocr_delivery es negativo
-        invoice = request.env['account.invoice'].sudo().search([('to_correct', '=', True)], limit=1)
+        invoice = request.env['account.move'].sudo().search([('to_correct', '=', True)], limit=1)
         invoice.to_correct = False
         if request.env.user.company_id.ocr_delivery_company and invoice.customer_id:
             pc = request.env['partner.credentials'].sudo().search([
