@@ -94,9 +94,9 @@ for r in records:
   newsol = env['sale.order.line'].create({'order_id':neworder.id, 'partner_id':neworder.partner_id.id,
     'product_id':product_id, 'product_uom_qty':r.unit_amount, 'price_unit':-r.amount/r.unit_amount, 'product_uom':r.product_uom_id.id})
             </field>
-    </record>
+        </record>
 
-    <record id="update_analytic_line_from_iset" model="ir.actions.server">
+        <record id="update_analytic_line_from_iset" model="ir.actions.server">
             <field name="name">=> Update analytic.line from ISET</field>
             <field name="model_id" ref="model_account_analytic_line"/>
             <field name="state">code</field>
