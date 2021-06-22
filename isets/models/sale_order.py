@@ -9,3 +9,4 @@ class SaleOrderiSet(models.Model):
     _inherit = 'sale.order'
 
     iset_consumed_ids = fields.One2many('account.analytic.line', 'sale_id', string='iSets')
+    new_sale_id = fields.Many2one('sale.order', string='New quotation')
