@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <record id="sale_order_recalculate_sd" model="ir.actions.server">
-                <field name="name">=> recalculate special discounts</field>
+                <field name="name">=> Recalculate Special Discounts</field>
                 <field name="model_id" ref="model_sale_order"/>
                 <field name="state">code</field>
                 <field name="code">
@@ -19,10 +19,10 @@ if record.discount_type == 'target_price':
   # Calculating real total cost and sale without discount:
   cost_amount, price_amount, margin = 0,0,0
   for li in record.order_line:
-    if (len(li.udo_line_ids.ids) == 0) and (li.product_uom_qty > 0):
+    if (len(li.udo_line_ids.ids) == 0) and (li.product_uom_qty &gt; 0):
       cost_amount += li.price_unit_cost * li.product_uom_qty
-      price_amount += li.price_unit * li.product_uom_qty
-    elif (len(li.udo_line_ids.ids) > 0) and (li.product_uom_qty > 0):
+      price_amount += li.lst_price * li.product_uom_qty
+    elif (len(li.udo_line_ids.ids) &gt; 0) and (li.product_uom_qty &gt; 0):
       cost_amount  += round(li.udo_cost_amount,monetary_precision)
       price_amount += round(li.price_subtotal / (1-li.discount/100),monetary_precision)
 
@@ -31,8 +31,14 @@ if record.discount_type == 'target_price':
 
   else:
     margin = (1 - (record.target_price / price_amount)) * 100
+
   for li in record.order_line:
-    li['discount'] = margin
+    if (len(li.udo_line_ids.ids) == 0) and (li.product_uom_qty &gt; 0):
+      li.write({'price_unit':li.lst_price, 'discount':margin})
+    elif (len(li.udo_line_ids.ids) &gt; 0) and (li.product_uom_qty &gt; 0):
+      for udoline in li.udo_line_ids:
+        udoline['price_unit'] = udoline.price_unit * (1-margin/100)
+
   diference = round(record.target_price - record.amount_untaxed,2)
   if diference != 0:
     review = True
@@ -49,7 +55,7 @@ else:
       li['discount'] = 0
 
     # Line NOT UDO:
-    if (len(li.udo_line_ids.ids) == 0) and (li.product_uom_qty > 0):
+    if (len(li.udo_line_ids.ids) == 0) and (li.product_uom_qty &gt; 0):
       if li.product_uom.uom_type == 'reference':
         qty_uom = li.product_uom_qty
       elif li.product_uom.uom_type == 'bigger':
@@ -68,24 +74,25 @@ else:
           li.write({'price_unit':(li.product_id.standard_price  * (1 + record.margin / 100) * qty_uom), 'lst_price':li.product_id.lst_price * qty_uom})
 
     # Case Line IS 'computed by udos':
-    elif (len(li.udo_line_ids.ids) > 0):
+    elif (len(li.udo_line_ids.ids) &gt; 0):
       for liudo in li.udo_line_ids:
-        # Fixed cost by boolean field:
-        price_unit_cost = liudo.price_unit_cost
-        if liudo.fixed_cost == False:
+            # Price unit cost:
+        if (liudo.fix_price_unit_cost == True):
+          price_unit_cost = liudo.price_unit_cost
+        else:
           price_unit_cost = round(liudo.product_id.standard_price, monetary_precision)
-
-        # It is a Service and discount type is 'fixed_service_price':
-        if (liudo.product_id.product_tmpl_id.our_service == True) and (record.discount_type == 'fixed_service_margin_over_cost'):
-          liudo['price_unit'] = record.price_our_service
+            # Price unit sale:
+        if (liudo.fix_price_unit_sale == True):
+          price_unit = liudo.price_unit
+        elif (liudo.fix_price_unit_sale == False) and (liudo.product_id.product_tmpl_id.our_service == True) and (record.discount_type == 'fixed_service_margin_over_cost'):
+          price_unit = record.price_our_service
         else:
           if (record.margin &lt; 100):
-            liudo.write({'price_unit': round(price_unit_cost / (1 - record.margin / 100), monetary_precision),
-              'price_unit_cost': price_unit_cost})
-          else:
-            liudo.write({'price_unit': round(price_unit_cost * (1 + record.margin / 100),monetary_precision),
-              'price_unit_cost': price_unit_cost})
-
+            price_unit = round(price_unit_cost / (1 - record.margin / 100), monetary_precision)
+          else:            
+            price_unit = round(price_unit_cost * (1 + record.margin / 100),monetary_precision)
+            
+        liudo.write({'price_unit': price_unit, 'price_unit_cost': price_unit_cost})
 
                 </field>
         </record>

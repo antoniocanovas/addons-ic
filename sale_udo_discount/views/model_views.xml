@@ -33,7 +33,10 @@
         <field name="inherit_id" ref="sale_udo.sale_order_line_udo_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='udo_line_ids']/tree/field[@name='price_unit_cost']" position="after">
-                <field name="fixed_cost"/>
+                <field name="fix_price_unit_cost"/>
+            </xpath>
+            <xpath expr="//field[@name='udo_line_ids']/tree/field[@name='price_unit']" position="after">
+                <field name="fix_price_unit_sale"/>
             </xpath>
         </field>
     </record>
