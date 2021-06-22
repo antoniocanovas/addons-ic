@@ -405,11 +405,9 @@
                         <field name="amount"/>
                       </tree>
                     </field>
-<!--
                     <group col="1">
-
+                        <button class="oe_highlight" type="action" name="isets.sale_order_from_aal" string="Create quotation from real products and works"/>
                     </group>
--->
                 </page>
             </xpath>
         </field>
