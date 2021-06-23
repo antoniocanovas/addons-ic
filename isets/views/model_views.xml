@@ -145,8 +145,8 @@
                                     <field name="user_id" invisible="1"/>
                                     <field name="product_id" domain="[('type','!=','service')]" attrs="{'readonly':[('iset_so_line_id','!=',False)]}" options="{'no_create': True}"/>
                                     <field name="name"/>
-                                    <field name="unit_amount" attrs="{'readonly':[('iset_so_line_id','!=',False)]}"/>
-                                    <field name="amount" groups="hr_timesheet.group_hr_timesheet_approver"/>
+                                    <field name="unit_amount"/>
+                                    <field name="amount" groups="hr_timesheet.group_hr_timesheet_approver" attrs="{'readonly':[('iset_so_line_id','!=',False)]}"/>
                                     <field name="product_uom_id" attrs="{'readonly':[('iset_so_line_id','!=',False),('product_uom_id','=',False)]}" options="{'no_create': True}"/>
                                     <field name="product_uom_category_id" invisible="1"/>
                                     <field name="date"/>
@@ -390,7 +390,7 @@
     <record id="sale_order_iset_consumed" model="ir.ui.view">
         <field name="name">sale.order.iset_consumed</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="	sale.view_order_form"/>
+        <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//page/field[@name='order_line']/.." position="after">
                 <page string="iSet Consumed" name="iset_consumed" attrs="{'invisible': [('state', 'in', ['draft'])]}">
@@ -405,8 +405,9 @@
                         <field name="amount"/>
                       </tree>
                     </field>
-                    <group col="1">
-                        <button class="oe_highlight" type="action" name="%(recalculate_special_discounts)d" string="Create quotation from real products and works"/>
+                    <group col="4">
+                        <button class="oe_highlight" type="action" name="isets.sale_order_from_aal" string="Create quotation from real products and works"/>
+                        <field name="new_sale_id" readonly="1"/>
                     </group>
                 </page>
             </xpath>
