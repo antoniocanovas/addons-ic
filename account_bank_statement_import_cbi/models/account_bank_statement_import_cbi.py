@@ -163,6 +163,7 @@ class AccountBankStatementCBI(models.Model):
                 company_id.cbi_last_connection_date = time
 
             except Exception as e:
+                print("ERROR", e)
                 _logger.debug('Server Error: %s' % e)
 
         if company_id.cbi_autoimport:
