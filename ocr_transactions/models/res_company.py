@@ -75,13 +75,6 @@ class ResCompany(models.Model):
             vat_cleaned = vat[2:11]
         else:
             vat_cleaned = vat
-        #vat_cleaned = vat.replace('-', '')
-        #vat_cleaned = vat_cleaned.replace(" ", "")
-        #vat_cleaned = vat_cleaned.replace('ES', '')
-        #vat_cleaned = vat_cleaned.replace('FR', '')
-        #vat_cleaned = vat_cleaned.replace('IT', '')
-        #vat_cleaned = vat_cleaned.replace('PR', '')
-        #vat_cleaned = vat_cleaned.replace('DE', '')
         vat_cleaned.upper()
         return vat_cleaned
 

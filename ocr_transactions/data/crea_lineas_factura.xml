@@ -115,8 +115,9 @@ if (ret19.id) and (base_ret19 > 0):
   if (base_iva21 >= base_ret19):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva21.id, taxret19.id]
-    nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_ret19,'account_id':cc})
-    nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+    record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_ret19, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva21 -= base_ret19
     neto -= base_ret19
     base_ret19 = 0
@@ -125,8 +126,9 @@ if (ret19.id) and (base_ret19 > 0):
   if (base_iva10 >= base_ret19) and (base_ret19 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva10.id, taxret19.id]
-    nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_ret19,'account_id':cc})
-    nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+    record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_ret19, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva10 -= base_ret19
     neto -= base_ret19
     base_ret19 = 0
@@ -134,8 +136,9 @@ if (ret19.id) and (base_ret19 > 0):
   if (base_iva4 >= base_ret19) and (base_ret19 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva4.id, taxret19.id]
-    nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_ret19,'account_id':cc})
-    nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+    record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_ret19, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva4 -= base_ret19
     neto -= base_ret19
 
@@ -144,8 +147,9 @@ if (ret15.id) and (base_ret15 > 0):
   if (base_iva21 >= base_ret15):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva21.id, taxret15.id]
-    nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_ret15,'account_id':cc})
-    nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+    record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_ret15, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva21 -= base_ret15
     neto -= base_ret15
     base_ret15 = 0
@@ -153,17 +157,19 @@ if (ret15.id) and (base_ret15 > 0):
   if (base_iva10 >= base_ret15) and (base_ret15 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva10.id, taxret15.id]
-    nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_ret15,'account_id':cc})
-    nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+    record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_ret15, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva10 -= base_ret15
     neto -= base_ret15
     base_ret15 = 0
-  # Lo mismo por si es iva4 para 19
+  # Lo mismo por si es iva4 para 15
   if (base_iva4 >= base_ret15) and (base_ret15 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva4.id, taxret15.id]
-    nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_ret15,'account_id':cc})
-    nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+    record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_ret15, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva4 -= base_ret15
     neto -= base_ret15
 
@@ -172,8 +178,9 @@ if (ret7.id) and (base_ret7 > 0):
   if (base_iva21 >= base_ret7):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva21.id, taxret7.id]
-    nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_ret7,'account_id':cc})
-    nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+    record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_ret7, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva21 -= base_ret7
     neto -= base_ret7
     base_ret7 = 0
@@ -181,17 +188,19 @@ if (ret7.id) and (base_ret7 > 0):
   if (base_iva10 >= base_ret7) and (base_ret7 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva10.id, taxret7.id]
-    nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_ret7,'account_id':cc})
-    nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+    record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_ret7, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva10 -= base_ret7
     neto -= base_ret7
     base_ret7 = 0
-  # Lo mismo por si es iva4 para 19
+  # Lo mismo por si es iva4 para 7
   if (base_iva4 >= base_ret7) and (base_ret7 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva4.id, taxret7.id]
-    nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_ret7,'account_id':cc})
-    nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+    record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_ret7, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva4 -= base_ret7
     neto -= base_ret7
 
@@ -200,8 +209,9 @@ if (ret2.id) and (base_ret2 > 0):
   if (base_iva21 >= base_ret2):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva21.id, taxret2.id]
-    nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_ret2,'account_id':cc})
-    nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+    record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_ret2, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva21 -= base_ret2
     neto -= base_ret2
     base_ret2 = 0
@@ -209,42 +219,48 @@ if (ret2.id) and (base_ret2 > 0):
   if (base_iva10 >= base_ret2) and (base_ret2 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva10.id, taxret2.id]
-    nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_ret2,'account_id':cc})
-    nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+    record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_ret2, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva10 -= base_ret2
     neto -= base_ret2
     base_ret2 = 0
-  # Lo mismo por si es iva4 para 19
+  # Lo mismo por si es iva4 para 2
   if (base_iva4 >= base_ret2) and (base_ret2 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva4.id, taxret2.id]
-    nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_ret2,'account_id':cc})
-    nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+    record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_ret2, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva4 -= base_ret2
     neto -= base_ret2
 
 # Líneas de impuestos estándar, sin retención:
 if (taxiva21.id) and (base_iva21 > 0):
   impuestos = [taxiva21.id]
-  nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_iva21,'account_id':cc})
-  nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+  record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_iva21, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
   neto -= base_iva21
 if (taxiva10.id) and (base_iva10 > 0):
   impuestos = [taxiva10.id]
-  nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_iva10,'account_id':cc})
-  nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+  record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_iva10, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
   neto -= base_iva10
 if (taxiva4.id) and (base_iva4 > 0):
   impuestos = [taxiva4.id]
-  nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':base_iva4,'account_id':cc})
-  nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+  record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':base_iva4, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
   neto -= base_iva4
 
 # Caso de línea sin impuestos y sin detectar IVA0%:
 if (subtotal.id) and (neto > 0):
   impuestos = [taxiva0.id]
-  nuevalin = env['account.invoice.line'].create({'product_id':producto.id,'invoice_id':record.id,'name':descrip,'quantity':1,'price_unit':neto,'account_id':cc})
-  nuevalin['invoice_line_tax_ids'] = [(6,0,impuestos)]
+  record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
+      'partner_id':record.partner_id.id, 'price_unit':neto, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
 
 # Reculcalate Taxes
 if record.invoice_line_ids.ids:
