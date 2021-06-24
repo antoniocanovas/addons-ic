@@ -110,7 +110,7 @@ class AccountBankStatementCBI(models.Model):
                     path = "/%s" % d
                     result = sftpclient.chdir(path=path)
                     filelist = sftpclient.listdir('.')
-
+                    print("DEBUG path", d)
                     for f in filelist:
                         if f != 'Historico':
                             if f not in imported_n43_list:
@@ -130,7 +130,9 @@ class AccountBankStatementCBI(models.Model):
                                             first_bank_sequence = bank_mnt_account_number[4:12]
                                             second_bank_secuence = bank_mnt_account_number[14:]
                                             bank_account_number = first_bank_sequence + second_bank_secuence
+                                            print("DEBUG compare", bsa_bank_number ,bank_account_number)
                                             if bank_account_number == bsa_bank_number:
+                                                print("DEBUG MATCH")
                                                 with open('/tmp/%s' % f, "r+b") as file:
                                                     data = file.read()
                                                     file.close()
