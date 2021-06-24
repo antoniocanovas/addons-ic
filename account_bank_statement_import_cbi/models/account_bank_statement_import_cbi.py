@@ -98,6 +98,7 @@ class AccountBankStatementCBI(models.Model):
         print("STAR")
         company_id = self.env.user.company_id
         if company_id.ftp_url_cbi and company_id.ftp_port_cbi and company_id.ftp_user_cbi and company_id.ftp_passwd_cbi:
+            print("TRY")
             try:
                 sftpclient = self.create_sftp_client(company_id.ftp_url_cbi, company_id.ftp_port_cbi,
                                                      company_id.ftp_user_cbi, company_id.ftp_passwd_cbi, None, 'DSA')
@@ -105,7 +106,7 @@ class AccountBankStatementCBI(models.Model):
                 dirlist = sftpclient.listdir('.')
 
                 imported_n43_list = self.get_n43_list()
-
+                print("n43 LIST", dirlist , imported_n43_list)
                 for d in dirlist:
                     path = "/%s" % d
                     result = sftpclient.chdir(path=path)
