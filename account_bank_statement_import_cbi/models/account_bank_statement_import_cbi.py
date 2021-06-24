@@ -97,6 +97,7 @@ class AccountBankStatementCBI(models.Model):
     def automated_ftp_get_n43_files(self):
         print("STAR")
         company_id = self.env.user.company_id
+        print(company_id)
         if company_id.ftp_url_cbi and company_id.ftp_port_cbi and company_id.ftp_user_cbi and company_id.ftp_passwd_cbi:
             print("TRY")
             try:
