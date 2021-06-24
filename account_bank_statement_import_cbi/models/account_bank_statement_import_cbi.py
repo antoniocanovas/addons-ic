@@ -95,25 +95,19 @@ class AccountBankStatementCBI(models.Model):
 
     @api.multi
     def automated_ftp_get_n43_files(self):
-        print("STAR")
         company_ids = self.env['res.company'].sudo().search([])
         for company_id in company_ids:
-            print(company_id)
             if company_id.ftp_url_cbi and company_id.ftp_port_cbi and company_id.ftp_user_cbi and company_id.ftp_passwd_cbi:
-                print("TRY")
                 try:
                     sftpclient = self.create_sftp_client(company_id.ftp_url_cbi, company_id.ftp_port_cbi,
                                                          company_id.ftp_user_cbi, company_id.ftp_passwd_cbi, None, 'DSA')
                     # List files in the default directory on the remote computer.
                     dirlist = sftpclient.listdir('.')
-
                     imported_n43_list = self.get_n43_list()
-                    print("n43 LIST", dirlist , imported_n43_list)
                     for d in dirlist:
                         path = "/%s" % d
                         result = sftpclient.chdir(path=path)
                         filelist = sftpclient.listdir('.')
-                        print("DEBUG path", d)
                         for f in filelist:
                             if f != 'Historico':
                                 if f not in imported_n43_list:
@@ -121,7 +115,6 @@ class AccountBankStatementCBI(models.Model):
                                     file_first = file.readline()
                                     bsa_bank_number = file_first[2:20]
                                     #rename = sftpclient.rename(f,(str(bank_number) + str(f)+ '.n43'))
-
                                     sftpclient.get(f, '/tmp/%s' % f)
 
                                     try:
@@ -133,9 +126,7 @@ class AccountBankStatementCBI(models.Model):
                                                 first_bank_sequence = bank_mnt_account_number[4:12]
                                                 second_bank_secuence = bank_mnt_account_number[14:]
                                                 bank_account_number = first_bank_sequence + second_bank_secuence
-                                                print("DEBUG compare", bsa_bank_number ,bank_account_number)
                                                 if bank_account_number == bsa_bank_number:
-                                                    print("DEBUG MATCH")
                                                     with open('/tmp/%s' % f, "r+b") as file:
                                                         data = file.read()
                                                         file.close()
@@ -166,11 +157,10 @@ class AccountBankStatementCBI(models.Model):
                     company_id.cbi_last_connection_date = time
 
                 except Exception as e:
-                    print("ERROR", e)
                     _logger.debug('Server Error: %s' % e)
 
-        if company_id.cbi_autoimport:
-            self.automated_import_files()
+            if company_id.cbi_autoimport:
+                self.automated_import_files()
 
     @api.multi
     def import_files(self):
