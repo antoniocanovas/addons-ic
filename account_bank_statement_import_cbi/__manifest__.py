@@ -2,7 +2,7 @@
 {
     'name': 'Account Bank Statement Import CBI',
     'category': 'Accounting',
-    'version': '12.0.0.0.1º',
+    'version': '12.0.1.0.0º',
     'depends': ['account_bank_statement_import','l10n_es_account_bank_statement_import_n43'],
     'description': """ Upload multiple documents n43 formated """,
     'data': [
