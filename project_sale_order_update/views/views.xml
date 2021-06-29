@@ -3,6 +3,7 @@
 
     <record id="project_project_form_sale_order_field" model="ir.ui.view">
         <field name="name">project.project.form.sale_order_field</field>
+        <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_email']" position="after">
