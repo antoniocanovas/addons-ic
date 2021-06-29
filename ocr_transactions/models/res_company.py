@@ -118,6 +118,7 @@ class ResCompany(models.Model):
             exist = self.env['ocr.transactions'].search([
                 ("token", "=", token),
             ], limit=1)
+            print("TOKEN", token)
             # No se Borran facturas, solo actualizamos el transaction si no hay líneas de factura
             # Si hay lineas no debe actualizar estado
             if exist.token:
@@ -346,7 +347,7 @@ class ResCompany(models.Model):
                 'name': str(ocr_document.name) + "_" + str(ocr_document.id),
                 'type': 'binary',
                 'datas': img_file_encode,
-                'datas_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
+                #'datas_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
                 'store_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
                 'res_model': 'account.move',
                 'res_id': document.id,
@@ -376,7 +377,7 @@ class ResCompany(models.Model):
                 'name': str(ocr_document.name) + "_" + str(ocr_document.id),
                 'type': 'binary',
                 'datas': img_file_encode,
-                'datas_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
+                #'datas_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
                 'store_fname': str(ocr_document.name) + "_" + str(ocr_document.id),
                 'res_model': 'account.move',
                 'res_id': document.id,
@@ -467,11 +468,13 @@ class ResCompany(models.Model):
                                                                             ("state", "=", 'processed'),
                                                                             ("customer_api_key", "=", key),
                                                                         ], limit=30)
+            print("TP",transactions_processed)
             transactions_with_errors = self.env['ocr.transactions'].search([
                                                                         ("state", "=", 'error'),
                                                                         ("customer_api_key", "=", key),
                                                                         ("cleared", "=", False),
                                                                           ], limit=10)
+            print("TE", transactions_with_errors)
             if transactions_with_errors:
                 for t_error in transactions_processed:
                     try:
