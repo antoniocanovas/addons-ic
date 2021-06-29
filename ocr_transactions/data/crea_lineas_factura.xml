@@ -5,8 +5,9 @@
             <field name="model_id" ref="model_account_move"/>
             <field name="state">code</field>
             <field name="code">
+partner_id = record.partner_id
 # Comprobamos que el partner tiene asignadas cuentas contables por defecto para crear las líneas de factura:
-if (not record.partner_id.ocr_sale_account_id.id) or (not record.partner_id.ocr_purchase_account_id.id):
+if (not partner_id.ocr_sale_account_id.id) or (not partner_id.ocr_purchase_account_id.id):
   raise Warning('Asigne los productos o cuentas contables por defecto para OCR en la ficha de esta empresa, antes de intentar crear las líneas de factura.')
 
 # Inicializando:
@@ -15,9 +16,9 @@ base_iva10 = 0
 base_iva4  = 0
 
 # Diccionario de impuestos para ventas:
-if record.type in ['out_invoice','out_refund']:
+if record.move_type in ['out_invoice','out_refund']:
   # Si hay producto en la configuración OCR del partner, se utiliza; en otro caso sólo la cuenta contable:
-  producto = record.partner_id.ocr_sale_product_id
+  producto = partner_id.ocr_sale_product_id
   if (producto.property_account_income_id.id):
     cc = producto.property_account_income_id.id
     descrip = producto.name
@@ -25,8 +26,8 @@ if record.type in ['out_invoice','out_refund']:
     cc = producto.categ_id.property_account_income_categ_id.id
     descrip = producto.name
   else:
-    cc = record.partner_id.ocr_sale_account_id.id
-    descrip = record.partner_id.ocr_sale_account_id.name
+    cc = partner_id.ocr_sale_account_id.id
+    descrip = partner_id.ocr_sale_account_id.name
 
   taxiva21 = env['ocr.dictionary'].search([('name','=','IVA21'),('type','=','out_invoice')]).tax_id
   taxiva10 = env['ocr.dictionary'].search([('name','=','IVA10'),('type','=','out_invoice')]).tax_id
@@ -39,9 +40,9 @@ if record.type in ['out_invoice','out_refund']:
   taxret2  = env['ocr.dictionary'].search([('name','=','IRPF2'),('type','=','out_invoice')]).tax_id
 
 # Diccionario de impuestos para compras:
-elif record.type in ['in_invoice','in_refund']:
+elif record.move_type in ['in_invoice','in_refund']:
   # Si hay producto en la configuración OCR del partner, se utiliza; en otro caso sólo la cuenta contable:
-  producto = record.partner_id.ocr_purchase_product_id
+  producto = partner_id.ocr_purchase_product_id
   if (producto.property_account_expense_id.id):
     cc = producto.property_account_expense_id.id
     descrip = producto.name
@@ -49,8 +50,8 @@ elif record.type in ['in_invoice','in_refund']:
     cc = producto.categ_id.property_account_expense_categ_id.id
     descrip = producto.name
   else:
-    cc = record.partner_id.ocr_purchase_account_id.id
-    descrip = record.partner_id.ocr_purchase_account_id.name
+    cc = partner_id.ocr_purchase_account_id.id
+    descrip = partner_id.ocr_purchase_account_id.name
 
   taxiva21 = env['ocr.dictionary'].search([('name','=','IVA21'),('type','=','in_invoice')]).tax_id
   taxiva10 = env['ocr.dictionary'].search([('name','=','IVA10'),('type','=','in_invoice')]).tax_id
@@ -116,8 +117,8 @@ if (ret19.id) and (base_ret19 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva21.id, taxret19.id]
     record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_ret19, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_ret19, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva21 -= base_ret19
     neto -= base_ret19
     base_ret19 = 0
@@ -127,8 +128,8 @@ if (ret19.id) and (base_ret19 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva10.id, taxret19.id]
     record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_ret19, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id': partner_id.id, 'price_unit':base_ret19, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva10 -= base_ret19
     neto -= base_ret19
     base_ret19 = 0
@@ -137,8 +138,8 @@ if (ret19.id) and (base_ret19 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva4.id, taxret19.id]
     record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_ret19, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_ret19, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva4 -= base_ret19
     neto -= base_ret19
 
@@ -148,8 +149,8 @@ if (ret15.id) and (base_ret15 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva21.id, taxret15.id]
     record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_ret15, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_ret15, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva21 -= base_ret15
     neto -= base_ret15
     base_ret15 = 0
@@ -158,8 +159,8 @@ if (ret15.id) and (base_ret15 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva10.id, taxret15.id]
     record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_ret15, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_ret15, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva10 -= base_ret15
     neto -= base_ret15
     base_ret15 = 0
@@ -168,8 +169,8 @@ if (ret15.id) and (base_ret15 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva4.id, taxret15.id]
     record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_ret15, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_ret15, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva4 -= base_ret15
     neto -= base_ret15
 
@@ -179,8 +180,8 @@ if (ret7.id) and (base_ret7 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva21.id, taxret7.id]
     record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_ret7, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_ret7, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva21 -= base_ret7
     neto -= base_ret7
     base_ret7 = 0
@@ -189,8 +190,8 @@ if (ret7.id) and (base_ret7 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva10.id, taxret7.id]
     record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_ret7, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_ret7, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva10 -= base_ret7
     neto -= base_ret7
     base_ret7 = 0
@@ -199,8 +200,8 @@ if (ret7.id) and (base_ret7 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva4.id, taxret7.id]
     record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_ret7, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_ret7, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva4 -= base_ret7
     neto -= base_ret7
 
@@ -210,8 +211,8 @@ if (ret2.id) and (base_ret2 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva21.id, taxret2.id]
     record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_ret2, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_ret2, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva21 -= base_ret2
     neto -= base_ret2
     base_ret2 = 0
@@ -220,8 +221,8 @@ if (ret2.id) and (base_ret2 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva10.id, taxret2.id]
     record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_ret2, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_ret2, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva10 -= base_ret2
     neto -= base_ret2
     base_ret2 = 0
@@ -230,8 +231,8 @@ if (ret2.id) and (base_ret2 > 0):
     # crear línea con base de retención y dejar base restante para otra línea:
     impuestos = [taxiva4.id, taxret2.id]
     record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_ret2, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_ret2, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
     base_iva4 -= base_ret2
     neto -= base_ret2
 
@@ -239,32 +240,32 @@ if (ret2.id) and (base_ret2 > 0):
 if (taxiva21.id) and (base_iva21 > 0):
   impuestos = [taxiva21.id]
   record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_iva21, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_iva21, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
   neto -= base_iva21
 if (taxiva10.id) and (base_iva10 > 0):
   impuestos = [taxiva10.id]
   record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_iva10, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_iva10, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
   neto -= base_iva10
 if (taxiva4.id) and (base_iva4 > 0):
   impuestos = [taxiva4.id]
   record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':base_iva4, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':base_iva4, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
   neto -= base_iva4
 
 # Caso de línea sin impuestos y sin detectar IVA0%:
 if (subtotal.id) and (neto > 0):
   impuestos = [taxiva0.id]
   record['invoice_line_ids'] = [(0,0,{'product_id':producto.id, 'name':descrip or producto.name, 'account_id':cc,
-      'partner_id':record.partner_id.id, 'price_unit':neto, 'tax_ids':[(6,0,impuestos)]}),
-      (0, 0, {'name':descrip or '/','account_id':parter_id.ocr_purchase_account_id.id,'partner_id':record.partner_id.id,'exclude_from_invoice_tab':True})]
+      'partner_id':partner_id.id, 'price_unit':neto, 'tax_ids':[(6,0,impuestos)]}),
+      (0, 0, {'name':descrip or '/','account_id':partner_id.ocr_purchase_account_id.id,'partner_id':partner_id.id,'exclude_from_invoice_tab':True})]
 
 # Reculcalate Taxes
-if record.invoice_line_ids.ids:
-  record.compute_taxes()
+#if record.invoice_line_ids.ids:
+#  record.compute_taxes()
             </field>
         </record>
 
