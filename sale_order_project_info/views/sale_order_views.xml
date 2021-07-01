@@ -26,7 +26,7 @@
                             <field name="purchase_forecast"/>
                             <field name="purchase_percent"/>
                         </group><group name="sale_order_project_info_time">
-                            <field name="time_now" widget="gauge" options="{'max_field':'purchase_forecast', 'style': 'width:160px; height: 120px;'}" nolabel="1"/>
+                            <field name="time_now" widget="gauge" options="{'max_field':'time_forecast', 'style': 'width:160px; height: 120px;'}" nolabel="1"/>
                             <field name="time_forecast"/>
                             <field name="time_percent"/>
                         </group>
