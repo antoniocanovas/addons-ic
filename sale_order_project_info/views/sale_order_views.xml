@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="view_sale_order_project_info_inh_form" model="ir.ui.view">
+        <field name="name">sale.order.project.info</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="purchase_percent" widget="progressbar" optional="show"/>
+                <field name="time_percent" widget="progressbar" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_project_info_gauges_page" model="ir.ui.view">
+        <field name="name">sale.order.info.gauges.page</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page/field[@name='order_line']/.." position="after">
+                <page string="Seguimiento" name="sale_project_info_gauges" attrs="{'invisible': [('state', 'in', ['draft','sent'])]}">
+                    <group>
+                        <group name="sale_order_project_info_purchase">
+                            <field name="purchase_now" widget="gauge" options="{'max_field':'purchase_forecast'}" nolabel="1"/>
+                            <field name="purchase_forecast" invisible="1"/>
+                        </group><group name="sale_order_project_info_time">
+                            <field name="time_now" widget="gauge" options="{'max_field':'time_forecast'}" nolabel="1"/>
+                            <field name="time_forecast" invisible="1"/>
+                        </group>
+                    </group>
+                </page>
+
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

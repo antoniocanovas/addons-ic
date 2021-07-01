@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_n43_massive_import" model="ir.actions.act_window">
+            <field name="name">cbi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.bank.statement.cbi</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+                id="menu_n43_massive_import"
+                name="cbi N43"
+                parent="account.account_account_menu"
+                sequence="20"
+                action="action_n43_massive_import"
+                />
+
+        <record id="bank_statement_automated_tree" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="state"/>
+                <field name="error_logger"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">account.bank.statement.cbi</field>
+        <field name="name">account.bank.statement.cbi</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
+    </record>
+
+    <record id="bank_statement_automated_form" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="import_files" string="Importar" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'completed')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,completed,error,cancelled" clickable="True"/>
+                </header>
+                <sheet string="Journal Automated Import">
+                    <h2>
+                        <field name="name" placeholder="Nombre ..."/>
+                    </h2>
+                    <notebook colspan="4">
+                        <page string="Documentos">
+                            <group><field name="journal_id"/></group>
+                            <group col="4">
+                                <field name="bank_statement_attachment_id"/>
+                            </group>
+                            <separator/>
+                            Formatos soportados: n43
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh':'recipients'}"/>
+                </div>
+            </form>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">account.bank.statement.cbi</field>
+        <field name="name">account.bank.statement.cbi</field>
+        <field name="priority">16</field>
+        <field name="type">form</field>
+    </record>
+
+
+    </data>
+</odoo>

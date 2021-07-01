@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+sso_access, group_sso_access,base.respartner_add_token,base.group_user,1,1,1,1
+
+
