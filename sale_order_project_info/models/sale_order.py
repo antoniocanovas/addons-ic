@@ -4,7 +4,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-class SaleMandatorySaleOrder(models.Model):
+class SaleOrderProyectInfo(models.Model):
     _inherit = 'sale.order'
 
     @api.depends('write_date')
@@ -59,7 +59,7 @@ class SaleMandatorySaleOrder(models.Model):
                         total += li.product_uom_qty
             record['time_forecast'] = total
 
-    time_forecast = fields.Float(string='Previsión Tiempo', store=False, compute='get_time_forecast')
+    time_forecast = fields.Float(string='Previsión tiempo', store=False, compute='get_time_forecast')
 
     @api.depends('write_date')
     def get_time_now(self):
@@ -69,7 +69,7 @@ class SaleMandatorySaleOrder(models.Model):
                 total += li.unit_amount
             record['time_now'] = total
 
-    time_now = fields.Float(string='Previsión Tiempo', store=False, compute='get_time_now')
+    time_now = fields.Float(string='Tiempo ejecutado', store=False, compute='get_time_now')
 
     @api.depends('write_date')
     def get_time_percent(self):
@@ -79,4 +79,4 @@ class SaleMandatorySaleOrder(models.Model):
                 total = record.time_now / record.time_forecast * 100
             record['time_percent'] = total
 
-    time_percent = fields.Float(string='Previsión Tiempo', store=False, compute='get_time_percent')
+    time_percent = fields.Float(string='Tiempo %', store=False, compute='get_time_percent')
