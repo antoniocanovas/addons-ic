@@ -118,7 +118,6 @@ class ResCompany(models.Model):
             exist = self.env['ocr.transactions'].search([
                 ("token", "=", token),
             ], limit=1)
-            print("TOKEN", token)
             # No se Borran facturas, solo actualizamos el transaction si no hay líneas de factura
             # Si hay lineas no debe actualizar estado
             if exist.token:
@@ -291,10 +290,8 @@ class ResCompany(models.Model):
                                 'ocr_transaction_id': t.id,
                                 'is_ocr': True,
                             })
-                            print("INVOICE", invoice)
                         except Exception as e:
                             date_invoice = False
-                            print("DEBUG INVOICE CREATION ERROR", e)
                     else:
                         invoice = self.env['account.move'].sudo().create({
                             'journal_id': sjournal.id,
@@ -307,7 +304,6 @@ class ResCompany(models.Model):
                         })
 
                 if invoice:
-                    print("DEBUG", invoice)
                     t.state = 'downloaded'
                     t.invoice_id = invoice.id
 
@@ -458,7 +454,6 @@ class ResCompany(models.Model):
         ########## Hacemos una consulta por cada ApiKey ################
         for key in ApiKeys:
             header = self.get_header(key)
-            print("key", key)
             transactions_by_state = self.get_documents_data(api_transaction_url, header)
             ############### Control status donwloaded #######################
             if transactions_by_state:
@@ -468,13 +463,11 @@ class ResCompany(models.Model):
                                                                             ("state", "=", 'processed'),
                                                                             ("customer_api_key", "=", key),
                                                                         ], limit=30)
-            print("TP",transactions_processed)
             transactions_with_errors = self.env['ocr.transactions'].search([
                                                                         ("state", "=", 'error'),
                                                                         ("customer_api_key", "=", key),
                                                                         ("cleared", "=", False),
                                                                           ], limit=10)
-            print("TE", transactions_with_errors)
             if transactions_with_errors:
                 for t_error in transactions_processed:
                     try:

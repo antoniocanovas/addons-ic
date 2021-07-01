@@ -1,5 +1,5 @@
 {
-    'name': 'Sale Order Multisection Discount',
+    'name': 'Sale Mandatory Product',
     'version': '14.0.1.0.0',
     'category': '',
     'description': u"""
@@ -7,13 +7,14 @@
 """,
     'author': 'Serincloud',
     'depends': [
-        'sale_order_multisection',
+        'sale_management',
+        'base_automation',
     ],
     'data': [
-        'data/server_actions.xml',
-        'views/sale_order_wizard_multisection_discount.xml',
+        'data/server_action.xml',
         'views/sale_order_views.xml',
-        'security/ir.model.access.csv',
+        'views/product_views.xml',
+        #'data/data.xml',
     ],
     'installable': True,
 }

@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+        <record id="sale_order_mandatory_sale" model="base.automation">
+                <field name="name">=> Mandatory Sale sale.order</field>
+                <field name="model_id" ref="model_sale_order"/>
+                <field name="state">code</field>
+                <field name="code">
+if (record.state == "sale") and (record.mandatory_sale):
+  mandatories = env['product.template'].search([('mandatory_sale','=',True)])
+  products = []
+  for li in record.order_line:
+    if li.product_id.product_tmpl_id not in products: products.append(li.product_id.product_tmpl_id)
+  check = False
+  mensaje = "Falta algún producto obligatorio en las líneas de venta, o quitar este requerimiento en el pedido de venta:"
+  for mandatory in mandatories:
+    if mandatory in products: check = True
+    mensaje += "\n" + " - " + mandatory.name
+  if check == False:
+    raise Warning(mensaje)
+
+                </field>
+                <field name="trigger">on_create_or_write</field>
+                <field name="filter_pre_domain"></field>
+                <field name="filter_domain"></field>
+                <field name="active" eval="True"/>
+        </record>
+
+    </data>
+</odoo>
