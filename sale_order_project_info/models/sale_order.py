@@ -28,7 +28,7 @@ class SaleOrderProyectInfo(models.Model):
     def get_purchase_now(self):
         for record in self:
             total = 0
-            purchases = self.env['purchase.order'].search([('sale_id', '=', record.id)])
+            purchases = self.env['purchase.order'].sudo().search([('sale_id', '=', record.id)])
             for purchase in purchases:
                 total += purchase.amount_untaxed
             record['purchase_now'] = total
