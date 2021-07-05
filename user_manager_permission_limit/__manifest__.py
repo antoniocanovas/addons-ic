@@ -14,7 +14,7 @@
     ],
     'data': [
         #'views/res_user_groups.xml',
-        'security/menu_access.xml',
+        #'security/menu_access.xml',
     ],
     'installable': True,
     'application': True,
