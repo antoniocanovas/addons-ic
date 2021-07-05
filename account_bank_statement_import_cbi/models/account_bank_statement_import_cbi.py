@@ -167,7 +167,7 @@ class AccountBankStatementCBI(models.Model):
         for record in self:
             if record.state != 'completed':
                 if record.journal_id:
-                    record = record.with_context(journal_id=record.journal_id.id)
+                    record = record.with_context(journal_id=record.journal_id.id, company_id=record.journal_id.company_id.id)
 
                     bank_statement = record.env['account.bank.statement.import'].create({
                         'data_file': record.bank_statement_attachment_id.datas,
@@ -190,7 +190,7 @@ class AccountBankStatementCBI(models.Model):
         for bsa in imported_n43_ids:
 
             if bsa.journal_id:
-                self = self.with_context(journal_id=bsa.journal_id.id)
+                self = self.with_context(journal_id=bsa.journal_id.id, company_id=bsa.journal_id.company_id.id)
 
                 bank_statement = self.env['account.bank.statement.import'].create({
                     'data_file': bsa.bank_statement_attachment_id.datas,
