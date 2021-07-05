@@ -6,7 +6,7 @@
                 <field name="state">code</field>
                 <field name="code">
 # Round prices with Odoo monetary_precision:
-monetary_precision = env['decimal.precision'].search([('id','=',1)]).digits
+monetary_precision = env['decimal.precision'].sudo().search([('id','=',1)]).digits
 
 # CASE "TARGER_PRICE" (udo prices are not recalculated, working with discount in SOL):
 if record.discount_type == 'target_price':
