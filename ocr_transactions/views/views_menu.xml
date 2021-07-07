@@ -137,7 +137,6 @@
     />
 
     <record id="menu_ocr_documents" model="ir.ui.menu">
-        <field name="action" ref="action_ocr_documents"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]"/>
         <field name="name">Documents</field>

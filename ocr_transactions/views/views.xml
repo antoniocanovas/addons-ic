@@ -254,7 +254,7 @@
     <record id="ocr_account_invoice_form" model="ir.ui.view">
         <field name="name">ocr.account.invoice.form</field>
         <field name="model">account.move</field>
-        <field name="priority">15</field>
+        <field name="priority">99</field>
         <field name="arch" type="xml">
             <form string="Factura de proveedor">
                 <header>

@@ -4,7 +4,7 @@
         <field name="name">Supplier tree inh ocr transactions</field>
         <field name="model">account.move</field>
         <field name="type">tree</field>
-        <field name="inherit_id" ref="account.view_in_invoice_tree"/>
+        <field name="inherit_id" ref="ocr_transactions.ocr_account_invoice_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//tree/field[@name='state']" position="after">
                 <field name="ocr_delivery_invoice" invisible="1"/>
@@ -23,11 +23,11 @@
         <field name="name">Supplier form inh ocr transactions</field>
         <field name="model">account.move</field>
         <field name="type">form</field>
-        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="inherit_id" ref="ocr_transactions.ocr_account_invoice_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form/header" position="inside">
                 <field name="ocr_transaction_id" invisible="1"/>
-                <button name="create_invoice_lines_from_ocr" string="Generate Lines" type="object"
+                <!--<button name="create_invoice_lines_from_ocr" string="Generate Lines" type="object"
                         class="oe_highlight" attrs="{
                             'invisible':['|',('invoice_line_ids','=',True),('ocr_transaction_id','=', False)]
                         }" />
@@ -38,21 +38,21 @@
                 <button name="post_correction_form" string="Go correction portal" type="object"
                         class="oe_highlight" attrs="{
                             'invisible':[('ocr_transaction_id','=', False)]
-                        }"/>
+                        }"/>-->
                 <field name="message_main_attachment_id" invisible="1"/>
                 <field name="is_ocr" invisible="1"/>
-                <button name="send_through" string="Send to OCR" type="object" class="oe_highlight"
+                <!--<button name="send_through" string="Send to OCR" type="object" class="oe_highlight"
                         groups="account.group_account_invoice"
-                        attrs="{'invisible':['|',('message_main_attachment_id','=',False),('is_ocr','=',True)]}"/>
+                        attrs="{'invisible':['|',('message_main_attachment_id','=',False),('is_ocr','=',True)]}"/>-->
             </xpath>
         </field>
     </record>
 
-    <!--<record id="view_account_invoice_supplier_form_inh" model="ir.ui.view">
+    <record id="view_account_view_move_form_send_inh" model="ir.ui.view">
         <field name="name">Supplier form inh ocr transactions</field>
-        <field name="model">account.invoice</field>
+        <field name="model">account.move</field>
         <field name="type">form</field>
-        <field name="inherit_id" ref="account.invoice_supplier_form"/>
+        <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form/header" position="inside">
                 <field name="message_main_attachment_id" invisible="1"/>
@@ -62,7 +62,7 @@
                         attrs="{'invisible':['|',('message_main_attachment_id','=',False),('is_ocr','=',True)]}"/>
             </xpath>
         </field>
-    </record>-->
+    </record>
 
 
 </odoo>
