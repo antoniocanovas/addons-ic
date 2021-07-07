@@ -59,7 +59,33 @@
                 <field name="is_ocr" invisible="1"/>
                 <button name="send_through" string="Send to OCR" type="object" class="oe_highlight"
                         groups="account.group_account_invoice"
-                        attrs="{'invisible':['|',('message_main_attachment_id','=',False),('is_ocr','=',True)]}"/>
+                        attrs="{'invisible':[('is_ocr','=',True)]}"/>
+                <button name="create_invoice_lines_from_ocr" string="Generate Lines" type="object"
+                        class="oe_highlight" attrs="{
+                            'invisible':['|',('invoice_line_ids','=',True),('ocr_upload_status','!=', 'done')]
+                        }" />
+                <button name="post_correction_form" string="Go correction portal" type="object"
+                        class="oe_highlight" attrs="{
+                            'invisible':[('ocr_upload_status','!=', 'done')]
+                        }"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_bank_id']" position="after">
+                <field name="ocr_upload_status"/>
+                <field name="ocr_transaction_id" attrs="{
+                            'invisible':[('ocr_upload_status','!=', 'done')]}"/>
+
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_view_move_tree_send_inh" model="ir.ui.view">
+        <field name="name">Supplier tree inh ocr transactions</field>
+        <field name="model">account.move</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="account.view_in_invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="ocr_upload_status"/>
             </xpath>
         </field>
     </record>
