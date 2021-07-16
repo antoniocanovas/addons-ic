@@ -16,6 +16,7 @@ class AccountInvoice(models.Model):
     ocr_delivery_invoice = fields.Boolean(string='Es Gestor OCR',
                                           default=lambda self: self.env.user.company_id.ocr_delivery_company)
     ocr_transaction_error = fields.Char("Error OCR", related='ocr_transaction_id.transaction_error')
+    ocr_upload_status = fields.Selection(string='OCR Status', related='ocr_transaction_id.ocr_upload_id.state')
 
     @api.multi
     def post_correction_form(self):
