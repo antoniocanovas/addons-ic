@@ -70,11 +70,9 @@
         <field name="type">tree</field>
         <field name="inherit_id" ref="account.invoice_supplier_tree"/>
         <field name="arch" type="xml">
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='state']" position="after">
-                    <field name="ocr_upload_status"/>
-                </xpath>
-            </field>
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="ocr_upload_status"/>
+            </xpath>
         </field>
     </record>
 
