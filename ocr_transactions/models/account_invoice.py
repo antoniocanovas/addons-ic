@@ -57,17 +57,23 @@ class AccountInvoice(models.Model):
     @api.multi
     def send_through(self):
 
-        ocr_upload = self.env['ocr.uploads'].create({
-            'name': str(self.env.user.name) + " - " + \
-                    str(datetime.utcnow().strftime('%d-%m-%Y')),
-            'type': 'recibida',
-            'attachment_ids': [(6, 0, [self.message_main_attachment_id.id])],
-            'invoice_origin_id': self.id,
-        })
-        if ocr_upload:
-            ocr_upload.prepare_ocr_post_transactions()
-            self.ocr_transaction_id = ocr_upload.ocr_transaction_ids[0]
-            self.is_ocr = True
+        if not self.message_main_attachment_id:
+            raise ValidationError(
+                'No hay adjunto para enviar a OCR')
+        else:
+            ocr_upload = self.env['ocr.uploads'].create({
+                'name': str(self.env.user.name) + " - " + \
+                        str(datetime.utcnow().strftime('%d-%m-%Y')),
+                'type': 'recibida',
+                'attachment_ids': [(6, 0, [self.message_main_attachment_id.id])],
+                'invoice_origin_id': self.id,
+            })
+            if ocr_upload:
+                ocr_upload.prepare_ocr_post_transactions_from_invoice()
+                self.ocr_transaction_id = ocr_upload.ocr_transaction_ids[0]
+                self.ocr_transaction_id.invoice_id = self.id
+                self.is_ocr = True
+
 
     @api.multi
     def create_invoice_lines_from_ocr(self):

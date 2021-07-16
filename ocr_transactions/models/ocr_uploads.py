@@ -232,6 +232,25 @@ class OcrUploads(models.Model):
                     upload.sudo().ocr_post_transactions_jobs_ids |= job
                     upload.state = 'sending'
 
+    def prepare_ocr_post_transactions_from_invoice(self):
+
+        if self.env.user.company_id.ocr_delivery_company:
+            if not self.partner_credentials_id:
+                self.partner_id = self.env.user.company_id.partner_id.id
+            else:
+                self.partner_id = self.partner_credentials_id.partner_id.id
+        else:
+            self.partner_id = self.env.user.company_id.partner_id.id
+        if not self.partner_id.vat:
+            raise ValidationError("Partner has not vat defined")
+        else:
+            company = self.env.user.company_id
+            for upload in self:
+                if upload.state == "processing" or upload.state == "sending":
+                    raise ValidationError(
+                        "Odoo is still uploading this!!! Please be patient")
+                upload.action_post_invoices()
+
     @job
     @api.multi
     def action_queue_post_invoices(self):
