@@ -40,6 +40,11 @@
                             'invisible':[('ocr_transaction_id','=', False)]
                         }"/>
             </xpath>
+            <xpath expr="//field[@name='partner_bank_id']" position="after">
+                <field name="ocr_upload_status"/>
+                <field name="ocr_transaction_id" attrs="{
+                            'invisible':[('ocr_upload_status','!=', 'done')]}"/>
+            </xpath>
         </field>
     </record>
 
@@ -56,6 +61,20 @@
                         groups="account.group_account_invoice"
                         attrs="{'invisible':['|',('message_main_attachment_id','=',False),('is_ocr','=',True)]}"/>
             </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_invoice_supplier_tree_inh" model="ir.ui.view">
+        <field name="name">Supplier tree inh ocr transactions</field>
+        <field name="model">account.invoice</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="account.invoice_supplier_tree"/>
+        <field name="arch" type="xml">
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="after">
+                    <field name="ocr_upload_status"/>
+                </xpath>
+            </field>
         </field>
     </record>
 
