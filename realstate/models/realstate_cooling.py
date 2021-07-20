@@ -5,8 +5,8 @@
 from odoo import models, fields, api
 
 
-class RealstateAir(models.Model):
-    _name = 'realstate.air'
-    _description = 'Realstate Air Model'
+class RealstateCooling(models.Model):
+    _name = 'realstate.cooling'
+    _description = 'Realstate Air Cooling'
 
     name = fields.Char('Name')

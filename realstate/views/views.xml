@@ -5,17 +5,12 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <field name="state" widget="statusbar"/>
+                        <field name="state" widget="statusbar" clickable="1"/>
                     </header>
                     <sheet string="Inmuebles">
-                        <!--<div class="oe_button_box" name="button_box">
-                                <button class="oe_stat_button" icon="fa-pie_chart" type="action" name="964">
-                                    <field name="property_state" string="Estado" widget="statinfo"/>
-                                </button>
-                        </div>-->
-                        <h2>
+                        <h1>
                             <field name="name" placeholder="Referencia o nombre del inmueble"/>
-                        </h2>
+                        </h1>
                         <group name="Ppal Inmueble">
                             <group name="PpalInmuebleIzquierda">
                                 <field name="type" can_create="true" can_write="true" modifiers="{}"/>
@@ -36,10 +31,7 @@
                             <field name="outgoing_date"/>
 
                         </group>
-                        <group>
-                            <field name="extra_ids" widget="many2many_checkboxes"/>
 
-                        </group>
                         <notebook name="characters">
                             <page name="character_page" string="Características">
                                 <group name="group_RoVFx">
@@ -53,7 +45,6 @@
                                         <field name="built_space"/>
                                         <field name="property_origin"/>
                                         <field name="built_date"/>
-                                        <field name="note"/>
                                     </group>
                                     <group name="group_RoVFx_right" string="Oferta">
                                         <field name="sale_price"/>
@@ -66,18 +57,17 @@
                                         <field name="owner_id"/>
                                     </group>
                                 </group>
+                                <field name="note" placeholder="Descripción breve y notas importantes..."/>
+
                             </page>
                             <page name="studio_page_xRYtC" string="Habitabilidad">
-                                <group name="studio_group_xRYtC">
+                                <group name="studio_group_xRYtC" string="General">
                                     <group name="group_xRYtC_left">
                                         <field name="room_qty"/>
                                         <field name="living_room_qty"/>
                                         <field name="kitchen"/>
                                         <field name="bathroom_qty"/>
                                         <field name="parking"/>
-
-                                    </group>
-                                    <group name="group_xRYtC_right">
                                         <field name="heating_id"/>
                                         <field name="cooling_id"/>
                                         <field name="energy_certificate"/>
@@ -87,6 +77,9 @@
                                         <field name="conservation"/>
                                         <field name="swimmingpool"/>
 
+                                    </group>
+                                    <group name="group_xRYtC_right" string="Extras">
+                                        <field name="extra_ids"/>
                                     </group>
                                 </group>
                             </page>

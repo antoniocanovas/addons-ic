@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb6e4e08-1358-4f0d-8a26-66c4a9426e37" name="Default Changelist" comment="" />
+    <list default="true" id="cb6e4e08-1358-4f0d-8a26-66c4a9426e37" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/models/realstate_air.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/realstate_cooling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/models/realstate_property.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/realstate_property.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/views/views.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,5 +36,16 @@
       <updated>1626763917284</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
