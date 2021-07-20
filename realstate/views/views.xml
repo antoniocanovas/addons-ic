@@ -9,7 +9,7 @@
                     </header>
                     <sheet string="Inmuebles">
                         <h1>
-                            <field name="name" placeholder="Referencia o nombre del inmueble"/>
+                            <field name="name" placeholder="Referencia o nombre del inmueble" required="1"/>
                         </h1>
                         <group name="Ppal Inmueble">
                             <group name="PpalInmuebleIzquierda">
@@ -60,9 +60,9 @@
                                 <field name="note" placeholder="Descripción breve y notas importantes..."/>
 
                             </page>
-                            <page name="studio_page_xRYtC" string="Habitabilidad">
-                                <group name="studio_group_xRYtC" string="General">
-                                    <group name="group_xRYtC_left">
+                            <page name="property_page_habitabilidad" string="Habitabilidad">
+                                <group name="property_group_habitabilidad">
+                                    <group name="property_left_habitabilidad_general" string="General">
                                         <field name="room_qty"/>
                                         <field name="living_room_qty"/>
                                         <field name="kitchen"/>
@@ -78,8 +78,8 @@
                                         <field name="swimmingpool"/>
 
                                     </group>
-                                    <group name="group_xRYtC_right" string="Extras">
-                                        <field name="extra_ids"/>
+                                    <group name="property_right_extras" string="Extras">
+                                        <field name="extra_ids" nolabel="1"/>
                                     </group>
                                 </group>
                             </page>

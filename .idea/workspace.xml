@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb6e4e08-1358-4f0d-8a26-66c4a9426e37" name="Default Changelist" comment="">
+    <list default="true" id="cb6e4e08-1358-4f0d-8a26-66c4a9426e37" name="Default Changelist" comment="v1 ac">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realstate/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realstate/models/realstate_air.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/realstate_cooling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realstate/models/realstate_property.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/realstate_property.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/models/realstate_auditory.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/realstate_auditory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/security/ir.model.access.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/realstate/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/views/views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/views/views_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/views/views_menu.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +35,14 @@
       <option name="presentableId" value="Default" />
       <updated>1626763917284</updated>
     </task>
+    <task id="LOCAL-00001" summary="v1 ac">
+      <created>1626795505085</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1626795505085</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -47,5 +55,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="v1 ac" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1 ac" />
   </component>
 </project>
