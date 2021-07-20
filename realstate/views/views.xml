@@ -41,7 +41,7 @@
                                   <field name="inhabited"/>
                                   <field name="useful_space"/>
                                   <field name="built_space"/>
-                                  <field name="origin"/>
+                                  <field name="property_origin"/>
                                   <field name="built_date"/>
                                   <field name="furnished"/>
                                   <field name="alarm"/>
@@ -78,14 +78,14 @@
                               </group>
                               <group name="group_xRYtC_right">
                                   <field name="heating_id"/>
-                                  <field name="air_id"/>
+                                  <field name="cooling_id"/>
                                   <field name="energy_certificate"/>
                                   <field name="environment_id"/>
                                   <field name="elevator"/>
                                   <field name="phone"/>
                                   <field name="satellite_tv"/>
                                   <field name="internet_id"/>
-                                  <field name="orientation"/>
+                                  <field name="property_orientation"/>
                                   <field name="conservation"/>
                                   <!--<field name="pool"/>-->
                                   <field name="barbecue"/>
