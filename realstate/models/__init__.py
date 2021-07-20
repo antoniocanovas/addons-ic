@@ -9,3 +9,4 @@ from . import realstate_internet
 from . import realstate_parking
 from . import realstate_type
 from . import realstate_visit
+from . import realstate_extras

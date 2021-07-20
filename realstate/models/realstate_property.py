@@ -26,6 +26,10 @@ class RealstateProperty(models.Model):
         'property_id',
         string='Advices'
     )
+    extra_ids = fields.Many2many(
+        'realstate.extras',
+        string='Extras'
+    )
     auditory_ids = fields.One2many(
         'realstate.auditory',
         'property_id',
@@ -42,7 +46,7 @@ class RealstateProperty(models.Model):
     )
     to_sale = fields.Boolean(string='To Sale')
     to_rent = fields.Boolean(string='To rent')
-    to_holiday = fields.Boolean(string='For Holidays')
+    to_season = fields.Boolean(string='Season')
     income_date = fields.Date(string='Income Date')
     outgoing_date = fields.Date(string='Outgoing Date')
     customer_id = fields.Many2one('res.partner', string='Comercial')
@@ -100,7 +104,7 @@ class RealstateProperty(models.Model):
     # orientation = fields.Boolean(string='Phone')
     property_orientation = fields.Selection(
         selection=[('sur', 'SUR'), ('sureste', 'SURESTE'), ('este', 'ESTE'), ('noreste', 'NORESTE'), ('norte', 'NORTE'),
-                   ('noroeste', 'NOROESTE'), ('oeste', 'OESTE'), ('suroeste', 'SUROESTE')], string="State",
+                   ('noroeste', 'NOROESTE'), ('oeste', 'OESTE'), ('suroeste', 'SUROESTE')], string="Orientation",
         default='este')
     conservation = fields.Char(string='Conservation')
     # pool = fields.Boolean(string='Phone')
@@ -109,4 +113,4 @@ class RealstateProperty(models.Model):
     barbecue = fields.Boolean(string='Barbecue')
     hearth = fields.Boolean(string='Chimenea')
     state = fields.Selection(selection=STATES,
-                            string="State", default='no')
+                            string="State", default='new')
