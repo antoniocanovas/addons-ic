@@ -10,4 +10,4 @@ class RealstateEnviroment(models.Model):
     _name = 'realstate.enviroment'
     _description = 'Realstate Enviroment Model'
 
-    name = fields.Char('Name')
+    name = fields.Char('Name',  required=True)

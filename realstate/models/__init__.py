@@ -10,3 +10,6 @@ from . import realstate_parking
 from . import realstate_type
 from . import realstate_visit
 from . import realstate_extras
+from . import res_company
+from . import crm_lead
+from . import calendar_event

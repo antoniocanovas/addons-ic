@@ -9,4 +9,4 @@ class RealstateHeating(models.Model):
     _name = 'realstate.heating'
     _description = 'Realstate Heating Model'
 
-    name = fields.Char('Name')
+    name = fields.Char('Name',  required=True)

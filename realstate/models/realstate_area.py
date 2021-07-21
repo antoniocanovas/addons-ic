@@ -10,4 +10,4 @@ class RealstateArea(models.Model):
     _name = 'realstate.area'
     _description = 'Realstate Area Model'
 
-    name = fields.Char('Name')
+    name = fields.Char('Name',  required=True)

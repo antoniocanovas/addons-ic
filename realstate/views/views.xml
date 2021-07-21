@@ -1,5 +1,32 @@
 <odoo>
     <data>
+
+        <record id="act_properties_2_opportunities" model="ir.actions.act_window">
+            <field name="name">Opportunities</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_realstate_id': active_id, 'default_realstate_id': active_id}</field>
+            <field name="groups_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Opportunities!
+                </p>
+            </field>
+        </record>
+
+        <record id="act_properties_2_event" model="ir.actions.act_window">
+            <field name="name">Event</field>
+            <field name="res_model">calendar.event</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_realstate_id': active_id, 'default_realstate_id': active_id}</field>
+            <field name="groups_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Event!
+                </p>
+            </field>
+        </record>
+
         <record id="realstate_property_form" model="ir.ui.view">
             <field name="active" eval="True"/>
             <field name="arch" type="xml">
@@ -8,6 +35,14 @@
                         <field name="state" widget="statusbar" clickable="1"/>
                     </header>
                     <sheet string="Inmuebles">
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="action" name="%(realstate.act_properties_2_opportunities)d" icon="fa-usd">
+                                <field string="Opportunity" name="opportunity_ids_count" widget="statinfo"/>
+                            </button>
+                            <button class="oe_stat_button" type="action" name="%(realstate.act_properties_2_event)d" icon="fa-clock">
+                                <field string="Event" name="event_ids_count" widget="statinfo"/>
+                            </button>
+                        </div>
                         <h1>
                             <field name="name" placeholder="Referencia o nombre del inmueble" required="1"/>
                         </h1>
@@ -53,7 +88,6 @@
                                         <field name="community_price"/>
                                         <field name="date"/>
                                         <field name="last_change"/>
-                                        <field name="exclusivity"/>
                                         <field name="owner_id"/>
                                     </group>
                                 </group>
@@ -70,7 +104,7 @@
                                         <field name="parking"/>
                                         <field name="heating_id"/>
                                         <field name="cooling_id"/>
-                                        <field name="energy_certificate"/>
+
                                         <field name="environment_id"/>
                                         <field name="internet_id"/>
                                         <field name="property_orientation"/>
@@ -81,6 +115,21 @@
                                     <group name="property_right_extras" string="Extras">
                                         <field name="extra_ids" nolabel="1"/>
                                     </group>
+                                </group>
+                            </page>
+                            <page name="realstate_anagement" string="Management">
+                                <group name="group_management">
+                                    <group name="property_left_management" string="General">
+                                        <field name="exclusivity"/>
+                                    </group>
+                                    <group name="property_right_management" string="Extras">
+                                         <field name="energy_certificate"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="realstate_advice" string="Advices">
+                                <group name="group_advice">
+                                    <field name="advice_ids"/>
                                 </group>
                             </page>
                             <!--<page name="page_23zGI" string="Suministros">
@@ -141,10 +190,11 @@
 
                         </notebook>
                     </sheet>
-                    <!--<div class="oe_chatter">
-                      <field name="message_follower_ids" widget="mail_followers"/>
-                      <field name="message_ids" widget="mail_thread"/>
-                    </div>-->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" options="{'post_refresh':'recipients'}"/>
+                    </div>
                 </form>
             </field>
             <field name="field_parent" eval="False"/>
@@ -184,5 +234,51 @@
             <field name="priority">16</field>
             <field name="type">tree</field>
         </record>
+
+        <record id="view_crm_lead_realstate_inh" model="ir.ui.view">
+            <field name="name">crm.lead.form.realstate</field>
+            <field name="model">crm.lead</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="realstate_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_calendar_event_realstate_inh" model="ir.ui.view">
+            <field name="name">calendar.event.form.realstate</field>
+            <field name="model">calendar.event</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='location']" position="after">
+                    <field name="realstate_id"/>
+                </xpath>
+            </field>
+        </record>
+
+         <record id="view_res_company_realstate_inh" model="ir.ui.view">
+            <field name="name">res.company.form.realstate</field>
+            <field name="model">res.company</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/notebook/page[@name='general_info']" position="after">
+                    <page string="Realstate" name="realstate">
+                            <group>
+                                <group>
+                                    <field name="realstate"/>
+                                </group>
+                                <group>
+
+                                </group>
+                            </group>
+                        </page>
+                </xpath>
+            </field>
+        </record>
+
     </data>
 </odoo>
