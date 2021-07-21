@@ -16,9 +16,10 @@ STATES = [
 
 class RealstateProperty(models.Model):
     _name = 'realstate.property'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Realstate Property Model'
 
-    name = fields.Char('Name')
+    name = fields.Char('Name',  required=True)
     type = fields.Many2one('realstate.type')
     realstate_area = fields.Many2one('realstate.area')
     advice_ids = fields.One2many(
@@ -114,3 +115,17 @@ class RealstateProperty(models.Model):
     hearth = fields.Boolean(string='Chimenea')
     state = fields.Selection(selection=STATES,
                             string="State", default='new')
+    advice_ids = fields.One2many('realstate.advice', 'property_id' )
+    opportunity_ids = fields.One2many('crm.lead', 'realstate_id')
+    event_ids = fields.One2many('calendar.event', 'realstate_id')
+
+    def _get_opportunity_count(self):
+        self.opportunity_ids_count = len(self.opportunity_ids)
+
+    opportunity_ids_count = fields.Integer('Opportunity', compute=_get_opportunity_count, store=False)
+
+    def _get_event_count(self):
+        self.event_ids_count = len(self.event_ids)
+
+    event_ids_count = fields.Integer('Event', compute=_get_event_count, store=False)
+

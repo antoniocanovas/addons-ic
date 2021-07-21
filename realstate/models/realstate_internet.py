@@ -9,4 +9,4 @@ class RealstateInternet(models.Model):
     _name = 'realstate.internet'
     _description = 'Realstate Internet Model'
 
-    name = fields.Char('Name')
+    name = fields.Char('Name',  required=True)

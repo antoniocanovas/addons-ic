@@ -10,4 +10,4 @@ class RealstateType(models.Model):
     _name = 'realstate.type'
     _description = 'Realstate Type Model'
 
-    name = fields.Char('Name')
+    name = fields.Char('Name',  required=True)

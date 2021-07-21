@@ -10,7 +10,7 @@ class RealstateAdvice(models.Model):
     _name = 'realstate.advice'
     _description = 'Realstate Advice Model'
 
-    name = fields.Char('Name')
+    name = fields.Char('Name', required=True)
     property_id = fields.Many2one('realstate.property')
     date_begin = fields.Date('Begin date')
     date_end = fields.Date('End date')
