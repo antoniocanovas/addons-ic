@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_realstate_advice_user,realstate.advice,realstate.model_realstate_advice,base.group_user,1,1,1,1
-access_realstate_air_user,realstate.air,realstate.model_realstate_air,base.group_user,1,1,1,1
+access_realstate_cooling_user,realstate.cooling,realstate.model_realstate_cooling,base.group_user,1,1,1,1
 access_realstate_area_user,realstate.area,realstate.model_realstate_area,base.group_user,1,1,1,1
 access_realstate_auditory_user,realstate.auditory,realstate.model_realstate_auditory,base.group_user,1,1,1,1
 access_realstate_enviroment_user,realstate.enviroment,realstate.model_realstate_enviroment,base.group_user,1,1,1,1

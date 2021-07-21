@@ -7,7 +7,7 @@ from odoo import models, fields, api
 
 class RealstateAuditory(models.Model):
     _name = 'realstate.auditory'
-    _description = 'Realstate Audiitory Model'
+    _description = 'Realstate Auditory Model'
 
     name = fields.Char('Visita de captación')
     property_id = fields.Many2one('realstate.property')

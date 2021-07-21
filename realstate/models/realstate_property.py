@@ -94,7 +94,7 @@ class RealstateProperty(models.Model):
     garden = fields.Boolean(string='Garden')
     patio = fields.Boolean(string='Patio')
     heating_id = fields.Many2one('realstate.heating', string='Heating')
-    cooling_id = fields.Many2one('realstate.air', string='Air')
+    cooling_id = fields.Many2one('realstate.cooling', string='Air cooling')
     energy_certificate = fields.Binary(string='Energy certificate')
     environment_id = fields.Many2one('realstate.enviroment', string='Enviroment id')
     elevator = fields.Boolean(string='Elevator')
