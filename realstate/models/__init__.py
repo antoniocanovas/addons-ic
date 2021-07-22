@@ -2,14 +2,13 @@ from . import realstate_property
 from . import realstate_advice
 from . import realstate_cooling
 from . import realstate_area
-from . import realstate_auditory
 from . import realstate_enviroment
 from . import realstate_heating
 from . import realstate_internet
 from . import realstate_parking
 from . import realstate_type
-from . import realstate_visit
 from . import realstate_extras
 from . import res_company
 from . import crm_lead
 from . import calendar_event
+from . import res_partner
