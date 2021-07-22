@@ -71,8 +71,8 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="name">Advice</field>
-        <field name="res_model">realstate.auditory</field>
+        <field name="name">Auditory</field>
+        <field name="res_model">realstate.property</field>
         <field name="search_view_id" eval="False"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
@@ -86,7 +86,7 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="name">Advice</field>
+        <field name="name">Enviorment</field>
         <field name="res_model">realstate.enviroment</field>
         <field name="search_view_id" eval="False"/>
         <field name="target">current</field>
@@ -102,7 +102,7 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="name">Advice</field>
+        <field name="name">Heating</field>
         <field name="res_model">realstate.heating</field>
         <field name="search_view_id" eval="False"/>
         <field name="target">current</field>
@@ -118,7 +118,7 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="name">Advice</field>
+        <field name="name">Internet</field>
         <field name="res_model">realstate.internet</field>
         <field name="search_view_id" eval="False"/>
         <field name="target">current</field>
@@ -134,7 +134,7 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="name">Advice</field>
+        <field name="name">Parking</field>
         <field name="res_model">realstate.parking</field>
         <field name="search_view_id" eval="False"/>
         <field name="target">current</field>
@@ -166,7 +166,7 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="name">Advice</field>
+        <field name="name">Type</field>
         <field name="res_model">realstate.type</field>
         <field name="search_view_id" eval="False"/>
         <field name="target">current</field>
@@ -176,21 +176,7 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <record id="action_realstate_configuration_visit" model="ir.actions.act_window">
-        <field name="binding_model_id" eval="False"/>
-        <field name="binding_type">action</field>
-        <field name="filter" eval="False"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="limit">80</field>
-        <field name="name">Advice</field>
-        <field name="res_model">realstate.visit</field>
-        <field name="search_view_id" eval="False"/>
-        <field name="target">current</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="usage" eval="False"/>
-        <field name="view_id" eval="False"/>
-        <field name="view_mode">tree,form</field>
-    </record>
+
 
     <menuitem
             action="action_realstate_property"
@@ -214,7 +200,7 @@
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
         <field name="name">Configuration</field>
         <field name="parent_id" ref="realstate_property_main"/>
-        <field name="sequence">1</field>
+        <field name="sequence">3</field>
         <field name="web_icon" eval="False"/>
     </record>
 
@@ -253,8 +239,8 @@
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
         <field name="name">Auditory</field>
-        <field name="parent_id" ref="menu_realstate_configuration"/>
-        <field name="sequence">4</field>
+        <field name="parent_id" ref="realstate_property_main"/>
+        <field name="sequence">2</field>
         <field name="web_icon" eval="False"/>
     </record>
 
@@ -305,16 +291,6 @@
         <field name="name">Type</field>
         <field name="parent_id" ref="menu_realstate_configuration"/>
         <field name="sequence">9</field>
-        <field name="web_icon" eval="False"/>
-    </record>
-
-    <record id="menu_realstate_configuration_visit" model="ir.ui.menu">
-        <field name="action" ref="action_realstate_configuration_visit"/>
-        <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
-        <field name="name">Visit</field>
-        <field name="parent_id" ref="menu_realstate_configuration"/>
-        <field name="sequence">10</field>
         <field name="web_icon" eval="False"/>
     </record>
 

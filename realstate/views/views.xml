@@ -39,7 +39,7 @@
                             <button class="oe_stat_button" type="action" name="%(realstate.act_properties_2_opportunities)d" icon="fa-usd">
                                 <field string="Opportunity" name="opportunity_ids_count" widget="statinfo"/>
                             </button>
-                            <button class="oe_stat_button" type="action" name="%(realstate.act_properties_2_event)d" icon="fa-clock">
+                            <button class="oe_stat_button" type="action" name="%(realstate.act_properties_2_event)d" icon="fa-calendar">
                                 <field string="Event" name="event_ids_count" widget="statinfo"/>
                             </button>
                         </div>
@@ -71,10 +71,10 @@
                             <page name="character_page" string="Características">
                                 <group name="group_RoVFx">
                                     <group name="group_RoVFx_left" string="Vivienda">
-                                        <field name="city"/>
                                         <field name="street"/>
-                                        <field name="number"/>
-                                        <field name="floor"/>
+                                        <field name="street2"/>
+                                        <field name="city"/>
+                                        <field name="state_id"/>
                                         <field name="inhabited"/>
                                         <field name="useful_space"/>
                                         <field name="built_space"/>
@@ -88,7 +88,6 @@
                                         <field name="community_price"/>
                                         <field name="date"/>
                                         <field name="last_change"/>
-                                        <field name="owner_id"/>
                                     </group>
                                 </group>
                                 <field name="note" placeholder="Descripción breve y notas importantes..."/>
@@ -120,17 +119,26 @@
                             <page name="realstate_anagement" string="Management">
                                 <group name="group_management">
                                     <group name="property_left_management" string="General">
+                                        <field name="owner_id"/>
+                                        <field name="address_id" context="{'default_parent_id':owner_id, 'default_type':'other'}" domain="['|',('id','=',owner_id),('parent_id','=',owner_id)]"/>
+                                        <field name="service_amount"/>
+                                        <field name="notary_cost"/>
+                                        <field name="plusvalia_amount"/>
+                                        <field name="owner_vat_file1"/>
+                                        <field name="owner_vat_file1"/>
                                         <field name="exclusivity"/>
                                     </group>
-                                    <group name="property_right_management" string="Extras">
-                                         <field name="energy_certificate"/>
+                                    <group name="property_right_management" string="Documents">
+                                        <field name="energy_certificate"/>
+                                        <field name="contribution_file" filename="contribution_file_name"/>
+                                        <field name="titlet_dead" filename="titlet_dead_name"/>
+                                        <field name="title_dead_simple" filename="title_dead_simple_name"/>
+                                        <field name="document_url" widget="url"/>
                                     </group>
                                 </group>
                             </page>
                             <page name="realstate_advice" string="Advices">
-                                <group name="group_advice">
-                                    <field name="advice_ids"/>
-                                </group>
+                                <field name="advice_ids"/>
                             </page>
                             <!--<page name="page_23zGI" string="Suministros">
                               <group name="group_23zGI">
@@ -241,7 +249,7 @@
             <field name="type">form</field>
             <field name="inherit_id" ref="crm.crm_lead_view_form"/>
             <field name="arch" type="xml">
-                 <xpath expr="//field[@name='tag_ids']" position="after">
+                <xpath expr="//field[@name='tag_ids']" position="after">
                     <field name="realstate_id"/>
                 </xpath>
             </field>
@@ -259,7 +267,7 @@
             </field>
         </record>
 
-         <record id="view_res_company_realstate_inh" model="ir.ui.view">
+        <record id="view_res_company_realstate_inh" model="ir.ui.view">
             <field name="name">res.company.form.realstate</field>
             <field name="model">res.company</field>
             <field name="type">form</field>
@@ -267,14 +275,35 @@
             <field name="arch" type="xml">
                 <xpath expr="//form/sheet/notebook/page[@name='general_info']" position="after">
                     <page string="Realstate" name="realstate">
+                        <group>
                             <group>
-                                <group>
-                                    <field name="realstate"/>
-                                </group>
-                                <group>
-
-                                </group>
+                                <field name="realstate"/>
                             </group>
+                            <group>
+
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_partner_form_documents" model="ir.ui.view">
+            <field name="name">view.partner.form.documents</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page name="documents" string="Documents">
+                            <group>
+                            <group>
+                                <field name="vat_file1" filename="vat_file1_name"/>
+                            </group>
+                            <group>
+                                <field name="vat_file2" filename="vat_file2_name"/>
+                            </group>
+                        </group>
                         </page>
                 </xpath>
             </field>

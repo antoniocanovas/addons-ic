@@ -20,6 +20,7 @@ class RealstateProperty(models.Model):
     _description = 'Realstate Property Model'
 
     name = fields.Char('Name',  required=True)
+    currency_id = fields.Many2one('res.currency')
     type = fields.Many2one('realstate.type')
     realstate_area = fields.Many2one('realstate.area')
     advice_ids = fields.One2many(
@@ -31,16 +32,7 @@ class RealstateProperty(models.Model):
         'realstate.extras',
         string='Extras'
     )
-    auditory_ids = fields.One2many(
-        'realstate.auditory',
-        'property_id',
-        string='Auditories'
-    )
-    visit_ids = fields.One2many(
-        'realstate.visit',
-        'property_id',
-        string='Visits'
-    )
+
     user_id = fields.Many2one(
         'res.users',
         string='Comercial'
@@ -56,10 +48,10 @@ class RealstateProperty(models.Model):
     property_state = fields.Selection(string='State', selection=STATES)
     photo = fields.Binary(string='Photo')
     # Vivienda
-    city = fields.Char(string='City')
-    street = fields.Char(string='Street')
-    number = fields.Char(string='Number')
-    floor = fields.Char(string='Floor')
+    street = fields.Char(string='Street', related='address_id.street')
+    street2 = fields.Char(string='Street2', related='address_id.street2')
+    city = fields.Char(string='City', related='address_id.city')
+    state_id = fields.Many2one(string='State', related='address_id.state_id')
     inhabited = fields.Boolean(string='Inhabited')
     useful_space = fields.Char(string='Useful space')
     built_space = fields.Char(string='Built space')
@@ -79,6 +71,8 @@ class RealstateProperty(models.Model):
     last_change = fields.Date(string='Last chance')
     exclusivity = fields.Boolean(string='Exclusivity')
     owner_id = fields.Many2one('res.partner', string='Owner')
+    owner_vat_file1 = fields.Binary(related='owner_id.vat_file1', readonly=False)
+    owner_vat_file2 = fields.Binary(related='owner_id.vat_file2', readonly=False)
     # HABITABILITY
     room_qty = fields.Integer(string='Rooms')
     builtin_wardroble = fields.Boolean(string='Builtin wardrobe')
@@ -97,6 +91,7 @@ class RealstateProperty(models.Model):
     heating_id = fields.Many2one('realstate.heating', string='Heating')
     cooling_id = fields.Many2one('realstate.cooling', string='Air cooling')
     energy_certificate = fields.Binary(string='Energy certificate')
+    energy_certificate_name = fields.Char(string='Energy certificate')
     environment_id = fields.Many2one('realstate.enviroment', string='Enviroment id')
     elevator = fields.Boolean(string='Elevator')
     phone = fields.Boolean(string='Phone')
@@ -115,9 +110,20 @@ class RealstateProperty(models.Model):
     hearth = fields.Boolean(string='Chimenea')
     state = fields.Selection(selection=STATES,
                             string="State", default='new')
+    address_id = fields.Many2one('res.partner', string='Address')
+    service_amount = fields.Monetary('Service Amount', currency_field='currency_id')
+    notary_cost = fields.Float('Notary cost')
+    plusvalia_amount  = fields.Float('Capital gain')
     advice_ids = fields.One2many('realstate.advice', 'property_id' )
     opportunity_ids = fields.One2many('crm.lead', 'realstate_id')
     event_ids = fields.One2many('calendar.event', 'realstate_id')
+    contribution_file  = fields.Binary(string='Contribution file' )
+    name_contribution_file  = fields.Char(string='Contribution file name')
+    titlet_dead = fields.Binary(string='Titlet dead')
+    name_titlet_dead = fields.Char(string='Titlet dead name')
+    title_dead_simple  = fields.Binary(string='Titlet dead simple')
+    name_title_dead_simple  = fields.Char(string='Titlet dead simple name')
+    document_url = fields.Char('Cloud folder')
 
     def _get_opportunity_count(self):
         self.opportunity_ids_count = len(self.opportunity_ids)

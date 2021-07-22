@@ -2,13 +2,11 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_realstate_advice_manager,realstate.advice,realstate.model_realstate_advice,realstate.realstate_manager,1,1,1,1
 access_realstate_cooling_manager,realstate.cooling,realstate.model_realstate_cooling,realstate.realstate_manager,1,1,1,1
 access_realstate_area_manager,realstate.area,realstate.model_realstate_area,realstate.realstate_manager,1,1,1,1
-access_realstate_auditory_manager,realstate.auditory,realstate.model_realstate_auditory,realstate.realstate_manager,1,1,1,1
 access_realstate_enviroment_manager,realstate.enviroment,realstate.model_realstate_enviroment,realstate.realstate_manager,1,1,1,1
 access_realstate_heating_manager,realstate.heating,realstate.model_realstate_heating,realstate.realstate_manager,1,1,1,1
 access_realstate_internet_manager,realstate.internet,realstate.model_realstate_internet,realstate.realstate_manager,1,1,1,1
 access_realstate_parking_manager,realstate.parking,realstate.model_realstate_parking,realstate.realstate_manager,1,1,1,1
 access_realstate_property_manager,realstate.property,realstate.model_realstate_property,realstate.realstate_manager,1,1,1,1
 access_realstate_type_manager,realstate.type,realstate.model_realstate_type,realstate.realstate_manager,1,1,1,1
-access_realstate_visit_manager,realstate.visit,realstate.model_realstate_visit,realstate.realstate_manager,1,1,1,1
 access_realstate_extras_manager,realstate.extras,realstate.model_realstate_extras,realstate.realstate_manager,1,1,1,1
 
