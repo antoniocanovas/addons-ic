@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cb6e4e08-1358-4f0d-8a26-66c4a9426e37" name="Default Changelist" comment="v1 ac">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realstate/models/realstate_auditory.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/realstate_auditory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realstate/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/security/ir.model.access.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/models/realstate_property.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/realstate_property.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/realstate/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/views/views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realstate/views/views_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/views/views_menu.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +40,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626795505085</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="v1 ac">
+      <created>1626800420518</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1626800420518</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

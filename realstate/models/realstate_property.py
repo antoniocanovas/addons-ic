@@ -6,11 +6,11 @@ from odoo import _, api, fields, models
 # fields.Selection(selection=TYPES, required=True, string='Types')
 
 STATES = [
-    ('new', 'NEW'),
-    ('publish', 'PUBLISH'),
-    ('sale', 'SALE'),
-    ('done', 'DONE'),
-    ('cancel', 'CANCEL'),
+    ('new', 'New'),
+    ('publish', 'Publish'),
+    ('sale', 'Available'),
+    ('done', 'Done'),
+    ('cancel', 'Cancel'),
 ]
 
 
@@ -56,7 +56,7 @@ class RealstateProperty(models.Model):
     useful_space = fields.Char(string='Useful space')
     built_space = fields.Char(string='Built space')
     # origin = fields.Boolean(string='Phone')
-    property_origin = fields.Selection(selection=[('new', 'NEW'), ('2hand', 'SECOND HAND')], string="Origin", default='new')
+    property_origin = fields.Selection(selection=[('new', 'New construction'), ('2hand', 'Used')], string="Origin", default='new')
     built_date = fields.Date(string='Built date')
     furnished = fields.Boolean(string='Furnished')
     alarm = fields.Boolean(string='Alarm')
@@ -78,7 +78,7 @@ class RealstateProperty(models.Model):
     builtin_wardroble = fields.Boolean(string='Builtin wardrobe')
     living_room_qty = fields.Integer(string='Living rooms')
     # kitchen = fields.Boolean(string='Phone')
-    kitchen = fields.Selection(selection=[('kitchen', 'KITCHEN'), ('office', 'OFFICE')], string="Kitchen",
+    kitchen = fields.Selection(selection=[('kitchen', 'Traditional'), ('office', 'Office')], string="Kitchen",
                                default='kitchen')
     bathroom_qty = fields.Integer(string='Bathrooms')
     bathroom_bedroom = fields.Boolean(string='Bathroom in bedroom')
@@ -99,12 +99,12 @@ class RealstateProperty(models.Model):
     internet_id = fields.Many2one('realstate.internet', string='Internet')
     # orientation = fields.Boolean(string='Phone')
     property_orientation = fields.Selection(
-        selection=[('sur', 'SUR'), ('sureste', 'SURESTE'), ('este', 'ESTE'), ('noreste', 'NORESTE'), ('norte', 'NORTE'),
-                   ('noroeste', 'NOROESTE'), ('oeste', 'OESTE'), ('suroeste', 'SUROESTE')], string="Orientation",
+        selection=[('sur', 'Sur'), ('sureste', 'Sureste'), ('este', 'Este'), ('noreste', 'Noreste'), ('norte', 'Norte'),
+                   ('noroeste', 'Noroeste'), ('oeste', 'Oeste'), ('suroeste', 'Suroeste')], string="Orientation",
         default='este')
     conservation = fields.Char(string='Conservation')
     # pool = fields.Boolean(string='Phone')
-    swimmingpool = fields.Selection(selection=[('no', 'NO'), ('private', 'PRIVATE'), ('communitary', 'COMMUNITARY')],
+    swimmingpool = fields.Selection(selection=[('no', 'None'), ('private', 'Private'), ('communitary', 'Communitary'),('public','Public')],
                             string="Pool", default='no')
     barbecue = fields.Boolean(string='Barbecue')
     hearth = fields.Boolean(string='Chimenea')
