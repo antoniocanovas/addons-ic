@@ -39,32 +39,29 @@
                             <button class="oe_stat_button" type="action" name="%(realstate.act_properties_2_opportunities)d" icon="fa-usd">
                                 <field string="Opportunity" name="opportunity_ids_count" widget="statinfo"/>
                             </button>
-                            <button class="oe_stat_button" type="action" name="%(realstate.act_properties_2_event)d" icon="fa-calendar">
+                            <button class="oe_stat_button" type="action"  name="%(realstate.act_properties_2_event)d" icon="fa-calendar">
                                 <field string="Event" name="event_ids_count" widget="statinfo"/>
                             </button>
                         </div>
                         <h1>
-                            <field name="name" placeholder="Referencia o nombre del inmueble" required="1"/>
+                            <field name="name" colspan="2" placeholder="Referencia o nombre del inmueble" nolabel="1" required="1"/>
                         </h1>
-                        <group name="Ppal Inmueble">
-                            <group name="PpalInmuebleIzquierda">
+
+                        <group>
+                            <group>
+                                <field label="Product"/>
                                 <field name="type" can_create="true" can_write="true" modifiers="{}"/>
                                 <field name="realstate_area"/>
                                 <field name="user_id" can_create="true" can_write="true" modifiers="{}"/>
+                                <field name="to_sale" modifiers="{}"/>
+                                <field name="to_rent"/>
+                                <field name="to_season"/>
+                                <field name="income_date"/>
+                                <field name="outgoing_date"/>
                             </group>
                             <group name="PpalInmuebleDerecha">
-                                <field name="photo" string="Foto" widget="image" class="oe_right oe_avatar"/>
+                                <field name="photo" string="Photo" widget="image" nolabel="1"/>
                             </group>
-                        </group>
-                        <group col="4">
-                            <field name="to_sale" modifiers="{}"/>
-                            <field name="to_season"/>
-                            <field name="to_rent"/>
-                            <!--<newline/>-->
-                            <field name="active"/>
-                            <field name="income_date"/>
-                            <field name="outgoing_date"/>
-
                         </group>
 
                         <notebook name="characters">
@@ -132,6 +129,7 @@
                                         <field name="titlet_dead" filename="titlet_dead_name"/>
                                         <field name="title_dead_simple" filename="title_dead_simple_name"/>
                                         <field name="document_url" widget="url"/>
+                                        <field name="active"/>
                                     </group>
                                 </group>
                                 <group name="proerty_left_dni1">
@@ -146,62 +144,9 @@
                             <page name="realstate_advice" string="Advices">
                                 <field name="advice_ids"/>
                             </page>
-                            <!--<page name="page_23zGI" string="Suministros">
-                              <group name="group_23zGI">
-                                  <group name="group_23zGI_left">
-                                      <field name="x_ref_electricidad"/>
-                                      <field name="x_energia"/>
-                                      <field name="x_ref_gas"/>
-                                      <field name="x_ref_agua"/>
-                                      <field name="x_ref_seguro_hogar"/>
-                                      <field name="x_fecha_ee"/>
-                                      <field name="x_codigo_ee"/>
-                                  </group>
-                                  <group name="group_23zGI_right">
-                                      <field name="x_pago_comunidad"/>
-                                      <field name="x_escritura"/>
-                                      <field name="x_seguro_hogar"/>
-                                      <field name="x_ibi"/>
-                                      <field name="x_mto_piscina"/>
-                                      <field name="x_administrador_id"/>
-                                  </group>
-                              </group>
+                            <page name="Images" string="Images">
+                                <field name="product_template_image_ids"/>
                             </page>
-                            <page name="page_BmZwA" string="Varios">
-                                <group name="group_BmZwA">
-                                    <group name="group_BmZwA_left">
-                                        <field name="x_pvp_min_alquiler"/>
-                                        <field name="x_pvp_min_venta"/>
-                                        <field name="x_referencia_catastral"/>
-                                        <field name="x_finca_registral"/>
-                                        <field name="x_n_llaves"/>
-                                        <field name="x_notas_internas"/>
-                                    </group>
-                                    <group name="group_BmZwA_right" string="Inicio de Contrato">
-                                        <field name="x_amueblar"/>
-                                        <field name="x_alta_suministro"/>
-                                        <field name="x_ofertar_seguro_hogar"/>
-                                        <field name="x_ofertar_reforma"/>
-                                        <field name="x_ofertar_ee"/>
-                                           <field name="x_contrato_iniciado" invisible="1"/>
-                                    </group>
-                                </group>
-                            </page>
-                            <page name="page_mb705" string="Comercialización">
-                                <group name="group_mb705">
-                                    <group name="group_mb705_left" string="Publicación">
-                                        <field name="x_autorizados_publicar_fotos"/>
-                                        <field name="x_medio_ids" widget="many2many_tags"/>
-                                    </group>
-                                    <group name="group_mb705_right" string="Preventa">
-                                        <field name="x_cartel"/>
-                                        <field name="x_reservado"/>
-                                        <field name="x_comercial_id"/>
-                                        <field name="x_notas_caracteristicas"/>
-                                    </group>
-                                </group>
-                            </page> -->
-
                         </notebook>
                     </sheet>
                     <div class="oe_chatter">
@@ -302,17 +247,77 @@
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
                     <page name="documents" string="Documents">
+                        <group>
                             <group>
-                            <group>
-                                <field name="vat_file1" filename="vat_file1_name"/>
+                                <field name="vat_file1" filename="vat_file1_name" widget="image"/>
                             </group>
                             <group>
-                                <field name="vat_file2" filename="vat_file2_name"/>
+                                <field name="vat_file2" filename="vat_file2_name" widget="image"/>
                             </group>
                         </group>
-                        </page>
+                    </page>
                 </xpath>
             </field>
+        </record>
+
+        <record id="realstate_property_advice_form" model="ir.ui.view">
+            <field name="active" eval="True"/>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet string="Realstate Advices">
+                        <h1>
+                            <field name="name" placeholder="Referencia del anuncio" required="1"/>
+                        </h1>
+                        <group>
+                            <field name="property_id" required="1"/>
+                            <field name="date_begin" required="1"/>
+                            <field name="date_end" required="1"/>
+                            <field name="medium_id" required="1"/>
+                            <field name="amount"/>
+                            <field name="attachment"/>
+                        </group>
+                    </sheet>
+
+
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" options="{'post_refresh':'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+            <field name="field_parent" eval="False"/>
+            <field name="groups_id" eval="[(6, 0, [])]"/>
+            <field name="inherit_id" eval="False"/>
+            <field name="key" eval="False"/>
+            <field name="mode">primary</field>
+            <field name="model">realstate.advice</field>
+            <field name="name">Default form view for Realstate advice</field>
+            <field name="priority">16</field>
+            <field name="type">form</field>
+        </record>
+
+        <record id="realstate_advice_tree" model="ir.ui.view">
+            <field name="active" eval="True"/>
+            <field name="arch" type="xml">
+                <tree string="Advice">
+                    <field name="name"/>
+                    <field name="property_id"/>
+                    <field name="date_begin"/>
+                    <field name="date_end"/>
+                    <field name="active"/>
+                    <field name="medium_id"/>
+                </tree>
+            </field>
+            <field name="field_parent" eval="False"/>
+            <field name="groups_id" eval="[(6, 0, [])]"/>
+            <field name="inherit_id" eval="False"/>
+            <field name="key" eval="False"/>
+            <field name="mode">primary</field>
+            <field name="model">realstate.advice</field>
+            <field name="name">Default tree for Realstate Advice</field>
+            <field name="priority">16</field>
+            <field name="type">tree</field>
         </record>
 
     </data>

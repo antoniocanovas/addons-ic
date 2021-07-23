@@ -8,12 +8,16 @@ from odoo import models, fields, api
 # (anuncios en portales)
 class RealstateAdvice(models.Model):
     _name = 'realstate.advice'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Realstate Advice Model'
 
     name = fields.Char('Name', required=True)
     property_id = fields.Many2one('realstate.property')
-    date_begin = fields.Date('Begin date')
-    date_end = fields.Date('End date')
+    date_begin = fields.Date('Begin date', tracking=True)
+    date_end = fields.Date('End date', tracking=True)
     url = fields.Char()
     attachment = fields.Binary()
     amount = fields.Float(string='Amount', digits=(7, 2))
+    active = fields.Boolean("Active")
+    medium_id = fields.Many2one("utm.medium", string='Medium', tracking=True)
+    note = fields.Text(string='Note')
