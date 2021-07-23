@@ -37,6 +37,11 @@ class RealstateProperty(models.Model):
         'res.users',
         string='Comercial'
     )
+    product_id = fields.Many2one(
+        'product.product',
+        string='Product'
+    )
+
     to_sale = fields.Boolean(string='To Sale')
     to_rent = fields.Boolean(string='To rent')
     to_season = fields.Boolean(string='Season')
@@ -124,6 +129,11 @@ class RealstateProperty(models.Model):
     title_dead_simple  = fields.Binary(string='Titlet dead simple')
     name_title_dead_simple  = fields.Char(string='Titlet dead simple name')
     document_url = fields.Char('Cloud folder')
+    private_image_ids = fields.Many2many('product.image')
+
+    def _get_product_template_image_ids(self):
+        self.product_template_image_ids = self.product_id.product_template_image_ids
+    product_template_image_ids = fields.Many2many('product.image', compute=_get_product_template_image_ids, store=False)
 
     def _get_opportunity_count(self):
         self.opportunity_ids_count = len(self.opportunity_ids)

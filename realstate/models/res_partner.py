@@ -9,7 +9,7 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     vat_file1 = fields.Binary(
-        string='DNI propietario',
+        string='DNI Anverso',
     )
     name_vat_file1 = fields.Char(
         string='Nombre Anverso',

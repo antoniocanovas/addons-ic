@@ -183,7 +183,7 @@
             id="realstate_property_main"
             name="RealState"
             sequence="10"
-            web_icon=""
+             web_icon="realstate,static/description/icon.png"
     />
     <record id="menu_realstate_property" model="ir.ui.menu">
         <field name="action" ref="action_realstate_property"/>
@@ -209,8 +209,8 @@
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
         <field name="name">Advice</field>
-        <field name="parent_id" ref="menu_realstate_configuration"/>
-        <field name="sequence">1</field>
+        <field name="parent_id" ref="realstate_property_main"/>
+        <field name="sequence">3</field>
         <field name="web_icon" eval="False"/>
     </record>
 
