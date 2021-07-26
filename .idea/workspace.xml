@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cb6e4e08-1358-4f0d-8a26-66c4a9426e37" name="Default Changelist" comment="v1 ac">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/models/realstate_advice.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/realstate_advice.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/realstate/models/realstate_property.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/realstate_property.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/realstate/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/views/views.xml" afterDir="false" />
     </list>
@@ -22,7 +23,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../odoo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

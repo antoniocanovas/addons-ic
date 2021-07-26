@@ -16,7 +16,7 @@ class RealstateAdvice(models.Model):
     date_begin = fields.Date('Begin date', tracking=True)
     date_end = fields.Date('End date', tracking=True)
     url = fields.Char()
-    attachment = fields.Binary()
+    printed_advice = fields.Binary()
     amount = fields.Float(string='Amount', digits=(7, 2))
     active = fields.Boolean("Active", default=True)
     medium_id = fields.Many2one("utm.medium", string='Medium', tracking=True)

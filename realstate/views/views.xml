@@ -73,10 +73,10 @@
                             </group>
                         </group>
 
-                        <notebook name="characters">
-                            <page name="character_page" string="Características">
-                                <group name="group_RoVFx">
-                                    <group name="group_RoVFx_left" string="Vivienda">
+                        <notebook name="realstate_properties">
+                            <page name="property_page" string="Properties">
+                                <group name="group_realstate_properties">
+                                    <group name="group_realstate_property_left" string="Property">
                                         <field name="street"/>
                                         <field name="street2"/>
                                         <field name="city"/>
@@ -86,7 +86,7 @@
                                         <field name="built_space"/>
                                         <field name="property_origin"/>
                                     </group>
-                                    <group name="group_RoVFx_right" string="Oferta">
+                                    <group name="group_realstate_property_right" string="Conditions">
                                         <field name="sale_price"/>
                                         <field name="rental_price"/>
                                         <field name="advance_price"/>
@@ -96,12 +96,12 @@
                                         <field name="built_date"/>
                                     </group>
                                 </group>
-                                <field name="note" placeholder="Descripción breve y notas importantes..."/>
+                                <field name="note" placeholder="Description, notes and other ..."/>
 
                             </page>
-                            <page name="property_page_habitabilidad" string="Habitabilidad">
-                                <group name="property_group_habitabilidad">
-                                    <group name="property_left_habitabilidad_general" string="General">
+                            <page name="property_page_habitability" string="Habitability">
+                                <group name="property_group_habitability">
+                                    <group name="property_left_habitability_general" string="General">
                                         <field name="room_qty"/>
                                         <field name="living_room_qty"/>
                                         <field name="kitchen"/>
@@ -136,7 +136,7 @@
                                         <field name="contribution_file" filename="contribution_file_name"/>
                                         <field name="titlet_dead" filename="titlet_dead_name"/>
                                         <field name="title_dead_simple" filename="title_dead_simple_name"/>
-                                        <field name="document_url" widget="url"/>
+                                        <field name="cloud_folder" widget="url" placeholder="https://drive.google.com/my/... "/>
                                         <field name="active"/>
                                     </group>
                                 </group>
@@ -150,7 +150,7 @@
                                 </group>
                             </page>
                             <page name="realstate_advice" string="Advices">
-                                <field name="advice_ids"/>
+                                <field name="advice_ids" domain="['|',('active','=',True),('active','=',False)]"/>
                             </page>
                             <page name="Images" string="Images">
                                   <group>
@@ -195,7 +195,7 @@
             <field name="key" eval="False"/>
             <field name="mode">primary</field>
             <field name="model">realstate.property</field>
-            <field name="name">Default form tree for Realstate</field>
+            <field name="name">Default tree view for Realstate</field>
             <field name="priority">16</field>
             <field name="type">tree</field>
         </record>
@@ -272,7 +272,7 @@
                 <form>
                     <sheet string="Realstate Advices">
                         <h1>
-                            <field name="name" placeholder="Referencia del anuncio" required="1"/>
+                            <field name="name" placeholder="Advice reference, and short detail" required="1"/>
                         </h1>
                         <group>
                             <field name="property_id" required="1"/>
@@ -280,7 +280,8 @@
                             <field name="date_end"/>
                             <field name="medium_id" />
                             <field name="amount"/>
-                            <field name="attachment"/>
+                            <field name="printed_advice"/>
+                            <field name="active"/>
                         </group>
                     </sheet>
 
