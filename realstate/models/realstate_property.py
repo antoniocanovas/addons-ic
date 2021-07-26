@@ -7,6 +7,7 @@ from odoo import _, api, fields, models
 
 STATES = [
     ('new', 'New'),
+    ('aditory', 'Auditory'),
     ('publish', 'Publish'),
     ('sale', 'Available'),
     ('done', 'Done'),

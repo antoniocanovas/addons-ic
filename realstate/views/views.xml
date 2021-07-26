@@ -150,7 +150,14 @@
                                 </group>
                             </page>
                             <page name="realstate_advice" string="Advices">
-                                <field name="advice_ids" domain="['|',('active','=',True),('active','=',False)]"/>
+                                <field name="advice_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="date_begin"/>
+                                        <field name="date_end"/>
+                                        <field name="medium_id"/>
+                                    </tree>
+                                </field>
                             </page>
                             <page name="Images" string="Images">
                                   <group>
