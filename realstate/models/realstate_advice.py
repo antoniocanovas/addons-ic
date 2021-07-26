@@ -18,6 +18,6 @@ class RealstateAdvice(models.Model):
     url = fields.Char()
     attachment = fields.Binary()
     amount = fields.Float(string='Amount', digits=(7, 2))
-    active = fields.Boolean("Active")
+    active = fields.Boolean("Active", default=True)
     medium_id = fields.Many2one("utm.medium", string='Medium', tracking=True)
     note = fields.Text(string='Note')

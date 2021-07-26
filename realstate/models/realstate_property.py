@@ -129,11 +129,11 @@ class RealstateProperty(models.Model):
     title_dead_simple  = fields.Binary(string='Titlet dead simple')
     name_title_dead_simple  = fields.Char(string='Titlet dead simple name')
     document_url = fields.Char('Cloud folder')
-    private_image_ids = fields.Many2many('product.image')
+    private_image_ids = fields.One2many('product.image','property_id')
 
     def _get_product_template_image_ids(self):
         self.product_template_image_ids = self.product_id.product_template_image_ids
-    product_template_image_ids = fields.Many2many('product.image', compute=_get_product_template_image_ids, store=False)
+    product_template_image_ids = fields.Many2many('product.image', compute=_get_product_template_image_ids, readonly=True, store=False)
 
     def _get_opportunity_count(self):
         self.opportunity_ids_count = len(self.opportunity_ids)

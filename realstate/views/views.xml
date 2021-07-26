@@ -153,7 +153,14 @@
                                 <field name="advice_ids"/>
                             </page>
                             <page name="Images" string="Images">
-                                <field name="product_template_image_ids"/>
+                                  <group>
+
+                                      <field name="product_template_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" options="{'create_text':'Add a Media'}" nolabel="1"/>
+                                  </group>
+                                 <group>
+
+                                     <field name="private_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" options="{'create_text':'Add a Private'}" nolabel="1"/>
+                                  </group>
                             </page>
                         </notebook>
                     </sheet>
@@ -269,9 +276,9 @@
                         </h1>
                         <group>
                             <field name="property_id" required="1"/>
-                            <field name="date_begin" required="1"/>
-                            <field name="date_end" required="1"/>
-                            <field name="medium_id" required="1"/>
+                            <field name="date_begin"/>
+                            <field name="date_end"/>
+                            <field name="medium_id" />
                             <field name="amount"/>
                             <field name="attachment"/>
                         </group>
