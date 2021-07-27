@@ -7,6 +7,7 @@ from odoo import _, api, fields, models
 
 STATES = [
     ('new', 'New'),
+    ('aditory', 'Auditory'),
     ('publish', 'Publish'),
     ('sale', 'Available'),
     ('done', 'Done'),
@@ -128,7 +129,7 @@ class RealstateProperty(models.Model):
     name_titlet_dead = fields.Char(string='Titlet dead name')
     title_dead_simple  = fields.Binary(string='Titlet dead simple')
     name_title_dead_simple  = fields.Char(string='Titlet dead simple name')
-    document_url = fields.Char('Cloud folder')
+    cloud_folder = fields.Char('Cloud folder')
     private_image_ids = fields.One2many('product.image','property_id')
 
     def _get_product_template_image_ids(self):
