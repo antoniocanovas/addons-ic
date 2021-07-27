@@ -134,8 +134,8 @@
                                     <group name="property_right_management" string="Documents">
                                         <field name="energy_certificate"/>
                                         <field name="contribution_file" filename="contribution_file_name"/>
-                                        <field name="titlet_dead" filename="titlet_dead_name"/>
-                                        <field name="title_dead_simple" filename="title_dead_simple_name"/>
+                                        <field name="house_deed" filename="house_deed_name"/>
+                                        <field name="house_deed_simple" filename="house_deed_simple_name"/>
                                         <field name="cloud_folder" widget="url" placeholder="https://drive.google.com/my/... "/>
                                         <field name="active"/>
                                     </group>
@@ -160,14 +160,14 @@
                                 </field>
                             </page>
                             <page name="Images" string="Images">
-                                  <group>
+                                <group>
 
-                                      <field name="product_template_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" options="{'create_text':'Add a Media'}" nolabel="1"/>
-                                  </group>
-                                 <group>
+                                    <field name="product_template_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" options="{'create_text':'Add a Media'}" nolabel="1"/>
+                                </group>
+                                <group>
 
-                                     <field name="private_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" options="{'create_text':'Add a Private'}" nolabel="1"/>
-                                  </group>
+                                    <field name="private_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" options="{'create_text':'Add a Private'}" nolabel="1"/>
+                                </group>
                             </page>
                         </notebook>
                     </sheet>
@@ -286,7 +286,7 @@
                             <field name="date_begin"/>
                             <field name="date_end"/>
                             <field name="medium_id" />
-                            <field name="amount"/>
+                            <field name="amount" widget="monetary"/>
                             <field name="printed_advice"/>
                             <field name="active"/>
                         </group>
@@ -332,6 +332,111 @@
             <field name="name">Default tree for Realstate Advice</field>
             <field name="priority">16</field>
             <field name="type">tree</field>
+        </record>
+
+        <record id="realstate_property_auditory_form" model="ir.ui.view">
+            <field name="active" eval="True"/>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" clickable="1"/>
+                    </header>
+                    <sheet string="Inmuebles">
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="action" name="392" icon="fa-usd">
+                                <field string="Opportunity" name="opportunity_ids_count" widget="statinfo"/>
+                            </button>
+                            <button class="oe_stat_button" type="action" name="393" icon="fa-calendar">
+                                <field string="Event" name="event_ids_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <h1>
+                            <field name="name" placeholder="Referencia o nombre del inmueble" required="1"/>
+                        </h1>
+
+                        <group name="group_realstate_property_left" string="Property">
+                            <field name="owner_id" readonly="1"/>
+                            <field name="address_id" context="{'default_parent_id':owner_id, 'default_type':'other'}" domain="['|',('id','=',owner_id),('parent_id','=',owner_id)]" readonly="1"/>
+                            <field name="street"/>
+                            <field name="street2"/>
+                            <field name="city"/>
+                            <field name="user_id" readonly="1"/>
+                            <field name="product_id" label="Product"/>
+                            <field name="type" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="realstate_area"/>
+                            <field name="to_sale" modifiers="{}"/>
+                            <field name="to_rent"/>
+                            <field name="to_season"/>
+                            <field name="income_date"/>
+                            <field name="outgoing_date"/>
+                            <field name="inhabited"/>
+                            <field name="useful_space"/>
+                            <field name="built_space"/>
+                            <field name="property_origin"/>
+                            <field name="date"/>
+                            <field name="last_change"/>
+                            <field name="built_date"/>
+                        </group>
+                        <group name="PpalInmuebleDerecha">
+                            <field name="photo" string="Photo" widget="image" nolabel="1"/>
+                        </group>
+                        <group name="group_realstate_property_right" string="Conditions">
+                            <field name="sale_price" widget="monetary"/>
+                            <field name="rental_price" widget="monetary"/>
+                            <field name="advance_price" widget="monetary"/>
+                            <field name="community_price" widget="monetary"/>
+                        </group>
+                        <group name="property_left_habitability_general" string="General">
+                            <field name="room_qty"/>
+                            <field name="living_room_qty"/>
+                            <field name="kitchen"/>
+                            <field name="bathroom_qty"/>
+                            <field name="parking"/>
+                            <field name="heating_id"/>
+                            <field name="cooling_id"/>
+                            <field name="environment_id"/>
+                            <field name="internet_id"/>
+                            <field name="property_orientation"/>
+                            <field name="conservation"/>
+                            <field name="swimmingpool"/>
+                        </group>
+                        <group name="property_right_extras" string="Extras">
+                            <field name="extra_ids" nolabel="1"/>
+                        </group>
+                        <group name="property_right_management" string="Documents">
+                            <field name="energy_certificate"/>
+                            <field name="contribution_file" filename="contribution_file_name"/>
+                            <field name="house_deed" filename="house_deed_name"/>
+                            <field name="house_deed_simple" filename="house_deed_simple_name"/>
+                            <field name="cloud_folder" widget="url" placeholder="https://drive.google.com/my/... "/>
+                        </group>
+                        <group string="Website photos (included from Product => eCommerce => Extra product media)">
+                            <field name="product_template_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" options="{'create_text':'Add a Media'}" nolabel="1"/>
+                        </group>
+                        <group string="Private photos">
+                            <field name="private_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" options="{'create_text':'Add a Private'}" nolabel="1"/>
+                        </group>
+                        <group name="property_left_management" string="Notes">
+                            <field name="exclusivity"/>
+                            <field name="note" placeholder="Description, notes and other ..."/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" options="{'post_refresh':'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+            <field name="field_parent" eval="False"/>
+            <field name="groups_id" eval="[(6, 0, [])]"/>
+            <field name="inherit_id" eval="False"/>
+            <field name="key" eval="False"/>
+            <field name="mode">primary</field>
+            <field name="model">realstate.property</field>
+            <field name="name">Default form view for Realstate Auditory</field>
+            <field name="priority">18</field>
+            <field name="type">form</field>
         </record>
 
     </data>
