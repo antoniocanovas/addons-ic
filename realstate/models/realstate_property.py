@@ -7,7 +7,7 @@ from odoo import _, api, fields, models
 
 STATES = [
     ('new', 'New'),
-    ('aditory', 'Auditory'),
+    ('auditory', 'Auditory'),
     ('publish', 'Publish'),
     ('sale', 'Available'),
     ('done', 'Done'),
@@ -119,16 +119,16 @@ class RealstateProperty(models.Model):
     address_id = fields.Many2one('res.partner', string='Address')
     service_amount = fields.Monetary('Service Amount', currency_field='currency_id')
     notary_cost = fields.Float('Notary cost')
-    plusvalia_amount  = fields.Float('Capital gain')
+    plusvalia_amount = fields.Float('Capital gain')
     advice_ids = fields.One2many('realstate.advice', 'property_id' )
     opportunity_ids = fields.One2many('crm.lead', 'realstate_id')
     event_ids = fields.One2many('calendar.event', 'realstate_id')
-    contribution_file  = fields.Binary(string='Contribution file' )
-    name_contribution_file  = fields.Char(string='Contribution file name')
-    titlet_dead = fields.Binary(string='Titlet dead')
-    name_titlet_dead = fields.Char(string='Titlet dead name')
-    title_dead_simple  = fields.Binary(string='Titlet dead simple')
-    name_title_dead_simple  = fields.Char(string='Titlet dead simple name')
+    contribution_file = fields.Binary(string='Contribution file' )
+    name_contribution_file = fields.Char(string='Contribution file name')
+    house_deed = fields.Binary(string='House deed')
+    name_house_deed = fields.Char(string='house deed name')
+    house_deed_simple = fields.Binary(string='House deed simple')
+    name_house_deed_simple = fields.Char(string='House simple name')
     cloud_folder = fields.Char('Cloud folder')
     private_image_ids = fields.One2many('product.image','property_id')
 

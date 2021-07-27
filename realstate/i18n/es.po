@@ -1,0 +1,1157 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* realstate
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-27 06:55+0000\n"
+"PO-Revision-Date: 2021-07-27 09:49+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: \n"
+"Language: es\n"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_needaction
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__active
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_ids
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_exception_decoration
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_state
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__activity_state
+msgid "Activity State"
+msgstr "Estado de la actividad"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_type_icon
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Icono tipo actividad"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__address_id
+msgid "Address"
+msgstr "Dirección"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__advance_price
+msgid "Advance"
+msgstr "Avanzado"
+
+#. module: realstate
+#: model:ir.actions.act_window,name:realstate.action_realstate_configuration_advice
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__advice_ids
+#: model:ir.ui.menu,name:realstate.menu_realstate_configuration_advice
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_advice_tree
+msgid "Advice"
+msgstr "Anuncio"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Advices"
+msgstr "Anuncios"
+
+#. module: realstate
+#: model:ir.actions.act_window,name:realstate.action_realstate_configuration_cooling
+#: model:ir.ui.menu,name:realstate.menu_realstate_configuration_cooling
+msgid "Air Cooling"
+msgstr "Aire acondicionado"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__cooling_id
+msgid "Air cooling"
+msgstr "Aire acondicionado"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__alarm
+msgid "Alarm"
+msgstr "Alarma"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__amount
+msgid "Amount"
+msgstr "Cantidad"
+
+#. module: realstate
+#: model:ir.actions.act_window,name:realstate.action_realstate_configuration_area
+#: model:ir.ui.menu,name:realstate.menu_realstate_configuration_area
+msgid "Area"
+msgstr "Area"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__attachment
+msgid "Attachment"
+msgstr "Adjunto"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_attachment_count
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_attachment_count
+msgid "Attachment Count"
+msgstr "Nº Adjuntos"
+
+#. module: realstate
+#: model:ir.actions.act_window,name:realstate.action_realstate_configuration_auditory
+#: model:ir.ui.menu,name:realstate.menu_realstate_configuration_auditory
+msgid "Auditory"
+msgstr "Auditoría"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_state__sale
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__state__sale
+msgid "Available"
+msgstr "Disponible"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__balcony
+msgid "Balcony"
+msgstr "Balcón"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__barbecue
+msgid "Barbecue"
+msgstr "Barbacoa"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__bathroom_bedroom
+msgid "Bathroom in bedroom"
+msgstr "Baño suite"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__bathroom_qty
+msgid "Bathrooms"
+msgstr "Baños"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__date_begin
+msgid "Begin date"
+msgstr "Fecha comienzo"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__built_date
+msgid "Built date"
+msgstr "Año de construcción"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__built_space
+msgid "Built space"
+msgstr "Espacio construido"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__builtin_wardroble
+msgid "Builtin wardrobe"
+msgstr "Armarios empotrados"
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_calendar_event
+msgid "Calendar Event"
+msgstr "Evento de calendario"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_state__cancel
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__state__cancel
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__plusvalia_amount
+msgid "Capital gain"
+msgstr "Ganancia capital"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Características"
+msgstr "Características"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__hearth
+msgid "Chimenea"
+msgstr "Chimenea"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__city
+msgid "City"
+msgstr "Ciudad"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__document_url
+msgid "Cloud folder"
+msgstr "Directorio en la nube"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__customer_id
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__user_id
+msgid "Comercial"
+msgstr "Comercial"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__swimmingpool__communitary
+msgid "Communitary"
+msgstr "Comunitario"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__community_price
+msgid "Community"
+msgstr "Comunidad"
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: realstate
+#: model:ir.ui.menu,name:realstate.menu_realstate_configuration
+msgid "Configuration"
+msgstr "Configuración"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__conservation
+msgid "Conservation"
+msgstr "Conservación"
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__contribution_file
+msgid "Contribution file"
+msgstr "Archivo de contribución"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__name_contribution_file
+msgid "Contribution file name"
+msgstr "Nombre archivo de contribución"
+
+#. module: realstate
+#: model_terms:ir.actions.act_window,help:realstate.act_properties_2_event
+msgid "Create a new Event!"
+msgstr "Crear nuevo evento!"
+
+#. module: realstate
+#: model_terms:ir.actions.act_window,help:realstate.act_properties_2_opportunities
+msgid "Create a new Opportunities!"
+msgstr "Crear nueva oportunidad!"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__create_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_area__create_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_cooling__create_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_enviroment__create_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_extras__create_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_heating__create_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_internet__create_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_parking__create_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__create_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_type__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__create_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_area__create_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_cooling__create_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_enviroment__create_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_extras__create_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_heating__create_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_internet__create_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_parking__create_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__create_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_type__create_date
+msgid "Created on"
+msgstr "Creado en "
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__currency_id
+msgid "Currency"
+msgstr "Divisa"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__owner_vat_file1
+#: model:ir.model.fields,field_description:realstate.field_res_partner__vat_file1
+#: model:ir.model.fields,field_description:realstate.field_res_users__vat_file1
+msgid "DNI Anverso"
+msgstr "DNI Anverso"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__owner_vat_file2
+#: model:ir.model.fields,field_description:realstate.field_res_partner__vat_file2
+#: model:ir.model.fields,field_description:realstate.field_res_users__vat_file2
+msgid "DNI Reverso"
+msgstr "DNI Reverso"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Descripción breve y notas importantes..."
+msgstr "Descripción breve y notas importantes"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__note
+msgid "Description"
+msgstr "Descripción"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_calendar_event__display_name
+#: model:ir.model.fields,field_description:realstate.field_crm_lead__display_name
+#: model:ir.model.fields,field_description:realstate.field_product_image__display_name
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__display_name
+#: model:ir.model.fields,field_description:realstate.field_realstate_area__display_name
+#: model:ir.model.fields,field_description:realstate.field_realstate_cooling__display_name
+#: model:ir.model.fields,field_description:realstate.field_realstate_enviroment__display_name
+#: model:ir.model.fields,field_description:realstate.field_realstate_extras__display_name
+#: model:ir.model.fields,field_description:realstate.field_realstate_heating__display_name
+#: model:ir.model.fields,field_description:realstate.field_realstate_internet__display_name
+#: model:ir.model.fields,field_description:realstate.field_realstate_parking__display_name
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__display_name
+#: model:ir.model.fields,field_description:realstate.field_realstate_type__display_name
+#: model:ir.model.fields,field_description:realstate.field_res_company__display_name
+#: model:ir.model.fields,field_description:realstate.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+#: model_terms:ir.ui.view,arch_db:realstate.view_partner_form_documents
+msgid "Documents"
+msgstr "Documentos"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_state__done
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__state__done
+msgid "Done"
+msgstr "Hecho"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__elevator
+msgid "Elevator"
+msgstr "Ascensor"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__date_end
+msgid "End date"
+msgstr "Fecha finalización"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__energy_certificate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__energy_certificate_name
+msgid "Energy certificate"
+msgstr "Certificado energético"
+
+#. module: realstate
+#: model:ir.actions.act_window,name:realstate.action_realstate_configuration_enviroment
+msgid "Enviorment"
+msgstr "Entorno"
+
+#. module: realstate
+#: model:ir.ui.menu,name:realstate.menu_realstate_configuration_enviroment
+msgid "Enviroment"
+msgstr "Entorno"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__environment_id
+msgid "Enviroment id"
+msgstr "ID Entorno"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_orientation__este
+msgid "Este"
+msgstr "Este"
+
+#. module: realstate
+#: model:ir.actions.act_window,name:realstate.act_properties_2_event
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__event_ids
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__event_ids_count
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Event"
+msgstr "Evento"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__exclusivity
+msgid "Exclusivity"
+msgstr "Exclusividad"
+
+#. module: realstate
+#: model:ir.actions.act_window,name:realstate.action_realstate_configuration_extras
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__extra_ids
+#: model:ir.ui.menu,name:realstate.menu_realstate_configuration_extras
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Extras"
+msgstr "Extras"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_follower_ids
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_channel_ids
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores(Channel)"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_partner_ids
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores(Contactos)"
+
+#. module: realstate
+#: model:ir.model.fields,help:realstate.field_realstate_advice__activity_type_icon
+#: model:ir.model.fields,help:realstate.field_realstate_property__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__furnished
+msgid "Furnished"
+msgstr "Amueblado"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__garden
+msgid "Garden"
+msgstr "Jardín"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "General"
+msgstr "General"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Habitabilidad"
+msgstr "Habitabilidad"
+
+#. module: realstate
+#: model:ir.actions.act_window,name:realstate.action_realstate_configuration_heating
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__heating_id
+#: model:ir.ui.menu,name:realstate.menu_realstate_configuration_heating
+msgid "Heating"
+msgstr "Calefacción"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_calendar_event__id
+#: model:ir.model.fields,field_description:realstate.field_crm_lead__id
+#: model:ir.model.fields,field_description:realstate.field_product_image__id
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__id
+#: model:ir.model.fields,field_description:realstate.field_realstate_area__id
+#: model:ir.model.fields,field_description:realstate.field_realstate_cooling__id
+#: model:ir.model.fields,field_description:realstate.field_realstate_enviroment__id
+#: model:ir.model.fields,field_description:realstate.field_realstate_extras__id
+#: model:ir.model.fields,field_description:realstate.field_realstate_heating__id
+#: model:ir.model.fields,field_description:realstate.field_realstate_internet__id
+#: model:ir.model.fields,field_description:realstate.field_realstate_parking__id
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__id
+#: model:ir.model.fields,field_description:realstate.field_realstate_type__id
+#: model:ir.model.fields,field_description:realstate.field_res_company__id
+#: model:ir.model.fields,field_description:realstate.field_res_partner__id
+msgid "ID"
+msgstr "ID"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_exception_icon
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__activity_exception_icon
+msgid "Icon"
+msgstr "Icono"
+
+#. module: realstate
+#: model:ir.model.fields,help:realstate.field_realstate_advice__activity_exception_icon
+#: model:ir.model.fields,help:realstate.field_realstate_property__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,help:realstate.field_realstate_advice__message_needaction
+#: model:ir.model.fields,help:realstate.field_realstate_advice__message_unread
+#: model:ir.model.fields,help:realstate.field_realstate_property__message_needaction
+#: model:ir.model.fields,help:realstate.field_realstate_property__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,help:realstate.field_realstate_advice__message_has_error
+#: model:ir.model.fields,help:realstate.field_realstate_advice__message_has_sms_error
+#: model:ir.model.fields,help:realstate.field_realstate_property__message_has_error
+#: model:ir.model.fields,help:realstate.field_realstate_property__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Images"
+msgstr "Imágenes"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__income_date
+msgid "Income Date"
+msgstr "Fecha de entrada"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__inhabited
+msgid "Inhabited"
+msgstr "Poblado"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_tree
+msgid "Inmueble"
+msgstr "Inmueble"
+
+#. module: realstate
+#: model:ir.actions.act_window,name:realstate.action_realstate_property
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Inmuebles"
+msgstr "Inmuebles"
+
+#. module: realstate
+#: model:ir.actions.act_window,name:realstate.action_realstate_configuration_internet
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__internet_id
+#: model:ir.ui.menu,name:realstate.menu_realstate_configuration_internet
+msgid "Internet"
+msgstr "Internet"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_is_follower
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_is_follower
+msgid "Is Follower"
+msgstr "Es seguidpor"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__kitchen
+msgid "Kitchen"
+msgstr "Cocina"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_calendar_event____last_update
+#: model:ir.model.fields,field_description:realstate.field_crm_lead____last_update
+#: model:ir.model.fields,field_description:realstate.field_product_image____last_update
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice____last_update
+#: model:ir.model.fields,field_description:realstate.field_realstate_area____last_update
+#: model:ir.model.fields,field_description:realstate.field_realstate_cooling____last_update
+#: model:ir.model.fields,field_description:realstate.field_realstate_enviroment____last_update
+#: model:ir.model.fields,field_description:realstate.field_realstate_extras____last_update
+#: model:ir.model.fields,field_description:realstate.field_realstate_heating____last_update
+#: model:ir.model.fields,field_description:realstate.field_realstate_internet____last_update
+#: model:ir.model.fields,field_description:realstate.field_realstate_parking____last_update
+#: model:ir.model.fields,field_description:realstate.field_realstate_property____last_update
+#: model:ir.model.fields,field_description:realstate.field_realstate_type____last_update
+#: model:ir.model.fields,field_description:realstate.field_res_company____last_update
+#: model:ir.model.fields,field_description:realstate.field_res_partner____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en "
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__write_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_area__write_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_cooling__write_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_enviroment__write_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_extras__write_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_heating__write_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_internet__write_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_parking__write_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__write_uid
+#: model:ir.model.fields,field_description:realstate.field_realstate_type__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__write_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_area__write_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_cooling__write_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_enviroment__write_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_extras__write_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_heating__write_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_internet__write_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_parking__write_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__write_date
+#: model:ir.model.fields,field_description:realstate.field_realstate_type__write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__last_change
+msgid "Last chance"
+msgstr "Última oportunidad"
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Oportunidad"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__living_room_qty
+msgid "Living rooms"
+msgstr "Salas"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_main_attachment_id
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjunto principal"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Management"
+msgstr "Gestión"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__medium_id
+msgid "Medium"
+msgstr "Medio"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_has_error
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de entrega de mensaje"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_ids
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__name
+#: model:ir.model.fields,field_description:realstate.field_realstate_area__name
+#: model:ir.model.fields,field_description:realstate.field_realstate_cooling__name
+#: model:ir.model.fields,field_description:realstate.field_realstate_enviroment__name
+#: model:ir.model.fields,field_description:realstate.field_realstate_extras__name
+#: model:ir.model.fields,field_description:realstate.field_realstate_heating__name
+#: model:ir.model.fields,field_description:realstate.field_realstate_internet__name
+#: model:ir.model.fields,field_description:realstate.field_realstate_parking__name
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__name
+#: model:ir.model.fields,field_description:realstate.field_realstate_type__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_state__new
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__state__new
+msgid "New"
+msgstr "Nuevo"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_origin__new
+msgid "New construction"
+msgstr "Nueva construcción"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_date_deadline
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_summary
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_type_id
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_res_partner__name_vat_file1
+#: model:ir.model.fields,field_description:realstate.field_res_users__name_vat_file1
+msgid "Nombre Anverso"
+msgstr "Nombre anverso"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_res_partner__name_vat_file2
+#: model:ir.model.fields,field_description:realstate.field_res_users__name_vat_file2
+msgid "Nombre Reverso"
+msgstr "Nombre reverso"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__swimmingpool__no
+msgid "None"
+msgstr "Ninguno"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_orientation__noreste
+msgid "Noreste"
+msgstr "Noreste"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_orientation__noroeste
+msgid "Noroeste"
+msgstr "Noroeste"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_orientation__norte
+msgid "Norte"
+msgstr "Norte"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__notary_cost
+msgid "Notary cost"
+msgstr "Coste notaría"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__note
+msgid "Note"
+msgstr "Nota"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_needaction_counter
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_has_error_counter
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: realstate
+#: model:ir.model.fields,help:realstate.field_realstate_advice__message_needaction_counter
+#: model:ir.model.fields,help:realstate.field_realstate_property__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren acción"
+
+#. module: realstate
+#: model:ir.model.fields,help:realstate.field_realstate_advice__message_has_error_counter
+#: model:ir.model.fields,help:realstate.field_realstate_property__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,help:realstate.field_realstate_advice__message_unread_counter
+#: model:ir.model.fields,help:realstate.field_realstate_property__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes sin leer"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_orientation__oeste
+msgid "Oeste"
+msgstr "Oeste"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Oferta"
+msgstr "Oferta"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__kitchen__office
+msgid "Office"
+msgstr "Oficina"
+
+#. module: realstate
+#: model:ir.actions.act_window,name:realstate.act_properties_2_opportunities
+msgid "Opportunities"
+msgstr "Oportunidades"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__opportunity_ids
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__opportunity_ids_count
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Opportunity"
+msgstr "Oportunidad"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__property_orientation
+msgid "Orientation"
+msgstr "Orientación"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__property_origin
+msgid "Origin"
+msgstr "Origen"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__outgoing_date
+msgid "Outgoing Date"
+msgstr "Fecha de salida"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__owner_id
+msgid "Owner"
+msgstr "Propietario"
+
+#. module: realstate
+#: model:ir.actions.act_window,name:realstate.action_realstate_configuration_parking
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__parking
+#: model:ir.ui.menu,name:realstate.menu_realstate_configuration_parking
+msgid "Parking"
+msgstr "Aparcamiento"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__patio
+msgid "Patio"
+msgstr "Patio"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__phone
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__photo
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Photo"
+msgstr "Foto"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__swimmingpool
+msgid "Pool"
+msgstr "Piscina"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__swimmingpool__private
+msgid "Private"
+msgstr "Privado"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__private_image_ids
+msgid "Private Image"
+msgstr "Imagen privada"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_product_image
+msgid "Product Image"
+msgstr "Imagen de producto"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__product_template_image_ids
+msgid "Product Template Image"
+msgstr "Imagen de plantilla de producto"
+
+#. module: realstate
+#: model:ir.ui.menu,name:realstate.menu_realstate_property
+msgid "Properties"
+msgstr "Propiedades"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_product_image__property_id
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__property_id
+msgid "Property"
+msgstr "Propiedad"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__swimmingpool__public
+msgid "Public"
+msgstr "Público"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_state__publish
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__state__publish
+msgid "Publish"
+msgstr "Publicado"
+
+#. module: realstate
+#: model:res.groups,name:realstate.realstate_manager
+msgid "Real State Manager"
+msgstr "Gestor inmobiliario"
+
+#. module: realstate
+#: model:ir.ui.menu,name:realstate.realstate_property_main
+msgid "RealState"
+msgstr "Inmobiliaria"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_calendar_event__realstate_id
+#: model:ir.model.fields,field_description:realstate.field_crm_lead__realstate_id
+#: model:ir.model.fields,field_description:realstate.field_res_company__realstate
+#: model_terms:ir.ui.view,arch_db:realstate.view_res_company_realstate_inh
+msgid "Realstate"
+msgstr "Inmobiliaria"
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_realstate_advice
+msgid "Realstate Advice Model"
+msgstr "Modelo de anuncio inmobiliario"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_advice_form
+msgid "Realstate Advices"
+msgstr "Anuncios inmobiliarios"
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_realstate_cooling
+msgid "Realstate Air Cooling"
+msgstr "Aire acondicionado "
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__realstate_area
+msgid "Realstate Area"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_realstate_area
+msgid "Realstate Area Model"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_realstate_enviroment
+msgid "Realstate Enviroment Model"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_realstate_extras
+msgid "Realstate Extras Model"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_realstate_heating
+msgid "Realstate Heating Model"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_realstate_internet
+msgid "Realstate Internet Model"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_realstate_parking
+msgid "Realstate Parking Model"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_realstate_property
+msgid "Realstate Property Model"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model,name:realstate.model_realstate_type
+msgid "Realstate Type Model"
+msgstr ""
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_advice_form
+msgid "Referencia del anuncio"
+msgstr "Referencia del anuncio"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Referencia o nombre del inmueble"
+msgstr "Referencia o nombre del inmueble"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__rental_price
+msgid "Rental"
+msgstr "Alquiler"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_user_id
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__room_qty
+msgid "Rooms"
+msgstr "Habitaciones"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_has_sms_error
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__sale_price
+msgid "Sale"
+msgstr "Venta"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__satellite_tv
+msgid "Satellite TV"
+msgstr "TV Satélite"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__to_season
+msgid "Season"
+msgstr "Temporada"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__security
+msgid "Security"
+msgstr "Seguridad"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__service_amount
+msgid "Service Amount"
+msgstr "Monto del servicio"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__solarium
+msgid "Solarium"
+msgstr "Solarium"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__property_state
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__state
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__state_id
+msgid "State"
+msgstr "Estado"
+
+#. module: realstate
+#: model:ir.model.fields,help:realstate.field_realstate_advice__activity_state
+#: model:ir.model.fields,help:realstate.field_realstate_property__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__storage_room
+msgid "Storage room"
+msgstr "Trastero"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__street
+msgid "Street"
+msgstr "Calle"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__street2
+msgid "Street2"
+msgstr "Calle2"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_orientation__sur
+msgid "Sur"
+msgstr "Sur"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_orientation__sureste
+msgid "Sureste"
+msgstr "Sureste"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_orientation__suroeste
+msgid "Suroeste"
+msgstr "Suroeste"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__house_deed
+msgid "House dedd"
+msgstr "Escritura"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__name_house_deed
+msgid "House deed name"
+msgstr "Nombre escritura"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__house_deed_simple
+msgid "House deed simple"
+msgstr "Escritura simple"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__name_house_deed_simple
+msgid "House deed simple name"
+msgstr "Nombre escritura simple"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__to_sale
+msgid "To Sale"
+msgstr "Por vender"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__to_rent
+msgid "To rent"
+msgstr "Por alquilar"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__kitchen__kitchen
+msgid "Traditional"
+msgstr "Tradicional"
+
+#. module: realstate
+#: model:ir.actions.act_window,name:realstate.action_realstate_configuration_type
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__type
+#: model:ir.ui.menu,name:realstate.menu_realstate_configuration_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: realstate
+#: model:ir.model.fields,help:realstate.field_realstate_advice__activity_exception_decoration
+#: model:ir.model.fields,help:realstate.field_realstate_property__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_unread
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_unread_counter
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__url
+msgid "Url"
+msgstr "Url"
+
+#. module: realstate
+#: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_origin__2hand
+msgid "Used"
+msgstr "Usado"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__useful_space
+msgid "Useful space"
+msgstr "Espacio útil"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Vivienda"
+msgstr "Vivienda"
+
+#. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_advice__website_message_ids
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: realstate
+#: model:ir.model.fields,help:realstate.field_realstate_advice__website_message_ids
+#: model:ir.model.fields,help:realstate.field_realstate_property__website_message_ids
+msgid "Website communication history"
+msgstr ""
