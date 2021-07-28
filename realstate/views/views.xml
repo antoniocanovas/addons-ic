@@ -76,7 +76,7 @@
                         <notebook name="realstate_properties">
                             <page name="property_page" string="Properties">
                                 <group name="group_realstate_properties">
-                                    <group name="group_realstate_property_left" string="Property">
+                                    <group name="group_realstate_property_left" string="General">
                                         <field name="street"/>
                                         <field name="street2"/>
                                         <field name="city"/>
@@ -101,7 +101,7 @@
                             </page>
                             <page name="property_page_habitability" string="Habitability">
                                 <group name="property_group_habitability">
-                                    <group name="property_left_habitability_general" string="General">
+                                    <group name="property_left_habitability_general" string="Habitability">
                                         <field name="room_qty"/>
                                         <field name="living_room_qty"/>
                                         <field name="kitchen"/>
@@ -437,6 +437,32 @@
             <field name="name">Default form view for Realstate Auditory</field>
             <field name="priority">18</field>
             <field name="type">form</field>
+        </record>
+
+         <record id="realstate_auditory_tree" model="ir.ui.view">
+            <field name="active" eval="True"/>
+            <field name="arch" type="xml">
+                <tree string="Auditory" create = '0'>
+                    <field name="name"/>
+                    <field name="city"/>
+                    <field name="realstate_area"/>
+                    <field name="type"/>
+                    <field name="income_date"/>
+                    <field name="outgoing_date"/>
+                    <field name="rental_price"/>
+                    <field name="to_rent"/>
+                    <field name="to_sale"/>
+                </tree>
+            </field>
+            <field name="field_parent" eval="False"/>
+            <field name="groups_id" eval="[(6, 0, [])]"/>
+            <field name="inherit_id" eval="False"/>
+            <field name="key" eval="False"/>
+            <field name="mode">primary</field>
+            <field name="model">realstate.property</field>
+            <field name="name">Default tree for Realstate propertye</field>
+            <field name="priority">16</field>
+            <field name="type">tree</field>
         </record>
 
     </data>
