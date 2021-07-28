@@ -48,7 +48,7 @@ class RealstateProperty(models.Model):
     to_season = fields.Boolean(string='Season')
     income_date = fields.Date(string='Income Date')
     outgoing_date = fields.Date(string='Outgoing Date')
-    customer_id = fields.Many2one('res.partner', string='Comercial')
+    customer_id = fields.Many2one('res.partner', string='Salesman')
     active = fields.Boolean(string='Active', default=True)
     # state = fields.Boolean(string='Phone')
     property_state = fields.Selection(string='State', selection=STATES)
@@ -93,7 +93,7 @@ class RealstateProperty(models.Model):
     balcony = fields.Boolean(string='Balcony')
     solarium = fields.Boolean(string='Solarium')
     garden = fields.Boolean(string='Garden')
-    patio = fields.Boolean(string='Patio')
+    patio = fields.Boolean(string='courtyard')
     heating_id = fields.Many2one('realstate.heating', string='Heating')
     cooling_id = fields.Many2one('realstate.cooling', string='Air cooling')
     energy_certificate = fields.Binary(string='Energy certificate')
@@ -105,8 +105,8 @@ class RealstateProperty(models.Model):
     internet_id = fields.Many2one('realstate.internet', string='Internet')
     # orientation = fields.Boolean(string='Phone')
     property_orientation = fields.Selection(
-        selection=[('sur', 'Sur'), ('sureste', 'Sureste'), ('este', 'Este'), ('noreste', 'Noreste'), ('norte', 'Norte'),
-                   ('noroeste', 'Noroeste'), ('oeste', 'Oeste'), ('suroeste', 'Suroeste')], string="Orientation",
+        selection=[('south', 'South'), ('southeast', 'Southeast'), ('west', 'West'), ('northeast', 'Northeast'), ('north', 'North'),
+                   ('northwest', 'Northwest'), ('west', 'West'), ('southwest', 'Southwest')], string="Orientation",
         default='este')
     conservation = fields.Char(string='Conservation')
     # pool = fields.Boolean(string='Phone')

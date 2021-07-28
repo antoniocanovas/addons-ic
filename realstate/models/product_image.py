@@ -8,7 +8,7 @@ from odoo import models, fields, api
 class ProductImage(models.Model):
     _inherit = 'product.image'
 
-    property_id = fields.Many2one('realstate.property')
+    property_id = fields.Many2one('realstate.property', string='Property')
 
 
 
