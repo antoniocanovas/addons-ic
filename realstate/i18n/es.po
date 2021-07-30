@@ -157,7 +157,7 @@ msgstr "Comienzo"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__built_date
 msgid "Built date"
-msgstr "Año de construcción"
+msgstr "Construcción"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__built_space
@@ -203,7 +203,7 @@ msgstr ""
 #. module: realstate
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__swimmingpool__communitary
 msgid "Communitary"
-msgstr "Comunitario"
+msgstr "Comunitaria"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__community_price
@@ -239,7 +239,7 @@ msgstr "Contacto"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__contribution_file
 msgid "Contribution file"
-msgstr "Archivo de contribución"
+msgstr "Contribución"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__name_contribution_file
@@ -365,13 +365,13 @@ msgstr "Ascensor"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__date_end
 msgid "End date"
-msgstr "Finalización"
+msgstr "Fin"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__energy_certificate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__energy_certificate_name
 msgid "Energy certificate"
-msgstr "Certificado energético"
+msgstr "Certificado EE"
 
 #. module: realstate
 #: model:ir.actions.act_window,name:realstate.action_realstate_configuration_enviroment
@@ -385,8 +385,8 @@ msgstr "Entorno"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__environment_id
-msgid "Enviroment id"
-msgstr "ID Entorno"
+msgid "Enviroment"
+msgstr "Entorno"
 
 #. module: realstate
 #: model:ir.actions.act_window,name:realstate.act_properties_2_event
@@ -395,7 +395,7 @@ msgstr "ID Entorno"
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_auditory_form
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
 msgid "Event"
-msgstr "Evento"
+msgstr "Reuniones"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__exclusivity
@@ -476,7 +476,7 @@ msgstr "Calefacción"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__house_deed
 msgid "House deed"
-msgstr ""
+msgstr "Escritura"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__house_deed_simple
@@ -630,7 +630,7 @@ msgstr "Última actualización en"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__last_change
 msgid "Last chance"
-msgstr "Última oportunidad"
+msgstr "PVP Revisado"
 
 #. module: realstate
 #: model:ir.model,name:realstate.model_crm_lead
@@ -860,7 +860,7 @@ msgstr "Anuncio publicado"
 #. module: realstate
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__swimmingpool__private
 msgid "Private"
-msgstr "Privado"
+msgstr "Privada"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__private_image_ids
@@ -903,7 +903,7 @@ msgstr "Propiedad"
 #. module: realstate
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__swimmingpool__public
 msgid "Public"
-msgstr "Público"
+msgstr "Pública"
 
 #. module: realstate
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_state__publish
@@ -1045,7 +1045,7 @@ msgstr "Seguridad"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__service_amount
 msgid "Service Amount"
-msgstr "Monto del servicio"
+msgstr "Gestión inmobiliaria"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__solarium
@@ -1107,12 +1107,12 @@ msgstr "Calle2"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__to_sale
 msgid "To Sale"
-msgstr "Por vender"
+msgstr "Vender"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__to_rent
 msgid "To rent"
-msgstr "Por alquilar"
+msgstr "Alquilar"
 
 #. module: realstate
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__kitchen__kitchen

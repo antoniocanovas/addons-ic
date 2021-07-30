@@ -23,17 +23,12 @@ class RealstateProperty(models.Model):
     name = fields.Char('Name',  required=True)
 
     def get_currency(self):
-        self.currency_id = self.company_id.currency_id
+        self.currency_id = 1
 
     currency_id = fields.Many2one('res.currency', compute='get_currency')
 
     type = fields.Many2one('realstate.type')
     realstate_area = fields.Many2one('realstate.area')
-    advice_ids = fields.One2many(
-        'realstate.advice',
-        'property_id',
-        string='Advices'
-    )
     extra_ids = fields.Many2many(
         'realstate.extras',
         string='Extras'
@@ -102,7 +97,7 @@ class RealstateProperty(models.Model):
     cooling_id = fields.Many2one('realstate.cooling', string='Air cooling')
     energy_certificate = fields.Binary(string='Energy certificate')
     energy_certificate_name = fields.Char(string='Energy certificate')
-    environment_id = fields.Many2one('realstate.enviroment', string='Enviroment id')
+    environment_id = fields.Many2one('realstate.enviroment', string='Enviroment')
     elevator = fields.Boolean(string='Elevator')
     phone = fields.Boolean(string='Phone')
     satellite_tv = fields.Boolean(string='Satellite TV')
@@ -121,9 +116,9 @@ class RealstateProperty(models.Model):
                             string="Status")
     address_id = fields.Many2one('res.partner', string='Address')
     service_amount = fields.Monetary('Service Amount', currency_field='currency_id')
-    notary_cost = fields.Float('Notary cost')
-    plusvalia_amount = fields.Float('Capital gain')
-    advice_ids = fields.One2many('realstate.advice', 'property_id' )
+    notary_cost = fields.Monetary('Notary cost', currency_field='currency_id')
+    plusvalia_amount = fields.Monetary('Capital gain', currency_field='currency_id')
+    advice_ids = fields.One2many('realstate.advice', 'property_id',string='Advices' )
     opportunity_ids = fields.One2many('crm.lead', 'realstate_id')
     event_ids = fields.One2many('calendar.event', 'realstate_id')
     contribution_file = fields.Binary(string='Contribution file' )

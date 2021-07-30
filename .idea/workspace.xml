@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb6e4e08-1358-4f0d-8a26-66c4a9426e37" name="Default Changelist" comment="v3 ac">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realstate/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/views/views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/i18n/es.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/models/realstate_property.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/realstate_property.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/views/views_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/views/views_menu.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +17,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1vZJw8OqZb0wuPAer268oLHKV03" />
+  <component name="ProjectId" id="1w2XMqktEMEYJVK2HcR2h9F7e4P" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -21,63 +26,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cb6e4e08-1358-4f0d-8a26-66c4a9426e37" name="Default Changelist" comment="" />
-      <created>1626763917284</created>
+      <changelist id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="" />
+      <created>1627657619456</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1626763917284</updated>
+      <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00001" summary="v1 ac">
-      <created>1626795505085</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1626795505085</updated>
-    </task>
-    <task id="LOCAL-00002" summary="v1 ac">
-      <created>1626800420518</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1626800420518</updated>
-    </task>
-    <task id="LOCAL-00003" summary="v3 ac">
-      <created>1627313569124</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1627313569124</updated>
-    </task>
-    <task id="LOCAL-00004" summary="v3 ac">
-      <created>1627313714792</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1627313714792</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="v1 ac" />
-    <MESSAGE value="v3 ac" />
-    <option name="LAST_COMMIT_MESSAGE" value="v3 ac" />
   </component>
 </project>
