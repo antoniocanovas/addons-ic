@@ -105,15 +105,15 @@ class RealstateProperty(models.Model):
     internet_id = fields.Many2one('realstate.internet', string='Internet')
     # orientation = fields.Boolean(string='Phone')
     property_orientation = fields.Selection(
-        selection=[('south', 'South'), ('southeast', 'Southeast'), ('west', 'West'), ('northeast', 'Northeast'), ('north', 'North'),
+        selection=[('south', 'South'), ('southeast', 'Southeast'), ('east', 'East'), ('northeast', 'Northeast'), ('north', 'North'),
                    ('northwest', 'Northwest'), ('west', 'West'), ('southwest', 'Southwest')], string="Orientation",
-        default='este')
+        default='east')
     conservation = fields.Char(string='Conservation')
     # pool = fields.Boolean(string='Phone')
     swimmingpool = fields.Selection(selection=[('no', 'None'), ('private', 'Private'), ('communitary', 'Communitary'),('public','Public')],
                             string="Pool", default='no')
     barbecue = fields.Boolean(string='Barbecue')
-    hearth = fields.Boolean(string='Chimenea')
+    hearth = fields.Boolean(string='Fireplace')
     state = fields.Selection(selection=STATES,
                             string="State", default='new')
     address_id = fields.Many2one('res.partner', string='Address')

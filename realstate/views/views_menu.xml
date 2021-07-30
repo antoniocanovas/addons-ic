@@ -106,7 +106,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
         <field name="view_ids" eval="[(5, 0, 0),
-        (0, 0, {'view_mode': 'tree', 'view_id': ref('realstate_property_tree')}),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('realstate_auditory_tree')}),
         (0, 0, {'view_mode': 'form', 'view_id': ref('realstate_property_auditory_form')})]"/>
         <!--<field name="view_mode">tree,form</field>
         <field name="view_type">tree</field>-->
