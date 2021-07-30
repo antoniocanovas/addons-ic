@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <search string="State">
                 <field name="state"></field>
-                <filter name="state" string="Working" domain="[('state', 'not in', ['done','cancel'])]"/>
+                <filter name="state_running" string="Working" domain="[('state', 'not in', ['done','cancel'])]"/>
                 <group expand="0" name="group_by" string="Group By">
                     <filter name="state" string="State" domain="[]" context="{'group_by' : 'state'}"/>
                 </group>
@@ -16,7 +16,7 @@
         </field>
     </record>
 
-    <record id="realstate_auditory_tree_search" model="ir.ui.view">
+    <!--<record id="realstate_auditory_tree_search" model="ir.ui.view">
         <field name="name">realstate.auditory.tree.search</field>
         <field name="model">realstate.property</field>
         <field name="active">True</field>
@@ -26,7 +26,7 @@
                 <filter name="state" string="Auditory" domain="[('state', '=', 'auditory')]"/>
             </search>
         </field>
-    </record>
+    </record>-->
 
     <record id="action_realstate_property" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
@@ -37,6 +37,7 @@
         <field name="name">Inmuebles</field>
         <field name="res_model">realstate.property</field>
         <field name="search_view_id" ref="realstate_property_tree_search"/>
+        <field name="context">{'search_default_state_running': 1}</field>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
@@ -100,7 +101,7 @@
         <field name="limit">80</field>
         <field name="name">Auditory</field>
         <field name="res_model">realstate.property</field>
-        <field name="context">{'default_state': 'auditory', 'search_default_state': 'auditory'}</field>
+        <field name="domain">[('state','=', 'auditory')]</field>
         <field name="search_view_id" ref="realstate_auditory_tree_search"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
