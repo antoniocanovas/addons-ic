@@ -162,11 +162,11 @@
                             <page name="Images" string="Images">
                                 <group>
 
-                                    <field name="product_template_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" options="{'create_text':'Add a Media'}" nolabel="1"/>
+                                    <field name="product_template_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" options="{'create_text':'Añadir'}" nolabel="1"/>
                                 </group>
                                 <group>
 
-                                    <field name="private_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" options="{'create_text':'Add a Private'}" nolabel="1"/>
+                                    <field name="private_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" options="{'create_text':'Añadir Privada'}" nolabel="1"/>
                                 </group>
                             </page>
                         </notebook>
@@ -461,7 +461,7 @@
             <field name="mode">primary</field>
             <field name="model">realstate.property</field>
             <field name="name">Default tree for Realstate propertye</field>
-            <field name="priority">16</field>
+            <field name="priority">99</field>
             <field name="type">tree</field>
         </record>
 

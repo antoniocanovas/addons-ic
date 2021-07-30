@@ -167,7 +167,7 @@ class AccountBankStatementCBI(models.Model):
         for record in self:
             if record.state != 'completed':
                 if record.journal_id:
-                    record = record.with_context(journal_id=record.journal_id.id)
+                    record = record.with_context(journal_id=record.journal_id.id, company_id=record.company_id.id)
 
                     bank_statement = record.env['account.statement.import'].create({
                         'statement_file': record.bank_statement_attachment_id.datas,
@@ -185,24 +185,23 @@ class AccountBankStatementCBI(models.Model):
                         raise ValidationError('Server Error: %s' % e)
 
     def automated_import_files(self):
-        imported_n43_ids = self.env['account.bank.statement.cbi'].sudo().search([['state', '=', 'draft']])
+        imported_n43_ids = self.env['account.bank.statement.cbi'].search([['state', '=', 'draft']])
         for bsa in imported_n43_ids:
 
             if bsa.journal_id:
-                self = self.with_context(journal_id=bsa.journal_id.id)
+                bsa = bsa.with_context(journal_id=bsa.journal_id.id, company_id=bsa.journal_id.company_id.id, user_id=2)
 
-                bank_statement = self.env['account.statement.import'].create({
-                    'statement_file': bsa.bank_statement_attachment_id.datas,
-                    'display_name': bsa.bank_statement_attachment_id.name,
-                    'statement_filename': bsa.bank_statement_attachment_id.name,
+                bank_statement = bsa.env['account.statement.import'].create({
+                    'data_file': bsa.bank_statement_attachment_id.datas,
+                    'display_name': bsa.bank_statement_attachment_id.datas_fname,
+                    'filename': bsa.bank_statement_attachment_id.datas_fname,
                 })
 
                 try:
-                    bank_statement.import_file_button()
+                    bank_statement.import_file()
                     bsa.state = 'completed'
-                    #bank_statement.name = str(bank_statement.date)
+                    # bank_statement.name = str(bank_statement.date)
                 except Exception as e:
                     bsa.state = 'error'
                     bsa.error_logger = e
                     _logger.debug('Server Error: %s' % e)
-
