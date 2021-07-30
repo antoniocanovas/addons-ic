@@ -25,7 +25,7 @@ class RealstateProperty(models.Model):
     def get_currency(self):
         self.currency_id = self.env.user.company_id.currency_id
 
-    currency_id = fields.Many2one('res.currency', compute='get_currency')
+    currency_id = fields.Many2one('res.currency', compute='get_currency', store=False)
 
     type = fields.Many2one('realstate.type')
     realstate_area = fields.Many2one('realstate.area')
