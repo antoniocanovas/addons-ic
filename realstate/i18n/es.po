@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 14.0+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 06:41+0000\n"
-"PO-Revision-Date: 2021-07-30 08:55+0200\n"
+"PO-Revision-Date: 2021-07-30 10:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -386,7 +386,7 @@ msgstr "Entorno"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__environment_id
 msgid "Enviroment id"
-msgstr "ID Entorno"
+msgstr "Entorno"
 
 #. module: realstate
 #: model:ir.actions.act_window,name:realstate.act_properties_2_event
@@ -630,7 +630,7 @@ msgstr "Última actualización en"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__last_change
 msgid "Last chance"
-msgstr "Última oportunidad"
+msgstr "PVP revisado"
 
 #. module: realstate
 #: model:ir.model,name:realstate.model_crm_lead
@@ -880,7 +880,7 @@ msgstr "Producto"
 #. module: realstate
 #: model:ir.model,name:realstate.model_product_image
 msgid "Product Image"
-msgstr "Imagen del producto"
+msgstr "Fotos y vídeos para publicar"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__product_template_image_ids
@@ -998,7 +998,7 @@ msgstr ""
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__rental_price
 msgid "Rental"
-msgstr "Alquiler"
+msgstr "PVP Alquiler"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_user_id
@@ -1020,7 +1020,7 @@ msgstr ""
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__sale_price
 msgid "Sale"
-msgstr "Venta"
+msgstr "PVP Venta"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__customer_id
@@ -1035,7 +1035,7 @@ msgstr "TV Satélite"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__to_season
 msgid "Season"
-msgstr "Temporada"
+msgstr "Estacional"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__security
