@@ -121,7 +121,7 @@
                                     </group>
                                 </group>
                             </page>
-                            <page name="realstate_anagement" string="Management">
+                            <page name="realstate_management" string="Management">
                                 <group name="group_management">
                                     <group name="property_left_management" string="General">
                                         <field name="owner_id"/>
@@ -150,7 +150,7 @@
                                 </group>
                             </page>
                             <page name="realstate_advice" string="Advices">
-                                <field name="advice_ids">
+                                <field name="advice_ids" context="{'default_property_id':id}">
                                     <tree>
                                         <field name="name"/>
                                         <field name="date_begin"/>

@@ -17,7 +17,13 @@ class RealstateAdvice(models.Model):
     date_end = fields.Date('End date', tracking=True)
     url = fields.Char()
     printed_advice = fields.Binary()
-    amount = fields.Float(string='Amount', digits=(7, 2))
+
+    amount = fields.Monetary(string='Amount', digits=(7, 2), currency_field='currency_id')
     active = fields.Boolean("Active", default=True)
     medium_id = fields.Many2one("utm.medium", string='Medium', tracking=True)
     note = fields.Text(string='Note')
+
+    def get_currency(self):
+        self.currency_id = self.company_id.currency_id
+
+    currency_id = fields.Many2one('res.currency', compute='get_currency')

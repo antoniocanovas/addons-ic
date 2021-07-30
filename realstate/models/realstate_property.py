@@ -21,7 +21,12 @@ class RealstateProperty(models.Model):
     _description = 'Realstate Property Model'
 
     name = fields.Char('Name',  required=True)
-    currency_id = fields.Many2one('res.currency')
+
+    def get_currency(self):
+        self.currency_id = self.company_id.currency_id
+
+    currency_id = fields.Many2one('res.currency', compute='get_currency')
+
     type = fields.Many2one('realstate.type')
     realstate_area = fields.Many2one('realstate.area')
     advice_ids = fields.One2many(
@@ -62,17 +67,17 @@ class RealstateProperty(models.Model):
     useful_space = fields.Char(string='Useful space')
     built_space = fields.Char(string='Built space')
     # origin = fields.Boolean(string='Phone')
-    property_origin = fields.Selection(selection=[('new', 'New construction'), ('2hand', 'Used')], string="Origin", default='new')
+    property_origin = fields.Selection(selection=[('new', 'New construction'), ('2hand', 'Used')], string="Origin")
     built_date = fields.Date(string='Built date')
     furnished = fields.Boolean(string='Furnished')
     alarm = fields.Boolean(string='Alarm')
     security = fields.Boolean(string='Security')
     note = fields.Text('Description')
     # Oferta
-    sale_price = fields.Float(string='Sale', digits=(7, 2))
-    rental_price = fields.Float(string='Rental', digits=(5, 2))
-    advance_price = fields.Float(string='Advance', digits=(4, 2))
-    community_price = fields.Float(string='Community', digits=(4, 2))
+    sale_price = fields.Monetary(string='Sale', digits=(7, 2), currency_field='currency_id')
+    rental_price = fields.Monetary(string='Rental', digits=(5, 2), currency_field='currency_id')
+    advance_price = fields.Monetary(string='Advance', digits=(4, 2), currency_field='currency_id')
+    community_price = fields.Monetary(string='Community', digits=(4, 2), currency_field='currency_id')
     date = fields.Date(string='Date')
     last_change = fields.Date(string='Last chance')
     exclusivity = fields.Boolean(string='Exclusivity')
@@ -84,8 +89,7 @@ class RealstateProperty(models.Model):
     builtin_wardroble = fields.Boolean(string='Builtin wardrobe')
     living_room_qty = fields.Integer(string='Living rooms')
     # kitchen = fields.Boolean(string='Phone')
-    kitchen = fields.Selection(selection=[('kitchen', 'Traditional'), ('office', 'Office')], string="Kitchen",
-                               default='kitchen')
+    kitchen = fields.Selection(selection=[('kitchen', 'Traditional'), ('office', 'Office')], string="Kitchen")
     bathroom_qty = fields.Integer(string='Bathrooms')
     bathroom_bedroom = fields.Boolean(string='Bathroom in bedroom')
     parking = fields.Many2one('realstate.parking', string='Parking')
@@ -106,16 +110,15 @@ class RealstateProperty(models.Model):
     # orientation = fields.Boolean(string='Phone')
     property_orientation = fields.Selection(
         selection=[('south', 'South'), ('southeast', 'Southeast'), ('east', 'East'), ('northeast', 'Northeast'), ('north', 'North'),
-                   ('northwest', 'Northwest'), ('west', 'West'), ('southwest', 'Southwest')], string="Orientation",
-        default='east')
+                   ('northwest', 'Northwest'), ('west', 'West'), ('southwest', 'Southwest')], string="Orientation")
     conservation = fields.Char(string='Conservation')
     # pool = fields.Boolean(string='Phone')
     swimmingpool = fields.Selection(selection=[('no', 'None'), ('private', 'Private'), ('communitary', 'Communitary'),('public','Public')],
-                            string="Pool", default='no')
+                            string="Pool")
     barbecue = fields.Boolean(string='Barbecue')
     hearth = fields.Boolean(string='Fireplace')
     state = fields.Selection(selection=STATES,
-                            string="State", default='new')
+                            string="Status")
     address_id = fields.Many2one('res.partner', string='Address')
     service_amount = fields.Monetary('Service Amount', currency_field='currency_id')
     notary_cost = fields.Float('Notary cost')
