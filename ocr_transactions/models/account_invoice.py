@@ -75,7 +75,6 @@ class AccountInvoice(models.Model):
                 self.ocr_transaction_id.invoice_id = self.id
                 self.is_ocr = True
 
-
     @api.multi
     def create_invoice_lines_from_ocr(self):
         for invoice in self:
