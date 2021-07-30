@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="Bug an others AC">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/realstate/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/i18n/es.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realstate/models/realstate_property.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/realstate_property.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realstate/views/views_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/views/views_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/views/views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +33,29 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
+    <task id="LOCAL-00001" summary="Bug an others AC">
+      <created>1627662060710</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1627662060710</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Bug an others AC" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug an others AC" />
   </component>
 </project>

@@ -150,7 +150,7 @@
                                 </group>
                             </page>
                             <page name="realstate_advice" string="Advices">
-                                <field name="advice_ids" context="{'default_property_id':id}">
+                                <field name="advice_ids" context="{'default_name':name, 'default_property_id':id}">
                                     <tree>
                                         <field name="name"/>
                                         <field name="date_begin"/>
@@ -282,11 +282,11 @@
                             <field name="name" placeholder="Advice reference, and short detail" required="1"/>
                         </h1>
                         <group>
-                            <field name="property_id" required="1"/>
+                            <field name="property_id"/>
                             <field name="date_begin"/>
                             <field name="date_end"/>
                             <field name="medium_id" />
-                            <field name="amount" widget="monetary"/>
+                            <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                             <field name="printed_advice"/>
                             <field name="active"/>
                         </group>
@@ -381,10 +381,10 @@
                             <field name="photo" string="Photo" widget="image" nolabel="1"/>
                         </group>
                         <group name="group_realstate_property_right" string="Conditions">
-                            <field name="sale_price" widget="monetary"/>
-                            <field name="rental_price" widget="monetary"/>
-                            <field name="advance_price" widget="monetary"/>
-                            <field name="community_price" widget="monetary"/>
+                            <field name="sale_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="rental_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="advance_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="community_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                         </group>
                         <group name="property_left_habitability_general" string="General">
                             <field name="room_qty"/>

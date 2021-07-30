@@ -183,7 +183,7 @@ msgstr "Cancelar"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__plusvalia_amount
 msgid "Capital gain"
-msgstr "Ganancia capital"
+msgstr "Imp. patrimonio"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__city
@@ -548,7 +548,7 @@ msgstr "Fecha de entrada"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__inhabited
 msgid "Inhabited"
-msgstr "Poblado"
+msgstr "Habitada"
 
 #. module: realstate
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_tree
@@ -630,7 +630,7 @@ msgstr "Última actualización en"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__last_change
 msgid "Last chance"
-msgstr "PVP Revisado"
+msgstr "Revisión PVP"
 
 #. module: realstate
 #: model:ir.model,name:realstate.model_crm_lead
@@ -1045,7 +1045,7 @@ msgstr "Seguridad"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__service_amount
 msgid "Service Amount"
-msgstr "Gestión inmobiliaria"
+msgstr "Comisión gestión"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__solarium

@@ -24,6 +24,6 @@ class RealstateAdvice(models.Model):
     note = fields.Text(string='Note')
 
     def get_currency(self):
-        self.currency_id = self.company_id.currency_id
+        self.currency_id = self.env.user.company_id.currency_id
 
     currency_id = fields.Many2one('res.currency', compute='get_currency')
