@@ -95,8 +95,10 @@ class AccountBankStatementCBI(models.Model):
 
     @api.multi
     def automated_ftp_get_n43_files(self):
-        company_ids = self.env['res.company'].sudo().search([])
+        company_ids = self.env['res.company'].search([])
+
         for company_id in company_ids:
+            print("company",company_id.name)
             if company_id.ftp_url_cbi and company_id.ftp_port_cbi and company_id.ftp_user_cbi and company_id.ftp_passwd_cbi:
                 try:
                     sftpclient = self.create_sftp_client(company_id.ftp_url_cbi, company_id.ftp_port_cbi,
@@ -116,7 +118,6 @@ class AccountBankStatementCBI(models.Model):
                                     bsa_bank_number = file_first[2:20]
                                     #rename = sftpclient.rename(f,(str(bank_number) + str(f)+ '.n43'))
                                     sftpclient.get(f, '/tmp/%s' % f)
-
                                     try:
                                         journal = self.env['account.journal'].sudo().search([])
                                         for journal_id in journal:
@@ -130,7 +131,7 @@ class AccountBankStatementCBI(models.Model):
                                                     with open('/tmp/%s' % f, "r+b") as file:
                                                         data = file.read()
                                                         file.close()
-                                                        attachment_id = self.env['ir.attachment'].sudo().create({
+                                                        attachment_id = self.env['ir.attachment'].create({
                                                             'name': f,
                                                             'type': 'binary',
                                                             'datas': base64.b64encode(data),
@@ -141,13 +142,16 @@ class AccountBankStatementCBI(models.Model):
                                                             'mimetype': 'text/plain'
                                                         })
 
-                                                    self.env['account.bank.statement.cbi'].sudo().create({
+                                                    absc = self.env['account.bank.statement.cbi'].sudo().create({
                                                         'name': f,
                                                         'journal_id': journal_id.id,
                                                         'bank_statement_attachment_id': attachment_id.id,
                                                         'company_id': journal_id.company_id.id,
                                                     })
                                                     self.move_file_to_downloaded_dir(sftpclient, f)
+
+                                                    if company_id.cbi_autoimport:
+                                                        absc.import_files()
 
                                     except Exception as e:
                                         raise ValidationError('Server Error: %s' % e)
@@ -158,9 +162,9 @@ class AccountBankStatementCBI(models.Model):
 
                 except Exception as e:
                     _logger.debug('Server Error: %s' % e)
-
-            if company_id.cbi_autoimport:
-                self.automated_import_files()
+            #print("Autoimport", company_id.cbi_autoimport)
+            #if company_id.cbi_autoimport:
+            #    company_id.automated_import_files()
 
     @api.multi
     def import_files(self):
@@ -186,13 +190,13 @@ class AccountBankStatementCBI(models.Model):
 
     @api.multi
     def automated_import_files(self):
-        imported_n43_ids = self.env['account.bank.statement.cbi'].sudo().search([['state', '=', 'draft']])
+        imported_n43_ids = self.env['account.bank.statement.cbi'].search([['state', '=', 'draft']])
         for bsa in imported_n43_ids:
 
             if bsa.journal_id:
-                self = self.with_context(journal_id=bsa.journal_id.id, company_id=bsa.journal_id.company_id.id)
+                bsa = bsa.with_context(journal_id=bsa.journal_id.id, company_id=bsa.journal_id.company_id.id, user_id=2)
 
-                bank_statement = self.env['account.bank.statement.import'].create({
+                bank_statement = bsa.env['account.bank.statement.import'].create({
                     'data_file': bsa.bank_statement_attachment_id.datas,
                     'display_name': bsa.bank_statement_attachment_id.datas_fname,
                     'filename': bsa.bank_statement_attachment_id.datas_fname,

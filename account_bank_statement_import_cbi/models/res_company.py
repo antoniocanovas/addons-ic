@@ -40,7 +40,7 @@ class ResCompany(models.Model):
     @api.multi
     def force_sync_cbi(self):
         if self.ftp_url_cbi and self.ftp_port_cbi and self.ftp_user_cbi and self.ftp_passwd_cbi:
-            cbi = self.env['account.bank.statement.cbi'].sudo()
+            cbi = self.env['account.bank.statement.cbi']
             conn = cbi.automated_ftp_get_n43_files()
             time = datetime.now()
             self.cbi_last_connection_date = time
