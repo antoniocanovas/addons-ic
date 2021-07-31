@@ -1,12 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
+    <record id="realstate_advice_search" model="ir.ui.view">
+        <field name="name">realstate.advice.search</field>
+        <field name="model">realstate.advice</field>
+        <field name="active">True</field>
+        <field name="arch" type="xml">
+            <search string="Realstate Advice">
+                    <field name="name"/>
+                    <field name="property_id"/>
+                    <field name="medium_id"/>
+
+                    <separator/>
+                    <filter name="active" string="Active" domain="[('active','=',True)]"/>
+                    <filter name="archived" string="Archived" domain="[('active','=',False)]"/>
+                    <separator/>
+
+                    <group expand="0" name="group_by" string="Group By">
+                        <filter name="medium" domain="[]" context="{'group_by' : 'medium_id'}"/>
+                    </group>
+            </search>
+        </field>
+    </record>
+
     <record id="realstate_property_search" model="ir.ui.view">
         <field name="name">realstate.property.search</field>
         <field name="model">realstate.property</field>
         <field name="active">True</field>
         <field name="arch" type="xml">
-            <search string="State">
+            <search string="Realstate property">
+                <field name="name"/>
                 <field name="state"/>
                 <field name="realstate_area"/>
                 <field name="user_id"/>
