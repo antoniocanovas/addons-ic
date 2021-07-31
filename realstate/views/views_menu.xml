@@ -2,15 +2,31 @@
 <odoo>
 
     <record id="realstate_property_search" model="ir.ui.view">
-        <field name="name">realstate.property.tree.search</field>
+        <field name="name">realstate.property.search</field>
         <field name="model">realstate.property</field>
         <field name="active">True</field>
         <field name="arch" type="xml">
             <search string="State">
-                <field name="state"></field>
+                <field name="state"/>
+                <field name="realstate_area"/>
+                <field name="user_id"/>
+                <field name="property_origin"/>
+
+                <separator/>
+                <filter name="to_sale" string="To sale" domain="[('to_sale','=',True)]"/>
+                <filter name="to_rent" string="To rent" domain="[('to_rent','=',True)]"/>
+                <separator/>
+                <filter name="exclusivity" string="Exclusivity" domain="[('exclusivity','=',True)]"/>
+                <separator/>
                 <filter name="state_running" string="Working" domain="[('state', 'not in', ['done','cancel'])]"/>
+                <separator/>
+                <filter name="inhabited" string="Not habited" domain="[('inhabited', '=',False)]"/>
+                <separator/>
+
                 <group expand="0" name="group_by" string="Group By">
-                    <filter name="state" string="State" domain="[]" context="{'group_by' : 'state'}"/>
+                    <filter name="state" domain="[]" context="{'group_by' : 'state'}"/>
+                    <filter name="user_id" context="{'group_by' : 'user_id'}"/>
+                    <filter name="property_origin" context="{'group_by' : 'property_origin'}"/>
                 </group>
             </search>
         </field>

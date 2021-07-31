@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="AC4 títulos de imágenes en propiedades">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realstate/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/i18n/es.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realstate/models/realstate_advice.py" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/models/realstate_advice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realstate/views/views_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/views/views_menu.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
