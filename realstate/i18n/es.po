@@ -100,7 +100,7 @@ msgstr "Alarma"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__amount
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Importe"
 
 #. module: realstate
 #: model:ir.actions.act_window,name:realstate.action_realstate_configuration_area
