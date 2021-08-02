@@ -1,32 +1,59 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="realstate_property_tree_search" model="ir.ui.view">
-        <field name="name">realstate.property.tree.search</field>
-        <field name="model">realstate.property</field>
+    <record id="realstate_advice_search" model="ir.ui.view">
+        <field name="name">realstate.advice.search</field>
+        <field name="model">realstate.advice</field>
         <field name="active">True</field>
         <field name="arch" type="xml">
-            <search string="State">
-                <field name="state"></field>
-                <filter name="state_running" string="Working" domain="[('state', 'not in', ['done','cancel'])]"/>
-                <group expand="0" name="group_by" string="Group By">
-                    <filter name="state" string="State" domain="[]" context="{'group_by' : 'state'}"/>
-                </group>
+            <search string="Realstate Advice">
+                    <field name="name"/>
+                    <field name="property_id"/>
+                    <field name="medium_id"/>
+
+                    <separator/>
+                    <filter name="active" string="Active" domain="[('active','=',True)]"/>
+                    <filter name="archived" string="Archived" domain="[('active','=',False)]"/>
+                    <separator/>
+
+                    <group expand="0" name="group_by" string="Group By">
+                        <filter name="medium" domain="[]" context="{'group_by' : 'medium_id'}"/>
+                    </group>
             </search>
         </field>
     </record>
 
-    <!--<record id="realstate_auditory_tree_search" model="ir.ui.view">
-        <field name="name">realstate.auditory.tree.search</field>
+    <record id="realstate_property_search" model="ir.ui.view">
+        <field name="name">realstate.property.search</field>
         <field name="model">realstate.property</field>
         <field name="active">True</field>
         <field name="arch" type="xml">
-            <search string="State">
-                <field name="state"></field>
-                <filter name="state" string="Auditory" domain="[('state', '=', 'auditory')]"/>
+            <search string="Realstate property">
+                <field name="name"/>
+                <field name="state"/>
+                <field name="realstate_area"/>
+                <field name="user_id"/>
+                <field name="property_origin"/>
+
+                <separator/>
+                <filter name="to_sale" string="To sale" domain="[('to_sale','=',True)]"/>
+                <filter name="to_rent" string="To rent" domain="[('to_rent','=',True)]"/>
+                <separator/>
+                <filter name="exclusivity" string="Exclusivity" domain="[('exclusivity','=',True)]"/>
+                <separator/>
+                <filter name="state_running" string="Working" domain="[('state', 'not in', ['done','cancel'])]"/>
+                <separator/>
+                <filter name="inhabited" string="Not habited" domain="[('inhabited', '=',False)]"/>
+                <separator/>
+
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="state" domain="[]" context="{'group_by' : 'state'}"/>
+                    <filter name="user_id" context="{'group_by' : 'user_id'}"/>
+                    <filter name="property_origin" context="{'group_by' : 'property_origin'}"/>
+                </group>
             </search>
         </field>
-    </record>-->
+    </record>
 
     <record id="action_realstate_property" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
@@ -36,7 +63,7 @@
         <field name="limit">80</field>
         <field name="name">Inmuebles</field>
         <field name="res_model">realstate.property</field>
-        <field name="search_view_id" ref="realstate_property_tree_search"/>
+        <field name="search_view_id" ref="realstate_property_search"/>
         <field name="context">{'search_default_state_running': 1}</field>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
@@ -102,7 +129,7 @@
         <field name="name">Auditory</field>
         <field name="res_model">realstate.property</field>
         <field name="domain">[('state','=', 'auditory')]</field>
-        <field name="search_view_id" ref="realstate_auditory_tree_search"/>
+        <field name="search_view_id" ref="realstate_property_search"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
