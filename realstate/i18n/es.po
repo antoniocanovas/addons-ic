@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-30 11:49+0000\n"
-"PO-Revision-Date: 2021-07-30 13:54+0200\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2021-08-03 08:19+0000\n"
+"PO-Revision-Date: 2021-08-03 10:24+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0\n"
+"Last-Translator: \n"
+"Language: es\n"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_needaction
@@ -26,6 +26,7 @@ msgstr "Acción necesaria"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__active
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__active
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_advice_search
 msgid "Active"
 msgstr "Activo"
 
@@ -38,8 +39,9 @@ msgstr "Actividades"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_exception_decoration
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__activity_exception_decoration
+#, fuzzy
 msgid "Activity Exception Decoration"
-msgstr ""
+msgstr "Icono tipo actividad"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_state
@@ -65,7 +67,6 @@ msgstr "Adelanto"
 
 #. module: realstate
 #: model:ir.actions.act_window,name:realstate.action_realstate_configuration_advice
-#: model:ir.model.fields,field_description:realstate.field_realstate_property__advice_ids
 #: model:ir.ui.menu,name:realstate.menu_realstate_configuration_advice
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_advice_tree
 msgid "Advice"
@@ -77,6 +78,7 @@ msgid "Advice reference, and short detail"
 msgstr "Referencia de anuncio, descripción corta"
 
 #. module: realstate
+#: model:ir.model.fields,field_description:realstate.field_realstate_property__advice_ids
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
 msgid "Advices"
 msgstr "Anuncios"
@@ -100,13 +102,18 @@ msgstr "Alarma"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__amount
 msgid "Amount"
-msgstr "Importe"
+msgstr "Cantidad"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_advice_search
+msgid "Archived"
+msgstr "Archivado"
 
 #. module: realstate
 #: model:ir.actions.act_window,name:realstate.action_realstate_configuration_area
 #: model:ir.ui.menu,name:realstate.menu_realstate_configuration_area
 msgid "Area"
-msgstr ""
+msgstr "Área"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_attachment_count
@@ -157,7 +164,7 @@ msgstr "Comienzo"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__built_date
 msgid "Built date"
-msgstr "Construcción"
+msgstr "Año de construcción"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__built_space
@@ -183,7 +190,7 @@ msgstr "Cancelar"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__plusvalia_amount
 msgid "Capital gain"
-msgstr "Imp. patrimonio"
+msgstr "Ganancia capital"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__city
@@ -198,12 +205,12 @@ msgstr "Ruta documentos"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__user_id
 msgid "Comercial"
-msgstr ""
+msgstr "Comercial"
 
 #. module: realstate
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__swimmingpool__communitary
 msgid "Communitary"
-msgstr "Comunitaria"
+msgstr "Comunitario"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__community_price
@@ -239,7 +246,7 @@ msgstr "Contacto"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__contribution_file
 msgid "Contribution file"
-msgstr "Contribución"
+msgstr "Archivo de contribución"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__name_contribution_file
@@ -295,14 +302,14 @@ msgstr "Divisa"
 #: model:ir.model.fields,field_description:realstate.field_res_partner__vat_file1
 #: model:ir.model.fields,field_description:realstate.field_res_users__vat_file1
 msgid "DNI Anverso"
-msgstr ""
+msgstr "DNI anverso"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__owner_vat_file2
 #: model:ir.model.fields,field_description:realstate.field_res_partner__vat_file2
 #: model:ir.model.fields,field_description:realstate.field_res_users__vat_file2
 msgid "DNI Reverso"
-msgstr ""
+msgstr "DNI Reverso"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__date
@@ -365,13 +372,13 @@ msgstr "Ascensor"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__date_end
 msgid "End date"
-msgstr "Fin"
+msgstr "Finalización"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__energy_certificate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__energy_certificate_name
 msgid "Energy certificate"
-msgstr "Certificado EE"
+msgstr "Certificado energético"
 
 #. module: realstate
 #: model:ir.actions.act_window,name:realstate.action_realstate_configuration_enviroment
@@ -379,12 +386,8 @@ msgid "Enviorment"
 msgstr "Entorno"
 
 #. module: realstate
-#: model:ir.ui.menu,name:realstate.menu_realstate_configuration_enviroment
-msgid "Enviroment"
-msgstr "Entorno"
-
-#. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__environment_id
+#: model:ir.ui.menu,name:realstate.menu_realstate_configuration_enviroment
 msgid "Enviroment"
 msgstr "Entorno"
 
@@ -395,10 +398,11 @@ msgstr "Entorno"
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_auditory_form
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
 msgid "Event"
-msgstr "Reuniones"
+msgstr "Evento"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__exclusivity
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_search
 msgid "Exclusivity"
 msgstr "Exclusividad"
 
@@ -409,12 +413,12 @@ msgstr "Exclusividad"
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_auditory_form
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
 msgid "Extras"
-msgstr ""
+msgstr "Extras"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__hearth
 msgid "Fireplace"
-msgstr ""
+msgstr "Chimenea"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_follower_ids
@@ -454,10 +458,11 @@ msgstr "Jardín"
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_auditory_form
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #. module: realstate
-#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_tree_search
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_advice_search
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_search
 msgid "Group By"
 msgstr ""
 
@@ -486,7 +491,7 @@ msgstr "Escritura simple"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__name_house_deed_simple
 msgid "House simple name"
-msgstr ""
+msgstr "Nombre escritura simple"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_calendar_event__id
@@ -505,7 +510,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:realstate.field_res_company__id
 #: model:ir.model.fields,field_description:realstate.field_res_partner__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_exception_icon
@@ -516,8 +521,9 @@ msgstr "Icono"
 #. module: realstate
 #: model:ir.model.fields,help:realstate.field_realstate_advice__activity_exception_icon
 #: model:ir.model.fields,help:realstate.field_realstate_property__activity_exception_icon
+#, fuzzy
 msgid "Icon to indicate an exception activity."
-msgstr ""
+msgstr "Icono tipo actividad"
 
 #. module: realstate
 #: model:ir.model.fields,help:realstate.field_realstate_advice__message_needaction
@@ -548,26 +554,26 @@ msgstr "Fecha de entrada"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__inhabited
 msgid "Inhabited"
-msgstr "Habitada"
+msgstr "Habitado"
 
 #. module: realstate
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_tree
 msgid "Inmueble"
-msgstr ""
+msgstr "Inmueble"
 
 #. module: realstate
 #: model:ir.actions.act_window,name:realstate.action_realstate_property
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_auditory_form
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
 msgid "Inmuebles"
-msgstr ""
+msgstr "Inmuebles"
 
 #. module: realstate
 #: model:ir.actions.act_window,name:realstate.action_realstate_configuration_internet
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__internet_id
 #: model:ir.ui.menu,name:realstate.menu_realstate_configuration_internet
 msgid "Internet"
-msgstr ""
+msgstr "Internet"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_is_follower
@@ -630,7 +636,7 @@ msgstr "Última actualización en"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__last_change
 msgid "Last chance"
-msgstr "Revisión PVP"
+msgstr "Última oportunidad"
 
 #. module: realstate
 #: model:ir.model,name:realstate.model_crm_lead
@@ -698,20 +704,23 @@ msgstr "Nueva construcción"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_date_deadline
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__activity_date_deadline
+#, fuzzy
 msgid "Next Activity Deadline"
-msgstr ""
+msgstr "Icono tipo actividad"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_summary
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__activity_summary
+#, fuzzy
 msgid "Next Activity Summary"
-msgstr ""
+msgstr "Icono tipo actividad"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__activity_type_id
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__activity_type_id
+#, fuzzy
 msgid "Next Activity Type"
-msgstr ""
+msgstr "Icono tipo actividad"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_res_partner__name_vat_file1
@@ -744,6 +753,11 @@ msgstr "Noreste"
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_orientation__northwest
 msgid "Northwest"
 msgstr "Noroeste"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_search
+msgid "Not habited"
+msgstr "No habitado"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__notary_cost
@@ -781,8 +795,9 @@ msgstr "Número de mensajes que requieren acción"
 #. module: realstate
 #: model:ir.model.fields,help:realstate.field_realstate_advice__message_has_error_counter
 #: model:ir.model.fields,help:realstate.field_realstate_property__message_has_error_counter
+#, fuzzy
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Error de entrega de mensaje"
 
 #. module: realstate
 #: model:ir.model.fields,help:realstate.field_realstate_advice__message_unread_counter
@@ -860,7 +875,7 @@ msgstr "Anuncio publicado"
 #. module: realstate
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__swimmingpool__private
 msgid "Private"
-msgstr "Privada"
+msgstr "Privado"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__private_image_ids
@@ -869,6 +884,7 @@ msgstr "Imagen privada"
 
 #. module: realstate
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_auditory_form
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
 msgid "Private photos"
 msgstr "Fotos y vídeos privados"
 
@@ -903,7 +919,7 @@ msgstr "Propiedad"
 #. module: realstate
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__swimmingpool__public
 msgid "Public"
-msgstr "Pública"
+msgstr "Público"
 
 #. module: realstate
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_state__publish
@@ -930,6 +946,12 @@ msgid "Realstate"
 msgstr "Inmobiliaria"
 
 #. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_advice_search
+#, fuzzy
+msgid "Realstate Advice"
+msgstr "Modelo de anuncio inmobiliario"
+
+#. module: realstate
 #: model:ir.model,name:realstate.model_realstate_advice
 msgid "Realstate Advice Model"
 msgstr "Modelo de anuncio inmobiliario"
@@ -951,49 +973,63 @@ msgstr "Zona"
 
 #. module: realstate
 #: model:ir.model,name:realstate.model_realstate_area
+#, fuzzy
 msgid "Realstate Area Model"
-msgstr ""
+msgstr "Modelo de anuncio inmobiliario"
 
 #. module: realstate
 #: model:ir.model,name:realstate.model_realstate_enviroment
+#, fuzzy
 msgid "Realstate Enviroment Model"
-msgstr ""
+msgstr "Modelo de anuncio inmobiliario"
 
 #. module: realstate
 #: model:ir.model,name:realstate.model_realstate_extras
+#, fuzzy
 msgid "Realstate Extras Model"
-msgstr ""
+msgstr "Modelo de anuncio inmobiliario"
 
 #. module: realstate
 #: model:ir.model,name:realstate.model_realstate_heating
+#, fuzzy
 msgid "Realstate Heating Model"
-msgstr ""
+msgstr "Modelo de anuncio inmobiliario"
 
 #. module: realstate
 #: model:ir.model,name:realstate.model_realstate_internet
+#, fuzzy
 msgid "Realstate Internet Model"
-msgstr ""
+msgstr "Modelo de anuncio inmobiliario"
 
 #. module: realstate
 #: model:ir.model,name:realstate.model_realstate_parking
+#, fuzzy
 msgid "Realstate Parking Model"
-msgstr ""
+msgstr "Modelo de anuncio inmobiliario"
 
 #. module: realstate
 #: model:ir.model,name:realstate.model_realstate_property
+#, fuzzy
 msgid "Realstate Property Model"
-msgstr ""
+msgstr "Modelo de anuncio inmobiliario"
 
 #. module: realstate
 #: model:ir.model,name:realstate.model_realstate_type
+#, fuzzy
 msgid "Realstate Type Model"
-msgstr ""
+msgstr "Modelo de anuncio inmobiliario"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_search
+#, fuzzy
+msgid "Realstate property"
+msgstr "Propiedad"
 
 #. module: realstate
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_auditory_form
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
 msgid "Referencia o nombre del inmueble"
-msgstr ""
+msgstr "Referencia o nombre del inmueble"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__rental_price
@@ -1014,8 +1050,9 @@ msgstr "Habitaciones"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_has_sms_error
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__message_has_sms_error
+#, fuzzy
 msgid "SMS Delivery error"
-msgstr ""
+msgstr "Error de entrega de mensaje"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__sale_price
@@ -1025,7 +1062,7 @@ msgstr "Venta"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__customer_id
 msgid "Salesman"
-msgstr ""
+msgstr "Comercial"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__satellite_tv
@@ -1045,12 +1082,12 @@ msgstr "Seguridad"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__service_amount
 msgid "Service Amount"
-msgstr "Comisión gestión"
+msgstr "Monto del servicio"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__solarium
 msgid "Solarium"
-msgstr ""
+msgstr "Solarium"
 
 #. module: realstate
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_orientation__south
@@ -1070,7 +1107,6 @@ msgstr "Suroeste"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__property_state
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__state_id
-#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_tree_search
 msgid "State"
 msgstr "Provincia"
 
@@ -1097,22 +1133,28 @@ msgstr "Trastero"
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__street
 msgid "Street"
-msgstr "Calle"
+msgstr "Dirección"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__street2
 msgid "Street2"
-msgstr "Calle2"
+msgstr "Dirección (2)"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__to_sale
 msgid "To Sale"
-msgstr "Vender"
+msgstr "Venta"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__to_rent
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_search
 msgid "To rent"
-msgstr "Alquilar"
+msgstr "Alquiler"
+
+#. module: realstate
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_search
+msgid "To sale"
+msgstr "Venta"
 
 #. module: realstate
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__kitchen__kitchen
@@ -1129,25 +1171,28 @@ msgstr "Tipo"
 #. module: realstate
 #: model:ir.model.fields,help:realstate.field_realstate_advice__activity_exception_decoration
 #: model:ir.model.fields,help:realstate.field_realstate_property__activity_exception_decoration
+#, fuzzy
 msgid "Type of the exception activity on record."
-msgstr ""
+msgstr "Icono tipo actividad"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_unread
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__message_unread
+#, fuzzy
 msgid "Unread Messages"
-msgstr ""
+msgstr "Número de mensajes sin leer"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__message_unread_counter
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__message_unread_counter
+#, fuzzy
 msgid "Unread Messages Counter"
-msgstr ""
+msgstr "Número de mensajes sin leer"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_advice__url
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
 #. module: realstate
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_origin__2hand
@@ -1173,11 +1218,9 @@ msgstr "Historial de comunicación"
 
 #. module: realstate
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_auditory_form
-msgid ""
-"Website photos (included from Product => eCommerce => Extra product media)"
-msgstr ""
-"Fotos del sitio web (incluidas en Producto => eCommerce => Medios de "
-"productos adicionales)"
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_form
+msgid "Website photos (included from Product => eCommerce => Extra product media)"
+msgstr "Fotos del sitio web (incluidas en Producto => eCommerce => Medios de productos adicionales)"
 
 #. module: realstate
 #: model:ir.model.fields.selection,name:realstate.selection__realstate_property__property_orientation__west
@@ -1185,7 +1228,7 @@ msgid "West"
 msgstr "Oeste"
 
 #. module: realstate
-#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_tree_search
+#: model_terms:ir.ui.view,arch_db:realstate.realstate_property_search
 msgid "Working"
 msgstr "En curso"
 
@@ -1196,8 +1239,9 @@ msgstr "Patio"
 
 #. module: realstate
 #: model:ir.model.fields,field_description:realstate.field_realstate_property__name_house_deed
+#, fuzzy
 msgid "house deed name"
-msgstr ""
+msgstr "Escritura"
 
 #. module: realstate
 #: model_terms:ir.ui.view,arch_db:realstate.realstate_property_auditory_form
