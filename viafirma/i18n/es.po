@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-11 06:37+0000\n"
-"PO-Revision-Date: 2021-02-11 07:38+0100\n"
+"POT-Creation-Date: 2021-08-17 08:44+0000\n"
+"PO-Revision-Date: 2021-08-17 10:46+0200\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
 "Language: es\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 3.0\n"
 
 #. module: viafirma
 #: model:ir.actions.server,name:viafirma.ir_cron_viafirma_sends_ir_actions_server
@@ -38,6 +38,11 @@ msgstr "Actividades"
 #: model:ir.model.fields,field_description:viafirma.field_viafirma__activity_state
 msgid "Activity State"
 msgstr "Estado de la actividad"
+
+#. module: viafirma
+#: model:ir.model.fields,field_description:viafirma.field_res_company__api_viafirma
+msgid "Api Url"
+msgstr ""
 
 #. module: viafirma
 #: model:ir.model.fields,field_description:viafirma.field_viafirma__message_attachment_count
@@ -417,7 +422,7 @@ msgstr "Planificado"
 #. module: viafirma
 #: selection:viafirma,state:0 selection:viafirma.lines,state:0
 msgid "RECEIVED"
-msgstr "RECIVIDO"
+msgstr "RECIBIDO"
 
 #. module: viafirma
 #: selection:viafirma,state:0 selection:viafirma.lines,state:0
@@ -480,7 +485,7 @@ msgstr "Firmantes"
 #: model:ir.model.fields,field_description:viafirma.field_viafirma__state
 #: model:ir.model.fields,field_description:viafirma.field_viafirma_lines__state
 msgid "State"
-msgstr "Estado"
+msgstr "Provincia"
 
 #. module: viafirma
 #: model:ir.model.fields,help:viafirma.field_viafirma__activity_state
@@ -516,6 +521,7 @@ msgstr "Tipo plantilla"
 #: model:ir.actions.act_window,name:viafirma.action_viafirma_groups
 #: model:ir.actions.act_window,name:viafirma.action_viafirma_templates
 #: model:ir.ui.menu,name:viafirma.menu_viafirma_templates
+#: model:ir.ui.menu,name:viafirma.menu_viafirma_templates_menu
 msgid "Templates"
 msgstr "Plantillas"
 
@@ -564,6 +570,12 @@ msgstr "Mensajes por leer"
 #: model:ir.model.fields,field_description:viafirma.field_viafirma__message_unread_counter
 msgid "Unread Messages Counter"
 msgstr "Contador de mensajes sin leer"
+
+#. module: viafirma
+#: model:ir.actions.server,name:viafirma.update_templates
+#: model:ir.ui.menu,name:viafirma.menu_viafirma_templates_update
+msgid "Update Templates"
+msgstr ""
 
 #. module: viafirma
 #: selection:viafirma.wizard,document_type:0

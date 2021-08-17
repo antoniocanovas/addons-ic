@@ -3,14 +3,13 @@
     'name': "viafirma",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Send documents to be signed on viafirma platform""",
 
     'description': """
         Long description of module's purpose
     """,
 
-    'author': "ic",
+    'author': "ingenieriacloud.com",
     'website': "http://www.ingenieriacloud.com",
 
     # Categories can be used to filter modules in modules listing

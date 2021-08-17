@@ -63,7 +63,7 @@
             id="viafirma_main"
             name="VIAFIRMA"
             sequence="10"
-            web_icon=""
+            web_icon="viafirma,static/description/icon.png"
     />
 
     <record id="menu_viafirma" model="ir.ui.menu">

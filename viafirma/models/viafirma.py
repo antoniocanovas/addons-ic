@@ -304,8 +304,10 @@ class Viafirma(models.Model):
         }
         customization = {
             "customization": {
-                "requestMailSubject": "Documento listo para firmar",
-                "requestMailBody": "Hola {{recipient.name}}. <br /><br />Ya puedes revisar y firmar el documento. Haz click en el siguiente enlace y sigue las instrucciones.",
+                "requestMailSubject": str(self.name) + str(self.noti_text),
+                "requestMailBody": "Hola {{recipient.name}}. <br /><br/>Ya puedes revisar y firmar el documento: <br /><br/>"
+                                   + str(self.noti_text) + "<br /><br/>" + str(self.noti_detail) + "<br /><br/>" +
+                                   "Haz click en el siguiente enlace y sigue las instrucciones.",
                 "requestSmsBody": "En el siguiente link puedes revisar y firmar el documento"
             },
         }
