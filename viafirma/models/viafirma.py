@@ -255,7 +255,7 @@ class Viafirma(models.Model):
             }
         metadatalist = {
             "metadataList": [{
-                "key": "MOBILE_SMS_01",
+                "key": "MOBILE_SMS_02", #Cambio 23/08/21
                 "value": self.line_ids.partner_id.mobile
             }],
         }
@@ -308,7 +308,12 @@ class Viafirma(models.Model):
                 "requestMailBody": "Hola {{recipient.name}}. <br /><br/>Ya puedes revisar y firmar el documento: <br /><br/>"
                                    + str(self.noti_text) + "<br /><br/>" + str(self.noti_detail) + "<br /><br/>" +
                                    "Haz click en el siguiente enlace y sigue las instrucciones.",
-                "requestSmsBody": "En el siguiente link puedes revisar y firmar el documento"
+                "requestSmsBody": "En el siguiente link puedes revisar y firmar el documento",
+                "callbackMailSuccessSubject": "Finalizado"  + " " + str(self.name) + str(self.noti_text),
+                "callbackMailSuccessBody": "Hola {{recipient.name}}. <br /><br/>proceso finalizado: <br /><br/>"
+                                   + str(self.noti_text) + "<br /><br/>" + str(self.noti_detail) + "<br /><br/>",
+                "successMessage": "Proceso de firma completado",
+
             },
         }
         metadata2 = self.compose_metadatalist_messages(self.line_ids)
@@ -412,8 +417,8 @@ class Viafirma(models.Model):
                             "page": -1
                         }],
                         "metadataList": [{
-                            "key": "phoneNumber",
-                            # "key": "{{MOBILE_SMS_" + str(newx) + str(newy) + "}}",
+                            #"key": "phoneNumber",
+                            "key": "{{MOBILE_SMS_" + str(x) + str(y) + "}}", #23/08/21
                             "value": recipient.mobile,
                             "internal": "false"
                         }],
@@ -630,6 +635,7 @@ class Viafirma(models.Model):
                     elif self.template_id.multiple_signatures:
                         search_url = 'https://services.viafirma.com/documents/api/v3/set/'
                         datas = self.compose_call_multiple()
+                        print(datas)
                     else:
                         if len(self.line_ids) > 1:
                             raise ValidationError(
