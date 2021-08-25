@@ -14,6 +14,8 @@
             <field name="value">mobile</field>
         </record>
 
+
+
         <record id="viafirma_certificate_signature" model="viafirma.signature">
             <field name="type">signature</field>
             <field name="name">CERTIFICATE</field>
@@ -30,6 +32,12 @@
             <field name="type">notification</field>
             <field name="name">MAIL</field>
             <field name="value">email</field>
+        </record>
+
+        <record id="viafirma_mail_mobile_notification" model="viafirma.notification">
+            <field name="type">notification</field>
+            <field name="name">MAIL_SMS</field>
+            <field name="value">mail_sms</field>
         </record>
 
     </data>
