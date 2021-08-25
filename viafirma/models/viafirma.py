@@ -115,7 +115,7 @@ class Viafirma(models.Model):
     @api.multi
     def upd_viafirma(self):
         ''' chequeamos cada 5 minutos por cron el estado de los viafirma que no tengan estado RESPONSED (finalizado) para
-        actualizar su estado cada cierto tiempo y ver si ha habido algún error'''
+        actualizar su estado cada cierto tiempo y ver si ha habido algun error'''
 
         viafirmas =self.env['viafirma'].search([('state', '!=', 'RESPONSED')])
         for via in viafirmas:
@@ -136,11 +136,14 @@ class Viafirma(models.Model):
         for recipient in line_ids:
             recipient_n = {
                 "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY"),
+                #"key": str("MOBILE_SMS_") + str(x) + str(y),
                 "mail": recipient.email,
                 "name": recipient.name,
-                #"id": recipient.vat, # no se usa pero se deja por si hay que añadir en un futuro
+                #"id": recipient.vat,
             }
-            if str(self.notification_type_ids) == "MAIL_SMS" or str(self.notification_type_ids) == "SMS":
+            print("NOTIFICATION", self.notification_type_ids.value)
+            if str(self.notification_type_ids.name) == "MAIL_SMS" or str(self.notification_type_ids.name) == "SMS":
+                print("Incluye mobile")
                 recipient_n.update({"phone": recipient.mobile,})
             y+=1
             if y == 10:
@@ -179,12 +182,14 @@ class Viafirma(models.Model):
         for recipient in line_ids:
             for firma in theTemplate.firma_ids:
                 if firma.value == 'email':
+                    print("FIRMA EMAIL")
                     recipient_n = {
                         "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY"),
                         "value": recipient.name
                     }
                     metadatalist.append(recipient_n)
                 else:
+                    print("MOBILE FIRMA")
                     recipient_n = {
                         "key": str("MOBILE_SMS_") + str(x) + str(y),
                         "value": recipient.mobile
@@ -197,115 +202,11 @@ class Viafirma(models.Model):
 
         return metadatalist
 
-    def compose_call_policies(self):
-        ''' Compone la llamada en caso de que haya que defnirlo todo, se activa si hemos creado un viafirma desde el wizard'''
-
-        groupCode = {
-            "groupCode": self.env.user.company_id.group_viafirma
-        }
-        workflow = {
-            "workflow": {
-                "type": "WEB",
-            },
-        }
-        recip = self.compose_recipients(self.line_ids)
-        recipients = {
-            "recipients": recip,
-        }
-        customization = {
-            "customization": {
-                "requestMailSubject": "Documento listo para firmar",
-                "requestMailBody": "Hola {{recipient.name}}. <br /><br />Ya puedes revisar y firmar el documento. Haz click en el siguiente enlace y sigue las instrucciones.",
-                "requestSmsBody": "En el siguiente link puedes revisar y firmar el documento"
-            },
-        }
-        metadata2 = self.compose_metadatalist_messages(self.line_ids)
-        messages = {
-            "messages": [{
-                "document": {
-                    "templateType": self.template_type,
-                    "templateReference": str(self.document_to_send.decode('ascii')),
-                    "templateCode": self.template_id.code
-                },
-                "metadataList": metadata2,
-                "policies": self.compose_policies()
-            }]
-        }
-        callbackmails = {
-            "callbackMails": self.env.user.email,
-        }
-
-        # data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
-        data = {**groupCode, **workflow, **recipients, **customization, **messages, **callbackmails}
-
-        # raise ValidationError ("fin")
-        return data
-
-    def compose_call_multiple(self):
-        ''' crea la llamada a viafirma cuando hay multiples firmantes'''
-
-        groupCode = {
-            "groupCode": self.env.user.company_id.group_viafirma
-        }
-        workflow = {
-            "workflow": {
-                "type": "WEB",
-            },
-        }
-        recip = self.compose_recipients(self.line_ids)
-        recipients = {
-            "recipients" : recip,
-        }
-        #metadata = self.compose_metadatalist(self.line_ids)
-        #metadatalist = {
-        #    "metadataList": metadata,
-        #}
-        metadata = self.compose_metadatalist_messages(self.line_ids)
-        metadatalist = {
-            "metadataList": metadata,
-        }
-        customization = {
-            "customization": {
-                "requestMailSubject": str(self.name) + str(self.noti_text),
-                "requestMailBody": "Hola {{recipient.name}}. <br /><br/>Ya puedes revisar y firmar el documento: <br /><br/>"
-                                   + str(self.noti_text) + "<br /><br/>" + str(self.noti_detail) + "<br /><br/>" +
-                                   "Haz click en el siguiente enlace y sigue las instrucciones.",
-                "requestSmsBody": "En el siguiente link puedes revisar y firmar el documento",
-                "callbackMailSuccessSubject": "Finalizado"  + " " + str(self.name) + str(self.noti_text),
-                "callbackMailSuccessBody": "Hola {{recipient.name}}. <br /><br/>proceso finalizado: <br /><br/>"
-                                   + str(self.noti_text) + "<br /><br/>" + str(self.noti_detail) + "<br /><br/>",
-                "successMessage": "Proceso de firma completado",
-
-            },
-        }
-        metadata2 = self.compose_metadatalist_messages(self.line_ids)
-        messages ={
-            "messages":[{
-                "document": {
-                    "templateType": self.template_type,
-                    "templateReference": str(self.document_to_send.decode('ascii')),
-                    "templateCode": self.template_id.code
-                },
-                "metadataList": metadata2,
-            #"policies": self.compose_policies() #comentado demo multiple sin enviar claves en blanco
-            }]
-        }
-        callbackmails = {
-            "callbackMails": self.env.user.email,
-        }
-
-        #data = {**groupCode, **workflow, **recipients,**metadatalist,**customization, **messages, **callbackmails}
-        data = {**groupCode, **workflow, **recipients, **customization, **messages, **callbackmails}
-
-        #raise ValidationError ("fin")
-        return data
-
     @api.multi
     def compose_call(self):
-        ''' Llamada para un solo firmante, se compone todo sin llamar a otras funciones
-            '''
+        ''' tenemos que componer la llamada a la firma, por lo que tenemos que conocer el groupcode, el texto de la notificacion
+            y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
 
-        # def_check_parameters
         groupCode = {
             "groupCode": self.env.user.company_id.group_viafirma
         }
@@ -336,6 +237,7 @@ class Viafirma(models.Model):
                     "notificationType": self.notification_type_ids[0].name,
                     "sharedLink": {
                         "appCode": "com.viafirma.documents",
+                        #"email": self.line_ids.partner_id.email,  #
                         "phone": self.line_ids.partner_id.mobile,
                         "subject": self.noti_subject
                     }
@@ -350,19 +252,21 @@ class Viafirma(models.Model):
                     "sharedLink": {
                         "appCode": "com.viafirma.documents",
                         "email": self.line_ids.partner_id.email,
+                        #"phone": self.line_ids.partner_id.mobile,
                         "subject": self.noti_subject
                     }
                 },
             }
         metadatalist = {
             "metadataList": [{
-                "key": "MOBILE_SMS_02",  # Cambio 23/08/21
+                "key": "MOBILE_SMS_02", #Cambio 23/08/21
                 "value": self.line_ids.partner_id.mobile
             }],
         }
         document = {
             "document": {
                 "templateType": self.template_type,
+                #"templateReference": "https://descargas.viafirma.com/documents/example/doc_sample_2018.pdf",
                 "templateReference": str(self.document_to_send.decode('ascii')),
                 "templateCode": self.template_id.code
             },
@@ -374,14 +278,63 @@ class Viafirma(models.Model):
             "callbackURL": ""
         }
 
-        data = {**groupCode, **workflow, **notification, **metadatalist, **document, **callbackmails, **callbackurl}
+        data = {**groupCode, **workflow, **notification, **metadatalist, **document, **callbackmails, **callbackurl }
 
+        return data
+
+    def compose_call_multiple(self):
+        ''' tenemos que componer la llamada a la firma, por lo que tenemos que conocer el groupcode, el texto de la notificacion
+            y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
+
+        groupCode = {
+            "groupCode": self.env.user.company_id.group_viafirma
+        }
+        workflow = {
+            "workflow": {
+                "type": "WEB",
+            },
+        }
+        recip = self.compose_recipients(self.line_ids)
+        recipients = {
+            "recipients" : recip,
+        }
+
+        customization = {
+            "customization": {
+                "requestMailSubject": str(self.name) + str(self.noti_text),
+                "requestMailBody": "Hola {{recipient.name}}. <br /><br/>Ya puedes revisar y firmar el documento: <br /><br/>"
+                                   + str(self.noti_text) + "<br /><br/>" + str(self.noti_detail) + "<br /><br/>" +
+                                   "Haz click en el siguiente enlace y sigue las instrucciones.",
+                "requestSmsBody": "En el siguiente link puedes revisar y firmar el documento",
+                "callbackMailSuccessSubject": "Finalizado"  + " " + str(self.name) + str(self.noti_text),
+                "callbackMailSuccessBody": "Hola {{recipient.name}}. <br /><br/>proceso finalizado: <br /><br/>"
+                                   + str(self.noti_text) + "<br /><br/>" + str(self.noti_detail) + "<br /><br/>",
+                "successMessage": "Proceso de firma completado",
+
+            },
+        }
+        metadata = self.compose_metadatalist_messages(self.line_ids)
+        messages ={
+            "messages":[{
+                "document": {
+                    "templateType": self.template_type,
+                    "templateReference": str(self.document_to_send.decode('ascii')),
+                    "templateCode": self.template_id.code
+                },
+                "metadataList": metadata,
+            #"policies": self.compose_policies() #comentado demo multiple sin enviar claves en blanco
+            }]
+        }
+        callbackmails = {
+            "callbackMails": self.env.user.email,
+        }
+
+        data = {**groupCode, **workflow, **recipients, **customization, **messages, **callbackmails}
         return data
 
     @api.multi
     def compose_evidences(self, line_ids):
-        ''' El maximo en Anchura es 596 puntos y en altura 838, teniendo en cuenta esta medidas por pagina, hay que divir el numero de firmantes entre este
-        espacio'''
+        ''' El maximo en Anchura es 596 puntos y en altura 838, teniendo en cuenta esta medidas por pagina, hay que divir el numero de firmantes entre este espacio'''
 
         theEvidences = []
         x = 0
@@ -499,6 +452,50 @@ class Viafirma(models.Model):
         data = [{**evidences, **signatures}]
         return data
 
+    def compose_call_policies(self):
+        ''' tenemos que componer la llamada a la firma, por lo que tenemos que conocer el groupcode, el texto de la notificacion
+            y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
+
+        groupCode = {
+            "groupCode": self.env.user.company_id.group_viafirma
+        }
+        workflow = {
+            "workflow": {
+                "type": "WEB",
+            },
+        }
+        recip = self.compose_recipients(self.line_ids)
+        recipients = {
+            "recipients": recip,
+        }
+
+        customization = {
+            "customization": {
+                "requestMailSubject": "Documento listo para firmar",
+                "requestMailBody": "Hola {{recipient.name}}. <br /><br />Ya puedes revisar y firmar el documento. Haz click en el siguiente enlace y sigue las instrucciones.",
+                "requestSmsBody": "En el siguiente link puedes revisar y firmar el documento"
+            },
+        }
+        metadata = self.compose_metadatalist_messages(self.line_ids)
+        messages = {
+            "messages": [{
+                "document": {
+                    "templateType": self.template_type,
+                    "templateReference": str(self.document_to_send.decode('ascii')),
+                    "templateCode": self.template_id.code
+                },
+                "metadataList": metadata,
+                "policies": self.compose_policies()
+            }]
+        }
+        callbackmails = {
+            "callbackMails": self.env.user.email,
+        }
+
+        data = {**groupCode, **workflow, **recipients, **customization, **messages, **callbackmails}
+
+        return data
+
     @api.multi
     def download_document(self, url, header, response_code, viafirma_user, viafirma_pass):
 
@@ -510,6 +507,8 @@ class Viafirma(models.Model):
         if response.status_code == 200:
             img_file_encode = base64.b64encode(response.content)
             return img_file_encode
+
+
 
     def status_response_firmweb(self):
         ''' Esta funcion ha de obtener el estado de la peticion'''
@@ -560,15 +559,30 @@ class Viafirma(models.Model):
 
     @api.multi
     def check_mandatory_attr(self, method, partner_id):
+        print("METHOD", method)
         for attr in method:
-            try:
-                value = getattr(partner_id, attr.value)
-            except Exception as e:
-                raise ValidationError(
-                    "Server Error : %s" % e)
-            if not value:
-               raise ValidationError(
-                   "%s is mandatory for this template" % attr.value)
+            print("DEBUG",attr.value)
+            if attr.value == 'mail_sms':
+                print("ES MAIL_SMS")
+                for attr2 in ['email','mobile']:
+                    try:
+                        value = getattr(partner_id, attr2)
+                    except Exception as e:
+                        raise ValidationError(
+                            "Server Error : %s" % e)
+                    if not value:
+                       raise ValidationError(
+                           "%s is mandatory for this template" % attr2)
+            else:
+                print("NO ES")
+                try:
+                    value = getattr(partner_id, attr.value)
+                except Exception as e:
+                    raise ValidationError(
+                        "Server Error : %s" % e)
+                if not value:
+                    raise ValidationError(
+                        "%s is mandatory for this template" % attr.value)
 
     @api.multi
     def check_template(self):
@@ -583,8 +597,8 @@ class Viafirma(models.Model):
 
     @api.multi
     def call_viafirma(self):
-        ''' es la funcion de al pulsar el boton enviar, inicia todo el proceso de viafirma, coge la seleccion de registros hecha y hace
-          el proceso de envio para cada uno de ellos'''
+        ''' solo firma web y un solo firmante, la mas simple de todas, de momento selecciono todos los registros que tenga en el modelo viafirma y que haga el proceso
+         de envio para cada uno de ellos, aunque no coge ningun valor de estos, ni emqail ni adjunto'''
 
         #Comprobamos todas las restricciones para informar al ususario antes de iniciar ejecución
         self.check_template()
@@ -608,18 +622,17 @@ class Viafirma(models.Model):
             if viafirma_user:
                 if viafirma_pass:
                     header = self.get_uploader_header()
-                    #search_url = 'https://sandbox.viafirma.com/documents/api/v3/messages/'
-                    #datas = self.compose_call()
 
-                    #En función del template envaremos policy o no
+                    #En función del template enviaremos policy o no
 
                     if self.document_policies:
                         search_url = 'https://services.viafirma.com/documents/api/v3/set/'
                         datas = self.compose_call_policies()
+                        print(datas)
                     elif self.template_id.multiple_signatures:
                         search_url = 'https://services.viafirma.com/documents/api/v3/set/'
                         datas = self.compose_call_multiple()
-                        print(datas)
+
                     else:
                         if len(self.line_ids) > 1:
                             raise ValidationError(
