@@ -22,9 +22,7 @@
             <form>
                 <sheet name="main" string="Credentials">
                     <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" type="object" name="toggle_active" icon="fa-archive">
-                            <field name="active" string="Active" widget="boolean_button" options="{'terminology': 'archive'}"/>
-                        </button>
+
                     </div>
                     <h2>
                         <field name="name"/>

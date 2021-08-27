@@ -37,7 +37,8 @@ class Isets(models.Model):
 
     set_start_stop = fields.Boolean(related='work_id.set_start_stop', string='Set start & stop time')
     duration = fields.Float('Duration')
-
+    partner_id = fields.Many2one('res.partner', string='Signed by')
+    signature = fields.Binary("Signature")
     #active = fields.Boolean('Active')
 
     @api.depends('repair_id')

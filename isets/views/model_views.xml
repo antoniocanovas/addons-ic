@@ -7,6 +7,7 @@
             <form>
                 <header>
                     <button name="create_lot_services_iset" string="Create lot services" type="object" class="btn-primary"/>
+                    <widget name="signature" string="Sign" highlight="1" attrs="{'invisible': [('partner_id', '=', False)]}" full_name="partner_id"/>
                 </header>
                 <sheet>
                     <h1><field name="name"/></h1>
@@ -19,6 +20,7 @@
                         <field name="stop" widget="timesheet_uom" attrs="{'invisible':['|',('type','=','production'),('set_start_stop','=',False),('type','!=','production')]}"/>
                         <field name="duration" widget="timesheet_uom" attrs="{'invisible':['|',('set_start_stop','=',True),('type','=','production')]}"/>
                         <field name="type_id" widget='selection'/>
+                        <field name="partner_id"/>
                     </group></group>
 
                     <div name="workorder_product_service" attrs="{'invisible':[('type','!=','production')]}">
@@ -208,6 +210,9 @@
                                 </tree>
                             </field>
                         </div>
+                    </div>
+                    <div name="signature">
+                        <field name="signature" widget="image"/>
                     </div>
                     <field name="type" invisible="1"/>
                     <field name="set_start_stop" invisible="1"/>
