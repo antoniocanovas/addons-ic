@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<odoo>
+    <data>
+
+        <template id="iset_report_document_report">
+            <t t-call="web.external_layout_standard">
+                <t t-set="o" t-value="o.with_context(lang=lang)"/>
+                <div class="page">
+                    <div class="text-center">
+                        <h2><span t-field="o.name"/></h2>
+                    </div>
+                    <div class="header">
+                        <span t-field="o.date" />
+                        <span t-field="o.work_id" />
+                        <span t-field="o.employee_ids" />
+                        <span t-field="o.duration" />
+                        <span t-field="o.type_id" />
+                        <span t-field="o.partner_id" />
+                    </div>
+                    <!--<table class="table table-sm o_main_table">
+                        <thead>
+                            <tr>
+                                <t t-set="colspan" t-value="3"/>
+                                <th class="text-left"><span>Interesados</span></th>
+                                <th class="text-left"><span></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="o.implied_ids" t-as="contact">
+                                <tr t-att-class="'bg-200 font-weight-bold'">
+                                    <t>
+                                        <td><span t-field="contact.partner_id"/></td>
+                                        <td><span t-field="contact.rol_id"/></td>
+                                    </t>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>-->
+                </div>
+            </t>
+        </template>
+
+        <template id="iset_report_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="isets.iset_report_document_report" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
