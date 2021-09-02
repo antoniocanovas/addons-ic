@@ -35,7 +35,7 @@
         <field name="inherit_id" ref="partner_credentials.credentials_form"/>
         <field name="arch" type="xml">
             <xpath expr="//div[@name='button_box']" position="inside">
-                <button class="oe_stat_button" icon="fa-info" type="object" name="action_view_tickets">
+                <button class="oe_stat_button" icon="fa-info" type="action" name="%(partner_credentials_helpdesk.action_view_tickets)d">
                     <field name="tickets_count" string="Tickets" widget="statinfo"/>
                 </button>
             </xpath>

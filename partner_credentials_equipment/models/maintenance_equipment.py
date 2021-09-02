@@ -15,7 +15,7 @@ class MaintenanceEquipmentCredentials(models.Model):
 
     credential_count = fields.Integer('Credentials', compute=_get_credentials_equipment, store=False)
 
-    def action_view_credentials(self):
-        action = self.env.ref(
-            'partner_credentials_equipment.action_maintenance_equipment_credentials').read()[0]
-        return action
+    #def action_view_credentials(self):
+    #    action = self.env.ref(
+    #        'partner_credentials_equipment.action_maintenance_equipment_credentials').read()[0]
+    #    return action

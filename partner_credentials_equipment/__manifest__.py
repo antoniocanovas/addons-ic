@@ -7,7 +7,7 @@
     'license': 'AGPL-3',
     'website': "https://ingenieriacloud.com",
     'category': 'Tools',
-    'version': '13.0.1.0.1',
+    'version': '14.0.1.0.1',
     'depends': [
         'partner_credentials',
         'maintenance',
