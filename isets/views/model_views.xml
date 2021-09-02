@@ -212,7 +212,7 @@
                         </div>
                     </div>
                     <div name="signature">
-                        <field name="signature" widget="image"/>
+                        <field name="signature" widget="image" attrs="{'invisible':[('signature','=',False)]}"/>
                     </div>
                     <field name="type" invisible="1"/>
                     <field name="set_start_stop" invisible="1"/>

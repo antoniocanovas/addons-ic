@@ -38,7 +38,7 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet/div[@name='button_box']" position="inside">
 
-                    <button class="oe_stat_button oe_read_only" icon="fa-spinner" type="object" name="action_view_purchases">
+                    <button class="oe_stat_button oe_read_only" icon="fa-spinner" type="action" name="%(purchase_repair.action_view_purchases)d">
                         <field widget="statinfo" name="purchase_order_count" string="Compras"/>
                     </button>
             </xpath>
