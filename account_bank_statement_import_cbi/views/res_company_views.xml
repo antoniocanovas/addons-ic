@@ -16,7 +16,7 @@
                         <field name="ftp_passwd_cbi" password="True"/>
                     </group>
                     <group>
-                        <field name="cbi_autoimport"/>
+                        <!--<field name="cbi_autoimport"/>-->
                     </group>
                     <group>
                         <button name="force_sync_cbi" string="Force Sync" type="object" class="oe_highlight oe_read_only"/>
