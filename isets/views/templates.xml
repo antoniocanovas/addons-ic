@@ -4,7 +4,7 @@
     <data>
 
         <template id="iset_report_document_report">
-            <t t-call="web.external_layout_standard">
+            <t t-call="web.external_layout">
                 <t t-set="o" t-value="o.with_context(lang=lang)"/>
                 <div class="page">
                     <div class="text-center">
@@ -17,6 +17,9 @@
                         <span t-field="o.duration" />
                         <span t-field="o.type_id" />
                         <span t-field="o.partner_id" />
+                    </div>
+                    <div>
+                        <img t-if="o.signature" t-attf-src="data:image/*;base64,{{o.signature}}"/>
                     </div>
                     <!--<table class="table table-sm o_main_table">
                         <thead>

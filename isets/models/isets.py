@@ -1,6 +1,7 @@
 from odoo import _, api, fields, models
 from datetime import datetime, timezone, timedelta
 import pytz
+import base64
 from odoo.exceptions import ValidationError
 
 import logging
@@ -39,6 +40,7 @@ class Isets(models.Model):
     duration = fields.Float('Duration')
     partner_id = fields.Many2one('res.partner', string='Signed by')
     signature = fields.Binary("Signature")
+    attachment_id = fields.Many2one('ir.attachment', string='Attachment')
     #active = fields.Boolean('Active')
 
     @api.depends('repair_id')
@@ -157,6 +159,39 @@ class Isets(models.Model):
 
     production_loss_id = fields.Many2one('mrp.workcenter.productivity.loss', string='Loss', readonly=False,
                                          compute=get_production_loss)
+
+    @api.depends('signature')
+    def get_signed_report(self):
+        print("TEST")
+        if self.signature and not self.signature_status:
+            # generate pdf from report, use report's id as reference
+            report_id = 'isets.iset_report'
+            pdf = self.env.ref(report_id)._render_qweb_pdf(self.ids[0])
+            # pdf result is a list
+            b64_pdf = base64.b64encode(pdf[0])
+            main_attachment = self.env['ir.attachment'].sudo().search(
+               ['&', ('res_id', '=', self.id), ('name', '=', str(self.type_id.name) + '.pdf')]
+            )
+            main_attachment.unlink()
+            # save pdf as attachment
+            name = self.name + (str(self.type_id.name))
+            self.attachment_id = self.env['ir.attachment'].sudo().create({
+                'name': name + '.pdf',
+                'type': 'binary',
+                'datas': b64_pdf,
+                'store_fname': name + '.pdf',
+                'res_model': 'isets',
+                'res_id': self.id,
+                'mimetype': 'application/pdf'
+            })
+            body = "<p>iSet Signed & Approved</p>"
+            self.message_post(body=body, attachment_ids=[self.attachment_id.id])
+            #self.message_main_attachment_id = [(4, self.attachment_id.id)]
+            self.signature_status = True
+        else:
+            self.signature_status = False
+
+    signature_status = fields.Boolean(string='Signed & Approved',  compute=get_signed_report, store=True)
 
     def create_lot_services_iset(self):
         # Check required fields:
