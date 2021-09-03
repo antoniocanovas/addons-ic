@@ -18,7 +18,7 @@ class ResCompany(models.Model):
         string='Usuario FTP',
     )
     ftp_url_cbi = fields.Char(
-        default='82.223.210.156',
+        default='sftp.comunicacionesbancarias.com',
         string='Api Url'
     )
     ftp_port_cbi = fields.Integer(
@@ -26,7 +26,8 @@ class ResCompany(models.Model):
         string='Puerto FTP',
     )
     ftp_passwd_cbi = fields.Char(
-        string='Password FTP'
+        string='Password FTP',
+        default='8<4eSDS‐vs‐8'
     )
     cbi_autoimport = fields.Boolean(
         "Autoimportar",

@@ -98,19 +98,22 @@ class AccountBankStatementCBI(models.Model):
         company_ids = self.env['res.company'].search([])
 
         for company_id in company_ids:
-            print("company",company_id.name)
+
             if company_id.ftp_url_cbi and company_id.ftp_port_cbi and company_id.ftp_user_cbi and company_id.ftp_passwd_cbi:
                 try:
                     sftpclient = self.create_sftp_client(company_id.ftp_url_cbi, company_id.ftp_port_cbi,
                                                          company_id.ftp_user_cbi, company_id.ftp_passwd_cbi, None, 'DSA')
                     # List files in the default directory on the remote computer.
                     dirlist = sftpclient.listdir('.')
+
                     imported_n43_list = self.get_n43_list()
                     for d in dirlist:
+
                         path = "/%s" % d
                         result = sftpclient.chdir(path=path)
                         filelist = sftpclient.listdir('.')
                         for f in filelist:
+
                             if f != 'Historico':
                                 if f not in imported_n43_list:
                                     file = sftpclient.file(f, mode='r', bufsize=-1)
@@ -162,6 +165,7 @@ class AccountBankStatementCBI(models.Model):
 
                 except Exception as e:
                     _logger.debug('Server Error: %s' % e)
+
             #print("Autoimport", company_id.cbi_autoimport)
             #if company_id.cbi_autoimport:
             #    company_id.automated_import_files()
@@ -186,7 +190,7 @@ class AccountBankStatementCBI(models.Model):
                     except Exception as e:
                         record.state = 'error'
                         record.error_logger = e
-                        raise ValidationError('Server Error: %s' % e)
+                        #raise ValidationError('Server Error: %s' % e)
 
     @api.multi
     def automated_import_files(self):
