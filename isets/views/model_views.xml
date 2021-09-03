@@ -8,6 +8,7 @@
                 <header>
                     <button name="create_lot_services_iset" string="Create lot services" type="object" class="btn-primary"/>
                     <widget name="signature" string="Sign" highlight="1" attrs="{'invisible': [('partner_id', '=', False)]}" full_name="partner_id"/>
+                    <field name="signature_status" widget="statusbar" />
                 </header>
                 <sheet>
                     <h1><field name="name"/></h1>
