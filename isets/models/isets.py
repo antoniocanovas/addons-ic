@@ -162,33 +162,34 @@ class Isets(models.Model):
 
     @api.depends('signature')
     def get_signed_report(self):
-        if self.signature and not self.signature_status:
-            # generate pdf from report, use report's id as reference
-            report_id = 'isets.iset_report'
-            pdf = self.env.ref(report_id)._render_qweb_pdf(self.ids[0])
-            # pdf result is a list
-            b64_pdf = base64.b64encode(pdf[0])
-            main_attachment = self.env['ir.attachment'].sudo().search(
-               ['&', ('res_id', '=', self.id), ('name', '=', str(self.type_id.name) + '.pdf')]
-            )
-            main_attachment.unlink()
-            # save pdf as attachment
-            name = self.name + (str(self.type_id.name))
-            self.attachment_id = self.env['ir.attachment'].sudo().create({
-                'name': name + '.pdf',
-                'type': 'binary',
-                'datas': b64_pdf,
-                'store_fname': name + '.pdf',
-                'res_model': 'isets',
-                'res_id': self.id,
-                'mimetype': 'application/pdf'
-            })
-            body = "<p>iSet Signed & Approved</p>"
-            self.message_post(body=body, attachment_ids=[self.attachment_id.id])
-            #self.message_main_attachment_id = [(4, self.attachment_id.id)]
-            self.signature_status = True
-        else:
-            self.signature_status = False
+        for record in self:
+            if record.signature and not record.signature_status:
+                # generate pdf from report, use report's id as reference
+                report_id = 'isets.iset_report'
+                pdf = self.env.ref(report_id)._render_qweb_pdf(record.ids[0])
+                # pdf result is a list
+                b64_pdf = base64.b64encode(pdf[0])
+                main_attachment = self.env['ir.attachment'].sudo().search(
+                   ['&', ('res_id', '=', record.id), ('name', '=', str(record.type_id.name) + '.pdf')]
+                )
+                main_attachment.unlink()
+                # save pdf as attachment
+                name = record.name + (str(record.type_id.name))
+                record.attachment_id = self.env['ir.attachment'].sudo().create({
+                    'name': name + '.pdf',
+                    'type': 'binary',
+                    'datas': b64_pdf,
+                    'store_fname': name + '.pdf',
+                    'res_model': 'isets',
+                    'res_id': record.id,
+                    'mimetype': 'application/pdf'
+                })
+                body = "<p>iSet Signed & Approved</p>"
+                record.message_post(body=body, attachment_ids=[record.attachment_id.id])
+                #self.message_main_attachment_id = [(4, self.attachment_id.id)]
+                record.signature_status = True
+            else:
+                record.signature_status = False
 
     signature_status = fields.Boolean(string='Signed & Approved',  compute=get_signed_report, store=True)
 
