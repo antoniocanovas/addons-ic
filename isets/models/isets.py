@@ -162,7 +162,6 @@ class Isets(models.Model):
 
     @api.depends('signature')
     def get_signed_report(self):
-        print("TEST")
         if self.signature and not self.signature_status:
             # generate pdf from report, use report's id as reference
             report_id = 'isets.iset_report'
