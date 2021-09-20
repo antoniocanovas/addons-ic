@@ -231,19 +231,23 @@ class ResCompany(models.Model):
                         partner = self.get_partner_by_vat(partner_vat)
                         partner_name_value = "NIF_no_valido_" + str(partner_vat.value)
                         partner_vat = False
+                    else:
+                        partner = self.get_partner_by_vat(partner_vat)
+                        partner_name_value = partner_vat.value
                 else:
                     random = self.random_with_n_digits(11)
                     partner_name_value = "NIF_no_válido_" + str(random)
+                    partner = False
 
                 if not partner:
                     partner = self.env['res.partner'].sudo().create({
                         'name': str(partner_name_value),
-                        #'vat': False,
+                        # 'vat': False,
                         'company_type': 'company',
                         'ocr_sale_account_id': account700.id,
                         'ocr_purchase_account_id': account600.id,
                     })
-                    #partner = self.env['res.partner'].search([('vat', "=", 'ES12345678Z'),'|',('active', "=", False),('active', "=", True)])
+                    # partner = self.env['res.partner'].search([('vat', "=", 'ES12345678Z'),'|',('active', "=", False),('active', "=", True)])
 
                 if partner:
                     date = self.env['ocr.values'].sudo().search([
