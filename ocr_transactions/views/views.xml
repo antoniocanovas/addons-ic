@@ -65,6 +65,7 @@
                 <field name="state"/>
                 <field name="create_date"/>
                 <field name="write_date"/>
+                <field name="transaction_error"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>

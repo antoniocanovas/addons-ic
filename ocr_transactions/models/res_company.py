@@ -92,12 +92,12 @@ class ResCompany(models.Model):
 
     @api.multi
     def get_partner_by_vat(self, vat):
+
         vat_cleaned = self.clean_vat(vat.value)
         partner = self.env['res.partner'].search(["|",
                                                   ('vat', '=', vat.value),
                                                   ('vat', '=', vat_cleaned),
                                                   ], limit=1)
-
         if partner:
             return partner
         else:
@@ -249,9 +249,13 @@ class ResCompany(models.Model):
                         partner = self.get_partner_by_vat(partner_vat)
                         partner_name_value = "NIF_no_valido_" + str(partner_vat.value)
                         partner_vat = False
+                    else:
+                        partner = self.get_partner_by_vat(partner_vat)
+                        partner_name_value = partner_vat.value
                 else:
                     random = self.random_with_n_digits(11)
                     partner_name_value = "NIF_no_válido_" + str(random)
+                    partner = False
 
                 if not partner:
                     partner = self.env['res.partner'].sudo().create({
@@ -462,7 +466,6 @@ class ResCompany(models.Model):
         ########## Hacemos una consulta por cada ApiKey ################
         for key in ApiKeys:
             header = self.get_header(key)
-            print("key", key)
             transactions_by_state = self.get_documents_data(api_transaction_url, header)
             ############### Control status donwloaded #######################
             if transactions_by_state:
