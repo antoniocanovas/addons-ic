@@ -152,6 +152,16 @@ class Isets(models.Model):
 
     project_ids = fields.Many2many('project.project', compute=get_projects, store=False)
 
+    @api.depends('project_service_ids', 'project_product_ids', 'repair_service_ids', 'repair_product_ids','mrp_service_ids', 'mrp_product_ids')
+    def get_workread_only(self):
+        for record in self:
+            isreadonly = False
+            if record.project_service_ids or record.project_product_ids or record.repair_service_ids.ids or record.repair_product_ids or record.mrp_service_ids or record.mrp_product_ids:
+                isreadonly = True
+            record['work_readonly'] = isreadonly
+
+    work_readonly = fields.Boolean(string='Read only', compute=get_workread_only, store=True)
+
     @api.depends('work_id')
     def get_production_loss(self):
         for record in self:
