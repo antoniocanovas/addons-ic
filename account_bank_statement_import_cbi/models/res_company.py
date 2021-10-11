@@ -18,7 +18,7 @@ class ResCompany(models.Model):
         string='Usuario FTP',
     )
     ftp_url_cbi = fields.Char(
-        default='82.223.210.156',
+        default='sftp.comunicacionesbancarias.com',
         string='Api Url'
     )
     ftp_port_cbi = fields.Integer(
