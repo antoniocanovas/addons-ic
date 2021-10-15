@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <record id="view_restaurant_table_form_inherited" model="ir.ui.view">
+            <field name="name">Restaurant Table</field>
+            <field name="model">restaurant.table</field>
+            <field name="inherit_id" ref="pos_restaurant.view_restaurant_table_form"/>
+            <field name="arch" type="xml">
+                <field name="height" position="after">
+                    <field name="state_id"/>
+                    <field name="time_start"/>
+                    <field name="time_waiting_order"/>
+                    <field name="time_pending_payment"/>
+                    <field name="time_done"/>
+                    <field name="amount"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
