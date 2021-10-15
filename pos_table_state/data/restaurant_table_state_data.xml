@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="restaurant_table_state_new" model="restaurant.table.state">
+            <field name="name">New</field>
+            <field name="type">new</field>
+        </record>
+        <record id="restaurant_table_state_waiting_order" model="restaurant.table.state">
+            <field name="name">Waiting Order</field>
+            <field name="type">waiting_order</field>
+        </record>
+        <record id="restaurant_table_state_pending_payment" model="restaurant.table.state">
+            <field name="name">Pending Payment</field>
+            <field name="type">pending_payment</field>
+        </record>
+        <record id="restaurant_table_state_done" model="restaurant.table.state">
+            <field name="name">Done</field>
+            <field name="type">done</field>
+        </record>
+        <record id="restaurant_table_state_manual" model="restaurant.table.state">
+            <field name="name">Manual</field>
+            <field name="type">manual</field>
+        </record>
+    </data>
+</odoo>
