@@ -80,7 +80,7 @@ class AccountInvoice(models.Model):
                 ('type', '=', 'odoo'),
             ])[0]
 
-            if len(invoice.partner_id.vat) < 11:
+            if len(invoice.partner_id.vat) < 10:
                 raise Warning((
                                   "El CIF de proveedor no está en formato VIES"
                 ))
