@@ -30,6 +30,7 @@
                                options="{'reload_on_button': true}"
                                nolabel="1"
                                readonly="1"
+                               groups="base.group_system"
                         />
                     </group>
                 </page>
