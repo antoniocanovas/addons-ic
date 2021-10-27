@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension" owl="1">
+        <xpath expr="//li[hasclass('orderline')]" position="attributes">
+            <attribute name="t-attf-class" add="{{ props.line.get_product().is_addon ? 'is_addon' : '' }}" separator=" "/>
+        </xpath>
+    </t>
+</templates>
+
+<!--<?xml version="1.0" encoding="UTF-8" ?>-->
+<!--<templates id="template" xml:space="preserve">-->
+<!--    <t t-name="OrderlineDetailsCR" t-inherit="point_of_sale.OrderlineDetails" t-inherit-mode="extension" owl="1">-->
+<!--        <xpath expr="//li[hasclass('orderline')]" position="inside">-->
+<!--            <t t-esc="props.line.get_product()"/>-->
+<!--        </xpath>-->
+<!--        <xpath expr="//li[hasclass('orderline')]" position="attributes">-->
+<!--            <attribute name="t-attf-class" add="#{'is_addon' if props.line.get_product().is_addon else ''}" separator=" "/>-->
+<!--        </xpath>-->
+<!--    </t>-->
+<!--</templates>-->

@@ -12,6 +12,11 @@
                     <field name="time_pending_payment"/>
                     <field name="time_done"/>
                     <field name="amount"/>
+
+                    <field name="time_start1" invisible="1"/>
+                    <field name="time_waiting_order1" invisible="1"/>
+                    <field name="time_pending_payment1" invisible="1"/>
+                    <field name="time_done1" invisible="1"/>
                 </field>
             </field>
         </record>

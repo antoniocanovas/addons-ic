@@ -34,14 +34,13 @@ odoo.define('pos_table_state.SetStateButton', function(require) {
 
             _.each(this.env.pos.config.state_ids, function (state) {
                 _.each(self.env.pos.table_state, function (state_id) {
-                    if (state_id.id == state) {
+                    if (state_id && state_id.id == state) {
 		                table_state_list.push({'id': state_id.id,
 			                               'label': state_id.name,
 			                               'color_code': state_id.color_code,
 			                               'item': state_id.id});
 			        }
 		        });
-
             });
 
             const selectionList = table_state_list.map(statelist => ({
@@ -66,17 +65,22 @@ odoo.define('pos_table_state.SetStateButton', function(require) {
 							                + currentdate.getHours() + ":"
 							                + currentdate.getMinutes() + ":"
 							                + currentdate.getSeconds();
+	            var datetime1 = currentdate.getHours() + ":" + currentdate.getMinutes();
 				if (selectedStatelist.label == 'New'){
 					self.env.pos.table.time_start = datetime
+					self.env.pos.table.time_start1 = datetime1
 				}
 				if (selectedStatelist.label == 'Waiting Order'){
 					self.env.pos.table.time_waiting_order = datetime
+					self.env.pos.table.time_waiting_order1 = datetime1
 				}
 				if (selectedStatelist.label == 'Pending Payment'){
 					self.env.pos.table.time_pending_payment = datetime
+					self.env.pos.table.time_pending_payment1 = datetime1
 				}
 				if (selectedStatelist.label == 'Done'){
 					self.env.pos.table.time_done = datetime
+					self.env.pos.table.time_done1 = datetime1
 				}
 				self.rpc({
                     model: 'restaurant.table',

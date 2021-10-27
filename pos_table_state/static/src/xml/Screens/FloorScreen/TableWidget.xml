@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates id="template" xml:space="preserve">
     <t t-name="TableWidget" t-inherit="pos_restaurant.TableWidget" t-inherit-mode="extension" owl="1">
-        <xpath expr="//span[hasclass('label')]" position="after">
-            <span class="state">
-                <t t-esc="props.table.state_id[1]" t-if="props.table.state_id"/>
-            </span>
-            <span class="OrderTime">
-                <t t-esc="props.table.time_start" t-if="props.table.time_start and props.table.state_id[1] == 'New'"/>
-                <t t-esc="props.table.time_waiting_order" t-if="props.table.time_waiting_order and props.table.state_id[1] == 'Waiting Order'"/>
-                <t t-esc="props.table.time_pending_payment" t-if="props.table.time_pending_payment and props.table.state_id[1] == 'Pending Payment'"/>
-                <t t-esc="props.table.time_done" t-if="props.table.time_done and props.table.state_id[1] == 'Done'"/>
-            </span>
-            <span class="OrderTotal">
-                <t t-esc="env.pos.format_currency(props.table.amount)"/>
-            </span>
+        <xpath expr="//span[hasclass('table-seats')]" position="after">
+            <button title="Table Information" class="fas fa-info-circle table-seats" style="margin-left:18px;height: 21px;width: 23px;padding: 0;" t-on-click="_onClickTableSeatsCollapseTotpSecret"></button>
         </xpath>
+    </t>
+
+    <t t-name="TableInfoPopup" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup">
+                <p class="title">
+                    <t t-esc="props.title"/>
+                </p>
+                <div class="body" style="text-align: left;">
+                    <span class="table_state_class">
+                        State : <t t-esc="props.table.state_id[1]" t-if="props.table.state_id"/>
+                    </span>
+                    <br/>
+                    <span class="table_time_class">
+                        Time :
+<!--                        <t t-esc="props.table.time_start" t-if="props.table.time_start and props.table.state_id[1] == 'New'"/>-->
+<!--                        <t t-esc="props.table.time_waiting_order" t-if="props.table.time_waiting_order and props.table.state_id[1] == 'Waiting Order'"/>-->
+<!--                        <t t-esc="props.table.time_pending_payment" t-if="props.table.time_pending_payment and props.table.state_id[1] == 'Pending Payment'"/>-->
+<!--                        <t t-esc="props.table.time_done" t-if="props.table.time_done and props.table.state_id[1] == 'Done'"/>-->
+                    <t t-esc="props.table.time_start1" t-if="props.table.time_start1 and props.table.state_id[1] == 'New'"/>
+                    <t t-esc="props.table.time_waiting_order1" t-if="props.table.time_waiting_order1 and props.table.state_id[1] == 'Waiting Order'"/>
+                    <t t-esc="props.table.time_pending_payment1" t-if="props.table.time_pending_payment1 and props.table.state_id[1] == 'Pending Payment'"/>
+                    <t t-esc="props.table.time_done1" t-if="props.table.time_done1 and props.table.state_id[1] == 'Done'"/>
+                    </span>
+                    <br/>
+                    <span class="table_amount_class">
+                        Amount :
+                        <t t-esc="env.pos.format_currency(props.table.amount)"/>
+                    </span>
+                </div>
+                <div class="footer">
+                    <div class="button cancel" t-on-click="confirm">
+                        <t t-esc="props.confirmText" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </t>
 </templates>

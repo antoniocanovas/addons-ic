@@ -11,7 +11,7 @@ odoo.define('pos_table_state.PrintBillButton', function(require) {
 				super.onClick(...arguments);
 	            var self = this;
 	            _.each(this.env.pos.table_state, function (state) {
-	                if (state.name == 'Pending Payment') {
+	                if (state && state.name == 'Pending Payment' && self.env.pos.table) {
 	                    var currentdate = new Date();
 						var datetime = currentdate.getDate() + "/"
 						                + (currentdate.getMonth()+1)  + "/"
@@ -19,8 +19,10 @@ odoo.define('pos_table_state.PrintBillButton', function(require) {
 						                + currentdate.getHours() + ":"
 						                + currentdate.getMinutes() + ":"
 						                + currentdate.getSeconds();
+						var datetime1 = currentdate.getHours() + ":" + currentdate.getMinutes();
 						self.env.pos.table.state_id = [state.id, state.name]
 						self.env.pos.table.time_pending_payment = datetime
+						self.env.pos.table.time_pending_payment1 = datetime1
 						self.rpc({
 		                    model: 'restaurant.table',
 		                    method: 'update_table_state',

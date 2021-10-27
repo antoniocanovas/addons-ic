@@ -7,12 +7,11 @@ odoo.define('pos_table_state.PosResPaymentScreen111', function(require) {
 
     const CustomPosResPaymentScreen = (PaymentScreen) =>
         class extends PaymentScreen {
-
 	        async _finalizeValidation() {
 	            super._finalizeValidation(...arguments);
 	            var self = this;
 	            _.each(this.env.pos.table_state, function (state) {
-	                if (state.name == 'Done') {
+	                if (state && state.name == 'Done' && self.env.pos.table) {
 	                    var currentdate = new Date();
 						var datetime = currentdate.getDate() + "/"
 				                + (currentdate.getMonth()+1)  + "/"
@@ -20,8 +19,10 @@ odoo.define('pos_table_state.PosResPaymentScreen111', function(require) {
 				                + currentdate.getHours() + ":"
 				                + currentdate.getMinutes() + ":"
 				                + currentdate.getSeconds();
+				        var datetime1 = currentdate.getHours() + ":" + currentdate.getMinutes();
 						self.env.pos.table.state_id = [state.id, state.name]
 						self.env.pos.table.time_done = datetime
+						self.env.pos.table.time_done1 = datetime1
 						self.rpc({
 		                    model: 'restaurant.table',
 		                    method: 'update_table_state',
@@ -30,7 +31,7 @@ odoo.define('pos_table_state.PosResPaymentScreen111', function(require) {
 	                }
 	            });
 	        }
-    };
+        };
     Registries.Component.extend(PaymentScreen, CustomPosResPaymentScreen);
 
     return CustomPosResPaymentScreen;

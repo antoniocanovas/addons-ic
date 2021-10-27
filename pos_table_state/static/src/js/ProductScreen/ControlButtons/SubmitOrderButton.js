@@ -8,12 +8,11 @@ odoo.define('pos_table_state.SubmitOrderButton', function(require) {
 
     const SubmitOrderButtonColorChange = (SubmitOrderButton) =>
         class extends SubmitOrderButton {
-
 	        async onClick() {
 	            super.onClick(...arguments);
 	            var self = this;
 	            _.each(this.env.pos.table_state, function (state) {
-	                if (state.name == 'Waiting Order') {
+	                if (state && state.name == 'Waiting Order' && self.env.pos.table) {
 	                    var currentdate = new Date();
 						var datetime = currentdate.getDate() + "/"
 						                + (currentdate.getMonth()+1)  + "/"
@@ -21,8 +20,10 @@ odoo.define('pos_table_state.SubmitOrderButton', function(require) {
 						                + currentdate.getHours() + ":"
 						                + currentdate.getMinutes() + ":"
 						                + currentdate.getSeconds();
+						var datetime1 = currentdate.getHours() + ":" + currentdate.getMinutes();
 						self.env.pos.table.state_id = [state.id, state.name]
 						self.env.pos.table.time_waiting_order = datetime
+						self.env.pos.table.time_waiting_order1 = datetime1
 						self.rpc({
 		                    model: 'restaurant.table',
 		                    method: 'update_table_state',

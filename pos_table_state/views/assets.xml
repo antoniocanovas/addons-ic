@@ -5,6 +5,7 @@
             <script type="text/javascript" src="/pos_table_state/static/src/js/Misc/models.js"></script>
             <script type="text/javascript" src="/pos_table_state/static/src/js/ProductScreen/ControlButtons/SubmitOrderButton.js"></script>
             <script type="text/javascript" src="/pos_table_state/static/src/js/FloorScreen/FloorScreen.js"/>
+            <script type="text/javascript" src="/pos_table_state/static/src/js/Popup/TableInfoPopup.js"/>
             <script type="text/javascript" src="/pos_table_state/static/src/js/FloorScreen/TableWidget.js"/>
             <script type="text/javascript" src="/pos_table_state/static/src/js/ProductScreen/ControlButtons/SetStateButton.js"/>
             <script type="text/javascript" src="/pos_table_state/static/src/js/ProductScreen/ControlButtons/PrintBillButton.js"/>
