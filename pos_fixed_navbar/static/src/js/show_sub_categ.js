@@ -6,6 +6,7 @@ odoo.define('pos_fixed_navbar.ShowSubCategory', function(require) {
 
     const FixedProductsWidget = ProductsWidget =>
         class extends ProductsWidget {
+
             get parentSubCategory() {
                 var self = this;
                 var parentSubCat = [];
@@ -18,7 +19,9 @@ odoo.define('pos_fixed_navbar.ShowSubCategory', function(require) {
                     });
                 return parentSubCat;
             }
+
         }
+
     Registries.Component.extend(ProductsWidget, FixedProductsWidget);
 
     return FixedProductsWidget;

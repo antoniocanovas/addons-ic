@@ -12,13 +12,12 @@
                 <p class="title">
                     <t t-esc="props.title"/>
                 </p>
-                <div class="body" style="text-align: left;">
+                <div class="body" style="">
                     <span class="table_state_class">
-                        State : <t t-esc="props.table.state_id[1]" t-if="props.table.state_id"/>
+                        <t t-esc="props.table.state_id[1]" t-if="props.table.state_id"/>
                     </span>
                     <br/>
                     <span class="table_time_class">
-                        Time :
 <!--                        <t t-esc="props.table.time_start" t-if="props.table.time_start and props.table.state_id[1] == 'New'"/>-->
 <!--                        <t t-esc="props.table.time_waiting_order" t-if="props.table.time_waiting_order and props.table.state_id[1] == 'Waiting Order'"/>-->
 <!--                        <t t-esc="props.table.time_pending_payment" t-if="props.table.time_pending_payment and props.table.state_id[1] == 'Pending Payment'"/>-->
@@ -30,7 +29,6 @@
                     </span>
                     <br/>
                     <span class="table_amount_class">
-                        Amount :
                         <t t-esc="env.pos.format_currency(props.table.amount)"/>
                     </span>
                 </div>
