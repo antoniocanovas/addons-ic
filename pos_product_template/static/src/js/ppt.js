@@ -43,7 +43,7 @@ odoo.define("pos_product_template.pos_product_template", function(require){
             }
         }
 
-    const PPTProductsWidget = (ProductWidget) =>
+    const PPTProductsWidget = (ProductsWidget) =>
         class extends ProductsWidget {
             get productsToDisplay() {
     //         /* ************************************************
