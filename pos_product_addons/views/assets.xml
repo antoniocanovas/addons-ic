@@ -4,6 +4,7 @@
         <xpath expr="." position="inside">
             <script type="text/javascript" src="/pos_product_addons/static/src/js/Misc/models.js"></script>
             <script type="text/javascript" src="/pos_product_addons/static/src/js/Misc/ProductScreen.js"></script>
+            <script type="text/javascript" src="/pos_product_addons/static/src/js/Misc/OrderWidget.js"></script>
 <!--            <script type="text/javascript" src="/pos_table_state/static/src/js/ProductScreen/ControlButtons/SubmitOrderButton.js"></script>-->
 <!--            <script type="text/javascript" src="/pos_table_state/static/src/js/FloorScreen/FloorScreen.js"/>-->
 <!--            <script type="text/javascript" src="/pos_table_state/static/src/js/FloorScreen/TableWidget.js"/>-->

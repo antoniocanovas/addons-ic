@@ -14,29 +14,30 @@ odoo.define('pos_product_addons.ProductScreen', function(require) {
     const ProductScreenCR = ProductScreen =>
 		class extends ProductScreen {
             async _clickProduct(event) {
-                var is_true = true;
                 const product = event.detail;
-                const orderline = this.currentOrder.get_orderlines();
-                if (product && product.is_addon && orderline) {
-                    var has_addons_line = false;
-                    _.each(orderline, function(val){
-                        if(val && val.product.has_addons){
-                            has_addons_line = true;
-                        }
-                    });
-                    if(!has_addons_line){
-                        is_true = false;
+                const orderline = this.currentOrder.selected_orderline;
+                if (product && product.is_addon) {
+                    if(!orderline){
+                        this.showPopup('ErrorPopup', {
+                            title: this.env._t('Warning'),
+                            body: this.env._t(
+                                'This product has no addons'
+                            ),
+                        });
+                    }else if(orderline && orderline.line_stamp){
+                        super._clickProduct(...arguments);
+                    }else if(orderline && !orderline.product.has_addons){
+                        this.showPopup('ErrorPopup', {
+                            title: this.env._t('Warning'),
+                            body: this.env._t(
+                                'This product has no addons'
+                            ),
+                        });
+                    } else{
+                        super._clickProduct(...arguments);
                     }
-                }
-                if(is_true){
+                } else{
                     super._clickProduct(...arguments);
-                }else{
-                    this.showPopup('ErrorPopup', {
-                        title: this.env._t('Warning'),
-                        body: this.env._t(
-                            'This product has no addons'
-                        ),
-                    });
                 }
             }
 		};

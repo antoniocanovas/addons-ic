@@ -14,6 +14,7 @@
     ],
     'qweb': [
         'static/src/xml/Screens/OrderlineDetails.xml',
+        'static/src/xml/Screens/OrderWidget.xml',
     ],
     
 }
