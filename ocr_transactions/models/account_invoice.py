@@ -17,6 +17,7 @@ class AccountMove(models.Model):
                                           default=lambda self: self.env.user.company_id.ocr_delivery_company)
     ocr_transaction_error = fields.Char("Error OCR", related='ocr_transaction_id.transaction_error')
     ocr_upload_status = fields.Selection(string='OCR Status', related='ocr_transaction_id.ocr_upload_id.state')
+    ocr_combination_image = fields.Binary("Img to show on wizard")
 
     def post_correction_form(self):
 
@@ -31,10 +32,6 @@ class AccountMove(models.Model):
 
         if self.ocr_transaction_id:
             view_id = self.env.ref('ocr_transactions.invoice_combination_view').id
-            attachment = False
-            for msg in self.message_ids:
-                if msg.body == "<p>created with OCR Documents</p>":
-                    attachment = msg.attachment_ids[0].datas
 
             return {
                 'name': _("Combinar Facturas"),
@@ -48,7 +45,7 @@ class AccountMove(models.Model):
                     'default_ocr_transaction_id': self.ocr_transaction_id.id,
                     'default_invoice_id_link': self.ocr_transaction_id.invoice_id.id,
                     #'default_attachment_datas': self.message_main_attachment_id.datas,
-                    'default_attachment_datas': attachment,
+                    'default_attachment_datas': self.ocr_combination_image,
                     'default_original_ocr_transaction_id': self.ocr_transaction_id.id,
                 }
             }

@@ -311,6 +311,12 @@ class ResCompany(models.Model):
                     t.state = 'downloaded'
                     t.invoice_id = invoice.id
 
+                    #Store img for invoice combination
+                    link = ocr_document_data['image']
+                    file_type = 'image/jpeg'
+                    invoice.ocr_combination_image = self.generate_img_for_combination(link, header, invoice, t, file_type)
+                    print("IMG CREATED ###########################################")
+
                     if "document" in ocr_document_data:
                         link = ocr_document_data['document']
                         file_type = 'application/pdf'
@@ -324,10 +330,31 @@ class ResCompany(models.Model):
                     body = "<p>created with OCR Documents</p>"
                     if attachment:
                         invoice.message_post(body=body, attachment_ids=[attachment.id])
-                        invoice.message_main_attachment_id = [(4, attachment.id)]
+                        #invoice.message_main_attachment_id = [(4, attachment.id)]
 
             else:
                 t.state = 'downloaded'
+
+    def generate_img_for_combination(self, api_img_url, headers, document, ocr_document, file_type):
+
+        response = requests.get(api_img_url, headers=headers)
+
+        if response.status_code == 200:
+
+            img_file_encode = base64.b64encode(response.content)
+
+            return img_file_encode
+
+        elif response.status_code == 400:
+            ocr_document.transaction_error = "Error 400"
+            _logger.info(
+                "Error from OCR server  %s" % ocr_document.transaction_error
+            )
+        else:
+            ocr_document.transaction_error = json.loads(response.content.decode('utf-8'))
+            _logger.info(
+                "Error from OCR server  %s" % ocr_document.transaction_error
+            )
 
     def img_2_pdf(self, api_img_url, headers, document, ocr_document, file_type):
 

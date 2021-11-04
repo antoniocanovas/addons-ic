@@ -15,7 +15,7 @@ class InvoiceCombination(models.TransientModel):
     original_ocr_transaction_id = fields.Many2one('ocr.transactions', string='Factura')
     ocr_transaction_id = fields.Many2one('ocr.transactions', string='Factura')
     attachment_datas = fields.Binary(string='Documento', attachment=True)
-    invoice_id_link = fields.Many2one('account.invoice', string='Enlace a Factura')
+    invoice_id_link = fields.Many2one('account.move', string='Enlace a Factura')
 
     def show_invoice(self):
         self.ensure_one()
@@ -29,7 +29,7 @@ class InvoiceCombination(models.TransientModel):
                 'name': 'action_ocr_in_invoice',
                 'view_type': 'form',
                 'view_mode': 'form',
-                'res_model': 'account.invoice',
+                'res_model': 'account.move',
                 'res_id': self.ocr_transaction_id.invoice_id.id,
                 'views': [(form_view_id, 'form')],
                 'target': 'current',
@@ -53,11 +53,6 @@ class InvoiceCombination(models.TransientModel):
                 else:
                     view_id = self.env.ref('ocr_transactions.invoice_combination_view').id
 
-                    attachment = False
-                    for msg in ocr_transaction_id.invoice_id.message_ids:
-                        if msg.body == "<p>created with OCR Documents</p>":
-                            attachment = msg.attachment_ids[0].datas
-
                     return {
                         'name': "Factura Anterior",
                         'type': 'ir.actions.act_window',
@@ -69,7 +64,7 @@ class InvoiceCombination(models.TransientModel):
                         'context': {
                             'default_ocr_transaction_id': ocr_transaction_id.id,
                             'default_invoice_id_link': ocr_transaction_id.invoice_id.id,
-                            'default_attachment_datas': attachment,
+                            'default_attachment_datas': ocr_transaction_id.invoice_id.ocr_combination_image,
                             'default_original_ocr_transaction_id': self.original_ocr_transaction_id.id,
                         }
                     }
@@ -92,11 +87,6 @@ class InvoiceCombination(models.TransientModel):
                 else:
                     view_id = self.env.ref('ocr_transactions.invoice_combination_view').id
 
-                    attachment = False
-                    for msg in ocr_transaction_id.invoice_id.message_ids:
-                        if msg.body == "<p>created with OCR Documents</p>":
-                            attachment = msg.attachment_ids[0].datas
-
                     return {
                         'name': "Siguiente Factura",
                         'type': 'ir.actions.act_window',
@@ -108,7 +98,7 @@ class InvoiceCombination(models.TransientModel):
                         'context': {
                             'default_ocr_transaction_id': ocr_transaction_id.id,
                             'default_invoice_id_link': ocr_transaction_id.invoice_id.id,
-                            'default_attachment_datas': attachment,
+                            'default_attachment_datas': ocr_transaction_id.invoice_id.ocr_combination_image,
                             'default_original_ocr_transaction_id': self.original_ocr_transaction_id.id,
                         }
                     }
@@ -165,14 +155,8 @@ class InvoiceCombination(models.TransientModel):
         if original.next_token != combined.token and original.previus_token != combined.token:
             raise ValidationError(("Las facturas seleccionadas no son consecutivas"))
 
-        attachment = False
-        attachment2 = False
-        for msg in original.invoice_id.message_ids:
-            if msg.body == "<p>created with OCR Documents</p>":
-                attachment = msg.attachment_ids[0].datas
-        for msg in combined.invoice_id.message_ids:
-            if msg.body == "<p>created with OCR Documents</p>":
-                attachment2 = msg.attachment_ids[0].datas
+        attachment = original.invoice_id.ocr_combination_image
+        attachment2 = combined.invoice_id.ocr_combination_image
 
         image_stream = io.BytesIO(codecs.decode(attachment, 'base64'))
         image = Image.open(image_stream)
@@ -206,7 +190,7 @@ class InvoiceCombination(models.TransientModel):
                 'datas': img_file_encode,
                 'datas_fname': original.name,
                 'store_fname': original.name,
-                'res_model': 'account.invoice',
+                'res_model': 'account.move',
                 'res_id': original.invoice_id.id,
                 'mimetype': 'image/jpeg'
             })
@@ -218,6 +202,8 @@ class InvoiceCombination(models.TransientModel):
                             img.unlink()
                     msg.unlink()
 
+                #Revisar este punto
+                original.invoice_id.ocr_combination_image = img_file_encode
                 original.invoice_id.message_post(body="created with OCR Documents",
                                                                          attachment_ids=[attachment_id.id])
                 original.invoice_id.message_main_attachment_id = [
