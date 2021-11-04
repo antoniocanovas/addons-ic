@@ -16,7 +16,7 @@
                 <group>
                     <div>
                         <!--<div><field name="attachment_datas" widget='image' readonly="True" class="o_attachment_preview"/></div>-->
-                        <div><field name="attachment_datas" widget='image' readonly="True"/></div>
+                        <div><field name="attachment_datas" widget="image" readonly="True"/></div>
                         <!--<div><field name="attachment_datas" widget='image' readonly="True" class="o_attachment_preview"/></div>-->
                     </div>
                 </group>

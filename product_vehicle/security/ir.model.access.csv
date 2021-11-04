@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_isets,isets timesheet user,isets.model_isets,hr_timesheet.group_hr_timesheet_user,1,1,1,0
+access_isets_Manager,isets timesheet manager,isets.model_isets,hr_timesheet.group_hr_timesheet_approver,1,1,1,1
+access_isets_System,isets timesheet sytem,isets.model_isets,base.group_system,1,1,1,1
+access_isets_admin,isets Admin,isets.model_isets,base.group_system,1,1,1,1
+access_isets_work,isets work user,isets.model_iset_work,base.group_user,1,1,1,1
+access_isets_work_types,isets work type user,isets.model_working_type,base.group_user,1,0,0,0
+access_isets_work_types_rrhh,isets work type rrhh,isets.model_working_type,hr.group_hr_manager,1,1,1,1

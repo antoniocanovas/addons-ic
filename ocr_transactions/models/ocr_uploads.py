@@ -45,8 +45,7 @@ class OcrUploads(models.Model):
         selection=TYPE, string="Type", default='recibida',
     )
     state = fields.Selection(
-        selection=STATE, string="State", default='draft', track_visibility='onchange'
-    )
+        selection=STATE, string="State", default='draft', tracking=True    )
     name = fields.Char('Name')
     ocr_transaction_ids = fields.One2many('ocr.transactions', 'ocr_upload_id')
     attachment_ids = fields.Many2many(comodel_name="ir.attachment",

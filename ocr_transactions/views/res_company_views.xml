@@ -24,12 +24,13 @@
                 </page>
             </xpath>
             <xpath expr="//notebook/page[@name='OCR']" position="after">
-                <page string="Job state" name="job_state">
+                <page string="Job state" name="job_state" groups="base.group_system">
                     <group>
                         <field name="ocr_transactions_jobs_ids"
                                options="{'reload_on_button': true}"
                                nolabel="1"
                                readonly="1"
+                               groups="base.group_system"
                         />
                     </group>
                 </page>
