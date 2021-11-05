@@ -16,6 +16,6 @@ class ProductTemplate(models.Model):
                                        related="vehicle_model_id.brand_id",
                                        string="Model")
     vehicle_category_id = fields.Many2one("fleet.vehicle.category", string="Category")
-    vehicle_id = fields.Many2one(" fleet.vehicle", string="ID")
+    vehicle_id = fields.Many2one("fleet.vehicle", string="ID")
 
 
