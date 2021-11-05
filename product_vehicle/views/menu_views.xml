@@ -5,7 +5,7 @@
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="domain" eval="[('is_vehicle', '=', 'True')]"/>
-        <field name="context" eval="{'default_is_vehicle':True}"/>
+        <field name="context" eval="{'search_default_filter_to_sell':1,'default_type':'product','default_is_vehicle': True}"/>
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
