@@ -16,6 +16,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">kanban,tree,form</field>
         <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'kanban', 'view_id': ref('product.product_template_kanban_view')}),
         (0, 0, {'view_mode': 'tree', 'view_id': ref('product_template_vehicle_tree')}),]"/>
     </record>
 
