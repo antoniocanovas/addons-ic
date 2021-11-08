@@ -5,23 +5,20 @@
             <field name="model_id" ref="model_product_template"/>
             <field name="state">code</field>
             <field name="code">
-# Exist analytic account (it could be assigned as vehicle later):
-if record.is_vehicle:
+# VEHICLES ANALYTICS:
+  # News or without AA:
+if (record.is_vehicle) and not (record.income_analytic_account_id.id):
   aa = env['account.analytic.account'].search([('name','=',record.name)])
   if not aa.id:
     aa = env['account.analytic.account'].create({'name':record.name})
-
-# If not aa asigned, let's do it:
-  if (not record.income_analytic_account_id.id):
-    record['income_analytic_account_id'] = aa.id
+  record['income_analytic_account_id'] = aa.id
   if not record.expense_analytic_account_id.id:
     record['expense_analytic_account_id'] = aa.id
-
-# If product has been duplicated, or changed the name; let's rename the aa:
-  if record.income_analytic_account_id.name != record.name:
-    products_aa = env['product.template'].search([('income_analytic_account_id','=',record.income_analytic_account_id.id)])
-    if len(products_aa.ids) &lt; 2:
-      record.income_analytic_account_id['name'] = record.name
+  # Renamed:
+elif (record.is_vehicle) and (record.income_analytic_account_id.id) and (record.income_analytic_account_id.name != record.name):
+  products_aa = env['product.template'].search([('income_analytic_account_id','=',record.income_analytic_account_id.id)])
+  if len(products_aa.ids) < 2:
+    record.income_analytic_account_id['name'] = record.name
 
             </field>
             <field name="trigger">on_create_or_write</field>
