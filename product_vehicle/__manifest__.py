@@ -17,7 +17,7 @@
         'crm',
     ],
     'data': [
-        #'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'data/action_server.xml',
         #'data/data.xml',
         #'data/rules.xml',
