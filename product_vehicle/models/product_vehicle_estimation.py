@@ -1,0 +1,15 @@
+from odoo import _, api, fields, models
+
+import logging
+_logger = logging.getLogger(__name__)
+
+
+class ProductVehicleEstimation(models.Model):
+    _name = 'product.vehicle.estimation'
+    _description = 'Vehicle Estimations'
+
+    product_vehicle_id = fields.Many2one('product.template', string="Vehicle")
+    product_id = fields.Many2one('product.product', string="Related Product")
+    amount = fields.Float(string='Amount')
+    account_move_line_id = fields.Many2one('account.move.line', string="Invoice line")
+

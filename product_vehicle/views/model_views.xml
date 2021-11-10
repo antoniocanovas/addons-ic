@@ -53,6 +53,27 @@
                                 <field name="stage_id"/>
                             </tree>
                         </field>
+                        <field name="vehicle_date2"/>
+                        <field name="rebu"/>
+                        <field name="vehicle_energy"/>
+                        <field name="vehicle_color"/>
+                        <field name="vehicle_power"/>
+                        <field name="vehicle_door"/>
+                        <field name="vehicle_next_itv"/>
+                        <field name="vehicle_chasis"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//page[@name='general_information']" position="before">
+                <page name="estimations" string="Estimations" attrs="{'invisible':[('is_vehicle','=',False)]}">
+                    <group>
+                        <field name="vehicle_supplier"/>
+                        <field name="vehicle_estimation_ids"/>
+                        <field name="vehicle_total_estimation"/>
+                        <field name="vehicle_total_analityc"/>
+                        <field name="vehicle_margin"/>
+                        <field name="vehicle_price"/>
+                        <field name="analytic_line_ids"/>
                     </group>
                 </page>
             </xpath>
