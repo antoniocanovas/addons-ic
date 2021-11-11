@@ -38,13 +38,35 @@ class ProductTemplate(models.Model):
     vehicle_supplier = fields.Many2one('res.partner', string="Proveedor")
     vehicle_estimation_ids = fields.One2many('product.vehicle.estimation', 'product_vehicle_id', string="Estimation")
 
-    vehicle_total_estimation = fields.Float(string="Total estimation")
+    def get_total_estimations(self):
+        for record in self:
+            total = 0
+            for line in record.vehicle_estimation_ids:
+                if not line.invoiced:
+                    total += line.amount
+            record.vehicle_total_estimation = total
 
-    vehicle_total_analityc = fields.Float(string="Total Analityc")
+    vehicle_total_estimation = fields.Float(string="Total estimation", store=False, compute="get_total_estimations")
+
+    def get_total_analytic(self):
+        for record in self:
+            total = 0
+            lines = self.env['account.analytic.line'].search([(
+                'account_id', 'in', [record.income_analytic_account_id.id, record.expense_analytic_account_id.id])])
+
+            for line in lines:
+                total += line.amount
+            record.vehicle_total_analytic = total
+    vehicle_total_analytic = fields.Float(string="Total Analytic", store=False, compute="get_total_analytic")
 
     vehicle_margin = fields.Float(string="Margin")
 
-    vehicle_price = fields.Float(string="Total price")
+    def get_recommended_price(self):
+        for record in self:
+            #if record.vehicle_margin:
+            cost = record.vehicle_total_analytic + record.vehicle_total_estimation
+            record.vehicle_price = cost/(1-(record.vehicle_margin/100))
+    vehicle_price = fields.Float(string="Total price", store=False, compute="get_recommended_price")
 
     def get_analytic_lines(self):
         for record in self:
