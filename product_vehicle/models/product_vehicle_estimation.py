@@ -11,5 +11,5 @@ class ProductVehicleEstimation(models.Model):
     product_vehicle_id = fields.Many2one('product.template', string="Vehicle")
     product_id = fields.Many2one('product.product', string="Related Product")
     amount = fields.Float(string='Amount')
-    account_move_line_id = fields.Many2one('account.move.line', string="Invoice line")
+    invoiced = fields.Boolean("Invoiced")
 
