@@ -44,9 +44,9 @@ class ProductTemplate(models.Model):
             for line in record.vehicle_estimation_ids:
                 if not line.invoiced:
                     total += line.amount
-            record.vehicle_total_estimation = total
+            record.vehicle_subtotal_estimation = total
 
-    vehicle_total_estimation = fields.Float(string="Total estimation", store=False, compute="get_total_estimations")
+    vehicle_subtotal_estimation = fields.Float(string="Total estimation", store=False, compute="get_total_estimations")
 
     def get_total_analytic(self):
         for record in self:
@@ -55,17 +55,18 @@ class ProductTemplate(models.Model):
                 'account_id', 'in', [record.income_analytic_account_id.id, record.expense_analytic_account_id.id])])
 
             for line in lines:
-                total += line.amount
-            record.vehicle_total_analytic = total
-    vehicle_total_analytic = fields.Float(string="Total Analytic", store=False, compute="get_total_analytic")
+                if not ((line.product_id == record.id) & (line.move_id.move_id.move_type in ['out_invoice','out_refund'])):
+                    total += line.amount
+            record.vehicle_subtotal_analytic = total
+    vehicle_subtotal_analytic = fields.Float(string="Total Analytic", store=False, compute="get_total_analytic")
 
     vehicle_margin = fields.Float(string="Margin")
 
     def get_recommended_price(self):
         for record in self:
             #if record.vehicle_margin:
-            cost = record.vehicle_total_analytic + record.vehicle_total_estimation
-            record.vehicle_price = cost/(1-(record.vehicle_margin/100))
+            cost = record.vehicle_subtotal_analytic + record.vehicle_subtotal_estimation
+            record.vehicle_price = (cost * -1)/(1-(record.vehicle_margin/100))
     vehicle_price = fields.Float(string="Total price", store=False, compute="get_recommended_price")
 
     def get_analytic_lines(self):
