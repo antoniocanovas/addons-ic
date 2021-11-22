@@ -116,7 +116,7 @@
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//sheet/group/group[4]/field[@name='tag_ids']" position="after">
-                <field name="vehicle_ids" widget="many2many_tags"/>
+                <field name="vehicle_ids" widget="many2many_tags" context="{'default_is_vehicle':True}/>
             </xpath>
         </field>
     </record>
