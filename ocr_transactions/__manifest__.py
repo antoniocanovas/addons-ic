@@ -10,7 +10,7 @@
         'account',
         'l10n_es_account_asset',
         'contacts',
-        'queue_job_cron',
+        'queue_job',
         'dbcopy_post_actions',
         'partner_credentials',
     ],
