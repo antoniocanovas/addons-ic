@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+
+        <record id="scrap_unbuild_sequence" model="ir.sequence">
+            <field name="name">Unbuild Sequence</field>
+            <field name="prefix">IDR</field>
+            <field name="padding">3</field>
+            <field name="number_increment">1</field>
+            <field name="code">scrap.unbuild</field>
+            <field name="implementation">no_gap</field>
+        </record>
+
+    </data>
+</odoo>
