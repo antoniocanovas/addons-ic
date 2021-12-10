@@ -20,6 +20,12 @@
 ##############################################################################
 from odoo import api, fields, models, _
 
+TYPE = [
+    ('unique', 'Unique'),
+    ('monthly', 'Monthly'),
+    ('quarted', 'Quarted'),
+    ('anual', 'Anual'),
+]
 
 class RoiSetLine(models.Model):
     _name = "roi.set.line"
@@ -29,7 +35,9 @@ class RoiSetLine(models.Model):
         'roi.set',
         string='ROI set',
     )
-    periodicity_months = fields.Integer(string='Periodicity (months)')
+    type = fields.Selection(
+        selection=TYPE, string="Type", default='unique',
+    )
     currency_id = fields.Many2one('res.currency', string='Currency')
     amount = fields.Monetary(string="Amount", currency_field='currency_id')
     qty = fields.Integer(string='Quantity')

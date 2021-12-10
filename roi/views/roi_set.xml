@@ -10,6 +10,7 @@
                     </h1>
                     <field name="line_ids" context="{'default_qty':1, 'default_currency_id':1}">
                         <tree editable="bottom">
+                            <field name="sequence" widget="handle"/>
                             <field name="name" required="1"/>
                             <field name="qty" required="1"/>
                             <field name="amount" required="1"/>
