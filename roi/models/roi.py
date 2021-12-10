@@ -30,6 +30,10 @@ class Roi(models.Model):
         'res.partner',
         string='Contact',
     )
+    set_id = fields.Many2one(
+        'roi.set',
+        string='Template',
+    )
     sale_id = fields.Many2one(
         'sale.order',
         string='Sale',

@@ -11,10 +11,13 @@
                     <group name="roi_group" col="4">
                         <field name="date_start" required="1"/>
                         <field name="date_end"/>
-                        <field name="date_roi"/>
-                        <field name="balance_today"/>
+                        <field name="date_roi" attrs="{'invisible':[('date_start','=',False)]}"/>
+                        <field name="balance_today" attrs="{'invisible':[('date_start','=',False)]}"/>
                     </group>
-                    <field name="line_ids" context="{'default_qty':1, 'default_currency_id':1}">
+                    <group>
+                        <field name="set_id" attrs="{'invisible':[('date_start','=',False)]}"/>
+                    </group>
+                    <field name="line_ids" context="{'default_qty':1, 'default_currency_id':1, 'default_date_init':date_start}" attrs="{'invisible':[('date_start','=',False)]}">
                         <tree editable="bottom">
                             <field name="sequence" widget="handle"/>
                             <field name="name" required="1"/>
