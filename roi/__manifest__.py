@@ -30,6 +30,7 @@
     "depends": [
         'sale_management',
         'contract',
+        'base_automation',
     ],
     "data": [
         "views/roi_set.xml",
