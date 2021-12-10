@@ -2,12 +2,12 @@
 <odoo>
     <data>
 
-        <record id="scrap_unbuild_sequence" model="ir.sequence">
-            <field name="name">Unbuild Sequence</field>
-            <field name="prefix">IDR</field>
-            <field name="padding">3</field>
+        <record id="roi_sequence" model="ir.sequence">
+            <field name="name">ROI Sequence</field>
+            <field name="prefix">ROI</field>
+            <field name="padding">4</field>
             <field name="number_increment">1</field>
-            <field name="code">scrap.unbuild</field>
+            <field name="code">roi.sequence</field>
             <field name="implementation">no_gap</field>
         </record>
 
