@@ -33,11 +33,11 @@
     ],
     "data": [
         #"views/product.xml",
-        #"views/menu_views.xml",
+        "views/menu_views.xml",
         #"views/res_company.xml",
         #"data/action_server.xml",
         #"data/sequence.xml",
-        #"security/ir.model.access.csv",
+        "security/ir.model.access.csv",
     ],
     "installable": True,
 }
