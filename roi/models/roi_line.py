@@ -65,6 +65,7 @@ class RoiLine(models.Model):
     )
     periodicity_months = fields.Integer(string='Periodicity')
     currency_id = fields.Many2one('res.currency', string='Currency', )
+    qty = fields.Integer(string="Qty")
     amount = fields.Monetary(string="Amount",currency_field='currency_id')
     agregate = fields.Monetary(string="Agregate", currency_field='currency_id')
     sequence = fields.Integer(string="Sequence")
