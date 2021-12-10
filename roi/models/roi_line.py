@@ -20,27 +20,6 @@
 ##############################################################################
 from odoo import api, fields, models, _
 
-MONTHS = [
-    ('1', 'January'),
-    ('2', 'February'),
-    ('3', 'March'),
-    ('4', 'April'),
-    ('5', 'May'),
-    ('6', 'June'),
-    ('7', 'Junly'),
-    ('8', 'August'),
-    ('9', 'September'),
-    ('10', 'October'),
-    ('11', 'November'),
-    ('12', 'December'),
-]
-TYPE = [
-    ('unique', 'Unique'),
-    ('monthly', 'Monthly'),
-    ('quarted', 'Quarted'),
-    ('anual', 'Anual'),
-]
-
 class RoiLine(models.Model):
     _name = "roi.line"
     _description = "ROI line"
@@ -57,15 +36,10 @@ class RoiLine(models.Model):
         related='roi_id.contract_id',
         string='Contract',
     )
-    month_start = fields.Selection(
-        selection=MONTHS, string="Start month", default='january',
-    )
-    type = fields.Selection(
-        selection=TYPE, string="Type", default='unique',
-    )
+    date_init = fields.Date(string='Start')
     periodicity_months = fields.Integer(string='Periodicity')
-    currency_id = fields.Many2one('res.currency', string='Currency', )
-    qty = fields.Integer(string="Qty")
+    currency_id = fields.Many2one('res.currency', string='Currency')
+    qty = fields.Float(string="Quantity")
     amount = fields.Monetary(string="Amount",currency_field='currency_id')
     agregate = fields.Monetary(string="Agregate", currency_field='currency_id')
     sequence = fields.Integer(string="Sequence")

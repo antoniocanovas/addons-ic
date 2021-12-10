@@ -8,30 +8,31 @@
                     <h1>
                         <field name="name" required="1"/>
                     </h1>
-                    <group name="roi_group">
+                    <group name="roi_group" col="4">
                         <field name="date_start" required="1"/>
                         <field name="date_end"/>
                         <field name="date_roi"/>
                         <field name="balance_today"/>
                         <field name="sale_id"/>
-                        <field name="contract_id"/>
-                        <field name="currency_id"/>
                     </group>
                     <field name="line_ids" context="{'default_qty':1, 'default_currency_id':1}">
                         <tree editable="bottom">
                             <field name="sequence"/>
                             <field name="name" required="1"/>
                             <field name="qty" required="1"/>
-                            <field name="start_month"/>
+                            <field name="date_init"/>
                             <field name="amount" required="1"/>
                             <field name="periodicity_months" required="1"/>
-                            <field name="type"/>
                             <field name="agregate"/>
                             <field name="currency_id" invisible="1"/>
                             <field name="roi_id" invisible="1"/>
                         </tree>
                     </field>
-                    <group>
+                    <group name="roi_links" col="4">
+                        <field name="contract_id"/>
+                        <field name="currency_id"/>
+                    </group>
+                    <group name="roi_modification_data" col="4">
                         <field name="create_date"/>
                         <field name="create_uid"/>
                         <field name="write_date"/>
@@ -57,10 +58,10 @@
             <tree>
                 <field name="name"/>
                 <field name="partner_id" widget="many2many_tags"/>
-                <field name="date_start" widget="date"/>
-                <field name="date_end" widget="date"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
                 <field name="balance_today"/>
-                <field name="date_roi" widget="date"/>
+                <field name="date_roi"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>

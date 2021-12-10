@@ -38,13 +38,16 @@ class Roi(models.Model):
         'contract.contract',
         string='Contract',
     )
-    date_start = fields.Datetime(string='Start date')
-    date_end = fields.Datetime(string='End date')
+    date_start = fields.Date(string='Start date')
+    date_end = fields.Date(string='End date')
 
     def get_date_roi(self):
         for record in self:
             record.date_roi = False
-    date_roi = fields.Datetime(string='Start date', compute='get_date_roi')
+    date_roi = fields.Date(string='ROI date', compute='get_date_roi')
     currency_id = fields.Many2one('res.currency', string='Currency')
-    balance_today = fields.Monetary(string='Balance', currency_field='currency_id')
+    def get_balance_today(self):
+        for record in self:
+            record.balance_today = 3.3
+    balance_today = fields.Monetary(string='Balance', currency_field='currency_id', compute='get_balance_today', store=False)
     line_ids = fields.One2many('roi.line','roi_id', string='Roi Line')
