@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="AC Property search view">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realstate/views/views_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/realstate/views/views_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pos_retail_standard/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pos_retail_standard/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/models/roi.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/models/roi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/models/roi_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/models/roi_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/models/roi_set.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/models/roi_set.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/models/roi_set_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/models/roi_set_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/views/product.xml" beforeDir="false" afterPath="$PROJECT_DIR$/roi/views/roi_set.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/views/res_company.xml" beforeDir="false" afterPath="$PROJECT_DIR$/roi/views/roi.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +28,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1w2XMqktEMEYJVK2HcR2h9F7e4P" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -30,6 +40,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -88,7 +99,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Bug an others AC" />

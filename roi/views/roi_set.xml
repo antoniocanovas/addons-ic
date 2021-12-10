@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="roi_set_default_form_view" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>
+                        <field name="name" required="1"/>
+                    </h1>
+                    <field name="line_ids" context="{'default_qty':1, 'default_currency_id':1}">
+                        <tree editable="bottom">
+                            <field name="name" required="1"/>
+                            <field name="qty" required="1"/>
+                            <field name="amount" required="1"/>
+                            <field name="periodicity_months" required="1"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="set_id" invisible="1"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">roi.set</field>
+        <field name="name">Default form view for ROI set</field>
+        <field name="priority">16</field>
+        <field name="type">form</field>
+    </record>
+
+    <record id="roi_set_tree" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="line_ids" widget="many2many_tags"/>
+                <field name="create_date" widget="date"/>
+                <field name="write_date" widget="date"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">roi.set</field>
+        <field name="name">Default tree view for ROI set</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
+    </record>
+
+</odoo>

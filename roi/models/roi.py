@@ -25,7 +25,11 @@ class Roi(models.Model):
     _name = "roi"
     _description = "Return of investment"
 
-    name = fields.Char(string='Name')
+    name = fields.Char(string='Name', required=True)
+    partner_id = fields.Many2one(
+        'res.partner',
+        string='Contact',
+    )
     sale_id = fields.Many2one(
         'sale.order',
         string='Sale',

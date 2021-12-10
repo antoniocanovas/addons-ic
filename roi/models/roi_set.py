@@ -29,5 +29,5 @@ class RoiSet(models.Model):
     line_ids = fields.One2many(
         'roi.set.line',
         'set_id',
-        string='ROI Set line',
+        string='Set line',
     )

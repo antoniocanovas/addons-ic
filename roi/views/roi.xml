@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="roi_default_form_view" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>
+                        <field name="name" required="1"/>
+                    </h1>
+                    <group name="roi_group">
+                        <field name="date_start" required="1"/>
+                        <field name="date_end"/>
+                        <field name="date_roi"/>
+                        <field name="balance_today"/>
+                        <field name="sale_id"/>
+                        <field name="contract_id"/>
+                        <field name="currency_id"/>
+                    </group>
+                    <field name="line_ids" context="{'default_qty':1, 'default_currency_id':1}">
+                        <tree editable="bottom">
+                            <field name="sequence"/>
+                            <field name="name" required="1"/>
+                            <field name="qty" required="1"/>
+                            <field name="start_month"/>
+                            <field name="amount" required="1"/>
+                            <field name="periodicity_months" required="1"/>
+                            <field name="type"/>
+                            <field name="agregate"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="roi_id" invisible="1"/>
+                        </tree>
+                    </field>
+                    <group>
+                        <field name="create_date"/>
+                        <field name="create_uid"/>
+                        <field name="write_date"/>
+                        <field name="create_uid"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">roi</field>
+        <field name="name">Default form view for ROI</field>
+        <field name="priority">16</field>
+        <field name="type">form</field>
+    </record>
+
+    <record id="roi_tree" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="partner_id" widget="many2many_tags"/>
+                <field name="date_start" widget="date"/>
+                <field name="date_end" widget="date"/>
+                <field name="balance_today"/>
+                <field name="date_roi" widget="date"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">roi</field>
+        <field name="name">Default tree view for ROI</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
+    </record>
+
+</odoo>

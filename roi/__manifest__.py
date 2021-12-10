@@ -32,9 +32,9 @@
         'contract',
     ],
     "data": [
-        #"views/product.xml",
+        #"views/roi_set.xml",
         "views/menu_views.xml",
-        #"views/res_company.xml",
+        #"views/roi.xml",
         #"data/action_server.xml",
         #"data/sequence.xml",
         "security/ir.model.access.csv",

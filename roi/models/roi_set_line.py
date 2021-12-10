@@ -29,8 +29,9 @@ class RoiSetLine(models.Model):
         'roi.set',
         string='ROI set',
     )
-    periodicity_month = fields.Integer(string='Periodicity')
+    periodicity_months = fields.Integer(string='Periodicity (months)')
     currency_id = fields.Many2one('res.currency', string='Currency')
     amount = fields.Monetary(string="Amount", currency_field='currency_id')
     qty = fields.Integer(string='Quantity')
     name = fields.Char(string='Name')
+    sequence = fields.Integer(string="Sequence")
