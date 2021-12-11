@@ -49,5 +49,26 @@ class RoiLine(models.Model):
     currency_id = fields.Many2one('res.currency', string='Currency')
     qty = fields.Float(string="Quantity")
     amount = fields.Monetary(string="Amount",currency_field='currency_id')
-    agregate = fields.Monetary(string="Agregate", currency_field='currency_id')
+    def get_agregate_roi_line(self):
+        for record in self:
+            total, today = 0, datetime.date.today()
+            if record.date_init < today + datetime.timedelta(days=+1):
+                mtoday = ((today.year - 2001) * 12) + today.month
+                start = record.date_init
+                mstart = ((start.year - 2001) * 12) + start.month
+                dif = mtoday - mstart + 1
+                if record.type == 'unique':
+                    total += record.qty * record.amount
+                elif record.type == 'monthly':
+                    total += record.qty * record.amount * dif
+                elif record.type == 'quarted':
+                    total += record.qty * record.amount * round(dif / 3 + 0.5, 0)
+                else:
+                    total += record.qty * record.amount * round(dif / 12 + 0.5, 0)
+            record.agregate = total
+    agregate = fields.Monetary(string="Agregate", compute='get_agregate_roi_line', currency_field='currency_id', store=False)
+    date_roi = fields.Date(string='ROI date', compute='get_date_roi')
+
+
+
     sequence = fields.Integer(string="Sequence")

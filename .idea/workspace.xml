@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="AC Property search view">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="UPDATE Sequence (not used)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pos_retail_standard/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pos_retail_standard/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roi/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/__manifest__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/roi/models/roi.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/models/roi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/roi/models/roi_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/models/roi_line.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roi/models/roi_set.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/models/roi_set.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roi/models/roi_set_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/models/roi_set_line.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roi/views/product.xml" beforeDir="false" afterPath="$PROJECT_DIR$/roi/views/roi_set.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roi/views/res_company.xml" beforeDir="false" afterPath="$PROJECT_DIR$/roi/views/roi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/views/roi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/roi/views/roi.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +81,77 @@
       <option name="project" value="LOCAL" />
       <updated>1627723476283</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ROI ACP1">
+      <created>1639152934103</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1639152934103</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ROI ACP1 manifest">
+      <created>1639153253569</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1639153253569</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ROI ACP1 line qty">
+      <created>1639153431591</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1639153431591</updated>
+    </task>
+    <task id="LOCAL-00009" summary="ROI ACP2">
+      <created>1639155336537</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1639155336537</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ROI ACP3">
+      <created>1639156461384</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1639156461384</updated>
+    </task>
+    <task id="LOCAL-00011" summary="ROI ACP4 bug">
+      <created>1639156904885</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1639156904885</updated>
+    </task>
+    <task id="LOCAL-00012" summary="ROI set_id">
+      <created>1639157516489</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1639157516489</updated>
+    </task>
+    <task id="LOCAL-00013" summary="ROI set_id automation">
+      <created>1639158704444</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1639158704444</updated>
+    </task>
+    <task id="LOCAL-00014" summary="ROI set_id action_server file">
+      <created>1639159110822</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1639159110822</updated>
+    </task>
+    <task id="LOCAL-00015" summary="UPDATE Sequence (not used)">
+      <created>1639159264804</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1639159264804</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,6 +171,16 @@
     <MESSAGE value="AC3" />
     <MESSAGE value="AC4 títulos de imágenes en propiedades" />
     <MESSAGE value="AC Property search view" />
-    <option name="LAST_COMMIT_MESSAGE" value="AC Property search view" />
+    <MESSAGE value="ROI ACP1" />
+    <MESSAGE value="ROI ACP1 manifest" />
+    <MESSAGE value="ROI ACP1 line qty" />
+    <MESSAGE value="ROI ACP2" />
+    <MESSAGE value="ROI ACP3" />
+    <MESSAGE value="ROI ACP4 bug" />
+    <MESSAGE value="ROI set_id" />
+    <MESSAGE value="ROI set_id automation" />
+    <MESSAGE value="ROI set_id action_server file" />
+    <MESSAGE value="UPDATE Sequence (not used)" />
+    <option name="LAST_COMMIT_MESSAGE" value="UPDATE Sequence (not used)" />
   </component>
 </project>
