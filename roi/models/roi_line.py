@@ -68,8 +68,5 @@ class RoiLine(models.Model):
                     total += record.qty * record.amount * round(dif / 12 + 0.5, 0)
             record.agregate = total
     agregate = fields.Monetary(string="Agregate", compute='get_agregate_roi_line', currency_field='currency_id', store=False)
-    date_roi = fields.Date(string='ROI date', compute='get_date_roi')
-
-
 
     sequence = fields.Integer(string="Sequence")
