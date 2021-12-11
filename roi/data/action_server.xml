@@ -22,7 +22,7 @@ for li in record.set_id.line_ids:
 
     <record id="roi_update_general" model="base.automation">
             <field name="name">=> Update ROI (General)</field>
-            <field name="model_id" ref="roi"/>
+            <field name="model_id" ref="model_roi"/>
             <field name="state">code</field>
             <field name="code">
 total, date, lines, linesdelete, lidic = 0, datetime.date.today(), [], [], {}
