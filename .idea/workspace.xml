@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="rename menus" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="import datetime">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/models/roi_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/models/roi_line.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -167,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639240595836</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="import datetime">
+      <created>1639241501529</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1639241501529</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -200,6 +210,7 @@
     <MESSAGE value="User_id &amp; compute in agregate" />
     <MESSAGE value="roi agregate compute" />
     <MESSAGE value="rename menus" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename menus" />
+    <MESSAGE value="import datetime" />
+    <option name="LAST_COMMIT_MESSAGE" value="import datetime" />
   </component>
 </project>
