@@ -20,7 +20,6 @@
 ##############################################################################
 from odoo import api, fields, models, _
 
-
 class Roi(models.Model):
     _name = "roi"
     _description = "Return of investment"
