@@ -49,7 +49,7 @@ while (total not &gt; 0) and (lines != []):
         total += li.qty * li.amount
         next_month = nextquarter.month +3
         yearq = nextquarter.year
-        if next_month > 12:
+        if next_month &gt; 12:
           next_month = next_month -12
           yearq = yearq +1
         dq = datetime.datetime(year=yearq, month=next_month,day=nextquarter.day).date()
