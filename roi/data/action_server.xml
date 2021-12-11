@@ -25,49 +25,8 @@ for li in record.set_id.line_ids:
             <field name="model_id" ref="model_roi"/>
             <field name="state">code</field>
             <field name="code">
-total, date, lines, linesdelete, lidic = 0, datetime.date.today(), [], [], {}
+#CODE:
 
-  # First date, LINES y NEXTED DICTIONARY:
-for li in record.line_ids:
-  lines.append(li)
-  lidic[li.id]={'nextquarter':date, 'nextyear':date}
-  if (li.date_init &lt; date):
-    date = li.date_init
-
-# Minimum date:
-while (total not &gt; 0) and (lines != []):
-  for li in lines:
-    nextquarter = lidic[li.id]['nextquarter']
-    nextyear    = lidic[li.id]['nextyear']
-    if (li.date_init not &gt; date):
-      if li.type == 'unique':
-        total += li.qty * li.amount
-        linesdelete.append(li)
-      elif (li.type == 'monthly'):
-        total += li.qty * li.amount
-      elif (li.type == 'quarted') and (nextquarter not &gt; date):
-        total += li.qty * li.amount
-        next_month = nextquarter.month +3
-        yearq = nextquarter.year
-        if next_month &gt; 12:
-          next_month = next_month -12
-          yearq = yearq +1
-        dq = datetime.datetime(year=yearq, month=next_month,day=nextquarter.day).date()
-        lidic[li.id]['nextquarter'] = dq
-      elif (li.type == 'anual') and (nextyear not &gt; date):
-        total += li.qty * li.amount
-        dy = datetime.datetime(year=nextyear +1, month=nextyear.month,day=nextyear.day).date()
-        lidic[li.id]['nextyear'] = dy
-
-  for li in linesdelete:
-    lines.remove(li)
-  linesdelete = []
-
-  if total &lt; 0:
-    date = date + datetime.timedelta(days=31)
-    date = datetime.date(year=date.year, month=date.month, day=1)
-  else:
-    record['date_roi'] = date
             </field>
             <field name="trigger">on_create_or_write</field>
             <field name="filter_pre_domain"></field>
