@@ -52,9 +52,8 @@ class RoiLine(models.Model):
     amount = fields.Monetary(string="Amount",currency_field='currency_id')
     def get_agregate_roi_line(self):
         for record in self:
-            total = 0
-            today = datetime.date.today()
-            if record.date_init < today + datetime.timedelta(days=+1):
+            total, today = 0, date.today()
+            if record.date_init <= tomorrow:
                 mtoday = ((today.year - 2001) * 12) + today.month
                 start = record.date_init
                 mstart = ((start.year - 2001) * 12) + start.month
