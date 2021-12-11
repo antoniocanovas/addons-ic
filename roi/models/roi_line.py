@@ -19,7 +19,6 @@
 #
 ##############################################################################
 from odoo import api, fields, models, _
-from datetime import datetime, date, timedelta
 
 TYPE = [
     ('unique', 'Unique'),
@@ -53,6 +52,7 @@ class RoiLine(models.Model):
     def get_agregate_roi_line(self):
         for record in self:
             total = 0
+<!--
             today = datetime.date.today()
             if record.date_init < today + datetime.timedelta(days=+1):
                 mtoday = ((today.year - 2001) * 12) + today.month
@@ -67,6 +67,7 @@ class RoiLine(models.Model):
                     total += record.qty * record.amount * round(dif / 3 + 0.5, 0)
                 else:
                     total += record.qty * record.amount * round(dif / 12 + 0.5, 0)
+-->
             record.agregate = total
     agregate = fields.Monetary(string="Agregate", compute='get_agregate_roi_line', currency_field='currency_id', store=False)
     date_roi = fields.Date(string='ROI date', compute='get_date_roi')
