@@ -56,7 +56,7 @@ class Roi(models.Model):
     def get_balance_today(self):
         for record in self:
             total = 0
-            for li in record.line_ids.ids:
+            for li in record.line_ids:
                 total += li.agregate
             record.balance_today = total
     balance_today = fields.Monetary(string='Balance', currency_field='currency_id', compute='get_balance_today', store=False)
