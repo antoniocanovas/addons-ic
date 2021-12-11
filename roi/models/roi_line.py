@@ -53,7 +53,7 @@ class RoiLine(models.Model):
     def get_agregate_roi_line(self):
         for record in self:
             total, today = 0, date.today()
-            if record.date_init <= tomorrow:
+            if record.date_init <= today:
                 mtoday = ((today.year - 2001) * 12) + today.month
                 start = record.date_init
                 mstart = ((start.year - 2001) * 12) + start.month
