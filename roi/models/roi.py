@@ -47,7 +47,7 @@ class Roi(models.Model):
     )
     date_start = fields.Date(string='Start date')
     date_end = fields.Date(string='End date')
-    date_roi = fields.Date(string='ROI date', 'store':True, 'readonly':True)
+    date_roi = fields.Date(string='ROI date', 'store'=True, 'readonly'=True)
 
     def get_balance_today(self):
         for record in self:
