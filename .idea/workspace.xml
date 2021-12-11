@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="User_id &amp; compute in agregate">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="roi agregate compute">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/roi/views/menu_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/views/roi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/roi/views/roi.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639239287328</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="roi agregate compute">
+      <created>1639240063327</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1639240063327</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -186,6 +195,7 @@
     <MESSAGE value="ROI set_id action_server file" />
     <MESSAGE value="UPDATE Sequence (not used)" />
     <MESSAGE value="User_id &amp; compute in agregate" />
-    <option name="LAST_COMMIT_MESSAGE" value="User_id &amp; compute in agregate" />
+    <MESSAGE value="roi agregate compute" />
+    <option name="LAST_COMMIT_MESSAGE" value="roi agregate compute" />
   </component>
 </project>

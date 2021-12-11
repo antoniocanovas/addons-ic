@@ -8,15 +8,16 @@
                     <h1>
                         <field name="name" required="1"/>
                     </h1>
-                    <group name="roi_group" col="4">
+                    <group name="roi_group">
                         <group>
                             <field name="partner_id" required="1"/>
                             <field name="user_id"/>
+                            <field name="balance_today"/>
                         </group>
                         <group>
                             <field name="date_start" required="1"/>
                             <field name="date_end"/>
-                            <field name="date_roi" attrs="{'invisible':[('date_start','=',False)]}"/>
+                            <field name="date_roi"/>
                         </group>
                     </group>
                     <group>

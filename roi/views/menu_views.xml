@@ -41,7 +41,7 @@
         <field name="action" ref="action_roi"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
-        <field name="name">ROI</field>
+        <field name="name">Estimations</field>
         <field name="parent_id" ref="menu_roi"/>
         <field name="sequence">1</field>
         <field name="web_icon" eval="False"/>
@@ -51,7 +51,7 @@
         <field name="action" ref="action_set"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
-        <field name="name">ROI Set</field>
+        <field name="name">Templates</field>
         <field name="parent_id" ref="menu_roi"/>
         <field name="sequence">2</field>
         <field name="web_icon" eval="False"/>
