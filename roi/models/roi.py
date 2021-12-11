@@ -53,9 +53,14 @@ class Roi(models.Model):
         for record in self:
             record.date_roi = False
     date_roi = fields.Date(string='ROI date', compute='get_date_roi')
+
     def get_balance_today(self):
         for record in self:
-            record.balance_today = 3.3
+            total = 0
+            for li in record.line_ids.ids:
+                total += li.agregate
+            record.balance_today = total
+    balance_today = fields.Monetary(string='Balance', currency_field='currency_id', compute='get_balance_today', store=False)
 
     line_ids = fields.One2many('roi.line', 'roi_id', string='Roi Line')
     currency_id = fields.Many2one('res.currency', string='Currency')
