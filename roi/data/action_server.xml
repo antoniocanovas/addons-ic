@@ -68,7 +68,7 @@ while ((total &lt; 0) and (len(lines) != 0)) or (firsttime == True):
     date = datetime.date(year=date.year, month=date.month, day=1)
     counter += 1
     if counter == 600:
-      raise Warning('Please review, ROI bigger than 50 years')
+      raise Warning('Please review, ROI over 50 years')
   else:
     record['date_roi'] = date
             </field>
