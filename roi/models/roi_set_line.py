@@ -38,7 +38,7 @@ class RoiSetLine(models.Model):
     type = fields.Selection(
         selection=TYPE, string="Type", default='unique',
     )
-    currency_id = fields.Many2one('res.currency', string='Currency')
+    currency_id = fields.Many2one('res.currency', string='Currency', default=1)
     amount = fields.Monetary(string="Amount", currency_field='currency_id')
     qty = fields.Integer(string='Quantity')
     name = fields.Char(string='Name')

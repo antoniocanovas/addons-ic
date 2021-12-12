@@ -13,7 +13,7 @@
                             <field name="sequence" widget="handle"/>
                             <field name="name" required="1"/>
                             <field name="qty" required="1"/>
-                            <field name="amount" required="1"/>
+                            <field name="amount" required="1" widget="monetary"/>
                             <field name="type" required="1"/>
                             <field name="currency_id" invisible="1"/>
                             <field name="set_id" invisible="1"/>

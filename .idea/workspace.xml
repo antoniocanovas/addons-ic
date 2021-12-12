@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="AA">
-      <change beforePath="$PROJECT_DIR$/roi/data/action_server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/roi/data/action_server.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/models/roi.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/models/roi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/models/roi_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/models/roi_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/models/roi_set_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/roi/models/roi_set_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/views/roi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/roi/views/roi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roi/views/roi_set.xml" beforeDir="false" afterPath="$PROJECT_DIR$/roi/views/roi_set.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +279,21 @@
       <option name="project" value="LOCAL" />
       <updated>1639323506635</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="AA">
+      <created>1639325462939</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1639325462939</updated>
+    </task>
+    <task id="LOCAL-00035" summary="AA">
+      <created>1639325608813</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1639325608813</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

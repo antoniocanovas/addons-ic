@@ -47,7 +47,7 @@ class RoiLine(models.Model):
         selection=TYPE, string="Type", default='unique',
     )
     date_init = fields.Date(string='Start')
-    currency_id = fields.Many2one('res.currency', string='Currency')
+    currency_id = fields.Many2one('res.currency', string='Currency', default=1)
     qty = fields.Float(string="Quantity")
     amount = fields.Monetary(string="Amount",currency_field='currency_id')
     def get_agregate_roi_line(self):
