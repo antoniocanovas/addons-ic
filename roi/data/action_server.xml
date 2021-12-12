@@ -5,7 +5,6 @@
             <field name="model_id" ref="model_roi"/>
             <field name="state">code</field>
             <field name="code">
-# CODE:
 record.line_ids.unlink()
 for li in record.set_id.line_ids:
   newline = env['roi.line'].create({'name':li.name, 'date_init':record.date_start, 'qty':li.qty,
@@ -34,18 +33,18 @@ for li in record.line_ids:
   if (li.date_init &lt; date):
     date = li.date_init
 
-# Minimum date:
-while (total not &gt; 0) and (lines != []):
+# Main compute:
+while (total &lt; 0) and (len(lines) != 0):
   for li in lines:
     nextquarter = lidic[li.id]['nextquarter']
     nextyear    = lidic[li.id]['nextyear']
-    if (li.date_init not &gt; date):
+    if (li.date_init &lt; date) or (li.date_init == date):
       if li.type == 'unique':
         total += li.qty * li.amount
         linesdelete.append(li)
       elif (li.type == 'monthly'):
         total += li.qty * li.amount
-      elif (li.type == 'quarted') and (nextquarter not &gt; date):
+      elif (li.type == 'quarted') and (nextquarter &lt; date) or (li.type == 'quarted') and (nextquarter == date):
         total += li.qty * li.amount
         next_month = nextquarter.month +3
         yearq = nextquarter.year
@@ -54,7 +53,7 @@ while (total not &gt; 0) and (lines != []):
           yearq = yearq +1
         dq = datetime.datetime(year=yearq, month=next_month,day=nextquarter.day).date()
         lidic[li.id]['nextquarter'] = dq
-      elif (li.type == 'anual') and (nextyear not &gt; date):
+      elif (li.type == 'anual') and (nextyear &lt; date) or (li.type == 'anual') and (nextyear == date):
         total += li.qty * li.amount
         dy = datetime.datetime(year=nextyear +1, month=nextyear.month,day=nextyear.day).date()
         lidic[li.id]['nextyear'] = dy
