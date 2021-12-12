@@ -12,7 +12,7 @@
                         <group>
                             <field name="partner_id" required="1"/>
                             <field name="user_id"/>
-                            <field name="balance_today" widget="monetary"/>
+                            <field name="balance_global" widget="monetary"/>
                         </group>
                         <group>
                             <field name="date_start" required="1"/>
@@ -31,7 +31,7 @@
                             <field name="qty" required="1"/>
                             <field name="amount" required="1" widget="monetary"/>
                             <field name="type" required="1"/>
-                            <field name="agregate" widget="monetary"/>
+                            <field name="agregate" sum="Today" widget="monetary"/>
                             <field name="currency_id" invisible="1"/>
                             <field name="roi_id" invisible="1"/>
                         </tree>

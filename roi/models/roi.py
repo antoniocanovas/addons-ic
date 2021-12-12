@@ -57,5 +57,6 @@ class Roi(models.Model):
             record.balance_today = total
     balance_today = fields.Monetary(string='Balance', currency_field='currency_id', compute='get_balance_today', store=False)
 
+    balance_global = fields.Monetary(string='Margin', currency_field='currency_id', store=True, readonly=True)
     line_ids = fields.One2many('roi.line', 'roi_id', string='Roi Line')
     currency_id = fields.Many2one('res.currency', string='Currency', default=1)

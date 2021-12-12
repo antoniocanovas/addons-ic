@@ -24,7 +24,8 @@ for li in record.set_id.line_ids:
             <field name="model_id" ref="model_roi"/>
             <field name="state">code</field>
             <field name="code">
-total, date, lines, linesdelete, lidic, firsttime, counter = 0, datetime.date.today(), [], [], {}, True, 0
+margin, total, date, lines, linesdelete, lidic, firsttime, counter = 0, 0, datetime.date.today(), [], [], {}, True, 0
+mend = ((record.date_end.year -2001) * 12) + record.date_end.month
 
   # First date, LINES y NEXTED DICTIONARY:
 for li in record.line_ids:
@@ -32,6 +33,17 @@ for li in record.line_ids:
   lidic[li.id]={'nextquarter':date, 'nextyear':date}
   if (li.date_init &lt; date):
     date = li.date_init
+  # Global MARGIN:
+  mstart = ((li.date_init.year -2001) * 12) + li.date_init.month
+  dif = mend - mstart +1
+  if li.type == 'unique':
+    margin += li.qty * li.amount
+  elif li.type == 'monthly':
+    margin += li.qty * li.amount * dif
+  elif li.type == 'quarted':
+    margin += li.qty * li.amount * round(dif/3 + 0.5,0)
+  else:
+    margin += li.qty * li.amount * round(dif/12 + 0.5,0)
 
 # Main compute:
 while ((total &lt; 0) and (len(lines) != 0)) or (firsttime == True):
@@ -70,7 +82,7 @@ while ((total &lt; 0) and (len(lines) != 0)) or (firsttime == True):
     if counter == 600:
       raise Warning('Please review, ROI over 50 years')
   else:
-    record['date_roi'] = date
+    record.write({'date_roi':date, 'balance_global':margin})
             </field>
             <field name="trigger">on_create_or_write</field>
             <field name="filter_pre_domain"></field>
