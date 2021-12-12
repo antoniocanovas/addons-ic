@@ -24,7 +24,7 @@ for li in record.set_id.line_ids:
             <field name="model_id" ref="model_roi"/>
             <field name="state">code</field>
             <field name="code">
-total, date, lines, linesdelete, lidic = 0, datetime.date.today(), [], [], {}
+total, date, lines, linesdelete, lidic, firsttime, counter = 0, datetime.date.today(), [], [], {}, True, 0
 
   # First date, LINES y NEXTED DICTIONARY:
 for li in record.line_ids:
@@ -34,7 +34,8 @@ for li in record.line_ids:
     date = li.date_init
 
 # Main compute:
-while (total &lt; 0) and (len(lines) != 0):
+while ((total &lt; 0) and (len(lines) != 0)) or (firsttime == True):
+  firsttime = False
   for li in lines:
     nextquarter = lidic[li.id]['nextquarter']
     nextyear    = lidic[li.id]['nextyear']
@@ -65,6 +66,9 @@ while (total &lt; 0) and (len(lines) != 0):
   if total &lt; 0:
     date = date + datetime.timedelta(days=31)
     date = datetime.date(year=date.year, month=date.month, day=1)
+    counter += 1
+    if counter == 600:
+      raise Warning('Please review, ROI bigger than 50 years')
   else:
     record['date_roi'] = date
             </field>
