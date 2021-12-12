@@ -12,11 +12,12 @@
                         <group>
                             <field name="partner_id" required="1"/>
                             <field name="user_id"/>
-                            <field name="date_roi"/>
+                            <field name="balance_today"/>
                         </group>
                         <group>
                             <field name="date_start" required="1"/>
                             <field name="date_end"/>
+                            <field name="date_roi"/>
                         </group>
                     </group>
                     <group>
