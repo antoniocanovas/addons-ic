@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="roi_user" model="res.groups">
+        <field name="name">ROI User</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="rule_groups" eval="[(4, ref('roi_rois_user_acces'))]"/>
+    </record>
+
+    <record id="roi_admin" model="res.groups">
+        <field name="name">ROI Admin</field>
+        <field name="implied_ids" eval="[(4, ref('roi.roi_user'))]"/>
+        <field name="rule_groups" eval="[(4, ref('roi_rois_admin_acces'))]"/>
+    </record>
+
+</odoo>

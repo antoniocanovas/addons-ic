@@ -1,22 +1,9 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #    License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
-#    Copyright (C) 2020 Comunitea Servicios Tecnológicos S.L. All Rights Reserved
-#    Vicente Ángel Gutiérrez Fernández <vicente@comunitea.com>
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published
-#    by the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
+#    Copyright (C) 2021 Serincloud S.L. All Rights Reserved
+#    Antonio Cánovas <antonio.canovas@ingenieriacloud.com>
+#    Pedro josé Baños Guirao <pedro@serincloud.com>
 ##############################################################################
 from odoo import api, fields, models, _
 from datetime import datetime, date, timedelta
@@ -27,6 +14,8 @@ TYPE = [
     ('quarted', 'Quarted'),
     ('anual', 'Anual'),
 ]
+
+
 class RoiLine(models.Model):
     _name = "roi.line"
     _description = "ROI line"
@@ -50,6 +39,7 @@ class RoiLine(models.Model):
     currency_id = fields.Many2one('res.currency', string='Currency', default=1)
     qty = fields.Float(string="Quantity")
     amount = fields.Monetary(string="Amount",currency_field='currency_id')
+
     def get_agregate_roi_line(self):
         for record in self:
             total, today = 0, date.today()

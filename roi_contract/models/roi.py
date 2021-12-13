@@ -8,13 +8,10 @@
 from odoo import api, fields, models, _
 
 
-class RoiSet(models.Model):
-    _name = "roi.set"
-    _description = "ROI Set"
+class Roi(models.Model):
+    _inherit = 'roi'
 
-    name = fields.Char(string='Name')
-    line_ids = fields.One2many(
-        'roi.set.line',
-        'set_id',
-        string='Set line',
+    contract_id = fields.Many2one(
+        'contract.contract',
+        string='Contract',
     )

@@ -7,7 +7,7 @@
 ##############################################################################
 
 {
-    "name": "ROI",
+    "name": "ROI Sale Crm",
     "version": "14.0.1.0.0",
     "category": "Sales",
     "author": "www.serincloud.com",
@@ -15,18 +15,15 @@
     "website": "www.serincloud.com",
     "license": "AGPL-3",
     "depends": [
-        'sale_management',
-        'contract',
-        'base_automation',
+        'roi',
+        'sale',
+        'crm',
     ],
     "data": [
-        "views/roi_set.xml",
-        "views/menu_views.xml",
+        #"views/roi_set.xml",
+        #"views/menu_views.xml",
         "views/roi.xml",
-        "data/action_server.xml",
-        "data/default_rules.xml",
-        "security/user_groups.xml",
-        "security/ir.model.access.csv",
+        #"security/ir.model.access.csv",
 
     ],
     "installable": True,

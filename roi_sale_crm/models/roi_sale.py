@@ -8,13 +8,14 @@
 from odoo import api, fields, models, _
 
 
-class RoiSet(models.Model):
-    _name = "roi.set"
-    _description = "ROI Set"
+class SaleOrder(models.Model):
+    _inherit = "sale.order"
 
-    name = fields.Char(string='Name')
-    line_ids = fields.One2many(
-        'roi.set.line',
-        'set_id',
-        string='Set line',
+    roi_ids = fields.One2many(
+        'roi',
+        'sale_id',
+        string='Roi(s)',
     )
+
+
+

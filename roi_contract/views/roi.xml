@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="inh_contract_roi_default_form_view" model="ir.ui.view">
+        <field name="name">Contract ROI form view inh</field>
+        <field name="model">roi</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="roi.roi_default_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='roi_links']" position="inside">
+                <field name="contract_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="inh_contract_contract_form_view_for_roi" model="ir.ui.view">
+        <field name="name">Contract ROI form view inh</field>
+        <field name="model">contract.contract</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="contract.contract_contract_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='recurring_invoicing_type']" position="after">
+                <field name="roi_id" domain="[('partner_id', '=', partner_id)]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

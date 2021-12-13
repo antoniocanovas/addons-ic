@@ -5,16 +5,21 @@
 #    Antonio Cánovas <antonio.canovas@ingenieriacloud.com>
 #    Pedro josé Baños Guirao <pedro@serincloud.com>
 ##############################################################################
-from odoo import api, fields, models, _
 
-
-class RoiSet(models.Model):
-    _name = "roi.set"
-    _description = "ROI Set"
-
-    name = fields.Char(string='Name')
-    line_ids = fields.One2many(
-        'roi.set.line',
-        'set_id',
-        string='Set line',
-    )
+{
+    "name": "ROI Contract",
+    "version": "14.0.1.0.0",
+    "category": "Sales",
+    "author": "www.serincloud.com",
+    "maintainer": "Pedroguirao",
+    "website": "www.serincloud.com",
+    "license": "AGPL-3",
+    "depends": [
+        'roi',
+        'contract',
+    ],
+    "data": [
+        "views/roi.xml",
+    ],
+    "installable": True,
+}

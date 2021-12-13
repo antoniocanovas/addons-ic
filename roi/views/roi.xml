@@ -37,8 +37,7 @@
                         </tree>
                     </field>
                     <group name="roi_links" col="4">
-                        <field name="sale_id"/>
-                        <field name="contract_id"/>
+
                     </group>
                     <group name="roi_modification_data" col="4">
                         <field name="create_date"/>
@@ -48,6 +47,11 @@
                         <field name="currency_id" invisible="1"/>
                     </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh':'recipients'}"/>
+                </div>
             </form>
         </field>
         <field name="field_parent" eval="False"/>

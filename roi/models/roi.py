@@ -1,27 +1,16 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #    License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
-#    Copyright (C) 2020 Comunitea Servicios Tecnológicos S.L. All Rights Reserved
-#    Vicente Ángel Gutiérrez Fernández <vicente@comunitea.com>
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published
-#    by the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
+#    Copyright (C) 2021 Serincloud S.L. All Rights Reserved
+#    Antonio Cánovas <antonio.canovas@ingenieriacloud.com>
+#    Pedro josé Baños Guirao <pedro@serincloud.com>
 ##############################################################################
 from odoo import api, fields, models, _
 
+
 class Roi(models.Model):
     _name = "roi"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "Return of investment"
 
     name = fields.Char(string='Name', required=True)
@@ -32,6 +21,7 @@ class Roi(models.Model):
     user_id = fields.Many2one(
         'res.users',
         string='Commercial',
+        default=lambda self: self.env.user,
     )
     set_id = fields.Many2one(
         'roi.set',
@@ -46,8 +36,8 @@ class Roi(models.Model):
         string='Contract',
     )
     date_start = fields.Date(string='Start date')
-    date_end = fields.Date(string='End date')
-    date_roi = fields.Date(string='ROI date', store=True, readonly=True)
+    date_end = fields.Date(string='End date', tracking=True)
+    date_roi = fields.Date(string='ROI date', tracking=True, store=True, readonly=True)
 
     def get_balance_today(self):
         for record in self:
@@ -57,6 +47,6 @@ class Roi(models.Model):
             record.balance_today = total
     balance_today = fields.Monetary(string='Balance', currency_field='currency_id', compute='get_balance_today', store=False)
 
-    balance_global = fields.Monetary(string='Margin', currency_field='currency_id', store=True, readonly=True)
+    balance_global = fields.Monetary(string='Margin', tracking=True, currency_field='currency_id', store=True, readonly=True)
     line_ids = fields.One2many('roi.line', 'roi_id', string='Roi Line')
     currency_id = fields.Many2one('res.currency', string='Currency', default=1)
