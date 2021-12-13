@@ -25,7 +25,9 @@ for li in record.set_id.line_ids:
             <field name="state">code</field>
             <field name="code">
 margin, total, date, lines, linesdelete, lidic, firsttime, counter = 0, 0, datetime.date.today(), [], [], {}, True, 0
-mend = ((record.date_end.year -2001) * 12) + record.date_end.month
+  # Dates:
+if (record.date_end) and ((record.date_end == record.date_start) or (record.date_end &lt; record.date_start)):
+  raise Warning('Review dates start an end.')
 
   # First date, LINES y NEXTED DICTIONARY:
 for li in record.line_ids:
@@ -33,17 +35,21 @@ for li in record.line_ids:
   lidic[li.id]={'nextquarter':date, 'nextyear':date}
   if (li.date_init &lt; date):
     date = li.date_init
+
   # Global MARGIN:
-  mstart = ((li.date_init.year -2001) * 12) + li.date_init.month
-  dif = mend - mstart +1
-  if li.type == 'unique':
-    margin += li.qty * li.amount
-  elif li.type == 'monthly':
-    margin += li.qty * li.amount * dif
-  elif li.type == 'quarted':
-    margin += li.qty * li.amount * round(dif/3 + 0.5,0)
-  else:
-    margin += li.qty * li.amount * round(dif/12 + 0.5,0)
+if record.date_end:
+  mend = ((record.date_end.year -2001) * 12) + record.date_end.month
+  for li in record.line_ids:
+    mstart = ((li.date_init.year -2001) * 12) + li.date_init.month
+    dif = mend - mstart +1
+    if li.type == 'unique':
+      margin += li.qty * li.amount
+    elif li.type == 'monthly':
+      margin += li.qty * li.amount * dif
+    elif li.type == 'quarted':
+      margin += li.qty * li.amount * round(dif/3 + 0.5,0)
+    else:
+      margin += li.qty * li.amount * round(dif/12 + 0.5,0)
 
 # Main compute:
 while ((total &lt; 0) and (len(lines) != 0)) or (firsttime == True):
