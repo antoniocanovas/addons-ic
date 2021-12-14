@@ -21,7 +21,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='recurring_invoicing_type']" position="after">
                 <field name="roi_id"
-                       context="{'default_partner_id':partner_id.id, 'default_contract_id':record.id}"
+                       context="{'default_partner_id':partner_id}"
                        domain="[('partner_id', '=', partner_id)]"
                 />
             </xpath>
