@@ -15,8 +15,6 @@
     "website": "www.serincloud.com",
     "license": "AGPL-3",
     "depends": [
-        'sale_management',
-        'contract',
         'base_automation',
     ],
     "data": [

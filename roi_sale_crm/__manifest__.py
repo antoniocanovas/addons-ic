@@ -16,7 +16,7 @@
     "license": "AGPL-3",
     "depends": [
         'roi',
-        'sale',
+        'sale_management',
         'crm',
     ],
     "data": [
