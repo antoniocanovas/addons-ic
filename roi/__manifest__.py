@@ -23,10 +23,10 @@
         "views/roi_set.xml",
         "views/menu_views.xml",
         "views/roi.xml",
-        "data/action_server.xml",
-        "data/default_rules.xml",
         "security/user_groups.xml",
         "security/ir.model.access.csv",
+        "data/action_server.xml",
+        "data/default_rules.xml",
 
     ],
     "installable": True,
