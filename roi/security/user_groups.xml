@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+     <record id="roi_group_category" model="ir.module.category">
+            <field name="name">ROI</field>
+        </record>
+
     <record id="roi_user" model="res.groups">
         <field name="name">ROI User</field>
-
-
+        <field name="category_id" ref="roi_group_category"/>
     </record>
 
     <record id="roi_admin" model="res.groups">
         <field name="name">ROI Admin</field>
         <field name="implied_ids" eval="[(4, ref('roi.roi_user'))]"/>
+        <field name="category_id" ref="roi_group_category"/>
     </record>
 
 </odoo>
