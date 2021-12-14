@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record model="ir.rule" id="roi_rois_user_acces">
+    <record model="ir.rule" id="roi_rois_user_access">
              <field name="name">Users can view his roi's</field>
              <field name="model_id" ref="roi.model_roi"></field>
              <field name="domain_force">['|',('user_id','=',user.id),('user_id','=',False)]</field>
@@ -12,7 +12,7 @@
              <field eval="1" name="perm_create"></field>
     </record>
 
-    <record model="ir.rule" id="roi_rois_admin_acces">
+    <record model="ir.rule" id="roi_rois_admin_access">
              <field name="name">Admin can view all</field>
              <field name="model_id" ref="roi.model_roi"></field>
              <field name="domain_force">[(1,'=',1)]</field>
