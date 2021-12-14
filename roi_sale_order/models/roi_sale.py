@@ -11,10 +11,9 @@ from odoo import api, fields, models, _
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    roi_ids = fields.One2many(
+    roi_id = fields.Many2one(
         'roi',
-        'sale_id',
-        string='Roi(s)',
+        string='Roi',
     )
 
 

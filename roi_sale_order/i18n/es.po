@@ -33,7 +33,7 @@ msgid "Last Modified on"
 msgstr "Última modificación el"
 
 #. module: roi_sale_crm
-#: model:ir.model.fields,field_description:roi_sale_crm.field_sale_order__roi_ids
+#: model:ir.model.fields,field_description:roi_sale_crm.field_sale_order__roi_id
 msgid "Roi(s)"
 msgstr "ROI's"
 

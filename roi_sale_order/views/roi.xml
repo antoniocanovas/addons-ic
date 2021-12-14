@@ -19,7 +19,10 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <field name="fiscal_position_id" position="after">
-                <field name="roi_ids"/>
+                <field name="roi_id"
+                       context="{'default_partner_id':partner_id.id, 'default_sale_id':record.id}"
+                       domain="[('partner_id', '=', partner_id.id)]"
+                />
             </field>
         </field>
     </record>
