@@ -1,26 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-
-    <record id="view_saleorder_sections" model="ir.ui.view">
-        <field name="name">Sections</field>
-        <field name="model">sale.order</field>
-        <field name="type">form</field>
-        <field name="inherit_id" ref="sale.view_order_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//div[@name='button_box']" position="inside">
-                <button class="oe_stat_button oe_read_only" icon="fa-spinner" type="action" name="%(sale_order_multisection.action_view_sections)d">
-                    <field widget="statinfo" name="section_lines_count" string="Secciones"/>
-                </button>
-            </xpath>
-            <xpath expr="//header/button[@name='action_draft']" position="after">
-                <button class="oe_stat_butt" string="Reordenar Secciones" type="object" name="order_sections">
-
-                </button>
-            </xpath>
-
-        </field>
-    </record>
-
     <record id="sol_sections_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
@@ -131,6 +110,28 @@
         <!--<field name="view_mode">tree,form</field>
         <field name="view_type">tree</field>-->
     </record>
+
+    <record id="view_saleorder_sections" model="ir.ui.view">
+        <field name="name">Sections</field>
+        <field name="model">sale.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button oe_read_only" icon="fa-spinner" type="action" name="%(sale_order_multisection.action_view_sections)d">
+                    <field widget="statinfo" name="section_lines_count" string="Secciones"/>
+                </button>
+            </xpath>
+            <xpath expr="//header/button[@name='action_draft']" position="after">
+                <button class="oe_stat_butt" string="Reordenar Secciones" type="object" name="order_sections">
+
+                </button>
+            </xpath>
+
+        </field>
+    </record>
+
+
 
     <record id="view_saleorder_sections_key" model="ir.ui.view">
         <field name="name">Multisection Key</field>
