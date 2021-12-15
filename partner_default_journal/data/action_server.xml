@@ -1,0 +1,20 @@
+<odoo>
+
+    <record id="sale_model_account_move_default_partner_journal" model="base.automation">
+            <field name="name">=> Change Journal by partner default</field>
+            <field name="model_id" ref="sale.model_account_move"/>
+            <field name="state">code</field>
+            <field name="code">
+if (record.move_type == 'out_invoice') and (record.partner_id.journal_sale_id.id):
+  record['journal_id'] = record.partner_id.journal_sale_id.id
+elif (record.move_type == 'in_invoice') and (record.partner_id.journal_purchase_id.id):
+  record['journal_id'] = record.partner_id.journal_purchase_id.id
+            </field>
+            <field name="trigger">on_change</field>
+            <field name="on_change_field_ids" eval="[(6,0, [ref('account.field_account_move__partner_id')])]"/>
+            <field name="filter_pre_domain"></field>
+            <field name="filter_domain"></field>
+            <field name="active" eval="True"/>
+    </record>
+
+</odoo>
