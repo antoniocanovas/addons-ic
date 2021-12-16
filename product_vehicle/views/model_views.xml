@@ -71,31 +71,32 @@
 
             <xpath expr="//page[@name='general_information']" position="before">
                 <page name="estimations" string="Estimations" attrs="{'invisible':[('is_vehicle','=',False)]}">
-                    <group>
-                        <field name="rebu"/>
-                        <field name="vehicle_id"/>
+                    <group col="4">
                         <field name="vehicle_supplier"/>
-                        <field name="analytic_line_ids">
-                            <tree>
-                                <field name="date"/>
-                                <field name="name"/>
-                                <field name="amount"/>
-                            </tree>
-                        </field>
-
-                        <field name="vehicle_estimation_ids">
-                            <tree editable="bottom">
-                                <field name="product_id"/>
-                                <field name="invoiced"/>
-                                <field name="amount" widget="monetary"/>
-                            </tree>
-                        </field>
-                        <field name="vehicle_margin" widget="monetary"/>
+                        <field name="vehicle_id"/>
+                        <field name="rebu"/>
                     </group>
+                    <h3>Analytic INFO:</h3>
+                    <field name="analytic_line_ids">
+                        <tree>
+                            <field name="date"/>
+                            <field name="name"/>
+                            <field name="amount" widget="monetary" sum="Total analytic"/>
+                        </tree>
+                    </field>
+                    <h3>Estimation INFO:</h3>
+                    <field name="vehicle_estimation_ids">
+                        <tree editable="bottom">
+                            <field name="product_id"/>
+                            <field name="invoiced"/>
+                            <field name="amount" widget="monetary" sum="Total estimation"/>
+                        </tree>
+                    </field>
                     <group name="note_group" col="6" class="mt-2 mt-md-0">
                         <group class="oe_subtotal_footer oe_right" colspan="2" name="quotation_total">
-                            <field name="vehicle_subtotal_estimation" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                            <field name="vehicle_subtotal_analytic" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="vehicle_margin"/>
+                            <field name="vehicle_subtotal_estimation" widget="monetary"/>
+                            <field name="vehicle_subtotal_analytic" widget="monetary"/>
                             <div class="oe_subtotal_footer_separator oe_inline o_td_label">
                                 <label for="vehicle_price"/>
                             </div>
