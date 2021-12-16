@@ -39,7 +39,7 @@ class ProductTemplate(models.Model):
     vehicle_supplier = fields.Many2one('res.partner', string="Proveedor")
     vehicle_estimation_ids = fields.One2many('product.vehicle.estimation', 'product_vehicle_id', string="Estimation")
 
-    @api.depends("vehicle_estimation_ids")
+    @api.depends('vehicle_estimation_ids')
     def get_total_estimations(self):
         for record in self:
             total = 0
@@ -62,7 +62,7 @@ class ProductTemplate(models.Model):
 
     vehicle_margin = fields.Float(string="Margin (%)")
 
-    @api.depends("vehicle_estimation_ids, vehicle_margin")
+    @api.depends('vehicle_estimation_ids', 'vehicle_margin')
     def get_recommended_price(self):
         for record in self:
             total = 0
