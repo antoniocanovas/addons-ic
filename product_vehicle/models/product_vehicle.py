@@ -47,18 +47,16 @@ class ProductTemplate(models.Model):
                     total += line.amount
             record.vehicle_subtotal_estimation = total
 
-    vehicle_subtotal_estimation = fields.Float(string="Total estimation", store=False, compute="get_total_estimations")
+    vehicle_subtotal_estimation = fields.Float(string="Total estimation", store=False, compute="get_total_estimations",
+                                               depends=vehicle_estimation_ids)
 
     def get_total_analytic(self):
         for record in self:
             total = 0
             lines = self.env['account.analytic.line'].search([(
                 'account_id', 'in', [record.income_analytic_account_id.id, record.expense_analytic_account_id.id])])
-
             for line in lines:
-                if not (line.product_id.product_tmpl_id.id == record.id) and (
-                        line.move_id.move_id.move_type in ['out_invoice', 'out_refund']):
-                    total += line.amount
+                total += line.amount
             record.vehicle_subtotal_analytic = total
     vehicle_subtotal_analytic = fields.Float(string="Total Analytic", store=False, compute="get_total_analytic")
 
@@ -66,10 +64,19 @@ class ProductTemplate(models.Model):
 
     def get_recommended_price(self):
         for record in self:
-            #if record.vehicle_margin:
-            cost = record.vehicle_subtotal_analytic + record.vehicle_subtotal_estimation
-            record.vehicle_price = cost * (1 + (record.vehicle_margin/100))
-    vehicle_price = fields.Float(string="Total price", store=False, compute="get_recommended_price")
+            total = 0
+            for li in record.analytic_line_ids:
+                total += li.amount
+            for li in record.vehicle_estimation_ids:
+                if li.invoiced == False:
+                    total += li.amount
+            if total > 0:
+                total = 1
+            else:
+                total = - (total * (1 + record.vehicle_margin / 100))
+            record.vehicle_price = total
+    vehicle_price = fields.Float(string="Total price", store=False, compute="get_recommended_price",
+                                 depends="vehicle_estimation_ids, vehicle_margin")
 
     def get_analytic_lines(self):
         for record in self:

@@ -79,20 +79,26 @@
                         <field name="vehicle_id"/>
                         <field name="rebu"/>
                     </group>
-                    <h3>Analytic INFO:</h3>
-                    <field name="analytic_line_ids">
-                        <tree>
-                            <field name="date"/>
-                            <field name="name"/>
-                            <field name="amount" widget="monetary" sum="Total analytic"/>
-                        </tree>
-                    </field>
                     <h3>Estimation INFO:</h3>
+                    <p>Estimación inicial de costes para tras incluir margen proponer un PVP.
+                        NO incluyas estimación de venta.
+                        Si alguno de los conceptos ya aparece en el apartado de líneas analíticas,
+                        marca la línea como "facturada" y no será tenido en cuenta.
+                    </p>
                     <field name="vehicle_estimation_ids">
                         <tree editable="bottom">
                             <field name="product_id"/>
                             <field name="invoiced"/>
                             <field name="amount" widget="monetary" sum="Total estimation"/>
+                        </tree>
+                    </field>
+                    <h3>Analytic INFO:</h3>
+                    <p>Costes e ingresos en las cuentas analíticas del vehículo.</p>
+                    <field name="analytic_line_ids">
+                        <tree>
+                            <field name="date"/>
+                            <field name="name"/>
+                            <field name="amount" widget="monetary" sum="Total analytic"/>
                         </tree>
                     </field>
                     <group name="note_group" col="6" class="mt-2 mt-md-0">
