@@ -61,13 +61,13 @@ class ProductTemplate(models.Model):
             record.vehicle_subtotal_analytic = total
     vehicle_subtotal_analytic = fields.Float(string="Total Analytic", store=False, compute="get_total_analytic")
 
-    vehicle_margin = fields.Float(string="Margin")
+    vehicle_margin = fields.Float(string="Margin (%)")
 
     def get_recommended_price(self):
         for record in self:
             #if record.vehicle_margin:
             cost = record.vehicle_subtotal_analytic + record.vehicle_subtotal_estimation
-            record.vehicle_price = (cost * -1)/(1-(record.vehicle_margin/100))
+            record.vehicle_price = cost * (1 + (record.vehicle_margin/100))
     vehicle_price = fields.Float(string="Total price", store=False, compute="get_recommended_price")
 
     def get_analytic_lines(self):
