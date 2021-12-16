@@ -39,6 +39,7 @@ class ProductTemplate(models.Model):
     vehicle_supplier = fields.Many2one('res.partner', string="Proveedor")
     vehicle_estimation_ids = fields.One2many('product.vehicle.estimation', 'product_vehicle_id', string="Estimation")
 
+    @api.depends("vehicle_estimation_ids")
     def get_total_estimations(self):
         for record in self:
             total = 0
@@ -47,8 +48,7 @@ class ProductTemplate(models.Model):
                     total += line.amount
             record.vehicle_subtotal_estimation = total
 
-    vehicle_subtotal_estimation = fields.Float(string="Total estimation", store=False, compute="get_total_estimations",
-                                               depends=vehicle_estimation_ids)
+    vehicle_subtotal_estimation = fields.Float(string="Total estimation", store=False, compute="get_total_estimations")
 
     def get_total_analytic(self):
         for record in self:
@@ -62,6 +62,7 @@ class ProductTemplate(models.Model):
 
     vehicle_margin = fields.Float(string="Margin (%)")
 
+    @api.depends("vehicle_estimation_ids, vehicle_margin")
     def get_recommended_price(self):
         for record in self:
             total = 0
@@ -75,8 +76,7 @@ class ProductTemplate(models.Model):
             else:
                 total = - (total * (1 + record.vehicle_margin / 100))
             record.vehicle_price = total
-    vehicle_price = fields.Float(string="Total price", store=False, compute="get_recommended_price",
-                                 depends="vehicle_estimation_ids, vehicle_margin")
+    vehicle_price = fields.Float(string="Total price", store=False, compute="get_recommended_price")
 
     def get_analytic_lines(self):
         for record in self:
