@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="v2">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="default_code as matrícula">
+      <change beforePath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -338,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639614097007</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="default_code as matrícula">
+      <created>1639652247647</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1639652247647</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -353,7 +359,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Bug an others AC" />
     <MESSAGE value="AC2" />
     <MESSAGE value="AC3" />
     <MESSAGE value="AC4 títulos de imágenes en propiedades" />
@@ -378,6 +383,7 @@
     <MESSAGE value="Views monetary" />
     <MESSAGE value="bug" />
     <MESSAGE value="v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2" />
+    <MESSAGE value="default_code as matrícula" />
+    <option name="LAST_COMMIT_MESSAGE" value="default_code as matrícula" />
   </component>
 </project>

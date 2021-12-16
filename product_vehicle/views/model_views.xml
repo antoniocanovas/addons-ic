@@ -67,6 +67,8 @@
                             <field name="stage_id"/>
                         </tree>
                     </field>
+                    <h3>Description:</h3>
+                    <field name="vehicle_description"/>
                 </page>
             </xpath>
 

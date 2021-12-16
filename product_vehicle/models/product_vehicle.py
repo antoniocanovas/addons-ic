@@ -34,6 +34,7 @@ class ProductTemplate(models.Model):
     vehicle_door = fields.Char(string="Doors")
     vehicle_next_itv = fields.Date(string="Next ITV")
     vehicle_chasis = fields.Char(string="Chasis")
+    vehicle_description = fields.Text(string="Description")
 
     vehicle_supplier = fields.Many2one('res.partner', string="Proveedor")
     vehicle_estimation_ids = fields.One2many('product.vehicle.estimation', 'product_vehicle_id', string="Estimation")
