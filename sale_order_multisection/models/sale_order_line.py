@@ -19,7 +19,7 @@ class SaleOrderLine(models.Model):
     )
     child_ids = fields.Many2many(
         'sale.order.line',
-        relation='sections_rel',
+        relation='sale_order_multisections_rel',
         column1='parent_section_id',
         column2='child_section_id',
         readonly=True,
@@ -27,13 +27,13 @@ class SaleOrderLine(models.Model):
 
     parent_ids = fields.Many2many(
         'sale.order.line',
-        relation='sections_rel',
+        relation='sale_order_multisections_rel',
         column1='child_section_id',
         column2='parent_section_id',
         readonly=True,
     )
 
-    review = fields.Boolean('Review')
+    ms_review = fields.Boolean('Review')
 
     @api.depends('create_date')
     def _get_total_section(self):
@@ -45,9 +45,9 @@ class SaleOrderLine(models.Model):
                 secciones.append(record.id)
                 lineas = self.env['sale.order.line'].search([('section_id', 'in', secciones)])
                 for li in lineas: total += li.price_subtotal
-            record['total_section'] = total
+            record['section_total'] = total
 
-    total_section = fields.Float(
+    section_total = fields.Float(
         'Total Section',
         readonly=True,
         compute=_get_total_section,

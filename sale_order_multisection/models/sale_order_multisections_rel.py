@@ -5,7 +5,7 @@ _logger = logging.getLogger(__name__)
 
 
 class SectionRel(models.Model):
-    _name = 'section.rel'
+    _name = 'sale.order.multisections.rel'
     _description = 'Sections Relations'
 
     name = fields.Char('Name')

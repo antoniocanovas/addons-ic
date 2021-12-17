@@ -23,9 +23,9 @@ class SaleOrderSets(models.Model):
             ('order_id', '=', self.id),
             ('display_type', '=', 'line_section')]
         )
-        self.section_lines_count = len(results)
+        self.section_line_count = len(results)
 
-    section_lines_count = fields.Integer('Lines', compute=_get_lines_count)
+    section_line_count = fields.Integer('Lines', compute=_get_lines_count)
 
     def action_view_sections(self):
         action = self.env.ref(
