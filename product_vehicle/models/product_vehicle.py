@@ -74,7 +74,7 @@ class ProductTemplate(models.Model):
             if total > 0:
                 total = 1
             else:
-                total = - (total + vehicle_margin)
+                total = - (total + record.vehicle_margin)
             record.vehicle_price = total
     vehicle_price = fields.Float(string="Total price", store=False, compute="get_recommended_price")
 
