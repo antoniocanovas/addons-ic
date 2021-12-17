@@ -198,7 +198,7 @@ class AccountBankStatementCBI(models.Model):
                 })
 
                 try:
-                    bank_statement.import_file()
+                    bank_statement.import_file_button()
                     bsa.state = 'completed'
                     # bank_statement.name = str(bank_statement.date)
                 except Exception as e:
