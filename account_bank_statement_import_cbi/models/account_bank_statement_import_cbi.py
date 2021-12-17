@@ -192,9 +192,9 @@ class AccountBankStatementCBI(models.Model):
                 bsa = bsa.with_context(journal_id=bsa.journal_id.id, company_id=bsa.journal_id.company_id.id, user_id=2)
 
                 bank_statement = bsa.env['account.statement.import'].create({
-                    'data_file': bsa.bank_statement_attachment_id.datas,
+                    'statement_file': bsa.bank_statement_attachment_id.datas,
                     'display_name': bsa.bank_statement_attachment_id.name,
-                    'filename': bsa.bank_statement_attachment_id.name,
+                    'statement_filename': bsa.bank_statement_attachment_id.name,
                 })
 
                 try:
