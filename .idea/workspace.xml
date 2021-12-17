@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="revisión estimaciones">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="@api.depends">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -359,7 +358,21 @@
       <option name="project" value="LOCAL" />
       <updated>1639669714852</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="@api.depends">
+      <created>1639670427605</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1639670427605</updated>
+    </task>
+    <task id="LOCAL-00047" summary="@api.depends">
+      <created>1639670538163</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1639670538163</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -374,7 +387,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AC4 títulos de imágenes en propiedades" />
     <MESSAGE value="AC Property search view" />
     <MESSAGE value="ROI ACP1" />
     <MESSAGE value="ROI ACP1 manifest" />
@@ -399,6 +411,7 @@
     <MESSAGE value="default_code as matrícula" />
     <MESSAGE value="vehicle_description" />
     <MESSAGE value="revisión estimaciones" />
-    <option name="LAST_COMMIT_MESSAGE" value="revisión estimaciones" />
+    <MESSAGE value="@api.depends" />
+    <option name="LAST_COMMIT_MESSAGE" value="@api.depends" />
   </component>
 </project>

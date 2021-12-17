@@ -60,7 +60,7 @@ class ProductTemplate(models.Model):
             record.vehicle_subtotal_analytic = total
     vehicle_subtotal_analytic = fields.Float(string="Total Analytic", store=False, compute="get_total_analytic")
 
-    vehicle_margin = fields.Float(string="Margin (%)")
+    vehicle_margin = fields.Float(string="Margin (€)")
 
     @api.depends('vehicle_estimation_ids', 'vehicle_margin')
     def get_recommended_price(self):
@@ -74,7 +74,7 @@ class ProductTemplate(models.Model):
             if total > 0:
                 total = 1
             else:
-                total = - (total * (1 + record.vehicle_margin / 100))
+                total = - (total + vehicle_margin)
             record.vehicle_price = total
     vehicle_price = fields.Float(string="Total price", store=False, compute="get_recommended_price")
 
