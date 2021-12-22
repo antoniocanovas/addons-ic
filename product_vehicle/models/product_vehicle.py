@@ -66,7 +66,7 @@ class ProductTemplate(models.Model):
             record.vehicle_subtotal_analytic = total
     vehicle_subtotal_analytic = fields.Float(string="Total Analytic", store=False, compute="get_total_analytic")
 
-    @api.depends('vehicle_estimation_ids', 'vehicle_price', 'supplie_taxes_id')
+    @api.depends('vehicle_estimation_ids', 'vehicle_price', 'supplier_taxes_id')
     def get_vehicle_rebu_iva(self):
         for record in self:
             tax = 0
@@ -80,7 +80,7 @@ class ProductTemplate(models.Model):
             record.vehicle_rebu_iva = tax
     vehicle_rebu_iva = fields.Float(string="Margin (€)", store=True, compute="get_vehicle_rebu_iva")
 
-    @api.depends('vehicle_estimation_ids', 'vehicle_price', 'supplie_taxes_id')
+    @api.depends('vehicle_estimation_ids', 'vehicle_price', 'supplier_taxes_id')
     def get_vehicle_margin(self):
         for record in self:
             price = record.vehicle_price
