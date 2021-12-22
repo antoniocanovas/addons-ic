@@ -13,3 +13,5 @@ class FleetVehicleSerie(models.Model):
     brand_id = fields.Many2one("fleet.vehicle.model.brand",
                                        related="model_id.brand_id",
                                        string="Brand")
+    date_in = fields.Date(string='Date in')
+    date_out = fields.Date(string='Date out')
