@@ -71,14 +71,14 @@ class ProductTemplate(models.Model):
         for record in self:
             tax = 0
             for li in record.vehicle_estimation_ids:
-                if (li.product_id.id == record.id) and (record.supplier_taxes_id.ids == []):
+                if (li.product_id.product_tmpl_id.id == record.id) and (record.supplier_taxes_id.ids == []):
                     # Es REBU
                     tax = (record.vehicle_price + li.amount) * 0.21
-                elif (li.product_id.id == record.id) and (record.supplier_taxes_id.ids != []):
+                elif (li.product_id.product_tmpl_id.id == record.id) and (record.supplier_taxes_id.ids != []):
                     # ES IVA:
                     tax = record.vehicle_price * 0.21
             record.vehicle_rebu_iva = tax
-    vehicle_rebu_iva = fields.Float(string="REBU/IVA (€)", store=True, compute="get_vehicle_rebu_iva")
+    vehicle_rebu_iva = fields.Float(string="REBU/IVA (€)", store=False, compute="get_vehicle_rebu_iva")
 
     @api.depends('vehicle_estimation_ids', 'vehicle_price', 'supplier_taxes_id')
     def get_vehicle_margin(self):
