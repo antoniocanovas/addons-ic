@@ -74,10 +74,9 @@
 
             <xpath expr="//page[@name='general_information']" position="before">
                 <page name="estimations" string="Estimations" attrs="{'invisible':[('is_vehicle','=',False)]}">
-                    <group col="4">
+                    <group col="2">
                         <field name="vehicle_supplier"/>
                         <field name="vehicle_id"/>
-                        <field name="rebu"/>
                     </group>
                     <h3>Estimation INFO:</h3>
                     <p>Estimación inicial de costes para tras incluir margen proponer un PVP.
@@ -106,7 +105,7 @@
                             <field name="vehicle_price"/>
                             <field name="vehicle_subtotal_estimation" widget="monetary"/>
                             <field name="vehicle_subtotal_analytic" widget="monetary"/>
-                            <field name="vehicle_rebu_iva" widget="monetary"/>
+                            <field name="vehicle_rebu_iva" widget="monetary" force_save="1"/>
                             <div class="oe_subtotal_footer_separator oe_inline o_td_label">
                                 <label for="vehicle_margin"/>
                             </div>

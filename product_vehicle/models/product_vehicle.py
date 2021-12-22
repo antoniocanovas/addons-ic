@@ -28,7 +28,6 @@ class ProductTemplate(models.Model):
     vehicle_category_id = fields.Many2one("fleet.vehicle.category", string="Category")
     vehicle_id = fields.Many2one("fleet.vehicle", string="My company car")
 
-    rebu = fields.Boolean(string="Rebu")
     vehicle_energy = fields.Selection(selection=TYPE, string="Energy type")
     vehicle_color = fields.Char(string="Color")
     vehicle_power = fields.Char(string="Power")
