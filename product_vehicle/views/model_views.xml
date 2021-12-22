@@ -103,13 +103,14 @@
                     </field>
                     <group name="note_group" col="6" class="mt-2 mt-md-0">
                         <group class="oe_subtotal_footer oe_right" colspan="2" name="quotation_total">
-                            <field name="vehicle_margin"/>
+                            <field name="vehicle_price"/>
                             <field name="vehicle_subtotal_estimation" widget="monetary"/>
                             <field name="vehicle_subtotal_analytic" widget="monetary"/>
+                            <field name="vehicle_rebu_iva" widget="monetary"/>
                             <div class="oe_subtotal_footer_separator oe_inline o_td_label">
-                                <label for="vehicle_price"/>
+                                <label for="vehicle_margin"/>
                             </div>
-                            <field name="vehicle_price" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="vehicle_margin" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                         </group>
                         <div class="oe_clear"/>
                     </group>

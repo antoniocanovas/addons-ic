@@ -40,6 +40,7 @@ class ProductTemplate(models.Model):
     vehicle_supplier = fields.Many2one('res.partner', string="Proveedor")
     vehicle_estimation_ids = fields.One2many('product.vehicle.estimation', 'product_vehicle_id', string="Estimation")
     vehicle_serie_id = fields.Many2one('fleet.vehicle.serie')
+    vehicle_price = fields.Float(string="Price", store=True)
 
     @api.depends('vehicle_estimation_ids')
     def get_total_estimations(self):
@@ -64,24 +65,29 @@ class ProductTemplate(models.Model):
                     total += line.amount
             record.vehicle_subtotal_analytic = total
     vehicle_subtotal_analytic = fields.Float(string="Total Analytic", store=False, compute="get_total_analytic")
-    vehicle_margin = fields.Float(string="Margin (€)")
 
-    @api.depends('vehicle_estimation_ids', 'vehicle_margin')
-    def get_recommended_price(self):
+    @api.depends('vehicle_estimation_ids', 'vehicle_price', 'supplie_taxes_id')
+    def get_vehicle_rebu_iva(self):
         for record in self:
-            total = 0
-            for li in record.analytic_line_ids:
-                total += li.amount
+            tax = 0
             for li in record.vehicle_estimation_ids:
-                if li.invoiced == False:
-                    total += li.amount
-            if total > 0:
-                total = 1
-            else:
-                total = -1 * total + record.vehicle_margin
-            record.vehicle_price = total
+                if (li.product_id.id == record.id) and (record.supplier_taxes_id.ids == []):
+                    # Es REBU
+                    tax = (record.vehicle_price + li.amount) * 0.21
+                elif (li.product_id.id == record.id) and (record.supplier_taxes_id.ids != []):
+                    # ES IVA:
+                    tax = record.vehicle_price * 0.21
+            record.vehicle_rebu_iva = tax
+    vehicle_rebu_iva = fields.Float(string="Margin (€)", store=True, compute="get_vehicle_rebu_iva")
 
-    vehicle_price = fields.Float(string="Total price", store=False, compute="get_recommended_price")
+    @api.depends('vehicle_estimation_ids', 'vehicle_price', 'supplie_taxes_id')
+    def get_vehicle_margin(self):
+        for record in self:
+            price = record.vehicle_price
+            estimations = record.vehicle_subtotal_estimation
+            analytics = record.vehicle_subtotal_analytic
+            record.vehicle_margin = price + estimations + analytics
+    vehicle_margin = fields.Float(string="Margin (€)", store=True, compute="get_vehicle_margin")
 
     def get_analytic_lines(self):
         for record in self:
