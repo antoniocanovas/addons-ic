@@ -105,7 +105,7 @@
                             <field name="vehicle_price"/>
                             <field name="vehicle_subtotal_estimation" widget="monetary"/>
                             <field name="vehicle_subtotal_analytic" widget="monetary"/>
-                            <field name="vehicle_rebu_iva" widget="monetary" force_save="1"/>
+                            <field name="vehicle_rebu_iva" force_save="1" widget="monetary"/>
                             <div class="oe_subtotal_footer_separator oe_inline o_td_label">
                                 <label for="vehicle_margin"/>
                             </div>
