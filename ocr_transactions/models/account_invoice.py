@@ -15,9 +15,9 @@ class AccountMove(models.Model):
     is_ocr = fields.Boolean('De OCR')
     ocr_delivery_invoice = fields.Boolean(string='Es Gestor OCR',
                                           default=lambda self: self.env.user.company_id.ocr_delivery_company)
-    ocr_transaction_error = fields.Char("Error OCR", related='ocr_transaction_id.transaction_error')
     ocr_upload_status = fields.Selection(string='OCR Status', related='ocr_transaction_id.ocr_upload_id.state')
     ocr_combination_image = fields.Binary("Img to show on wizard")
+    ocr_transaction_error = fields.Char(string='OCR Error', related='ocr_transaction_id.transaction_error')
 
     def post_correction_form(self):
 
@@ -51,31 +51,30 @@ class AccountMove(models.Model):
             }
 
     def send_through(self):
-
-        if not self.message_main_attachment_id:
-            raise ValidationError(
-                'No hay adjunto para enviar a OCR')
-        else:
-            ocr_upload = self.env['ocr.uploads'].create({
-                'name': str(self.env.user.name) + " - " + \
-                        str(datetime.utcnow().strftime('%d-%m-%Y')),
-                'type': 'recibida',
-                'attachment_ids': [(6, 0, [self.message_main_attachment_id.id])],
-                'invoice_origin_id': self.id,
-            })
-            if ocr_upload:
-                ocr_upload.prepare_ocr_post_transactions_from_invoice()
-                self.ocr_transaction_id = ocr_upload.ocr_transaction_ids[0]
-                self.ocr_transaction_id.invoice_id = self.id
-                self.is_ocr = True
+        for record in self:
+            if not record.message_main_attachment_id:
+                raise ValidationError(
+                    'No hay adjunto para enviar a OCR')
+            else:
+                ocr_upload = record.env['ocr.uploads'].create({
+                    'name': str(record.env.user.name) + " - " + \
+                            str(datetime.utcnow().strftime('%d-%m-%Y')),
+                    'type': 'recibida',
+                    'attachment_ids': [(6, 0, [record.message_main_attachment_id.id])],
+                    'invoice_origin_id': record.id,
+                })
+                if ocr_upload:
+                    ocr_upload.prepare_ocr_post_transactions_from_invoice()
+                    record.ocr_transaction_id = ocr_upload.ocr_transaction_ids[0]
+                    record.ocr_transaction_id.invoice_id = record.id
+                    record.is_ocr = True
 
     def create_invoice_lines_from_ocr(self):
         for record in self:
-
             partner_id = record.partner_id
             # Comprobamos que el partner tiene asignadas cuentas contables por defecto para crear las líneas de factura:
             if (not partner_id.ocr_sale_account_id.id) or (not partner_id.ocr_purchase_account_id.id):
-                raise Warning(
+                raise ValidationError(
                     'Asigne los productos o cuentas contables por defecto para OCR en la ficha de esta empresa, antes de intentar crear las líneas de factura.')
 
             # Inicializando:

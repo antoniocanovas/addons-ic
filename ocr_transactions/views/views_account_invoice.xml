@@ -75,6 +75,18 @@
                             'invisible':[('ocr_upload_status','!=', 'done')]}"/>
 
             </xpath>
+            <xpath expr="//form/sheet/notebook" position="inside">
+                <page id="ocr_tab" string="OCR info" name="ocr_info" attrs="{'invisible': [('is_ocr', '!=', True)]}">
+                    <group id="ocr_info_group">
+                        <group name="ocr_error_group">
+                            <field name="ocr_transaction_error" attrs="{'readonly': [('is_ocr', '!=', True)]}"/>
+                        </group>
+                        <group>
+
+                        </group>
+                    </group>
+                </page>
+            </xpath>
         </field>
     </record>
 

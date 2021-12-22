@@ -27,7 +27,7 @@
             <field eval="False" name="doall" />
             <field name="state">code</field>
             <field name="code">model.ocr_delete_old_transactions()</field>
-        </record>ocr_restart_halted_queue_jobs
+        </record>
 
         <record id="ir_cron_ocr_restart_halted_queue_jobs" model="ir.cron">
             <field name="name">=> OCR queue_jobs RESTART</field>
