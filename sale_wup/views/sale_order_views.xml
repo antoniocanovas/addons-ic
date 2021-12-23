@@ -66,24 +66,6 @@
         <field name="type">form</field>
     </record>
 
-
-   <!-- <record id="sale_order_line_udo_action" model="ir.actions.act_window">
-        <field name="binding_model_id" eval="False"/>
-        <field name="binding_type">action</field>
-        <field name="context" eval='{}'/>
-        <field name="domain" eval="False"/>
-        <field name="filter" eval="False"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="limit">80</field>
-        <field name="name">UdO SOL</field>
-        <field name="res_model">sale.order.line</field>
-        <field name="target">current</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="view_ids" eval="[(5, 0, 0),
-        (0, 0, {'view_mode': 'form', 'view_id': ref('sale_order_line_udo_form')})]"/>
-    </record>-->
-
-
     <record id="view_order_form" model="ir.ui.view">
         <field name="name">sale.order.form</field>
         <field name="model">sale.order</field>
@@ -102,42 +84,42 @@
     </record>
 
 
-     <record id="action_view_udos" model="ir.actions.act_window">
+     <record id="action_view_wups" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="context">{'search_default_sale_id': active_id,'default_sale_id': active_id}</field>
         <field name="domain">[('sale_id', '=', active_id)]</field>
         <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="help"><![CDATA[<p>UdOs</p>]]></field>
+        <field name="help"><![CDATA[<p>WUs</p>]]></field>
         <field name="limit">80</field>
-        <field name="name">UdOs</field>
-        <field name="res_model">udo.line</field>
+        <field name="name">WUs</field>
+        <field name="res_model">wup.line</field>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="search_view_id" eval="udo_line_tree_search"/>
+        <field name="search_view_id" eval="wup_line_tree_search"/>
         <field name="view_ids" eval="[(5, 0, 0),
-        (0, 0, {'view_mode': 'tree', 'view_id': ref('sale_udo_line_action_tree')})]"/>
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('sale_wup_line_action_tree')})]"/>
         <field name="usage" eval="False"/>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <record id="view_so_udos_form" model="ir.ui.view">
-        <field name="name">Udo line sale order</field>
+    <record id="view_so_wups_form" model="ir.ui.view">
+        <field name="name">WUs line sale order</field>
         <field name="model">sale.order</field>
         <field name="type">form</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//sheet/div[@name='button_box']" position="inside">
 
-                    <button class="oe_stat_button oe_read_only" icon="fa-shopping-cart" type="object" name="action_view_udo_line">
-                        <field string="UdOs" widget="statinfo" name="udo_line_count" />
+                    <button class="oe_stat_button oe_read_only" icon="fa-shopping-cart" type="object" name="action_view_wup_line">
+                        <field string="WUs" widget="statinfo" name="wup_line_count" />
                     </button>
             </xpath>
             <xpath expr="//sheet/notebook/page[@name='order_lines']/field/tree" position="inside">
-                    <field name="udo_line_ids" invisible="1"/>
+                    <field name="wup_line_ids" invisible="1"/>
             </xpath>
             <xpath expr="//sheet/notebook/page[@name='order_lines']/field/tree" position="attributes">
-                    <attribute name="decoration-primary">udo_line_ids</attribute>
+                    <attribute name="decoration-primary">wup_line_ids</attribute>
             </xpath>
         </field>
     </record>

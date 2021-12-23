@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="sale_udo_target_tree" model="ir.ui.view">
+    <record id="sale_wup_target_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree editable="bottom">
@@ -13,13 +13,13 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">udo.target</field>
+        <field name="model">wup.target</field>
         <field name="name">Editable Tree View </field>
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
 
-    <record id="sale_udo_style_tree" model="ir.ui.view">
+    <record id="sale_wup_style_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree editable="bottom">
@@ -31,13 +31,13 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">udo.style</field>
+        <field name="model">wup.style</field>
         <field name="name">Editable Tree View </field>
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
 
-    <record id="sale_udo_type_tree" model="ir.ui.view">
+    <record id="sale_wup_type_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree editable="bottom">
@@ -49,13 +49,13 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">udo.type</field>
+        <field name="model">wup.type</field>
         <field name="name">Editable Tree View </field>
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
 
-    <record id="sale_udo_quality_tree" model="ir.ui.view">
+    <record id="sale_wup_quality_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree editable="bottom">
@@ -67,13 +67,13 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">udo.quality</field>
+        <field name="model">wup.quality</field>
         <field name="name">Editable Tree View </field>
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
 
-    <record id="sale_udo_template_tree" model="ir.ui.view">
+    <record id="sale_wup_template_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree>
@@ -87,13 +87,13 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">udo.template</field>
+        <field name="model">wup.template</field>
         <field name="name">Editable Tree View </field>
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
 
-    <record id="sale_udo_template_form" model="ir.ui.view">
+    <record id="sale_wup_template_form" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <form>
@@ -133,13 +133,13 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">udo.template</field>
-        <field name="name">UDO Template form View</field>
+        <field name="model">wup.template</field>
+        <field name="name">WU Template form View</field>
         <field name="priority">16</field>
         <field name="type">form</field>
     </record>
 
-    <record id="sale_udo_line_action_tree" model="ir.ui.view">
+    <record id="sale_wup_line_action_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree create="0">
@@ -156,17 +156,17 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">udo.line</field>
+        <field name="model">wup.line</field>
         <field name="name">Default Sale Order o2m order_line tree view</field>
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
 
-    <record id="udo_line_tree_search" model="ir.ui.view">
-        <field name="name">Default udo_line search</field>
-        <field name="model">udo.line</field>
+    <record id="wup_line_tree_search" model="ir.ui.view">
+        <field name="name">Default wup_line search</field>
+        <field name="model">wup.line</field>
         <field name="arch" type="xml">
-            <search string="Udo Lines">
+            <search string="WU Lines">
                 <field name="product_id"/>
                 <field name="sale_line_id" string="Line product"/>
                 <field name="sale_line_name" string="Line description"/>
