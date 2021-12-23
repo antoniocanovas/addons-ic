@@ -27,15 +27,19 @@ elif (record.is_vehicle) and (record.income_analytic_account_id.id) and (record.
             <field name="active" eval="True"/>            
     </record>
 
-        <record id="calculate_rebu_iva" model="base.automation">
-            <field name="name">=> Calculate REBU:</field>
-            <field name="model_id" ref="model_product_template"/>
+        <record id="calculate_rebu_amount" model="base.automation">
+            <field name="name">=> Calculate REBU amount in vehicle</field>
+            <field name="model_id" ref="model_product_vehicle_estimation"/>
             <field name="state">code</field>
             <field name="code">
-
+vehiclept = record.product_vehicle_id
+rebu = 0
+if record.product_id.product_tmpl_id.vehicle_is_rebu == True:
+  rebu = record.amount
+  vehiclept['vehicle_rebu_amount'] = rebu
             </field>
-            <field name="trigger">on_change</field>
-            <field name="on_change_field_ids" eval="[(6,0, [ref('product_vehicle.field_product_template__vehicle_price'),ref('product_vehicle.field_product_template__vehicle_estimation_ids'),ref('product_vehicle.field_product_template__vehicle_is_rebu')])]"/>
+            <field name="trigger">on_create_or_write</field>
+            <field name="on_change_field_ids"><field/>
             <field name="filter_pre_domain"></field>
             <field name="filter_domain"></field>
             <field name="active" eval="True"/>

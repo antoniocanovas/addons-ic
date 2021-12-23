@@ -40,6 +40,7 @@ class ProductTemplate(models.Model):
     vehicle_estimation_ids = fields.One2many('product.vehicle.estimation', 'product_vehicle_id', string="Estimation")
     vehicle_serie_id = fields.Many2one('fleet.vehicle.serie')
     vehicle_price = fields.Float(string="Price", store=True)
+    vehicle_rebu_amount = fields.Float(string="REBU Amount", store=True)
     vehicle_is_rebu = fields.Boolean(string='Is REBU')
 
     @api.depends('vehicle_estimation_ids')
@@ -66,7 +67,16 @@ class ProductTemplate(models.Model):
             record.vehicle_subtotal_analytic = total
     vehicle_subtotal_analytic = fields.Float(string="Total Analytic", store=False, compute="get_total_analytic")
 
-    vehicle_rebu_iva = fields.Float(string="REBU/IVA (€)", store=True)
+    @api.depends('vehicle_price', 'vehicle_is_rebu', 'vehicle_rebu_amount')
+    def get_vehicle_rebu_iva(self):
+        for record in self:
+            tax = 0
+            if record.vehicle_is_rebu = True:
+                tax = (record.vehicle_price + record.vehicle_rebu_amount) * 0.21
+            else:
+                tax = record.vehicle_price * 0.21
+            record.vehice_rebu_iva = tax
+    vehicle_rebu_iva = fields.Float(string="REBU/IVA (€)", store=True, compute="get_vehicle_rebu_iva")
 
     @api.depends('vehicle_estimation_ids', 'vehicle_price', 'supplier_taxes_id')
     def get_vehicle_margin(self):
