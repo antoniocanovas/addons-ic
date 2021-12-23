@@ -78,7 +78,7 @@ class ProductTemplate(models.Model):
             record.vehicle_rebu_iva = -tax
     vehicle_rebu_iva = fields.Float(string="REBU/IVA (€)", store=True, compute="get_vehicle_rebu_iva")
 
-    @api.depends('vehicle_estimation_ids', 'vehicle_price', 'supplier_taxes_id')
+    @api.depends('vehicle_estimation_ids', 'vehicle_price', 'vehicle_is_rebu')
     def get_vehicle_margin(self):
         for record in self:
             price = record.vehicle_price
