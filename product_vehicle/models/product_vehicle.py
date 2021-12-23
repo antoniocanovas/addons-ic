@@ -75,7 +75,7 @@ class ProductTemplate(models.Model):
                 tax = (record.vehicle_price + record.vehicle_rebu_amount) * 0.21
             else:
                 tax = record.vehicle_price * 0.21
-            record.vehice_rebu_iva = tax
+            record.vehicle_rebu_iva = tax
     vehicle_rebu_iva = fields.Float(string="REBU/IVA (€)", store=True, compute="get_vehicle_rebu_iva")
 
     @api.depends('vehicle_estimation_ids', 'vehicle_price', 'supplier_taxes_id')
