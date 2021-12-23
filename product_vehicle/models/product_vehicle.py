@@ -71,7 +71,7 @@ class ProductTemplate(models.Model):
     def get_vehicle_rebu_iva(self):
         for record in self:
             tax = 0
-            if record.vehicle_is_rebu = True:
+            if record.vehicle_is_rebu == True:
                 tax = (record.vehicle_price + record.vehicle_rebu_amount) * 0.21
             else:
                 tax = record.vehicle_price * 0.21
