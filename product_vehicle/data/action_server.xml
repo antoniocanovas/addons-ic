@@ -39,7 +39,7 @@ if record.product_id.product_tmpl_id.vehicle_is_rebu == True:
   vehiclept['vehicle_rebu_amount'] = rebu
             </field>
             <field name="trigger">on_create_or_write</field>
-            <field name="on_change_field_ids"><field/>
+            <field name="on_change_field_ids"></field>
             <field name="filter_pre_domain"></field>
             <field name="filter_domain"></field>
             <field name="active" eval="True"/>
