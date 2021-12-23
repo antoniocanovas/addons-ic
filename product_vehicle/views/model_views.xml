@@ -77,6 +77,7 @@
                     <group col="2">
                         <field name="vehicle_supplier"/>
                         <field name="vehicle_id"/>
+                        <field name="vehicle_is_rebu"/>
                     </group>
                     <h3>Estimation INFO:</h3>
                     <p>Estimación inicial de costes para tras incluir margen proponer un PVP.

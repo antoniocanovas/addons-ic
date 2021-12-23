@@ -40,6 +40,7 @@ class ProductTemplate(models.Model):
     vehicle_estimation_ids = fields.One2many('product.vehicle.estimation', 'product_vehicle_id', string="Estimation")
     vehicle_serie_id = fields.Many2one('fleet.vehicle.serie')
     vehicle_price = fields.Float(string="Price", store=True)
+    vehicle_is_rebu = fields.Boolean(string='Is REBU')
 
     @api.depends('vehicle_estimation_ids')
     def get_total_estimations(self):
@@ -65,19 +66,7 @@ class ProductTemplate(models.Model):
             record.vehicle_subtotal_analytic = total
     vehicle_subtotal_analytic = fields.Float(string="Total Analytic", store=False, compute="get_total_analytic")
 
-    @api.depends('vehicle_estimation_ids', 'vehicle_price', 'supplier_taxes_id')
-    def get_vehicle_rebu_iva(self):
-        for record in self:
-            line = self.env['product.vehicle.estimation'].search(
-                [('product_id.product_tmpl_id', '=', record.id), ('product_vehicle_id', '=', record.id)])
-            if (line.id) and (record.supplier_taxes_id.ids == []):
-                # Es REBU
-                tax = (record.vehicle_price + line.amount) * 0.21
-            else:
-                # ES IVA:
-                tax = record.vehicle_price * 0.21
-            record.vehicle_rebu_iva = -tax
-    vehicle_rebu_iva = fields.Float(string="REBU/IVA (€)", store=True, compute="get_vehicle_rebu_iva")
+    vehicle_rebu_iva = fields.Float(string="REBU/IVA (€)", store=True)
 
     @api.depends('vehicle_estimation_ids', 'vehicle_price', 'supplier_taxes_id')
     def get_vehicle_margin(self):
@@ -85,7 +74,7 @@ class ProductTemplate(models.Model):
             price = record.vehicle_price
             estimations = record.vehicle_subtotal_estimation
             analytics = record.vehicle_subtotal_analytic
-            record.vehicle_margin = price + estimations + analytics
+            record.vehicle_margin = price + estimations + analytics + record.vehicle_rebu_iva
     vehicle_margin = fields.Float(string="Margin (€)", store=True, compute="get_vehicle_margin")
 
     def get_analytic_lines(self):
