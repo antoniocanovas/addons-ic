@@ -12,8 +12,9 @@ class WupLine(models.Model):
     product_uom_qty = fields.Float(string='Quantity')
     product_uom = fields.Many2one('uom.uom', string='Unit', related='product_id.uom_id')
     currency_id = fields.Many2one('res.currency')
-    sale_line_id = fields.Many2one('sale.order.line', string='Líneas')
+    sale_line_id = fields.Many2one('sale.order.line', string='SO Line')
     sale_id = fields.Many2one('sale.order', related='sale_line_id.order_id', string='Sale')
+    task_id = fields.Many2one('project.task', string='WU Task')
     purchase_request_id = fields.Many2one('purchase.request', string='Purchase Request')
     sale_line_name = fields.Char(string='Sale line', related='sale_line_id.name')
 
