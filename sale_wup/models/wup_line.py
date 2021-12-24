@@ -15,6 +15,7 @@ class WupLine(models.Model):
     sale_line_id = fields.Many2one('sale.order.line', string='SO Line')
     sale_id = fields.Many2one('sale.order', related='sale_line_id.order_id', string='Sale')
     task_id = fields.Many2one('project.task', string='WU Task')
+    effective_hours = fields.Float(string="Eff. Hours", related='task_id.effective_hours', store=False)
     purchase_request_id = fields.Many2one('purchase.request', string='Purchase Request')
     sale_line_name = fields.Char(string='Sale line', related='sale_line_id.name')
 

@@ -47,6 +47,8 @@
                             <field name="subtotal"/>
                             <field name="lst_price" optional="hide"/>
                             <field name="lst_price_discount" optional="hide"/>
+                            <field name="task_id" optional="hide"/>
+                            <field name="effective_hours" widget="timesheet_uom" attrs="{'invisible':[('task_id','=',False)]}" optional="hide"/>
                             <field name="name" invisible="1"/>
                             <field name="sale_line_id" invisible="1"/>
                             <field name="currency_id" invisible="1"/>
