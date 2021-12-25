@@ -12,7 +12,7 @@
         'hr',
         'purchase_request',
         'base_automation',
-
+        'sale_timesheet_edit',
 
     ],
     'data': [
