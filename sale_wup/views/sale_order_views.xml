@@ -39,7 +39,8 @@
                     </group>
                     <field name="wup_line_ids" attrs="{'readonly':[('state','!=','draft')]}">
                         <tree editable="bottom">
-                            <field name="product_id"/>
+                            <field name="product_id" required="1"/>
+                            <field name="name" attrs="{'required':[('product_id','!=',False)]}"/>
                             <field name="product_uom_qty" readonly="0"/>
                             <field name="product_uom"/>
                             <field name="price_unit_cost"/>
@@ -49,7 +50,6 @@
                             <field name="lst_price_discount" optional="hide"/>
                             <field name="task_id" optional="hide" readonly="1"/>
                             <field name="effective_hours" widget="timesheet_uom" attrs="{'invisible':[('task_id','=',False)]}" optional="hide"/>
-                            <field name="name" invisible="1"/>
                             <field name="sale_line_id" invisible="1"/>
                             <field name="currency_id" invisible="1"/>
                         </tree>

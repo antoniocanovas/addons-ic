@@ -8,7 +8,14 @@ class WupTemplateLine(models.Model):
     _name = 'wup.template.line'
     _description = 'Líneas de los productos en el set (wups):'
 
-    name = fields.Char(string='Name')
+    @api.depends('product_id')
+    def get_name_from_product_id(self):
+        for record in self:
+            name = ""
+            if record.product_id.id:
+                name = record.product_id.name
+            record.name = name
+    name = fields.Char(string='Name', store=True, readonly=False, compute="get_name_from_product_id")
 
     template_id = fields.Many2one('wup.template', string='wup Template')
     product_id = fields.Many2one('product.product', string='Product')
