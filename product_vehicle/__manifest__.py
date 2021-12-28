@@ -19,12 +19,8 @@
     'data': [
         'security/ir.model.access.csv',
         'data/action_server.xml',
-        #'data/data.xml',
-        #'data/rules.xml',
         'views/model_views.xml',
         'views/menu_views.xml',
-        #'views/templates.xml',
-        #'views/iset_report.xml',
     ],
     'installable': True,
 }
