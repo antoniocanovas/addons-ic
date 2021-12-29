@@ -95,11 +95,11 @@ class ProductTemplate(models.Model):
     analytic_line_ids = fields.Many2many('account.analytic.line', store=False, Readonly=True, string="Analytic",
                                          compute="get_analytic_lines")
 
-    def get_opp_ids(self):
-        for record in self:
-            ops = self.env['crm.lead'].search([('vehicle_ids', 'like', record.id)]).ids
-            record.opportunity_ids = [(6, 0, ops)]
-    opportunity_ids = fields.Many2many('crm.lead', string="Opportunities", readonly=True, compute="get_opp_ids")
+    #def get_opp_ids(self):
+    #    for record in self:
+    #        ops = self.env['crm.lead'].search([('vehicle_ids', 'like', record.id)]).ids
+    #        record.opportunity_ids = [(6, 0, ops)]
+    #opportunity_ids = fields.Many2many('crm.lead', string="Opportunities", readonly=True, compute="get_opp_ids")
 
 
 
