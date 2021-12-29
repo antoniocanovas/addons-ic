@@ -10,9 +10,8 @@
         'account',
     ],
     'data': [
-        #'data/crea_lineas_factura.xml',
         'views/views_account_invoice.xml',
-        #'wizards/ocr_invoice_combination.xml',
+
     ],
     'installable': True,
 }
