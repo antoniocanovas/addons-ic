@@ -101,10 +101,5 @@ class ProductTemplate(models.Model):
             record.opportunity_ids = [(6, 0, ops)]
     opportunity_ids = fields.Many2many('crm.lead', string="Opportunities", readonly=True, compute="get_opp_ids")
 
-    lead_ids = fields.Many2many('crm.lead', string="Leads",
-                                relation='product_lead_rel',
-                                column1='lead_id',
-                                column2='product_id',
-                                )
 
 

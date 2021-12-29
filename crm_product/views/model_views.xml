@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+
+    <record id="product_template_lead" model="ir.ui.view">
+        <field name="name">product template lead</field>
+        <field name="model">product.template</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_information']" position="before">
+                <page name="opportunities" string="Opportunities">
+                    <h3>Opportunities:</h3>
+                    <field name="lead_ids">
+                        <tree>
+                            <field name="name"/>
+                            <field name="user_id"/>
+                            <field name="stage_id"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_lead_product_opportunities" model="ir.ui.view">
+        <field name="name">crm lead product opportunitues</field>
+        <field name="model">crm.lead</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group/group[4]/field[@name='tag_ids']" position="after">
+                <field name="product_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

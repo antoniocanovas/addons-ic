@@ -1,0 +1,26 @@
+<odoo>
+
+    <record id="view_move_form_documents_merge" model="ir.ui.view">
+        <field name="name">view move form documents merge</field>
+        <field name="model">account.move</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/notebook/page[@name='other_info']" position="after">
+                <page string="Additional Documents" name="additional_documents">
+                    <group name="document_merge">
+                        <field name="document_ids" widget="many2many_binary"/>
+                        <field name="merge_report"/>
+                    </group>
+                    <group name="document_merge">
+                        <button name="get_merged_document" string="Merge Documents" class="oe_highlight" type="object"/>
+                        <field name="merged_document"/>
+                        <field name="merged_error" attrs="{'invisible':[('merged_error','=',False)]}" />
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
