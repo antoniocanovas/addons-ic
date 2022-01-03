@@ -45,7 +45,6 @@ class ProductTemplate(models.Model):
     vehicle_serie_id = fields.Many2one('fleet.vehicle.serie')
     vehicle_price = fields.Float(string="Price", store=True)
     vehicle_rebu_amount = fields.Float(string="REBU Amount", store=True)
-    vehicle_is_rebu = fields.Boolean(string='Is REBU')
     vehicle_tax_type = fields.Selection(selection=TAX_TYPE, string='Tax Type')
 
     @api.depends('vehicle_estimation_ids')

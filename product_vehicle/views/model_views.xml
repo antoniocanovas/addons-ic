@@ -70,8 +70,7 @@
                     <group col="2">
                         <field name="vehicle_supplier"/>
                         <field name="vehicle_id"/>
-                        <field name="vehicle_is_rebu"/>
-                        <field name="vehicle_tax_type" required="1"/>
+                        <field name="vehicle_tax_type" attrs="{'required':[('is_vehicle','=',True)]}"/>
                     </group>
                     <div attrs="{'invisible':[('vehicle_tax_type','=',False)]}">
                       <h3>Estimation INFO:</h3>
