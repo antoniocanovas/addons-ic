@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="- many2manytags">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="default_code en tree">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,13 +42,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00004" summary="AC4 títulos de imágenes en propiedades">
-      <created>1627667050179</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1627667050179</updated>
     </task>
     <task id="LOCAL-00005" summary="AC Property search view">
       <created>1627723476283</created>
@@ -387,7 +379,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640816655965</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="default_code en tree">
+      <created>1640879937534</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1640879937534</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -402,7 +401,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ROI ACP1 line qty" />
     <MESSAGE value="ROI ACP2" />
     <MESSAGE value="ROI ACP3" />
     <MESSAGE value="ROI ACP4 bug" />
@@ -427,6 +425,7 @@
     <MESSAGE value="bug" />
     <MESSAGE value="moving products_ids" />
     <MESSAGE value="- many2manytags" />
-    <option name="LAST_COMMIT_MESSAGE" value="- many2manytags" />
+    <MESSAGE value="default_code en tree" />
+    <option name="LAST_COMMIT_MESSAGE" value="default_code en tree" />
   </component>
 </project>

@@ -61,8 +61,10 @@ class ProductTemplate(models.Model):
                 'account_id', 'in', [record.income_analytic_account_id.id, record.expense_analytic_account_id.id])])
 
             for line in lines:
-                if not (line.product_id.product_tmpl_id.id == record.id) and (
+                if (line.product_id.product_tmpl_id.id == record.id) and (
                         line.move_id.move_id.move_type in ['out_invoice', 'out_refund']):
+                    total += 0
+                else:
                     total += line.amount
             record.vehicle_subtotal_analytic = total
     vehicle_subtotal_analytic = fields.Float(string="Total Analytic", store=False, compute="get_total_analytic")
