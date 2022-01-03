@@ -71,6 +71,7 @@
                         <field name="vehicle_supplier"/>
                         <field name="vehicle_id"/>
                         <field name="vehicle_is_rebu"/>
+                        <field name="vehicle_tax_type" required="1"/>
                     </group>
                     <h3>Estimation INFO:</h3>
                     <p>Estimación inicial de costes para tras incluir margen proponer un PVP.

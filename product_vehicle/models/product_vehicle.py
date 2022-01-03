@@ -11,6 +11,10 @@ TYPE = [
     ('h_gasoline', 'Híbrido Gasolina'),
     ('h_gasoil', 'Híbrido Gasoil'),
 ]
+TAX_TYPE = [
+    ('rebu', 'REBU'),
+    ('iva', 'IVA'),
+]
 
 
 class ProductTemplate(models.Model):
@@ -42,6 +46,7 @@ class ProductTemplate(models.Model):
     vehicle_price = fields.Float(string="Price", store=True)
     vehicle_rebu_amount = fields.Float(string="REBU Amount", store=True)
     vehicle_is_rebu = fields.Boolean(string='Is REBU')
+    vehicle_tax_type = fields.Selection(selection=TAX_TYPE, string='Tax Type')
 
     @api.depends('vehicle_estimation_ids')
     def get_total_estimations(self):
@@ -69,18 +74,18 @@ class ProductTemplate(models.Model):
             record.vehicle_subtotal_analytic = total
     vehicle_subtotal_analytic = fields.Float(string="Total Analytic", store=False, compute="get_total_analytic")
 
-    @api.depends('vehicle_price', 'vehicle_is_rebu', 'vehicle_rebu_amount')
+    @api.depends('vehicle_price', 'vehicle_tax_type', 'vehicle_rebu_amount')
     def get_vehicle_rebu_iva(self):
         for record in self:
             tax = 0
-            if record.vehicle_is_rebu == True:
+            if record.vehicle_tax_type == 'rebu':
                 tax = (record.vehicle_price + record.vehicle_rebu_amount) * 0.21
             else:
                 tax = record.vehicle_price * 0.21
             record.vehicle_rebu_iva = -tax
     vehicle_rebu_iva = fields.Float(string="REBU/IVA (€)", store=True, compute="get_vehicle_rebu_iva")
 
-    @api.depends('vehicle_estimation_ids', 'vehicle_price', 'vehicle_is_rebu')
+    @api.depends('vehicle_estimation_ids', 'vehicle_price', 'vehicle_tax_type')
     def get_vehicle_margin(self):
         for record in self:
             price = record.vehicle_price

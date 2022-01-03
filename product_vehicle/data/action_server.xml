@@ -34,7 +34,7 @@ elif (record.is_vehicle) and (record.income_analytic_account_id.id) and (record.
             <field name="code">
 vehiclept = record.product_vehicle_id
 rebu = 0
-if record.product_id.product_tmpl_id.vehicle_is_rebu == True:
+if record.product_id.product_tmpl_id.vehicle_tax_type == 'rebu':
   rebu = record.amount
   vehiclept['vehicle_rebu_amount'] = rebu
             </field>
