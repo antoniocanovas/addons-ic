@@ -208,12 +208,6 @@ msgid "Invoiced"
 msgstr "Facturado"
 
 #. module: product_vehicle
-#: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_is_rebu
-#: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_is_rebu
-msgid "Is REBU"
-msgstr "Es REBU"
-
-#. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_km
 #: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_km
 msgid "KM"
@@ -256,6 +250,11 @@ msgstr "Fabricante del vehículo"
 #: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_margin
 msgid "Margin (€)"
 msgstr "Margen (€)"
+
+#. module: product_vehicle
+#: model_terms:ir.ui.view,arch_db:product_vehicle.product_template_vehicle
+msgid "Matrícula"
+msgstr ""
 
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_fleet_vehicle_serie__model_id
@@ -331,6 +330,12 @@ msgstr "Número de serie para vehículos"
 #: model:ir.ui.menu,name:product_vehicle.menu_fleet_vehicle_serie
 msgid "Serie"
 msgstr ""
+
+#. module: product_vehicle
+#: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_tax_type
+#: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_tax_type
+msgid "Tax Type"
+msgstr "Tipo de IVA"
 
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_subtotal_analytic
