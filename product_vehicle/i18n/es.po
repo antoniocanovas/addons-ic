@@ -38,7 +38,7 @@ msgstr "=> Crear una cuenta analítica por vehículo:"
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_product_vehicle_estimation__amount
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Importe"
 
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__analytic_line_ids
@@ -97,7 +97,7 @@ msgstr "Creado el"
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_date
 #: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_date
 msgid "Date"
-msgstr "Fecha"
+msgstr "1ª Matriculación"
 
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_fleet_vehicle_serie__date_in
@@ -148,7 +148,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_energy
 #: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_energy
 msgid "Energy type"
-msgstr "Tipo de energía"
+msgstr "Propulsión"
 
 #. module: product_vehicle
 #: model_terms:ir.ui.view,arch_db:product_vehicle.product_template_vehicle
@@ -167,7 +167,7 @@ msgstr "Estimación"
 #. module: product_vehicle
 #: model_terms:ir.ui.view,arch_db:product_vehicle.product_template_vehicle
 msgid "Estimation INFO:"
-msgstr "Información de estimación:"
+msgstr "Estimación de costes e ingresos:"
 
 #. module: product_vehicle
 #: model_terms:ir.ui.view,arch_db:product_vehicle.product_template_vehicle
@@ -205,7 +205,7 @@ msgstr ""
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_product_vehicle_estimation__invoiced
 msgid "Invoiced"
-msgstr "facturado"
+msgstr "Facturado"
 
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_is_rebu
@@ -268,7 +268,7 @@ msgstr "Modelo"
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_id
 #: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_id
 msgid "My company car"
-msgstr "Mi coche de compañía"
+msgstr "Vehículo de flota"
 
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_fleet_vehicle_serie__name
@@ -285,7 +285,7 @@ msgstr "Próxima ITV"
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_power
 #: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_power
 msgid "Power"
-msgstr "Poder"
+msgstr "Potencia"
 
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_price
@@ -319,7 +319,7 @@ msgstr ""
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_product_vehicle_estimation__product_id
 msgid "Related Product"
-msgstr "Producto referido"
+msgstr "Producto"
 
 #. module: product_vehicle
 #: model:ir.model,name:product_vehicle.model_fleet_vehicle_serie
@@ -348,7 +348,7 @@ msgstr "Total analítica"
 #: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_subtotal_estimation
 #: model_terms:ir.ui.view,arch_db:product_vehicle.product_template_vehicle
 msgid "Total estimation"
-msgstr "Estimación Total"
+msgstr "Total estimaciones:"
 
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__is_vehicle
@@ -367,14 +367,14 @@ msgstr "Estimaciones del vehículo"
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_serie_id
 #: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_serie_id
 msgid "Vehicle Serie"
-msgstr "Serie del vehículo"
+msgstr "Serie"
 
 #. module: product_vehicle
 #: model:ir.ui.menu,name:product_vehicle.menu_vehicle_dealership
 msgid "Vehicle dealership"
-msgstr "Concesionario de vehículos"
+msgstr "Vehículos"
 
 #. module: product_vehicle
 #: model:ir.actions.act_window,name:product_vehicle.action_product_vehicle
 msgid "VehicleDealership"
-msgstr "ConcesionarioDeVehículos"
+msgstr "Vehículos"
