@@ -16,7 +16,7 @@ class PurchasePriceUpdate(models.Model):
             if record.standard_price == record.price_unit:
                 control = True
             record.price_control = control
-    price_control = fields.Boolean(string='Price Control', get='get_price_control')
+    price_control = fields.Boolean(string='Price Control', compute='get_price_control')
 
     @api.depends('product_id')
     def get_standard_price(self):

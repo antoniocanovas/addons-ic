@@ -98,7 +98,7 @@ class ProductTemplate(models.Model):
             lines = self.env['account.analytic.line'].search([(
                 'account_id', 'in', [record.income_analytic_account_id.id, record.expense_analytic_account_id.id])])
             record.analytic_line_ids = [(6, 0, lines.ids)]
-    analytic_line_ids = fields.Many2many('account.analytic.line', store=False, Readonly=True, string="Analytic",
+    analytic_line_ids = fields.Many2many('account.analytic.line', store=False, readonly=True, string="Analytic",
                                          compute="get_analytic_lines")
 
     #def get_opp_ids(self):
