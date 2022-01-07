@@ -63,9 +63,8 @@
                             <field name="vehicle_chasis"/>
                         </group>
                     </group>
-                    <group>
-                        <field name="vehicle_description" widget="html"/>
-                    </group>
+                    <h2>Descripción del vehículo</h2>
+                    <field name="vehicle_description" widget="html"/>
                 </page>
             </xpath>
 
