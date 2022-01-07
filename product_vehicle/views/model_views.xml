@@ -63,6 +63,9 @@
                             <field name="vehicle_chasis"/>
                         </group>
                     </group>
+                    <group>
+                        <field name="vehicle_description"/>
+                    </group>
                 </page>
             </xpath>
 

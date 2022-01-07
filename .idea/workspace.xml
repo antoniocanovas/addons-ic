@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="review3">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="gearbox">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,13 +42,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00008" summary="ROI ACP1 line qty">
-      <created>1639153431591</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1639153431591</updated>
     </task>
     <task id="LOCAL-00009" summary="ROI ACP2">
       <created>1639155336537</created>
@@ -388,7 +379,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641220999334</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="gearbox">
+      <created>1641550842552</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1641550842556</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -403,7 +401,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ROI set_id" />
     <MESSAGE value="ROI set_id automation" />
     <MESSAGE value="ROI set_id action_server file" />
     <MESSAGE value="UPDATE Sequence (not used)" />
@@ -428,6 +425,7 @@
     <MESSAGE value="review1" />
     <MESSAGE value="review2" />
     <MESSAGE value="review3" />
-    <option name="LAST_COMMIT_MESSAGE" value="review3" />
+    <MESSAGE value="gearbox" />
+    <option name="LAST_COMMIT_MESSAGE" value="gearbox" />
   </component>
 </project>
