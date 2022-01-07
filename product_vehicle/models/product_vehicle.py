@@ -15,6 +15,10 @@ TAX_TYPE = [
     ('rebu', 'REBU'),
     ('iva', 'IVA'),
 ]
+GEARBOX = [
+    ('manual', 'Manual'),
+    ('auto', 'Automático'),
+]
 
 
 class ProductTemplate(models.Model):
@@ -33,6 +37,7 @@ class ProductTemplate(models.Model):
     vehicle_id = fields.Many2one("fleet.vehicle", string="My company car")
 
     vehicle_energy = fields.Selection(selection=TYPE, string="Energy type")
+    vehicle_gearbox = fields.Selection(selection=GEARBOX, string="Gearbox")
     vehicle_color = fields.Char(string="Color")
     vehicle_power = fields.Char(string="Power")
     vehicle_door = fields.Char(string="Doors")
