@@ -64,7 +64,7 @@
                         </group>
                     </group>
                     <group>
-                        <field name="vehicle_description"/>
+                        <field name="vehicle_description" widget="html"/>
                     </group>
                 </page>
             </xpath>
