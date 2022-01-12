@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="repair.view_repair_order_form" />
         <field name="arch" type="xml">
             <xpath
-                expr="//field[@name='analytic_account_id']"
+                expr="//page[@name='extra_info']/group/group[1]/field[@name='move_id']"
                 position="after"
             >
                 <field
