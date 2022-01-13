@@ -353,7 +353,7 @@ msgstr "Total analítica"
 #: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_subtotal_estimation
 #: model_terms:ir.ui.view,arch_db:product_vehicle.product_template_vehicle
 msgid "Total estimation"
-msgstr "Total estimaciones:"
+msgstr "Total estimaciones"
 
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__is_vehicle

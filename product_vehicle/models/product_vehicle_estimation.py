@@ -12,4 +12,5 @@ class ProductVehicleEstimation(models.Model):
     product_id = fields.Many2one('product.product', string="Related Product", required=True)
     amount = fields.Float(string='Amount')
     invoiced = fields.Boolean("Invoiced")
+    date = fields.Date(string='Date')
 
