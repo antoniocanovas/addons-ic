@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="Change position analytic_account_id">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="Recal rebu_iva">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" afterDir="false" />
     </list>
@@ -43,13 +43,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00013" summary="ROI set_id automation">
-      <created>1639158704444</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1639158704444</updated>
     </task>
     <task id="LOCAL-00014" summary="ROI set_id action_server file">
       <created>1639159110822</created>
@@ -387,7 +380,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642004473120</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Recal rebu_iva">
+      <created>1642089061045</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1642089061045</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -402,7 +402,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="UPDATE Sequence (not used)" />
     <MESSAGE value="User_id &amp; compute in agregate" />
     <MESSAGE value="roi agregate compute" />
     <MESSAGE value="rename menus" />
@@ -427,6 +426,7 @@
     <MESSAGE value="gearbox" />
     <MESSAGE value="vehicle_description in form view" />
     <MESSAGE value="Change position analytic_account_id" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change position analytic_account_id" />
+    <MESSAGE value="Recal rebu_iva" />
+    <option name="LAST_COMMIT_MESSAGE" value="Recal rebu_iva" />
   </component>
 </project>

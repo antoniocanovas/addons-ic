@@ -82,9 +82,9 @@ class ProductTemplate(models.Model):
     def get_vehicle_rebu_iva(self):
         for record in self:
             tax = 0
-            if record.vehicle_tax_type == 'rebu':
+            if (record.vehicle_tax_type == 'rebu') and (record.vehicle_price &gt; record.vehicle_rebu_amount):
                 tax = (record.vehicle_price + record.vehicle_rebu_amount) * (1- 1/1.21)
-            else:
+            elif (record.vehicle_tax_type != 'rebu'):
                 tax = record.vehicle_price * (1- 1/1.21)
             record.vehicle_rebu_iva = -tax
     vehicle_rebu_iva = fields.Float(string="REBU/IVA (€)", store=True, compute="get_vehicle_rebu_iva")
