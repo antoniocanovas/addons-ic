@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="Recal rebu_iva">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_vehicle/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/i18n/es.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_vehicle/models/product_vehicle_estimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/models/product_vehicle_estimation.py" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="estimation date">
       <change beforePath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,13 +42,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00015" summary="UPDATE Sequence (not used)">
-      <created>1639159264804</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1639159264804</updated>
     </task>
     <task id="LOCAL-00016" summary="User_id &amp; compute in agregate">
       <created>1639239287328</created>
@@ -390,7 +379,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642093359434</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="estimation date">
+      <created>1642094556736</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1642094556736</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -405,7 +401,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="User_id &amp; compute in agregate" />
     <MESSAGE value="roi agregate compute" />
     <MESSAGE value="rename menus" />
     <MESSAGE value="import datetime" />
@@ -430,6 +425,7 @@
     <MESSAGE value="vehicle_description in form view" />
     <MESSAGE value="Change position analytic_account_id" />
     <MESSAGE value="Recal rebu_iva" />
-    <option name="LAST_COMMIT_MESSAGE" value="Recal rebu_iva" />
+    <MESSAGE value="estimation date" />
+    <option name="LAST_COMMIT_MESSAGE" value="estimation date" />
   </component>
 </project>
