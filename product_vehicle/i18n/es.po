@@ -185,6 +185,12 @@ msgid "Gasolina"
 msgstr ""
 
 #. module: product_vehicle
+#: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_gearbox
+#: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_gearbox
+msgid "Gearbox"
+msgstr "Caja de cambios"
+
+#. module: product_vehicle
 #: model:ir.model.fields.selection,name:product_vehicle.selection__product_template__vehicle_energy__h_gasoil
 msgid "Híbrido Gasoil"
 msgstr ""
