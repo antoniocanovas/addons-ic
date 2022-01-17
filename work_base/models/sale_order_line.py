@@ -19,4 +19,4 @@ class SaleOrderLine(models.Model):
                 for li in used: total += li.unit_amount
             record['timesheet_qty'] = total
 
-    timesheet_qty = fields.Float('isets', compute=_get_timesheet_qty)
+    timesheet_qty = fields.Float('Work Base', compute=_get_timesheet_qty)

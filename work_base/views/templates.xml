@@ -3,7 +3,7 @@
 <odoo>
     <data>
 
-        <template id="iset_report_document_report">
+        <template id="work_base_report_document_report">
             <t t-call="web.external_layout">
                 <t t-set="o" t-value="o.with_context(lang=lang)"/>
                 <div class="page">
@@ -42,7 +42,7 @@
                             <table class="table table-sm o_main_table">
                                          <thead style="display: table-row-group">
                                             <tr>
-                                                <th name="th_line">Linea de presupuesto iSet</th>
+                                                <th name="th_line">Linea de presupuesto Work Base</th>
                                                 <th name="th_product">Producto</th>
                                                 <th name="th_Description">Descripción</th>
                                                 <th name="th_quantity">Cantidad</th>
@@ -54,7 +54,7 @@
                                          <tbody class="sale_tbody">
                                             <t t-foreach="o.project_product_ids" t-as="pr">
                                               <tr>
-                                                <td name="td_line"><span t-field="pr.iset_so_line_id" /></td>
+                                                <td name="td_line"><span t-field="pr.work_base_so_line_id" /></td>
                                                 <td name="td_product"><span t-field="pr.product_id" /></td>
                                                 <td name="td_description"><span t-field="pr.name" /></td>
                                                 <td name="td_units"><span t-field="pr.unit_amount" /></td>

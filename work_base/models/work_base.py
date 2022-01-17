@@ -15,9 +15,9 @@ TYPES = [
 
 
 class Isets(models.Model):
-    _name = 'isets'
+    _name = 'work.base'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    _description = 'iSets'
+    _description = 'work base'
 
     name = fields.Char('Name', required=True)
     date = fields.Date('Date', required=True)
@@ -190,7 +190,7 @@ class Isets(models.Model):
                     'type': 'binary',
                     'datas': b64_pdf,
                     'store_fname': name + '.pdf',
-                    'res_model': 'isets',
+                    'res_model': 'work.base',
                     'res_id': record.id,
                     'mimetype': 'application/pdf'
                 })

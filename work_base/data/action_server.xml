@@ -1,8 +1,8 @@
 <odoo>
 
-    <record id="create_lot_services_iset" model="ir.actions.server">
-            <field name="name">=> Create Lot Services from iSet</field>
-            <field name="model_id" ref="model_isets"/>
+    <record id="create_lot_services_work_base" model="ir.actions.server">
+            <field name="name">=> Create Lot Services from work.base</field>
+            <field name="model_id" ref="model_work_base"/>
             <field name="state">code</field>
             <field name="code">
 # Required start to concatenate later, required duration to change later if startstop:
@@ -41,7 +41,7 @@ else:
 if (record.work_id.type == "project") and (record.project_id.id):
   for li in employee_ids:
     name = record.name + start
-    new = env['account.analytic.line'].create({'iset_id':record.id, 'name': name, 'project_id':record.project_id.id,
+    new = env['account.analytic.line'].create({'work_base_id':record.id, 'name': name, 'project_id':record.project_id.id,
           'task_id':record.task_id.id, 'date':record.date, 'account_id': record.project_analytic_id.id, 'company_id':record.company_id.id,
           'employee_id':li.id, 'unit_amount':duration, 'type_id':record.type_id.id
     })
@@ -52,7 +52,7 @@ elif (record.work_id.type == "repair") and (record.repair_id.id):
     product_id = record.work_id.repair_service_id
     for li in employee_ids:
         name = product_id.name + start + " - " + li.name
-        new = env['repair.fee'].create({'iset_id':record.id, 'product_id':product_id.id,
+        new = env['repair.fee'].create({'work_base_id':record.id, 'product_id':product_id.id,
         'name': name, 'repair_id':record.repair_id.id, 'company_id':record.company_id.id,
         'create_uid':li.user_id.id, 'product_uom_qty':duration, 'price_unit':product_id.list_price,
         'product_uom':product_id.uom_id.id, 'type_id':record.type_id.id, 'employee_id':li.id, 'date':record.date
@@ -67,7 +67,7 @@ elif (record.work_id.type == "production") and (record.workorder_id.id):
       hour=int(record.stop - inc), minute=int((record.stop-int(record.stop))*60))
   for li in employee_ids:
     name = record.workorder_id.name  + start + " - " + li.name
-    new = env['mrp.workcenter.productivity'].create({'iset_id':record.id, 'description': name, 'production_id':record.mrp_id.id,
+    new = env['mrp.workcenter.productivity'].create({'work_base_id':record.id, 'description': name, 'production_id':record.mrp_id.id,
           'workorder_id':record.workorder_id.id, 'workcenter_id':record.workorder_id.workcenter_id.id, 'company_id':record.company_id.id,
           'loss_id':record.production_loss_id.id, 'date_start':date_start, 'date_end':date_end, 'type_id':record.type_id.id,
           'user_id':li.user_id.id
@@ -82,13 +82,13 @@ elif (record.work_id.type == "production") and (record.workorder_id.id):
             <field name="model_id" ref="model_sale_order"/>
             <field name="state">code</field>
             <field name="code">
-if record.timesheet_ids.ids or record.iset_consumed_ids.ids:
+if record.timesheet_ids.ids or record.work_base_consumed_ids.ids:
   neworder = env['sale.order'].create({'partner_id':record.partner_id.id})
-  if record.iset_consumed_ids:
+  if record.work_base_consumed_ids:
     # Creating Section "Products":
     section_product = env['sale.order.line'].create({'order_id':neworder.id, 'partner_id':neworder.partner_id.id, 
       'display_type':'line_section', 'name':'Products:'})
-    for li in record.iset_consumed_ids:
+    for li in record.work_base_consumed_ids:
       newsol = env['sale.order.line'].create({'order_id':neworder.id, 'partner_id':record.partner_id.id,
         'product_id':li.product_id.id, 'product_uom_qty':li.unit_amount, 'product_uom':li.product_uom_id.id})
   if record.timesheet_ids:
@@ -108,14 +108,14 @@ else:
             </field>
         </record>
 
-        <record id="update_analytic_line_from_iset" model="base.automation">
-            <field name="name">=> Update analytic.line from ISET</field>
+        <record id="update_analytic_line_from_work_base" model="base.automation">
+            <field name="name">=> Update analytic.line from Work Base</field>
             <field name="model_id" ref="model_account_analytic_line"/>
             <field name="state">code</field>
             <field name="code">
-if (record.iset_so_line_id.id) and (record.iset_so_line_id.product_id.id != record.product_id.id):
-  record.write({'product_id':record.iset_so_line_id.product_id.id, 'amount':-record.unit_amount * record.iset_so_line_id.price_unit_cost,
-    'product_uom_id':record.iset_so_line_id.product_uom.id
+if (record.work_base_so_line_id.id) and (record.work_base_so_line_id.product_id.id != record.product_id.id):
+  record.write({'product_id':record.work_base_so_line_id.product_id.id, 'amount':-record.unit_amount * record.work_base_so_line_id.price_unit_cost,
+    'product_uom_id':record.work_base_so_line_id.product_uom.id
   })
             </field>
             <field name="trigger">on_create_or_write</field>

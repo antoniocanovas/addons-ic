@@ -1,5 +1,5 @@
 {
-    'name': 'iSets',
+    'name': 'work_base',
     'version': '14.0.6.0.0',
     'category': '',
     'description': u"""
@@ -21,7 +21,7 @@
         'views/model_views.xml',
         'views/menu_views.xml',
         'views/templates.xml',
-        'views/iset_report.xml',
+        'views/work_base_report.xml',
     ],
     'installable': True,
 }
