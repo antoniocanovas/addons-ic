@@ -292,7 +292,7 @@ msgid "Iset"
 msgstr "iSet"
 
 #. module: isets
-#: model:ir.model.fields,field_description:isets.field_account_analytic_line__iset_so_line_id
+#: model:ir.model.fields,field_description:isets.field_account_analytic_line__work_base_so_line_id
 msgid "Iset So Line"
 msgstr "Línea de presupuesto iSet"
 

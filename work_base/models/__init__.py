@@ -1,5 +1,5 @@
-from . import iset_work
-from . import isets
+from . import work_extended
+from . import work_base
 from . import mrp
 from . import repair_fee
 from . import stock_move

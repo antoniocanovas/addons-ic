@@ -9,7 +9,7 @@
             <field name="report_file">isets.iset_report_document</field>
             <field name="print_report_name">((str(object.type_id.name) or ''))</field>
             <field name="attachment">((str(object.type_id.name) or '')+'.pdf')</field>
-            <field name="binding_model_id" ref="model_isets"/>
+            <field name="binding_model_id" ref="model_work_base"/>
             <field name="binding_type">report</field>
         </record>
 

@@ -15,7 +15,7 @@ class SaleOrderLine(models.Model):
                 used = self.env['account.analytic.line'].search([('so_line', '=', record.id)])
                 for li in used: total += li.unit_amount
             else:
-                used = self.env['account.analytic.line'].search([('iset_so_line_id', '=', record.id)])
+                used = self.env['account.analytic.line'].search([('work_base_so_line_id', '=', record.id)])
                 for li in used: total += li.unit_amount
             record['timesheet_qty'] = total
 

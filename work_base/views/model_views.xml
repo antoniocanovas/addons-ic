@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="isets_form" model="ir.ui.view">
+    <record id="work_base_form" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <form>
@@ -145,13 +145,13 @@
                             <h2>Products:</h2><i>(Project REQUIRED, optional task)</i>
                             <field name="project_product_ids" attrs="{'readonly':[('project_id','=',False)]}" context="{'default_sale_id':project_so_id, 'default_name':'/', 'default_account_id':project_analytic_id, 'default_company_id': company_id}">
                                 <tree editable="bottom" string="Products consumed">
-                                    <field name="iset_so_line_id" options="{'no_create': True}" attrs="{'readonly':[('product_id','!=',False)]}" domain="[('order_id','=',sale_id),('product_id.type','!=','service')]"/>
+                                    <field name="work_base_so_line_id" options="{'no_create': True}" attrs="{'readonly':[('product_id','!=',False)]}" domain="[('order_id','=',sale_id),('product_id.type','!=','service')]"/>
                                     <field name="user_id" invisible="1"/>
-                                    <field name="product_id" domain="[('type','!=','service')]" attrs="{'readonly':[('iset_so_line_id','!=',False)]}" options="{'no_create': True}"/>
+                                    <field name="product_id" domain="[('type','!=','service')]" attrs="{'readonly':[('work_base_so_line_id','!=',False)]}" options="{'no_create': True}"/>
                                     <field name="name"/>
                                     <field name="unit_amount"/>
-                                    <field name="amount" groups="hr_timesheet.group_hr_timesheet_approver" attrs="{'readonly':[('iset_so_line_id','!=',False)]}"/>
-                                    <field name="product_uom_id" attrs="{'readonly':[('iset_so_line_id','!=',False),('product_uom_id','=',False)]}" options="{'no_create': True}"/>
+                                    <field name="amount" groups="hr_timesheet.group_hr_timesheet_approver" attrs="{'readonly':[('work_base_so_line_id','!=',False)]}"/>
+                                    <field name="product_uom_id" attrs="{'readonly':[('work_base_so_line_id','!=',False),('product_uom_id','=',False)]}" options="{'no_create': True}"/>
                                     <field name="product_uom_category_id" invisible="1"/>
                                     <field name="date"/>
                                     <field name="project_id" invisible="1"/>
@@ -243,16 +243,16 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">isets</field>
-        <field name="name">iSets form view</field>
+        <field name="model">work.base</field>
+        <field name="name">Work Base form view</field>
         <field name="priority">16</field>
         <field name="type">form</field>
     </record>
 
-    <record id="isets_tree" model="ir.ui.view">
+    <record id="work_base_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-            <tree name="iSet_tree" string="iSets"  default_order='create_date desc'>
+            <tree name="iSet_tree" string="Work Base"  default_order='create_date desc'>
                 <field name="name"/>
                 <field name="work_id"/>
                 <field name="date"/>
@@ -263,17 +263,17 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">isets</field>
-        <field name="name">iSets Tree View</field>
+        <field name="model">work.base</field>
+        <field name="name">Work Base Tree View</field>
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
 
-    <record id="isets_tree_search" model="ir.ui.view">
+    <record id="work_base_tree_search" model="ir.ui.view">
         <field name="name">iset.tree.search</field>
-        <field name="model">isets</field>
+        <field name="model">work.base</field>
         <field name="arch" type="xml">
-            <search string="Search iSets">
+            <search string="Search Work Base">
                 <field name="name" filter_domain="[('name', 'ilike', self)]"/>
                 <field name="type" filter_domain="[('type_id', 'ilike', self)]"/>
                 <field name="work_id" filter_domain="[('work_id', 'ilike', self)]"/>
@@ -292,10 +292,10 @@
     </record>
 
 
-    <record id="isets_work_tree" model="ir.ui.view">
+    <record id="work_extended_work_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-            <tree string="iSets Types" sample="1"  default_order='create_date desc'>
+            <tree string="Work Extended" sample="1"  default_order='create_date desc'>
                 <field name="name"/>
                 <field name="type"/>
                 <field name="partner_id"/>
@@ -308,13 +308,13 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">iset.work</field>
-        <field name="name">iSets Work Tree View</field>
+        <field name="model">work.extended</field>
+        <field name="name">Work extended Work Tree View</field>
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
 
-    <record id="isets_work_form" model="ir.ui.view">
+    <record id="work_extended_work_form" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <form>
@@ -343,8 +343,8 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">iset.work</field>
-        <field name="name">iSets Work form View</field>
+        <field name="model">work.extended</field>
+        <field name="name">Work extended Work form View</field>
         <field name="priority">16</field>
         <field name="type">form</field>
     </record>
@@ -355,7 +355,7 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form/sheet/notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='qty_invoiced']" position="after">
-                <field name="timesheet_qty" string='iSet' attrs="{'invisible':[('parent.project_ids','=',[])]}"/>
+                <field name="timesheet_qty" string='Work Base' attrs="{'invisible':[('parent.project_ids','=',[])]}"/>
             </xpath>
         </field>
     </record>
@@ -373,7 +373,7 @@
         </field>
     </record>
 
-    <record id="isets_working_type" model="ir.ui.view">
+    <record id="work_extended_working_type" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree editable="bottom">
@@ -404,7 +404,7 @@
                     <field name="iset_consumed_ids" readonly="1">
                       <tree>
                         <field name="date"/>
-                        <field name="iset_so_line_id"/>
+                        <field name="work_base_so_line_id"/>
                         <field name="product_id"/>
                         <field name="name"/>
                         <field name="unit_amount"/>
@@ -413,7 +413,7 @@
                       </tree>
                     </field>
                     <group col="4">
-                        <button class="oe_highlight" type="action" name="isets.sale_order_from_aal" string="Create quotation from real products and works"/>
+                        <button class="oe_highlight" type="action" name="work_base.sale_order_from_aal" string="Create quotation from real products and works"/>
                         <field name="new_sale_id" readonly="1"/>
                     </group>
                 </page>
