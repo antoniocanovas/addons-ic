@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="act_iset_work_2_sale_order" model="ir.actions.act_window">
+    <record id="act_we_2_sale_order" model="ir.actions.act_window">
         <field name="name">Sale Order</field>
         <field name="res_model">sale.order</field>
         <field name="view_mode">tree,form</field>
-        <field name="context">{'search_default_iset_work_id': active_id, 'default_iset_work_id': active_id}</field>
+        <field name="context">{'search_default_work_extended_id': active_id, 'default_work_extended_id': active_id}</field>
         <field name="groups_id" eval="False"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -14,11 +14,11 @@
         </field>
     </record>
 
-    <record id="act_iset_work_2_project" model="ir.actions.act_window">
+    <record id="act_we_2_project" model="ir.actions.act_window">
         <field name="name">Project</field>
         <field name="res_model">project.project</field>
         <field name="view_mode">tree,form</field>
-        <field name="context">{'search_default_iset_work_id': active_id, 'default_iset_work_id': active_id}</field>
+        <field name="context">{'search_default_work_extended_id': active_id, 'default_work_extended_id': active_id}</field>
         <field name="groups_id" eval="False"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -27,17 +27,17 @@
         </field>
     </record>
 
-    <record id="isets_work_form_inh" model="ir.ui.view">
-        <field name="name">iset work extended</field>
-        <field name="model">iset.work</field>
-        <field name="inherit_id" ref="isets.isets_work_form"/>
+    <record id="wb_work_form_inh" model="ir.ui.view">
+        <field name="name">work base</field>
+        <field name="model">work.extended</field>
+        <field name="inherit_id" ref="work_base.work_extended_work_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form/sheet/h1" position="before">
                 <div class="oe_button_box" name="button_box">
-                    <button class="oe_stat_button" type="action" name="%(iset_work.act_iset_work_2_sale_order)d" icon="fa-usd">
+                    <button class="oe_stat_button" type="action" name="%(work_extended.act_we_2_sale_order)d" icon="fa-usd">
                         <field string="Sale Order" name="sale_order_count" widget="statinfo"/>
                     </button>
-                    <button class="oe_stat_button" type="action" name="%(iset_work.act_iset_work_2_project)d" icon="fa-usd">
+                    <button class="oe_stat_button" type="action" name="%(work_extended.act_we_2_project)d" icon="fa-usd">
                         <field string="Projects" name="projects_count" widget="statinfo"/>
                     </button>
                 </div>
@@ -80,7 +80,7 @@
                             <tree editable="bottom">
                                 <field name="employee_id"/>
                                 <field name="function_ids" widget="many2many_tags"/>
-                                <field name="iset_work_id" invisible="1"/>
+                                <field name="work_extended_id" invisible="1"/>
                             </tree>
                         </field>
                     </page>

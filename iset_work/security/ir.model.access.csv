@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_isets_work_employee,isets work project user,iset_work.model_iset_work_employee,project.group_project_user,1,0,0,0
-access_isets_work_employee_manager,isets work project manager,iset_work.model_iset_work_employee,project.group_project_manager,1,1,1,0
-

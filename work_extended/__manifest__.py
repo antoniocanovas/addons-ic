@@ -1,5 +1,5 @@
 {
-    'name': 'iSet Work',
+    'name': 'Work Extended',
     'version': '14.0.1.0.0',
     'category': '',
     'description': u"""
@@ -7,8 +7,9 @@
 """,
     'author': 'Serincloud',
     'depends': [
-        'isets',
+        'work_base',
         'hr_equipment_stock',
+        'repair',
 
     ],
     'data': [

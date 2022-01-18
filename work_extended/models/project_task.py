@@ -7,4 +7,4 @@ _logger = logging.getLogger(__name__)
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
-    iset_work_id = fields.Many2one('iset.work', 'iSet Work')
+    work_extended_id = fields.Many2one('work.extended', 'Work Extended')

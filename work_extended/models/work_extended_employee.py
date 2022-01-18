@@ -5,10 +5,10 @@ _logger = logging.getLogger(__name__)
 
 
 class iSetWorkEmployee(models.Model):
-    _name = 'iset.work.employee'
+    _name = 'work.extended.employee'
     _description = 'iSetWorkEmployee'
 
     employee_id = fields.Many2one('hr.employee', 'Employee')
-    iset_work_id = fields.Many2one('iset.work', 'iSet Work')
+    work_extended_id = fields.Many2one('work.extended', 'Work Extended')
     function_ids = fields.Many2many('hr.job')
 
