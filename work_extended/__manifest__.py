@@ -9,7 +9,6 @@
     'depends': [
         'work_base',
         'hr_equipment_stock',
-        'repair',
 
     ],
     'data': [

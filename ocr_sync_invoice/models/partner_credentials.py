@@ -152,7 +152,7 @@ class ConfigClient(models.Model):
             if invoice.remote_type:
                 type_for_remote = invoice.remote_type
             else:
-                type_for_remote = invoice.type
+                type_for_remote = invoice.move_type
             try:
                 invoice_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'account.move', 'create',
                                                        [{
@@ -204,24 +204,46 @@ class ConfigClient(models.Model):
 
     def create_invoice_lines(self, conn, invoice_id, invoice, invoice_line_list):
         i = 0
+        invoice_lines = []
+        partner_id = self.check_partner_in_remote(invoice.partner_id, conn, invoice)
         for line in invoice.invoice_line_ids:
+            invoice_lines.append((0, 0, {
+                'product_id':invoice_line_list[i]['product_id'],
+                'name': line.name,
+                'account_id':invoice_line_list[i]['account_id'],
+                'partner_id':partner_id,
+                'price_unit':line.price_unit,
+                'tax_ids': [(6, 0, invoice_line_list[i]['tax_ids'])],
+            }))
+            invoice_lines.append((0, 0, {
+                'name':line.name or '/',
+                'account_id':invoice_line_list[i]['account_id'],
+                'partner_id':partner_id,
+                'exclude_from_invoice_tab':True}))
+            i += 1
+
             try:
                 invoice_line_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
-                                                            'account.move.line', 'create',
-                                                            [{
-                                                                'invoice_id': invoice_id,
-                                                                'product_id': invoice_line_list[i]['product_id'],
-                                                                'name': line.name,
-                                                                'account_id': invoice_line_list[i]['account_id'],
-                                                                'asset_profile_id': invoice_line_list[i]['profile_id'],
-                                                                'quantity': line.quantity,
-                                                                'price_unit': line.price_unit,
-                                                                'discount': line.discount,
-                                                                'tax_ids': [
-                                                                    (6, 0, invoice_line_list[i]['tax_ids'])],
-                                                                'price_subtotal': line.price_subtotal,
-                                                            }])
-                i += 1
+                                                            'account.move', 'write', [[invoice_id], {
+                        'invoice_line_ids': invoice_lines,
+                    }])
+
+                #invoice_line_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
+                #                                            'account.move.line', 'create',
+                #                                            [{
+                #                                                'invoice_id': invoice_id,
+                #                                                'product_id': invoice_line_list[i]['product_id'],
+                #                                                'name': line.name,
+                #                                                'account_id': invoice_line_list[i]['account_id'],
+                #                                                'asset_profile_id': invoice_line_list[i]['profile_id'],
+                #                                                'quantity': line.quantity,
+                #                                                'price_unit': line.price_unit,
+                #                                                'discount': line.discount,
+                #                                                'tax_ids': [
+                #                                                    (6, 0, invoice_line_list[i]['tax_ids'])],
+                #                                                'price_subtotal': line.price_subtotal,
+                #                                            }])
+
             except Exception as e:
                 invoice.invoice_sync_error = ("Error creando líneas de factura: %s\n" % invoice.ref)
                 invoice.remote_state = 'error'
@@ -421,23 +443,21 @@ class ConfigClient(models.Model):
                 self.write_asset_profile_account(account, conn)
 
         if invoice:
-            print(conn['version'])
+
             if conn['version'] == '14.0':
-                print("############V14############")
                 invoice_line_list = self.get_lines(conn, invoice)
                 if invoice_line_list:
                     invoice_id = self.write_invoice_to_remote(conn, invoice)
                     if invoice_id:
                         invoice_line_id = self.create_invoice_lines(conn, invoice_id, invoice, invoice_line_list)
                         if invoice_line_id:
-                            self.compute_invoice(invoice, invoice_id, conn)
+                            #self.compute_invoice(invoice, invoice_id, conn)
                             attachment_id = self.create_attachment(conn, invoice, invoice_id)
                             if attachment_id:
                                 message_id = self.create_message_post(conn, invoice_id, attachment_id)
                         else:
                             invoice.remote_send_failed = True
             else:
-                print("#################V12##############")
                 invoice_line_list = self.get_lines(conn, invoice)
                 if invoice_line_list:
                     invoice_id = self.write_invoice_to_remote_v12(conn, invoice)
