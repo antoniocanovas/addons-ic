@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_work_base_timesheet,work_base timesheet user,work_base_timesheet.model_work_base_timesheet,hr_timesheet.group_hr_timesheet_user,1,1,1,0
-access_work_base_Manager_timesheet,work_base timesheet manager,work_base_timesheet.model_work_base_timesheet,hr_timesheet.group_hr_timesheet_approver,1,1,1,1
-access_work_base_System_timesheet,work_base timesheet sytem,work_base_timesheet.model_work_base_timesheet,base.group_system,1,1,1,1
-
