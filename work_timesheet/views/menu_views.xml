@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="action_work_base_timesheet" model="ir.actions.act_window">
+    <record id="action_work_timesheet" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="domain" eval="False"/>
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="name">Work Base Timesheet</field>
-        <field name="res_model">work.base.timesheet</field>
-        <field name="search_view_id" eval="work_base_timesheet_tree_search"/>
+        <field name="name">Work Timesheet</field>
+        <field name="res_model">work.timesheet</field>
+        <field name="search_view_id" eval="work_timesheet_tree_search"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <record id="menu_work_base_timesheet" model="ir.ui.menu">
-        <field name="action" ref="action_work_base_timesheet"/>
+    <record id="menu_work_timesheet" model="ir.ui.menu">
+        <field name="action" ref="action_work_timesheet"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
         <field name="name">Timesheet</field>
@@ -25,7 +25,5 @@
         <field name="sequence">6</field>
         <field name="web_icon" eval="False"/>
     </record>
-
-
 
 </odoo>

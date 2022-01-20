@@ -1,5 +1,5 @@
 {
-    'name': 'work_base',
+    'name': 'Work base',
     'version': '14.0.6.0.0',
     'category': '',
     'description': u"""
