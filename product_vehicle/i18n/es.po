@@ -97,7 +97,7 @@ msgstr "Creado el"
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_date
 #: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_date
 msgid "Date"
-msgstr "Fecha"
+msgstr "1ª Matriculación"
 
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_fleet_vehicle_serie__date_in
