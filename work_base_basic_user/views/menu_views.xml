@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="action_isets_basic_repair" model="ir.actions.act_window">
+    <record id="action_work_base_basic_repair" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="domain" eval="False"/>
@@ -19,7 +19,7 @@
         (0, 0, {'view_mode': 'kanban', 'view_id': ref('repair_kanban_basic_readonly')})]"/>
     </record>
 
-    <record id="action_isets_basic_tasks" model="ir.actions.act_window">
+    <record id="action_work_base_basic_tasks" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="domain" eval="False"/>
@@ -36,22 +36,22 @@
         (0, 0, {'view_mode': 'form', 'view_id': ref('project_task_form_basic_readonly')})]"/>
     </record>
 
-    <record id="menu_isets_basic_repair" model="ir.ui.menu">
-        <field name="action" ref="action_isets_basic_repair"/>
+    <record id="menu_work_base_basic_repair" model="ir.ui.menu">
+        <field name="action" ref="action_work_base_basic_repair"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [ref('iset_basic_user.iset_basic_user')])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('work_base_basic_user.work_base_basic_user')])]"/>
         <field name="name">REPAIR</field>
-        <field name="parent_id" ref="isets.menu_isets"/>
+        <field name="parent_id" ref="work_base.menu_work_base"/>
         <field name="sequence">8</field>
         <field name="web_icon" eval="False"/>
     </record>
 
-    <record id="menu_isets_basic_tasks" model="ir.ui.menu">
-        <field name="action" ref="action_isets_basic_tasks"/>
+    <record id="menu_work_base_basic_tasks" model="ir.ui.menu">
+        <field name="action" ref="action_work_base_basic_tasks"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [ref('iset_basic_user.iset_basic_user')])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('work_base_basic_user.work_base_basic_user')])]"/>
         <field name="name">TASKS</field>
-        <field name="parent_id" ref="isets.menu_isets"/>
+        <field name="parent_id" ref="work_base.menu_work_base"/>
         <field name="sequence">9</field>
         <field name="web_icon" eval="False"/>
     </record>

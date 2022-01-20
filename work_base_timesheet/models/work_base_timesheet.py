@@ -4,8 +4,8 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-class iSetTimesheet(models.Model):
-    _name = 'iset.timesheet'
+class WorkBaseTimesheet(models.Model):
+    _name = 'work.base.timesheet'
     _description = "TIMESHEET ISET"
 
     name = fields.Char(string="Name")
@@ -13,7 +13,7 @@ class iSetTimesheet(models.Model):
     date = fields.Date(string='Date')
     employee_id = fields.Many2one('hr.employee', string="Employee")
 
-    analytic_line_ids = fields.One2many('account.analytic.line', 'iset_timesheet_id', string="Analytic line")
+    analytic_line_ids = fields.One2many('account.analytic.line', 'work_base_timesheet_id', string="Analytic line")
 
     def _get_extra_time(self):
         for record in self:
@@ -44,7 +44,7 @@ class iSetTimesheet(models.Model):
 
     project_time = fields.Float("Project Time", store=False, compute="calculate_project_time")
 
-    repair_fee_ids = fields.One2many('repair.fee', 'iset_timesheet_id', string="Repair fee")
+    repair_fee_ids = fields.One2many('repair.fee', 'work_base_timesheet_id', string="Repair fee")
 
     def calculate_repair_time(self):
         for record in self:
@@ -55,7 +55,7 @@ class iSetTimesheet(models.Model):
             record.repair_time = time
     repair_time = fields.Float("Repair Time", store=False, compute="calculate_repair_time")
 
-    mrp_productivity_ids = fields.One2many('mrp.workcenter.productivity', 'iset_timesheet_id', string="MRP")
+    mrp_productivity_ids = fields.One2many('mrp.workcenter.productivity', 'work_base_timesheet_id', string="MRP")
 
     def calculate_mrp_time(self):
         for record in self:

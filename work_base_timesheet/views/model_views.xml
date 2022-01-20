@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="isets_timesheet_tree" model="ir.ui.view">
+    <record id="work_base_timesheet_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-            <tree name="iSet_timesheet_tree" string="iSets"  default_order='date desc'>
+            <tree name="work_base_timesheet_tree" string="Work Base"  default_order='date desc'>
                 <field name="date"/>
                 <field name="employee_id"/>
                 <field name="project_time" sum="Projects"/>
@@ -20,17 +20,17 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">iset.timesheet</field>
-        <field name="name">iSets TimesheetTree View</field>
+        <field name="model">work.base.timesheet</field>
+        <field name="name">Work Base TimesheetTree View</field>
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
 
-    <record id="isets_timesheet_tree_search" model="ir.ui.view">
-        <field name="name">iset.timesheet.tree.search</field>
-        <field name="model">iset.timesheet</field>
+    <record id="work_base_timesheet_tree_search" model="ir.ui.view">
+        <field name="name">work.base.timesheet.tree.search</field>
+        <field name="model">work.base.timesheet</field>
         <field name="arch" type="xml">
-            <search string="Search Timesheet iSets">
+            <search string="Search Timesheet Work Base">
                     <field name="name" filter_domain="[('name', 'ilike', self)]"/>
                     <field name="employee_id" filter_domain="[('employee_id', 'ilike', self)]"/>
   <!--
@@ -46,7 +46,7 @@
         </field>
     </record>
 
-    <record id="isets_timesheet_form" model="ir.ui.view">
+    <record id="work_base_timesheet_form" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <form>
@@ -95,8 +95,8 @@
         <field name="inherit_id" eval="False"/>
         <field name="key" eval="False"/>
         <field name="mode">primary</field>
-        <field name="model">iset.timesheet</field>
-        <field name="name">iSets timesheet form view</field>
+        <field name="model">work.base.timesheet</field>
+        <field name="name">Work Base timesheet form view</field>
         <field name="priority">16</field>
         <field name="type">form</field>
     </record>
