@@ -8,7 +8,7 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="name">Work Base</field>
+        <field name="name">Sheets</field>
         <field name="res_model">work.base</field>
         <field name="search_view_id" eval="work_base_tree_search"/>
         <field name="target">current</field>
@@ -23,7 +23,7 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="name">Work Extended</field>
+        <field name="name">Work</field>
         <field name="res_model">work.extended</field>
         <field name="search_view_id" eval="False"/>
         <field name="target">current</field>
@@ -51,7 +51,7 @@
     <menuitem
             action="action_work_base"
             id="menu_work_base"
-            name="Work Base"
+            name="Work Sheets"
             sequence="10"
             web_icon="work_base,static/work_base.png"
     />
@@ -60,7 +60,7 @@
         <field name="action" ref="action_work_base"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
-        <field name="name">Work Base</field>
+        <field name="name">Sheet</field>
         <field name="parent_id" ref="menu_work_base"/>
         <field name="sequence">1</field>
         <field name="web_icon" eval="False"/>
@@ -90,7 +90,7 @@
         <field name="action" ref="repair.action_repair_order_tree"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [ref('hr_timesheet.group_hr_timesheet_approver')])]"/>
-        <field name="name">Repairs</field>
+        <field name="name">Repair</field>
         <field name="parent_id" ref="menu_work_base"/>
         <field name="sequence">4</field>
         <field name="web_icon" eval="False"/>
