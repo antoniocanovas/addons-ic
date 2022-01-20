@@ -7,7 +7,10 @@
             <field name="code">
 # VEHICLE ANALYTICS:
   # News or without AA:
-name = str(record.create_date.year)[2:] + str(record.create_date.month) + " [" + record.default_code + "] " + record.name
+if record.default_code:
+  name = str(record.create_date.year)[2:] + str(record.create_date.month) + " [" + record.default_code + "] " + record.name
+else:
+  name = str(record.create_date.year)[2:] + str(record.create_date.month) + " " + record.name
 if (record.is_vehicle) and not (record.income_analytic_account_id.id):
   aa = env['account.analytic.account'].search([('name','=', name)])
   if not aa.id:

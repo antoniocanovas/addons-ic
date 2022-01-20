@@ -41,13 +41,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00016" summary="User_id &amp; compute in agregate">
-      <created>1639239287328</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1639239287328</updated>
-    </task>
     <task id="LOCAL-00017" summary="roi agregate compute">
       <created>1639240063327</created>
       <option name="number" value="00017" />
@@ -384,7 +377,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642094556736</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="recalculation">
+      <created>1642647398990</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1642647398990</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -399,7 +399,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="roi agregate compute" />
     <MESSAGE value="rename menus" />
     <MESSAGE value="import datetime" />
     <MESSAGE value="bug today" />
@@ -424,6 +423,7 @@
     <MESSAGE value="Change position analytic_account_id" />
     <MESSAGE value="Recal rebu_iva" />
     <MESSAGE value="estimation date" />
-    <option name="LAST_COMMIT_MESSAGE" value="estimation date" />
+    <MESSAGE value="recalculation" />
+    <option name="LAST_COMMIT_MESSAGE" value="recalculation" />
   </component>
 </project>
