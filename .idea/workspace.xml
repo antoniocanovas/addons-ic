@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug name">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="rename menus">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_base/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/views/menu_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base_basic_user/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_basic_user/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base_basic_user/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_basic_user/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base_basic_user/data/automatic_actions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_basic_user/data/automatic_actions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base_basic_user/data/rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_basic_user/data/rules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base_basic_user/data/user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_basic_user/data/user.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base_basic_user/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_basic_user/views/menu_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base_basic_user/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_basic_user/views/model_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,13 +49,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00018" summary="rename menus">
-      <created>1639240595836</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1639240595836</updated>
     </task>
     <task id="LOCAL-00019" summary="import datetime">
       <created>1639241501529</created>
@@ -387,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642678327403</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="rename menus">
+      <created>1642696139329</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1642696139329</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -402,7 +408,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="import datetime" />
     <MESSAGE value="bug today" />
     <MESSAGE value="bug 2" />
     <MESSAGE value="AA" />
@@ -427,6 +432,7 @@
     <MESSAGE value="estimation date" />
     <MESSAGE value="recalculation" />
     <MESSAGE value="bug name" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug name" />
+    <MESSAGE value="rename menus" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename menus" />
   </component>
 </project>

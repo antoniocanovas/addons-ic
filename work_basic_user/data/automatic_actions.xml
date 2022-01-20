@@ -8,7 +8,7 @@
             <field name="state">code</field>
             <field name="code">
 # Easier than changing internal user permissions:
-id_group = env['ir.model.data'].search([('name','=','work_base_basic_user'),('model','=','res.groups')]).res_id
+id_group = env['ir.model.data'].search([('name','=','work_basic_user'),('model','=','res.groups')]).res_id
 group = env['res.groups'].search([('id','=',id_group)])
 if (record.active == False) and (user in group.users):
   raise Warning('You are not allowed to archive Task, contact with your project manager.')

@@ -1,5 +1,5 @@
 {
-    'name': 'Work Base Basic User',
+    'name': 'Work Basic User',
     'version': '14.0.1.0.0',
     'category': '',
     'description': u"""

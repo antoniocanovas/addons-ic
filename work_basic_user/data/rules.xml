@@ -1,9 +1,9 @@
 <odoo>
 
-    <record id="work_base_basic_user_own_repairs" model="ir.rule">
+    <record id="work_basic_user_own_repairs" model="ir.rule">
         <field name="name">See own repairs</field>
         <field name="model_id" ref='repair.model_repair_order'/>
-        <field name="groups" eval="[(6,0, [ref('work_base_basic_user.work_base_basic_user')])]"/>
+        <field name="groups" eval="[(6,0, [ref('work_basic_user.work_basic_user')])]"/>
         <field name="perm_read" eval="True"/>
         <field name="perm_write" eval="True"/>
         <field name="perm_create" eval="True"/>
