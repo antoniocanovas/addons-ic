@@ -90,12 +90,10 @@
                 </notebook>
             </xpath>
             <xpath expr="//form/sheet" position="after">
-                <div class="oe_button_box" name="button_box">
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids"/>
-                        <field name="activity_ids"/>
-                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
-                    </div>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
                 </div>
             </xpath>
         </field>
