@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="rename">
-      <change beforePath="$PROJECT_DIR$/work_base/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/views/menu_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base/views/work_sheet_report.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/views/work_sheet_report.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,27 +43,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00030" summary="AA">
-      <created>1639264868174</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1639264868175</updated>
-    </task>
-    <task id="LOCAL-00031" summary="AA">
-      <created>1639265533736</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1639265533736</updated>
-    </task>
-    <task id="LOCAL-00032" summary="AA">
-      <created>1639265739139</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1639265739139</updated>
     </task>
     <task id="LOCAL-00033" summary="AA">
       <created>1639323506635</created>
@@ -387,7 +366,28 @@
       <option name="project" value="LOCAL" />
       <updated>1642731735627</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="rename">
+      <created>1642732036592</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1642732036592</updated>
+    </task>
+    <task id="LOCAL-00080" summary="rename">
+      <created>1642732150337</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1642732150337</updated>
+    </task>
+    <task id="LOCAL-00081" summary="rename">
+      <created>1642732232188</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1642732232189</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
