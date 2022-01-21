@@ -10,7 +10,7 @@
         <field name="limit">80</field>
         <field name="name">Sheets</field>
         <field name="res_model">work.base</field>
-        <field name="search_view_id" eval="work_base_tree_search"/>
+        <field name="search_view_id" eval="work_sheet_tree_search"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">tree,form</field>
