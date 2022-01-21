@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="rename module">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="margin false">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_extended/models/work_extended_employee.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/models/work_extended_employee.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_extended/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/security/ir.model.access.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +35,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -43,13 +45,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00022" summary="bug 2">
-      <created>1639243332541</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1639243332541</updated>
     </task>
     <task id="LOCAL-00023" summary="bug 2">
       <created>1639244104475</created>
@@ -387,7 +382,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642699246246</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="margin false">
+      <created>1642724965471</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1642724965471</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -402,7 +404,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="bug 2" />
     <MESSAGE value="AA" />
     <MESSAGE value="Views monetary" />
     <MESSAGE value="v2" />
@@ -427,6 +428,7 @@
     <MESSAGE value="bug name" />
     <MESSAGE value="rename menus" />
     <MESSAGE value="rename module" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename module" />
+    <MESSAGE value="margin false" />
+    <option name="LAST_COMMIT_MESSAGE" value="margin false" />
   </component>
 </project>
