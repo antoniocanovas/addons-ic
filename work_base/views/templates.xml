@@ -180,7 +180,7 @@
             </t>
         </template>
         
-        <template id="iset_report_document">
+        <template id="work_sheet_report_document">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t t-call="work_base.work_sheet_report_document_report" t-lang="lang"/>
