@@ -5,19 +5,19 @@ _logger = logging.getLogger(__name__)
 
 
 class WorkExtended(models.Model):
-    _name = 'work.extended'
-    _inherit = ['work.extended','mail.thread', 'mail.activity.mixin']
+    _name = 'work.work'
+    _inherit = ['work.work','mail.thread', 'mail.activity.mixin']
 
     user_id = fields.Many2one('res.users', string='Supervisor')
     saleperson_id = fields.Many2one('res.users', string='Salesman')
-    sale_order_ids = fields.One2many('sale.order', 'work_extended_id')
-    project_ids = fields.One2many('project.project', 'work_extended_id')
-    employee_line_ids = fields.One2many('work.extended.employee', 'work_extended_id', string="Employees")
+    sale_order_ids = fields.One2many('sale.order', 'work_id')
+    project_ids = fields.One2many('project.project', 'work_id')
+    employee_line_ids = fields.One2many('work.employee', 'work_id', string="Employees")
     note = fields.Text('Note')
     protection_product_ids = fields.Many2many('product.product', string='Protection')
     location_id = fields.Many2one('stock.location', string='Location')
-    task_ids = fields.One2many('project.task', 'work_extended_id', string='Task')
-    tool_product_ids = fields.Many2many('product.product', 'rel_product_work_extended', 'work_extended_id', 'product_id', string='Tools')
+    task_ids = fields.One2many('project.task', 'work_id', string='Task')
+    tool_product_ids = fields.Many2many('product.product', 'rel_product_work', 'work_id', 'product_id', string='Tools')
 
     def _get_sale_order_count(self):
         self.sale_order_count = len(self.sale_order_ids)

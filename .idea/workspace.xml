@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="rename">
-      <change beforePath="$PROJECT_DIR$/work_base/views/work_sheet_report.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/views/work_sheet_report.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_extended/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_extended/models/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/models/project.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_extended/models/project_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/models/project_task.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_extended/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/models/sale_order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_extended/models/stock_quant.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/models/stock_quant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_extended/models/work_extended.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/models/work_work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_extended/models/work_extended_employee.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/models/work_employee.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_extended/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/security/ir.model.access.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_extended/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/views/menu_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_extended/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/views/model_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,13 +52,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00033" summary="AA">
-      <created>1639323506635</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1639323506635</updated>
     </task>
     <task id="LOCAL-00034" summary="AA">
       <created>1639325462939</created>
@@ -387,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642732232189</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="rename">
+      <created>1642732560480</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1642732560480</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

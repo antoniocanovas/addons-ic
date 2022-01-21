@@ -8,4 +8,4 @@ _logger = logging.getLogger(__name__)
 class SaleOrderiSet(models.Model):
     _inherit = 'sale.order'
 
-    work_extended_id = fields.Many2one('work.extended', 'Work Extended')
+    work_id = fields.Many2one('work.work', 'Work')
