@@ -1,0 +1,47 @@
+<odoo>
+
+    <record id="work_basic_user" model="res.groups">
+        <field name="name">iSet basic user</field>
+    </record>
+
+    <record id="base.menu_board_root" model="ir.ui.menu">
+        <field name="excluded_group_ids" eval="[(4, ref('work_basic_user.work_basic_user'))]"/>
+    </record>
+
+    <record id="stock.menu_stock_root" model="ir.ui.menu">
+        <field name="excluded_group_ids" eval="[(4, ref('work_basic_user.work_basic_user'))]"/>
+    </record>
+
+    <record id="mrp.menu_mrp_root" model="ir.ui.menu">
+        <field name="excluded_group_ids" eval="[(4, ref('work_basic_user.work_basic_user'))]"/>
+    </record>
+
+    <record id="repair.menu_repair_order" model="ir.ui.menu">
+        <field name="excluded_group_ids" eval="[(4, ref('work_basic_user.work_basic_user'))]"/>
+    </record>
+
+    <record id="project.menu_main_pm" model="ir.ui.menu">
+        <field name="excluded_group_ids" eval="[(4, ref('work_basic_user.work_basic_user'))]"/>
+    </record>
+
+    <record id="hr.menu_hr_root" model="ir.ui.menu">
+        <field name="excluded_group_ids" eval="[(4, ref('work_basic_user.work_basic_user'))]"/>
+    </record>
+
+    <record id="maintenance.menu_maintenance_title" model="ir.ui.menu">
+        <field name="excluded_group_ids" eval="[(4, ref('work_basic_user.work_basic_user'))]"/>
+    </record>
+
+    <record id="hr_timesheet.timesheet_menu_root" model="ir.ui.menu">
+        <field name="excluded_group_ids" eval="[(4, ref('work_basic_user.work_basic_user'))]"/>
+    </record>
+
+    <record id="utm.menu_link_tracker_root" model="ir.ui.menu">
+        <field name="excluded_group_ids" eval="[(4, ref('work_basic_user.work_basic_user'))]"/>
+    </record>
+
+    <record id="contacts.menu_contacts" model="ir.ui.menu">
+        <field name="excluded_group_ids" eval="[(4, ref('work_basic_user.work_basic_user'))]"/>
+    </record>
+
+</odoo>

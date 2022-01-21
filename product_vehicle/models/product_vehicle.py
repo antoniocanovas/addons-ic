@@ -96,7 +96,7 @@ class ProductTemplate(models.Model):
             estimations = record.vehicle_subtotal_estimation
             analytics = record.vehicle_subtotal_analytic
             record.vehicle_margin = price + estimations + analytics + record.vehicle_rebu_iva
-    vehicle_margin = fields.Float(string="Margin (€)", store=True, compute="get_vehicle_margin")
+    vehicle_margin = fields.Float(string="Margin (€)", store=False, compute="get_vehicle_margin")
 
     def get_analytic_lines(self):
         for record in self:
@@ -105,12 +105,3 @@ class ProductTemplate(models.Model):
             record.analytic_line_ids = [(6, 0, lines.ids)]
     analytic_line_ids = fields.Many2many('account.analytic.line', store=False, readonly=True, string="Analytic",
                                          compute="get_analytic_lines")
-
-    #def get_opp_ids(self):
-    #    for record in self:
-    #        ops = self.env['crm.lead'].search([('vehicle_ids', 'like', record.id)]).ids
-    #        record.opportunity_ids = [(6, 0, ops)]
-    #opportunity_ids = fields.Many2many('crm.lead', string="Opportunities", readonly=True, compute="get_opp_ids")
-
-
-

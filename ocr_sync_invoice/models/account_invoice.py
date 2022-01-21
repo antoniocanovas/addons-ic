@@ -2,8 +2,8 @@
 
 from odoo.exceptions import AccessError, UserError, RedirectWarning, ValidationError, Warning
 from odoo import fields, models, api
-import requests
-from odoo import http
+import xmlrpc.client
+
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -78,6 +78,14 @@ class AccountInvoice(models.Model):
                 ('client_api_key', '=', self.ocr_transaction_id.customer_api_key),
                 ('type', '=', 'odoo'),
             ])[0]
+
+            ##TERST##
+            asesoria = self.env['res.users'].sudo().search([('name', '=', 'asesoria'),
+                                                            "|",
+                                                            ("active", "=", True),
+                                                            ("active", "=", False),
+                                                            ], limit=1)
+
 
             if not invoice.partner_id.vat:
                 raise Warning((
