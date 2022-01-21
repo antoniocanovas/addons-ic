@@ -3,7 +3,7 @@
     <data>
         <record id="iset_report" model="ir.actions.report">
             <field name="name">Work Base</field>
-            <field name="model">work.base</field>
+            <field name="model">work.sheet</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">work_base.work_base_report_document</field>
             <field name="report_file">work_base.work_base_report_document</field>
