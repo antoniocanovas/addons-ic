@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="action_work_base" model="ir.actions.act_window">
+    <record id="action_work_base_sheet" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="domain" eval="False"/>
@@ -9,7 +9,7 @@
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
         <field name="name">Sheets</field>
-        <field name="res_model">work.base</field>
+        <field name="res_model">work.sheet</field>
         <field name="search_view_id" eval="work_sheet_tree_search"/>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
@@ -38,7 +38,7 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="name">Work base Schedule</field>
+        <field name="name">Work Schedule</field>
         <field name="res_model">working.type</field>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
@@ -56,8 +56,8 @@
             web_icon="work_base,static/work_base.png"
     />
 
-    <record id="menu_work_base_bar" model="ir.ui.menu">
-        <field name="action" ref="action_work_base"/>
+    <record id="menu_work_base_sheet" model="ir.ui.menu">
+        <field name="action" ref="action_work_base_sheet"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
         <field name="name">Sheet</field>
