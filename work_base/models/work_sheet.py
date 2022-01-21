@@ -15,9 +15,9 @@ TYPES = [
 
 
 class Isets(models.Model):
-    _name = 'work.base'
+    _name = 'work.sheet'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    _description = 'work base'
+    _description = 'Work Sheet'
 
     name = fields.Char('Name', required=True)
     date = fields.Date('Date', required=True)
@@ -78,24 +78,24 @@ class Isets(models.Model):
 
     project_service_ids = fields.One2many(
         'account.analytic.line',
-        'work_base_id',
-        domain=[('product_id','=',False),('work_base_so_line_id','=',False)],
+        'work_sheet_id',
+        domain=[('product_id','=',False),('work_sheet_so_line_id','=',False)],
         store=True,
         string='Imputaciones'
     )
     project_product_ids = fields.One2many(
         'account.analytic.line',
-        'work_base_id',
-        domain=['|',('product_id','!=',False),('work_base_so_line_id','!=',False)],
+        'work_sheet_id',
+        domain=['|',('product_id','!=',False),('work_sheet_so_line_id','!=',False)],
         store=True,
         string='Productos'
     )
     task_sale_order_id = fields.Many2one('sale.order', related='task_id.sale_order_id', string='Sale Order')
 
-    repair_service_ids = fields.One2many('repair.fee', 'work_base_id', string='Tech. Services')
-    repair_product_ids = fields.One2many('repair.line', 'work_base_id', string='Parts')
-    mrp_product_ids = fields.One2many('stock.move', 'work_base_id', string='Products')
-    mrp_service_ids = fields.One2many('mrp.workcenter.productivity', 'work_base_id', string='Time consumed')
+    repair_service_ids = fields.One2many('repair.fee', 'work_sheet_id', string='Tech. Services')
+    repair_product_ids = fields.One2many('repair.line', 'work_sheet_id', string='Parts')
+    mrp_product_ids = fields.One2many('stock.move', 'work_sheet_id', string='Products')
+    mrp_service_ids = fields.One2many('mrp.workcenter.productivity', 'work_sheet_id', string='Time consumed')
 
     @api.depends('work_id')
     def get_productions(self):
@@ -175,7 +175,7 @@ class Isets(models.Model):
         for record in self:
             if record.signature and not record.signature_status:
                 # generate pdf from report, use report's id as reference
-                report_id = 'work_base.iset_report'
+                report_id = 'work_base.work_sheet_report'
                 pdf = self.env.ref(report_id)._render_qweb_pdf(record.ids[0])
                 # pdf result is a list
                 b64_pdf = base64.b64encode(pdf[0])
@@ -190,7 +190,7 @@ class Isets(models.Model):
                     'type': 'binary',
                     'datas': b64_pdf,
                     'store_fname': name + '.pdf',
-                    'res_model': 'work.base',
+                    'res_model': 'work.sheet',
                     'res_id': record.id,
                     'mimetype': 'application/pdf'
                 })
@@ -244,7 +244,7 @@ class Isets(models.Model):
                 for li in employee_ids:
                     name = record.name + start
                     new = self.env['account.analytic.line'].create(
-                        {'work_base_id': record.id, 'name': name, 'project_id': record.project_id.id,
+                        {'work_sheet_id': record.id, 'name': name, 'project_id': record.project_id.id,
                          'task_id': record.task_id.id, 'date': record.date, 'account_id': record.project_analytic_id.id,
                          'company_id': record.company_id.id,
                          'employee_id': li.id, 'unit_amount': duration, 'type_id': record.type_id.id
@@ -256,7 +256,7 @@ class Isets(models.Model):
                     product_id = record.work_id.repair_service_id
                     for li in employee_ids:
                         name = product_id.name + start + " - " + li.name
-                        new = self.env['repair.fee'].create({'work_base_id': record.id, 'product_id': product_id.id,
+                        new = self.env['repair.fee'].create({'work_sheet_id': record.id, 'product_id': product_id.id,
                                                         'name': name, 'repair_id': record.repair_id.id,
                                                         'company_id': record.company_id.id,
                                                         'create_uid': li.user_id.id, 'product_uom_qty': duration,
@@ -281,7 +281,7 @@ class Isets(models.Model):
                 for li in employee_ids:
                     name = record.workorder_id.name + start + " - " + li.name
                     new = self.env['mrp.workcenter.productivity'].create(
-                        {'work_base_id': record.id, 'description': name, 'production_id': record.mrp_id.id,
+                        {'work_sheet_id': record.id, 'description': name, 'production_id': record.mrp_id.id,
                          'workorder_id': record.workorder_id.id, 'workcenter_id': record.workorder_id.workcenter_id.id,
                          'company_id': record.company_id.id,
                          'loss_id': record.production_loss_id.id, 'date_start': date_start, 'date_end': date_end,

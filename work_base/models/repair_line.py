@@ -7,4 +7,4 @@ _logger = logging.getLogger(__name__)
 class RepairLine(models.Model):
     _inherit = 'repair.line'
 
-    work_base_id = fields.Many2one('work.base')
+    work_sheet_id = fields.Many2one('work.sheet')

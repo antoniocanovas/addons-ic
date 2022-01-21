@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="rename">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_base/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_base/data/action_server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/data/action_server.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_base/data/data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/data/data.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_base/data/rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/data/rules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/work_base/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_base/models/work_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/models/work_base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_base/models/work_extended.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/models/work_work.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_base/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/security/ir.model.access.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_base/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/views/menu_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_base/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/views/model_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base/models/account_analytic_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/models/account_analytic_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base/models/mrp.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/models/mrp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base/models/repair_fee.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/models/repair_fee.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base/models/repair_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/models/repair_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/models/sale_order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base/models/sale_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/models/sale_order_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base/models/stock_move.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/models/stock_move.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_base/models/work_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/models/work_sheet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/work_base/views/templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/views/templates.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_base/views/work_base_report.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_base/views/work_sheet_report.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_extended/models/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/models/project.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_extended/models/project_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/models/project_task.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,13 +53,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00024" summary="bug 2">
-      <created>1639244191653</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1639244191653</updated>
     </task>
     <task id="LOCAL-00025" summary="bug 2">
       <created>1639259449131</created>
@@ -401,7 +390,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642726951891</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="rename">
+      <created>1642729125898</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1642729125899</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -416,7 +412,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AA" />
     <MESSAGE value="Views monetary" />
     <MESSAGE value="v2" />
     <MESSAGE value="default_code as matrícula" />
@@ -441,6 +436,7 @@
     <MESSAGE value="rename module" />
     <MESSAGE value="margin false" />
     <MESSAGE value="bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug" />
+    <MESSAGE value="rename" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename" />
   </component>
 </project>
