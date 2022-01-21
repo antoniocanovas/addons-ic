@@ -23,7 +23,7 @@ class Isets(models.Model):
     date = fields.Date('Date', required=True)
     start = fields.Float('Start')
     stop = fields.Float('Stop')
-    work_id = fields.Many2one('work.extended')
+    work_id = fields.Many2one('work.work')
     type = fields.Selection(string='Type', related='work_id.type')
     employee_ids = fields.Many2many('hr.employee')
     repair_id = fields.Many2one('repair.order', string="Repair Order")

@@ -8,8 +8,8 @@ class Project(models.Model):
     _inherit = 'project.project'
 
     @api.depends('sale_order_id')
-    def get_iset_word_id(self):
-        if not self.work_extended_id:
-            self.work_extended_id = self.sale_order_id.work_extended_id
+    def get_work_id(self):
+        if not self.work_id:
+            self.work_id = self.sale_order_id.work_id
 
-    work_extended_id = fields.Many2one('work.extended', 'Work extended', compute='get_iset_word_id', readonly=False)
+    work_id = fields.Many2one('work.extended', 'Work extended', compute='get_work_id', readonly=False)

@@ -12,7 +12,7 @@ TYPES = [
 
 
 class IsetsTypes(models.Model):
-    _name = 'work.extended'
+    _name = 'work.work'
     _description = 'iSet Work'
 
     name = fields.Char('Name', required=True)

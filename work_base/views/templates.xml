@@ -3,7 +3,7 @@
 <odoo>
     <data>
 
-        <template id="work_base_report_document_report">
+        <template id="work_sheet_report_document_report">
             <t t-call="web.external_layout">
                 <t t-set="o" t-value="o.with_context(lang=lang)"/>
                 <div class="page">
@@ -42,7 +42,7 @@
                             <table class="table table-sm o_main_table">
                                          <thead style="display: table-row-group">
                                             <tr>
-                                                <th name="th_line">Linea de presupuesto Work Base</th>
+                                                <th name="th_line">Linea de presupuesto Work Sheet</th>
                                                 <th name="th_product">Producto</th>
                                                 <th name="th_Description">Descripción</th>
                                                 <th name="th_quantity">Cantidad</th>
@@ -183,7 +183,7 @@
         <template id="iset_report_document">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="work_base.work_base_report_document_report" t-lang="lang"/>
+                    <t t-call="work_base.work_sheet_report_document_report" t-lang="lang"/>
                 </t>
             </t>
         </template>
