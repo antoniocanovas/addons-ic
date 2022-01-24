@@ -793,7 +793,7 @@ msgstr "Firmado y aprovado"
 #. module: work_base
 #: model:ir.model.fields,field_description:work_base.field_work_sheet__partner_id
 msgid "Signed by"
-msgstr "firmado por"
+msgstr "Firmado por"
 
 #. module: work_base
 #: model:ir.model.fields,field_description:work_base.field_work_sheet__start
@@ -969,7 +969,7 @@ msgstr "Hoja de trabajo So Línea"
 #. module: work_base
 #: model:ir.ui.menu,name:work_base.menu_work_base
 msgid "Work Sheets"
-msgstr "hojas de trabajo"
+msgstr "Hojas de trabajo"
 
 #. module: work_base
 #: model:ir.model,name:work_base.model_mrp_workcenter_productivity
