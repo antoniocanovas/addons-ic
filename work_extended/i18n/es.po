@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* iset_work
+# 	* work_extended
 #
 msgid ""
 msgstr ""
@@ -17,284 +17,284 @@ msgstr ""
 "Language: es\n"
 "X-Generator: Poedit 2.2.3\n"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_needaction
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_needaction
 msgid "Action Needed"
 msgstr "Acción necesaria"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__activity_ids
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__activity_ids
 msgid "Activities"
 msgstr "Actividades"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__activity_exception_decoration
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__activity_exception_decoration
 msgid "Activity Exception Decoration"
 msgstr "Excepción actividad"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__activity_state
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__activity_state
 msgid "Activity State"
 msgstr "Estado de actividad"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__activity_type_icon
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__activity_type_icon
 msgid "Activity Type Icon"
 msgstr "Icono de tipo de actividad"
 
-#. module: iset_work
-#: model_terms:ir.ui.view,arch_db:iset_work.isets_work_form_inh
+#. module: work_extended
+#: model_terms:ir.ui.view,arch_db:work_extended.isets_work_form_inh
 msgid "Administrative management"
 msgstr "Gestión administrativa"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_attachment_count
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_attachment_count
 msgid "Attachment Count"
 msgstr "Nº Adjuntos"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__projects_count
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__sale_order_count
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__projects_count
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__sale_order_count
 msgid "Attachments"
 msgstr "Adjuntos"
 
-#. module: iset_work
-#: model_terms:ir.actions.act_window,help:iset_work.act_iset_work_2_project
+#. module: work_extended
+#: model_terms:ir.actions.act_window,help:work_extended.act_work_extended_2_project
 msgid "Create a new Project!"
 msgstr "Crear nuevo proyecto!"
 
-#. module: iset_work
-#: model_terms:ir.actions.act_window,help:iset_work.act_iset_work_2_sale_order
+#. module: work_extended
+#: model_terms:ir.actions.act_window,help:work_extended.act_work_extended_2_sale_order
 msgid "Create a new Sale Order!"
 msgstr "Crear nuevo pedido de venta!"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work_employee__create_uid
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended_employee__create_uid
 msgid "Created by"
 msgstr "Creado por"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work_employee__create_date
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended_employee__create_date
 msgid "Created on"
 msgstr "Creado en"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__display_name
-#: model:ir.model.fields,field_description:iset_work.field_iset_work_employee__display_name
-#: model:ir.model.fields,field_description:iset_work.field_project_project__display_name
-#: model:ir.model.fields,field_description:iset_work.field_project_task__display_name
-#: model:ir.model.fields,field_description:iset_work.field_sale_order__display_name
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__display_name
+#: model:ir.model.fields,field_description:work_extended.field_work_extended_employee__display_name
+#: model:ir.model.fields,field_description:work_extended.field_project_project__display_name
+#: model:ir.model.fields,field_description:work_extended.field_project_task__display_name
+#: model:ir.model.fields,field_description:work_extended.field_sale_order__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work_employee__employee_id
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended_employee__employee_id
 msgid "Employee"
 msgstr "Empleado"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__employee_line_ids
-#: model_terms:ir.ui.view,arch_db:iset_work.isets_work_form_inh
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__employee_line_ids
+#: model_terms:ir.ui.view,arch_db:work_extended.isets_work_form_inh
 msgid "Employees"
 msgstr "Empleados"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_follower_ids
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_follower_ids
 msgid "Followers"
 msgstr "Seguidores"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_channel_ids
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_channel_ids
 msgid "Followers (Channels)"
 msgstr "Canalaes"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_partner_ids
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_partner_ids
 msgid "Followers (Partners)"
 msgstr "Contactos"
 
-#. module: iset_work
-#: model:ir.model.fields,help:iset_work.field_iset_work__activity_type_icon
+#. module: work_extended
+#: model:ir.model.fields,help:work_extended.field_work_extended__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work_employee__function_ids
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended_employee__function_ids
 msgid "Function"
 msgstr "Función"
 
-#. module: iset_work
-#: model_terms:ir.ui.view,arch_db:iset_work.isets_work_form_inh
+#. module: work_extended
+#: model_terms:ir.ui.view,arch_db:work_extended.isets_work_form_inh
 msgid "General"
 msgstr "General"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__id
-#: model:ir.model.fields,field_description:iset_work.field_iset_work_employee__id
-#: model:ir.model.fields,field_description:iset_work.field_project_project__id
-#: model:ir.model.fields,field_description:iset_work.field_project_task__id
-#: model:ir.model.fields,field_description:iset_work.field_sale_order__id
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__id
+#: model:ir.model.fields,field_description:work_extended.field_work_extended_employee__id
+#: model:ir.model.fields,field_description:work_extended.field_project_project__id
+#: model:ir.model.fields,field_description:work_extended.field_project_task__id
+#: model:ir.model.fields,field_description:work_extended.field_sale_order__id
 msgid "ID"
 msgstr "ID"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__activity_exception_icon
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__activity_exception_icon
 msgid "Icon"
 msgstr "Icono"
 
-#. module: iset_work
-#: model:ir.model.fields,help:iset_work.field_iset_work__activity_exception_icon
+#. module: work_extended
+#: model:ir.model.fields,help:work_extended.field_work_extended__activity_exception_icon
 msgid "Icon to indicate an exception activity."
 msgstr ""
 
-#. module: iset_work
-#: model:ir.model.fields,help:iset_work.field_iset_work__message_needaction
-#: model:ir.model.fields,help:iset_work.field_iset_work__message_unread
+#. module: work_extended
+#: model:ir.model.fields,help:work_extended.field_work_extended__message_needaction
+#: model:ir.model.fields,help:work_extended.field_work_extended__message_unread
 msgid "If checked, new messages require your attention."
 msgstr ""
 
-#. module: iset_work
-#: model:ir.model.fields,help:iset_work.field_iset_work__message_has_error
-#: model:ir.model.fields,help:iset_work.field_iset_work__message_has_sms_error
+#. module: work_extended
+#: model:ir.model.fields,help:work_extended.field_work_extended__message_has_error
+#: model:ir.model.fields,help:work_extended.field_work_extended__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr ""
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_is_follower
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_is_follower
 msgid "Is Follower"
 msgstr ""
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work____last_update
-#: model:ir.model.fields,field_description:iset_work.field_iset_work_employee____last_update
-#: model:ir.model.fields,field_description:iset_work.field_project_project____last_update
-#: model:ir.model.fields,field_description:iset_work.field_project_task____last_update
-#: model:ir.model.fields,field_description:iset_work.field_sale_order____last_update
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended____last_update
+#: model:ir.model.fields,field_description:work_extended.field_work_extended_employee____last_update
+#: model:ir.model.fields,field_description:work_extended.field_project_project____last_update
+#: model:ir.model.fields,field_description:work_extended.field_project_task____last_update
+#: model:ir.model.fields,field_description:work_extended.field_sale_order____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work_employee__write_uid
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended_employee__write_uid
 msgid "Last Updated by"
 msgstr "Actualizado por"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work_employee__write_date
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended_employee__write_date
 msgid "Last Updated on"
 msgstr "Actualizado el"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__location_id
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__location_id
 msgid "Location"
 msgstr "Localización"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_main_attachment_id
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_main_attachment_id
 msgid "Main Attachment"
 msgstr "Adjunto principal"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_has_error
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_has_error
 msgid "Message Delivery error"
 msgstr "Error envío de mensajes"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_ids
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_ids
 msgid "Messages"
 msgstr "Mensajes"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__activity_date_deadline
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__activity_date_deadline
 msgid "Next Activity Deadline"
 msgstr "Fecha límite próxima actividad"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__activity_summary
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__activity_summary
 msgid "Next Activity Summary"
 msgstr "Resumen próxima actividad"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__activity_type_id
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__activity_type_id
 msgid "Next Activity Type"
 msgstr "Tipo próxima actividad"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__note
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__note
 msgid "Note"
 msgstr "Nota"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_needaction_counter
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_needaction_counter
 msgid "Number of Actions"
 msgstr "Número de acciones"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_has_error_counter
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_has_error_counter
 msgid "Number of errors"
 msgstr "Número de errores"
 
-#. module: iset_work
-#: model:ir.model.fields,help:iset_work.field_iset_work__message_needaction_counter
+#. module: work_extended
+#: model:ir.model.fields,help:work_extended.field_work_extended__message_needaction_counter
 msgid "Number of messages which requires an action"
 msgstr "Número de mensajes que requieren acción"
 
-#. module: iset_work
-#: model:ir.model.fields,help:iset_work.field_iset_work__message_has_error_counter
+#. module: work_extended
+#: model:ir.model.fields,help:work_extended.field_work_extended__message_has_error_counter
 msgid "Number of messages with delivery error"
 msgstr "Número de mensajes con error de entrega"
 
-#. module: iset_work
-#: model:ir.model.fields,help:iset_work.field_iset_work__message_unread_counter
+#. module: work_extended
+#: model:ir.model.fields,help:work_extended.field_work_extended__message_unread_counter
 msgid "Number of unread messages"
 msgstr "Número de mensajes sin leer"
 
-#. module: iset_work
-#: model:ir.actions.act_window,name:iset_work.act_iset_work_2_project
-#: model:ir.model,name:iset_work.model_project_project
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__project_ids
+#. module: work_extended
+#: model:ir.actions.act_window,name:work_extended.act_work_extended_2_project
+#: model:ir.model,name:work_extended.model_project_project
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__project_ids
 msgid "Project"
 msgstr "Proyecto"
 
-#. module: iset_work
-#: model_terms:ir.ui.view,arch_db:iset_work.isets_work_form_inh
+#. module: work_extended
+#: model_terms:ir.ui.view,arch_db:work_extended.isets_work_form_inh
 msgid "Projects"
 msgstr "Proyectos"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__protection_product_ids
-#: model_terms:ir.ui.view,arch_db:iset_work.isets_work_form_inh
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__protection_product_ids
+#: model_terms:ir.ui.view,arch_db:work_extended.isets_work_form_inh
 msgid "Protection"
 msgstr "Protección"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__activity_user_id
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__activity_user_id
 msgid "Responsible User"
 msgstr "Usuario responsable"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_has_sms_error
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_has_sms_error
 msgid "SMS Delivery error"
 msgstr ""
 
-#. module: iset_work
-#: model:ir.actions.act_window,name:iset_work.act_iset_work_2_sale_order
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__sale_order_ids
-#: model_terms:ir.ui.view,arch_db:iset_work.isets_work_form_inh
+#. module: work_extended
+#: model:ir.actions.act_window,name:work_extended.act_work_extended_2_sale_order
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__sale_order_ids
+#: model_terms:ir.ui.view,arch_db:work_extended.isets_work_form_inh
 msgid "Sale Order"
 msgstr "Pedido de venta"
 
-#. module: iset_work
-#: model:ir.model,name:iset_work.model_sale_order
+#. module: work_extended
+#: model:ir.model,name:work_extended.model_sale_order
 msgid "Sales Order"
 msgstr "Pedido de venta"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__saleperson_id
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__saleperson_id
 msgid "Salesman"
 msgstr "Comercial"
 
-#. module: iset_work
-#: model:ir.model.fields,help:iset_work.field_iset_work__activity_state
+#. module: work_extended
+#: model:ir.model.fields,help:work_extended.field_work_extended__activity_state
 msgid ""
 "Status based on activities\n"
 "Overdue: Due date is already passed\n"
@@ -302,64 +302,64 @@ msgid ""
 "Planned: Future activities."
 msgstr ""
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__quant_ids
-#: model_terms:ir.ui.view,arch_db:iset_work.isets_work_form_inh
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__quant_ids
+#: model_terms:ir.ui.view,arch_db:work_extended.isets_work_form_inh
 msgid "Stock"
 msgstr "Inventario"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__user_id
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__user_id
 msgid "Supervisor"
 msgstr "Supervisor"
 
-#. module: iset_work
-#: model:ir.model,name:iset_work.model_project_task
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__task_ids
+#. module: work_extended
+#: model:ir.model,name:work_extended.model_project_task
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__task_ids
 msgid "Task"
 msgstr "Tarea"
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__tool_product_ids
-#: model_terms:ir.ui.view,arch_db:iset_work.isets_work_form_inh
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__tool_product_ids
+#: model_terms:ir.ui.view,arch_db:work_extended.isets_work_form_inh
 msgid "Tools"
 msgstr "Herramientas"
 
-#. module: iset_work
-#: model:ir.model.fields,help:iset_work.field_iset_work__activity_exception_decoration
+#. module: work_extended
+#: model:ir.model.fields,help:work_extended.field_work_extended__activity_exception_decoration
 msgid "Type of the exception activity on record."
 msgstr ""
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_unread
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_unread
 msgid "Unread Messages"
 msgstr ""
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__message_unread_counter
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__message_unread_counter
 msgid "Unread Messages Counter"
 msgstr ""
 
-#. module: iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work__website_message_ids
+#. module: work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended__website_message_ids
 msgid "Website Messages"
 msgstr ""
 
-#. module: iset_work
-#: model:ir.model.fields,help:iset_work.field_iset_work__website_message_ids
+#. module: work_extended
+#: model:ir.model.fields,help:work_extended.field_work_extended__website_message_ids
 msgid "Website communication history"
 msgstr ""
 
-#. module: iset_work
-#: model:ir.model,name:iset_work.model_iset_work
-#: model:ir.model.fields,field_description:iset_work.field_iset_work_employee__iset_work_id
-#: model:ir.model.fields,field_description:iset_work.field_project_project__iset_work_id
-#: model:ir.model.fields,field_description:iset_work.field_project_task__iset_work_id
-#: model:ir.model.fields,field_description:iset_work.field_sale_order__iset_work_id
+#. module: work_extended
+#: model:ir.model,name:work_extended.model_work_extended
+#: model:ir.model.fields,field_description:work_extended.field_work_extended_employee__work_extended_id
+#: model:ir.model.fields,field_description:work_extended.field_project_project__work_extended_id
+#: model:ir.model.fields,field_description:work_extended.field_project_task__work_extended_id
+#: model:ir.model.fields,field_description:work_extended.field_sale_order__work_extended_id
 msgid "Work"
 msgstr "Trabajos"
 
-#. module: iset_work
-#: model:ir.model,name:iset_work.model_iset_work_employee
+#. module: work_extended
+#: model:ir.model,name:work_extended.model_work_extended_employee
 msgid "iSetWorkEmployee"
 msgstr "iSetWork Empleado"
