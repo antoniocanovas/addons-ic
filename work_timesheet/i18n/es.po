@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* iset_timesheet
+# 	* work_timesheet
 #
 msgid ""
 msgstr ""
@@ -17,197 +17,197 @@ msgstr ""
 "Language: es\n"
 "X-Generator: Poedit 2.2.3\n"
 
-#. module: iset_timesheet
-#: model:base.automation,name:iset_timesheet.update_mrp_timesheet
-#: model:ir.actions.server,name:iset_timesheet.update_mrp_timesheet_ir_actions_server
-msgid "=> Update mrp iset_timesheet"
+#. module: work_timesheet
+#: model:base.automation,name:work_timesheet.update_mrp_timesheet
+#: model:ir.actions.server,name:work_timesheet.update_mrp_timesheet_ir_actions_server
+msgid "=> Update mrp work_timesheet"
 msgstr ""
 
-#. module: iset_timesheet
-#: model:base.automation,name:iset_timesheet.update_repair_timesheet
-#: model:ir.actions.server,name:iset_timesheet.update_repair_timesheet_ir_actions_server
-msgid "=> Update repair iset_timesheet"
+#. module: work_timesheet
+#: model:base.automation,name:work_timesheet.update_repair_timesheet
+#: model:ir.actions.server,name:work_timesheet.update_repair_timesheet_ir_actions_server
+msgid "=> Update repair work_timesheet"
 msgstr ""
 
-#. module: iset_timesheet
-#: model:ir.model,name:iset_timesheet.model_account_analytic_line
+#. module: work_timesheet
+#: model:ir.model,name:work_timesheet.model_account_analytic_line
 msgid "Analytic Line"
 msgstr "Línea Analítica"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__analytic_line_ids
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__analytic_line_ids
 msgid "Analytic line"
 msgstr "Línea analítica"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__create_uid
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__create_uid
 msgid "Created by"
 msgstr "Creado por"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__create_date
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__create_date
 msgid "Created on"
 msgstr "Creado en"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__date
-#: model_terms:ir.ui.view,arch_db:iset_timesheet.isets_timesheet_tree_search
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__date
+#: model_terms:ir.ui.view,arch_db:work_timesheet.isets_timesheet_tree_search
 msgid "Date"
 msgstr "Fecha"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_account_analytic_line__display_name
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__display_name
-#: model:ir.model.fields,field_description:iset_timesheet.field_mrp_workcenter_productivity__display_name
-#: model:ir.model.fields,field_description:iset_timesheet.field_repair_fee__display_name
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_account_analytic_line__display_name
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__display_name
+#: model:ir.model.fields,field_description:work_timesheet.field_mrp_workcenter_productivity__display_name
+#: model:ir.model.fields,field_description:work_timesheet.field_repair_fee__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__employee_id
-#: model_terms:ir.ui.view,arch_db:iset_timesheet.isets_timesheet_tree_search
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__employee_id
+#: model_terms:ir.ui.view,arch_db:work_timesheet.isets_timesheet_tree_search
 msgid "Employee"
 msgstr "Empleado"
 
-#. module: iset_timesheet
-#: model_terms:ir.ui.view,arch_db:iset_timesheet.isets_timesheet_tree_search
+#. module: work_timesheet
+#: model_terms:ir.ui.view,arch_db:work_timesheet.isets_timesheet_tree_search
 msgid "Group By"
 msgstr "Agrupar por"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_account_analytic_line__id
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__id
-#: model:ir.model.fields,field_description:iset_timesheet.field_mrp_workcenter_productivity__id
-#: model:ir.model.fields,field_description:iset_timesheet.field_repair_fee__id
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_account_analytic_line__id
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__id
+#: model:ir.model.fields,field_description:work_timesheet.field_mrp_workcenter_productivity__id
+#: model:ir.model.fields,field_description:work_timesheet.field_repair_fee__id
 msgid "ID"
 msgstr "ID"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_account_analytic_line__iset_timesheet_id
-#: model:ir.model.fields,field_description:iset_timesheet.field_mrp_workcenter_productivity__iset_timesheet_id
-#: model:ir.model.fields,field_description:iset_timesheet.field_repair_fee__iset_timesheet_id
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_account_analytic_line__work_timesheet_id
+#: model:ir.model.fields,field_description:work_timesheet.field_mrp_workcenter_productivity__work_timesheet_id
+#: model:ir.model.fields,field_description:work_timesheet.field_repair_fee__work_timesheet_id
 msgid "Iset Timesheet"
 msgstr "Iset Partes de horas"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_account_analytic_line____last_update
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet____last_update
-#: model:ir.model.fields,field_description:iset_timesheet.field_mrp_workcenter_productivity____last_update
-#: model:ir.model.fields,field_description:iset_timesheet.field_repair_fee____last_update
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_account_analytic_line____last_update
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet____last_update
+#: model:ir.model.fields,field_description:work_timesheet.field_mrp_workcenter_productivity____last_update
+#: model:ir.model.fields,field_description:work_timesheet.field_repair_fee____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__write_uid
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__write_uid
 msgid "Last Updated by"
 msgstr "Última actualización por"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__write_date
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__write_date
 msgid "Last Updated on"
 msgstr "Última actualización en"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__mrp_productivity_ids
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__mrp_productivity_ids
 msgid "MRP"
 msgstr "MRP"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__mrp_time
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__mrp_time
 msgid "MRP Time"
 msgstr "Tiempo producción"
 
-#. module: iset_timesheet
-#: model_terms:ir.ui.view,arch_db:iset_timesheet.isets_timesheet_form
+#. module: work_timesheet
+#: model_terms:ir.ui.view,arch_db:work_timesheet.isets_timesheet_form
 msgid "MRP:"
 msgstr ""
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__name
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__name
 msgid "Name"
 msgstr "Nombre"
 
-#. module: iset_timesheet
-#: model_terms:ir.ui.view,arch_db:iset_timesheet.isets_timesheet_tree
+#. module: work_timesheet
+#: model_terms:ir.ui.view,arch_db:work_timesheet.isets_timesheet_tree
 msgid "Productions"
 msgstr "Producciones"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__project_time
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__project_time
 msgid "Project Time"
 msgstr "Tiempo de Proyecto"
 
-#. module: iset_timesheet
-#: model_terms:ir.ui.view,arch_db:iset_timesheet.isets_timesheet_tree
+#. module: work_timesheet
+#: model_terms:ir.ui.view,arch_db:work_timesheet.isets_timesheet_tree
 msgid "Projects"
 msgstr "Proyectos"
 
-#. module: iset_timesheet
-#: model_terms:ir.ui.view,arch_db:iset_timesheet.isets_timesheet_form
+#. module: work_timesheet
+#: model_terms:ir.ui.view,arch_db:work_timesheet.isets_timesheet_form
 msgid "Projects:"
 msgstr "Proyectos:"
 
-#. module: iset_timesheet
-#: model:ir.model,name:iset_timesheet.model_repair_fee
+#. module: work_timesheet
+#: model:ir.model,name:work_timesheet.model_repair_fee
 msgid "Repair Fees"
 msgstr "Tarifas de reparación"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__repair_time
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__repair_time
 msgid "Repair Time"
 msgstr "Tiempo de reparación"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__repair_fee_ids
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__repair_fee_ids
 msgid "Repair fee"
 msgstr "Comisión de reparación"
 
-#. module: iset_timesheet
-#: model_terms:ir.ui.view,arch_db:iset_timesheet.isets_timesheet_tree
+#. module: work_timesheet
+#: model_terms:ir.ui.view,arch_db:work_timesheet.isets_timesheet_tree
 msgid "Repairs"
 msgstr "Reparaciones"
 
-#. module: iset_timesheet
-#: model_terms:ir.ui.view,arch_db:iset_timesheet.isets_timesheet_form
+#. module: work_timesheet
+#: model_terms:ir.ui.view,arch_db:work_timesheet.isets_timesheet_form
 msgid "Repairs:"
 msgstr "Reparaciones:"
 
-#. module: iset_timesheet
-#: model_terms:ir.ui.view,arch_db:iset_timesheet.isets_timesheet_tree_search
+#. module: work_timesheet
+#: model_terms:ir.ui.view,arch_db:work_timesheet.isets_timesheet_tree_search
 msgid "Search Timesheet iSets"
 msgstr "Búsqueda partes de horas"
 
-#. module: iset_timesheet
-#: model:ir.model,name:iset_timesheet.model_iset_timesheet
+#. module: work_timesheet
+#: model:ir.model,name:work_timesheet.model_work_timesheet
 msgid "TIMESHEET ISET"
 msgstr ""
 
-#. module: iset_timesheet
-#: model:ir.ui.menu,name:iset_timesheet.menu_isets_timesheet
+#. module: work_timesheet
+#: model:ir.ui.menu,name:work_timesheet.menu_isets_timesheet
 msgid "Timesheet"
 msgstr "Parte de horas"
 
-#. module: iset_timesheet
-#: model_terms:ir.ui.view,arch_db:iset_timesheet.isets_timesheet_tree
+#. module: work_timesheet
+#: model_terms:ir.ui.view,arch_db:work_timesheet.isets_timesheet_tree
 msgid "Total"
 msgstr "Total"
 
-#. module: iset_timesheet
-#: model:ir.model.fields,field_description:iset_timesheet.field_iset_timesheet__time
+#. module: work_timesheet
+#: model:ir.model.fields,field_description:work_timesheet.field_work_timesheet__time
 msgid "Total Time"
 msgstr "Tiempo total"
 
-#. module: iset_timesheet
-#: model:ir.model,name:iset_timesheet.model_mrp_workcenter_productivity
+#. module: work_timesheet
+#: model:ir.model,name:work_timesheet.model_mrp_workcenter_productivity
 msgid "Workcenter Productivity Log"
 msgstr "Registro de productividad del centro de trabajo"
 
-#. module: iset_timesheet
-#: model_terms:ir.ui.view,arch_db:iset_timesheet.isets_timesheet_tree
+#. module: work_timesheet
+#: model_terms:ir.ui.view,arch_db:work_timesheet.isets_timesheet_tree
 msgid "iSets"
 msgstr "iSets"
 
-#. module: iset_timesheet
-#: model:ir.actions.act_window,name:iset_timesheet.action_iset_timesheet
+#. module: work_timesheet
+#: model:ir.actions.act_window,name:work_timesheet.action_work_timesheet
 msgid "iSets Timesheet"
 msgstr "iSets Parte de horas"
