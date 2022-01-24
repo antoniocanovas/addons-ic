@@ -43,7 +43,7 @@ msgid "Activity Type Icon"
 msgstr "Icono de tipo de actividad"
 
 #. module: work_extended
-#: model_terms:ir.ui.view,arch_db:work_extended.work_work_form_inh
+#: model_terms:ir.ui.view,arch_db:work_extended.wb_work_form_inh
 msgid "Administrative management"
 msgstr "Gestión administrativa"
 
@@ -88,13 +88,13 @@ msgid "Display Name"
 msgstr "Nombre mostrado"
 
 #. module: work_extended
-#: model:ir.model.fields,field_description:work_extended.field_work_work_employee__employee_id
+#: model:ir.model.fields,field_description:work_extended.field_work_employee__employee_id
 msgid "Employee"
 msgstr "Empleado"
 
 #. module: work_extended
 #: model:ir.model.fields,field_description:work_extended.field_work_work__employee_line_ids
-#: model_terms:ir.ui.view,arch_db:work_extended.work_work_form_inh
+#: model_terms:ir.ui.view,arch_db:work_extended.wb_work_form_inh
 msgid "Employees"
 msgstr "Empleados"
 
@@ -119,12 +119,12 @@ msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
 
 #. module: work_extended
-#: model:ir.model.fields,field_description:work_extended.field_work_work_employee__function_ids
+#: model:ir.model.fields,field_description:work_extended.field_work_employee__function_ids
 msgid "Function"
 msgstr "Función"
 
 #. module: work_extended
-#: model_terms:ir.ui.view,arch_db:work_extended.work_work_form_inh
+#: model_terms:ir.ui.view,arch_db:work_extended.wb_work_form_inh
 msgid "General"
 msgstr "General"
 
@@ -256,13 +256,13 @@ msgid "Project"
 msgstr "Proyecto"
 
 #. module: work_extended
-#: model_terms:ir.ui.view,arch_db:work_extended.work_work_form_inh
+#: model_terms:ir.ui.view,arch_db:work_extended.wb_work_form_inh
 msgid "Projects"
 msgstr "Proyectos"
 
 #. module: work_extended
 #: model:ir.model.fields,field_description:work_extended.field_work_work__protection_product_ids
-#: model_terms:ir.ui.view,arch_db:work_extended.work_work_form_inh
+#: model_terms:ir.ui.view,arch_db:work_extended.wb_work_form_inh
 msgid "Protection"
 msgstr "Protección"
 
@@ -279,7 +279,7 @@ msgstr ""
 #. module: work_extended
 #: model:ir.actions.act_window,name:work_extended.act_work_work_2_sale_order
 #: model:ir.model.fields,field_description:work_extended.field_work_work__sale_order_ids
-#: model_terms:ir.ui.view,arch_db:work_extended.work_work_form_inh
+#: model_terms:ir.ui.view,arch_db:work_extended.wb_work_form_inh
 msgid "Sale Order"
 msgstr "Pedido de venta"
 
@@ -304,7 +304,7 @@ msgstr ""
 
 #. module: work_extended
 #: model:ir.model.fields,field_description:work_extended.field_work_work__quant_ids
-#: model_terms:ir.ui.view,arch_db:work_extended.work_work_form_inh
+#: model_terms:ir.ui.view,arch_db:work_extended.wb_work_form_inh
 msgid "Stock"
 msgstr "Inventario"
 
@@ -321,7 +321,7 @@ msgstr "Tarea"
 
 #. module: work_extended
 #: model:ir.model.fields,field_description:work_extended.field_work_work__tool_product_ids
-#: model_terms:ir.ui.view,arch_db:work_extended.work_work_form_inh
+#: model_terms:ir.ui.view,arch_db:work_extended.wb_work_form_inh
 msgid "Tools"
 msgstr "Herramientas"
 
