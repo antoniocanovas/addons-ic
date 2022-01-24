@@ -143,11 +143,11 @@ msgstr "Línea analítica"
 #. module: work_base
 #: model:ir.model.fields,help:work_base.field_work_sheet__project_analytic_id
 msgid ""
-"Analytic account to which this project is linked for financial management. "
+"Analytic account to which this project is linked for financial management.\n"
 "Use an analytic account to record cost and revenue on your project."
 msgstr ""
-"Cuenta analítica a la que se vincula este proyecto para la gestión financiera".
-"Utilice una cuenta analítica para registrar los gastos y los ingresos de su proyecto".
+"Cuenta analítica a la que se vincula este proyecto para la gestión financiera.\n"
+"Utilice una cuenta analítica para registrar los gastos y los ingresos de su proyecto."
 
 #. module: work_base
 #: model:ir.model.fields,field_description:work_base.field_work_sheet__attachment_id
