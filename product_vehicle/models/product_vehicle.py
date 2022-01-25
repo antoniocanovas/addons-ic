@@ -83,9 +83,9 @@ class ProductTemplate(models.Model):
             tax, rebu_amount = 0, 0
             if (record.vehicle_tax_type == 'rebu'):
                 analytic = self.env['account.analytic.line'].search(
-                    [('account_id', '=', record.product_id.product_tmpl_id.expense_analytic_account_id.id),
+                    [('account_id', '=', record.expense_analytic_account_id.id),
                      ('move_id.move_id.move_type', '=', 'in_invoice'),
-                     ('product_id', '=', record.product_id.id)])
+                     ('product_id.product_tmpl_id', '=', record.id)])
                 if analytic:
                     for li in analytic.ids:
                         rebu_amount += analytic.amount
