@@ -82,7 +82,7 @@ class ProductTemplate(models.Model):
         for record in self:
             tax, rebu_amount = 0, 0
             if (record.vehicle_tax_type == 'rebu'):
-                analytic = env['account.analytic.line'].search(
+                analytic = self.env['account.analytic.line'].search(
                     [('account_id', '=', record.product_id.product_tmpl_id.expense_analytic_account_id.id),
                      ('move_id.move_id.move_type', '=', 'in_invoice'),
                      ('product_id', '=', record.product_id.id)])

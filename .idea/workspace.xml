@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hide opp if not record.id">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_vehicle/data/action_server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/data/action_server.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="recompute rebu with no stored fields">
       <change beforePath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,20 +43,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00043" summary="default_code as matrícula">
-      <created>1639652247647</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1639652247647</updated>
-    </task>
-    <task id="LOCAL-00044" summary="vehicle_description">
-      <created>1639653213246</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1639653213246</updated>
     </task>
     <task id="LOCAL-00045" summary="revisión estimaciones">
       <created>1639669714852</created>
@@ -389,7 +373,21 @@
       <option name="project" value="LOCAL" />
       <updated>1643071553688</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="recompute rebu with no stored fields">
+      <created>1643074803291</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1643074803291</updated>
+    </task>
+    <task id="LOCAL-00093" summary="recompute rebu with no stored fields">
+      <created>1643074935460</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1643074935460</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -404,7 +402,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="@api.depends" />
     <MESSAGE value="margin percentage to amount" />
     <MESSAGE value="moving products_ids" />
     <MESSAGE value="- many2manytags" />
@@ -429,6 +426,7 @@
     <MESSAGE value="Self fields pt/crm bug" />
     <MESSAGE value="self field" />
     <MESSAGE value="hide opp if not record.id" />
-    <option name="LAST_COMMIT_MESSAGE" value="hide opp if not record.id" />
+    <MESSAGE value="recompute rebu with no stored fields" />
+    <option name="LAST_COMMIT_MESSAGE" value="recompute rebu with no stored fields" />
   </component>
 </project>
