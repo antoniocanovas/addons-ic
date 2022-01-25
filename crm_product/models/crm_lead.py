@@ -13,6 +13,6 @@ class CrmLead(models.Model):
 
     def get_lead_self(self):
         for record in self:
-            record.self = self.env['crm.lead'].search([('id','=',record.id)])
-    self = fields.Many2one(string="Self", store=False, compute="get_lead_self")
+            record.self = self.env['crm.lead'].search([('id','=',record.id)]).id
+    self = fields.Many2one('crm.lead', string="Self", store=False, compute="get_lead_self")
 
