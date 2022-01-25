@@ -92,10 +92,10 @@
                             <tree>
                                 <field name="sequence" widget="handle" optional="show"/>
                                 <field name="name"/>
-                                <field name="description" optional="hide"/>
+                                <field name="description" optional="show"/>
                                 <field name="fold" optional="show"/>
-                                <field name="mail_template_id" optional="hide"/>
-                                <field name="rating_template_id" optional="hide"/>
+                                <field name="mail_template_id" optional="show"/>
+                                <field name="rating_template_id" optional="show"/>
                                 <field name="project_ids" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}"/>
                             </tree>
                         </field>
