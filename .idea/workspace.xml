@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="Self fields pt/crm" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="Self fields pt/crm bug" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,13 +41,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00040" summary="bug">
-      <created>1639608251708</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1639608251708</updated>
     </task>
     <task id="LOCAL-00041" summary="v2">
       <created>1639613934906</created>
@@ -385,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643069321623</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="Self fields pt/crm bug">
+      <created>1643070539016</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1643070539016</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -400,7 +400,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="default_code as matrícula" />
     <MESSAGE value="vehicle_description" />
     <MESSAGE value="revisión estimaciones" />
     <MESSAGE value="@api.depends" />
@@ -425,6 +424,7 @@
     <MESSAGE value="rename" />
     <MESSAGE value="chatter work.work" />
     <MESSAGE value="Self fields pt/crm" />
-    <option name="LAST_COMMIT_MESSAGE" value="Self fields pt/crm" />
+    <MESSAGE value="Self fields pt/crm bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Self fields pt/crm bug" />
   </component>
 </project>
