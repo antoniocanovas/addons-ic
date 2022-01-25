@@ -11,5 +11,10 @@ class ProductTemplate(models.Model):
                                 string="Leads",
                                 )
 
+    def get_product_template_self(self):
+        for record in self:
+            record.self = self.env['product.template'].search([('id','=',record.id)])
+    self = fields.Many2one(string="Self", store=False, compute="get_product_template_self")
+
 
 
