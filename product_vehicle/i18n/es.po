@@ -315,12 +315,6 @@ msgid "Proveedor"
 msgstr ""
 
 #. module: product_vehicle
-#: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_rebu_amount
-#: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_rebu_amount
-msgid "REBU Amount"
-msgstr "Cantidad REBU"
-
-#. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_rebu_iva
 #: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_rebu_iva
 msgid "REBU/IVA (€)"
