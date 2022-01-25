@@ -99,3 +99,10 @@ msgstr "Plantilla de producto"
 #: model:ir.model,name:crm_product.model_product_lead_rel
 msgid "Relational table for prodcut and opportunities"
 msgstr "Relación para producto y oportunidades"
+
+#. module: crm_product
+#: model:ir.model.fields,field_description:crm_product.field_crm_lead__self
+#: model:ir.model.fields,field_description:crm_product.field_product_product__self
+#: model:ir.model.fields,field_description:crm_product.field_product_template__self
+msgid "Self"
+msgstr "Oportunidad"
