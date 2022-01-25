@@ -11,8 +11,10 @@ class CrmLead(models.Model):
         column2='product_id',
     )
 
+    @api.depends('create_date')
     def get_lead_self(self):
         for record in self:
-            record.self = self.env['crm.lead'].search([('id','=',record.id)]).id
-    self = fields.Many2one('crm.lead', string="Self", store=False, compute="get_lead_self")
+            lead = self.env['crm.lead'].search([('id', '=', record.id)])
+            record.self = lead.id
+    self = fields.Many2one('crm.lead', string="Self", store=True, compute="get_lead_self")
 

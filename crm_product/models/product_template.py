@@ -11,10 +11,12 @@ class ProductTemplate(models.Model):
                                 string="Leads",
                                 )
 
+    @api.depends('create_date')
     def get_product_template_self(self):
         for record in self:
-            record.self = self.env['product.template'].search([('id','=',record.id)]).id
-    self = fields.Many2one('product.template', string="Self", store=False, compute="get_product_template_self")
+            pt = self.env['product.template'].search([('id','=',record.id)])
+            record.self = pt.id
+    self = fields.Many2one('product.template', string="Self", store=True, compute="get_product_template_self")
 
 
 

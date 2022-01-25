@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="recompute rebu with no stored fields">
-      <change beforePath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crm_product/models/crm_lead.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_product/models/crm_lead.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crm_product/models/product_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_product/models/product_template.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,20 +45,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00045" summary="revisión estimaciones">
-      <created>1639669714852</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1639669714852</updated>
-    </task>
-    <task id="LOCAL-00046" summary="@api.depends">
-      <created>1639670427605</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1639670427605</updated>
     </task>
     <task id="LOCAL-00047" summary="@api.depends">
       <created>1639670538163</created>
@@ -387,7 +375,21 @@
       <option name="project" value="LOCAL" />
       <updated>1643074935460</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="bug">
+      <created>1643075325158</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1643075325158</updated>
+    </task>
+    <task id="LOCAL-00095" summary="bug2">
+      <created>1643075558885</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1643075558885</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -402,7 +404,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="margin percentage to amount" />
     <MESSAGE value="moving products_ids" />
     <MESSAGE value="- many2manytags" />
     <MESSAGE value="default_code en tree" />
@@ -419,7 +420,6 @@
     <MESSAGE value="rename menus" />
     <MESSAGE value="rename module" />
     <MESSAGE value="margin false" />
-    <MESSAGE value="bug" />
     <MESSAGE value="rename" />
     <MESSAGE value="chatter work.work" />
     <MESSAGE value="Self fields pt/crm" />
@@ -427,6 +427,8 @@
     <MESSAGE value="self field" />
     <MESSAGE value="hide opp if not record.id" />
     <MESSAGE value="recompute rebu with no stored fields" />
-    <option name="LAST_COMMIT_MESSAGE" value="recompute rebu with no stored fields" />
+    <MESSAGE value="bug" />
+    <MESSAGE value="bug2" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug2" />
   </component>
 </project>
