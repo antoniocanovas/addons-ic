@@ -10,7 +10,7 @@
 # Pasa por todas las archivadas NO TERMINADAS para comprobar si hay que activarlas tras cambiar de etapa cualquier tarea;
 # No se permite archivar tareas del procedimiento del procedures (procedure_line_id) si no están cerradas.Si se permite para tareas manuales que este valor es False:
 if record.project_id.is_procedure == True:
-  archivadas = env['project.task'].search([('project_id','=',record.project_id.id),('active','=',False),('stage_id.closed','=',False),('procedure_line_id','!=',False)])
+  archivadas = env['project.task'].search([('project_id','=',record.project_id.id),('active','=',False),('stage_id.is_closed','=',False),('procedure_line_id','!=',False)])
   for ta in archivadas:
     activar = 'si'
     # Trámites de esta tarea:
@@ -20,7 +20,7 @@ if record.project_id.is_procedure == True:
     # Pasa por todas las tareas (archivadas o no) de los trámites anteriores y si alguna está pendiente NO ACTIVES la tarea:
     for de in acciones_dependencia:
       tarea_dependiente = env['project.task'].search([('project_id','=',record.project_id.id),('procedure_line_id.procedure_id','=',de),'|',('active','=',True),('active','=',False)])
-      if (tarea_dependiente.id) and (tarea_dependiente.stage_id.closed == False):
+      if (tarea_dependiente.id) and (tarea_dependiente.stage_id.is_closed == False):
         activar = 'no'
     if (activar == 'si'):
       ta.write({'active':True})

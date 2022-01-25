@@ -80,7 +80,7 @@ class project(models.Model):
                     for de in ta.procedure_line_id.dependency_ids:
                         tarea_en_proyecto = self.env['project.task'].search(
                             [('id', 'in', todas.ids), ('procedure_line_id', '=', de.id)])
-                        if (tarea_en_proyecto.stage_id.closed == False):
+                        if (tarea_en_proyecto.stage_id.is_closed == False):
                             activo = False
                         ta['active'] = activo
 
