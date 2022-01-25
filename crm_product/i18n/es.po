@@ -67,7 +67,7 @@ msgstr "Iniciativa/Oportunidad"
 #: model:ir.model.fields,field_description:crm_product.field_product_product__lead_ids
 #: model:ir.model.fields,field_description:crm_product.field_product_template__lead_ids
 msgid "Leads"
-msgstr "Iniciativas"
+msgstr "Oportunidades"
 
 #. module: crm_product
 #: model:ir.model.fields,field_description:crm_product.field_product_lead_rel__lead_id

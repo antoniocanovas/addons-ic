@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="rename">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work_extended/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/work_extended/views/model_views.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug3">
+      <change beforePath="$PROJECT_DIR$/crm_product/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/crm_product/i18n/es.po" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,76 +43,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Views monetary">
-      <created>1639327692673</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1639327692673</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Views monetary">
-      <created>1639328805254</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1639328805254</updated>
-    </task>
-    <task id="LOCAL-00040" summary="bug">
-      <created>1639608251708</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1639608251708</updated>
-    </task>
-    <task id="LOCAL-00041" summary="v2">
-      <created>1639613934906</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1639613934906</updated>
-    </task>
-    <task id="LOCAL-00042" summary="v2">
-      <created>1639614097006</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1639614097007</updated>
-    </task>
-    <task id="LOCAL-00043" summary="default_code as matrícula">
-      <created>1639652247647</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1639652247647</updated>
-    </task>
-    <task id="LOCAL-00044" summary="vehicle_description">
-      <created>1639653213246</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1639653213246</updated>
-    </task>
-    <task id="LOCAL-00045" summary="revisión estimaciones">
-      <created>1639669714852</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1639669714852</updated>
-    </task>
-    <task id="LOCAL-00046" summary="@api.depends">
-      <created>1639670427605</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1639670427605</updated>
-    </task>
-    <task id="LOCAL-00047" summary="@api.depends">
-      <created>1639670538163</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1639670538163</updated>
     </task>
     <task id="LOCAL-00048" summary="margin percentage to amount">
       <created>1639700121832</created>
@@ -388,7 +317,77 @@
       <option name="project" value="LOCAL" />
       <updated>1642734050541</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="chatter work.work">
+      <created>1642734766504</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1642734766504</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Self fields pt/crm">
+      <created>1643069321623</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1643069321623</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Self fields pt/crm bug">
+      <created>1643070539016</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1643070539016</updated>
+    </task>
+    <task id="LOCAL-00090" summary="self field">
+      <created>1643070906858</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1643070906858</updated>
+    </task>
+    <task id="LOCAL-00091" summary="hide opp if not record.id">
+      <created>1643071553688</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1643071553688</updated>
+    </task>
+    <task id="LOCAL-00092" summary="recompute rebu with no stored fields">
+      <created>1643074803291</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1643074803291</updated>
+    </task>
+    <task id="LOCAL-00093" summary="recompute rebu with no stored fields">
+      <created>1643074935460</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1643074935460</updated>
+    </task>
+    <task id="LOCAL-00094" summary="bug">
+      <created>1643075325158</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1643075325158</updated>
+    </task>
+    <task id="LOCAL-00095" summary="bug2">
+      <created>1643075558885</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1643075558885</updated>
+    </task>
+    <task id="LOCAL-00096" summary="bug3">
+      <created>1643076742271</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1643076742271</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -403,14 +402,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Views monetary" />
-    <MESSAGE value="v2" />
-    <MESSAGE value="default_code as matrícula" />
-    <MESSAGE value="vehicle_description" />
-    <MESSAGE value="revisión estimaciones" />
-    <MESSAGE value="@api.depends" />
-    <MESSAGE value="margin percentage to amount" />
-    <MESSAGE value="moving products_ids" />
     <MESSAGE value="- many2manytags" />
     <MESSAGE value="default_code en tree" />
     <MESSAGE value="review1" />
@@ -426,8 +417,16 @@
     <MESSAGE value="rename menus" />
     <MESSAGE value="rename module" />
     <MESSAGE value="margin false" />
-    <MESSAGE value="bug" />
     <MESSAGE value="rename" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename" />
+    <MESSAGE value="chatter work.work" />
+    <MESSAGE value="Self fields pt/crm" />
+    <MESSAGE value="Self fields pt/crm bug" />
+    <MESSAGE value="self field" />
+    <MESSAGE value="hide opp if not record.id" />
+    <MESSAGE value="recompute rebu with no stored fields" />
+    <MESSAGE value="bug" />
+    <MESSAGE value="bug2" />
+    <MESSAGE value="bug3" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug3" />
   </component>
 </project>
