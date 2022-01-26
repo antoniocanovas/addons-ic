@@ -93,6 +93,7 @@ class ConfigClient(models.Model):
     ##### FOR V12 ################
     def write_invoice_to_remote_v12(self, conn, invoice):
         partner_id = self.check_partner_in_remote(invoice.partner_id, conn, invoice)
+
         try:
             invoice_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
                                                    'account.invoice', 'search',
@@ -293,7 +294,7 @@ class ConfigClient(models.Model):
 
         try:
             invoice_attachment = self.env['ir.attachment'].sudo().search([
-                ('res_model', '=', 'account.invoice'),
+                ('res_model', '=', 'account.move'),
                 ('res_id', '=', invoice.id)
             ])
 
@@ -308,6 +309,7 @@ class ConfigClient(models.Model):
                                                           'res_id': invoice_id,
                                                           'mimetype': invoice_attachment.mimetype
                                                       }])
+
             return attachment_id
         except Exception as e:
             invoice.remote_state = 'error'
