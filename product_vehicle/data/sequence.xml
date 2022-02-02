@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <odoo>
-    <record id="scrap_unbuild_sequence" model="ir.sequence">
+    <record id="vehicle_dealership_sequence" model="ir.sequence">
         <field name="name">Vehicle dealership Sequence</field>
         <field name="prefix">V</field>
         <field name="padding">3</field>
