@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="closed to is_closed">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="redesigned">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_procedure/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_procedure/views/views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,20 +43,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00049" summary="bug">
-      <created>1639703698834</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1639703698834</updated>
-    </task>
-    <task id="LOCAL-00050" summary="bug">
-      <created>1639704263805</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1639704263805</updated>
     </task>
     <task id="LOCAL-00051" summary="moving products_ids">
       <created>1640816342474</created>
@@ -388,7 +373,21 @@
       <option name="project" value="LOCAL" />
       <updated>1643128838211</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="redesigned">
+      <created>1643154536149</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1643154536150</updated>
+    </task>
+    <task id="LOCAL-00099" summary="redesigned">
+      <created>1643154742903</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1643154742903</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -403,7 +402,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="default_code en tree" />
     <MESSAGE value="review1" />
     <MESSAGE value="review2" />
     <MESSAGE value="review3" />
@@ -428,6 +426,7 @@
     <MESSAGE value="bug2" />
     <MESSAGE value="bug3" />
     <MESSAGE value="closed to is_closed" />
-    <option name="LAST_COMMIT_MESSAGE" value="closed to is_closed" />
+    <MESSAGE value="redesigned" />
+    <option name="LAST_COMMIT_MESSAGE" value="redesigned" />
   </component>
 </project>

@@ -95,6 +95,7 @@
                       <field name="analytic_line_ids">
                           <tree>
                               <field name="name"/>
+                              <field name="invoice_id"/>
                               <field name="date"/>
                               <field name="amount" widget="monetary" sum="Total analytic"/>
                           </tree>
