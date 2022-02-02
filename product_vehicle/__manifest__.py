@@ -15,6 +15,7 @@
         'base_automation',
         'product_analytic',
         'crm',
+        'crm_product',
     ],
     'data': [
         'security/ir.model.access.csv',
