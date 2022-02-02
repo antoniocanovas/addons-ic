@@ -1,11 +1,14 @@
 <odoo>
 
         <record id="create_analytic_account_per_vehicle" model="base.automation">
-            <field name="name">=> Create analytic account per vehicle:</field>
+            <field name="name">=> Create analytic account per vehicle</field>
             <field name="model_id" ref="model_product_template"/>
             <field name="state">code</field>
             <field name="code">
 # VEHICLE ANALYTICS:
+#if (record.is_vehicle == True) and (record.vehicle_code == False):
+#  seq = env['ir.sequence'].next_by_code('product.vehicle.sequence')
+#  record['vehicle_code'] = seq
   # News or without AA:
 if record.default_code:
   name = str(record.create_date.year)[2:] + str(record.create_date.month) + " [" + record.default_code + "] " + record.name
