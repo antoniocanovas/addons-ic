@@ -9,7 +9,6 @@
     'depends': [
         'fleet_vehicle_category',
         'analytic',
-        'sale_management',
         'stock',
         'account',
         'base_automation',
