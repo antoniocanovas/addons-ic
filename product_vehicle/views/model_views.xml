@@ -45,7 +45,6 @@
                         <group>
                             <field name="vehicle_tax_type" attrs="{'required':[('is_vehicle','=',True)]}"/>
                             <field name="default_code" string="Matrícula"/>
-                            <field name="default_code" string="Matrícula"/>
                             <field name="vehicle_model_id"/>
                             <field name="vehicle_serie_id" domain="[('model_id','=',vehicle_model_id)]"/>
                             <field name="vehicle_date"/>
