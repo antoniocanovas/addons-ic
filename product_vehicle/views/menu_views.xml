@@ -5,7 +5,8 @@
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
         <field name="domain" eval="[('is_vehicle', '=', 'True')]"/>
-        <field name="context" eval="{'search_default_filter_to_sell':1,'default_type':'product','default_is_vehicle': True}"/>
+        <field name="context"
+               eval="{'search_default_filter_to_sell':1,'default_type':'product','default_is_vehicle': True}"/>
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
@@ -53,5 +54,43 @@
             sequence="10"
             web_icon="product_vehicle,static/icon.png"
     />
+
+    <record id="menu_vehicle_dealership_contact" model="ir.ui.menu">
+        <field name="action" ref="contacts.action_contacts"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Contactos</field>
+        <field name="parent_id" ref="menu_vehicle_dealership"/>
+        <field name="sequence">10</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+    <record id="menu_vehicle_dealership_crm" model="ir.ui.menu">
+        <field name="action" ref="crm.crm_lead_action_pipeline"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">CRM</field>
+        <field name="parent_id" ref="menu_vehicle_dealership"/>
+        <field name="sequence">20</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+    <record id="menu_vehicle_dealership_sale" model="ir.ui.menu">
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Ventas</field>
+        <field name="parent_id" ref="menu_vehicle_dealership"/>
+        <field name="sequence">30</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+    <record id="menu_vehicle_dealership_purchase" model="ir.ui.menu">
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Compras</field>
+        <field name="parent_id" ref="menu_vehicle_dealership"/>
+        <field name="sequence">40</field>
+        <field name="web_icon" eval="False"/>
+    </record>
 
 </odoo>
