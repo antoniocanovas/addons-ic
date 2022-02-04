@@ -12,10 +12,11 @@ if (record.is_vehicle == True) and (record.vehicle_code == False):
   record['vehicle_code'] = seq
 
 # New vehicles or without AA:
-if record.default_code:
+if (record.is_vehicle == True) and (record.default_code):
   name = "[" + record.vehicle_code + "] " + record.default_code + " - " + record.name
-else:
+elif (record.is_vehicle == True) and not (record.default_code):
   name = "[" + record.vehicle_code + "] " + record.name
+
 if (record.is_vehicle) and not (record.income_analytic_account_id.id):
   aa = env['account.analytic.account'].search([('name','=', name)])
   if not aa.id:
