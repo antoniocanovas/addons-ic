@@ -9,16 +9,16 @@
     'depends': [
         'fleet_vehicle_category',
         'analytic',
-        'sale_management',
         'stock',
         'account',
         'base_automation',
         'product_analytic',
-        'crm',
+        'crm_product',
     ],
     'data': [
         'security/ir.model.access.csv',
         'data/action_server.xml',
+        'data/sequence.xml',
         'views/model_views.xml',
         'views/menu_views.xml',
     ],

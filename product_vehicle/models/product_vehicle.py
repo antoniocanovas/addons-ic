@@ -27,6 +27,7 @@ class ProductTemplate(models.Model):
     is_vehicle = fields.Boolean('Vehicle')
 
     vehicle_km = fields.Integer(string='KM')
+    vehicle_code = fields.Char(string='Code')
     vehicle_date = fields.Date(string="Date")
     vehicle_date2 = fields.Date(string="2ª Matriculación")
     vehicle_model_id = fields.Many2one("fleet.vehicle.model", string="Model")

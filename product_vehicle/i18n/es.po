@@ -32,8 +32,8 @@ msgstr "=> Calcular REBU en el vehículo"
 #. module: product_vehicle
 #: model:base.automation,name:product_vehicle.create_analytic_account_per_vehicle
 #: model:ir.actions.server,name:product_vehicle.create_analytic_account_per_vehicle_ir_actions_server
-msgid "=> Create analytic account per vehicle:"
-msgstr "=> Crear una cuenta analítica por vehículo:"
+msgid "=> Create analytic account per vehicle"
+msgstr "=> Crear una cuenta analítica por vehículo"
 
 #. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_product_vehicle_estimation__amount
