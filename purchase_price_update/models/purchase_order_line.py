@@ -34,16 +34,20 @@ class PurchasePriceUpdate(models.Model):
 
     @api.onchange('price_unit')
     def price_unit_wizard(self):
-        if self.price_unit != self.standard_price & self.standard_price == 0:
+        message = ''
+        if self.price_unit != self.standard_price and self.standard_price == 0:
             message = 'Producto sin precio de coste asignado!' + "\n" + 'Recuerde pulsar el botón para asignar este.'
-        elif self.price_unit != self.standard_price & self.standard_price != 0:
+
+        elif self.price_unit != self.standard_price and self.standard_price != 0:
             new_pvp = round((self.product_id.lst_price / self.standard_price * self.price_unit), 2)
             message = "Precio de coste actual: " + str(self.standard_price) + "\n" + "Precio de venta actual: " + str(
                 self.product_id.lst_price) + "\n" + "Posible nuevo precio de venta: " + str(
                 new_pvp) + "\n" + " !!  Recuerde pulsar el botón para actualizar, si procede el cambio !!"
-        return {
-            'warning': {
-                'title': 'Standard price and Price unit is not the same!',
-                'message': message,
+
+        if message != '':
+            return {
+                'warning': {
+                    'title': 'Standard price and Price unit is not the same!',
+                    'message': message,
+                }
             }
-        }
