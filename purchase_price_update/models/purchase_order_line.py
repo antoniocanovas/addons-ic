@@ -31,7 +31,10 @@ class PurchasePriceUpdate(models.Model):
     @api.onchange('price_unit')
     def price_unit_wizard(self):
         message = ''
-        price_unit = self.price_subtotal / self.product_qty
+        if self.price_subtotal != 0 and self.product_qty != 0:
+            price_unit = self.price_subtotal / self.product_qty
+        else:
+            price_unit = self.standard_price
 
         if price_unit != self.standard_price and self.standard_price == 0:
             message = 'Producto sin precio de coste asignado!' + "\n" + 'Recuerde pulsar el botón para asignar este.'
