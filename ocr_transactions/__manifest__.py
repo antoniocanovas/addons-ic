@@ -9,7 +9,6 @@
     'depends': [
         'account',
         'l10n_es_account_asset',
-        'contacts',
         'queue_job',
         'dbcopy_post_actions',
         'partner_credentials',

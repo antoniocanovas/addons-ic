@@ -26,20 +26,18 @@ class PurchasePriceUpdate(models.Model):
 
     def update_product_standard_price(self):
         for record in self:
-            #product = record.product_id
-            #product['standard_price'] = record.price_unit
-            record.product_id.standard_price = record.price_unit
-            print("Object,", record.product_id,)
-
+            record.product_id.standard_price = record.price_subtotal / record.product_qty
 
     @api.onchange('price_unit')
     def price_unit_wizard(self):
         message = ''
-        if self.price_unit != self.standard_price and self.standard_price == 0:
+        price_unit = self.price_subtotal / self.product_qty
+
+        if price_unit != self.standard_price and self.standard_price == 0:
             message = 'Producto sin precio de coste asignado!' + "\n" + 'Recuerde pulsar el botón para asignar este.'
 
-        elif self.price_unit != self.standard_price and self.standard_price != 0:
-            new_pvp = round((self.product_id.lst_price / self.standard_price * self.price_unit), 2)
+        elif price_unit != self.standard_price and self.standard_price != 0:
+            new_pvp = round((self.product_id.lst_price / self.standard_price * price_unit), 2)
             message = "Precio de coste actual: " + str(self.standard_price) + "\n" + "Precio de venta actual: " + str(
                 self.product_id.lst_price) + "\n" + "Posible nuevo precio de venta: " + str(
                 new_pvp) + "\n" + " !!  Recuerde pulsar el botón para actualizar, si procede el cambio !!"
