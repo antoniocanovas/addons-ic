@@ -197,6 +197,8 @@
                                     <button name="action_show_details" type="object" icon="fa-list" context="{'default_product_uom_qty': 0}" attrs="{'invisible': [('show_details_visible', '=', False)]}" options="{&quot;warn&quot;: true}"/>
                                 </tree>
                             </field>
+                            <field name="workorder_ids" invisible="1"/>
+
                     <!--
                         </page>
                         <page string="Work Orders" name="operations" groups="mrp.group_mrp_routings">
@@ -225,7 +227,6 @@
                                             <field name="state" invisible="1"/>
                                             <field name="move_id" invisible="1"/>
                                             <field name="id" invisible="1"/>
-                                            <field name="workorder_ids" invisible="1"/>
                                         </tree>
                                     </field>
 
