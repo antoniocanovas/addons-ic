@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="new fields and view">
-      <change beforePath="$PROJECT_DIR$/mrp_simple/views/mrp_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_simple/views/mrp_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_simple/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_simple/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_simple/models/account_analytic_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_simple/models/account_analytic_line.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,13 +49,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00054" summary="review1">
-      <created>1641208135384</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1641208135385</updated>
     </task>
     <task id="LOCAL-00055" summary="review2">
       <created>1641219640621</created>
@@ -392,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645226776491</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="new fields and view">
+      <created>1645227471540</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1645227471540</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

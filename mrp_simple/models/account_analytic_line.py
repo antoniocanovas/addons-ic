@@ -4,7 +4,7 @@
 from odoo import fields, models
 
 
-class MrpBom(models.Model):
+class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
 
     mrp_id = fields.Many2one('mrp.production', string='Producción')
