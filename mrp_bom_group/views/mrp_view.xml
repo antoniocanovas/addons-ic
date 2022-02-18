@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="custom_mrp_bom_form_view_2" model="ir.ui.view">
+        <field name="name">mrp.bom.form.custom.2</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='company_id']"
+                position="after"
+            >
+                <field
+                    name="group_id"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="custom_mrp_bom_tree_view_2" model="ir.ui.view">
+        <field name="name">mrp.bom.tree.custom.2</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_tree_view" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='company_id']"
+                position="after"
+            >
+                <field
+                    name="group_id"
+                />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

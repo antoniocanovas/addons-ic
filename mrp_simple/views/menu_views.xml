@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="action_menu_production" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <!--<field name="context" eval="False"></field>-->
+        <!-- <field name="domain" eval="[('tag_ids.facet_id.name', '=', 'OCR')]"/>-->
+        <field name="domain" eval="[('state','!=','downloaded')]"/>
+        <field name="filter" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="limit">80</field>
+        <field name="name">Production</field>
+        <field name="res_model">mrp.production</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="usage" eval="False"/>
+        <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp_custom_production_tree')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_custom_production_form')})]"/>
+    </record>
+
+    <menuitem
+            action="action_menu_production"
+            id="menu_production"
+            name="Producción"
+            sequence="10"
+            web_icon="mrp_simple,static/description/icon.png"
+    />
+
+
+
+</odoo>
