@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="menus">
+      <change afterPath="$PROJECT_DIR$/mrp_simple/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mrp_simple/models/account_analytic_line.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mrp_simple/models/mrp_production.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_vehicle/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/views/menu_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_simple/views/mrp_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_simple/views/mrp_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +36,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mrp_simple" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mrp_simple" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -44,13 +52,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00052" summary="- many2manytags">
-      <created>1640816655965</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1640816655965</updated>
     </task>
     <task id="LOCAL-00053" summary="default_code en tree">
       <created>1640879937534</created>
@@ -388,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644012397528</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="menus">
+      <created>1644013834038</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1644013834038</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -429,5 +437,16 @@
     <MESSAGE value="redesigned" />
     <MESSAGE value="menus" />
     <option name="LAST_COMMIT_MESSAGE" value="menus" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/mrp_simple/models/__init__.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
