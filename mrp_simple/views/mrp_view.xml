@@ -5,24 +5,6 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <form string="Manufacturing Orders">
-                <header>
-                    <field name="confirm_cancel" invisible="1"/>
-                    <field name="show_lock" invisible="1"/>
-                    <button name="button_mark_done" attrs="{'invisible': ['|', ('state', 'in', ('draft', 'cancel', 'done', 'to_close')), ('qty_producing', '=', 0)]}" string="Validate" type="object" class="oe_highlight"/>
-                    <button name="button_mark_done" attrs="{'invisible': [                         '&amp;',                         '|',                         ('state', 'not in', ('confirmed', 'progress')),                         ('qty_producing', '!=', 0),                         ('state', '!=', 'to_close')]}" string="Mark as Done" type="object" class="oe_highlight"/>
-                    <button name="action_confirm" attrs="{'invisible': [('state', '!=', 'draft')]}" string="Confirm" type="object" class="oe_highlight"/>
-                    <button name="button_plan" attrs="{'invisible': ['|', '|', ('state', 'not in', ('confirmed', 'progress', 'to_close')), ('workorder_ids', '=', []), ('is_planned', '=', True)]}" type="object" string="Plan" class="oe_highlight"/>
-                    <button name="button_unplan" type="object" string="Unplan" attrs="{'invisible': [('is_planned', '=', False)]}"/>
-                    <button name="action_assign" attrs="{'invisible': ['|', ('state', 'in', ('draft', 'done', 'cancel')), ('reserve_visible', '=', False)]}" string="Check availability" type="object"/>
-                    <button name="button_unreserve" type="object" string="Unreserve" attrs="{'invisible': [('unreserve_visible', '=', False)]}"/>
-                    <button name="button_scrap" type="object" string="Scrap" attrs="{'invisible': [('state', 'in', ('cancel', 'draft'))]}"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,progress,done"/>
-                    <button name="action_toggle_is_locked" attrs="{'invisible': ['|', ('show_lock', '=', False), ('is_locked', '=', False)]}" string="Unlock" groups="mrp.group_mrp_manager" type="object" help="Unlock the manufacturing order to adjust what has been consumed or produced."/>
-                    <button name="action_toggle_is_locked" attrs="{'invisible': ['|', ('show_lock', '=', False), ('is_locked', '=', True)]}" string="Lock" groups="mrp.group_mrp_manager" type="object" help="Lock the manufacturing order to prevent changes to what has been consumed or produced."/>/&gt;
-                    <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible': ['|', '|', ('id', '=', False), ('state', 'in', ('done', 'cancel')), ('confirm_cancel', '=', True)]}"/>
-                    <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible': ['|', '|', ('id', '=', False), ('state', 'in', ('done', 'cancel')), ('confirm_cancel', '=', False)]}" confirm="Some product moves have already been confirmed, this manufacturing order can't be completely cancelled. Are you still sure you want to process ?"/>
-                    <button name="button_unbuild" type="object" string="Unbuild" attrs="{'invisible': [('state', '!=', 'done')]}"/>
-                </header>
                 <sheet>
                     <field name="reservation_state" invisible="1"/>
                     <field name="date_planned_finished" invisible="1"/>
@@ -32,37 +14,6 @@
                     <field name="reserve_visible" invisible="1"/>
                     <field name="consumption" invisible="1"/>
                     <field name="is_planned" invisible="1"/>
-                    <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" name="action_view_mrp_production_childs" type="object" icon="fa-wrench" attrs="{'invisible': [('mrp_production_child_count', '=', 0)]}">
-                            <div class="o_field_widget o_stat_info">
-                                <span class="o_stat_value"><field name="mrp_production_child_count"/></span>
-                                <span class="o_stat_text">Child MO</span>
-                            </div>
-                        </button>
-                        <button class="oe_stat_button" name="action_view_mrp_production_sources" type="object" icon="fa-wrench" attrs="{'invisible': [('mrp_production_source_count', '=', 0)]}">
-                            <div class="o_field_widget o_stat_info">
-                                <span class="o_stat_value"><field name="mrp_production_source_count"/></span>
-                                <span class="o_stat_text">Source MO</span>
-                            </div>
-                        </button>
-                        <button class="oe_stat_button" name="action_view_mrp_production_backorders" type="object" icon="fa-wrench" attrs="{'invisible': [('mrp_production_backorder_count', '&lt;', 2)]}">
-                            <div class="o_field_widget o_stat_info">
-                                <span class="o_stat_value"><field name="mrp_production_backorder_count"/></span>
-                                <span class="o_stat_text">Backorders</span>
-                            </div>
-                        </button>
-                        <button class="oe_stat_button" name="action_see_move_scrap" type="object" icon="fa-arrows-v" attrs="{'invisible': [('scrap_count', '=', 0)]}">
-                            <div class="o_field_widget o_stat_info">
-                                <span class="o_stat_value"><field name="scrap_count"/></span>
-                                <span class="o_stat_text">Scraps</span>
-                            </div>
-                        </button>
-                        <button type="object" name="action_view_mo_delivery" class="oe_stat_button" icon="fa-truck" groups="base.group_user" attrs="{'invisible': [('delivery_count', '=', 0)]}">
-                            <field name="delivery_count" widget="statinfo" string="Transfers"/>
-                        </button>
-                        <button name="269" icon="fa-arrow-up" class="oe_stat_button" string="Traceability" type="action" states="done" groups="stock.group_production_lot"/>
-                        <button name="482" type="action" string="Product Moves" class="oe_stat_button" icon="fa-exchange" attrs="{'invisible': [('state', 'not in', ('progress', 'done'))]}"/>
-                    </div>
                     <div class="oe_title">
                         <h1>
                             <field name="priority" widget="priority" class="mr-3"/>
@@ -75,7 +26,9 @@
                             <field name="use_create_components_lots" invisible="1"/>
                             <field name="show_lot_ids" invisible="1"/>
                             <field name="product_tracking" invisible="1"/>
-                            <field name="product_id" context="{'default_type': 'product'}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="group_id" required="1"/>
+                            <field name="bom_easy_id" attrs="{'domain':[('group_id','=',record.easy_bom_id.group_id)]}"
+                            <field name="product_id" context="{'default_type': 'product'}" readonly="1"/>
                             <field name="product_tmpl_id" invisible="1"/>
                             <field name="product_description_variants" attrs="{'invisible': [('product_description_variants', 'in', (False, ''))], 'readonly': [('state', '!=', 'draft')]}"/>
                             <label for="product_qty" string="Quantity"/>
@@ -198,15 +151,6 @@
                                 </tree>
                             </field>
                             <field name="workorder_ids" invisible="1"/>
-
-                    <!--
-                        </page>
-                        <page string="Work Orders" name="operations" groups="mrp.group_mrp_routings">
-                            <field name="workorder_ids" attrs="{'readonly': [('state', 'in', ['cancel', 'done'])]}" context="{'tree_view_ref': 'mrp.mrp_production_workorder_tree_editable_view', 'default_product_uom_id': product_uom_id, 'default_consumption': consumption, 'default_company_id': company_id}"/>
-                        </page>
-
-                        <page string="By-Products" name="finished_products" groups="mrp.group_mrp_byproducts">
-                    -->
                             <field name="move_byproduct_ids" context="{'default_date': date_planned_finished, 'default_date_deadline': date_deadline, 'default_location_id': production_location_id, 'default_location_dest_id': location_src_id, 'default_state': 'draft', 'default_production_id': id, 'default_picking_type_id': picking_type_id, 'default_company_id': company_id}" attrs="{'readonly': ['|', ('state', '=', 'cancel'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)]}" options="{'delete': [('state', '=', 'draft')]}">
                                 <tree default_order="is_done,sequence" decoration-muted="is_done" editable="bottom">
                                     <field name="byproduct_id" invisible="1"/>

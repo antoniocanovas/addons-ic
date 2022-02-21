@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug1">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bom_easy_id">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_simple/models/mrp_production.py" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_simple/models/mrp_production.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_simple/views/mrp_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_simple/views/mrp_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,13 +50,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00059" summary="vehicle_description in form view">
-      <created>1641571074115</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1641571074115</updated>
     </task>
     <task id="LOCAL-00060" summary="vehicle_description in form view">
       <created>1641571261581</created>
@@ -392,7 +387,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645228640234</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="bom_easy_id">
+      <created>1645461958947</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1645461958947</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -407,7 +409,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="gearbox" />
     <MESSAGE value="vehicle_description in form view" />
     <MESSAGE value="Change position analytic_account_id" />
     <MESSAGE value="Recal rebu_iva" />
@@ -432,7 +433,8 @@
     <MESSAGE value="menus" />
     <MESSAGE value="new fields and view" />
     <MESSAGE value="bug1" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug1" />
+    <MESSAGE value="bom_easy_id" />
+    <option name="LAST_COMMIT_MESSAGE" value="bom_easy_id" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
