@@ -9,5 +9,6 @@ class MrpBom(models.Model):
 
     group_id = fields.Many2one('mrp.bom.group', string='Group')
     timesheet_ids = fields.One2many('account.analytic.line', 'mrp_id', string='Timesheets')
+    bom_easy_id = fields.Many2one('mrp.bom', string='Receta')
 
 
