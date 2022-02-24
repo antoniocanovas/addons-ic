@@ -54,7 +54,6 @@
                             <field name="vehicle_brand_id" invisible="1"/>
                             <field name="vehicle_state"/>
                             <field name="vehicle_use"/>
-                            <field name="vehicle_supplier_id"/>
                         </group>
                         <group>
                             <field name="vehicle_code"/>
@@ -78,7 +77,7 @@
             <xpath expr="//page[@name='general_information']" position="before">
                 <page name="estimations" string="Estimations" attrs="{'invisible':[('is_vehicle','=',False)]}">
                     <group col="2">
-                        <field name="vehicle_supplier"/>
+                        <field name="vehicle_supplier_id"/>
                         <field name="vehicle_id"/>
                     </group>
                     <div attrs="{'invisible':[('vehicle_tax_type','=',False)]}">

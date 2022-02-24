@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="group_id">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="new fields product_vehicle">
       <change beforePath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,13 +49,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00065" summary="recalculation">
-      <created>1642647398990</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1642647398990</updated>
     </task>
     <task id="LOCAL-00066" summary="bug name">
       <created>1642678327403</created>
@@ -395,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645465984944</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="new fields product_vehicle">
+      <created>1645695883781</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1645695883782</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -410,7 +408,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Change position analytic_account_id" />
     <MESSAGE value="Recal rebu_iva" />
     <MESSAGE value="estimation date" />
     <MESSAGE value="recalculation" />
@@ -435,7 +432,8 @@
     <MESSAGE value="bug1" />
     <MESSAGE value="bom_easy_id" />
     <MESSAGE value="group_id" />
-    <option name="LAST_COMMIT_MESSAGE" value="group_id" />
+    <MESSAGE value="new fields product_vehicle" />
+    <option name="LAST_COMMIT_MESSAGE" value="new fields product_vehicle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
