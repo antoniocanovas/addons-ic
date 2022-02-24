@@ -8,6 +8,8 @@
     'author': 'Serincloud',
     'depends': [
         'fleet_vehicle_category',
+        'sale_management',
+        'purchase',
         'analytic',
         'stock',
         'account',
