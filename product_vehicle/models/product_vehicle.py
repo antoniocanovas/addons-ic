@@ -19,7 +19,13 @@ GEARBOX = [
     ('manual', 'Manual'),
     ('auto', 'Automático'),
 ]
-
+VEHICLE_STATE = [
+    ('used', 'Usado'),
+    ('new', 'Nuevo'),
+    ('km0', 'Kilómetro 0'),
+    ('accident', 'Accidentando'),
+    ('scrap', 'Para chatarra'),
+]
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
@@ -42,15 +48,21 @@ class ProductTemplate(models.Model):
     vehicle_color = fields.Char(string="Color")
     vehicle_power = fields.Char(string="Power")
     vehicle_door = fields.Char(string="Doors")
+    vehicle_last_itv = fields.Date(string="Last ITV")
     vehicle_next_itv = fields.Date(string="Next ITV")
     vehicle_chasis = fields.Char(string="Chasis")
     vehicle_description = fields.Text(string="Description")
 
-    vehicle_supplier = fields.Many2one('res.partner', string="Proveedor")
     vehicle_estimation_ids = fields.One2many('product.vehicle.estimation', 'product_vehicle_id', string="Estimation")
     vehicle_serie_id = fields.Many2one('fleet.vehicle.serie')
     vehicle_price = fields.Float(string="Price", store=True)
     vehicle_tax_type = fields.Selection(selection=TAX_TYPE, string='Tax Type')
+
+    vehicle_supplier_id = fields.Many2one('res.partner', string="Proveedor")
+    vehicle_customer_id = fields.Many2one('res.partner', string="Comprador")
+    vehicle_legal_customer_id = fields.Many2one('res.partner', string="Representante legal")
+    vehicle_use = fields.Char(string="Uso anterior")
+    vehicle_state = fields.Selection(selection=VEHICLE_STATE, string="Estado")
 
     @api.depends('vehicle_estimation_ids')
     def get_total_estimations(self):

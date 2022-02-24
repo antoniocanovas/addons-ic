@@ -52,7 +52,9 @@
                             <field name="vehicle_color"/>
                             <field name="vehicle_door"/>
                             <field name="vehicle_brand_id" invisible="1"/>
-
+                            <field name="vehicle_state"/>
+                            <field name="vehicle_use"/>
+                            <field name="vehicle_supplier_id"/>
                         </group>
                         <group>
                             <field name="vehicle_code"/>
@@ -61,8 +63,11 @@
                             <field name="vehicle_gearbox"/>
                             <field name="vehicle_power"/>
                             <field name="vehicle_date2"/>
+                            <field name="vehicle_last_itv"/>
                             <field name="vehicle_next_itv"/>
                             <field name="vehicle_chasis"/>
+                            <field name="vehicle_customer_id"/>
+                            <field name="vehicle_legal_customer_id"/>
                         </group>
                     </group>
                     <h2>Descripción del vehículo</h2>

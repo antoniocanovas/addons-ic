@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="group_id">
-      <change beforePath="$PROJECT_DIR$/mrp_simple/views/mrp_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_simple/views/mrp_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +36,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/mrp_simple" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -48,20 +51,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Recal rebu_iva">
-      <created>1642093359434</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1642093359434</updated>
-    </task>
-    <task id="LOCAL-00064" summary="estimation date">
-      <created>1642094556736</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1642094556736</updated>
     </task>
     <task id="LOCAL-00065" summary="recalculation">
       <created>1642647398990</created>
@@ -392,7 +381,21 @@
       <option name="project" value="LOCAL" />
       <updated>1645465686919</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="group_id">
+      <created>1645465901368</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1645465901368</updated>
+    </task>
+    <task id="LOCAL-00113" summary="group_id">
+      <created>1645465984944</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1645465984944</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
