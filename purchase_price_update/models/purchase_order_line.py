@@ -28,7 +28,7 @@ class PurchasePriceUpdate(models.Model):
         for record in self:
             record.product_id.standard_price = record.price_subtotal / record.product_qty
 
-    @api.onchange('price_unit')
+    @api.onchange('price_subtotal')
     def price_unit_wizard(self):
         message = ''
         if self.price_subtotal != 0 and self.product_qty != 0:
