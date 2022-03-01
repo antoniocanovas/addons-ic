@@ -3,7 +3,7 @@
 <odoo>
     <data>
 
-        <template id="work_sheet_repair" inherit_id="work_sheet_report_document_report">
+        <template id="work_sheet_repair" inherit_id="hr_timesheet_work.work_sheet_report_document_report">
             <xpath expr="//t[@name='project']" position="after">
                 <t name="repair" t-if="o.type == 'repair'">
                     <h2>Servicios:</h2>
