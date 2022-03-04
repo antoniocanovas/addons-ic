@@ -11,7 +11,7 @@
     "website": "",
     "license": "AGPL-3",
     "depends": [
-        "stock_analityc",
+        "stock_analytic",
         "base_automation",
                 ],
     "data": [

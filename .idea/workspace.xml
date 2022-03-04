@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug dependencies">
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/static/work_base.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/menu_views.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="icon">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytic_picking_auto/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytic_picking_auto/__manifest__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,13 +50,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00068" summary="rename module">
-      <created>1642697724293</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1642697724293</updated>
     </task>
     <task id="LOCAL-00069" summary="rename module">
       <created>1642698669055</created>
@@ -394,7 +387,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645698109968</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="icon">
+      <created>1646409021874</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1646409021875</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -409,7 +409,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="estimation date" />
     <MESSAGE value="recalculation" />
     <MESSAGE value="bug name" />
     <MESSAGE value="rename menus" />
@@ -434,7 +433,8 @@
     <MESSAGE value="group_id" />
     <MESSAGE value="new fields product_vehicle" />
     <MESSAGE value="bug dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug dependencies" />
+    <MESSAGE value="icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="icon" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
