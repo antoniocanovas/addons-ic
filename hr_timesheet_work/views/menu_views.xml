@@ -36,7 +36,7 @@
             id="menu_hr_timesheet_work"
             name="Work Sheets"
             sequence="10"
-            web_icon="hr_timesheet_work,static/work_base.png"
+            web_icon="hr_timesheet_work,static/hr_worksheet_icon.png"
     />
 
     <record id="menu_hr_timesheet_work_sheet" model="ir.ui.menu">

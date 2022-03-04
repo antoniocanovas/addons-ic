@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug dependencies" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug dependencies">
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/static/work_base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/menu_views.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
