@@ -142,13 +142,13 @@
     <record id="sale_wup_line_action_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-            <tree create="0">
+            <tree create="0" editable="bottom">
                 <field name="product_id"/>
+                <field name="name"/>
                 <field name="product_uom_qty"/>
                 <field name="product_uom"/>
                 <field name="price_unit"/>
                 <field name="subtotal"/>
-                <field name="purchase_request_id"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -174,12 +174,9 @@
                 <filter string="Products" name="products" domain="[('product_id.type', '!=', 'service')]"/>
                 <filter string="Services" name="services" domain="[('product_id.type', '=', 'service')]"/>
                 <separator/>
-                <filter string="Not requested" name="Not requested" domain="[('purchase_request_id', '=', False)]"/>
-                <separator/>
                 <group expand="0" string="Group By">
                     <filter string="Product" name="group_by_product" domain="[]" context="{'group_by': 'product_id'}"/>
-                    <filter string="Sale line" name="group_by_sale_line_name" domain="[]" context="{'group_by': 'sale_line_name'}"/>
-                    <filter string="Purchase Request" name="group_by_purchase_request_id" domain="[]" context="{'group_by': 'purchase_request_id'}"/>
+                    <filter string="Sale line" name="group_by_sale_line_id" domain="[]" context="{'group_by': 'sale_line_id'}"/>
                 </group>
             </search>
         </field>

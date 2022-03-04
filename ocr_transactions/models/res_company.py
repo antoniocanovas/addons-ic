@@ -194,6 +194,7 @@ class ResCompany(models.Model):
             random = self.random_with_n_digits(11)
             partner_name_value = "NIF_no_vies_" + str(random)
             partner = False
+            partner_by_name = False
 
         if partner:
             return partner
@@ -520,7 +521,7 @@ class ResCompany(models.Model):
                     try:
                         self.create_invoices(t_error, api_transaction_url, header)
                     except Exception as e:
-                        t_error.transaction_error = str(t_error.transaction_error) + str(e)
+                        t_error.transaction_error = str(t_error.transaction_error) if t_error.transaction_error else " " + str(e)
                     try:
                         self.mark_uploads_done(t_error)
                     except Exception as e:
@@ -531,7 +532,7 @@ class ResCompany(models.Model):
                     try:
                         account_move = self.create_invoices(t, api_transaction_url, header)
                     except Exception as e:
-                        t.transaction_error = str(t.transaction_error) + str(e)
+                        t.transaction_error = str(t_error.transaction_error) if t_error.transaction_error else " " + str(e)
                     try:
                         self.mark_uploads_done(t)
                     except Exception as e:

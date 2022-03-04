@@ -10,7 +10,6 @@
         'sale_management',
         'product_brand',
         'hr',
-        'purchase_request',
         'base_automation',
         'sale_timesheet_edit',
 
