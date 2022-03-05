@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="view_stock_valuation_layer_analytic_inh" model="ir.ui.view">
-        <field name="name">stock.valuation.layer.analytic.form.inh</field>
+    <record id="view_stock_valuation_analytic_inh" model="ir.ui.view">
+        <field name="name">stock.valuation.analytic.form.inh</field>
         <field name="model">stock.valuation.layer</field>
         <field name="type">form</field>
         <field name="inherit_id" ref="stock_account.stock_valuation_layer_form"/>
