@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="icon">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug analytic">
+      <change afterPath="$PROJECT_DIR$/analytic_picking_auto/views/stock_valuation_layer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analytic_picking_auto/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytic_picking_auto/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytic_picking_auto/models/stock_valuation_layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytic_picking_auto/models/stock_valuation_layer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +35,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mrp_simple" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/analytic_picking_auto/views" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/analytic_picking_auto/views" />
       <recent name="$PROJECT_DIR$/mrp_simple" />
     </key>
   </component>
@@ -50,13 +53,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00069" summary="rename module">
-      <created>1642698669055</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1642698669055</updated>
     </task>
     <task id="LOCAL-00070" summary="rename module">
       <created>1642699246246</created>
@@ -394,7 +390,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646409021875</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="bug analytic">
+      <created>1646416856558</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1646416856558</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -409,7 +412,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="recalculation" />
     <MESSAGE value="bug name" />
     <MESSAGE value="rename menus" />
     <MESSAGE value="rename module" />
@@ -434,7 +436,8 @@
     <MESSAGE value="new fields product_vehicle" />
     <MESSAGE value="bug dependencies" />
     <MESSAGE value="icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="icon" />
+    <MESSAGE value="bug analytic" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug analytic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
