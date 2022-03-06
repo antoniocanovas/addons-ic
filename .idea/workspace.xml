@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug analytic">
-      <change beforePath="$PROJECT_DIR$/analytic_picking_auto/views/stock_valuation_layer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/analytic_picking_auto/views/stock_valuation_layer.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug view">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,13 +50,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00072" summary="bug">
-      <created>1642726951890</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1642726951891</updated>
     </task>
     <task id="LOCAL-00073" summary="rename">
       <created>1642729125898</created>
@@ -394,7 +387,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646440006293</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="bug view">
+      <created>1646440578306</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1646440578306</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -409,7 +409,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="bug name" />
     <MESSAGE value="rename menus" />
     <MESSAGE value="rename module" />
     <MESSAGE value="margin false" />
@@ -434,7 +433,8 @@
     <MESSAGE value="bug dependencies" />
     <MESSAGE value="icon" />
     <MESSAGE value="bug analytic" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug analytic" />
+    <MESSAGE value="bug view" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug view" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
