@@ -7,7 +7,7 @@ _logger = logging.getLogger(__name__)
 class WupSaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    wup_line_ids = fields.One2many('wup.line','sale_id', string='wup')
+    wup_line_ids = fields.One2many('wup.line','sale_id', string='wup', copied=True)
 
     def _get_wup_line_count(self):
         results = self.env['wup.line'].search([
