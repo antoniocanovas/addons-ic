@@ -27,8 +27,8 @@ class WupSaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     name = fields.Char(string='Name')
-    wup_template_id = fields.Many2one('wup.template', string='wup Template', copied=True)
-    wup_line_ids = fields.One2many('wup.line', 'sale_line_id', string='wup Line', copied=True)
+    wup_template_id = fields.Many2one('wup.template', string='wup Template', copy=True)
+    wup_line_ids = fields.One2many('wup.line', 'sale_line_id', string='wup Line', copy=True)
 
     def get_wup_cost_amount(self):
         for record in self:
@@ -89,7 +89,7 @@ class WupSaleOrderLine(models.Model):
     wup_cost_amount = fields.Monetary('Cost amount', currency_field='currency_id', store=False,
                                       compute="get_wup_cost_amount")
 
-    wup_qty = fields.Integer('wup Qty', copied=True)
+    wup_qty = fields.Integer('wup Qty', copy=True)
 
     def action_open_sol(self):
         return {
