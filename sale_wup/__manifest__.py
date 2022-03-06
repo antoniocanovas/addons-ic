@@ -12,7 +12,6 @@
         'hr',
         'base_automation',
         'sale_timesheet_edit',
-
     ],
     'data': [
         'data/server_action.xml',

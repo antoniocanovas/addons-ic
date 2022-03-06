@@ -34,7 +34,7 @@
                             <field name="wup_qty" attrs="{'readonly':[('state','!=','draft')]}"/>
                         </group>
                         <group>
-                            <button class="oe_highlight oe_edit_only" type="action" name="%(sale_wup.sale_order_line_from_wup_template)d" string="Add WuPs" attrs="{'invisible':[('state','!=','draft')]}"/>
+                            <button class="oe_highlight oe_edit_only" type="action" name="%(sale_wup.wup_line_from_wup_template)d" string="Add WuPs" attrs="{'invisible':[('state','!=','draft')]}"/>
                         </group>
                     </group>
                     <field name="wup_line_ids" attrs="{'readonly':[('state','!=','draft')]}">

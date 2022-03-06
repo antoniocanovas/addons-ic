@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 2.2.3\n"
 
 #. module: sale_wup
-#: model:ir.actions.server,name:sale_wup.sale_order_line_from_wup_template
+#: model:ir.actions.server,name:sale_wup.wup_line_from_wup_template
 msgid "=> Add wup to sale.order.line"
 msgstr "=> Añadir wup a SOL"
 
