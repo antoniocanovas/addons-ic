@@ -8,6 +8,8 @@ from . import wup_template_line
 from . import wup_template
 from . import wup_line
 from . import product_template
+from . import project_task
+from . import account_analytic_line
 
 
 

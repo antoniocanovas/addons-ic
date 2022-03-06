@@ -33,7 +33,7 @@ if (record.state == 'sale'):
   for li in wuplines:
     name = li.sale_line_id.name + ".- " + li.name
     newtask = env['project.task'].create({'name':name, 'sale_line_id':li.sale_line_id.id ,'sale_order_id':record.id,
-      'project_id': record.project_id.id, 'planned_hours':li.product_uom_qty})
+      'project_id': record.project_id.id, 'planned_hours':li.product_uom_qty, 'wup_line_id':li.id})
     li['task_id'] = newtask.id
             </field>
             <field name="trigger">on_create_or_write</field>

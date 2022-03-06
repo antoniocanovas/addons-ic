@@ -21,7 +21,7 @@
         'views/menu_views.xml',
         'views/sale_order_views.xml',
         'views/product_views.xml',
-        #'data/data.xml',
+        'views/project_task.xml',
     ],
     'installable': True,
 }
