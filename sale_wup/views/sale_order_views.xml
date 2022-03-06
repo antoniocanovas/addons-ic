@@ -68,7 +68,7 @@
         <field name="type">form</field>
     </record>
 
-    <record id="view_order_form" model="ir.ui.view">
+    <record id="sale_order_wup_form_view" model="ir.ui.view">
         <field name="name">sale.order.form</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
@@ -81,6 +81,24 @@
                 <field name="lst_price" optional="hide"/>
                 <field name="lst_price_discount" optional="hide"/>
                 <field name="wup_cost_amount" optional="hide"/>
+            </xpath>
+            <xpath expr="//page/field[@name='order_line']/.." position="after">
+                <page string="Product Consumed" name="product_consumed" attrs="{'invisible': ['|',('analytic_account_id','=',False),('state', 'in', ['draft'])]}">
+                    <field name="product_consumed_ids" readonly="1">
+                      <tree>
+                        <field name="date"/>
+                        <field name="product_id"/>
+                        <field name="name"/>
+                        <field name="unit_amount"/>
+                        <field name="product_uom_id"/>
+                        <field name="amount"/>
+                      </tree>
+                    </field>
+                    <group col="4">
+                        <button class="oe_highlight" type="action" name="hr_timesheet_work.sale_order_from_aal" string="Create quotation from consumed products and works"/>
+                        <field name="new_sale_id" readonly="1"/>
+                    </group>
+                </page>
             </xpath>
         </field>
     </record>
