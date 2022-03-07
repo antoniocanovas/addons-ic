@@ -23,10 +23,15 @@ class TimeSheetWorkSheet(models.Model):
     stop = fields.Float('Stop')
     work_id = fields.Many2one('timesheet.work')
     type = fields.Selection(string='Type', related='work_id.type')
-    employee_ids = fields.Many2many('hr.employee')
+    employee_ids = fields.Many2many('hr.employee', string='Employees')
     project_id = fields.Many2one('project.project')
     task_id = fields.Many2one('project.task')
     type_id = fields.Many2one('project.time.type', 'Schedule', required=True)
+    # Nuevo marzo 22:
+    picking_ids = fields.One2many('stock.picking', 'work_sheet_id', string='Pickings')
+    analytic_tag_ids = fields.Many2many('account.analytic.tag', store=True, string='Tags',
+                                        domain=[('timesheet_hidden', '=', False)]
+                                        )
 
     set_start_stop = fields.Boolean(related='work_id.set_start_stop', string='Set start & stop time')
     duration = fields.Float('Duration')
@@ -49,17 +54,19 @@ class TimeSheetWorkSheet(models.Model):
     project_service_ids = fields.One2many(
         'account.analytic.line',
         'work_sheet_id',
-        domain=[('product_id','=',False),('work_sheet_so_line_id','=',False)],
+        domain=['|',('product_id','=',False),('product_id.type','=','service')],
         store=True,
         string='Imputaciones'
     )
-    project_product_ids = fields.One2many(
-        'account.analytic.line',
-        'work_sheet_id',
-        domain=['|',('product_id','!=',False),('work_sheet_so_line_id','!=',False)],
-        store=True,
-        string='Productos'
-    )
+
+    @api.depends('picking_ids')
+    def get_project_products(self):
+        for record in self:
+            products = self.env['stock.move'].search([('picking_id','in',record.picking_ids.ids)])
+            record.project_product_ids = [(6, 0, products.ids)]
+    project_product_ids = fields.Many2many('stock.move', compute=get_project_products, store=False)
+
+
     task_sale_order_id = fields.Many2one('sale.order', related='task_id.sale_order_id', string='Sale Order')
 
     @api.depends('work_id')
@@ -68,13 +75,13 @@ class TimeSheetWorkSheet(models.Model):
             projects = []
             partner = record.work_id.partner_id
             project = record.work_id.project_id
-            if (partner.id) and (not project.id) and (record.type == 'project'):
+            if (partner.id) and (not project.id):
                 projects = self.env['project.project'].search([('partner_id', '=', partner.id)]).ids
-            elif (not partner.id) and (project.id) and (record.type == 'project'):
+            elif (not partner.id) and (project.id):
                 projects = self.env['project.project'].search([('id', '=', project.id)]).ids
-            elif (partner.id) and (project.id) and (record.type == 'project'):
+            elif (partner.id) and (project.id):
                 projects = self.env['project.project'].search([('id', '=', project.id)]).ids
-            elif (not partner.id) and not (project.id) and (record.type == 'project'):
+            elif (not partner.id) and not (project.id):
                 projects = self.env['project.project'].search([]).ids
             record.project_ids = [(6, 0, projects)]
 
@@ -125,7 +132,7 @@ class TimeSheetWorkSheet(models.Model):
 
     signature_status = fields.Boolean(string='Signed & Approved',  compute=get_signed_report, store=True)
 
-    def create_lot_services_iset(self):
+    def create_lot_worksheet_services(self):
         # Check required fields:
         for record in self:
             # Required start to concatenate later, required duration to change later if startstop:
@@ -168,7 +175,7 @@ class TimeSheetWorkSheet(models.Model):
                     new = self.env['account.analytic.line'].create(
                         {'work_sheet_id': record.id, 'name': name, 'project_id': record.project_id.id,
                          'task_id': record.task_id.id, 'date': record.date, 'account_id': record.project_analytic_id.id,
-                         'company_id': record.company_id.id,
+                         'company_id': record.company_id.id, 'tag_ids': [(6,0,record.analytic_tag_ids.ids)],
                          'employee_id': li.id, 'unit_amount': duration, 'type_id': record.type_id.id
                          })
 
