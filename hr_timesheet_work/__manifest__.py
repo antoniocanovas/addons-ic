@@ -8,9 +8,9 @@
     'author': 'Serincloud',
     'depends': [
         'base_automation',
-        'sale_timesheet',
         'purchase',
         'stock',
+        'sale_timesheet',
         'hr_timesheet_time_type',
     ],
     'data': [
