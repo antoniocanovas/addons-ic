@@ -11,7 +11,6 @@
         'repair',
     ],
     'data': [
-#        'data/action_server.xml',
         'views/model_views.xml',
         'views/menu_views.xml',
         'views/templates.xml',

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="time_type_id bug" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="work active option">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/work_sheet.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/models/work_sheet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work_repair/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_repair/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work_repair/data/action_server.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,13 +53,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00080" summary="rename">
-      <created>1642732150337</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1642732150337</updated>
     </task>
     <task id="LOCAL-00081" summary="rename">
       <created>1642732232188</created>
@@ -392,7 +390,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646692003874</updated>
     </task>
-    <option name="localTasksCounter" value="129" />
+    <task id="LOCAL-00129" summary="work active option">
+      <created>1646694398571</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1646694398571</updated>
+    </task>
+    <option name="localTasksCounter" value="130" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -407,7 +412,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="margin false" />
     <MESSAGE value="rename" />
     <MESSAGE value="chatter work.work" />
     <MESSAGE value="Self fields pt/crm" />
@@ -432,7 +436,8 @@
     <MESSAGE value="bug view" />
     <MESSAGE value="copied wup fields" />
     <MESSAGE value="time_type_id bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="time_type_id bug" />
+    <MESSAGE value="work active option" />
+    <option name="LAST_COMMIT_MESSAGE" value="work active option" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
