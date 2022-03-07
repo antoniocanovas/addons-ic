@@ -26,7 +26,7 @@ class TimeSheetWorkSheet(models.Model):
     employee_ids = fields.Many2many('hr.employee', string='Employees')
     project_id = fields.Many2one('project.project')
     task_id = fields.Many2one('project.task')
-    type_id = fields.Many2one('project.time.type', 'Schedule', required=True)
+    time_type_id = fields.Many2one('project.time.type', 'Schedule', required=True)
     # Nuevo marzo 22:
     picking_ids = fields.One2many('stock.picking', 'work_sheet_id', string='Pickings')
     analytic_tag_ids = fields.Many2many('account.analytic.tag', store=True, string='Tags',
@@ -176,6 +176,6 @@ class TimeSheetWorkSheet(models.Model):
                         {'work_sheet_id': record.id, 'name': name, 'project_id': record.project_id.id,
                          'task_id': record.task_id.id, 'date': record.date, 'account_id': record.project_analytic_id.id,
                          'company_id': record.company_id.id, 'tag_ids': [(6,0,record.analytic_tag_ids.ids)],
-                         'employee_id': li.id, 'unit_amount': duration, 'type_id': record.type_id.id
+                         'employee_id': li.id, 'unit_amount': duration, 'time_type_id': record.time_type_id.id
                          })
 
