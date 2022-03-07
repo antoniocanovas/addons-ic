@@ -14,7 +14,7 @@ class TimesheetWork(models.Model):
     _description = 'Timesheet Work'
 
     name = fields.Char('Name', required=True)
-    active = fields.Boolean(default=True)
+    active = fields.Boolean(string="Active", default=True)
     partner_id = fields.Many2one('res.partner', string='Partner')
     type = fields.Selection([('project','Project')],
         required=True, string='Type', default='project', index=True, copy=False, tracking=True)

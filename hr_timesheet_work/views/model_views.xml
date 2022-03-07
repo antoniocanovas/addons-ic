@@ -146,6 +146,7 @@
                 <field name="name"/>
                 <field name="type"/>
                 <field name="partner_id"/>
+                <field name="active" invisible="1"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -171,6 +172,7 @@
                         <field name="project_id"/>
                         <field name="set_start_stop" string="Start/stop time" attrs="{'invisible':[('type','not in',['repair','project'])]}"/>
                     </group>
+                    <field name="active" invisible="1"/>
                 </sheet>
             </form>
         </field>
