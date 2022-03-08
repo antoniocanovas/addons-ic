@@ -109,11 +109,11 @@ class TimeSheetWorkSheet(models.Model):
                 # pdf result is a list
                 b64_pdf = base64.b64encode(pdf[0])
                 main_attachment = self.env['ir.attachment'].sudo().search(
-                   ['&', ('res_id', '=', record.id), ('name', '=', str(record.type_id.name) + '.pdf')]
+                   ['&', ('res_id', '=', record.id), ('name', '=', str(record.time_type_id.name) + '.pdf')]
                 )
                 main_attachment.unlink()
                 # save pdf as attachment
-                name = record.name + (str(record.type_id.name))
+                name = record.name + (str(record.time_type_id.name))
                 record.attachment_id = self.env['ir.attachment'].sudo().create({
                     'name': name + '.pdf',
                     'type': 'binary',
