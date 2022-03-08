@@ -55,11 +55,17 @@
                                             <t t-foreach="o.project_product_ids" t-as="pr">
                                               <tr>
                                                 <td name="td_product"><span t-field="pr.product_id" /></td>
+                                                  <!-- lo que había para AAL, ahora son SM:
                                                 <td name="td_description"><span t-field="pr.name" /></td>
                                                 <td name="td_units"><span t-field="pr.unit_amount" /></td>
                                                 <td name="td_amount"><span t-field="pr.amount" /></td>
                                                 <td name="td_measure"><span t-field="pr.product_uom_id.name" /></td>
                                                 <td name="td_date"><span t-field="pr.date" /></td>
+                                                -->
+                                                <td name="td_units"><span t-field="pr.product_uom_qty" /></td>
+                                                <td name="td_measure"><span t-field="pr.product_uom.name" /></td>
+                                                <td name="td_date"><span t-field="pr.date" /></td>
+                                                <td name="td_state"><span t-field="pr.state" /></td>
                                               </tr>
                                             </t>
                                          </tbody>
