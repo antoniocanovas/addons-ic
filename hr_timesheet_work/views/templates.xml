@@ -31,7 +31,7 @@
                                                 <td name="td_user_id"><span t-field="pr.user_id.name" /></td>
                                                 <td name="td_description"><span t-field="pr.name" /></td>
                                                 <td name="td_units"><span t-field="pr.unit_amount" /></td>
-                                                <td name="td_type"><span t-field="pr.type_id" /></td>
+                                                <td name="td_type"><span t-field="pr.time_type_id" /></td>
                                                 <td name="td_date"><span t-field="pr.date" /></td>
                                               </tr>
                                             </t>
