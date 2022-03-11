@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="action_repair_2_timesheets" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="context">{'search_default_repair_id': active_id,'default_repair_id': active_id}</field>
+        <field name="domain">[('repair_id', '=',active_id)]</field>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="help"><![CDATA[<p> Timesheets </p>]]></field>
+        <field name="limit">80</field>
+        <field name="name">Timesheets</field>
+        <field name="res_model">account.analytic.line</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref=""/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="repair_order_2_timesheets_form" model="ir.ui.view">
+        <field name="name">repair.order.2.timesheets.form</field>
+        <field name="model">repair.order</field>
+        <field name="inherit_id" ref="repair.view_repair_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" icon="fa-info" type="action" name="%(hr_timesheet_work_repair.action_repair_2_timesheets)d" groups="base.group_user">
+                    <field name="timesheets_count" string="Timesheets" widget="statinfo"/>
+                </button>
+
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -14,7 +14,7 @@
         'views/model_views.xml',
         'views/menu_views.xml',
         'views/templates.xml',
-#        'views/work_sheet_report.xml',
+        'views/view_repair_order_timesheets.xml',
     ],
     'installable': True,
 }
