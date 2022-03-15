@@ -301,7 +301,7 @@ msgid ""
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
-"Estatus basado en las actividades\n"
+"Estado basado en las actividades\n"
 "Atrasado: la fecha de vencimiento ya pasó\n"
 "Hoy: la fecha de la actividad es hoy\n"
 "Planificado: Futuras actividades."
@@ -361,7 +361,7 @@ msgstr "Historial de comunicación del Website"
 #: model:ir.model.fields,field_description:hr_timesheet_work_extended.field_project_task__work_work_id
 #: model:ir.model.fields,field_description:hr_timesheet_work_extended.field_sale_order__work_work_id
 msgid "Work"
-msgstr "Parte"
+msgstr "Trabajo"
 
 #. module: hr_timesheet_work_extended
 #: model:ir.model.fields,field_description:hr_timesheet_work_extended.field_project_project__work_id
