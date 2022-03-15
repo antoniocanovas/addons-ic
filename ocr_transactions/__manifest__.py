@@ -10,7 +10,6 @@
         'account',
         'l10n_es_account_asset',
         'queue_job',
-        'dbcopy_post_actions',
         'partner_credentials',
     ],
     'data': [
