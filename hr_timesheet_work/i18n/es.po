@@ -577,7 +577,7 @@ msgstr "Historial de comunicación del Website"
 #: model_terms:ir.ui.view,arch_db:hr_timesheet_work.timesheet_work_tree
 #: model_terms:ir.ui.view,arch_db:hr_timesheet_work.work_sheet_tree_search
 msgid "Work"
-msgstr "Parte"
+msgstr "Trabajo"
 
 #. module: hr_timesheet_work
 #: model:ir.actions.report,name:hr_timesheet_work.work_sheet_report
