@@ -4,18 +4,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0+e\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 06:09+0000\n"
-"PO-Revision-Date: 2021-07-02 08:22+0200\n"
+"POT-Creation-Date: 2022-03-18 11:02+0000\n"
+"PO-Revision-Date: 2022-03-18 12:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"Language: es\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -92,6 +92,11 @@ msgid "=> OCR transactions GET"
 msgstr ""
 
 #. module: ocr_transactions
+#: model:ir.actions.server,name:ocr_transactions.send_through_ocr
+msgid "=> Send to OCR"
+msgstr ""
+
+#. module: ocr_transactions
 #: model:ir.actions.server,name:ocr_transactions.ir_cron_ocr_dbcopy_post_actions_ir_actions_server
 #: model:ir.cron,cron_name:ocr_transactions.ir_cron_ocr_dbcopy_post_actions
 #: model:ir.cron,name:ocr_transactions.ir_cron_ocr_dbcopy_post_actions
@@ -117,6 +122,31 @@ msgstr "Contabilidad"
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 msgid "Accounting Date"
 msgstr "Fecha de contabilidad"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -146,12 +176,47 @@ msgstr "Cantidad a deber"
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.invoice_combination_view
 msgid "Anterior"
-msgstr "Anterior"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_company__api_key
+msgid "Api Key"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__token
+msgid "Api Token"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_company__api_domain
+msgid "Api Url"
+msgstr ""
+
+#. module: ocr_transactions
+#: model_terms:ir.ui.view,arch_db:ocr_transactions.view_account_invoice_filter_app_upload
+msgid "App upload"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__attachment_ids
+msgid "Attachments"
+msgstr ""
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 msgid "Auto-Complete"
 msgstr "Auto-completar"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_company__ocr_disable_queue_jobs
+msgid "Avoid queue_job"
+msgstr ""
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -175,11 +240,23 @@ msgid "Change Period"
 msgstr "Cambiar periodo"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__cleared
+msgid "Cleared"
+msgstr "Liquidado"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__partner_credentials_id
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__partner_id
+msgid "Cliente"
+msgstr ""
+
+#. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_uploads_form
 msgid "Cliente y algo descriptivo ..."
 msgstr "Cliente y algo descriptivo"
 
 #. module: ocr_transactions
+#: code:addons/addons-ic/ocr_transactions/models/account_invoice.py:0
 #: code:addons/ocr_transactions/models/account_invoice.py:0
 #, python-format
 msgid "Combinar Facturas"
@@ -196,20 +273,48 @@ msgid "Configuration"
 msgstr "Configuración"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__ocr_post_transactions_jobs_ids
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_company__ocr_transactions_jobs_ids
+msgid "Connector Jobs"
+msgstr ""
+
+#. module: ocr_transactions
 #: model:ir.model,name:ocr_transactions.model_res_partner
 msgid "Contact"
 msgstr "Contacto"
 
 #. module: ocr_transactions
-#: model_terms:ir.actions.act_window,help:ocr_transactions.action_ocr_in_invoice
-msgid "Crear nuevos documento"
-msgstr "Crear nuevos Documentos"
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary__create_uid
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_invoice_combination__create_uid
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__create_uid
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__create_uid
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_values__create_uid
+msgid "Created by"
+msgstr "Creado por"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary__create_date
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_invoice_combination__create_date
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__create_date
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__create_date
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_values__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_bank_statement_line__customer_id
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_move__customer_id
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_payment__customer_id
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__name
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_tree
 msgid "Customer"
 msgstr "Cliente"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__customer_api_key
+msgid "Customer Api Key"
+msgstr "Clave Api Cliente"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -227,12 +332,20 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_bank_statement_line__is_ocr
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_move__is_ocr
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_payment__is_ocr
+msgid "De OCR"
+msgstr "De OCR"
+
+#. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 msgid "Description"
 msgstr "Descripción"
 
 #. module: ocr_transactions
 #: model:ir.actions.act_window,name:ocr_transactions.action_ocr_dictionary
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_values__dictionary_id
 #: model:ir.ui.menu,name:ocr_transactions.menu_ocr_dictionary
 msgid "Dictionary"
 msgstr "Diccionario"
@@ -244,10 +357,20 @@ msgstr "Desc.%"
 
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_account_move__display_name
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary__display_name
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_invoice_combination__display_name
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__display_name
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__display_name
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_values__display_name
 #: model:ir.model.fields,field_description:ocr_transactions.field_res_company__display_name
 #: model:ir.model.fields,field_description:ocr_transactions.field_res_partner__display_name
 msgid "Display Name"
-msgstr "Nombre mostrado"
+msgstr "Mostrar nombre"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_invoice_combination__attachment_datas
+msgid "Documento"
+msgstr "Documento"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_uploads_form
@@ -287,6 +410,11 @@ msgid "En blanco si no es para cliente"
 msgstr "En blanco si no es para cliente"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_invoice_combination__invoice_id_link
+msgid "Enlace a Factura"
+msgstr "Enlace a Factura"
+
+#. module: ocr_transactions
 #: model:ir.model.fields.selection,name:ocr_transactions.selection__ocr_uploads__state__error
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_uploads_form
 msgid "Error"
@@ -295,35 +423,98 @@ msgstr "Error:"
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_uploads_form
 msgid "Error:"
-msgstr "Error:"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_bank_statement_line__ocr_delivery_invoice
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_move__ocr_delivery_invoice
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_payment__ocr_delivery_invoice
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__ocr_delivery_upload
+msgid "Es Gestor OCR"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary__res_id
+msgid "External ID"
+msgstr "ID Externo"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_invoice_combination__ocr_transaction_id
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_invoice_combination__original_ocr_transaction_id
+msgid "Factura"
+msgstr ""
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 msgid "Factura de proveedor"
-msgstr "Factura de proveedor"
+msgstr ""
 
 #. module: ocr_transactions
 #: model:ir.actions.act_window,name:ocr_transactions.action_ocr_out_invoice
 msgid "Facturas a clientes"
-msgstr "Facturas a clientes"
+msgstr ""
 
 #. module: ocr_transactions
 #: model:ir.actions.act_window,name:ocr_transactions.action_ocr_in_invoice
 #: model:ir.model.fields.selection,name:ocr_transactions.selection__ocr_uploads__type__recibida
 #: model:ir.ui.menu,name:ocr_transactions.menu_ocr_in_invoice
 msgid "Facturas de proveedor"
-msgstr "Facturas de proveedor"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary__res_field
+msgid "Field"
+msgstr "Campo"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_bank_statement_line__to_correct
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_move__to_correct
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_payment__to_correct
+msgid "For correction portal"
+msgstr ""
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_uploads_form
 msgid "Formatos soportados: jpeg, pdf y jpg"
-msgstr "Formatos soportados: jpeg, pdf y jpg"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_bank_statement_line__app_upload
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_move__app_upload
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_payment__app_upload
+msgid "From App"
+msgstr "De app"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
-#: model_terms:ir.ui.view,arch_db:ocr_transactions.view_invoice_supplier_form_ocr_transactions_inh
+#: model_terms:ir.ui.view,arch_db:ocr_transactions.view_account_view_move_form_send_inh
 msgid "Generate Lines"
 msgstr "Generar Líneas"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_company__ocr_delivery_company
+msgid "Gestiona OCR de clientes"
+msgstr ""
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.view_company_ocr2invoice
@@ -332,16 +523,50 @@ msgstr "Obtener Documentos"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
-#: model_terms:ir.ui.view,arch_db:ocr_transactions.view_invoice_supplier_form_ocr_transactions_inh
+#: model_terms:ir.ui.view,arch_db:ocr_transactions.view_account_view_move_form_send_inh
 msgid "Go correction portal"
 msgstr "Ir portal de correción"
 
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_account_move__id
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary__id
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_invoice_combination__id
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__id
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__id
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_values__id
 #: model:ir.model.fields,field_description:ocr_transactions.field_res_company__id
 #: model:ir.model.fields,field_description:ocr_transactions.field_res_partner__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__message_needaction
+#: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__message_has_error
+#: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_bank_statement_line__ocr_combination_image
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_move__ocr_combination_image
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_payment__ocr_combination_image
+msgid "Img to show on wizard"
+msgstr ""
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -349,6 +574,7 @@ msgid "In Payment"
 msgstr "En pago"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__invoice_id
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 msgid "Invoice"
 msgstr "Factura"
@@ -357,7 +583,6 @@ msgstr "Factura"
 #: model:ir.model,name:ocr_transactions.model_ocr_invoice_combination
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.invoice_combination_view
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
-#: model_terms:ir.ui.view,arch_db:ocr_transactions.view_invoice_supplier_form_ocr_transactions_inh
 msgid "Invoice Combination"
 msgstr "Combinación de facturas"
 
@@ -368,9 +593,24 @@ msgid "Invoice Date"
 msgstr "Fecha de factura"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__attachment_id
+msgid "Invoice Document"
+msgstr "Documento de factura"
+
+#. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 msgid "Invoice Lines"
 msgstr "Líneas de factura"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__invoice_origin_id
+msgid "Invoice Origin"
+msgstr "Factura"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_is_follower
+msgid "Is Follower"
+msgstr "Es seguidor"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -403,11 +643,110 @@ msgid "Journal Items"
 msgstr "Artículos de diario"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__json_text
+msgid "Json"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary__name
+msgid "Label"
+msgstr ""
+
+#. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_account_move____last_update
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary____last_update
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_invoice_combination____last_update
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions____last_update
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads____last_update
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_values____last_update
 #: model:ir.model.fields,field_description:ocr_transactions.field_res_company____last_update
 #: model:ir.model.fields,field_description:ocr_transactions.field_res_partner____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary__write_uid
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_invoice_combination__write_uid
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__write_uid
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__write_uid
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_values__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary__write_date
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_invoice_combination__write_date
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__write_date
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__write_date
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_values__write_date
+msgid "Last Updated on"
+msgstr "Actualizado por"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_company__last_conn_date
+msgid "Last connection"
+msgstr "Última conexión"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_company__last_connection_date
+msgid "Last connection date"
+msgstr "Última fecha de conexión"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__token_list
+msgid "Lista"
+msgstr ""
+
+#. module: ocr_transactions
+#: model:ir.model.fields.selection,name:ocr_transactions.selection__ocr_uploads__type__recibida_batch
+msgid "Lote de facturas de proveedor"
+msgstr "Lote de facturas de proveedor"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjunto principal"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_has_error
+msgid "Message Delivery error"
+msgstr "Error entrega de mensaje"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary__res_model
+msgid "Model"
+msgstr "Modelo"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Fecha Límite de Actividad Siguiente"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__name
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_values__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Fecha límite próxima actividad"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen próxima actividad"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_type_id
+msgid "Next Activity Type"
+msgstr "Próximo tipo de actividad"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -415,7 +754,35 @@ msgid "Note"
 msgstr "Nota"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requerieren acción"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de entrega"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes sin leer"
+
+#. module: ocr_transactions
 #: model:ir.actions.act_window,name:ocr_transactions.action_ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_bank_statement_line__ocr_transaction_id
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_move__ocr_transaction_id
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_payment__ocr_transaction_id
 #: model:ir.ui.menu,name:ocr_transactions.menu_ocr
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_transactions_form
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_transactions_tree
@@ -429,15 +796,69 @@ msgid "OCR Account"
 msgstr "Cuenta OCR"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_bank_statement_line__ocr_transaction_error
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_move__ocr_transaction_error
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_payment__ocr_transaction_error
+msgid "OCR Error"
+msgstr "Error OCR"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_bank_statement_line__ocr_upload_status
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_move__ocr_upload_status
+#: model:ir.model.fields,field_description:ocr_transactions.field_account_payment__ocr_upload_status
+msgid "OCR Status"
+msgstr "Estado OCR"
+
+#. module: ocr_transactions
+#: model_terms:ir.ui.view,arch_db:ocr_transactions.view_account_view_move_form_send_inh
+msgid "OCR info"
+msgstr "OCR Información"
+
+#. module: ocr_transactions
 #: model:ir.model,name:ocr_transactions.model_ocr_dictionary
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_dictionary_form
 msgid "Ocr Dictionary"
 msgstr "Diccionario Ocr"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_partner__ocr_purchase_account_id
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_users__ocr_purchase_account_id
+msgid "Ocr Purchase Account"
+msgstr "Cuenta de compra de Ocr"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_partner__ocr_purchase_product_id
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_users__ocr_purchase_product_id
+msgid "Ocr Purchase Product"
+msgstr "Producto de compra de Ocr"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_partner__ocr_sale_account_id
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_users__ocr_sale_account_id
+msgid "Ocr Sale Account"
+msgstr "Cuenta de Venta Ocr"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_partner__ocr_sale_product_id
+#: model:ir.model.fields,field_description:ocr_transactions.field_res_users__ocr_sale_product_id
+msgid "Ocr Sale Product"
+msgstr "Producto de venta de OCR"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__ocr_transaction_ids
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_values__ocr_transaction_id
+msgid "Ocr Transaction"
+msgstr "Transacción Ocr"
+
+#. module: ocr_transactions
 #: model:ir.model,name:ocr_transactions.model_ocr_transactions
 msgid "Ocr Transactions"
 msgstr "Transacciónes Ocr"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__ocr_upload_id
+msgid "Ocr Upload"
+msgstr "Subida Ocr"
 
 #. module: ocr_transactions
 #: model:ir.model,name:ocr_transactions.model_ocr_uploads
@@ -466,6 +887,11 @@ msgid "Partial"
 msgstr "Parcial"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__previus_token
+msgid "Previus Token"
+msgstr "Token Previo"
+
+#. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 msgid "Price"
 msgstr "Precio"
@@ -479,6 +905,11 @@ msgstr "Procesando"
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.view_invoice_supplier_tree_ocr_transactions_inh
 msgid "Proveedor"
 msgstr "Proveedor"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__next_token
+msgid "Próxima Factura"
+msgstr "Próxima Factura"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -496,9 +927,24 @@ msgid "Reconciled Entries"
 msgstr "Entradas reconciliadas"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__invoice_reference
+msgid "Referencia"
+msgstr "Referencia"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 msgid "Reversed"
 msgstr "Revertido"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error entrega SMS"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_tree
@@ -522,9 +968,14 @@ msgstr "Enviar"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_uploads_form
-#: model_terms:ir.ui.view,arch_db:ocr_transactions.view_invoice_supplier_form_ocr_transactions_inh
+#: model_terms:ir.ui.view,arch_db:ocr_transactions.view_account_view_move_form_send_inh
 msgid "Send to OCR"
 msgstr "Enviar a OCR"
+
+#. module: ocr_transactions
+#: model:ir.model.fields.selection,name:ocr_transactions.selection__ocr_uploads__state__sending
+msgid "Sending"
+msgstr "Enviando"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.invoice_combination_view
@@ -538,11 +989,35 @@ msgid "Source Document"
 msgstr "Documento origen"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__state
+msgid "State"
+msgstr "Estado"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__state
+msgid "Status"
+msgstr "Estado"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Estado basado en actividades\n"
+"Atrasado: la fecha de vencimiento ya pasó\n"
+"Hoy: la fecha de actividad es hoy\n"
+"Planificado: actividades futuras."
+
+#. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 msgid "Subtotal"
 msgstr "Subtotal"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary__tax_id
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_tree
 msgid "Tax"
 msgstr "Impuestos"
@@ -585,6 +1060,11 @@ msgstr ""
 "Este movimiento se crea automáticamente en la fecha de contabilización:"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_values__token
+msgid "Token"
+msgstr "Token"
+
+#. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_tree
 msgid "Total"
@@ -601,9 +1081,40 @@ msgid "Total Debit"
 msgstr "Debe"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__transaction_error
+msgid "Transaction Error Code"
+msgstr "Código Error de Transacción"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__type
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary__type
+msgid "Type of document"
+msgstr "Tipo documento"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Tipo de excepción en la actividad."
+
+#. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 msgid "Unit Price:"
 msgstr "Precio Unitario:"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_unread
+msgid "Unread Messages"
+msgstr "No leidos"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes sin leer"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -622,6 +1133,12 @@ msgid "Valores"
 msgstr "Valores"
 
 #. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__value_ids
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_values__value
+msgid "Value"
+msgstr "Valor"
+
+#. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_tree
 msgid "Vendor"
@@ -637,6 +1154,16 @@ msgstr "Factura del vendedor"
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_transactions_form
 msgid "Ver Factura"
 msgstr "Ver Factura"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes Web"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de mensajes en la web"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -662,3 +1189,13 @@ msgstr "Deudas pendientes"
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
 msgid "outstanding payments"
 msgstr "Pagos pendientes"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__upload_transaction_error
+msgid "upload Error Code"
+msgstr "Código de error"
+
+#. module: ocr_transactions
+#: model:ir.model.fields,field_description:ocr_transactions.field_ocr_transactions__customer_vat
+msgid "vat"
+msgstr "iva"

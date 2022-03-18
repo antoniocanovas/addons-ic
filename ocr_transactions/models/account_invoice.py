@@ -15,9 +15,17 @@ class AccountMove(models.Model):
     is_ocr = fields.Boolean('De OCR')
     ocr_delivery_invoice = fields.Boolean(string='Es Gestor OCR',
                                           default=lambda self: self.env.user.company_id.ocr_delivery_company)
+    app_upload = fields.Boolean(string="From App", compute="_get_origin", store=True)
     ocr_upload_status = fields.Selection(string='OCR Status', related='ocr_transaction_id.ocr_upload_id.state')
     ocr_combination_image = fields.Binary("Img to show on wizard")
     ocr_transaction_error = fields.Char(string='OCR Error', related='ocr_transaction_id.transaction_error')
+
+    def _get_origin(self):
+        for record in self:
+            if record.ocr_transaction_id.ocr_upload_id:
+                record.app_upload = False
+            else:
+                record.app_upload = True
 
     def post_correction_form(self):
 
