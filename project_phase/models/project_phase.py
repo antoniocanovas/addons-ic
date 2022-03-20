@@ -30,10 +30,6 @@ class ProjectPhase(models.Model):
         for record in self:
             if (record.type == 'lead') and (record.lead_id.id):
                 state = record.lead_id.stage_id.name
-                if (record.lead_id.probability == 0):
-                    state = 'Perdido'
-                elif (record.lead_id.probability == 100):
-                    state = 'Ganado'
             elif (record.type == 'sale') and (record.sale_id.id):
                 state = record.sale_id.state
             elif (record.type == 'purchase') and (record.purchase_id.id):
