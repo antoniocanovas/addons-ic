@@ -50,13 +50,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00090" summary="self field">
-      <created>1643070906858</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1643070906858</updated>
-    </task>
     <task id="LOCAL-00091" summary="hide opp if not record.id">
       <created>1643071553688</created>
       <option name="number" value="00091" />
@@ -393,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647799208516</updated>
     </task>
-    <option name="localTasksCounter" value="139" />
+    <task id="LOCAL-00139" summary="Bug qty sol wit wup AA">
+      <created>1647862072540</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1647862072540</updated>
+    </task>
+    <option name="localTasksCounter" value="140" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -408,7 +408,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="recompute rebu with no stored fields" />
     <MESSAGE value="bug" />
     <MESSAGE value="bug2" />
     <MESSAGE value="bug3" />
@@ -433,7 +432,8 @@
     <MESSAGE value="sale_wup and discount deleted" />
     <MESSAGE value="new sale_wup and discount from dev" />
     <MESSAGE value="Default states in Opportunities" />
-    <option name="LAST_COMMIT_MESSAGE" value="Default states in Opportunities" />
+    <MESSAGE value="Bug qty sol wit wup AA" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug qty sol wit wup AA" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

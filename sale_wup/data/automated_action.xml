@@ -6,7 +6,7 @@
             <field name="code">
 # Change default behaviour when change QYT on SOL for WUP:
 if record.wup_line_ids.ids:
-    price_unit = 0
+    wup_price_unit = 0
     for li in record.wup_line_ids:
         wup_price_unit += li.price_unit * li.product_uom_qty
     record['price_unit'] = wup_price_unit
