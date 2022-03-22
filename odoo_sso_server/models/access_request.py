@@ -14,6 +14,24 @@ class AccessRequest(models.Model):
     db = fields.Char('Base de Datos')
     remote_company_id = fields.Integer('Id de empresa')
 
+    def set_remote_company(self, conn):
+
+        try:
+            asesoria_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
+                                                    'res.users', 'search_read',
+                                                    [[('name', '=', 'asesoria')]],
+                                                    {'fields': ['company_id'], 'limit': 1})
+        except Exception as e:
+            raise Warning(("Exception when calling remote server $Remote User Get company: %s\n" % e))
+        if asesoria_id[0]['company_id'][0] != self.remote_company_id:
+            try:
+                ase_company_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'],
+                                                           'res.users', 'write',
+                                                           [asesoria_id[0]['id'],
+                                                            {'company_id': self.remote_company_id}])
+            except Exception as e:
+                raise Warning(("Exception when calling remote server $Remote User Company_id: %s\n" % e))
+
     def tokengenerator(self):
 
         temptoken = string.ascii_letters
@@ -32,7 +50,7 @@ class AccessRequest(models.Model):
                                                                ("active", "=", True),
                                                                ("active", "=", False),
                                                                ], limit=1)
-            print("REMOTE USER", remote_user)
+
             remote_user.token = self.tokengenerator()
 
             try:
@@ -74,7 +92,6 @@ class AccessRequest(models.Model):
                                            })
         except Exception as e:
             raise Warning(("Exception when reading remote token: %s\n" % e))
-        print("TOKENS", token[0]['token'], conn['token'] )
         if token[0]['token'] == conn['token']:
             return True
         else:
@@ -85,9 +102,9 @@ class AccessRequest(models.Model):
         conn = self._setxmlrpc()
 
         writeok = self.writetoken(conn)
-        print("DEBUG", writeok)
+
         if writeok == True:
-            #self.token='off'
+            set_company = self.set_remote_company(conn)
             return {'type': 'ir.actions.act_url',
                     'url': url,
                     'target': 'current',
