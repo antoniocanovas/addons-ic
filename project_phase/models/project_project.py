@@ -19,9 +19,6 @@ TREE_TEMPLATE = (
     "<tbody>"
     "<tr>"
     '<td id="name" style="font-size: 16px;"><strong><span id="name">%s</span></strong>  &nbsp; <span id="responsible">[%s]</span></td></td>'
-    '<td></td>'
-    '<td></td>'
-    '<td></td>'
     '<td id="customer" style="text-align:right;"><strong><span title="%s" id="customer">%s</span></strong></td>'
     "</tr>"
 )
@@ -54,17 +51,15 @@ class ProjectProject(models.Model):
             for phase in rec.phase_ids:
                 phase_template += (
                     '<tr>'
-                    '<td style="font-size: 12px;"><strong>%s : %s</strong></td>' 
+                    '<td style="font-size: 12px;">[%s] %s : %s [ Responsable: %s / Estado: %s /Límite: %s ]</td>' 
                     '<td></td>'
-                    '<td style="font-size: 12px;text-align:right;"><strong>%s</strong></td>'
-                    '<td style="font-size: 12px;text-align:right;"><strong>%s</strong></td>'
-                    '<td style="font-size: 12px;text-align:right;"><strong>%s</strong></td>'
                     '</tr>' % (
-                        phase.type,
-                        phase.name,
-                        phase.user_id.name,
-                        phase.state,
-                        phase.date_limit,
+                        phase.priority if phase.priority else '',
+                        phase.type if phase.type else '',
+                        phase.name if phase.name else '',
+                        phase.user_id.name if phase.user_id.name else '',
+                        phase.state if phase.state else '',
+                        phase.date_limit if phase.date_limit else '',
                     )
                 )
 
@@ -79,8 +74,8 @@ class ProjectProject(models.Model):
                 #else IMAGE_PLACEHOLDER,
                 #rec.user_id.name,
                 rec.name,
+                rec.partner_id.name if rec.partner_id else '',
                 rec.user_id.name if rec.user_id else '',
-                rec.partner_id.name if rec.partner_id else '',
-                rec.partner_id.name if rec.partner_id else '',
+                rec.user_id.name if rec.user_id else '',
 
             ) + phase_template

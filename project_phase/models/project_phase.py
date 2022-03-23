@@ -28,6 +28,7 @@ class ProjectPhase(models.Model):
                  'invoice_id.state')
     def _get_phase_state(self):
         for record in self:
+            state = 'New'
             if (record.type == 'lead') and (record.lead_id.id):
                 state = record.lead_id.stage_id.name
             elif (record.type == 'sale') and (record.sale_id.id):
