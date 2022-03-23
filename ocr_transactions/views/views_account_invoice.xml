@@ -110,7 +110,7 @@
         <field name="arch" type="xml">
             <xpath expr="//group" position="inside">
                 <separator/>
-                <filter string="App upload" name="App upload" context="{'group_by': 'app_upload'}"/>
+                <filter string="Subidas por Aplicación" name="App_upload" context="{'group_by': 'app_upload'}"/>
             </xpath>
         </field>
     </record>
