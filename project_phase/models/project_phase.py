@@ -10,7 +10,7 @@ class ProjectPhase(models.Model):
     _description = 'Project phases'
 
     name = fields.Char(string='Nombre', required=True)
-    priority = fields.Integer(string='Prioridad')
+    priority = fields.Integer(string='Prioridad', default="1")
     user_id = fields.Many2one('res.users', string='Responsable', required=True, store=True)
     date_limit = fields.Date(string='Fecha límite')
     project_id = fields.Many2one('project.project', string='Proyecto')

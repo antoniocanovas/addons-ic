@@ -51,8 +51,8 @@ class ProjectProject(models.Model):
             for phase in rec.phase_ids:
                 phase_template += (
                     '<tr>'
-                    '<td style="font-size: 12px;">[%s] %s : %s [ Responsable: %s / Estado: %s /Límite: %s ]</td>' 
-                    '<td></td>'
+                    '<td style="font-size: 12px;">[%s] %s : %s </td>' 
+                    '<td  style="text-align:right;font-size: 12px;"> %s (%s), %s </td>'
                     '</tr>' % (
                         phase.priority if phase.priority else '',
                         phase.type if phase.type else '',
