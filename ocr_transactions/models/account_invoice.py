@@ -20,12 +20,13 @@ class AccountMove(models.Model):
     ocr_combination_image = fields.Binary("Img to show on wizard")
     ocr_transaction_error = fields.Char(string='OCR Error', related='ocr_transaction_id.transaction_error')
 
+    @api.depends('ocr_transaction_id')
     def _get_origin(self):
-        for record in self:
-            if record.ocr_transaction_id.ocr_upload_id:
-                record.app_upload = False
-            else:
-                record.app_upload = True
+
+        if self.ocr_transaction_id.ocr_upload_id:
+            self.app_upload = False
+        else:
+            self.app_upload = True
 
     def post_correction_form(self):
 
