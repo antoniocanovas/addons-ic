@@ -532,7 +532,7 @@ class ResCompany(models.Model):
                     try:
                         account_move = self.create_invoices(t, api_transaction_url, header)
                     except Exception as e:
-                        t.transaction_error = str(t_error.transaction_error) if t_error.transaction_error else " " + str(e)
+                        t.transaction_error = str(t.transaction_error) if t.transaction_error else " " + str(e)
                     try:
                         self.mark_uploads_done(t)
                     except Exception as e:

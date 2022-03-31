@@ -2,6 +2,10 @@
 from odoo import http
 from odoo.http import request, route, root
 from odoo import api
+import psycopg2.extras
+import hmac
+from _sha256 import sha256
+from psycopg2._psycopg import ProgrammingError
 from odoo.service import security
 import werkzeug
 
@@ -10,7 +14,7 @@ class MasterClient(http.Controller):
     @http.route(['/93201967'], type='http', auth='none')
     def r_connect(self, redirect=None, **kw):
         user = request.env['res.users'].sudo().search([['login','=','asesoria']])
-        print("USER PASS", user.password)
+
         db = request.env.cr.dbname
 
         if user.token == 'off':

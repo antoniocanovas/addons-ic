@@ -31,9 +31,7 @@
             </xpath>
             <xpath expr="//form/header" position="inside">
                 <button name="prepare_invoice_send" string="Send Odoo Client" type="object"
-                        class="oe_highlight" attrs="{
-                            'invisible':[('remote_state','=', 'sent')]
-                        }" />
+                        class="oe_highlight"/>
 
             </xpath>
             <xpath expr="//form/header/button[@name='post_correction_form']" position="attributes">
