@@ -22,7 +22,6 @@
         'views/views_account_invoice.xml',
         'data/ocr_queue_job.xml',
         'data/default_ocr_user.xml',
-        'data/ocr_dbcopy_post_actions_job.xml',
         'data/dictionary_data.xml',
         'data/pasar_factura_compra.xml',
         'data/send_through.xml',
