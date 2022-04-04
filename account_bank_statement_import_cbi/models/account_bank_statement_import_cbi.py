@@ -26,7 +26,7 @@ class AccountBankStatementCBI(models.Model):
     name = fields.Char('Name')
     journal_id = fields.Many2one('account.journal', domain=[('type', '=', 'bank')] )
     state = fields.Selection(
-        selection=STATE, string="State", default='draft', track_visibility='onchange'
+        selection=STATE, string="State", default='draft', tracking=True
     )
     company_id = fields.Many2one('res.company')
     bank_statement_attachment_id = fields.Many2one('ir.attachment')
