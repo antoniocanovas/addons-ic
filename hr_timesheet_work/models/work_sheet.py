@@ -21,13 +21,13 @@ class TimeSheetWorkSheet(models.Model):
     date = fields.Date('Date', required=True)
     start = fields.Float('Start')
     stop = fields.Float('Stop')
+    duration = fields.Float('Duration', store=True)
     work_id = fields.Many2one('timesheet.work')
     type = fields.Selection(string='Type', related='work_id.type')
     employee_ids = fields.Many2many('hr.employee', string='Employees')
     project_id = fields.Many2one('project.project')
     task_id = fields.Many2one('project.task')
     time_type_id = fields.Many2one('project.time.type', 'Schedule', required=True)
-    # Nuevo marzo 22:
     picking_ids = fields.One2many('stock.picking', 'work_sheet_id', string='Pickings')
     analytic_tag_ids = fields.Many2many('account.analytic.tag', store=True, string='Tags',
                                         domain=[('timesheet_hidden', '=', False)]
@@ -41,6 +41,7 @@ class TimeSheetWorkSheet(models.Model):
     company_id = fields.Many2one(
         'res.company',
         'Company',
+        store=False,
         default=lambda self: self.env.user.company_id
     )
     project_analytic_id = fields.Many2one(
@@ -57,19 +58,6 @@ class TimeSheetWorkSheet(models.Model):
         store=True,
         string='Imputaciones'
     )
-
-
-
-    @api.depends('time_start','time_stop')
-    def get_timesheet_duration(self):
-        for record in self:
-            duration = record.time_stop - record.time_start
-            if (record.work_sheet_id.set_start_stop == False):
-                if (duration < 0):
-                    record['duration'] = 0
-                else:
-                    record['duration'] = duration
-    duration = fields.Float('Duration', store=True, compute=get_timesheet_duration)
 
 
     @api.depends('picking_ids')
