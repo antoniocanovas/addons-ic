@@ -146,23 +146,6 @@ class TimeSheetWorkSheet(models.Model):
             elif (record.set_start_stop == True) and ((record.stop - record.start) <= 0):
                 raise ValidationError('Please review start & stop time consumed.')
 
-            # Only if production or set_start_stop = True:
-            if (record.set_start_stop == True):
-                duration = (record.stop - record.start)
-                # Calculate local time diference with UTC:
-                date_today = datetime(year=record.date.year, month=record.date.month, day=record.date.day,
-                                               hour=12, minute=0)
-
-                date_utc = date_today.astimezone(pytz.timezone(self.env.user.tz))
-                inc = date_utc.hour - date_today.hour
-
-                # Change 'hour/min' in record.start to string format to include in fields "name":
-                start = str(timedelta(hours=record.start))
-                if (record.start >= 10):
-                    start = start[:5]
-                else:
-                    start = " - " + start[:4]
-
             # CASE USER NOT ADMINISTRATOR, CAN'T SEE FIELD employee_ids => Self timesheet:
             if record.employee_ids.ids:
                 employee_ids = record.employee_ids
@@ -172,22 +155,24 @@ class TimeSheetWorkSheet(models.Model):
             # CASE PROJECT:
             if (record.work_id.type == "project") and (record.project_id.id):
                 for li in employee_ids:
-                    name = record.name + start
                     new = self.env['account.analytic.line'].create(
-                        {'work_sheet_id': record.id, 'name': name, 'project_id': record.project_id.id,
+                        {'work_sheet_id': record.id, 'name': record.name, 'project_id': record.project_id.id,
                          'task_id': record.task_id.id, 'date': record.date, 'account_id': record.project_analytic_id.id,
                          'company_id': record.company_id.id, 'tag_ids': [(6,0,record.analytic_tag_ids.ids)],
                          'employee_id': li.id, 'unit_amount': duration, 'time_type_id': record.time_type_id.id
                          })
+                    if (record.set_start_stop == True):
+                        new.write({'time_start':start, 'time_stop':stop})
 
             # CASE REPAIR:
             if (record.work_id.type == "repair") and (record.repair_id.id) and (record.project_id.id):
                 for li in employee_ids:
-                    name = record.name + start
                     new = self.env['account.analytic.line'].create(
-                        {'work_sheet_id': record.id, 'name': name, 'project_id': record.project_id.id,
+                        {'work_sheet_id': record.id, 'name': record.name, 'project_id': record.project_id.id,
                          'task_id': record.task_id.id, 'date': record.date, 'account_id': record.project_analytic_id.id,
                          'company_id': record.company_id.id, 'tag_ids': [(6,0,record.analytic_tag_ids.ids)],
                          'employee_id': li.id, 'unit_amount': duration, 'time_type_id': record.time_type_id.id,
                          'repair_id':record.repair_id.id
                          })
+                    if (record.set_start_stop == True):
+                        new.write({'time_start':start, 'time_stop':stop})
