@@ -162,7 +162,7 @@ class TimeSheetWorkSheet(models.Model):
                          'employee_id': li.id, 'unit_amount': duration, 'time_type_id': record.time_type_id.id
                          })
                     if (record.set_start_stop == True):
-                        duration = record.start - record.stop
+                        duration = record.stop - record.start
                         new.write({'time_start':record.start, 'time_stop':record.stop, 'unit_amount':duration})
 
             # CASE REPAIR:
@@ -176,5 +176,5 @@ class TimeSheetWorkSheet(models.Model):
                          'repair_id':record.repair_id.id
                          })
                     if (record.set_start_stop == True):
-                        duration = record.start - record.stop
+                        duration = record.stop - record.start
                         new.write({'time_start':record.start, 'time_stop':record.stop, 'unit_amount':duration})
