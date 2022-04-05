@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="set_start_stop aal">
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/work_sheet.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/models/work_sheet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/account_analytic_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/models/account_analytic_line.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,13 +51,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00101" summary="menus">
-      <created>1644013834038</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1644013834038</updated>
     </task>
     <task id="LOCAL-00102" summary="new fields and view">
       <created>1645226776490</created>
@@ -395,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649200482826</updated>
     </task>
-    <option name="localTasksCounter" value="150" />
+    <task id="LOCAL-00150" summary="set_start_stop aal">
+      <created>1649200556216</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1649200556216</updated>
+    </task>
+    <option name="localTasksCounter" value="151" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
