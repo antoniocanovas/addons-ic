@@ -34,7 +34,6 @@ class TimeSheetWorkSheet(models.Model):
                                         )
 
     set_start_stop = fields.Boolean(related='work_id.set_start_stop', string='Set start & stop time')
-    duration = fields.Float('Duration')
     partner_id = fields.Many2one('res.partner', string='Signed by')
     signature = fields.Binary("Signature")
     attachment_id = fields.Many2one('ir.attachment', string='Attachment')
@@ -58,6 +57,20 @@ class TimeSheetWorkSheet(models.Model):
         store=True,
         string='Imputaciones'
     )
+
+
+
+    @api.depends('time_start','time_stop')
+    def get_timesheet_duration(self):
+        for record in self:
+            duration = record.time_stop - record.time_start
+            if (record.work_sheet_id.set_start_stop == False):
+                if (duration < 0):
+                    record['duration'] = 0
+                else:
+                    record['duration'] = duration
+    duration = fields.Float('Duration', store=True, compute=get_timesheet_duration)
+
 
     @api.depends('picking_ids')
     def get_project_products(self):
