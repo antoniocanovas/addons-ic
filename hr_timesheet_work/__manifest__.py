@@ -12,6 +12,7 @@
         'stock',
         'sale_timesheet',
         'hr_timesheet_time_type',
+        'hr_timesheet_activity_begin_end',
     ],
     'data': [
         'security/ir.model.access.csv',
