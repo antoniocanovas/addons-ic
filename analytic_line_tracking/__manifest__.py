@@ -18,7 +18,7 @@
         'mail',
     ],
     "data": [
-
+        'views/views_account_analytic_line.xml'
     ],
     "installable": True,
 }
