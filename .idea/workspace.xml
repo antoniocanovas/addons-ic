@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="Bug qty sol wit wup AA">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="Update product_bulk">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/model_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,13 +52,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00092" summary="recompute rebu with no stored fields">
-      <created>1643074803291</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1643074803291</updated>
     </task>
     <task id="LOCAL-00093" summary="recompute rebu with no stored fields">
       <created>1643074935460</created>
@@ -395,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647862760872</updated>
     </task>
-    <option name="localTasksCounter" value="141" />
+    <task id="LOCAL-00141" summary="Update product_bulk">
+      <created>1648079485470</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1648079485471</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -410,7 +411,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="bug" />
     <MESSAGE value="bug2" />
     <MESSAGE value="bug3" />
     <MESSAGE value="closed to is_closed" />
@@ -435,7 +435,8 @@
     <MESSAGE value="new sale_wup and discount from dev" />
     <MESSAGE value="Default states in Opportunities" />
     <MESSAGE value="Bug qty sol wit wup AA" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug qty sol wit wup AA" />
+    <MESSAGE value="Update product_bulk" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update product_bulk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
