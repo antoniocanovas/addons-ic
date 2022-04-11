@@ -156,7 +156,7 @@ class TimeSheetWorkSheet(models.Model):
             if (record.work_id.type == "project") and (record.project_id.id):
                 for li in employee_ids:
                     if not li.user_id.id:
-                        raise ValidationError(li.name + ' sin usuario asignado, revisa su ficha de empleado')
+                        raise ValidationError('Empleado sin usuario asignado, revisa su ficha de empleado')
                     new = self.env['account.analytic.line'].create(
                         {'work_sheet_id': record.id, 'name': record.name, 'project_id': record.project_id.id,
                          'task_id': record.task_id.id, 'date': record.date, 'account_id': record.project_analytic_id.id,
@@ -172,7 +172,7 @@ class TimeSheetWorkSheet(models.Model):
             if (record.work_id.type == "repair") and (record.repair_id.id) and (record.project_id.id):
                 for li in employee_ids:
                     if not li.user_id.id:
-                        raise ValidationError(li.name + ' sin usuario asignado, revisa su ficha de empleado')
+                        raise ValidationError('Empleado sin usuario asignado, revisa su ficha de empleado')
                     new = self.env['account.analytic.line'].create(
                         {'work_sheet_id': record.id, 'name': record.name, 'project_id': record.project_id.id,
                          'task_id': record.task_id.id, 'date': record.date, 'account_id': record.project_analytic_id.id,
