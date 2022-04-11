@@ -155,11 +155,14 @@ class TimeSheetWorkSheet(models.Model):
             # CASE PROJECT:
             if (record.work_id.type == "project") and (record.project_id.id):
                 for li in employee_ids:
+                    if not li.user_id.id:
+                        raise ValidationError(li.name + ' sin usuario asignado, revisa su ficha de empleado')
                     new = self.env['account.analytic.line'].create(
                         {'work_sheet_id': record.id, 'name': record.name, 'project_id': record.project_id.id,
                          'task_id': record.task_id.id, 'date': record.date, 'account_id': record.project_analytic_id.id,
                          'company_id': record.company_id.id, 'tag_ids': [(6,0,record.analytic_tag_ids.ids)],
-                         'employee_id': li.id, 'unit_amount': duration, 'time_type_id': record.time_type_id.id
+                         'employee_id': li.id, 'unit_amount': duration, 'time_type_id': record.time_type_id.id,
+                         'user_id':li.user_id.id
                          })
                     if (record.set_start_stop == True):
                         duration = record.stop - record.start
@@ -168,12 +171,14 @@ class TimeSheetWorkSheet(models.Model):
             # CASE REPAIR:
             if (record.work_id.type == "repair") and (record.repair_id.id) and (record.project_id.id):
                 for li in employee_ids:
+                    if not li.user_id.id:
+                        raise ValidationError(li.name + ' sin usuario asignado, revisa su ficha de empleado')
                     new = self.env['account.analytic.line'].create(
                         {'work_sheet_id': record.id, 'name': record.name, 'project_id': record.project_id.id,
                          'task_id': record.task_id.id, 'date': record.date, 'account_id': record.project_analytic_id.id,
                          'company_id': record.company_id.id, 'tag_ids': [(6,0,record.analytic_tag_ids.ids)],
                          'employee_id': li.id, 'unit_amount': duration, 'time_type_id': record.time_type_id.id,
-                         'repair_id':record.repair_id.id
+                         'user_id':li.user_id.id, 'repair_id':record.repair_id.id
                          })
                     if (record.set_start_stop == True):
                         duration = record.stop - record.start

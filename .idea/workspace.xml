@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="set_start_stop aal">
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_work/views/hr_employee.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/__manifest__.py" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="portal user in employees">
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/work_sheet.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/models/work_sheet.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,13 +52,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00103" summary="new fields and view">
-      <created>1645227471540</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1645227471540</updated>
     </task>
     <task id="LOCAL-00104" summary="bug1">
       <created>1645227807400</created>
@@ -398,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649201140045</updated>
     </task>
-    <option name="localTasksCounter" value="152" />
+    <task id="LOCAL-00152" summary="portal user in employees">
+      <created>1649695605394</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1649695605395</updated>
+    </task>
+    <option name="localTasksCounter" value="153" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -413,7 +411,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="redesigned" />
     <MESSAGE value="menus" />
     <MESSAGE value="new fields and view" />
     <MESSAGE value="bug1" />
@@ -438,7 +435,8 @@
     <MESSAGE value="Update context y default form" />
     <MESSAGE value="hr_timesheet_activity_begin_end" />
     <MESSAGE value="set_start_stop aal" />
-    <option name="LAST_COMMIT_MESSAGE" value="set_start_stop aal" />
+    <MESSAGE value="portal user in employees" />
+    <option name="LAST_COMMIT_MESSAGE" value="portal user in employees" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
