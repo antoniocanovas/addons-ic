@@ -22,6 +22,7 @@
         'views/menu_views.xml',
         'views/templates.xml',
         'views/work_sheet_report.xml',
+        'views/hr_employee.xml',
     ],
     'installable': True,
 }

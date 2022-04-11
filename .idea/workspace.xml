@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="set_start_stop aal">
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/account_analytic_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/models/account_analytic_line.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_work/views/hr_employee.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/__manifest__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +34,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hr_timesheet_work/views" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hr_timesheet_work/views" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/analytic_picking_auto/views" />
       <recent name="$PROJECT_DIR$/mrp_simple" />
@@ -51,13 +54,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00102" summary="new fields and view">
-      <created>1645226776490</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1645226776491</updated>
     </task>
     <task id="LOCAL-00103" summary="new fields and view">
       <created>1645227471540</created>
@@ -395,7 +391,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649200556216</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="set_start_stop aal">
+      <created>1649201140045</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1649201140045</updated>
+    </task>
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
