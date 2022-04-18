@@ -12,7 +12,7 @@
             </xpath>
         </field>
     </record>
-
+<!--
     <record id="action_view_tickets" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
@@ -41,5 +41,5 @@
             </xpath>
         </field>
     </record>
-
+-->
 </odoo>
