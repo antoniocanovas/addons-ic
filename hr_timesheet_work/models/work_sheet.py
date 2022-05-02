@@ -140,6 +140,10 @@ class TimeSheetWorkSheet(models.Model):
             start = ""
             duration = record.duration
 
+            # Chek task assigned:
+            if (record.task_id.id == False):
+                raise ValidationError('Please, assign the task you have been working.')
+
             # Chek time consumed:
             if (record.set_start_stop == False) and (record.duration == 0):
                 raise ValidationError('Please, set the time consumed in Duration.')

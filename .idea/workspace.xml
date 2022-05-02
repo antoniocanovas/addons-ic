@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="helpdesk_credential v0">
-      <change beforePath="$PROJECT_DIR$/helpdesk_credential/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk_credential/views/views.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="time type not required">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/work_sheet.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/models/work_sheet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/model_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,13 +54,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00108" summary="bom_easy_id">
-      <created>1645461958947</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1645461958947</updated>
     </task>
     <task id="LOCAL-00109" summary="group_id">
       <created>1645464829063</created>
@@ -396,7 +391,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650283871380</updated>
     </task>
-    <option name="localTasksCounter" value="157" />
+    <task id="LOCAL-00157" summary="time type not required">
+      <created>1651419456843</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1651419456843</updated>
+    </task>
+    <option name="localTasksCounter" value="158" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -411,7 +413,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="new fields and view" />
     <MESSAGE value="bug1" />
     <MESSAGE value="bom_easy_id" />
     <MESSAGE value="group_id" />
@@ -436,7 +437,8 @@
     <MESSAGE value="set_start_stop aal" />
     <MESSAGE value="portal user in employees" />
     <MESSAGE value="helpdesk_credential v0" />
-    <option name="LAST_COMMIT_MESSAGE" value="helpdesk_credential v0" />
+    <MESSAGE value="time type not required" />
+    <option name="LAST_COMMIT_MESSAGE" value="time type not required" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
