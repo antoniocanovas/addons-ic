@@ -113,7 +113,7 @@ class ProjectWorkshop(models.Model):
                 name = record.name
                 if record.pre_offer == True:
                     name += " **"
-                task = self.env['project.task'].create({'name': record.name, 'project_id': project.id,
+                task = self.env['project.task'].create({'name': name, 'project_id': project.id,
                     'description': record.description, 'partner_id': project.partner_id.id,
                     'date_deadline':record.date_deadline, 'planned_hours':record.estimated_time,
                     'sale_line_id': saleline.id, 'kanban_state': kanban_state})
