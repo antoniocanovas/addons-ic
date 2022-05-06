@@ -27,7 +27,7 @@
                         <field name="license" attrs="{'invisible':[('is_new','=',False)], 'required':[('is_new','=',True)]}"/>
                         <field name="partner_id" attrs="{'invisible':[('is_new','=',False)], 'required':[('is_new','=',True)]}"/>
                         <field name="model" attrs="{'invisible':[('is_new','=',False)], 'required':[('is_new','=',True)]}"/>
-                        <field name="pre_offer" widget="boolean_toggle" attrs="{'invisible':['|',('warranty','==',True)]}"/>
+                        <field name="pre_offer" widget="boolean_toggle" attrs="{'invisible':[('warranty','==',True)]}"/>
                         <field name="user_id" options="{'no_create': True}"/>
                     </group>
                     <notebook>
