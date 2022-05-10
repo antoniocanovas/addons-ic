@@ -10,10 +10,12 @@ class WupSaleOrder(models.Model):
     wup_line_ids = fields.One2many('wup.line','sale_id', string='wup')
 
     def _get_wup_line_count(self):
+        total = 0
         results = self.env['wup.line'].search([
             ('sale_id', '=', self.id), ]
         )
-        self.wup_line_count = len(results)
+        if results: total = len(results)
+        self.wup_line_count = total
 
     wup_line_count = fields.Integer('wups', compute=_get_wup_line_count)
 
