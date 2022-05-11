@@ -105,10 +105,14 @@ class ResCompany(models.Model):
         if response.status_code == 200:
             return json.loads(response.content.decode('utf-8'))
         else:
-            error = json.loads(response.content.decode('utf-8'))
             _logger.info(
-                "Error from OCR server  %s" % error
+                "Error from OCR server  %s" % response.status_code
             )
+            if response.content:
+                error = json.loads(response.content.decode('utf-8'))
+                _logger.info(
+                    "Error from OCR server  %s" % error
+                )
 
     def create_queue_invoice_transactions(self, transactions_by_state, key):
         #### Comprobar si hay que crearlo, actualizarlo o ignorarlo ####
