@@ -6,6 +6,7 @@
 ##############################################################################
 from odoo import api, fields, models, _
 from datetime import datetime
+from odoo.tools import html2plaintext
 
 class ProjectWorkshop(models.Model):
     _name = "project.workshop"
@@ -106,20 +107,27 @@ class ProjectWorkshop(models.Model):
 
             # Crear pedido de venta con línea de servicio y tarea asociada a la línea:
             if (record.sale_line_id.id == False) and (record.warranty == False):
-                saleorder = self.env['sale.order'].create({'partner_id': project.partner_id.id})
+                saleorder = self.env['sale.order'].create(
+                    {'partner_id': project.partner_id.id, 'note':html2plaintext(record.description)})
+
+                # Líneas: Sección general:
+                saleline = self.env['sale.order.line'].create(
+                    {'order_id': saleorder.id, 'name': record.project_id.name, 'display_type':'line_section'})
+                # Líneas: Producto de servicio:
                 saleline = self.env['sale.order.line'].create(
                     {'order_id': saleorder.id, 'product_id': project.timesheet_product_id.id})
                 record['sale_line_id'] = saleline.id
                 name = record.name
+
                 if record.pre_offer == True:
                     name += " **"
                 task = self.env['project.task'].create({'name': name, 'project_id': project.id,
                     'description': record.description, 'partner_id': project.partner_id.id,
                     'date_deadline':record.date_deadline, 'planned_hours':record.estimated_time,
                     'sale_line_id': saleline.id, 'kanban_state': kanban_state})
+                record['task_id'] = task.id
             if (record.warranty == True):
                 task = self.env['project.task'].create({'name': record.name, 'project_id': project.id,
                     'description': record.description, 'partner_id': project.partner_id.id,
                     'date_deadline':record.date_deadline, 'planned_hours':record.estimated_time})
-            if task.id:
                 record['task_id'] = task.id
