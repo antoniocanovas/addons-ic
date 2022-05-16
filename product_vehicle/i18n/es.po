@@ -292,6 +292,12 @@ msgid "Next ITV"
 msgstr "Próxima ITV"
 
 #. module: product_vehicle
+#: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_last_itv
+#: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_last_itv
+msgid "Last ITV"
+msgstr "Última ITV"
+
+#. module: product_vehicle
 #: model:ir.model.fields,field_description:product_vehicle.field_product_product__vehicle_power
 #: model:ir.model.fields,field_description:product_vehicle.field_product_template__vehicle_power
 msgid "Power"
