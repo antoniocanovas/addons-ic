@@ -25,7 +25,7 @@ class SaleOrderSets(models.Model):
                 ('order_id', '=', self.id),
                 ('display_type', '=', 'line_section')])
             if results: total = len(results)
-        self.section_line_count = total
+            record['section_line_count'] = total
 
     section_line_count = fields.Integer('Lines', compute=_get_lines_count)
 
