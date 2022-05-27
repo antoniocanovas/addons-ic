@@ -22,7 +22,7 @@ class SaleOrderSets(models.Model):
         for record in self:
             total = 0
             results = self.env['sale.order.line'].search([
-                ('order_id', '=', self.id),
+                ('order_id', '=', record.id),
                 ('display_type', '=', 'line_section')])
             if results: total = len(results)
             record['section_line_count'] = total
