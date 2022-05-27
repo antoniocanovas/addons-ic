@@ -19,11 +19,13 @@ class SaleOrderSets(models.Model):
     multisection_key = fields.Char('Multisection Key', compute=get_key, readonly=False, required=True)
 
     def _get_lines_count(self):
-        results = self.env['sale.order.line'].search([
-            ('order_id', '=', self.id),
-            ('display_type', '=', 'line_section')]
-        )
-        self.section_line_count = len(results)
+        for record in self:
+            total = 0
+            results = self.env['sale.order.line'].search([
+                ('order_id', '=', self.id),
+                ('display_type', '=', 'line_section')])
+            if results: total = len(results)
+        self.section_line_count = total
 
     section_line_count = fields.Integer('Lines', compute=_get_lines_count)
 
