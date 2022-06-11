@@ -5,9 +5,9 @@
 from odoo import fields, models, api
 
 
-class ProjectPhase(models.Model):
-    _name = 'project.phase'
-    _description = 'Project phases'
+class ProjectRoadmap(models.Model):
+    _name = 'project.roadmap'
+    _description = 'Project roadmap'
 
     name = fields.Char(string='Nombre', required=True)
     priority = fields.Integer(string='Prioridad', default="1")
@@ -16,7 +16,7 @@ class ProjectPhase(models.Model):
     project_id = fields.Many2one('project.project', string='Proyecto')
     type = fields.Selection([('lead','Oportunidad'), ('sale','Venta'), ('purchase','Compra'), ('task','Tarea'),
                              ('picking','Albarán'),('invoice','Factura')], required=True)
-    phase_user_avatar = fields.Binary(string="Avatar", related="user_id.partner_id.image_128")
+    roadmap_user_avatar = fields.Binary(string="Avatar", related="user_id.partner_id.image_128")
     lead_id = fields.Many2one('crm.lead', string='Oportunidad')
     sale_id = fields.Many2one('sale.order', string='Venta')
     purchase_id = fields.Many2one('purchase.order', string='Compra')
@@ -26,7 +26,7 @@ class ProjectPhase(models.Model):
 
     @api.depends('lead_id.probability', 'sale_id.state', 'purchase_id.state', 'task_id.stage_id', 'picking_id.state',
                  'invoice_id.state')
-    def _get_phase_state(self):
+    def _get_roadmap_state(self):
         for record in self:
             state = 'New'
             if (record.type == 'lead') and (record.lead_id.id):
@@ -44,4 +44,4 @@ class ProjectPhase(models.Model):
             elif (record.type == 'invoice') and (record.invoice_id.id) and (record.invoice_id.state == 'posted'):
                 state = record.invoice_id.payment_state
             record.state = state
-    state = fields.Char(string='Estado', compute="_get_phase_state", store=True, default='New')
+    state = fields.Char(string='Estado', compute="_get_roadmap_state", store=True, default='New')

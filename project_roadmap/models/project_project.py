@@ -26,17 +26,17 @@ TREE_TEMPLATE = (
 class ProjectProject(models.Model):
     _inherit = 'project.project'
 
-    phase_ids = fields.One2many('project.phase', 'project_id', string='Etapas')
+    roadmap_ids = fields.One2many('project.roadmap', 'project_id', string='Etapas')
 
     project_user_avatar = fields.Binary(string="Avatar", readonly=False, related="user_id.image_128")
-    project_phase_display = fields.Html(string="Project Phase", compute="_compute_project_display")
+    project_roadmap_display = fields.Html(string="Project Roadmap", compute="_compute_project_display")
 
-    @api.depends("phase_ids")
+    @api.depends("roadmap_ids")
     def _compute_project_display(self):
 
         # Compose subject
         for rec in self:
-            phase_template = (
+            roadmap_template = (
                 ""
             )
             #    "<tr>"
@@ -48,28 +48,28 @@ class ProjectProject(models.Model):
             #    '</tr>'
             #)
 
-            for phase in rec.phase_ids:
-                phase_template += (
+            for roadmap in rec.roadmap_ids:
+                roadmap_template += (
                     '<tr>'
                     '<td style="font-size: 12px;">[%s] %s : %s </td>' 
                     '<td  style="text-align:right;font-size: 12px;"> %s (%s), %s </td>'
                     '</tr>' % (
-                        phase.priority if phase.priority else '',
-                        phase.type if phase.type else '',
-                        phase.name if phase.name else '',
-                        phase.user_id.name if phase.user_id.name else '',
-                        phase.state if phase.state else '',
-                        phase.date_limit if phase.date_limit else '',
+                        roadmap.priority if roadmap.priority else '',
+                        roadmap.type if roadmap.type else '',
+                        roadmap.name if roadmap.name else '',
+                        roadmap.user_id.name if roadmap.user_id.name else '',
+                        roadmap.state if roadmap.state else '',
+                        roadmap.date_limit if roadmap.date_limit else '',
                     )
                 )
 
-            phase_template += (
+            roadmap_template += (
                 "</td>"
                 "</tr>"
                 "</tbody>"
                 "</table>"
             )
-            rec.project_phase_display = TREE_TEMPLATE % (
+            rec.project_roadmap_display = TREE_TEMPLATE % (
                 #rec.project_user_avatar.decode("utf-8") if rec.project_user_avatar
                 #else IMAGE_PLACEHOLDER,
                 #rec.user_id.name,
@@ -78,4 +78,4 @@ class ProjectProject(models.Model):
                 rec.user_id.name if rec.user_id else '',
                 rec.user_id.name if rec.user_id else '',
 
-            ) + phase_template
+            ) + roadmap_template
