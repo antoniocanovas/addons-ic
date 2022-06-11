@@ -15,6 +15,7 @@
                             <field name="user_id"/>
                             <field name="date_limit"/>
                             <field name="state"/>
+                            <field name="hidden"/>
                         </tree>
                     </field>
                     <h4>Descripción</h4>
