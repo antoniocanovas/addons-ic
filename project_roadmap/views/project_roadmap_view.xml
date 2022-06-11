@@ -7,12 +7,12 @@
             <form>
                 <sheet string="Fases del proyecto">
                     <h1>
-                        <field name="lead_id" attrs="{'invisible':[('type','!=','lead')]}"/>
-                        <field name="sale_id" attrs="{'invisible':[('type','!=','sale')]}"/>
-                        <field name="purchase_id" attrs="{'invisible':[('type','!=','purchase')]}"/>
-                        <field name="task_id" attrs="{'invisible':[('type','!=','task')]}"/>
-                        <field name="picking_id" attrs="{'invisible':[('type','!=','picking')]}"/>
-                        <field name="invoice_id" attrs="{'invisible':[('type','!=','invoice')]}"/>
+                        <field name="lead_id" attrs="{'invisible':['|',('type','!=','lead'),('lead_id','=',False)]}"/>
+                        <field name="sale_id" attrs="{'invisible':['|',('type','!=','sale'),('sale_id','=',False)]}"/>
+                        <field name="purchase_id" attrs="{'invisible':['|',('type','!=','purchase'),('purchase_id','=',False)]}"/>
+                        <field name="task_id" attrs="{'invisible':['|',('type','!=','task'),('task_id','=',False)]}"/>
+                        <field name="picking_id" attrs="{'invisible':['|',('type','!=','picking'),('picking_id','=',False)]}"/>
+                        <field name="invoice_id" attrs="{'invisible':['|',('type','!=','invoice'),('invoice_id','=',False)]}"/>
                     </h1>
                     <h4>
                         <field name="name" modifiers="{}"/>
@@ -20,6 +20,12 @@
                     <group>
                         <field name="priority"/>
                         <field name="type"/>
+                        <field name="lead_id" attrs="{'invisible':['|',('type','!=','lead'),('lead_id','!=',False)]}"/>
+                        <field name="sale_id" attrs="{'invisible':['|',('type','!=','sale'),('sale_id','!=',False)]}"/>
+                        <field name="purchase_id" attrs="{'invisible':['|',('type','!=','purchase'),('purchase_id','!=',False)]}"/>
+                        <field name="task_id" attrs="{'invisible':['|',('type','!=','task'),('task_id','!=',False)]}"/>
+                        <field name="picking_id" attrs="{'invisible':['|',('type','!=','picking'),('picking_id','!=',False)]}"/>
+                        <field name="invoice_id" attrs="{'invisible':['|',('type','!=','invoice'),('invoice_id','!=',False)]}"/>
                         <field name="user_id"/>
                         <field name="date_limit"/>
                     </group>

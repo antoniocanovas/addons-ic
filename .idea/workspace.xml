@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_phase review">
-      <change beforePath="$PROJECT_DIR$/project_phase/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/models/account_move.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/account_move.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/models/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/models/project_phase.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_roadmap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/models/project_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_project.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/models/project_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_task.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/models/purchase_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/purchase_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/sale_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/models/stock_picking.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/stock_picking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/security/ir.model.access.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/views/project_phase_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_phase_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/views/project_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_phase/views/views_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/views_menu.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_phase 2 project_roadmap">
+      <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,20 +52,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00123" summary="copied wup fields">
-      <created>1646527542156</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1646527542156</updated>
-    </task>
-    <task id="LOCAL-00124" summary="copied wup fields">
-      <created>1646529561010</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1646529561010</updated>
     </task>
     <task id="LOCAL-00125" summary="copied wup fields">
       <created>1646564644103</created>
@@ -410,7 +382,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654965503641</updated>
     </task>
-    <option name="localTasksCounter" value="172" />
+    <task id="LOCAL-00172" summary="project_phase 2 project_roadmap">
+      <created>1654966334592</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1654966334592</updated>
+    </task>
+    <task id="LOCAL-00173" summary="project_phase 2 project_roadmap">
+      <created>1654966481797</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1654966481797</updated>
+    </task>
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -425,7 +411,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="icon" />
     <MESSAGE value="bug analytic" />
     <MESSAGE value="bug view" />
     <MESSAGE value="copied wup fields" />
@@ -450,7 +435,8 @@
     <MESSAGE value="Issue pos =&gt; wup" />
     <MESSAGE value="pos error sale.order singleton" />
     <MESSAGE value="project_phase review" />
-    <option name="LAST_COMMIT_MESSAGE" value="project_phase review" />
+    <MESSAGE value="project_phase 2 project_roadmap" />
+    <option name="LAST_COMMIT_MESSAGE" value="project_phase 2 project_roadmap" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
