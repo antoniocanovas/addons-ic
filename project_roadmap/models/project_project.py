@@ -49,19 +49,20 @@ class ProjectProject(models.Model):
             #)
 
             for roadmap in rec.roadmap_ids:
-                roadmap_template += (
-                    '<tr>'
-                    '<td style="font-size: 12px;">[%s] %s : %s </td>' 
-                    '<td  style="text-align:right;font-size: 12px;"> %s (%s), %s </td>'
-                    '</tr>' % (
-                        roadmap.priority if roadmap.priority else '',
-                        roadmap.type if roadmap.type else '',
-                        roadmap.name if roadmap.name else '',
-                        roadmap.user_id.name if roadmap.user_id.name else '',
-                        roadmap.state if roadmap.state else '',
-                        roadmap.date_limit if roadmap.date_limit else '',
+                if roadmap.hidden == False:
+                    roadmap_template += (
+                        '<tr>'
+                        '<td style="font-size: 12px;">[%s] %s : %s </td>' 
+                        '<td  style="text-align:right;font-size: 12px;"> %s (%s), %s </td>'
+                        '</tr>' % (
+                            roadmap.priority if roadmap.priority else '',
+                            roadmap.type if roadmap.type else '',
+                            roadmap.name if roadmap.name else '',
+                            roadmap.user_id.name if roadmap.user_id.name else '',
+                            roadmap.state if roadmap.state else '',
+                            roadmap.date_limit if roadmap.date_limit else '',
+                        )
                     )
-                )
 
             roadmap_template += (
                 "</td>"
