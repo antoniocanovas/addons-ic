@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_phase 2 project_roadmap">
-      <change beforePath="$PROJECT_DIR$/project_roadmap/models/project_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_project.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,13 +52,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00127" summary="time_type_id bug">
-      <created>1646691544588</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1646691544588</updated>
     </task>
     <task id="LOCAL-00128" summary="time_type_id bug">
       <created>1646692003874</created>
@@ -397,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654967729777</updated>
     </task>
-    <option name="localTasksCounter" value="176" />
+    <task id="LOCAL-00176" summary="project_phase 2 project_roadmap">
+      <created>1654968120117</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1654968120117</updated>
+    </task>
+    <option name="localTasksCounter" value="177" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
