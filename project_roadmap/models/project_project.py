@@ -19,7 +19,7 @@ TREE_TEMPLATE = (
     "<tbody>"
     "<tr>"
     '<td id="name" style="font-size: 16px;vertical-align:top;background-color:powderblue;"><strong><span id="name">%s</span></strong>  &nbsp; <span id="responsible">[%s]</span></td></td>'
-    '<td id="customer" style="text-align:right;"><strong><span title="%s" id="customer">%s</span></strong></td>'
+    '<td id="customer" style="text-align:right;background-color:powderblue;"><strong><span title="%s" id="customer">%s</span></strong></td>'
     "</tr>"
 )
 
