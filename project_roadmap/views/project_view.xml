@@ -5,10 +5,8 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <data>
-                <filter name="inactive" position="after">
-                    <separator>
-                        <filter string="Roadmap" name="roadmap" domain="[('roadmap_ids', '!=', False)]"/>
-                    </separator>
+                <filter name="my_projects" position="after">
+                    <filter string="Roadmap" name="roadmap" domain="[('roadmap_ids', '!=', False)]"/>
                 </filter>
             </data>
         </field>
