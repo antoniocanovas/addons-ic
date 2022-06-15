@@ -28,7 +28,7 @@
     <field name="action" ref="action_html_tree_template"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">On the road</field>
+    <field name="name">Roadmap</field>
     <field name="parent_id" ref="project.menu_main_pm"/>
     <field name="sequence">2</field>
     <field name="web_icon" eval="False"/>

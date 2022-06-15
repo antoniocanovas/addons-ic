@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <data>
                 <filter name="my_projects" position="after">
-                    <filter string="Roadmap" name="roadmap" domain="[('roadmap_ids', '!=', False)]"/>
+                    <filter string="On the road" name="roadmap" domain="[('roadmap_ids', '!=', False)]"/>
                 </filter>
             </data>
         </field>
