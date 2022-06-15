@@ -40,6 +40,15 @@
                     </field>
                     <h4>Descripción</h4>
                 </field>
+
+                <xpath expr="//sheet/div[@name='button_box']" position="inside">
+                        <button class="oe_stat_button oe_read_only" icon="fa-shopping-cart" type="object" name="action_view_project_2_roadmap">
+                            <!--
+                            <field string="WUs" widget="statinfo" name="nombre campo count" />
+                            -->
+                        </button>
+                </xpath>
+
             </data>
         </field>
         <field name="field_parent" eval="False"/>
