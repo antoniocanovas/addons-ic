@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_phase 2 project_roadmap">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,20 +52,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00139" summary="Bug qty sol wit wup AA">
-      <created>1647862072540</created>
-      <option name="number" value="00139" />
-      <option name="presentableId" value="LOCAL-00139" />
-      <option name="project" value="LOCAL" />
-      <updated>1647862072540</updated>
-    </task>
-    <task id="LOCAL-00140" summary="Bug qty sol wit wup AA">
-      <created>1647862760871</created>
-      <option name="number" value="00140" />
-      <option name="presentableId" value="LOCAL-00140" />
-      <option name="project" value="LOCAL" />
-      <updated>1647862760872</updated>
     </task>
     <task id="LOCAL-00141" summary="Update product_bulk">
       <created>1648079485470</created>
@@ -397,7 +382,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655279567144</updated>
     </task>
-    <option name="localTasksCounter" value="188" />
+    <task id="LOCAL-00188" summary="project_phase 2 project_roadmap">
+      <created>1655334087765</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
+      <option name="project" value="LOCAL" />
+      <updated>1655334087765</updated>
+    </task>
+    <task id="LOCAL-00189" summary="project_phase 2 project_roadmap">
+      <created>1655334300391</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
+      <option name="project" value="LOCAL" />
+      <updated>1655334300391</updated>
+    </task>
+    <option name="localTasksCounter" value="190" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

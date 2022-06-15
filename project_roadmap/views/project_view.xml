@@ -28,7 +28,7 @@
                 <field name="description" position="before">
                     <h4>Etapas del proyecto</h4>
                     <field name="roadmap_ids">
-                        <tree name="project_roadmaps" default_order="priority asc">
+                        <tree name="project_roadmaps" default_order="hidden asc, priority asc">
                             <field name="priority"/>
                             <field name="name"/>
                             <field name="type"/>
