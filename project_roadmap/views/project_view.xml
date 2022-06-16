@@ -26,7 +26,7 @@
         <field name="arch" type="xml">
             <data>
                 <xpath expr="//sheet/div[@name='button_box']" position="inside">
-                        <button class="oe_stat_button oe_read_only" icon="fa-dedent" type="action" name="project_roadmap.action_view_project_2_roadmap">
+                        <button class="oe_stat_button oe_read_only" icon="fa-dedent" type="action" name="%(project_roadmap.action_view_project_2_roadmap)d">
                             <field string="Roadmap phases" widget="statinfo" name="roadmap_count" />
                         </button>
                 </xpath>

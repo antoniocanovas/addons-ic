@@ -17,9 +17,9 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'views/project_view.xml',
         'views/project_roadmap_view.xml',
         'views/views_menu.xml',
+        'views/project_view.xml',
     ],
     'installable':True,
 }
