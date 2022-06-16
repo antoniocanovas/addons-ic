@@ -33,8 +33,7 @@ class ProjectProject(models.Model):
         for rec in self:
             total = 0
             roadmaps = self.env['project.roadmap'].search([('id' in roadmap_ids.ids),('hidden','=',False)])
-            if roadmaps.ids:
-                total = len(roadmaps.ids)
+            if roadmaps.ids: total = len(roadmaps.ids)
         rec['roadmap_count'] = total
 
     project_user_avatar = fields.Binary(string="Avatar", readonly=False, related="user_id.image_128")
