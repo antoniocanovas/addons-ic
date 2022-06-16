@@ -36,15 +36,6 @@ class ProjectProject(models.Model):
             if roadmaps.ids: total = len(roadmaps.ids)
         record['roadmap_count'] = total
 
-    roadmap_hidden = fields.Boolean('Hide if no phases pending', compute="_compute_roadmap_hidden", store=True)
-    @api.depends("roadmap_ids.hidden")
-    def _compute_roadmap_hidden(self):
-        for record in self:
-            hidden = True
-            roadmaps = self.env['project.roadmap'].search([('project_id','=',record.id), ('hidden','=',False)])
-            if roadmaps.ids: hidden = False
-            record['roadmap_hidden'] = hidden
-
     project_user_avatar = fields.Binary(string="Avatar", readonly=False, related="user_id.image_128")
     project_roadmap_display = fields.Html(string="Project Roadmap", compute="_compute_project_display")
 
