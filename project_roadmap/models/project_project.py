@@ -27,7 +27,7 @@ class ProjectProject(models.Model):
     _inherit = 'project.project'
 
     roadmap_ids = fields.One2many('project.roadmap', 'project_id', string='Etapas')
-    roadmap_count = fields.Integer('Roadmaps not hidden', compute="_compute_roadmap_count", store=False)
+    roadmap_count = fields.Integer('Roadmaps not hidden', compute="_compute_roadmap_count")
     @api.depends("roadmap_ids.hidden")
     def _compute_roadmap_count(self):
         for rec in self:
