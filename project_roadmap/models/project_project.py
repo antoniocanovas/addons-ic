@@ -37,7 +37,7 @@ class ProjectProject(models.Model):
         record['roadmap_count'] = total
 
     roadmap_hidden = fields.Boolean('Hide if no phases pending', compute="_compute_roadmap_hidden")
-    @api.depends("radmap_ids.hidden")
+    @api.depends("roadmap_ids.hidden")
     def _compute_roadmap_hidden(self):
         for record in self:
             hidden = True
