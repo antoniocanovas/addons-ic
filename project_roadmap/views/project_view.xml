@@ -25,29 +25,11 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <data>
-                <field name="description" position="before">
-                    <h4>Etapas del proyecto</h4>
-                    <field name="roadmap_ids">
-                        <tree name="project_roadmaps" default_order="hidden asc, priority asc">
-                            <field name="priority"/>
-                            <field name="name"/>
-                            <field name="type"/>
-                            <field name="user_id"/>
-                            <field name="date_limit"/>
-                            <field name="state"/>
-                            <field name="hidden" string="Hide"/>
-                        </tree>
-                    </field>
-                    <field name="roadmap_count" invisible="1"/>
-                    <h4>Descripción</h4>
-                </field>
-<!--
                 <xpath expr="//sheet/div[@name='button_box']" position="inside">
-                        <button class="oe_stat_button oe_read_only" icon="fa-shopping-cart" type="object" name="project_roadmap.action_view_project_2_roadmap">
+                        <button class="oe_stat_button oe_read_only" icon="fa-dedent" type="action" name="project_roadmap.action_view_project_2_roadmap">
                             <field string="Roadmap phases" widget="statinfo" name="roadmap_count" />
                         </button>
                 </xpath>
--->
             </data>
         </field>
         <field name="field_parent" eval="False"/>
