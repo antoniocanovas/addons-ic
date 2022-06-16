@@ -43,7 +43,7 @@
                 </field>
 
                 <xpath expr="//sheet/div[@name='button_box']" position="inside">
-                        <button class="oe_stat_button oe_read_only" icon="fa-shopping-cart" type="object" name="action_view_project_2_roadmap">
+                        <button class="oe_stat_button oe_read_only" icon="fa-shopping-cart" type="object" name="project_roadmap.action_view_project_2_roadmap">
                             <field string="Roadmap phases" widget="statinfo" name="roadmap_count" />
                         </button>
                 </xpath>
