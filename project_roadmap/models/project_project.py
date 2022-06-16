@@ -41,7 +41,7 @@ class ProjectProject(models.Model):
     def _compute_roadmap_hidden(self):
         for record in self:
             hidden = True
-            roadmaps = self.env['project.roadmap'].search('project_id','=',record.id), ('hidden','=',False)
+            roadmaps = self.env['project.roadmap'].search([('project_id','=',record.id), ('hidden','=',False)])
             if roadmaps.ids: hidden = False
             record['roadmap_hidden'] = hidden
 
