@@ -32,7 +32,7 @@ class ProjectProject(models.Model):
     def _compute_roadmap_count(self):
         for record in self:
             total = 0
-            roadmaps = self.env['project.roadmap'].search([('id' in record.roadmap_ids.ids),('hidden','=',False)])
+            roadmaps = self.env['project.roadmap'].search([('project_id', '=', record.id),('hidden','=',False)])
             if roadmaps.ids: total = len(roadmaps.ids)
         record['roadmap_count'] = total
 
