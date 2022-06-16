@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <data>
                 <filter name="my_projects" position="after">
-                    <filter string="On the road" name="roadmap" domain="[('roadmap_ids', '!=', False)]"/>
+                    <filter string="On the road" name="roadmap" domain="[('roadmap_count', '!=', 0)]"/>
                 </filter>
             </data>
         </field>
@@ -38,6 +38,7 @@
                             <field name="hidden" string="Hide"/>
                         </tree>
                     </field>
+                    <field name="roadmap_count" invisible="1"/>
                     <h4>Descripción</h4>
                 </field>
 <!--

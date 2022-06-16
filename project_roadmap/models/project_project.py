@@ -27,6 +27,15 @@ class ProjectProject(models.Model):
     _inherit = 'project.project'
 
     roadmap_ids = fields.One2many('project.roadmap', 'project_id', string='Etapas')
+    roadmap_count = fields.Integer('Roadmaps not hidden', compute="_compute_roadmap_count", store=False)
+    @api.depends("roadmap_ids.hidden")
+    def _compute_roadmap_count:
+        for rec in self:
+            total = 0
+            roadmaps = self.env['project.roadmap'].search([('id' in roadmap_ids.ids),('hidden','=',False)])
+            if roadmaps.ids:
+                total = len(roadmaps.ids)
+        rec['roadmap_count'] = total
 
     project_user_avatar = fields.Binary(string="Avatar", readonly=False, related="user_id.image_128")
     project_roadmap_display = fields.Html(string="Project Roadmap", compute="_compute_project_display")
