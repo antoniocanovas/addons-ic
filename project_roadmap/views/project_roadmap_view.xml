@@ -51,7 +51,7 @@
     <record id="project_roadmap_default_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-             <tree name="project_roadmaps" default_order="hidden asc, priority asc">
+            <tree name="project_roadmaps" default_order="hidden asc, priority asc">
                 <field name="priority"/>
                 <field name="name"/>
                 <field name="type"/>
@@ -72,4 +72,23 @@
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
+
+    <record id="action_view_project_2_roadmap" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="context">{'search_default_project_id': active_id,'default_project_id': active_id}</field>
+        <field name="domain">[('project_id', '=', active_id)]</field>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="help"></field>
+        <field name="limit">80</field>
+        <field name="name">Roadmap steps</field>
+        <field name="res_model">project.roadmap</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="project_roadmap_default_tree"/>
+        <field name="usage" eval="False"/>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
 </odoo>
