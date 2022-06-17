@@ -17,7 +17,7 @@
         <field name="usage" eval="False"/>
         <!--<field name="view_id" eval="ocr_account_invoice_tree"/>-->
         <field name="view_ids" eval="[(5, 0, 0),
-    (0, 0, {'view_mode': 'tree', 'view_id': ref('project_roadmap.project_html_tree_template')}),]"/>
+    (0, 0, {'view_mode': 'tree', 'view_id': ref('project_html_tree_template')}),]"/>
         <!--<field name="view_mode">tree,form</field>
         <field name="view_type">tree</field>-->
     </record>
