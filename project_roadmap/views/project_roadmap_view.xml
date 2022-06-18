@@ -51,7 +51,10 @@
     <record id="project_roadmap_default_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-            <tree name="project_roadmaps" default_order="hidden asc, priority asc">
+            <tree name="project_roadmaps"
+                        decoration-success="hidden==True"
+                        decoration-danger="hidden==False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
+                        default_order="hidden asc, priority asc">
                 <field name="priority"/>
                 <field name="name"/>
                 <field name="type"/>
@@ -81,7 +84,7 @@
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="help"></field>
         <field name="limit">80</field>
-        <field name="name">Roadmap steps</field>
+        <field name="name">Roadmap</field>
         <field name="res_model">project.roadmap</field>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
