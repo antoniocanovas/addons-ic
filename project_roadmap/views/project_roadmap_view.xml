@@ -114,12 +114,14 @@
         <field name="arch" type="xml">
             <data>
                 <field name="name" string="Name"/>
-                <filter string="Project" name="project"/>
-                <filter string="Responsible" name="user"/>
-                <filter string="Hidden" name="hidden"/>
+                <field string="Project" name="project_search"/>
+                <field string="Responsible" name="user"/>
+                <field string="Hidden" name="hidden"/>
                 <filter string="My phases" name="my_phases" domain="[('user_id', '=', uid)]"/>
-                <!--
                 <separator/>
+                <filter string="Actives" name="active_phases" domain="[('hidden', '=', False)]"/>
+                <filter string="Actives" name="hidden_phases" domain="[('hidden', '=', True)]"/>
+                <!--
                 <filter string="Starred" name="starred" domain="[('priority', 'in', [1, 2])]"/>
                 <filter string="Late Tasks" name="late" domain="[('date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
                 <filter string="Rated tasks" name="rating_task" domain="[('rating_last_value', '!=', 0.0)]" groups="project.group_project_rating"/>
