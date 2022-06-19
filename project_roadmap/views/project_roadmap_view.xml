@@ -137,7 +137,6 @@
                     <filter string="Project" name="project" context="{'group_by': 'project_id'}"/>
                     <filter string="Responsible" name="user" context="{'group_by': 'user_id'}"/>
                     <filter string="Date limit" name="date_limit" context="{'group_by': 'date_limit'}"/>
-                    <filter string="Hidden" name="hidden" context="{'group_by': 'hidden'}"/>
                 </group>
             </data>
         </field>
