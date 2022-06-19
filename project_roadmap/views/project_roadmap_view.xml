@@ -114,9 +114,8 @@
         <field name="arch" type="xml">
             <data>
                 <field name="name" string="Name"/>
-                <field string="Project" name="project_search"/>
-                <field string="Responsible" name="user"/>
-                <field string="Hidden" name="hidden"/>
+                <field name="project_id"/>
+                <field name="user" string="Responsible"/>
                 <filter string="My phases" name="my_phases" domain="[('user_id', '=', uid)]"/>
                 <separator/>
                 <filter string="Actives" name="active_phases" domain="[('hidden', '=', False)]"/>
