@@ -37,7 +37,7 @@
         <field name="view_type">tree</field>-->
     </record>
 
-    <record id="project_roadmap_search_inh" model="ir.ui.view">
+    <record id="project_project_roadmap_search_inh" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <data>
