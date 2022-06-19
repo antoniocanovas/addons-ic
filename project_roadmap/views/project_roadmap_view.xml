@@ -52,12 +52,12 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree name="project_roadmaps"
-                        decoration-success="hidden==True"
-                        decoration-danger="hidden==False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
-                        default_order="hidden asc, priority asc">
-                <field name="priority"/>
-                <field name="name"/>
-                <field name="type"/>
+                  decoration-success="hidden==True"
+                  decoration-danger="hidden==False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
+                  default_order="hidden asc, priority asc">
+                <field name="display_name"/>
+                <field name="priority" invisible="1"/>
+                <field name="type" invisible="1"/>
                 <field name="user_id"/>
                 <field name="date_limit"/>
                 <field name="state"/>
@@ -75,6 +75,38 @@
         <field name="priority">16</field>
         <field name="type">tree</field>
     </record>
+
+    <record id="project_roadmap_group_by_project_tree" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <tree name="project_roadmaps"
+                  expand="1"
+                  decoration-success="hidden==True"
+                  decoration-danger="hidden==False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
+                  default_order="hidden asc, priority asc">
+                <field name="display_name"/>
+                <field name="priority" invisible="1"/>
+                <field name="type" invisible="1"/>
+                <field name="user_id"/>
+                <field name="date_limit"/>
+                <field name="state"/>
+                <field name="hidden" string="Hide"/>
+                <field name="project_id" widget="open_tab"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">project.roadmap</field>
+        <field name="name">Default project roadmap group_by project tree view</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
+    </record>
+
+
+
 
     <record id="project_roadmap_search_view" model="ir.ui.view">
         <field name="active" eval="True"/>
@@ -104,9 +136,9 @@
                     <filter invisible="1" string="Today Activities" name="activities_today" domain="[('my_activity_date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"/>
                     <filter invisible="1" string="Future Activities" name="activities_upcoming_all" domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"/>
                  -->
-                    <group expand="0" string="Group By">
-                        <filter string="Project" name="project" context="{'group_by': 'project_id'}"/>
-                    </group>
+                <group expand="0" string="Group By">
+                    <filter string="Project" name="project" context="{'group_by': 'project_id'}"/>
+                </group>
             </data>
         </field>
         <field name="field_parent" eval="False"/>
@@ -136,5 +168,25 @@
         <field name="usage" eval="False"/>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <record id="action_view_project_roadmap" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="context">{'search_default_project_id': active_id,'default_project_id': active_id}</field>
+        <field name="domain">[('project_id', '=', active_id)]</field>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="help"></field>
+        <field name="limit">80</field>
+        <field name="name">Roadmap</field>
+        <field name="res_model">project.roadmap</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="project_roadmap_default_tree"/>
+        <field name="usage" eval="False"/>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('project_roadmap_group_by_project_tree')}),]"/>
+    </record>
+
 
 </odoo>
