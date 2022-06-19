@@ -119,7 +119,7 @@
                 <filter string="My phases" name="my_phases" domain="[('user_id', '=', uid)]"/>
                 <separator/>
                 <filter string="Actives" name="active_phases" domain="[('hidden', '=', False)]"/>
-                <filter string="Actives" name="hidden_phases" domain="[('hidden', '=', True)]"/>
+                <filter string="Hidden" name="hidden_phases" domain="[('hidden', '=', True)]"/>
                 <!--
                 <filter string="Starred" name="starred" domain="[('priority', 'in', [1, 2])]"/>
                 <filter string="Late Tasks" name="late" domain="[('date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
