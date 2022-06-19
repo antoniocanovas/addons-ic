@@ -10,6 +10,7 @@ class ProjectRoadmap(models.Model):
     _description = 'Project roadmap'
 
     name = fields.Char(string='Nombre', required=True)
+    display_name = fields.Char(string='Nombre mostrado', store=False, compute="_name_get")
     priority = fields.Integer(string='Prioridad', default="1")
     user_id = fields.Many2one('res.users', string='Responsable', required=True, store=True)
     date_limit = fields.Date(string='Fecha límite')
@@ -24,6 +25,13 @@ class ProjectRoadmap(models.Model):
     picking_id = fields.Many2one('stock.picking', string='Albarán')
     invoice_id = fields.Many2one('account.move', string='Factura')
     hidden = fields.Boolean('Not in resume view')
+
+    @api.depends('lead_id.probability', 'sale_id.state', 'purchase_id.state', 'task_id.stage_id', 'picking_id.state',
+                 'invoice_id.state')
+    def _name_get(self):
+        for record in self:
+            name = record.name
+            record['display_name'] = name
 
     @api.depends('lead_id.probability', 'sale_id.state', 'purchase_id.state', 'task_id.stage_id', 'picking_id.state',
                  'invoice_id.state')
