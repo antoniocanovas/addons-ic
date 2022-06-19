@@ -30,7 +30,7 @@ class ProjectRoadmap(models.Model):
                  'invoice_id.state')
     def _name_get(self):
         for record in self:
-            name = record.name
+            name = "[" + str(record.priority) + "] " + record.type +  ": " + " " + record.name
             record['display_name'] = name
 
     @api.depends('lead_id.probability', 'sale_id.state', 'purchase_id.state', 'task_id.stage_id', 'picking_id.state',
