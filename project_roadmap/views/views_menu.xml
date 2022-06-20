@@ -7,7 +7,7 @@
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="name">Roadmap resume</field>
     <field name="parent_id" ref="project.menu_project_config"/>
-    <field name="sequence">2</field>
+    <field name="sequence">5</field>
     <field name="web_icon" eval="False"/>
   </record>
 
