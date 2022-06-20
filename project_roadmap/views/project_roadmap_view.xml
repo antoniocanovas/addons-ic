@@ -82,8 +82,8 @@
             <tree name="project_roadmaps"
                   expand="1"
                   multi_edit="1"
-                  decoration-success="active==True"
-                  decoration-danger="active==False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
+                  decoration-success="active==False"
+                  decoration-danger="active==True and date_limit &lt; context_today().strftime('%Y-%m-%d')"
                   default_order="active asc, priority asc">
                 <field name="display_name"/>
                 <field name="priority" invisible="1"/>
