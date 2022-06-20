@@ -31,7 +31,7 @@
                     </group>
                     <group>
                         <field name="state"/>
-                        <field name="hidden"/>
+                        <field name="active"/>
                         <field name="project_id" readonly="1"/>
                     </group>
                 </sheet>
@@ -52,16 +52,16 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree name="project_roadmaps"
-                  decoration-success="hidden==True"
-                  decoration-danger="hidden==False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
-                  default_order="hidden asc, priority asc">
+                  decoration-success="active==True"
+                  decoration-danger="active==False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
+                  default_order="active asc, priority asc">
                 <field name="display_name"/>
                 <field name="priority" invisible="1"/>
                 <field name="type" invisible="1"/>
                 <field name="user_id"/>
                 <field name="date_limit"/>
                 <field name="state"/>
-                <field name="hidden" string="Hide"/>
+                <field name="active" string="Hide"/>
                 <field name="project_id" invisible="1"/>
             </tree>
         </field>
@@ -82,16 +82,16 @@
             <tree name="project_roadmaps"
                   expand="1"
                   multi_edit="1"
-                  decoration-success="hidden==True"
-                  decoration-danger="hidden==False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
-                  default_order="hidden asc, priority asc">
+                  decoration-success="active==True"
+                  decoration-danger="active==False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
+                  default_order="active asc, priority asc">
                 <field name="display_name"/>
                 <field name="priority" invisible="1"/>
                 <field name="type" invisible="1"/>
                 <field name="user_id"/>
                 <field name="date_limit"/>
                 <field name="state"/>
-                <field name="hidden" string="Hide"/>
+                <field name="active" string="Hide"/>
                 <field name="project_id" widget="open_tab"/>
             </tree>
         </field>
@@ -118,8 +118,8 @@
                 <field name="user_id" string="Responsible"/>
                 <filter string="My phases" name="my_phases" domain="[('user_id', '=', uid)]"/>
                 <separator/>
-                <filter string="Actives" name="active_phases" domain="[('hidden', '=', False)]"/>
-                <filter string="Hidden" name="hidden_phases" domain="[('hidden', '=', True)]"/>
+                <filter string="Archived" name="active" domain="[('active', '=', False)]"/>
+                <filter string="Active" name="archived" domain="[('active', '=', True)]"/>
                 <!--
                 <filter string="Starred" name="starred" domain="[('priority', 'in', [1, 2])]"/>
                 <filter string="Late Tasks" name="late" domain="[('date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
@@ -134,7 +134,7 @@
                 <filter invisible="1" string="Future Activities" name="activities_upcoming_all" domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"/>
                 -->
                 <group expand="0" string="Group By">
-                    <filter string="On road" name="on_road" context="{'group_by': 'project_id'}" domain="[('hidden','=',False)]"/>
+                    <filter string="On road" name="on_road" context="{'group_by': 'project_id'}"/>
                     <filter string="Project" name="project" context="{'group_by': 'project_id'}"/>
                     <filter string="Responsible" name="user" context="{'group_by': 'user_id'}"/>
                     <filter string="Date limit" name="date_limit" context="{'group_by': 'date_limit'}"/>

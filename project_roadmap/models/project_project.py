@@ -26,13 +26,16 @@ TREE_TEMPLATE = (
 class ProjectProject(models.Model):
     _inherit = 'project.project'
 
-    roadmap_ids = fields.One2many('project.roadmap', 'project_id', string='Etapas')
-    roadmap_count = fields.Integer('Roadmaps not hidden', compute="_compute_roadmap_count", store=True)
-    @api.depends("roadmap_ids.hidden")
+    roadmap_ids = fields.One2many('project.roadmap',
+                                  'project_id', string='Etapas',
+                                  context={'active_test': False}
+                                  )
+    roadmap_count = fields.Integer('Active roadmaps', compute="_compute_roadmap_count", store=True)
+    @api.depends("roadmap_ids.active")
     def _compute_roadmap_count(self):
         for record in self:
             total = 0
-            roadmaps = self.env['project.roadmap'].search([('project_id', '=', record.id),('hidden','=',False)])
+            roadmaps = self.env['project.roadmap'].search([('project_id', '=', record.id),('active','=',False)])
             if roadmaps.ids: total = len(roadmaps.ids)
         record['roadmap_count'] = total
 
@@ -57,7 +60,7 @@ class ProjectProject(models.Model):
             #)
 
             for roadmap in rec.roadmap_ids:
-                if roadmap.hidden == False:
+                if roadmap.active == False:
                     roadmap_template += (
                         '<tr>'
                         '<td style="font-size: 12px;">[%s] %s : %s </td>' 
