@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_roadmap hidden=&gt; activ e">
-      <change beforePath="$PROJECT_DIR$/project_roadmap/views/views_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/views_menu.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_roadmap menu">
+      <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,13 +52,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00196" summary="project_phase 2 project_roadmap">
-      <created>1655337945841</created>
-      <option name="number" value="00196" />
-      <option name="presentableId" value="LOCAL-00196" />
-      <option name="project" value="LOCAL" />
-      <updated>1655337945842</updated>
     </task>
     <task id="LOCAL-00197" summary="project_phase 2 project_roadmap">
       <created>1655338890403</created>
@@ -396,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655766527488</updated>
     </task>
-    <option name="localTasksCounter" value="245" />
+    <task id="LOCAL-00245" summary="project_roadmap menu">
+      <created>1655767237565</created>
+      <option name="number" value="00245" />
+      <option name="presentableId" value="LOCAL-00245" />
+      <option name="project" value="LOCAL" />
+      <updated>1655767237565</updated>
+    </task>
+    <option name="localTasksCounter" value="246" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -411,7 +411,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="bug view" />
     <MESSAGE value="copied wup fields" />
     <MESSAGE value="time_type_id bug" />
     <MESSAGE value="work active option" />
@@ -436,7 +435,8 @@
     <MESSAGE value="project_phase review" />
     <MESSAGE value="project_phase 2 project_roadmap" />
     <MESSAGE value="project_roadmap hidden=&gt; activ e" />
-    <option name="LAST_COMMIT_MESSAGE" value="project_roadmap hidden=&gt; activ e" />
+    <MESSAGE value="project_roadmap menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="project_roadmap menu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
