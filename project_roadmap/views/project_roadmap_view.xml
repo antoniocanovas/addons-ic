@@ -61,7 +61,7 @@
                 <field name="user_id"/>
                 <field name="date_limit"/>
                 <field name="state"/>
-                <field name="active" string="Hide"/>
+                <field name="active" string="Active"/>
                 <field name="project_id" invisible="1"/>
             </tree>
         </field>
@@ -91,7 +91,7 @@
                 <field name="user_id"/>
                 <field name="date_limit"/>
                 <field name="state"/>
-                <field name="active" string="Hide"/>
+                <field name="active" string="Active"/>
                 <field name="project_id" widget="open_tab"/>
             </tree>
         </field>

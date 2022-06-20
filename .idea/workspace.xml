@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_phase 2 project_roadmap">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_roadmap/models/project_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_project.py" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_roadmap hidden=&gt; activ e">
       <change beforePath="$PROJECT_DIR$/project_roadmap/models/project_roadmap.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_roadmap.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" afterDir="false" />
     </list>
@@ -55,13 +53,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00190" summary="project_phase 2 project_roadmap">
-      <created>1655334910344</created>
-      <option name="number" value="00190" />
-      <option name="presentableId" value="LOCAL-00190" />
-      <option name="project" value="LOCAL" />
-      <updated>1655334910344</updated>
     </task>
     <task id="LOCAL-00191" summary="project_phase 2 project_roadmap">
       <created>1655336241079</created>
@@ -399,7 +390,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655682720585</updated>
     </task>
-    <option name="localTasksCounter" value="239" />
+    <task id="LOCAL-00239" summary="project_roadmap hidden=&gt; activ e">
+      <created>1655716941128</created>
+      <option name="number" value="00239" />
+      <option name="presentableId" value="LOCAL-00239" />
+      <option name="project" value="LOCAL" />
+      <updated>1655716941128</updated>
+    </task>
+    <option name="localTasksCounter" value="240" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -414,7 +412,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="bug analytic" />
     <MESSAGE value="bug view" />
     <MESSAGE value="copied wup fields" />
     <MESSAGE value="time_type_id bug" />
@@ -439,7 +436,8 @@
     <MESSAGE value="pos error sale.order singleton" />
     <MESSAGE value="project_phase review" />
     <MESSAGE value="project_phase 2 project_roadmap" />
-    <option name="LAST_COMMIT_MESSAGE" value="project_phase 2 project_roadmap" />
+    <MESSAGE value="project_roadmap hidden=&gt; activ e" />
+    <option name="LAST_COMMIT_MESSAGE" value="project_roadmap hidden=&gt; activ e" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
