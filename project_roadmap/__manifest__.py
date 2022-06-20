@@ -14,6 +14,7 @@
         'stock',
         'account',
         'base_automation',
+        'web_widget_open_tab',
     ],
     'data': [
         'security/ir.model.access.csv',
