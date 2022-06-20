@@ -60,7 +60,7 @@ class ProjectProject(models.Model):
             #)
 
             for roadmap in rec.roadmap_ids:
-                if roadmap.active == False:
+                if roadmap.active == True:
                     roadmap_template += (
                         '<tr>'
                         '<td style="font-size: 12px;">[%s] %s : %s </td>' 
