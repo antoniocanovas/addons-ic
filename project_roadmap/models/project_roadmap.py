@@ -15,6 +15,7 @@ class ProjectRoadmap(models.Model):
     user_id = fields.Many2one('res.users', string='Responsable', required=True, store=True)
     date_limit = fields.Date(string='Fecha límite')
     project_id = fields.Many2one('project.project', string='Proyecto')
+    partner_id = fields.Many2one(related='project_id.partner_id', string="Cliente")
     type = fields.Selection([('lead','Oportunidad'), ('sale','Venta'), ('purchase','Compra'), ('task','Tarea'),
                              ('picking','Albarán'),('invoice','Factura')], required=True)
     roadmap_user_avatar = fields.Binary(string="Avatar", related="user_id.partner_id.image_128")

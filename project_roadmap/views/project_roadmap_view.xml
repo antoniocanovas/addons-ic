@@ -58,10 +58,10 @@
                 <field name="display_name"/>
                 <field name="priority" invisible="1"/>
                 <field name="type" invisible="1"/>
-                <field name="user_id"/>
+                <field name="user_id" widget="many2one_avatar_user"/>
                 <field name="date_limit"/>
                 <field name="state"/>
-                <field name="active" string="Active"/>
+                <field name="active" string="Active" widget="boolean_toggle"/>
                 <field name="project_id" invisible="1"/>
             </tree>
         </field>
@@ -88,10 +88,10 @@
                 <field name="display_name"/>
                 <field name="priority" invisible="1"/>
                 <field name="type" invisible="1"/>
-                <field name="user_id"/>
+                <field name="user_id" widget="many2one_avatar_user"/>
                 <field name="date_limit"/>
                 <field name="state"/>
-                <field name="active" string="Active"/>
+                <field name="active" string="Active" widget="boolean_toggle"/>
                 <field name="project_id" widget="open_tab"/>
             </tree>
         </field>
@@ -115,6 +115,7 @@
             <data>
                 <field name="name" string="Name"/>
                 <field name="project_id"/>
+                <field name="partner_id"/>
                 <field name="user_id" string="Responsible"/>
                 <filter string="My phases" name="my_phases" domain="[('user_id', '=', uid)]"/>
                 <separator/>
