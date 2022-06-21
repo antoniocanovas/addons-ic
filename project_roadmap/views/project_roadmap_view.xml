@@ -86,13 +86,14 @@
                   decoration-danger="active==True and date_limit != False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
                   default_order="active asc, priority asc">
                 <field name="display_name"/>
+                <field name="project_id" optional="hide"/>
                 <field name="priority" invisible="1"/>
                 <field name="type" invisible="1"/>
                 <field name="user_id" widget="many2one_avatar_user"/>
                 <field name="date_limit"/>
                 <field name="state"/>
                 <field name="active" string="Active" widget="boolean_toggle"/>
-                <field name="project_id" widget="open_tab"/>
+                <field name="id" widget="open_tab" nolabel="1"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
