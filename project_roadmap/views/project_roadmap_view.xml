@@ -118,7 +118,7 @@
                 <field name="project_id"/>
                 <field name="partner_id"/>
                 <field name="user_id" string="Responsible"/>
-                <filter string="My phases" name="my_phases" domain="[('user_id', '=', uid)]"/>
+                <filter string="I am responsible" name="my_phases" domain="[('user_id', '=', uid)]"/>
                 <separator/>
                 <filter string="Archived" name="active" domain="[('active', '=', False)]"/>
                 <filter string="Active" name="archived" domain="[('active', '=', True)]"/>
