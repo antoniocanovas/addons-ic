@@ -80,7 +80,6 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree name="project_roadmaps"
-                  expand="1"
                   multi_edit="1"
                   decoration-success="active==False"
                   decoration-danger="active==True and date_limit != False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
