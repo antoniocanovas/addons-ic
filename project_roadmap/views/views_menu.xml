@@ -14,7 +14,7 @@
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
     <field name="name">Roadmap</field>
-    <field name="parent_id" eval="False"/>
+    <field name="parent_id" ref="roadmap_main"/>
     <field name="sequence">3</field>
     <field name="web_icon" eval="False"/>
   </record>
