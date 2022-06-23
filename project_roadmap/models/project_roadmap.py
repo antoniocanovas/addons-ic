@@ -7,6 +7,7 @@ from odoo import fields, models, api
 
 class ProjectRoadmap(models.Model):
     _name = 'project.roadmap'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Project roadmap'
 
     name = fields.Char(string='Nombre', required=True)
