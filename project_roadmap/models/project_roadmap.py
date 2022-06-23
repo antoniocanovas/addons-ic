@@ -34,8 +34,8 @@ class ProjectRoadmap(models.Model):
             name = "[" + str(record.priority) + "] " + record.type +  ": " + " " + record.name
             record['display_name'] = name
 
-    @api.depends('lead_id.probability', 'sale_id.state', 'purchase_id.state', 'task_id.stage_id', 'picking_id.state',
-                 'invoice_id.state')
+    @api.depends('lead_id.stage_id', 'sale_id.state', 'purchase_id.state', 'task_id.stage_id', 'picking_id.state',
+                 'invoice_id.state', 'invoice_id.payment_state')
     def _get_roadmap_state(self):
         for record in self:
             state = 'New'
