@@ -13,6 +13,7 @@ class ProjectRoadmap(models.Model):
     name = fields.Char(string='Nombre', required=True)
     display_name = fields.Char(string='Nombre mostrado', store=False, compute="_name_get")
     priority = fields.Integer(string='Prioridad', default="1")
+    is_favorite = fields.Boolean('Is favorite')
     user_id = fields.Many2one('res.users', string='Responsable', required=True, store=True)
     date_limit = fields.Date(string='Fecha límite')
     project_id = fields.Many2one('project.project', string='Proyecto')

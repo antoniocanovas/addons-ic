@@ -60,6 +60,7 @@
                   decoration-success="active==False"
                   decoration-danger="active==True and date_limit &lt; context_today().strftime('%Y-%m-%d')"
                   default_order="active asc, priority asc">
+                <field name="is_favorite" widget="boolean_favorite"/>
                 <field name="display_name"/>
                 <field name="priority" invisible="1"/>
                 <field name="type" invisible="1"/>
