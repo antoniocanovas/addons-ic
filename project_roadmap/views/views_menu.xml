@@ -6,7 +6,7 @@
             id="roadmap_main"
             name="Roadmap"
             sequence="3"
-            web_icon="roadmap,static/description/icon.png"
+            web_icon="project_roadmap,static/description/icon.png"
     />
 
   <record id="menu_project_roadmap_tree" model="ir.ui.menu">
