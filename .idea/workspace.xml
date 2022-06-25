@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_roadmap favorite">
-      <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_roadmap favorite" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,20 +59,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00220" summary="project_phase 2 project_roadmap">
-      <created>1655485284328</created>
-      <option name="number" value="00220" />
-      <option name="presentableId" value="LOCAL-00220" />
-      <option name="project" value="LOCAL" />
-      <updated>1655485284328</updated>
-    </task>
-    <task id="LOCAL-00221" summary="project_phase 2 project_roadmap">
-      <created>1655485396989</created>
-      <option name="number" value="00221" />
-      <option name="presentableId" value="LOCAL-00221" />
-      <option name="project" value="LOCAL" />
-      <updated>1655485396989</updated>
     </task>
     <task id="LOCAL-00222" summary="project_phase 2 project_roadmap">
       <created>1655486008721</created>
@@ -405,7 +389,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656148769973</updated>
     </task>
-    <option name="localTasksCounter" value="269" />
+    <task id="LOCAL-00269" summary="project_roadmap favorite">
+      <created>1656148950637</created>
+      <option name="number" value="00269" />
+      <option name="presentableId" value="LOCAL-00269" />
+      <option name="project" value="LOCAL" />
+      <updated>1656148950637</updated>
+    </task>
+    <task id="LOCAL-00270" summary="project_roadmap favorite">
+      <created>1656149149478</created>
+      <option name="number" value="00270" />
+      <option name="presentableId" value="LOCAL-00270" />
+      <option name="project" value="LOCAL" />
+      <updated>1656149149478</updated>
+    </task>
+    <option name="localTasksCounter" value="271" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
