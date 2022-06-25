@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_roadmap favorite">
-      <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_roadmap/models/project_roadmap.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_roadmap.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,13 +61,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00224" summary="project_phase 2 project_roadmap">
-      <created>1655568042444</created>
-      <option name="number" value="00224" />
-      <option name="presentableId" value="LOCAL-00224" />
-      <option name="project" value="LOCAL" />
-      <updated>1655568042445</updated>
     </task>
     <task id="LOCAL-00225" summary="project_phase 2 project_roadmap">
       <created>1655630832872</created>
@@ -405,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656173857622</updated>
     </task>
-    <option name="localTasksCounter" value="273" />
+    <task id="LOCAL-00273" summary="project_roadmap favorite">
+      <created>1656174084334</created>
+      <option name="number" value="00273" />
+      <option name="presentableId" value="LOCAL-00273" />
+      <option name="project" value="LOCAL" />
+      <updated>1656174084334</updated>
+    </task>
+    <option name="localTasksCounter" value="274" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

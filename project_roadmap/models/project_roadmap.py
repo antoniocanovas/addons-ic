@@ -10,14 +10,14 @@ class ProjectRoadmap(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Project roadmap'
 
-    name = fields.Char(string='Nombre', required=True)
+    name = fields.Char(string='Nombre', required=True, copy=True, tracking=True)
     display_name = fields.Char(string='Nombre mostrado', store=False, compute="_name_get")
-    priority = fields.Integer(string='Prioridad', default="1")
-    is_favorite = fields.Boolean('Is favorite')
-    user_id = fields.Many2one('res.users', string='Responsable', required=True, store=True)
-    date_limit = fields.Date(string='Fecha límite')
-    project_id = fields.Many2one('project.project', string='Proyecto')
-    partner_id = fields.Many2one(related='project_id.partner_id', string="Cliente")
+    priority = fields.Integer(string='Prioridad', default="1", copy=True)
+    is_favorite = fields.Boolean('Is favorite', copy=False)
+    user_id = fields.Many2one('res.users', string='Responsable', required=True, store=True, copy=True, tracking=True)
+    date_limit = fields.Date(string='Fecha límite', copy=False, tracking=True)
+    project_id = fields.Many2one('project.project', string='Proyecto', copy=True)
+    partner_id = fields.Many2one(related='project_id.partner_id', string="Cliente", copy=True, tracking=True)
     type = fields.Selection([('lead','Oportunidad'), ('sale','Venta'), ('purchase','Compra'), ('task','Tarea'),
                              ('picking','Albarán'),('invoice','Factura')], required=True)
     roadmap_user_avatar = fields.Binary(string="Avatar", related="user_id.partner_id.image_128")
@@ -27,7 +27,7 @@ class ProjectRoadmap(models.Model):
     task_id = fields.Many2one('project.task', string='Tarea')
     picking_id = fields.Many2one('stock.picking', string='Albarán')
     invoice_id = fields.Many2one('account.move', string='Factura')
-    active = fields.Boolean('Active', default=True)
+    active = fields.Boolean('Active', default=True, copy=False, tracking=True)
 
     @api.depends('lead_id.probability', 'sale_id.state', 'purchase_id.state', 'task_id.stage_id', 'picking_id.state',
                  'invoice_id.state')
