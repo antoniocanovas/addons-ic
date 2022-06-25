@@ -91,7 +91,7 @@
                   decoration-success="active==False"
                   decoration-danger="active==True and date_limit != False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
                   default_order="active desc, priority asc">
-                <field name="is_favorite" widget="boolean_favorite"/>
+                <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
                 <field name="display_name"/>
                 <field name="project_id" optional="hide"/>
                 <field name="priority" invisible="1"/>
