@@ -89,7 +89,7 @@
                   multi_edit="1"
                   decoration-success="active==False"
                   decoration-danger="active==True and date_limit != False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
-                  default_order="active asc, priority asc">
+                  default_order="active desc, priority asc">
                 <field name="is_favorite" widget="boolean_favorite"/>
                 <field name="display_name"/>
                 <field name="project_id" optional="hide"/>
@@ -125,23 +125,21 @@
                 <field name="partner_id"/>
                 <field name="user_id" string="Responsible"/>
                 <filter string="My roadmaps" name="my_phases" domain="[('user_id', '=', uid)]"/>
-                <filter string="Favorite" name="is_favorite" domain="[('is_favorite', '=', True)]"/>
+
+                <filter string="Starred" name="starred" domain="[('is_favorite', '=', True)]"/>
                 <separator/>
+                <filter string="Archived too" name="active" domain="[('active', 'in', [True,False])]"/>
+<!--
                 <filter string="Archived" name="active" domain="[('active', '=', False)]"/>
                 <filter string="Active" name="archived" domain="[('active', '=', True)]"/>
-                <!--
-                <filter string="Starred" name="starred" domain="[('priority', 'in', [1, 2])]"/>
-                <filter string="Late Tasks" name="late" domain="[('date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
-                <filter string="Rated tasks" name="rating_task" domain="[('rating_last_value', '!=', 0.0)]" groups="project.group_project_rating"/>
+-->
                 <separator/>
                 <filter string="Unread Messages" name="message_needaction" domain="[('message_needaction', '=', True)]"/>
-                <separator/>
-                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
                 <separator/>
                 <filter invisible="1" string="Late Activities" name="activities_overdue" domain="[('my_activity_date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]" help="Show all records which has next action date is before today"/>
                 <filter invisible="1" string="Today Activities" name="activities_today" domain="[('my_activity_date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"/>
                 <filter invisible="1" string="Future Activities" name="activities_upcoming_all" domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"/>
-                -->
+
                 <group expand="0" string="Group By">
                     <filter string="On the road" name="on_road" context="{'group_by': 'project_id'}"/>
                     <filter string="Project" name="project" context="{'group_by': 'project_id'}"/>
