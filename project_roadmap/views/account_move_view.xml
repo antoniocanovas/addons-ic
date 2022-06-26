@@ -24,13 +24,13 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <data>
-                <xpath expr="//sheet/div[@name='button_box']" position="inside">
+                <div class="oe_button_box" name="button_box">
                     <button class="oe_stat_button" icon="fa-dedent"
                             type="action" name="%(project_roadmap.action_view_invoice_2_roadmap)d"
                             attrs="{'invisible':[('move_type','not in',['out_invoice', 'out_refund', 'in_invoice', 'in_refund'])]}">
                         <field string="Roadmap" widget="statinfo" name="roadmap_count" />
                     </button>
-                </xpath>
+                </div>
             </data>
         </field>
         <field name="field_parent" eval="False"/>
