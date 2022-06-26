@@ -4,7 +4,7 @@
     <record id="action_view_invoice_2_roadmap" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
-        <field name="context">{'search_default_invoice_id': active_id,'default_invoice_id': active_id}</field>
+        <field name="context">{'default_type': 'invoice','default_invoice_id': active_id}</field>
         <field name="domain">[('invoice_id', '=', active_id),('active','in',[True,False])]</field>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="help"></field>
