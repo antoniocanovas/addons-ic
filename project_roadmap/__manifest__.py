@@ -21,6 +21,7 @@
         'views/project_roadmap_view.xml',
         'views/project_view.xml',
         'views/project_task_view.xml',
+        'views/sale_order_view.xml',
         'views/account_move_view.xml',
         'views/views_menu.xml',
     ],
