@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="project_html_tree_template" model="ir.ui.view">
+        <field name="name">Project Roadmap Html Tree Template</field>
+        <field name="model">project.project</field>
+        <field name="arch" type="xml">
+            <field name="description" position="after">
+                <field name="roadmap_ids" context="{'default_type':'task',
+                                'default_user_id':user_id,
+                                'default_task_id':active_id,
+                                'default_name':name,
+                                'default_priority':1
+                                }"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

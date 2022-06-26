@@ -20,6 +20,7 @@
         'security/ir.model.access.csv',
         'views/project_roadmap_view.xml',
         'views/project_view.xml',
+        'views/project_task_view.xml',
         'views/views_menu.xml',
     ],
     'installable':True,
