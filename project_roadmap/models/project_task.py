@@ -7,9 +7,7 @@ from odoo import fields, models, api
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
-#    roadmap_ids = fields.One2many('project.roadmap', 'task_id', string='Roadmaps', store=True, copy=False)
     roadmap_count = fields.Integer('Roadmaps', compute="_compute_roadmap_count", store=False)
-#    @api.depends("roadmap_ids.active")
     def _compute_roadmap_count(self):
         for record in self:
             total = 0

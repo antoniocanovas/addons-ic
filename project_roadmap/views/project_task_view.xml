@@ -29,16 +29,6 @@
                         <field string="Roadmap" widget="statinfo" name="roadmap_count" />
                     </button>
                 </xpath>
-         <!--
-                <field name="description" position="after">
-                    <field name="roadmap_ids" context="{'default_type':'task',
-                                'default_user_id':user_id,
-                                'default_task_id':active_id,
-                                'default_name':name,
-                                'default_priority':1
-                                }"/>
-                </field>
-         -->
             </data>
         </field>
         <field name="field_parent" eval="False"/>

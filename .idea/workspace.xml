@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_roadmap o2m from models">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_roadmap/models/project_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_project.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_roadmap/models/project_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_task.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_task_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_task_view.xml" afterDir="false" />
     </list>
@@ -62,20 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00235" summary="project_phase 2 project_roadmap">
-      <created>1655682287726</created>
-      <option name="number" value="00235" />
-      <option name="presentableId" value="LOCAL-00235" />
-      <option name="project" value="LOCAL" />
-      <updated>1655682287726</updated>
-    </task>
-    <task id="LOCAL-00236" summary="project_phase 2 project_roadmap">
-      <created>1655682404975</created>
-      <option name="number" value="00236" />
-      <option name="presentableId" value="LOCAL-00236" />
-      <option name="project" value="LOCAL" />
-      <updated>1655682404975</updated>
     </task>
     <task id="LOCAL-00237" summary="project_phase 2 project_roadmap">
       <created>1655682463871</created>
@@ -406,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656256309424</updated>
     </task>
-    <option name="localTasksCounter" value="284" />
+    <task id="LOCAL-00284" summary="project_roadmap o2m from models">
+      <created>1656256616147</created>
+      <option name="number" value="00284" />
+      <option name="presentableId" value="LOCAL-00284" />
+      <option name="project" value="LOCAL" />
+      <updated>1656256616147</updated>
+    </task>
+    <task id="LOCAL-00285" summary="project_roadmap o2m from models">
+      <created>1656256791009</created>
+      <option name="number" value="00285" />
+      <option name="presentableId" value="LOCAL-00285" />
+      <option name="project" value="LOCAL" />
+      <updated>1656256791009</updated>
+    </task>
+    <option name="localTasksCounter" value="286" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
