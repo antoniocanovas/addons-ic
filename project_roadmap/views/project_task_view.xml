@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="project_html_tree_template" model="ir.ui.view">
-        <field name="name">Project Roadmap Html Tree Template</field>
-        <field name="model">project.project</field>
+    <record id="project_roadmap_task_form_inh" model="ir.ui.view">
+        <field name="name">Project Roadmap Task Form Inherited</field>
+        <field name="model">project.task</field>
         <field name="arch" type="xml">
             <field name="description" position="after">
                 <field name="roadmap_ids" context="{'default_type':'task',
