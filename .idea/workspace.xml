@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_roadmap o2m from models">
       <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_roadmap/views/views_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/views_menu.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,13 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00239" summary="project_roadmap hidden=&gt; activ e">
-      <created>1655716941128</created>
-      <option name="number" value="00239" />
-      <option name="presentableId" value="LOCAL-00239" />
-      <option name="project" value="LOCAL" />
-      <updated>1655716941128</updated>
     </task>
     <task id="LOCAL-00240" summary="project_roadmap hidden=&gt; activ e">
       <created>1655717253671</created>
@@ -405,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656259314341</updated>
     </task>
-    <option name="localTasksCounter" value="288" />
+    <task id="LOCAL-00288" summary="project_roadmap o2m from models">
+      <created>1656259456058</created>
+      <option name="number" value="00288" />
+      <option name="presentableId" value="LOCAL-00288" />
+      <option name="project" value="LOCAL" />
+      <updated>1656259456058</updated>
+    </task>
+    <option name="localTasksCounter" value="289" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

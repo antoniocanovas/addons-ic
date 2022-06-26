@@ -29,4 +29,14 @@
     <field name="web_icon" eval="False"/>
   </record>
 
+  <record id="menu_project_roadmap_mine" model="ir.ui.menu">
+    <field name="action" ref="action_view_project_roadmap_mine"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Mine</field>
+    <field name="parent_id" ref="roadmap_main"/>
+    <field name="sequence">30</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+
 </odoo>
