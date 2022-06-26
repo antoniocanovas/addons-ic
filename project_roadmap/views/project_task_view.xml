@@ -26,7 +26,9 @@
             <data>
                 <xpath expr="//sheet/div[@name='button_box']" position="inside">
                     <button class="oe_stat_button" icon="fa-dedent" type="action" name="%(project_roadmap.action_view_task_2_roadmap)d">
+                <!--
                         <field string="Roadmap" widget="statinfo" name="roadmap_count" />
+                -->
                     </button>
                 </xpath>
                 <field name="description" position="after">
@@ -37,8 +39,6 @@
                                 'default_priority':1
                                 }"/>
                 </field>
-                <!--
-                -->
             </data>
         </field>
         <field name="field_parent" eval="False"/>
