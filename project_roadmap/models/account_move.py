@@ -11,6 +11,6 @@ class AccountMove(models.Model):
     def _compute_roadmap_count(self):
         for record in self:
             total = 0
-            roadmaps = self.env['account.move'].search([('move_id', '=', record.id),('active','in',[True,False])])
+            roadmaps = self.env['project.roadmap'].search([('invoice_id', '=', record.id),('active','in',[True,False])])
             if roadmaps.ids: total = len(roadmaps.ids)
         record['roadmap_count'] = total
