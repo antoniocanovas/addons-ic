@@ -4,6 +4,7 @@
     <record id="project_roadmap_task_form_inh" model="ir.ui.view">
         <field name="name">Project Roadmap Task Form Inherited</field>
         <field name="model">project.task</field>
+        <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <field name="description" position="after">
                 <field name="roadmap_ids" context="{'default_type':'task',
@@ -14,6 +15,13 @@
                                 }"/>
             </field>
         </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="key" eval="False"/>
+        <field name="mode">extension</field>
+        <field name="priority">99</field>
+        <field name="type">form</field>
     </record>
 
 </odoo>
