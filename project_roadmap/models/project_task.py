@@ -7,7 +7,4 @@ from odoo import fields, models, api
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
-    project_roadmap_id = fields.Many2one('project.roadmap',string='Fase')
-
-
-
+    roadmap_ids = fields.One2many('project.roadmap', 'task_id', string='Roadmaps', store=True, copy=False)
