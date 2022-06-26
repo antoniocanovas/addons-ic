@@ -19,7 +19,7 @@
     </record>
 
     <record id="project_roadmap_picking_form_inh" model="ir.ui.view">
-        <field name="name">Project Roadmap Task Form Inherited</field>
+        <field name="name">Project Roadmap Picking Form Inherited</field>
         <field name="model">stock.picking</field>
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
