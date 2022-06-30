@@ -17,7 +17,7 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-     <record id="hr_equipment_view_form_credentials" model="ir.ui.view">
+    <record id="hr_equipment_view_form_credentials" model="ir.ui.view">
         <field name="name">hr.equipment.view.form.credentials</field>
         <field name="model">maintenance.equipment</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>

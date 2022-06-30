@@ -604,7 +604,7 @@ class Viafirma(models.Model):
                 raise ValidationError(
                     "Need a binary to send")
 
-            print("Check docuemnt")
+            print("Check document")
 
             viafirma_user = self.env.user.company_id.user_viafirma
             viafirma_pass = self.env.user.company_id.pass_viafirma
