@@ -514,6 +514,7 @@ class Viafirma(models.Model):
             if viafirma_pass:
 
                 stat_firmweb = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
+                print(stat_firmweb.json())
                 if stat_firmweb.ok:
                     statu_firmweb = json.loads(stat_firmweb.content.decode('utf-8'))
                     # de momento lo hago con la primera line_ids que hay
@@ -527,7 +528,7 @@ class Viafirma(models.Model):
                         # empezamos por el documento firmado
                         url = 'https://services.viafirma.com/documents/api/v3/documents/download/signed/' + response_code
 
-                        self.document_signed  = self.download_document(  url,  header, response_code, viafirma_user, viafirma_pass)
+                        self.document_signed = self.download_document(  url,  header, response_code, viafirma_user, viafirma_pass)
                         # ahora le toca el turno al documento de trail, pero para este documento no hay campo en el modelo viafirma, lo dejo preparado
                         url = 'https://services.viafirma.com/documents/api/v3/documents/download/trail/' + response_code
                         self.document_trail = self.download_document(url, header, response_code, viafirma_user,
@@ -540,7 +541,7 @@ class Viafirma(models.Model):
                         if r_error.ok:
                             rr_error = json.loads(r_error.content)
                             # los dos campos de este dictionary interesantes son message y trace
-                            self.error_code =  rr_error["workflow"]["history"]
+                            self.error_code = rr_error["workflow"]["history"]
                 else:
                     self.error_code = json.loads(stat_firmweb.content.decode('utf-8'))
         else:
@@ -633,7 +634,7 @@ class Viafirma(models.Model):
                         if self.template_id.multiple_signatures:
 
                             resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
-
+                            print("RESP", resp_firmweb)
                             # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
                             try:
                                 if resp_firmweb["messages"][0]["code"] != '':

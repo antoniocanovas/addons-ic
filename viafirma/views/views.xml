@@ -18,7 +18,8 @@
                                 <field name="noti_text"/>
                             </group>
                             <group>
-                                <field name="notification_type_ids" widget="many2many_tags" required="1"/>
+                                <field name="notification_type_ids" widget="many2many_tags"
+                                       required="1"  options="{'no_create': True}"/>
                                 <field name="noti_detail"/>
                             </group>
                         </group>
@@ -109,7 +110,7 @@
                             <field name="multiple_signatures"/>
                         </group>
                         <group name="notifications" col="4">
-                            <field name="firma_ids" widget="many2many_tags"/>
+                            <field name="firma_ids" widget="many2many_tags"  options="{'no_create': True}"/>
                         </group>
                         <!--<group name="models_use" col="4">
                             <field name="models_use" widget="many2many_tags"/>
