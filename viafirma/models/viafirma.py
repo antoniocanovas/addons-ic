@@ -631,31 +631,17 @@ class Viafirma(models.Model):
                                                      auth=(viafirma_user, viafirma_pass))
 
                     if response_firmweb.ok:
-                        if self.template_id.multiple_signatures:
-
-                            resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
-                            print("RESP", resp_firmweb)
-                            # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
-                            try:
-                                if resp_firmweb["messages"][0]["code"] != '':
-                                    self.tracking_code = resp_firmweb["messages"][0]["code"]
-                            except:
-                                self.tracking_code = resp_firmweb
-
-                            self.status_response_firmweb()
-                        else:
-                            resp_firmweb = response_firmweb.content.decode('utf-8')
-
-                            try:
-                                if resp_firmweb != '':
-                                    self.tracking_code = resp_firmweb
-                            except:
-                                self.tracking_code = resp_firmweb
-                            self.status_response_firmweb()
-
+                        resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
+                        print("RESP", resp_firmweb)
+                        # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
+                        try:
+                            if resp_firmweb["messages"][0]["code"] != '':
+                                self.tracking_code = resp_firmweb["messages"][0]["code"]
+                        except:
+                            self.tracking_code = resp_firmweb
+                        self.status_response_firmweb()
                     else:
                         self.error_code = json.loads(response_firmweb.content.decode('utf-8'))
-
 
             else:
                 raise ValidationError(
