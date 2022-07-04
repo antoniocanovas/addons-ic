@@ -25,6 +25,7 @@
         'views/purchase_order_view.xml',
         'views/stock_picking_view.xml',
         'views/account_move_view.xml',
+        'views/crm_lead_view.xml',
         'views/views_menu.xml',
     ],
     'installable':True,
