@@ -80,13 +80,6 @@ class ResCompany(models.Model):
             vat_cleaned = vat[2:11]
         else:
             vat_cleaned = vat
-        #vat_cleaned = vat.replace('-', '')
-        #vat_cleaned = vat_cleaned.replace(" ", "")
-        #vat_cleaned = vat_cleaned.replace('ES', '')
-        #vat_cleaned = vat_cleaned.replace('FR', '')
-        #vat_cleaned = vat_cleaned.replace('IT', '')
-        #vat_cleaned = vat_cleaned.replace('PR', '')
-        #vat_cleaned = vat_cleaned.replace('DE', '')
         vat_cleaned.upper()
         return vat_cleaned
 
@@ -119,10 +112,14 @@ class ResCompany(models.Model):
         if response.status_code == 200:
             return json.loads(response.content.decode('utf-8'))
         else:
-            error = json.loads(response.content.decode('utf-8'))
             _logger.info(
-                "Error from OCR server  %s" % error
+                "Error from OCR server  %s" % response.status_code
             )
+            if response.content:
+                # error = json.loads(response.content.decode('utf-8'))
+                _logger.info(
+                    "Error from OCR server  %s" % response.content
+                )
 
     @api.multi
     def create_queue_invoice_transactions(self, transactions_by_state, key):
@@ -188,6 +185,46 @@ class ResCompany(models.Model):
         t.state = 'downloaded'
 
     @api.multi
+    def get_partner(self, t):
+        account600_id = self.env['ir.model.data'].search([
+            ('name', '=', '1_account_common_600'),
+            ('model', '=', 'account.account')
+        ])
+        account600 = self.env['account.account'].search([('id', '=', account600_id.res_id)])
+        account700_id = self.env['ir.model.data'].search([
+            ('name', '=', '1_account_common_7000'),
+            ('model', '=', 'account.account')
+        ])
+        account700 = self.env['account.account'].search([('id', '=', account700_id.res_id)])
+
+        partner_vat = self.env['ocr.values'].sudo().search([
+            ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
+
+        if partner_vat:
+            partner_name_value = 'NIF_no_vies_' + str(partner_vat.value)
+            partner = self.get_partner_by_vat(partner_vat)
+            partner_by_name = self.env['res.partner'].search([
+                                                  ('name', '=', 'NIF_no_vies_' + str(partner_vat.value)),], limit=1)
+        else:
+            random = self.random_with_n_digits(11)
+            partner_name_value = "NIF_no_vies_" + str(random)
+            partner = False
+            partner_by_name = False
+
+        if partner:
+            return partner
+        elif partner_by_name:
+            return partner_by_name
+        else:
+            partner = self.env['res.partner'].sudo().create({
+                'name': str(partner_name_value),
+                'company_type': 'company',
+                'ocr_sale_account_id': account700.id,
+                'ocr_purchase_account_id': account600.id,
+            })
+            return partner
+
+    @api.multi
     def create_invoices(self, t, api_transaction_url, header):
         #for t in transactions_processed:
         invoice = self.env['account.invoice'].sudo().search([
@@ -202,19 +239,16 @@ class ResCompany(models.Model):
         t.json_text = ocr_document_data
 
         if ocr_document_data:
-            if invoice:
-                if not invoice.invoice_line_ids:
-                    basic_values = self.ocr_update_values(t, ocr_document_data, "basic")
-                    extended_values = self.ocr_update_values(t, ocr_document_data, "extended")
-                    t.state = 'downloaded'
-                else:
-                    t.state = 'downloaded'
+            # if invoice:
+            #    if not invoice.invoice_line_ids:
+            #        basic_values = self.ocr_update_values(t, ocr_document_data, "basic")
+            #        extended_values = self.ocr_update_values(t, ocr_document_data, "extended")
+            #        t.state = 'downloaded'
+            #    else:
+            #        t.state = 'downloaded'
 
-            elif not previus_ocr_values:
+            if not previus_ocr_values:
 
-                #if ocr_document_data["result"]["status"] == "ERROR":
-                #    t.transaction_error = ocr_document_data["result"]["reason"]
-                #    t.state = 'downloaded'
                 for v in ocr_document_data["result"]["basic"].values():
                     self.env['ocr.values'].sudo().create({
                         'token': t.token,
@@ -230,47 +264,12 @@ class ResCompany(models.Model):
                         'ocr_transaction_id': t.id,
                     })
 
-                account600_id = self.env['ir.model.data'].search([
-                    ('name', '=', '1_account_common_600'),
-                    ('model', '=', 'account.account')
-                ])
-                account600 = self.env['account.account'].search([('id', '=', account600_id.res_id)])
-                account700_id = self.env['ir.model.data'].search([
-                    ('name', '=', '1_account_common_7000'),
-                    ('model', '=', 'account.account')
-                ])
-                account700 = self.env['account.account'].search([('id', '=', account700_id.res_id)])
-
-                partner_vat = self.env['ocr.values'].sudo().search([
-                    ('token', '=', t.token), ('name', '=', 'CIF')], limit=1)
-
-                if partner_vat:
-                    if len(partner_vat.value) != 11:
-                        partner = self.get_partner_by_vat(partner_vat)
-                        partner_name_value = "NIF_no_valido_" + str(partner_vat.value)
-                        partner_vat = False
-                    else:
-                        partner = self.get_partner_by_vat(partner_vat)
-                        partner_name_value = partner_vat.value
-                else:
-                    random = self.random_with_n_digits(11)
-                    partner_name_value = "NIF_no_válido_" + str(random)
-                    partner = False
-
-                if not partner:
-                    partner = self.env['res.partner'].sudo().create({
-                        'name': str(partner_name_value),
-                        #'vat': False,
-                        'company_type': 'company',
-                        'ocr_sale_account_id': account700.id,
-                        'ocr_purchase_account_id': account600.id,
-                    })
-                    #partner = self.env['res.partner'].search([('vat', "=", 'ES12345678Z'),'|',('active', "=", False),('active', "=", True)])
+                partner = self.get_partner(t)
 
                 if partner:
                     date = self.env['ocr.values'].sudo().search([
                         ('token', '=', t.token), ('name', '=', 'Fecha')], limit=1)
-                    #ValueError: time data '25 Junio 2020' does not match format '%d/%m/%Y'
+
                     if date.value:
                         try:
                             date_invoice = datetime.strptime(date.value, '%d/%m/%Y').date()
@@ -288,27 +287,61 @@ class ResCompany(models.Model):
                     else:
                         reference_value = reference.value
 
-                    if t.type == 'in_invoice':
-                        invoice = self.env['account.invoice'].sudo().create({
-                            'partner_id': partner.id,
-                            'type': t.type,
-                            'reference': reference_value,
-                            'date_invoice': date_invoice,
-                            'ocr_transaction_id': t.id,
-                            'is_ocr': True,
-                        })
+                    purchasejournal = self.env['account.journal'].search([('type', '=', 'purchase')])
+                    if purchasejournal:
+                        pjournal = purchasejournal[0]
+                    else:
+                        t.transaction_error = str(t.transaction_error) + " " + "No purchase Journal found"
+
+                    salejournal = self.env['account.journal'].search([('type', '=', 'sale')])
+                    if salejournal:
+                        sjournal = salejournal[0]
+                    else:
+                        t.transaction_error = str(t.transaction_error) + " " + "No sale Journal found"
+
+                    if invoice:
+                        invoice.journal_id = pjournal.id
+                        invoice.partner_id = partner.id
+                        invoice.ref = reference_value
+                        invoice.invoice_date = date_invoice
+                        invoice.create_invoice_lines_from_ocr()
+                        t.state = 'downloaded'
+                        return
+
+                    elif t.type == 'in_invoice':
+                        try:
+
+                            invoice = self.env['account.invoice'].sudo().create({
+                                'journal_id': pjournal.id,
+                                'partner_id': partner.id,
+                                'type': t.type,
+                                'ref': reference_value,
+                                'invoice_date': date_invoice,
+                                'ocr_transaction_id': t.id,
+                                'is_ocr': True,
+                            })
+                        except Exception as e:
+                            date_invoice = False
                     else:
                         invoice = self.env['account.invoice'].sudo().create({
+                            'journal_id': sjournal.id,
                             'partner_id': partner.id,
                             'type': t.type,
-                            'date_invoice': date_invoice,
+                            'invoice_date': date_invoice,
                             'ocr_transaction_id': t.id,
+                            ''
                             'is_ocr': True,
                         })
 
                 if invoice:
                     t.state = 'downloaded'
                     t.invoice_id = invoice.id
+
+                    # Store img for invoice combination
+                    link = ocr_document_data['image']
+                    file_type = 'image/jpeg'
+                    invoice.ocr_combination_image = self.generate_img_for_combination(link, header, invoice, t,
+                                                                                      file_type)
 
                     if "document" in ocr_document_data:
                         link = ocr_document_data['document']
@@ -318,15 +351,39 @@ class ResCompany(models.Model):
                         link = ocr_document_data['image']
                         file_type = 'image/jpeg'
                         attachment = self.img_2_pdf(link, header, invoice, t, file_type)
-                    #attachment = self.generate_attachment(link, header, invoice, t, file_type)
+                    # attachment = self.generate_attachment(link, header, invoice, t, file_type)
 
                     body = "<p>created with OCR Documents</p>"
                     if attachment:
                         invoice.message_post(body=body, attachment_ids=[attachment.id])
-                        invoice.message_main_attachment_id = [(4, attachment.id)]
+                        # invoice.message_main_attachment_id = [(4, attachment.id)]
+                        # invoice.create_invoice_lines_from_ocr()
+
+                    invoice.create_invoice_lines_from_ocr()
 
             else:
                 t.state = 'downloaded'
+
+    def generate_img_for_combination(self, api_img_url, headers, document, ocr_document, file_type):
+
+        response = requests.get(api_img_url, headers=headers)
+
+        if response.status_code == 200:
+
+            img_file_encode = base64.b64encode(response.content)
+
+            return img_file_encode
+
+        elif response.status_code == 400:
+            ocr_document.transaction_error = "Error 400"
+            _logger.info(
+                "Error from OCR server  %s" % ocr_document.transaction_error
+            )
+        else:
+            ocr_document.transaction_error = json.loads(response.content.decode('utf-8'))
+            _logger.info(
+                "Error from OCR server  %s" % ocr_document.transaction_error
+            )
 
     @api.multi
     def img_2_pdf(self, api_img_url, headers, document, ocr_document, file_type):
