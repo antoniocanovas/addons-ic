@@ -26,13 +26,13 @@
             <field name="value">email</field>
         </record>
 
-        <!--<record id="viafirma_mobile_notification" model="viafirma.notification">
+       <!--<record id="viafirma_mobile_notification" model="viafirma.notification">
             <field name="type">notification</field>
             <field name="name">SMS</field>
             <field name="value">mobile</field>
-        </record>
+        </record>-->
 
-        <record id="viafirma_mail_mobile_notification" model="viafirma.notification">
+        <!--<record id="viafirma_mail_mobile_notification" model="viafirma.notification">
             <field name="type">notification</field>
             <field name="name">MAIL_SMS</field>
             <field name="value">mail_sms</field>

@@ -24,7 +24,7 @@ class ViafirmaTemplates(models.Model):
     #num_firmantes = fields.Integer('Numero firmantes')
     #send_policy = fields.Boolean('Envía políticas') # A eliminar
     multiple_signatures = fields.Boolean('Multiple Signatures')
-
+    otp = fields.Boolean(string='OTP/SMS')
     #models_use = fields.Many2many(
     #    comodel_name="ir.model",
     #    string="Used Models"

@@ -31,12 +31,9 @@ class Viafirma(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Viafirma Model'
 
-
     name = fields.Char('Name')
     res_model = fields.Char('Origin Model')
     res_id = fields.Char('Origin ID')
-
-    #res_id_name = fields.Char('Documento origen')
 
     create_date = fields.Date(string="Create date")
     completed_date = fields.Date(string='Last change')
@@ -64,7 +61,6 @@ class Viafirma(models.Model):
     )
 
     noti_subject = fields.Char(string='Subject')
-
     template_type = fields.Selection(selection=[('url','URL'),('base64','BASE64'),('message','MESSAGE')],string="Template Type",default='base64')
 
     #templareReference = fields.Char(defautl='"templateReference": ')  # este campo sirve para construir la linea que puede ser una url, base65 o un codigo
@@ -88,7 +84,6 @@ class Viafirma(models.Model):
 
         view_id = self.env.ref('viafirma.viafirma_wizard_view').id
 
-        print("debug")
         return {
             'name': "Wizard Viafirma",
             'type': 'ir.actions.act_window',
@@ -128,43 +123,22 @@ class Viafirma(models.Model):
         recipients = []
         x = 0
         y = 1
-        for recipient in line_ids:
+        for recipient in line_ids.sorted(key=lambda l: l.id, reverse=True):
             recipient_n = {
                 "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY"),
-                #"key": str("MOBILE_SMS_") + str(x) + str(y),
                 "mail": recipient.email,
                 "name": recipient.name,
-                #"id": recipient.vat,
             }
-            print("NOTIFICATION", self.notification_type_ids.value)
-            if str(self.notification_type_ids.name) == "MAIL_SMS" or str(self.notification_type_ids.name) == "SMS":
-                print("Incluye mobile")
-                recipient_n.update({"phone": recipient.mobile,})
-            y+=1
-            if y == 10:
-                y = 0
-                x+=1
-
-            recipients.append(recipient_n)
-
-        return recipients
-
-    def compose_metadatalist(self, line_ids):
-        metadatalist = []
-        x = 0
-        y = 1
-        for recipient in line_ids:
-            recipient_n = {
-                 "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
-                 "value":  recipient.name,
-            }
-            metadatalist.append(recipient_n)
+            if recipient.mobile:
+                recipient_n.update({"phone": recipient.mobile})
             y += 1
             if y == 10:
                 y = 0
                 x += 1
 
-        return metadatalist
+            recipients.append(recipient_n)
+
+        return recipients
 
     def compose_metadatalist_messages(self, line_ids):
         metadatalist = []
@@ -172,22 +146,20 @@ class Viafirma(models.Model):
         y = 1
         theTemplate = self.template_id
 
-        for recipient in line_ids:
+        for recipient in line_ids.sorted(key=lambda l: l.id, reverse=True):
             for firma in theTemplate.firma_ids:
                 if firma.value == 'email':
-                    print("FIRMA EMAIL")
                     recipient_n = {
                         "key": str("FIRMANTE_") + str(x) + str(y) + str("_KEY"),
-                        "value": recipient.name
+                        "value": recipient.name,
                     }
                     metadatalist.append(recipient_n)
-                else:
-                    print("MOBILE FIRMA")
-                    recipient_n = {
-                        "key": str("MOBILE_SMS_") + str(x) + str(y),
-                        "value": recipient.mobile
-                    }
-                    metadatalist.append(recipient_n)
+                    if theTemplate.otp:
+                        recipient_n = {
+                            "key": str("MOBILE_SMS_") + str(x) + str(y),
+                            "value": recipient.mobile
+                        }
+                        metadatalist.append(recipient_n)
             y += 1
             if y == 10:
                 y = 0
@@ -277,7 +249,7 @@ class Viafirma(models.Model):
     def compose_call_multiple(self):
         ''' tenemos que componer la llamada a la firma, por lo que tenemos que conocer el groupcode, el texto de la notificacion
             y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
-
+        print("COMPOSE CALL MULTIPLE")
         groupCode = {
             "groupCode": self.env.user.company_id.group_viafirma
         }
@@ -287,9 +259,9 @@ class Viafirma(models.Model):
             },
         }
         recip = self.compose_recipients(self.line_ids)
-        print("RECIPIENTS", recip)
+        print("COMPOSE RECIPIENTS", recip)
         recipients = {
-            "recipients" : recip,
+            "recipients": recip,
         }
 
         customization = {
@@ -307,6 +279,8 @@ class Viafirma(models.Model):
             },
         }
         metadata = self.compose_metadatalist_messages(self.line_ids)
+        print("COMPOSE METADATALIS", metadata)
+
         messages ={
             "messages":[{
                 "document": {
@@ -548,31 +522,21 @@ class Viafirma(models.Model):
             raise ValidationError(
                 "You must set Viafirma login Api credentials")
 
-    def check_mandatory_attr(self, method, partner_id):
-        print("METHOD", method)
+    def check_mandatory_attr(self, method, partner_id, otp):
+        if otp:
+            value = getattr(partner_id, 'mobile')
+            if not value:
+                raise ValidationError(
+                    "mobile is mandatory for OTP/SMS")
         for attr in method:
-            print("DEBUG",attr.value)
-            if attr.value == 'mail_sms':
-                print("ES MAIL_SMS")
-                for attr2 in ['email','mobile']:
-                    try:
-                        value = getattr(partner_id, attr2)
-                    except Exception as e:
-                        raise ValidationError(
-                            "Server Error : %s" % e)
-                    if not value:
-                       raise ValidationError(
-                           "%s is mandatory for this template" % attr2)
-            else:
-                print("NO ES")
-                try:
-                    value = getattr(partner_id, attr.value)
-                except Exception as e:
-                    raise ValidationError(
-                        "Server Error : %s" % e)
-                if not value:
-                    raise ValidationError(
-                        "%s is mandatory for this template" % attr.value)
+            try:
+                value = getattr(partner_id, attr.value)
+            except Exception as e:
+                raise ValidationError(
+                    "Server Error : %s" % e)
+            if not value:
+                raise ValidationError(
+                    "%s is mandatory for this template" % attr.value)
 
     def check_template(self):
         if self.template_id:
@@ -598,14 +562,11 @@ class Viafirma(models.Model):
 
         if self.line_ids:
             for line in self.line_ids:
-                self.check_mandatory_attr(self.template_id.firma_ids, line.partner_id)
-                self.check_mandatory_attr(self.notification_type_ids, line.partner_id)
-            print("Check mandatory")
+                self.check_mandatory_attr(self.template_id.firma_ids, line.partner_id, self.template_id.otp )
+                self.check_mandatory_attr(self.notification_type_ids, line.partner_id, False)
             if not self.document_to_send:
                 raise ValidationError(
                     "Need a binary to send")
-
-            print("Check document")
 
             viafirma_user = self.env.user.company_id.user_viafirma
             viafirma_pass = self.env.user.company_id.pass_viafirma
@@ -615,10 +576,10 @@ class Viafirma(models.Model):
                     header = self.get_uploader_header()
 
                     #if self.template_id.multiple_signatures:
-                    print("Is multiple signature")
                     search_url = 'https://services.viafirma.com/documents/api/v3/set/'
+                    print("COMPOSE CALL MULTIPLE")
                     datas = self.compose_call_multiple()
-
+                    #raise ValidationError("DEMO")
                     #else:
                     #    if len(self.line_ids) > 1:
                     #        raise ValidationError(
@@ -626,7 +587,6 @@ class Viafirma(models.Model):
                     #    else:
                     #        search_url = 'https://services.viafirma.com/documents/api/v3/messages/'
                     #        datas = self.compose_call()
-
                     response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
                                                      auth=(viafirma_user, viafirma_pass))
 
@@ -650,3 +610,20 @@ class Viafirma(models.Model):
             raise ValidationError(
                 "No hay firmantes seleccionados")
 
+
+    #def compose_metadatalist(self, line_ids):
+    #    metadatalist = []
+    #    x = 0
+    #    y = 1
+    #    for recipient in line_ids:
+    #        recipient_n = {
+    #             "key": str("FIRMANTE_") + str(x) + str(y) + str("_NAME"),
+    #             "value":  recipient.name,
+    #        }
+    #        metadatalist.append(recipient_n)
+    #        y += 1
+    #        if y == 10:
+    #            y = 0
+    #            x += 1
+    #
+    #    return metadatalist

@@ -218,7 +218,6 @@ class ResCompany(models.Model):
         invoice = self.env['account.move'].sudo().search([
             ("ocr_transaction_id.token", "=", t.token),
         ], limit=1)
-
         previus_ocr_values = self.env['ocr.values'].sudo().search([
             ("ocr_transaction_id", "=", t.id)
         ])

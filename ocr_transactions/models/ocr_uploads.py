@@ -73,9 +73,9 @@ class OcrUploads(models.Model):
             elif record.type == "emitida":
                 tipo = "emitida"
 
-            if not self.env.user.company_id.ocr_delivery_company:
-                record.name = str(self.env.user.name) + " - " +\
-                              str(datetime.utcnow().strftime('%d-%m-%Y')) + "-" + str(tipo)
+            #if not self.env.user.company_id.ocr_delivery_company:
+            #    record.name = str(self.env.user.name) + " - " +\
+            #                  str(datetime.utcnow().strftime('%d-%m-%Y')) + "-" + str(tipo)
 
     def get_api_key(self):
         if self.partner_id == self.env.user.company_id.partner_id:
