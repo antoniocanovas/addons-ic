@@ -164,8 +164,7 @@
                 </header>
                 <sheet string="Ocr Uploads">
                     <h2>
-                        <field name="name" placeholder="Cliente y algo descriptivo ..."
-                               attrs="{'invisible': [('ocr_delivery_upload', '!=', True)]}"/>
+                        <field name="name" placeholder="Cliente/Proveedor y algo descriptivo ..."/>
                     </h2>
                     <group><field name="ocr_delivery_upload" invisible="1"/></group>
                     <group col="4">
