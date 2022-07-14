@@ -22,13 +22,9 @@ class ViafirmaTemplates(models.Model):
         domain=[('type', '=', 'signature')],
     )
     #num_firmantes = fields.Integer('Numero firmantes')
-    #send_policy = fields.Boolean('Envía políticas') # A eliminar
+
     multiple_signatures = fields.Boolean('Multiple Signatures')
     otp = fields.Boolean(string='OTP/SMS')
-    #models_use = fields.Many2many(
-    #    comodel_name="ir.model",
-    #    string="Used Models"
-    #)
 
     def get_uploader_header(self):
 
@@ -46,7 +42,6 @@ class ViafirmaTemplates(models.Model):
 
     def create_templates(self, thedict):
         '''Esta funcion actualiza las plantillas y crea las nuevas'''
-
         # chequeo si no viene description para dejarlo en un str vacio
         try:
             if not thedict["description"]:

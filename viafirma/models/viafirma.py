@@ -249,7 +249,7 @@ class Viafirma(models.Model):
     def compose_call_multiple(self):
         ''' tenemos que componer la llamada a la firma, por lo que tenemos que conocer el groupcode, el texto de la notificacion
             y a quien mandar dicha notificacion. Lo anterior no esta en el modelo Viafirma, como lo rellenaremos? A parte hemos de indicar quien recibirá la respuesta de la firma'''
-        print("COMPOSE CALL MULTIPLE")
+
         groupCode = {
             "groupCode": self.env.user.company_id.group_viafirma
         }
@@ -259,7 +259,7 @@ class Viafirma(models.Model):
             },
         }
         recip = self.compose_recipients(self.line_ids)
-        print("COMPOSE RECIPIENTS", recip)
+
         recipients = {
             "recipients": recip,
         }
@@ -279,7 +279,6 @@ class Viafirma(models.Model):
             },
         }
         metadata = self.compose_metadatalist_messages(self.line_ids)
-        print("COMPOSE METADATALIS", metadata)
 
         messages ={
             "messages":[{
@@ -488,7 +487,6 @@ class Viafirma(models.Model):
             if viafirma_pass:
 
                 stat_firmweb = requests.get(search_url, headers=header, auth=(viafirma_user, viafirma_pass))
-                print(stat_firmweb.json())
                 if stat_firmweb.ok:
                     statu_firmweb = json.loads(stat_firmweb.content.decode('utf-8'))
                     # de momento lo hago con la primera line_ids que hay
@@ -554,8 +552,6 @@ class Viafirma(models.Model):
         #Comprobamos todas las restricciones para informar al ususario antes de iniciar ejecución
         self.check_template()
 
-        print("CHECKED TEMPLATE")
-
         if not self.env['viafirma.templates'].updated_templates(self.template_id.code):
             raise ValidationError(
                 "Template no existe")
@@ -577,22 +573,14 @@ class Viafirma(models.Model):
 
                     #if self.template_id.multiple_signatures:
                     search_url = 'https://services.viafirma.com/documents/api/v3/set/'
-                    print("COMPOSE CALL MULTIPLE")
                     datas = self.compose_call_multiple()
-                    #raise ValidationError("DEMO")
-                    #else:
-                    #    if len(self.line_ids) > 1:
-                    #        raise ValidationError(
-                    #            "Esta plantilla no soporta más de un firmante")
-                    #    else:
-                    #        search_url = 'https://services.viafirma.com/documents/api/v3/messages/'
-                    #        datas = self.compose_call()
+
                     response_firmweb = requests.post(search_url, data=json.dumps(datas), headers=header,
                                                      auth=(viafirma_user, viafirma_pass))
 
                     if response_firmweb.ok:
                         resp_firmweb = json.loads(response_firmweb.content.decode('utf-8'))
-                        print("RESP", resp_firmweb)
+
                         # normalmente devuelve solo un codigo pero puede ser que haya mas, ese código hay que almacenarlo en viafirma.status_id para su posterior consulta de estado
                         try:
                             if resp_firmweb["messages"][0]["code"] != '':
