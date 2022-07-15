@@ -114,7 +114,7 @@ class ConfigClient(models.Model):
             else:
                 type_for_remote = invoice.type
             try:
-                invoice_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'account.invoice', 'create',
+                invoice_id2 = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'account.invoice', 'create',
                                                        [{
                                                            'reference': invoice.ref,
                                                            'partner_id': partner_id,
@@ -128,8 +128,8 @@ class ConfigClient(models.Model):
                 invoice.remote_state = 'error'
                 raise Warning(("Exception when calling remote server $RegisterInvoice: %s\n" % e))
 
-            if invoice_id:
-                return invoice_id
+            if invoice_id2:
+                return invoice_id2
             else:
                 invoice.remote_state = 'sent'
                 return False
@@ -156,7 +156,7 @@ class ConfigClient(models.Model):
             else:
                 type_for_remote = invoice.move_type
             try:
-                invoice_id = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'account.move', 'create',
+                invoice_id2 = conn['models'].execute_kw(self.db, conn['uid'], conn['rpcp'], 'account.move', 'create',
                                                        [{
                                                            'ref': invoice.ref,
                                                            'partner_id': partner_id,
@@ -170,8 +170,8 @@ class ConfigClient(models.Model):
                 invoice.remote_state = 'error'
                 raise Warning(("Exception when calling remote server $RegisterInvoice: %s\n" % e))
 
-            if invoice_id:
-                return invoice_id
+            if invoice_id2:
+                return invoice_id2
             else:
                 invoice.remote_state = 'sent'
                 return False
