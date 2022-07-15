@@ -218,7 +218,7 @@ class ResCompany(models.Model):
         invoice = self.env['account.move'].sudo().search([
             ("ocr_transaction_id.token", "=", t.token),
         ], limit=1)
-        print("HAY FACTURA", invoice)
+        print("FACTURA", invoice)
         previus_ocr_values = self.env['ocr.values'].sudo().search([
             ("ocr_transaction_id", "=", t.id)
         ])
@@ -511,6 +511,7 @@ class ResCompany(models.Model):
             header = self.get_header(key)
             transactions_by_state = self.get_documents_data(api_transaction_url, header)
             ############### Control status donwloaded #######################
+            print("TRANSACTIONS", transactions_by_state)
             if transactions_by_state:
                 self.create_queue_invoice_transactions(transactions_by_state, key)
 
@@ -518,13 +519,14 @@ class ResCompany(models.Model):
                                                                             ("state", "=", 'processed'),
                                                                             ("customer_api_key", "=", key),
                                                                         ], limit=30)
+            print("PROCESSED", transactions_processed)
             transactions_with_errors = self.env['ocr.transactions'].search([
                                                                         ("state", "=", 'error'),
                                                                         ("customer_api_key", "=", key),
                                                                         ("cleared", "=", False),
                                                                           ], limit=10)
             if transactions_with_errors:
-                for t_error in transactions_processed:
+                for t_error in transactions_with_errors:
                     try:
                         self.update_transactions_error_code(t_error, api_transaction_url, header)
                     except Exception as e:
