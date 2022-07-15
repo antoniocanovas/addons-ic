@@ -218,6 +218,7 @@ class ResCompany(models.Model):
         invoice = self.env['account.move'].sudo().search([
             ("ocr_transaction_id.token", "=", t.token),
         ], limit=1)
+        print("HAY FACTURA", invoice)
         previus_ocr_values = self.env['ocr.values'].sudo().search([
             ("ocr_transaction_id", "=", t.id)
         ])
@@ -227,6 +228,7 @@ class ResCompany(models.Model):
         t.json_text = ocr_document_data
 
         if ocr_document_data:
+            print("DOCUMENT DATA")
             #if invoice:
             #    if not invoice.invoice_line_ids:
             #        basic_values = self.ocr_update_values(t, ocr_document_data, "basic")
@@ -255,6 +257,7 @@ class ResCompany(models.Model):
                 partner = self.get_partner(t)
 
                 if partner:
+                    print("HAY PARTNER", partner)
                     date = self.env['ocr.values'].sudo().search([
                         ('token', '=', t.token), ('name', '=', 'Fecha')], limit=1)
 
@@ -288,15 +291,18 @@ class ResCompany(models.Model):
                         t.transaction_error = str(t.transaction_error) + " " + "No sale Journal found"
 
                     if invoice:
+                        print("HAY FACTURA", invoice)
                         invoice.journal_id = pjournal.id
                         invoice.partner_id = partner.id
                         invoice.ref = reference_value
                         invoice.invoice_date = date_invoice
                         invoice.create_invoice_lines_from_ocr()
+                        print("Líneas Creadas")
                         t.state = 'downloaded'
                         return
 
                     elif t.type == 'in_invoice':
+                        print("NO HAY FACTURA", t.type)
                         try:
 
                             invoice = self.env['account.move'].sudo().create({
@@ -311,6 +317,7 @@ class ResCompany(models.Model):
                         except Exception as e:
                             date_invoice = False
                     else:
+                        print("NO HAY FACTURA", t.type)
                         invoice = self.env['account.move'].sudo().create({
                             'journal_id': sjournal.id,
                             'partner_id': partner.id,
@@ -496,6 +503,7 @@ class ResCompany(models.Model):
     def action_get_invoices(self):
         ########## Comprobamos si somos OCR Manager ####################
         ApiKeys = self.create_apikey_list()
+        print("Apikeys", ApiKeys)
         ########## Actualmente solo traemos facturas ###################
         api_transaction_url = "%s/facturas/" % self.env.user.company_id.api_domain
         ########## Hacemos una consulta por cada ApiKey ################
@@ -532,6 +540,7 @@ class ResCompany(models.Model):
 
             if transactions_processed:
                 for t in transactions_processed:
+                    print("TOKEN", t.token)
                     try:
                         account_move = self.create_invoices(t, api_transaction_url, header)
                     except Exception as e:
