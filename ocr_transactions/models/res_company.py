@@ -538,7 +538,7 @@ class ResCompany(models.Model):
                                                                         ("cleared", "=", False),
                                                                           ], limit=10)
             if transactions_with_errors:
-                for t_error in transactions_processed:
+                for t_error in transactions_with_errors:
                     try:
                         self.update_transactions_error_code(t_error, api_transaction_url, header)
                     except Exception as e:
