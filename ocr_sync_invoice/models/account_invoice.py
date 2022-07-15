@@ -118,6 +118,12 @@ class AccountInvoice(models.Model):
                         "La factura no contiene líneas de factura"
                     ))
                 else:
+                    for line in invoice.invoice_line_ids:
+                        if not line.name:
+                            raise Warning((
+                                "El campo 'Descripción' de la línea defactura es obligatorio"
+                            ))
+
                     queue_obj = self.env['queue.job'].sudo()
                     new_delay = invoice.sudo().with_context(
                             company_id=company.id

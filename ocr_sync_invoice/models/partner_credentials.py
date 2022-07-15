@@ -122,6 +122,7 @@ class ConfigClient(models.Model):
                                                            'date_invoice': invoice.invoice_date,
                                                            #'date_due': invoice.date_due,
                                                        }])
+                invoice.remote_state = 'sent'
             except Exception as e:
                 invoice.invoice_sync_error = ("Error al crear la factura: %s\n" % invoice.ref)
                 invoice.remote_state = 'error'
@@ -163,6 +164,7 @@ class ConfigClient(models.Model):
                                                            'invoice_date': invoice.invoice_date,
                                                            #'invoice_payment_term_id': invoice.invoice_payment_term_id,
                                                        }])
+                invoice.remote_state = 'sent'
             except Exception as e:
                 invoice.invoice_sync_error = ("Error al crear la factura: %s\n" % invoice.ref)
                 invoice.remote_state = 'error'
@@ -201,6 +203,8 @@ class ConfigClient(models.Model):
         if invoice_line_id:
             return invoice_line_id
         else:
+            invoice.invoice_sync_error = ("Error creando líneas de factura: %s\n" % invoice.ref)
+            invoice.remote_state = 'error'
             return False
 
     def create_invoice_lines(self, conn, invoice_id, invoice, invoice_line_list):

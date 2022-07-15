@@ -25,9 +25,11 @@
             <xpath expr="//sheet/group/group/field[@name='ref']" position="after">
                 <field name="remote_type"/>
             </xpath>
-            <xpath expr="//field[@name='invoice_payment_term_id']" position="after">
-                <field name="customer_id"/>
-                <field name="remote_state"/>
+            <xpath expr="//field[@name='invoice_date']" position="after">
+
+                    <field name="customer_id"/>
+                    <field name="remote_state"/>
+
             </xpath>
             <xpath expr="//form/header" position="inside">
                 <button name="prepare_invoice_send" string="Send Odoo Client" type="object"
