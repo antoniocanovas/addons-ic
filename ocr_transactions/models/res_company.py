@@ -226,7 +226,7 @@ class ResCompany(models.Model):
 
     @api.multi
     def create_invoices(self, t, api_transaction_url, header):
-        #for t in transactions_processed:
+        # for t in transactions_processed:
         invoice = self.env['account.invoice'].sudo().search([
             ("ocr_transaction_id.token", "=", t.token),
         ], limit=1)
@@ -265,11 +265,9 @@ class ResCompany(models.Model):
                     })
 
                 partner = self.get_partner(t)
-
                 if partner:
                     date = self.env['ocr.values'].sudo().search([
                         ('token', '=', t.token), ('name', '=', 'Fecha')], limit=1)
-
                     if date.value:
                         try:
                             date_invoice = datetime.strptime(date.value, '%d/%m/%Y').date()
@@ -281,7 +279,6 @@ class ResCompany(models.Model):
 
                     reference = self.env['ocr.values'].sudo().search([
                         ('token', '=', t.token), ('name', '=', 'NumFactura')], limit=1)
-
                     if not reference:
                         reference_value = False
                     else:
@@ -302,8 +299,8 @@ class ResCompany(models.Model):
                     if invoice:
                         invoice.journal_id = pjournal.id
                         invoice.partner_id = partner.id
-                        invoice.ref = reference_value
-                        invoice.invoice_date = date_invoice
+                        invoice.reference = reference_value
+                        invoice.date_invoice = date_invoice
                         invoice.create_invoice_lines_from_ocr()
                         t.state = 'downloaded'
                         return
@@ -315,8 +312,8 @@ class ResCompany(models.Model):
                                 'journal_id': pjournal.id,
                                 'partner_id': partner.id,
                                 'type': t.type,
-                                'ref': reference_value,
-                                'invoice_date': date_invoice,
+                                'reference': reference_value,
+                                'date_invoice': date_invoice,
                                 'ocr_transaction_id': t.id,
                                 'is_ocr': True,
                             })
@@ -327,7 +324,7 @@ class ResCompany(models.Model):
                             'journal_id': sjournal.id,
                             'partner_id': partner.id,
                             'type': t.type,
-                            'invoice_date': date_invoice,
+                            'date_invoice': date_invoice,
                             'ocr_transaction_id': t.id,
                             ''
                             'is_ocr': True,
