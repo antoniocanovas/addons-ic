@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="partner_expired_debt" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="partner_expired_debt">
+      <change beforePath="$PROJECT_DIR$/partner_expired_debt/models/res_partner.py" beforeDir="false" afterPath="$PROJECT_DIR$/partner_expired_debt/models/res_partner.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,13 +61,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00256" summary="project_roadmap menu">
-      <created>1655978083441</created>
-      <option name="number" value="00256" />
-      <option name="presentableId" value="LOCAL-00256" />
-      <option name="project" value="LOCAL" />
-      <updated>1655978083441</updated>
     </task>
     <task id="LOCAL-00257" summary="project_roadmap menu">
       <created>1655985851605</created>
@@ -403,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658329301417</updated>
     </task>
-    <option name="localTasksCounter" value="305" />
+    <task id="LOCAL-00305" summary="partner_expired_debt">
+      <created>1658329677480</created>
+      <option name="number" value="00305" />
+      <option name="presentableId" value="LOCAL-00305" />
+      <option name="project" value="LOCAL" />
+      <updated>1658329677480</updated>
+    </task>
+    <option name="localTasksCounter" value="306" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

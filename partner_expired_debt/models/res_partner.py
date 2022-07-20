@@ -6,7 +6,7 @@
 #    Pedro josé Baños Guirao <pedro@serincloud.com>
 ##############################################################################
 from odoo import api, fields, models, _
-
+from datetime import datetime
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
