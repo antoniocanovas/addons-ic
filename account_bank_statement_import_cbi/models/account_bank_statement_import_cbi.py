@@ -93,11 +93,8 @@ class AccountBankStatementCBI(models.Model):
 
     def automated_ftp_get_n43_files(self):
         company_ids = self.env['res.company'].sudo().search([])
-        print("company_IDS", company_ids)
         for company_id in company_ids:
-            print("COMPANY", company_id.name)
             if company_id.ftp_url_cbi and company_id.ftp_port_cbi and company_id.ftp_user_cbi and company_id.ftp_passwd_cbi:
-                print("IF")
                 try:
                     sftpclient = self.create_sftp_client(company_id.ftp_url_cbi, company_id.ftp_port_cbi,
                                                          company_id.ftp_user_cbi, company_id.ftp_passwd_cbi, None, 'DSA')
@@ -108,7 +105,6 @@ class AccountBankStatementCBI(models.Model):
                         path = "/%s" % d
                         result = sftpclient.chdir(path=path)
                         filelist = sftpclient.listdir('.')
-                        print("FILELIST", filelist)
                         for f in filelist:
                             if f != 'Historico':
                                 if f not in imported_n43_list:
@@ -127,7 +123,6 @@ class AccountBankStatementCBI(models.Model):
                                                 first_bank_sequence = bank_mnt_account_number[4:12]
                                                 second_bank_secuence = bank_mnt_account_number[14:]
                                                 bank_account_number = first_bank_sequence + second_bank_secuence
-                                                print(bsa_bank_number, bank_account_number)
                                                 if bank_account_number == bsa_bank_number:
                                                     with open('/tmp/%s' % f, "r+b") as file:
                                                         data = file.read()

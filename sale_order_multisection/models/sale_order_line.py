@@ -37,7 +37,6 @@ class SaleOrderLine(models.Model):
 
     @api.depends('create_date')
     def _get_total_section(self):
-        print("DEBUG section total")
         for record in self:
             total = 0
             if record.display_type == 'line_section':
