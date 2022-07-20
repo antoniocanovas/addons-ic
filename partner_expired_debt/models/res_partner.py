@@ -14,7 +14,7 @@ class ResPartner(models.Model):
     def _get_expired_debt(self):
         for record in self:
             total = 0
-            today = datetime.date.today()
+            today = datetime.today().date()
             invoices = self.env['account.move'].search([('partner_id', '=', record.id),
                                                         ('state', '=', 'posted'),
                                                         ('payment_state', 'in', ['not_paid', 'partial']),
