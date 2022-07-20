@@ -21,3 +21,5 @@ class ResPartner(models.Model):
                                                         ('invoice_date_due', '<', today)])
             for r in invoices:
                 total += r.amount_residual_signed
+            record.expired_debt = total
+    expired_debt = fields.Monetary(string='Expired debt', store=False, compute='_get_expired_debt')
