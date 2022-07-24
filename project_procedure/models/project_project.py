@@ -51,7 +51,7 @@ class project(models.Model):
                                                                   'departament_id': li.procedure_id.departament_id.id,
                                                                   'description': li.procedure_id.task_description,
                                                                   'active': True,
-                                                                  'stage':stage.id,
+                                                                  'stage_id':stage.id,
                                                                   'procedure_line_id': li.id})
 
             # Ahora las dependencias ya que tenemos todas las tareas de las líneas y podemos relacionar:
