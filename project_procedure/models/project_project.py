@@ -43,13 +43,15 @@ class project(models.Model):
             # Buscamos las tareas que tendrían que haber y las creamos (por si se han borrado o ampliado el ámbito):
             for li in record.procedure_id.line_ids:
                 if li.id not in lineswithtask:
-                    nombre = record.name + " - " + li.procedure_id.name
-                    nuevatarea = self.env['project.task'].create({'name': nombre,
+                    name = record.name + " - " + li.procedure_id.name
+                    stage = record.procedure_id.stage_ids[0]
+                    nuevatarea = self.env['project.task'].create({'name': name,
                                                                   'project_id': record.id,
                                                                   'user_id': li.procedure_id.user_id.id,
                                                                   'departament_id': li.procedure_id.departament_id.id,
                                                                   'description': li.procedure_id.task_description,
                                                                   'active': True,
+                                                                  'stage':stage,
                                                                   'procedure_line_id': li.id})
 
             # Ahora las dependencias ya que tenemos todas las tareas de las líneas y podemos relacionar:
