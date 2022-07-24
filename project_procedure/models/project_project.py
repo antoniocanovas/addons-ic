@@ -25,18 +25,12 @@ class project(models.Model):
 
     def create_case_tasks(self):
         for record in self:
-            # Crear las tareas en base al tipo de procedure, enlazando cada tarea con su línea origen:
-            # Si las tareas están archivadas y pulsamos de nuevo las repite, así que lo primero, sacar del archivo:
+            # Crear las tareas en base al tipo de procedure, enlazando cada tarea con su línea procedure origen:
+            # Si las tareas están archivadas y ejecutamos de nuevo las repite, así que lo primero, sacar del archivo:
             exist = self.env['project.task'].search(
                 [('project_id', '=', record.id), '|', ('active', '=', False), ('active', '=', True)])
 
             # Crear o actualizar añadiendo las etapas que faltan en el proyecto:
-            #etapas_plantilla = record.procedure_id.stage_ids
-            #for etapa in etapas_plantilla:
-            #    record['type_ids'] = [(4, etapa.id)]
-
-            # Crear o actualizar añadiendo las etapas que faltan en el proyecto:
-        
             for e in record.procedure_id.stage_ids:
                 record['type_ids'] = [(4, e.id)]
 
