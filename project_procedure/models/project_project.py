@@ -14,9 +14,9 @@ class project(models.Model):
 
     def compute_get_task(self):
         for record in self:
-            tareas = self.env['project.task'].search(
+            tasks = self.env['project.task'].search(
                 [('project_id', '=', record.id), '|', ('active', '=', False), ('active', '=', True)])
-            record['task_ids'] = [(6, 0, tareas.ids)]
+            record['task_ids'] = [(6, 0, tasks.ids)]
 
     task_ids = fields.Many2many('project.task', string='tarea', compute=compute_get_task, store=False)
 
@@ -31,8 +31,10 @@ class project(models.Model):
                 [('project_id', '=', record.id), '|', ('active', '=', False), ('active', '=', True)])
 
             # Crear o actualizar añadiendo las etapas que faltan en el proyecto:
-            for e in record.procedure_id.stage_ids:
-                record['type_ids'] = [(4, e.id)]
+            stages = record.procedure_id.stage_ids.ids
+            record['type_ids'] = [(6,0, stages)]
+            #for e in record.procedure_id.stage_ids:
+            #    record['type_ids'] = [(4, e.id)]
 
             # Las líneas del tipo de procedure que ya tienen tarea son:
             lineswithtask = []
@@ -42,10 +44,10 @@ class project(models.Model):
             #
             # Buscamos las tareas que tendrían que haber y las creamos (por si se han borrado o ampliado el ámbito):
             for li in record.procedure_id.line_ids:
-                if (1==0) and (li.id not in lineswithtask):
+                if (li.id not in lineswithtask):
                     name = record.name + " - " + li.procedure_id.name
                     stage = record.procedure_id.stage_ids[0]
-                    nuevatarea = self.env['project.task'].create({'name': name,
+                    newtask = self.env['project.task'].create({'name': name,
                                                                   'project_id': record.id,
                                                                   'user_id': li.procedure_id.user_id.id,
                                                                   'departament_id': li.procedure_id.departament_id.id,
@@ -59,13 +61,13 @@ class project(models.Model):
                 [('project_id', '=', record.id), '|', ('active', '=', False), ('active', '=', True)])
             for ta in todas:
                 if ta.procedure_line_id.dependency_ids.ids:
-                    dependencias = []
+                    dependencies = []
                     for de in ta.procedure_line_id.dependency_ids:
                         tarea = self.env['project.task'].search(
                             [('procedure_line_id.procedure_id', '=', de.id), ('project_id', '=', record.id), '|',
                              ('active', '=', False), ('active', '=', True)])
-                        dependencias.append(tarea.id)
-                    ta['dependency_task_ids'] = [(6, 0, dependencias)]
+                        dependencies.append(tarea.id)
+                    ta['dependency_task_ids'] = [(6, 0, dependencies)]
 
 
                     # Archivar las nuevas tareas que tengan dependencias no cumplidas, por si se pulsa por segunda vez el botón "Actualizar trámites":
