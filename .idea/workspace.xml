@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="partner_expired_debt">
-      <change afterPath="$PROJECT_DIR$/project_procedure_sale/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_procedure_sale/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_procedure_sale/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_procedure_sale/models/sale_order.py" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_procedure_sale">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_procedure/models/project_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_procedure/models/project_project.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_procedure_sale/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_procedure_sale/__manifest__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +42,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/project_procedure/models" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/project_procedure/models" />
       <recent name="$PROJECT_DIR$/project_roadmap/models" />
       <recent name="$PROJECT_DIR$/project_roadmap/views" />
       <recent name="$PROJECT_DIR$/project_roadmap" />
@@ -66,13 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00259" summary="project_roadmap menu">
-      <created>1656002369618</created>
-      <option name="number" value="00259" />
-      <option name="presentableId" value="LOCAL-00259" />
-      <option name="project" value="LOCAL" />
-      <updated>1656002369618</updated>
     </task>
     <task id="LOCAL-00260" summary="project_roadmap menu">
       <created>1656002815983</created>
@@ -410,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658330068236</updated>
     </task>
-    <option name="localTasksCounter" value="308" />
+    <task id="LOCAL-00308" summary="project_procedure_sale">
+      <created>1658678775963</created>
+      <option name="number" value="00308" />
+      <option name="presentableId" value="LOCAL-00308" />
+      <option name="project" value="LOCAL" />
+      <updated>1658678775964</updated>
+    </task>
+    <option name="localTasksCounter" value="309" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,7 +422,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sale_wup and discount deleted" />
     <MESSAGE value="new sale_wup and discount from dev" />
     <MESSAGE value="Default states in Opportunities" />
     <MESSAGE value="Bug qty sol wit wup AA" />
@@ -451,7 +446,8 @@
     <MESSAGE value="project_roadmap o2m leads" />
     <MESSAGE value="invoice2origin sale order change position field" />
     <MESSAGE value="partner_expired_debt" />
-    <option name="LAST_COMMIT_MESSAGE" value="partner_expired_debt" />
+    <MESSAGE value="project_procedure_sale" />
+    <option name="LAST_COMMIT_MESSAGE" value="project_procedure_sale" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

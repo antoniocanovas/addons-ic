@@ -8,7 +8,7 @@
     'author': 'Serincloud',
     'depends': [
         'project_procedure',
-        'sale',
+        'sale_management',
     ],
     'data': [
     ],
