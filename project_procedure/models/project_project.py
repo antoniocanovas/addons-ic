@@ -31,8 +31,13 @@ class project(models.Model):
                 [('project_id', '=', record.id), '|', ('active', '=', False), ('active', '=', True)])
 
             # Crear o actualizar añadiendo las etapas que faltan en el proyecto:
-            for e in record.procedure_id.stage_ids:
-                record['type_ids'] = [(4, e.id)]
+            if not exist.ids:
+                record['type_ids'] = [(6,0, record.procedure_id.stage_ids.ids)]
+            else:
+                record['type_ids'] = [(4, 0, record.procedure_id.stage_ids.ids)]
+
+            # ESTO FUNCIONA .... for e in record.procedure_id.stage_ids:
+            #    record['type_ids'] = [(4, e.id)]
 
             # Las líneas del tipo de procedure que ya tienen tarea son:
             lineswithtask = []
