@@ -31,14 +31,8 @@ class project(models.Model):
                 [('project_id', '=', record.id), '|', ('active', '=', False), ('active', '=', True)])
 
             # Crear o actualizar añadiendo las etapas que faltan en el proyecto:
-            stages = record.procedure_id.stage_ids.ids
-            if not exist.ids:
-                record['type_ids'] = [(6, 0, stages)]
-            else:
-                record['type_ids'] = [(4, 0, stages)]
-
-            # ESTO FUNCIONA .... for e in record.procedure_id.stage_ids:
-            #    record['type_ids'] = [(4, e.id)]
+            for e in record.procedure_id.stage_ids:
+                record['type_ids'] = [(4, e.id)]
 
             # Las líneas del tipo de procedure que ya tienen tarea son:
             lineswithtask = []
@@ -48,7 +42,7 @@ class project(models.Model):
             #
             # Buscamos las tareas que tendrían que haber y las creamos (por si se han borrado o ampliado el ámbito):
             for li in record.procedure_id.line_ids:
-                if li.id not in lineswithtask:
+                if (1==0) and (li.id not in lineswithtask):
                     name = record.name + " - " + li.procedure_id.name
                     stage = record.procedure_id.stage_ids[0]
                     nuevatarea = self.env['project.task'].create({'name': name,
