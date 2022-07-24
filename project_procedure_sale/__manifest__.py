@@ -11,6 +11,7 @@
         'sale_management',
     ],
     'data': [
+        'data/actions.xml'
     ],
     'installable':True,
 }
