@@ -10,9 +10,10 @@ class SaleOrder(models.Model):
 
     @api.depends('write_date')
     def create_procedure_tasks_when_confirmed(self):
-        if (self.state == 'sale'):
-            for pr in self.project_ids:
-                if (pr.procedure_id.id) and (not pr.task_ids.ids):
-                    action = pr.sudo().create_case_tasks()
+        for record in self:
+            if (record.state == 'sale'):
+                for pr in record.project_ids:
+                    if (pr.procedure_id.id) and (not pr.task_ids.ids):
+                        action = pr.sudo().create_case_tasks()
 
 
