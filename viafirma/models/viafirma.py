@@ -471,8 +471,6 @@ class Viafirma(models.Model):
             img_file_encode = base64.b64encode(response.content)
             return img_file_encode
 
-
-
     def status_response_firmweb(self):
         ''' Esta funcion ha de obtener el estado de la peticion'''
 
