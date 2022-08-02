@@ -11,7 +11,6 @@
     'depends': [
         'partner_credentials',
         'helpdesk_mgmt',
-        'equipment_credential',
     ],
     'data': [
         'views/views.xml',

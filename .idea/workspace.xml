@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_procedure stages new created by default">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="helpdesk_credential services">
       <change beforePath="$PROJECT_DIR$/helpdesk_credential/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk_credential/__manifest__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helpdesk_credential/models/helpdesk_ticket.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk_credential/models/helpdesk_ticket.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helpdesk_credential/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk_credential/views/views.xml" afterDir="false" />
@@ -63,13 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00271" summary="project_roadmap favorite">
-      <created>1656173831636</created>
-      <option name="number" value="00271" />
-      <option name="presentableId" value="LOCAL-00271" />
-      <option name="project" value="LOCAL" />
-      <updated>1656173831636</updated>
     </task>
     <task id="LOCAL-00272" summary="project_roadmap favorite">
       <created>1656173857622</created>
@@ -407,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658683132083</updated>
     </task>
-    <option name="localTasksCounter" value="320" />
+    <task id="LOCAL-00320" summary="helpdesk_credential services">
+      <created>1659450828647</created>
+      <option name="number" value="00320" />
+      <option name="presentableId" value="LOCAL-00320" />
+      <option name="project" value="LOCAL" />
+      <updated>1659450828647</updated>
+    </task>
+    <option name="localTasksCounter" value="321" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -423,7 +423,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Bug qty sol wit wup AA" />
     <MESSAGE value="Update product_bulk" />
     <MESSAGE value="Update context y default form" />
     <MESSAGE value="hr_timesheet_activity_begin_end" />
@@ -448,7 +447,8 @@
     <MESSAGE value="project_procedure_sale" />
     <MESSAGE value="project_procedure stage to new tasks" />
     <MESSAGE value="project_procedure stages new created by default" />
-    <option name="LAST_COMMIT_MESSAGE" value="project_procedure stages new created by default" />
+    <MESSAGE value="helpdesk_credential services" />
+    <option name="LAST_COMMIT_MESSAGE" value="helpdesk_credential services" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
