@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_procedure stages new created by default">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_procedure/models/project_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_procedure/models/project_project.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpdesk_credential/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk_credential/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpdesk_credential/models/helpdesk_ticket.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk_credential/models/helpdesk_ticket.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpdesk_credential/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk_credential/views/views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
