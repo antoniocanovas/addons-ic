@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchase_price_update price_control =&gt; MESSAGE">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup_discount/data/server_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup_discount/data/server_action.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchase_price_update =&gt; TARGET PRICE" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,13 +59,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00277" summary="project_roadmap o2m from models">
-      <created>1656254316908</created>
-      <option name="number" value="00277" />
-      <option name="presentableId" value="LOCAL-00277" />
-      <option name="project" value="LOCAL" />
-      <updated>1656254316908</updated>
     </task>
     <task id="LOCAL-00278" summary="project_roadmap o2m from models">
       <created>1656254409557</created>
@@ -406,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659690945032</updated>
     </task>
-    <option name="localTasksCounter" value="326" />
+    <task id="LOCAL-00326" summary="purchase_price_update =&gt; TARGET PRICE">
+      <created>1659694972750</created>
+      <option name="number" value="00326" />
+      <option name="presentableId" value="LOCAL-00326" />
+      <option name="project" value="LOCAL" />
+      <updated>1659694972751</updated>
+    </task>
+    <option name="localTasksCounter" value="327" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -422,7 +419,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="set_start_stop aal" />
     <MESSAGE value="portal user in employees" />
     <MESSAGE value="helpdesk_credential v0" />
     <MESSAGE value="time type not required" />
@@ -447,7 +443,8 @@
     <MESSAGE value="wup details" />
     <MESSAGE value="purchase_price_update price_control =&gt; subtotal" />
     <MESSAGE value="purchase_price_update price_control =&gt; MESSAGE" />
-    <option name="LAST_COMMIT_MESSAGE" value="purchase_price_update price_control =&gt; MESSAGE" />
+    <MESSAGE value="purchase_price_update =&gt; TARGET PRICE" />
+    <option name="LAST_COMMIT_MESSAGE" value="purchase_price_update =&gt; TARGET PRICE" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
