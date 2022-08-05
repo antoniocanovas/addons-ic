@@ -62,20 +62,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00284" summary="project_roadmap o2m from models">
-      <created>1656256616147</created>
-      <option name="number" value="00284" />
-      <option name="presentableId" value="LOCAL-00284" />
-      <option name="project" value="LOCAL" />
-      <updated>1656256616147</updated>
-    </task>
-    <task id="LOCAL-00285" summary="project_roadmap o2m from models">
-      <created>1656256791009</created>
-      <option name="number" value="00285" />
-      <option name="presentableId" value="LOCAL-00285" />
-      <option name="project" value="LOCAL" />
-      <updated>1656256791009</updated>
-    </task>
     <task id="LOCAL-00286" summary="project_roadmap o2m from models">
       <created>1656258205608</created>
       <option name="number" value="00286" />
@@ -405,7 +391,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659696232211</updated>
     </task>
-    <option name="localTasksCounter" value="333" />
+    <task id="LOCAL-00333" summary="purchase_price_update =&gt; TARGET PRICE">
+      <created>1659696485836</created>
+      <option name="number" value="00333" />
+      <option name="presentableId" value="LOCAL-00333" />
+      <option name="project" value="LOCAL" />
+      <updated>1659696485836</updated>
+    </task>
+    <task id="LOCAL-00334" summary="purchase_price_update =&gt; TARGET PRICE">
+      <created>1659696734751</created>
+      <option name="number" value="00334" />
+      <option name="presentableId" value="LOCAL-00334" />
+      <option name="project" value="LOCAL" />
+      <updated>1659696734751</updated>
+    </task>
+    <option name="localTasksCounter" value="335" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
