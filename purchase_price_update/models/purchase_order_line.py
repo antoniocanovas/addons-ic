@@ -9,11 +9,11 @@ from odoo import api, fields, models, _
 class PurchasePriceUpdate(models.Model):
     _inherit = "purchase.order.line"
 
-    @api.depends('standard_price','price_unit')
+    @api.depends('price_subtotal','price_unit')
     def get_price_control(self):
         for record in self:
             control = False
-            if record.standard_price == record.price_unit:
+            if (record.price_subtotal / record.product_qty) == record.standard_price:
                 control = True
             record.price_control = control
     price_control = fields.Boolean(string='Price Control', compute='get_price_control')

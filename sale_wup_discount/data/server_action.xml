@@ -47,8 +47,8 @@ if record.discount_type == 'target_price':
         li['price_unit'] = li.price_unit + diference
         review = False
 
-# CASE WUP_PRICING_UPDATE:
-if record.discount_type == 'wup_pricing_update':
+# CASE WUP_PRICING_RESET:
+if record.discount_type == 'wup_pricing_reset':
   for li in record.order_line:
     if li.wup_line_ids.ids:
       for li in record.wup_line_ids:
