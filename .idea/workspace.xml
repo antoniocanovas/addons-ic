@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchase_price_update =&gt; TARGET PRICE" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchase_price_update =&gt; TARGET PRICE">
+      <change beforePath="$PROJECT_DIR$/sale_wup_discount/data/server_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup_discount/data/server_action.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,13 +61,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00281" summary="project_roadmap o2m from models">
-      <created>1656255893063</created>
-      <option name="number" value="00281" />
-      <option name="presentableId" value="LOCAL-00281" />
-      <option name="project" value="LOCAL" />
-      <updated>1656255893063</updated>
     </task>
     <task id="LOCAL-00282" summary="project_roadmap o2m from models">
       <created>1656256182106</created>
@@ -403,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659695516275</updated>
     </task>
-    <option name="localTasksCounter" value="330" />
+    <task id="LOCAL-00330" summary="purchase_price_update =&gt; TARGET PRICE">
+      <created>1659695851274</created>
+      <option name="number" value="00330" />
+      <option name="presentableId" value="LOCAL-00330" />
+      <option name="project" value="LOCAL" />
+      <updated>1659695851274</updated>
+    </task>
+    <option name="localTasksCounter" value="331" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
