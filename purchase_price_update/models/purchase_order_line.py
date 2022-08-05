@@ -45,7 +45,7 @@ class PurchasePriceUpdate(models.Model):
         elif price_unit != self.product_id.standard_price and self.product_id.standard_price != 0:
             message = "Precio de coste actual: " + str(self.standard_price) + "\n" + \
                       "Precio de venta actual: " + str(self.product_id.lst_price) + "\n" + \
-                      "NUEVO PRECIO DE COSTE: " + str(price_unit) + "\n" + \
+                      "NUEVO PRECIO DE COSTE: " + str(round(price_unit,2)) + "\n" + \
                       " !!  Recuerde pulsar el botón para actualizar, si procede el cambio !!"
 
         if message != '':
