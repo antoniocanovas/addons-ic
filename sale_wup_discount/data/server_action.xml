@@ -10,13 +10,13 @@ monetary_precision = env['decimal.precision'].sudo().search([('id','=',1)]).digi
 
 # CASE "TARGER_PRICE" (wup prices are not recalculated, working with discount in SOL):
 if record.discount_type == 'target_price':
-  # Requirement: user discount per sale order line:
+  # REQUIRED: ENABLE DISCOUNTS in Sales => Configuration:
   group_id = env['ir.model.data'].search([('model','=','res.groups'),('name','=','group_discount_per_so_line')]).res_id
   group = env['res.groups'].search([('id','=',group_id)])
   if user not in group.users:
-    raise Warning('It is required to enable discounts per sale order line in sales settings, please ask to your administrator.')
+    raise Warning('It is required to enable discounts in Sales Settings, please ask to your admin.')
 
-  # Calculating real total cost and sale without discount:
+  # PREVIOUS: Compute real total cost and sale without discount:
   cost_amount, price_amount, margin = 0,0,0
   for li in record.order_line:
     if (len(li.wup_line_ids.ids) == 0) and (li.product_uom_qty &gt; 0):
@@ -26,29 +26,50 @@ if record.discount_type == 'target_price':
       cost_amount  += round(li.wup_cost_amount,monetary_precision)
       price_amount += round(li.price_subtotal / (1-li.discount/100),monetary_precision)
 
+  # CASE SALE UNDER COST, NOT ALLOWED:
   if (record.target_price &lt; cost_amount):
-    raise Warning('Saling under cost, not allowed.')
+    message_under_cost = "Target under real cost (Purchase = " + str(round(cost_amount,2)) +
+                  ", List price = " + str(round(price_amount,2)) +
+                  "), not allowed. You can do it manually."
+    raise Warning(message_under_cost)
 
-  else:
+  # CASE: TARGET UNDER PVP => Let's work with discounts:
+  elif (record.target_price &lt; price_amount):
     margin = (1 - (record.target_price / price_amount)) * 100
+    for li in record.order_line:
+      if (len(li.wup_line_ids.ids) == 0) and (li.product_uom_qty > 0):
+        li.write({'price_unit':li.lst_price, 'discount':margin})
+      elif (len(li.wup_line_ids.ids) &gt; 0) and (li.product_uom_qty &gt; 0):
+        for wupline in li.wup_line_ids:
+          wupline['price_unit'] = wupline.price_unit * (1-margin/100)
 
-  for li in record.order_line:
-    if (len(li.wup_line_ids.ids) == 0) and (li.product_uom_qty &gt; 0):
-      li.write({'price_unit':li.lst_price, 'discount':margin})
-    elif (len(li.wup_line_ids.ids) &gt; 0) and (li.product_uom_qty &gt; 0):
-      for wupline in li.wup_line_ids:
-        wupline['price_unit'] = wupline.price_unit * (1-margin/100)
+  # CASE: TARGET UNDER PVP => Let's work with list prices:
+  else:
+    margin = (record.target_price / price_amount)
+    for li in record.order_line:
+      if (len(li.wup_line_ids.ids) == 0) and (li.product_uom_qty &gt; 0):
+        li.write({'price_unit':li.lst_price * margin, 'discount':0})
+      elif (len(li.wup_line_ids.ids) &gt; 0) and (li.product_uom_qty &gt; 0):
+        for wupline in li.wup_line_ids:
+          wupline.write({'price_unit':wupline.price_unit * margin, 'fix_price_unit_sale':False})
 
+  # ROUNDING Method on the first line with units = 1:
   diference = round(record.target_price - record.amount_untaxed,2)
   if diference != 0:
     review = True
     for li in record.order_line:
       if (li.product_uom_qty == 1) and (review == True):
-        li['price_unit'] = li.price_unit + diference
-        review = False
+        if (len(li.wup_line_ids.ids) == 0) and (li.product_uom_qty &gt; 0):
+          li.write({'price_unit':li.price_unit + diference})
+          review = False
+        elif (len(li.wup_line_ids.ids) &gt; 0) and (li.product_uom_qty &gt; 0):
+          for wupline in li.wup_line_ids:
+            if (review == True):
+              wupline.write({'price_unit':wupline.price_unit + diference})
+              review = False
 
 # CASE WUP_PRICING_RESET:
-if record.discount_type == 'wup_pricing_reset':
+elif record.discount_type == 'wup_pricing_reset':
   for li in record.order_line:
     if li.wup_line_ids.ids:
       for li in record.wup_line_ids:

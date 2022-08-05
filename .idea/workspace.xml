@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchase_price_update price_control =&gt; subtotal">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchase_price_update price_control =&gt; MESSAGE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_wup_discount/data/server_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup_discount/data/server_action.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,20 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00275" summary="project_roadmap o2m from models">
-      <created>1656233047381</created>
-      <option name="number" value="00275" />
-      <option name="presentableId" value="LOCAL-00275" />
-      <option name="project" value="LOCAL" />
-      <updated>1656233047381</updated>
-    </task>
-    <task id="LOCAL-00276" summary="project_roadmap o2m from models">
-      <created>1656233422673</created>
-      <option name="number" value="00276" />
-      <option name="presentableId" value="LOCAL-00276" />
-      <option name="project" value="LOCAL" />
-      <updated>1656233422673</updated>
     </task>
     <task id="LOCAL-00277" summary="project_roadmap o2m from models">
       <created>1656254316908</created>
@@ -406,7 +392,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659689258427</updated>
     </task>
-    <option name="localTasksCounter" value="324" />
+    <task id="LOCAL-00324" summary="purchase_price_update price_control =&gt; MESSAGE">
+      <created>1659690761893</created>
+      <option name="number" value="00324" />
+      <option name="presentableId" value="LOCAL-00324" />
+      <option name="project" value="LOCAL" />
+      <updated>1659690761893</updated>
+    </task>
+    <task id="LOCAL-00325" summary="purchase_price_update price_control =&gt; MESSAGE">
+      <created>1659690945032</created>
+      <option name="number" value="00325" />
+      <option name="presentableId" value="LOCAL-00325" />
+      <option name="project" value="LOCAL" />
+      <updated>1659690945032</updated>
+    </task>
+    <option name="localTasksCounter" value="326" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -422,7 +422,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="hr_timesheet_activity_begin_end" />
     <MESSAGE value="set_start_stop aal" />
     <MESSAGE value="portal user in employees" />
     <MESSAGE value="helpdesk_credential v0" />
@@ -447,7 +446,8 @@
     <MESSAGE value="helpdesk_credential services" />
     <MESSAGE value="wup details" />
     <MESSAGE value="purchase_price_update price_control =&gt; subtotal" />
-    <option name="LAST_COMMIT_MESSAGE" value="purchase_price_update price_control =&gt; subtotal" />
+    <MESSAGE value="purchase_price_update price_control =&gt; MESSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="purchase_price_update price_control =&gt; MESSAGE" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
