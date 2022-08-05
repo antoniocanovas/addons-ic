@@ -22,7 +22,7 @@ class PurchasePriceUpdate(models.Model):
     def get_standard_price(self):
         for record in self:
             record.standard_price = record.product_id.standard_price
-    standard_price = fields.Float(string='Standard Price', store=True, compute="get_standard_price")
+    standard_price = fields.Float(string='Prev. Price', store=True, compute="get_standard_price")
 
     def update_product_standard_price(self):
         for record in self:
@@ -31,19 +31,22 @@ class PurchasePriceUpdate(models.Model):
     @api.onchange('price_subtotal')
     def price_unit_wizard(self):
         message = ''
+        # Purchase price_unit in SOL:
         if self.price_subtotal != 0 and self.product_qty != 0:
             price_unit = self.price_subtotal / self.product_qty
         else:
-            price_unit = self.standard_price
+            price_unit = self.product_id.standard_price
 
-        if price_unit != self.standard_price and self.standard_price == 0:
+        # Case: product_id without standard_price assigned:
+        if price_unit != self.product_id.standard_price and self.standard_price == 0:
             message = 'Producto sin precio de coste asignado!' + "\n" + 'Recuerde pulsar el botón para asignar este.'
 
-        elif price_unit != self.standard_price and self.standard_price != 0:
-            new_pvp = round((self.product_id.lst_price / self.standard_price * price_unit), 2)
-            message = "Precio de coste actual: " + str(self.standard_price) + "\n" + "Precio de venta actual: " + str(
-                self.product_id.lst_price) + "\n" + "Posible nuevo precio de venta: " + str(
-                new_pvp) + "\n" + " !!  Recuerde pulsar el botón para actualizar, si procede el cambio !!"
+        # Case: New purchase price and standard_price assigned:
+        elif price_unit != self.product_id.standard_price and self.product_id.standard_price != 0:
+            message = "Precio de coste actual: " + str(self.standard_price) + "\n" + \
+                      "Precio de venta actual: " + str(self.product_id.lst_price) + "\n" + \
+                      "NUEVO PRECIO DE COSTE: " + str(price_unit) + "\n" + \
+                      " !!  Recuerde pulsar el botón para actualizar, si procede el cambio !!"
 
         if message != '':
             return {
