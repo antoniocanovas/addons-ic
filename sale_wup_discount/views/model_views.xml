@@ -17,8 +17,8 @@
                     </group>
                     <group>
                         <button class="oe_highlight oe_edit_only"
-                                type="action"
-                                name="%(sale_wup_discount.sale_order_recalculate_sd)d"
+                                type="object"
+                                name="wup_sale_discounts"
                                 string="Recalculate"
                         />
                     </group>

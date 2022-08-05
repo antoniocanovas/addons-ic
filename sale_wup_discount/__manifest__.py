@@ -12,7 +12,6 @@
 
     ],
     'data': [
-        'data/server_action.xml',
         'views/model_views.xml',
     ],
     'installable': True,
