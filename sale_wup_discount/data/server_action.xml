@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <record id="sale_order_recalculate_sd" model="ir.actions.server">
-                <field name="name"> -- Recalculate Special Discounts</field>
+                <field name="name"> => Recalculate Special Discounts</field>
                 <field name="model_id" ref="model_sale_order"/>
                 <field name="state">code</field>
                 <field name="code">
@@ -28,7 +28,8 @@ if record.discount_type == 'target_price':
 
   # CASE SALE UNDER COST, NOT ALLOWED:
   if (record.target_price &lt; cost_amount):
-    message_under_cost  = "Target under real cost (Purchase = " + str(round(cost_amount,2)) + ", List price = " + str(round(price_amount,2)) "), not allowed. You can do it manually."
+    message_under_cost  = "Target under real cost (Purchase = " + str(round(cost_amount,2)) +
+                  ", List price = " + str(round(price_amount,2)) + "), not allowed. You can do it manually."
     raise Warning(message_under_cost)
 
   # CASE: TARGET UNDER PVP => Let's work with discounts:
