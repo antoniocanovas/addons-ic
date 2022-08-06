@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchase_price_update =&gt; TARGET PRICE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/partner_credentials_equipment/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/partner_credentials_equipment/__manifest__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/partner_credentials_equipment/models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/partner_credentials_equipment/models/maintenance_equipment.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/partner_credentials_equipment/models/partner_credential_equipment.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/partner_credentials_equipment/views/views.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
