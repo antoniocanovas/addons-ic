@@ -34,8 +34,8 @@ class ContestCompetitor(models.Model):
             price_out_of_range = False
             if (record.contest_id.min_price > record.price or record.contest_id.max_price < record.price):
                 price_out_of_range = True
-            record.price_out_of_rage = price_out_of_range
-    price_out_of_rage = fields.Boolean('Out of range', compute=get_price_in_range)
+            record.price_out_of_range = price_out_of_range
+    price_out_of_range = fields.Boolean('Out of range', compute=get_price_in_range)
 
     @api.depends('price', 'contest_id.max_price')
     def get_discount(self):
