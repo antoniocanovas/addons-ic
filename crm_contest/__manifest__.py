@@ -1,5 +1,5 @@
 {
-    'name': "contest",
+    'name': "CRM Contest",
     'summary': """
         Registrar concursos y ofertas privadas, así como las competencias.
         """,
@@ -19,5 +19,5 @@
         'security/ir.model.access.csv',
     ],
     'installable': True,
-    'application': True,
+    'application': False,
 }

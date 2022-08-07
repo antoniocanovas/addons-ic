@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="contest rev">
-      <change beforePath="$PROJECT_DIR$/contest/views/view_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contest/views/view_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/models/contest.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/models/contest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/models/contest_category.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/models/contest_category.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/models/contest_competitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/models/contest_competitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/models/contest_contract_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/models/contest_contract_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/models/contest_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/models/contest_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/models/crm_lead.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/models/crm_lead.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/models/res_partner.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/models/res_partner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/security/ir.model.access.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/static/description/contest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/views/view_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/views/view_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/views/views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/views/views_crm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/views/views_crm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/views/views_res_partner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/views/views_res_partner.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,20 +77,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00305" summary="partner_expired_debt">
-      <created>1658329677480</created>
-      <option name="number" value="00305" />
-      <option name="presentableId" value="LOCAL-00305" />
-      <option name="project" value="LOCAL" />
-      <updated>1658329677480</updated>
-    </task>
-    <task id="LOCAL-00306" summary="partner_expired_debt">
-      <created>1658329833388</created>
-      <option name="number" value="00306" />
-      <option name="presentableId" value="LOCAL-00306" />
-      <option name="project" value="LOCAL" />
-      <updated>1658329833388</updated>
     </task>
     <task id="LOCAL-00307" summary="partner_expired_debt">
       <created>1658330068236</created>
@@ -406,7 +407,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659912806431</updated>
     </task>
-    <option name="localTasksCounter" value="354" />
+    <task id="LOCAL-00354" summary="contest rev">
+      <created>1659913127621</created>
+      <option name="number" value="00354" />
+      <option name="presentableId" value="LOCAL-00354" />
+      <option name="project" value="LOCAL" />
+      <updated>1659913127621</updated>
+    </task>
+    <task id="LOCAL-00355" summary="contest rev">
+      <created>1659913409207</created>
+      <option name="number" value="00355" />
+      <option name="presentableId" value="LOCAL-00355" />
+      <option name="project" value="LOCAL" />
+      <updated>1659913409207</updated>
+    </task>
+    <option name="localTasksCounter" value="356" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
