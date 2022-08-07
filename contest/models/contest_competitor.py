@@ -42,7 +42,7 @@ class ContestCompetitor(models.Model):
             discount = 0
             if record.contest_id.max_price > 0:
                 discount = 1 - record.price / record.contest_id.max_price
-        record.discount = discount * 100
+            record.discount = discount * 100
     discount = fields.Float('Discount (%)', compute=get_discount)
 
     @api.depends('contest_id', 'partner_id')
