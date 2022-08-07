@@ -3,7 +3,7 @@
     'summary': """
         Registrar concursos y ofertas privadas, así como las competencias.
         """,
-    'author': "Pedro Guirao",
+    'author': "Serincloud SL",
     'license': 'AGPL-3',
     'website': "https://ingenieriacloud.com",
     'category': 'Tools',
@@ -16,10 +16,7 @@
         'views/views_crm.xml',
         'views/views_res_partner.xml',
         'views/view_menu.xml',
-        #'views/view_partner_credentials.xml',
-        #'security/user_groups.xml',
         'security/ir.model.access.csv',
-        #'data/default_rules.xml',
     ],
     'installable': True,
     'application': True,
