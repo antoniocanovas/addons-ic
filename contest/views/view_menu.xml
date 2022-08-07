@@ -81,6 +81,7 @@
             id="menu_contest"
             name="Contest"
             sequence="1"
+            parent_id="crm.crm_menu_root"
             web_icon="contest,static/description/contest.png"
     />
 
@@ -132,9 +133,5 @@
         <field name="parent_id" ref="menu_contest_configuration"/>
         <field name="sequence">3</field>
     </record>
-
-
-
-
 
 </odoo>

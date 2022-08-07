@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="contest rev">
-      <change beforePath="$PROJECT_DIR$/contest/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contest/views/views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/views/view_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contest/views/view_menu.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,20 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00302" summary="project_roadmap o2m leads">
-      <created>1656944968639</created>
-      <option name="number" value="00302" />
-      <option name="presentableId" value="LOCAL-00302" />
-      <option name="project" value="LOCAL" />
-      <updated>1656944968640</updated>
-    </task>
-    <task id="LOCAL-00303" summary="invoice2origin sale order change position field">
-      <created>1657040697576</created>
-      <option name="number" value="00303" />
-      <option name="presentableId" value="LOCAL-00303" />
-      <option name="project" value="LOCAL" />
-      <updated>1657040697576</updated>
     </task>
     <task id="LOCAL-00304" summary="partner_expired_debt">
       <created>1658329301416</created>
@@ -406,7 +393,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659893324996</updated>
     </task>
-    <option name="localTasksCounter" value="351" />
+    <task id="LOCAL-00351" summary="contest rev">
+      <created>1659893689567</created>
+      <option name="number" value="00351" />
+      <option name="presentableId" value="LOCAL-00351" />
+      <option name="project" value="LOCAL" />
+      <updated>1659893689567</updated>
+    </task>
+    <task id="LOCAL-00352" summary="contest rev">
+      <created>1659893799249</created>
+      <option name="number" value="00352" />
+      <option name="presentableId" value="LOCAL-00352" />
+      <option name="project" value="LOCAL" />
+      <updated>1659893799249</updated>
+    </task>
+    <option name="localTasksCounter" value="353" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
