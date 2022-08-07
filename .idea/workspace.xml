@@ -63,13 +63,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00301" summary="project_roadmap o2m from models">
-      <created>1656315258744</created>
-      <option name="number" value="00301" />
-      <option name="presentableId" value="LOCAL-00301" />
-      <option name="project" value="LOCAL" />
-      <updated>1656315258744</updated>
-    </task>
     <task id="LOCAL-00302" summary="project_roadmap o2m leads">
       <created>1656944968639</created>
       <option name="number" value="00302" />
@@ -406,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659892955590</updated>
     </task>
-    <option name="localTasksCounter" value="350" />
+    <task id="LOCAL-00350" summary="contest rev">
+      <created>1659893324996</created>
+      <option name="number" value="00350" />
+      <option name="presentableId" value="LOCAL-00350" />
+      <option name="project" value="LOCAL" />
+      <updated>1659893324996</updated>
+    </task>
+    <option name="localTasksCounter" value="351" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
