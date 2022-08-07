@@ -27,7 +27,7 @@
                 <field name="price_out_of_range" invisible="1"/>
             </tree>
         </field>
-        <field name="model">contest</field>
+        <field name="model">contest.competitor</field>
         <field name="priority">32</field>
         <field name="name">Editable buttom tree view for Competitors</field>
         <field name="type">tree</field>
