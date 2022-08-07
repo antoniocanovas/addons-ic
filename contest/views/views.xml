@@ -123,7 +123,7 @@
                         </group>
                         <group name="contest_competitor_details">
                             <field name="winner"/>
-                            <field name="lowerprice"/>
+                            <field name="price_out_of_range"/>
                         </group>
                     </group>
                     <field name="note" placeholder="Details about competitor proposal ..."/>

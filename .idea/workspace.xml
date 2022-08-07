@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="wup_discount review" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="contest rev">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/models/contest_competitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/contest/models/contest_competitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contest/views/views.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00293" summary="project_roadmap o2m from models">
-      <created>1656262418504</created>
-      <option name="number" value="00293" />
-      <option name="presentableId" value="LOCAL-00293" />
-      <option name="project" value="LOCAL" />
-      <updated>1656262418504</updated>
     </task>
     <task id="LOCAL-00294" summary="project_roadmap o2m from models">
       <created>1656262464332</created>
@@ -404,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659881678583</updated>
     </task>
-    <option name="localTasksCounter" value="342" />
+    <task id="LOCAL-00342" summary="contest rev">
+      <created>1659883284539</created>
+      <option name="number" value="00342" />
+      <option name="presentableId" value="LOCAL-00342" />
+      <option name="project" value="LOCAL" />
+      <updated>1659883284539</updated>
+    </task>
+    <option name="localTasksCounter" value="343" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -443,9 +447,9 @@
     <MESSAGE value="purchase_price_update price_control =&gt; MESSAGE" />
     <MESSAGE value="purchase_price_update =&gt; TARGET PRICE" />
     <MESSAGE value="partner_credential_equipment deleted, functionality in other modules" />
-    <MESSAGE value="contest rev" />
     <MESSAGE value="wup_discount review" />
-    <option name="LAST_COMMIT_MESSAGE" value="wup_discount review" />
+    <MESSAGE value="contest rev" />
+    <option name="LAST_COMMIT_MESSAGE" value="contest rev" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
