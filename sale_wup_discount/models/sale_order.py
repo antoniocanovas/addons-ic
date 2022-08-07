@@ -107,11 +107,11 @@ class WupSaleOrder(models.Model):
                     # Line NOT WUP:
                     if (len(li.wup_line_ids.ids) == 0) and (li.product_uom_qty > 0):
                         if li.product_uom.uom_type == 'reference':
-                            qty_uom = li.product_uom_qty
+                            qty_uom = 1
                         elif li.product_uom.uom_type == 'bigger':
-                            qty_uom = li.product_uom_qty * li.product_uom.factor_inv
+                            qty_uom = li.product_uom.factor_inv
                         elif li.product_uom.uom_type == 'smaller':
-                            qty_uom = li.product_uom_qty / li.product_uom.factor
+                            qty_uom = 1 / li.product_uom.factor
 
                         # Case 'services' and 'fixed_service_price':
                         if (li.product_id.product_tmpl_id.our_service == True) and (
