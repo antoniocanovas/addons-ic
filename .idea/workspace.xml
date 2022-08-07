@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="contest rev">
-      <change beforePath="$PROJECT_DIR$/contest/views/view_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contest/views/view_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contest/views/views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,13 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00290" summary="project_roadmap o2m from models">
-      <created>1656261042705</created>
-      <option name="number" value="00290" />
-      <option name="presentableId" value="LOCAL-00290" />
-      <option name="project" value="LOCAL" />
-      <updated>1656261042705</updated>
     </task>
     <task id="LOCAL-00291" summary="project_roadmap o2m from models">
       <created>1656261382700</created>
@@ -406,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659862237150</updated>
     </task>
-    <option name="localTasksCounter" value="339" />
+    <task id="LOCAL-00339" summary="contest rev">
+      <created>1659862554327</created>
+      <option name="number" value="00339" />
+      <option name="presentableId" value="LOCAL-00339" />
+      <option name="project" value="LOCAL" />
+      <updated>1659862554327</updated>
+    </task>
+    <option name="localTasksCounter" value="340" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

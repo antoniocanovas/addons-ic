@@ -65,9 +65,8 @@
                                 <field name="winner_id"/>
                                 <field name="competitor_num"/>
                                 <field name="winner_price"/>
-                                <field name="id" invisible="1"/>
                             </group>
-                            <field name="competitor_ids" context="{'default_contest_id':id}"/>
+                            <field name="competitor_ids"/>
                         </page>
                     </notebook>
                 </sheet>
