@@ -1,6 +1,38 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
+    <record id="competitor_tree" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <tree>
+                <field name="customer_id"/>
+                <field name="contest_id"/>
+                <field name="partner_id"/>
+                <field name="price"/>
+                <field name="winner"/>
+            </tree>
+        </field>
+        <field name="model">contest.competitor</field>
+        <field name="name">Default tree view for Competitor</field>
+        <field name="type">tree</field>
+    </record>
+
+    <record id="competitor_edit_bottom_tree" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <tree editable="bottom" decoration-danger="price_out_of_range == True">
+                <field name="partner_id"/>
+                <field name="price"/>
+                <field name="discount"/>
+                <field name="winner"/>
+                <field name="contest_id" invisible="1"/>
+                <field name="price_out_of_range" invisible="1"/>
+            </tree>
+        </field>
+        <field name="model">contest</field>
+        <field name="priority">32</field>
+        <field name="name">Editable buttom tree view for Competitors</field>
+        <field name="type">tree</field>
+    </record>
+
     <record id="act_contest_2_competitors" model="ir.actions.act_window">
         <field name="name">Competitors</field>
         <field name="res_model">contest.competitor</field>
@@ -149,38 +181,6 @@
         <field name="model">contest.competitor</field>
         <field name="name">Default form view for Competitor</field>
         <field name="type">form</field>
-    </record>
-
-    <record id="competitor_tree" model="ir.ui.view">
-        <field name="arch" type="xml">
-            <tree>
-                <field name="customer_id"/>
-                <field name="contest_id"/>
-                <field name="partner_id"/>
-                <field name="price"/>
-                <field name="winner"/>
-            </tree>
-        </field>
-        <field name="model">contest.competitor</field>
-        <field name="name">Default tree view for Competitor</field>
-        <field name="type">tree</field>
-    </record>
-
-    <record id="competitor_edit_bottom_tree" model="ir.ui.view">
-        <field name="arch" type="xml">
-            <tree editable="bottom" decoration-danger="price_out_of_range == True">
-                <field name="partner_id"/>
-                <field name="price"/>
-                <field name="discount"/>
-                <field name="winner"/>
-                <field name="contest_id" invisible="1"/>
-                <field name="price_out_of_range" invisible="1"/>
-            </tree>
-        </field>
-        <field name="model">contest</field>
-        <field name="priority">32</field>
-        <field name="name">Editable buttom tree view for Competitors</field>
-        <field name="type">tree</field>
     </record>
 
     <record id="contest_category_tree" model="ir.ui.view">
