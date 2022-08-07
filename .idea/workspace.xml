@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchase_price_update =&gt; TARGET PRICE">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="partner_credential_equipment deleted, functionality in other modules">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partner_credentials_equipment/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/partner_credentials_equipment/__manifest__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/partner_credentials_equipment/models/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/partner_credentials_equipment/models/maintenance_equipment.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/partner_credentials_equipment/models/partner_credential_equipment.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/partner_credentials_equipment/views/views.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contest/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contest/views/views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,13 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00287" summary="project_roadmap o2m from models">
-      <created>1656259314341</created>
-      <option name="number" value="00287" />
-      <option name="presentableId" value="LOCAL-00287" />
-      <option name="project" value="LOCAL" />
-      <updated>1656259314341</updated>
     </task>
     <task id="LOCAL-00288" summary="project_roadmap o2m from models">
       <created>1656259456058</created>
@@ -411,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659696819357</updated>
     </task>
-    <option name="localTasksCounter" value="336" />
+    <task id="LOCAL-00336" summary="partner_credential_equipment deleted, functionality in other modules">
+      <created>1659829515087</created>
+      <option name="number" value="00336" />
+      <option name="presentableId" value="LOCAL-00336" />
+      <option name="project" value="LOCAL" />
+      <updated>1659829515087</updated>
+    </task>
+    <option name="localTasksCounter" value="337" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -427,7 +422,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="portal user in employees" />
     <MESSAGE value="helpdesk_credential v0" />
     <MESSAGE value="time type not required" />
     <MESSAGE value="task not required" />
@@ -452,7 +446,8 @@
     <MESSAGE value="purchase_price_update price_control =&gt; subtotal" />
     <MESSAGE value="purchase_price_update price_control =&gt; MESSAGE" />
     <MESSAGE value="purchase_price_update =&gt; TARGET PRICE" />
-    <option name="LAST_COMMIT_MESSAGE" value="purchase_price_update =&gt; TARGET PRICE" />
+    <MESSAGE value="partner_credential_equipment deleted, functionality in other modules" />
+    <option name="LAST_COMMIT_MESSAGE" value="partner_credential_equipment deleted, functionality in other modules" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
