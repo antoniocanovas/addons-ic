@@ -88,7 +88,7 @@
                 Create a new competitor!
             </p>
         </field>
-        <field name="view_id" ref="contest.competitor_edit_bottom_tree"/>
+        <field name="view_id" ref="crm_contest.competitor_edit_bottom_tree"/>
         <field name="view_mode">tree,form</field>
     </record>
 
@@ -99,7 +99,7 @@
             <form>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" type="action" name="%(contest.act_contest_2_competitors)d" icon="fa-usd">
+                        <button class="oe_stat_button" type="action" name="%(crm_contest.act_contest_2_competitors)d" icon="fa-usd">
                             <field string="Competitors" name="competitor_count" widget="statinfo"/>
                         </button>
                     </div>
