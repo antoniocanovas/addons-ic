@@ -66,7 +66,15 @@
                                 <field name="competitor_num"/>
                                 <field name="winner_price"/>
                             </group>
-                            <field name="competitor_ids"/>
+                            <field name="competitor_ids">
+                                <tree editable="bottom" decoration-danger="price_out_of_range == True">
+                                    <field name="partner_id"/>
+                                    <field name="price"/>
+                                    <field name="discount"/>
+                                    <field name="winner"/>
+                                    <field name="price_out_of_range" invisible="1"/>
+                                </tree>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>

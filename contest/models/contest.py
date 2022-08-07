@@ -10,6 +10,7 @@ class Contest(models.Model):
     _description = 'Contests'
 
     name = fields.Char(string='Name', required=True)
+    active = fields.Boolean('Active', default=True)
     advise_url = fields.Char(string='URL')
     customer_id = fields.Many2one('res.partner', required=True)
     date = fields.Datetime(string='Publication date')
@@ -30,7 +31,7 @@ class Contest(models.Model):
     max_price = fields.Float(string='Max. Price')
     winner_price = fields.Float(string='Adjudication')
 
-    lowerprice_allowed = fields.Boolean(string='Lowerprice')
+    lowerprice_allowed = fields.Boolean(string='Lower price allowed')
     cost_evaluation = fields.Float(string='Economical Evaluation')
     project_evaluation = fields.Float(string='Technical Evaluation')
 

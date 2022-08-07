@@ -11,6 +11,7 @@ class ContestCompetitor(models.Model):
 
     partner_id = fields.Many2one('res.partner', string='Competitor', required=True)
     contest_id = fields.Many2one('contest', required=True)
+    active = fields.Boolean('Active', related='contest_id.active')
     opportunity_id = fields.Many2one('crm.lead', related='contest_id.opportunity_id')
     customer_id = fields.Many2one('res.partner', related='contest_id.customer_id')
     type = fields.Many2one('contest.type', related='contest_id.type_id')
