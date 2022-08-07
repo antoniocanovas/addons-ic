@@ -76,6 +76,7 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <!--
     <menuitem
             action="action_contest"
             id="menu_contest"
@@ -84,6 +85,16 @@
             parent_id="crm.crm_menu_root"
             web_icon="contest,static/description/contest.png"
     />
+    -->
+
+    <record id="menu_contest" model="ir.ui.menu">
+        <field name="action" ref="action_contest"/>
+        <field name="active" eval="True"/>
+        <field name="name">Contest</field>
+        <field name="parent_id" ref="crm.crm_menu_root"/>
+        <field name="sequence">1</field>
+        <field name="web_icon" eval="False"/>
+    </record>
 
     <record id="menu_main_contest" model="ir.ui.menu">
         <field name="action" ref="action_contest"/>
