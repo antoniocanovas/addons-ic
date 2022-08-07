@@ -81,7 +81,7 @@
             id="menu_contest"
             name="Contest"
             sequence="1"
-            web_icon="partner_credentials,static/description/contest.png"
+            web_icon="contest,static/description/contest.png"
     />
 
     <record id="menu_main_contest" model="ir.ui.menu">

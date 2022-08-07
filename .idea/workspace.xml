@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="contest rev">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contest/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/contest/__manifest__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contest/views/view_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contest/views/view_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contest/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contest/views/views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partner_credentials/views/view_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/partner_credentials/views/view_menu.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +48,7 @@
       <recent name="$PROJECT_DIR$/project_roadmap/views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/contest/static/description" />
       <recent name="$PROJECT_DIR$/project_roadmap/static/description" />
       <recent name="$PROJECT_DIR$/realstate/static/description" />
       <recent name="$PROJECT_DIR$/realstate/static/description/icon.png" />
@@ -65,13 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00289" summary="project_roadmap o2m from models">
-      <created>1656260299731</created>
-      <option name="number" value="00289" />
-      <option name="presentableId" value="LOCAL-00289" />
-      <option name="project" value="LOCAL" />
-      <updated>1656260299731</updated>
     </task>
     <task id="LOCAL-00290" summary="project_roadmap o2m from models">
       <created>1656261042705</created>
@@ -409,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659860639829</updated>
     </task>
-    <option name="localTasksCounter" value="338" />
+    <task id="LOCAL-00338" summary="contest rev">
+      <created>1659862237150</created>
+      <option name="number" value="00338" />
+      <option name="presentableId" value="LOCAL-00338" />
+      <option name="project" value="LOCAL" />
+      <updated>1659862237150</updated>
+    </task>
+    <option name="localTasksCounter" value="339" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
