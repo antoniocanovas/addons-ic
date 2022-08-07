@@ -168,7 +168,6 @@
 
     <record id="competitor_edit_bottom_tree" model="ir.ui.view">
         <field name="arch" type="xml">
-        <field name="competitor_ids">
             <tree editable="bottom" decoration-danger="price_out_of_range == True">
                 <field name="partner_id"/>
                 <field name="price"/>
