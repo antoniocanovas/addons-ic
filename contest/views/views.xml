@@ -106,7 +106,7 @@
                     <h1>
                         <field name="name"/>
                     </h1>
-                    <group name="General_data" col="4">
+                    <group name="General_data">
                         <group>
                             <field name="customer_id"/>
                             <field name="opportunity_id" domain="[('partner_id', '=', customer_id)]"/>
