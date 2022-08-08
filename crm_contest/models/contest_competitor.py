@@ -18,8 +18,10 @@ class ContestCompetitor(models.Model):
     category = fields.Many2one('contest.category', related='contest_id.category_id')
     contract = fields.Many2one('contest.contract.type', related='contest_id.contract_type')
 
-    price = fields.Float('Price')
+    price = fields.Monetary('Price')
     note = fields.Text('Note')
+    company_id = fields.Many2one('res.company', string='Company')
+    currency_id = fields.Many2one('res.currency', store=True, default=1)
 
     @api.depends('contest_id.winner_id')
     def get_winner(self):

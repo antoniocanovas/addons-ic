@@ -21,6 +21,7 @@ class Contest(models.Model):
     advise_file = fields.Binary(string='Advise')
     competitor_num = fields.Integer(string='Competitors')
 
+    user_id = fields.Many2one('res.users', related='opportunity_id.user_id', string='Salesperson')
     competitor_ids = fields.One2many('contest.competitor', 'contest_id', string='Competitors')
     winner_id = fields.Many2one('contest.competitor', string='Winner')
 
@@ -28,8 +29,11 @@ class Contest(models.Model):
     category_id = fields.Many2one('contest.category', string='Category')
     contract_type = fields.Many2one('contest.contract.type', string='Contract')
 
-    max_price = fields.Float(string='Max. Price')
-    winner_price = fields.Float(string='Adjudication')
+    max_price = fields.Monetary(string='Max. Price')
+    winner_price = fields.Monetary(string='Adjudication', related='winner_id.price')
+    min_price = fields.Monetary('Min.Price')
+    company_id = fields.Many2one('res.company', string='Company')
+    currency_id = fields.Many2one('res.currency', store=True, default=1)
 
     lowerprice_allowed = fields.Boolean(string='Lower price allowed')
     cost_evaluation = fields.Float(string='Economical Evaluation')
@@ -37,8 +41,6 @@ class Contest(models.Model):
 
     note = fields.Text(string='Note')
 
-    min_price = fields.Float('Min.Price')
-    user_id = fields.Many2one('res.users', related='opportunity_id.user_id', string='Salesperson')
 
     cloud_doc = fields.Char('Cloud Doc')
     cloud_folder = fields.Char('Cloud Folder')
