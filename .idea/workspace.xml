@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug purchase_price_update div 0">
-      <change beforePath="$PROJECT_DIR$/crm_contest/models/contest.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/models/contest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crm_contest/models/contest_category.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/models/contest_category.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crm_contest/models/contest_competitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/models/contest_competitor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crm_contest/models/contest_contract_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/models/contest_contract_type.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crm_contest/models/contest_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/models/contest_type.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crm_contest/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/crm_contest/views/views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,17 +35,17 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_procedure_sale" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/crm_contest" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/crm_contest" />
       <recent name="$PROJECT_DIR$/project_procedure_sale" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/project_procedure/models" />
       <recent name="$PROJECT_DIR$/project_roadmap/models" />
-      <recent name="$PROJECT_DIR$/project_roadmap/views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/contest/static/description" />
@@ -67,13 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00317" summary="project_procedure stages new created by default">
-      <created>1658682548512</created>
-      <option name="number" value="00317" />
-      <option name="presentableId" value="LOCAL-00317" />
-      <option name="project" value="LOCAL" />
-      <updated>1658682548512</updated>
     </task>
     <task id="LOCAL-00318" summary="project_procedure stages new created by default">
       <created>1658682717766</created>
@@ -411,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659955960266</updated>
     </task>
-    <option name="localTasksCounter" value="366" />
+    <task id="LOCAL-00366" summary="bug purchase_price_update div 0">
+      <created>1659961020356</created>
+      <option name="number" value="00366" />
+      <option name="presentableId" value="LOCAL-00366" />
+      <option name="project" value="LOCAL" />
+      <updated>1659961020356</updated>
+    </task>
+    <option name="localTasksCounter" value="367" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
