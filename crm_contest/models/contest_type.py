@@ -9,4 +9,5 @@ class ContestType(models.Model):
     _description = 'Types of contest'
 
     name = fields.Char(string='Name')
+    company_id = fields.Many2one('res.company', required=True, readonly=True, default=lambda self: self.env.company)
 

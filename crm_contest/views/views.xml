@@ -10,6 +10,8 @@
                 <field name="partner_id"/>
                 <field name="price"/>
                 <field name="winner"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="currency_id" invisible="1"/>
             </tree>
         </field>
         <field name="model">contest.competitor</field>
@@ -26,6 +28,7 @@
                 <field name="winner"/>
                 <field name="contest_id" invisible="1"/>
                 <field name="price_out_of_range" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
             </tree>
         </field>
         <field name="model">contest.competitor</field>
@@ -61,9 +64,11 @@
                         <group name="contest_competitor_details">
                             <field name="winner"/>
                             <field name="price_out_of_range"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
                         </group>
                     </group>
                     <field name="note" placeholder="Details about competitor proposal ..."/>
+                    <field name="currency_id" invisible="1"/>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
@@ -137,6 +142,7 @@
                                     <field name="contract_type" string="Contract type"/>
                                     <field name="contractor"/>
                                     <field name="place"/>
+                                    <field name="company_id" groups="base.group_multi_company"/>
                                 </group>
                                 <group>
                                     <field name="advise_url" widget="url"/>
@@ -144,6 +150,7 @@
                                     <field name="cost_evaluation" string="Economical %"/>
                                     <field name="project_evaluation" string="Project %"/>
                                     <field name="lowerprice_allowed"/>
+                                    <field name="currency_id" invisible="1"/>
                                 </group>
                             </group>
                         </page>
@@ -169,6 +176,8 @@
                 <field name="user_id"/>
                 <field name="max_price"/>
                 <field name="date_limit"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="currency_id" invisible="1"/>
             </tree>
         </field>
         <field name="model">contest</field>
@@ -182,6 +191,7 @@
         <field name="arch" type="xml">
             <tree name="Contest_category_tree" string="Contest Category" editable="bottom">
                 <field name="name" required="1"/>
+                <field name="company_id" groups="base.group_multi_company"/>
             </tree>
         </field>
         <field name="model">contest.category</field>
@@ -194,6 +204,7 @@
         <field name="arch" type="xml">
             <tree name="Contest_contract_type_tree" string="Contest Contracts" editable="bottom">
                 <field name="name" required="1"/>
+                <field name="company_id" groups="base.group_multi_company"/>
             </tree>
         </field>
         <field name="model">contest.contract.type</field>
@@ -206,6 +217,7 @@
         <field name="arch" type="xml">
             <tree name="Contest_type_tree" string="Contest Types" editable="bottom">
                 <field name="name" required="1"/>
+                <field name="company_id" groups="base.group_multi_company"/>
             </tree>
         </field>
         <field name="model">contest.type</field>

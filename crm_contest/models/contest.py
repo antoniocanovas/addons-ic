@@ -32,7 +32,7 @@ class Contest(models.Model):
     max_price = fields.Monetary(string='Max. Price')
     winner_price = fields.Monetary(string='Adjudication', related='winner_id.price')
     min_price = fields.Monetary('Min.Price')
-    company_id = fields.Many2one('res.company', string='Company')
+    company_id = fields.Many2one('res.company', required=True, readonly=True, default=lambda self: self.env.company)
     currency_id = fields.Many2one('res.currency', store=True, default=1)
 
     lowerprice_allowed = fields.Boolean(string='Lower price allowed')
