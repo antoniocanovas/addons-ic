@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="contest rev" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug purchase_price_update div 0">
+      <change beforePath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,13 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00314" summary="project_procedure stage to new tasks">
-      <created>1658681588177</created>
-      <option name="number" value="00314" />
-      <option name="presentableId" value="LOCAL-00314" />
-      <option name="project" value="LOCAL" />
-      <updated>1658681588177</updated>
     </task>
     <task id="LOCAL-00315" summary="project_procedure stage to new tasks">
       <created>1658681720964</created>
@@ -404,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659921052749</updated>
     </task>
-    <option name="localTasksCounter" value="363" />
+    <task id="LOCAL-00363" summary="bug purchase_price_update div 0">
+      <created>1659955235954</created>
+      <option name="number" value="00363" />
+      <option name="presentableId" value="LOCAL-00363" />
+      <option name="project" value="LOCAL" />
+      <updated>1659955235954</updated>
+    </task>
+    <option name="localTasksCounter" value="364" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -420,7 +422,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="task not required" />
     <MESSAGE value="pre offer" />
     <MESSAGE value="Issue pos =&gt; wup" />
     <MESSAGE value="pos error sale.order singleton" />
@@ -445,7 +446,8 @@
     <MESSAGE value="partner_credential_equipment deleted, functionality in other modules" />
     <MESSAGE value="wup_discount review" />
     <MESSAGE value="contest rev" />
-    <option name="LAST_COMMIT_MESSAGE" value="contest rev" />
+    <MESSAGE value="bug purchase_price_update div 0" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug purchase_price_update div 0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
