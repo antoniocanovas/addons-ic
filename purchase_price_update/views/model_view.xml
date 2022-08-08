@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <xpath expr="//notebook/page[@name='products']/field[@name='order_line']/tree/field[@name='taxes_id']" position="before">
                 <field name="standard_price" widget="monetary" style="color: purple;font-weight: bold;"/>
-                <button name="update_product_standard_price" attrs="{'invisible':[('price_control','=',True)]}" string="" type="object" icon="fa-share-square-o"/>
+                <button name="update_product_standard_price" attrs="{'invisible':['|',('id','=',False),('price_control','=',True)]}" string="" type="object" icon="fa-share-square-o"/>
                 <field name="price_control" invisible="1"/>
             </xpath>
         </field>
