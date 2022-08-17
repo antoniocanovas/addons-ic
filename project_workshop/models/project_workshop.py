@@ -20,7 +20,7 @@ class ProjectWorkshop(models.Model):
     project_partner_id = fields.Many2one('res.partner', related='project_id.partner_id', string='Cliente', store=True)
     is_new = fields.Boolean("Nuevo")
     pre_offer = fields.Boolean("Presupuestar antes")
-    warranty = fields.Boolean("En garantía")
+    warranty = fields.Boolean("Garantía o propio")
     license = fields.Char('Matrícula')
     partner_id = fields.Many2one('res.partner', 'Cliente')
     model = fields.Char('Marca y modelo')

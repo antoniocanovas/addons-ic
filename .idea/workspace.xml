@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug purchase_price_update div 0">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="contest es_es.po">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/models/product_vehicle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_workshop/models/project_workshop.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_workshop/models/project_workshop.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +50,7 @@
       <recent name="$PROJECT_DIR$/project_roadmap/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/crm_contest/i18n" />
       <recent name="$PROJECT_DIR$/contest/static/description" />
       <recent name="$PROJECT_DIR$/project_roadmap/static/description" />
       <recent name="$PROJECT_DIR$/realstate/static/description" />
@@ -62,13 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00318" summary="project_procedure stages new created by default">
-      <created>1658682717766</created>
-      <option name="number" value="00318" />
-      <option name="presentableId" value="LOCAL-00318" />
-      <option name="project" value="LOCAL" />
-      <updated>1658682717766</updated>
     </task>
     <task id="LOCAL-00319" summary="project_procedure stages new created by default">
       <created>1658683132083</created>
@@ -406,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659961020356</updated>
     </task>
-    <option name="localTasksCounter" value="367" />
+    <task id="LOCAL-00367" summary="contest es_es.po">
+      <created>1659976696802</created>
+      <option name="number" value="00367" />
+      <option name="presentableId" value="LOCAL-00367" />
+      <option name="project" value="LOCAL" />
+      <updated>1659976696802</updated>
+    </task>
+    <option name="localTasksCounter" value="368" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -422,7 +425,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="pre offer" />
     <MESSAGE value="Issue pos =&gt; wup" />
     <MESSAGE value="pos error sale.order singleton" />
     <MESSAGE value="project_phase review" />
@@ -447,7 +449,8 @@
     <MESSAGE value="wup_discount review" />
     <MESSAGE value="contest rev" />
     <MESSAGE value="bug purchase_price_update div 0" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug purchase_price_update div 0" />
+    <MESSAGE value="contest es_es.po" />
+    <option name="LAST_COMMIT_MESSAGE" value="contest es_es.po" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

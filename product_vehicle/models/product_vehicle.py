@@ -60,7 +60,7 @@ class ProductTemplate(models.Model):
 
     vehicle_supplier_id = fields.Many2one('res.partner', string="Proveedor")
     vehicle_customer_id = fields.Many2one('res.partner', string="Comprador")
-    vehicle_legal_customer_id = fields.Many2one('res.partner', string="Representante legal")
+    vehicle_legal_customer_id = fields.Many2one('res.partner', string="Represent. legal")
     vehicle_use = fields.Char(string="Uso anterior")
     vehicle_state = fields.Selection(selection=VEHICLE_STATE, string="Estado")
 
