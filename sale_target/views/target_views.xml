@@ -18,31 +18,45 @@
                                 <field name="sale_vs_target" widget="gauge"
                                        options="{'max_field':'target'}" nolabel="1"
                                        attrs="{'invisible':[('target_lt_sale','=',True)]}"
-                                       help="You are under target, this is your pending roadmap."/>
+                                       help="You are under target, this is your pending goal."
+                                />
                                 <field name="sale_over_target" widget="gauge"
                                        options="{'max_field':'target_multiple'}" nolabel="1"
                                        attrs="{'invisible':[('target_lt_sale','=',False)]}"
-                                       help="Congrations !! Your target is done and exceeded !!"/>
+                                       help="Congrations !! Your target is done and exceeded !!"
+                                />
 
                                 <field name="gap_vs_lead" string="Gap Vs Leads" widget="gauge"
                                        options="{'max_field':'lead_amount'}" nolabel="1"
-                                       attrs="{'invisible':['|',('lead_lt_gap','=',True),('target_lt_sale','=',True)]}"/>
+                                       attrs="{'invisible':['|',('lead_lt_gap','=',True),('target_lt_sale','=',True)]}"
+                                       help="Your pending sales for target, compared with your lead amount. You must achieve at least your GAP."
+                                />
                                 <field name="lead_vs_gap" string="Leads vs Gap" widget="gauge"
                                        options="{'max_field':'target_gap'}" nolabel="1"
-                                       attrs="{'invisible':['|',('lead_lt_gap','=',False),('target_lt_sale','=',True)]}"/>
+                                       attrs="{'invisible':['|',('lead_lt_gap','=',False),('target_lt_sale','=',True)]}"
+                                       help="Amount in leads compared with your GAP. YOU NEED MORE LEADS !!"
+                                />
                                 <field name="lead_over_target" string="Adtional Leads" widget="gauge"
                                        options="{'max_field':'lead_over_target'}" nolabel="1"
-                                       attrs="{'invisible':[('target_lt_sale','=',False)]}"/>
+                                       attrs="{'invisible':[('target_lt_sale','=',False)]}"
+                                       help="Congrations !! You have got your target, and still have more leads to close."
+                                />
 
                                 <field name="gap_vs_quotation" string="Gap Vs Quotations" widget="gauge"
                                        options="{'max_field':'quotation_amount'}" nolabel="1"
-                                       attrs="{'invisible':['|',('quotation_lt_gap','=',True),('target_lt_sale','=',True)]}"/>
+                                       attrs="{'invisible':['|',('quotation_lt_gap','=',True),('target_lt_sale','=',True)]}"
+                                       help="GAP to get target vs amount in quotations. You must to achieve at lest your GAP."
+                                />
                                 <field name="quotation_vs_gap" string="Quotations vs Gap" widget="gauge"
                                        options="{'max_field':'target_gap'}" nolabel="1"
-                                       attrs="{'invisible':['|',('quotation_lt_gap','=',False),('target_lt_sale','=',True)]}"/>
+                                       attrs="{'invisible':['|',('quotation_lt_gap','=',False),('target_lt_sale','=',True)]}"
+                                       help="Amount in quotations smaller than GAP. YOU NEED MORE QUOTATIONS !!"
+                                />
                                 <field name="quotation_over_target" string="Adtional Leads" widget="gauge"
                                        options="{'max_field':'quotation_over_target'}" nolabel="1"
-                                       attrs="{'invisible':[('target_lt_sale','=',False)]}"/>
+                                       attrs="{'invisible':[('target_lt_sale','=',False)]}"
+                                       help="Congratulations !! You have achieve your goal and still have open quotatinos."
+                                />
 
                             </group>
                             <group name="target_magins">

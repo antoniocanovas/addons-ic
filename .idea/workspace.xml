@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="workshop rename field">
-      <change afterPath="$PROJECT_DIR$/sale_target/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_target/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_target/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_target/data/server_action.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_target/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_target/models/sale_target.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_target/models/sale_target_quarter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_target/security/ir.model.access.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_target/static/description/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_target/views/target_views.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_target/views/views_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale_target">
+      <change beforePath="$PROJECT_DIR$/sale_target/views/target_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_target/views/target_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,9 +41,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/crm_contest" />
       <recent name="$PROJECT_DIR$/project_procedure_sale" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/project_procedure/models" />
       <recent name="$PROJECT_DIR$/project_roadmap/models" />
     </key>
@@ -74,13 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00320" summary="helpdesk_credential services">
-      <created>1659450828647</created>
-      <option name="number" value="00320" />
-      <option name="presentableId" value="LOCAL-00320" />
-      <option name="project" value="LOCAL" />
-      <updated>1659450828647</updated>
     </task>
     <task id="LOCAL-00321" summary="helpdesk_credential services">
       <created>1659451190378</created>
@@ -418,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660701925771</updated>
     </task>
-    <option name="localTasksCounter" value="369" />
+    <task id="LOCAL-00369" summary="sale_target">
+      <created>1660957850151</created>
+      <option name="number" value="00369" />
+      <option name="presentableId" value="LOCAL-00369" />
+      <option name="project" value="LOCAL" />
+      <updated>1660957850152</updated>
+    </task>
+    <option name="localTasksCounter" value="370" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -434,7 +423,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="pos error sale.order singleton" />
     <MESSAGE value="project_phase review" />
     <MESSAGE value="project_phase 2 project_roadmap" />
     <MESSAGE value="project_roadmap hidden=&gt; activ e" />
@@ -459,7 +447,8 @@
     <MESSAGE value="bug purchase_price_update div 0" />
     <MESSAGE value="contest es_es.po" />
     <MESSAGE value="workshop rename field" />
-    <option name="LAST_COMMIT_MESSAGE" value="workshop rename field" />
+    <MESSAGE value="sale_target" />
+    <option name="LAST_COMMIT_MESSAGE" value="sale_target" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
