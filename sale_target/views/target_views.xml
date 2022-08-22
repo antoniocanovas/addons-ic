@@ -117,6 +117,7 @@
         <field name="arch" type="xml">
             <tree string="Targets">
                 <field name="name"/>
+                <field name="target" optional="hide"/>
                 <field name="team_id" optional="hide"/>
                 <field name="lead_count" sum="Leads" optional="show"/>
                 <field name="lead_amount" sum="Possible" widget="monetary" optional="show"/>

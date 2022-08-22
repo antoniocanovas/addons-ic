@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale_target">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale_target helps">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sale_target/views/target_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_target/views/target_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00321" summary="helpdesk_credential services">
-      <created>1659451190378</created>
-      <option name="number" value="00321" />
-      <option name="presentableId" value="LOCAL-00321" />
-      <option name="project" value="LOCAL" />
-      <updated>1659451190378</updated>
     </task>
     <task id="LOCAL-00322" summary="wup details">
       <created>1659652899185</created>
@@ -407,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660957850152</updated>
     </task>
-    <option name="localTasksCounter" value="370" />
+    <task id="LOCAL-00370" summary="sale_target helps">
+      <created>1660959552105</created>
+      <option name="number" value="00370" />
+      <option name="presentableId" value="LOCAL-00370" />
+      <option name="project" value="LOCAL" />
+      <updated>1660959552105</updated>
+    </task>
+    <option name="localTasksCounter" value="371" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -423,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="project_phase review" />
     <MESSAGE value="project_phase 2 project_roadmap" />
     <MESSAGE value="project_roadmap hidden=&gt; activ e" />
     <MESSAGE value="project_roadmap menu" />
@@ -448,7 +448,8 @@
     <MESSAGE value="contest es_es.po" />
     <MESSAGE value="workshop rename field" />
     <MESSAGE value="sale_target" />
-    <option name="LAST_COMMIT_MESSAGE" value="sale_target" />
+    <MESSAGE value="sale_target helps" />
+    <option name="LAST_COMMIT_MESSAGE" value="sale_target helps" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
