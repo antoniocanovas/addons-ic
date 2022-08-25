@@ -83,6 +83,36 @@
         <field name="type">tree</field>
     </record>
 
+    <record id="project_roadmap_my_phases_tree" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <tree name="project_roadmap_my_phases"
+                  decoration-success="active==False"
+                  decoration-danger="active==True and date_limit &lt; context_today().strftime('%Y-%m-%d')"
+                  default_order="active asc, priority asc">
+                <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
+                <field name="project_id" optional="show"/>
+                <field name="display_name"/>
+                <field name="priority" optional="hide"/>
+                <field name="type" invisible="1"/>
+                <field name="user_id" widget="many2one_avatar_user"/>
+                <field name="activity_ids" widget="list_activity" optional="show"/>
+                <field name="date_limit"/>
+                <field name="state"/>
+                <field name="active" string="Active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">project.roadmap</field>
+        <field name="name">Default project roadmap tree view</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
+    </record>
+
     <record id="project_roadmap_group_by_project_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
@@ -228,7 +258,7 @@
         <field name="usage" eval="False"/>
         <field name="view_mode">tree,form</field>
         <field name="view_ids" eval="[(5, 0, 0),
-            (0, 0, {'view_mode': 'tree', 'view_id': ref('project_roadmap_group_by_project_tree')}),]"/>
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('project_roadmap_my_phases_tree')}),]"/>
     </record>
 
 </odoo>
