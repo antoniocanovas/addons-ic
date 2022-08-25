@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale_target helps">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale_target target in tree view">
+      <change afterPath="$PROJECT_DIR$/project_roadmap/security/ir_rule.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_target/views/target_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_target/views/target_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,17 +36,17 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_roadmap/security" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/project_roadmap/security" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/crm_contest" />
       <recent name="$PROJECT_DIR$/project_procedure_sale" />
       <recent name="$PROJECT_DIR$/project_procedure/models" />
-      <recent name="$PROJECT_DIR$/project_roadmap/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/crm_contest/i18n" />
@@ -64,20 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00322" summary="wup details">
-      <created>1659652899185</created>
-      <option name="number" value="00322" />
-      <option name="presentableId" value="LOCAL-00322" />
-      <option name="project" value="LOCAL" />
-      <updated>1659652899185</updated>
-    </task>
-    <task id="LOCAL-00323" summary="purchase_price_update price_control =&gt; subtotal">
-      <created>1659689258427</created>
-      <option name="number" value="00323" />
-      <option name="presentableId" value="LOCAL-00323" />
-      <option name="project" value="LOCAL" />
-      <updated>1659689258427</updated>
     </task>
     <task id="LOCAL-00324" summary="purchase_price_update price_control =&gt; MESSAGE">
       <created>1659690761893</created>
@@ -408,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1660959552105</updated>
     </task>
-    <option name="localTasksCounter" value="371" />
+    <task id="LOCAL-00371" summary="sale_target helps">
+      <created>1661155882438</created>
+      <option name="number" value="00371" />
+      <option name="presentableId" value="LOCAL-00371" />
+      <option name="project" value="LOCAL" />
+      <updated>1661155882442</updated>
+    </task>
+    <task id="LOCAL-00372" summary="sale_target target in tree view">
+      <created>1661156079889</created>
+      <option name="number" value="00372" />
+      <option name="presentableId" value="LOCAL-00372" />
+      <option name="project" value="LOCAL" />
+      <updated>1661156079889</updated>
+    </task>
+    <option name="localTasksCounter" value="373" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="project_phase 2 project_roadmap" />
     <MESSAGE value="project_roadmap hidden=&gt; activ e" />
     <MESSAGE value="project_roadmap menu" />
     <MESSAGE value="project_roadmap chatter" />
@@ -449,7 +448,8 @@
     <MESSAGE value="workshop rename field" />
     <MESSAGE value="sale_target" />
     <MESSAGE value="sale_target helps" />
-    <option name="LAST_COMMIT_MESSAGE" value="sale_target helps" />
+    <MESSAGE value="sale_target target in tree view" />
+    <option name="LAST_COMMIT_MESSAGE" value="sale_target target in tree view" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
