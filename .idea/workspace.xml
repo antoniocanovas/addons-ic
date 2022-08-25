@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="rules roadmap" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="search my">
+      <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,13 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00336" summary="partner_credential_equipment deleted, functionality in other modules">
-      <created>1659829515087</created>
-      <option name="number" value="00336" />
-      <option name="presentableId" value="LOCAL-00336" />
-      <option name="project" value="LOCAL" />
-      <updated>1659829515087</updated>
     </task>
     <task id="LOCAL-00337" summary="contest rev">
       <created>1659860639829</created>
@@ -405,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661447092854</updated>
     </task>
-    <option name="localTasksCounter" value="385" />
+    <task id="LOCAL-00385" summary="search my">
+      <created>1661448654571</created>
+      <option name="number" value="00385" />
+      <option name="presentableId" value="LOCAL-00385" />
+      <option name="project" value="LOCAL" />
+      <updated>1661448654571</updated>
+    </task>
+    <option name="localTasksCounter" value="386" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -421,7 +423,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="project_roadmap chatter" />
     <MESSAGE value="project_roadmap favorite" />
     <MESSAGE value="project_roadmap o2m from models" />
     <MESSAGE value="project_roadmap o2m leads" />
@@ -446,7 +447,8 @@
     <MESSAGE value="sale_target target in tree view" />
     <MESSAGE value="rule roadmap" />
     <MESSAGE value="rules roadmap" />
-    <option name="LAST_COMMIT_MESSAGE" value="rules roadmap" />
+    <MESSAGE value="search my" />
+    <option name="LAST_COMMIT_MESSAGE" value="search my" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
