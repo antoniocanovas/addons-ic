@@ -4,7 +4,7 @@
     <record id="group_roadmap_user" model="res.groups">
         <field name="name">User</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
         <!-- <field name="rule_groups" eval="[(4, ref('roadmap_user'))]"/> -->
         <field name="category_id" ref="module_category_roadmap"/>
     </record>
@@ -12,7 +12,7 @@
     <record id="group_roadmap_manager" model="res.groups">
         <field name="name">Manager</field>
         <field name="implied_ids" eval="[(4, ref('group_roadmap_user'))]"/>
-        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
         <!-- <field name="rule_groups" eval="[(4, ref('roadmap_manager'))]"/> -->
         <field name="category_id" ref="module_category_roadmap"/>
     </record>
