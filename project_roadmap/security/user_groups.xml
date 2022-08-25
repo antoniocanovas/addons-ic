@@ -6,6 +6,7 @@
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         <field name="users" eval="[(4, ref('base.user_root'))]"/>
         <!-- <field name="rule_groups" eval="[(4, ref('base.res_company_rule_erp_manager'))]"/> -->
+        <field name="category_id" ref="module_category_roadmap"/>
     </record>
 
     <record id="roadmap_user" model="res.groups">
@@ -13,6 +14,7 @@
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         <field name="users" eval="[(4, ref('base.user_root'))]"/>
         <field name="rule_groups" eval="[(4, ref('roadmap_manager'))]"/>
+        <field name="category_id" ref="module_category_roadmap"/>
     </record>
 
 </odoo>

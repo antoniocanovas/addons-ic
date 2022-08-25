@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="rules roadmap">
-      <change afterPath="$PROJECT_DIR$/project_roadmap/security/user_groups.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_roadmap/data/ir_module_category_data.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_roadmap/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_roadmap/security/user_groups.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/security/user_groups.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,17 +37,17 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_roadmap/security" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_roadmap/data" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/project_roadmap/data" />
       <recent name="$PROJECT_DIR$/project_roadmap/security" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/crm_contest" />
       <recent name="$PROJECT_DIR$/project_procedure_sale" />
-      <recent name="$PROJECT_DIR$/project_procedure/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/crm_contest/i18n" />
@@ -64,13 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00327" summary="purchase_price_update =&gt; TARGET PRICE">
-      <created>1659695298351</created>
-      <option name="number" value="00327" />
-      <option name="presentableId" value="LOCAL-00327" />
-      <option name="project" value="LOCAL" />
-      <updated>1659695298351</updated>
     </task>
     <task id="LOCAL-00328" summary="purchase_price_update =&gt; TARGET PRICE">
       <created>1659695316969</created>
@@ -408,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661443546966</updated>
     </task>
-    <option name="localTasksCounter" value="376" />
+    <task id="LOCAL-00376" summary="rules roadmap">
+      <created>1661444414596</created>
+      <option name="number" value="00376" />
+      <option name="presentableId" value="LOCAL-00376" />
+      <option name="project" value="LOCAL" />
+      <updated>1661444414596</updated>
+    </task>
+    <option name="localTasksCounter" value="377" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
