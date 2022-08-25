@@ -124,17 +124,13 @@
                 <field name="project_id"/>
                 <field name="partner_id"/>
                 <field name="user_id" string="Responsible"/>
-                <filter string="My roadmaps" name="my_phases" domain="[('user_id', '=', uid)]"/>
-
+                <filter string="My phases" name="my_phases" domain="[('user_id', '=', uid)]"/>
                 <filter string="Starred" name="starred" domain="[('is_favorite', '=', True)]"/>
                 <separator/>
                 <filter string="Archived too" name="active" domain="[('active', 'in', [True,False])]"/>
                 <separator/>
                 <filter string="Unread Messages" name="message_needaction" domain="[('message_needaction', '=', True)]"/>
                 <separator/>
-                <filter invisible="1" string="Mine" name="my_roadmap_by_project"
-                        domain="[('user_id', '=', uid)]"
-                        context="{'group_by': 'project_id'}"/>
 <!--
                 <filter string="Archived" name="active" domain="[('active', '=', False)]"/>
                 <filter string="Active" name="archived" domain="[('active', '=', True)]"/>
@@ -144,7 +140,7 @@
 -->
 
                 <group expand="0" string="Group By">
-                    <filter string="By Project" name="project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Project" name="project" context="{'group_by': 'project_id'}"/>
                     <filter string="Responsible" name="user" context="{'group_by': 'user_id'}"/>
                     <filter string="Date limit" name="date_limit" context="{'group_by': 'date_limit'}"/>
                 </group>
@@ -219,12 +215,12 @@
     <record id="action_view_project_roadmap_mine" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
-        <field name="context">{'search_default_my_roadmap_by_project':1}</field>
+        <field name="context">{'search_default_my_phases':1}</field>
         <field name="domain">[]</field>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="help"></field>
         <field name="limit">80</field>
-        <field name="name">My</field>
+        <field name="name">My roadmap phases</field>
         <field name="res_model">project.roadmap</field>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
