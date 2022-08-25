@@ -17,7 +17,7 @@
         'web_widget_open_tab',
     ],
     'data': [
-        'data/ir_module_cateogry_data.xml',
+        'data/ir_module_category_data.xml',
         'security/ir.model.access.csv',
         'security/ir_rule.xml',
         'security/user_groups.xml',
