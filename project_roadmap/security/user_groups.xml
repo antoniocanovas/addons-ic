@@ -2,7 +2,7 @@
 <odoo>
 
     <record id="roadmap_user" model="res.groups">
-        <field name="name">Roadmap User</field>
+        <field name="name">User</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         <field name="users" eval="[(4, ref('base.user_root'))]"/>
         <!-- <field name="rule_groups" eval="[(4, ref('roadmap_user'))]"/> -->
@@ -10,7 +10,7 @@
     </record>
 
     <record id="roadmap_manager" model="res.groups">
-        <field name="name">Roadmap Manager</field>
+        <field name="name">Manager</field>
         <field name="implied_ids" eval="[(4, ref('roadmap_user'))]"/>
         <field name="users" eval="[(4, ref('base.user_root'))]"/>
         <!-- <field name="rule_groups" eval="[(4, ref('roadmap_manager'))]"/> -->
