@@ -17,7 +17,7 @@
         'web_widget_open_tab',
     ],
     'data': [
-        'security/ir.model.access.csv',
+        'security/ir_model_access.csv',
         'security/ir_rule.xml',
         'views/project_roadmap_view.xml',
         'views/project_view.xml',

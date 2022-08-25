@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale_target target in tree view">
-      <change afterPath="$PROJECT_DIR$/project_roadmap/security/ir_rule.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="rule roadmap">
+      <change beforePath="$PROJECT_DIR$/project_roadmap/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/security/ir_model_access.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_roadmap/security/ir_rule.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/security/ir_rule.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00324" summary="purchase_price_update price_control =&gt; MESSAGE">
-      <created>1659690761893</created>
-      <option name="number" value="00324" />
-      <option name="presentableId" value="LOCAL-00324" />
-      <option name="project" value="LOCAL" />
-      <updated>1659690761893</updated>
     </task>
     <task id="LOCAL-00325" summary="purchase_price_update price_control =&gt; MESSAGE">
       <created>1659690945032</created>
@@ -408,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661156079889</updated>
     </task>
-    <option name="localTasksCounter" value="373" />
+    <task id="LOCAL-00373" summary="rule roadmap">
+      <created>1661441653387</created>
+      <option name="number" value="00373" />
+      <option name="presentableId" value="LOCAL-00373" />
+      <option name="project" value="LOCAL" />
+      <updated>1661441653387</updated>
+    </task>
+    <option name="localTasksCounter" value="374" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="project_roadmap hidden=&gt; activ e" />
     <MESSAGE value="project_roadmap menu" />
     <MESSAGE value="project_roadmap chatter" />
     <MESSAGE value="project_roadmap favorite" />
@@ -449,7 +448,8 @@
     <MESSAGE value="sale_target" />
     <MESSAGE value="sale_target helps" />
     <MESSAGE value="sale_target target in tree view" />
-    <option name="LAST_COMMIT_MESSAGE" value="sale_target target in tree view" />
+    <MESSAGE value="rule roadmap" />
+    <option name="LAST_COMMIT_MESSAGE" value="rule roadmap" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
