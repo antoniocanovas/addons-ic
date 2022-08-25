@@ -88,7 +88,7 @@
         <field name="arch" type="xml">
             <tree name="project_roadmap_my_phases"
                   decoration-success="active==False"
-                  decoration-danger="active==True and date_limit &lt; context_today().strftime('%Y-%m-%d')"
+                  decoration-danger="active==True and date_limit and date_limit &lt; context_today().strftime('%Y-%m-%d')"
                   default_order="active asc, priority asc">
                 <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
                 <field name="project_id" optional="show"/>
