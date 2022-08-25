@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="rules roadmap">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_roadmap/security/user_groups.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_roadmap/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_roadmap/security/ir_model_access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/security/ir.model.access.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00326" summary="purchase_price_update =&gt; TARGET PRICE">
-      <created>1659694972750</created>
-      <option name="number" value="00326" />
-      <option name="presentableId" value="LOCAL-00326" />
-      <option name="project" value="LOCAL" />
-      <updated>1659694972751</updated>
     </task>
     <task id="LOCAL-00327" summary="purchase_price_update =&gt; TARGET PRICE">
       <created>1659695298351</created>
@@ -409,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661442902790</updated>
     </task>
-    <option name="localTasksCounter" value="375" />
+    <task id="LOCAL-00375" summary="rules roadmap">
+      <created>1661443546965</created>
+      <option name="number" value="00375" />
+      <option name="presentableId" value="LOCAL-00375" />
+      <option name="project" value="LOCAL" />
+      <updated>1661443546966</updated>
+    </task>
+    <option name="localTasksCounter" value="376" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
