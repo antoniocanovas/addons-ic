@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="rules roadmap">
+      <change beforePath="$PROJECT_DIR$/project_roadmap/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/security/ir.model.access.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_roadmap/security/ir_rule.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/security/ir_rule.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_roadmap/security/user_groups.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/security/user_groups.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,20 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00330" summary="purchase_price_update =&gt; TARGET PRICE">
-      <created>1659695851274</created>
-      <option name="number" value="00330" />
-      <option name="presentableId" value="LOCAL-00330" />
-      <option name="project" value="LOCAL" />
-      <updated>1659695851274</updated>
-    </task>
-    <task id="LOCAL-00331" summary="purchase_price_update =&gt; TARGET PRICE">
-      <created>1659696091434</created>
-      <option name="number" value="00331" />
-      <option name="presentableId" value="LOCAL-00331" />
-      <option name="project" value="LOCAL" />
-      <updated>1659696091434</updated>
     </task>
     <task id="LOCAL-00332" summary="purchase_price_update =&gt; TARGET PRICE">
       <created>1659696232211</created>
@@ -407,7 +395,21 @@
       <option name="project" value="LOCAL" />
       <updated>1661445340613</updated>
     </task>
-    <option name="localTasksCounter" value="379" />
+    <task id="LOCAL-00379" summary="rules roadmap">
+      <created>1661445643708</created>
+      <option name="number" value="00379" />
+      <option name="presentableId" value="LOCAL-00379" />
+      <option name="project" value="LOCAL" />
+      <updated>1661445643708</updated>
+    </task>
+    <task id="LOCAL-00380" summary="rules roadmap">
+      <created>1661445873155</created>
+      <option name="number" value="00380" />
+      <option name="presentableId" value="LOCAL-00380" />
+      <option name="project" value="LOCAL" />
+      <updated>1661445873155</updated>
+    </task>
+    <option name="localTasksCounter" value="381" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
