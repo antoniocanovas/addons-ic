@@ -18,9 +18,9 @@
     ],
     'data': [
         'data/ir_module_category_data.xml',
+        'security/user_groups.xml',
         'security/ir.model.access.csv',
         'security/ir_rule.xml',
-        'security/user_groups.xml',
         'views/project_roadmap_view.xml',
         'views/project_view.xml',
         'views/project_task_view.xml',
