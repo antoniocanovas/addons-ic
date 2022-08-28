@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="search my">
-      <change afterPath="$PROJECT_DIR$/product_chassis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_chassis/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_chassis/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_chassis/models/product_product.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_chassis/models/product_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_chassis/views/product_views.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="product_chassis">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,9 +41,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/project_roadmap/data" />
       <recent name="$PROJECT_DIR$/project_roadmap/security" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/crm_contest" />
       <recent name="$PROJECT_DIR$/project_procedure_sale" />
     </key>
@@ -69,13 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00342" summary="contest rev">
-      <created>1659883284539</created>
-      <option name="number" value="00342" />
-      <option name="presentableId" value="LOCAL-00342" />
-      <option name="project" value="LOCAL" />
-      <updated>1659883284539</updated>
     </task>
     <task id="LOCAL-00343" summary="contest rev">
       <created>1659885264684</created>
@@ -413,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661450221163</updated>
     </task>
-    <option name="localTasksCounter" value="391" />
+    <task id="LOCAL-00391" summary="product_chassis">
+      <created>1661502126520</created>
+      <option name="number" value="00391" />
+      <option name="presentableId" value="LOCAL-00391" />
+      <option name="project" value="LOCAL" />
+      <updated>1661502126520</updated>
+    </task>
+    <option name="localTasksCounter" value="392" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -429,7 +423,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="project_roadmap favorite" />
     <MESSAGE value="project_roadmap o2m from models" />
     <MESSAGE value="project_roadmap o2m leads" />
     <MESSAGE value="invoice2origin sale order change position field" />
@@ -454,7 +447,8 @@
     <MESSAGE value="rule roadmap" />
     <MESSAGE value="rules roadmap" />
     <MESSAGE value="search my" />
-    <option name="LAST_COMMIT_MESSAGE" value="search my" />
+    <MESSAGE value="product_chassis" />
+    <option name="LAST_COMMIT_MESSAGE" value="product_chassis" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
