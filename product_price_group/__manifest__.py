@@ -15,8 +15,8 @@
         'account',
     ],
     'data': [
-        'views/views.xml',
         'security/res_group.xml',
+        'views/views.xml',
     ],
     'installable': True,
     'application': False,
