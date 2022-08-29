@@ -1,8 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="add product_price_group">
-      <change beforePath="$PROJECT_DIR$/product_price_group/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_price_group/__manifest__.py" afterDir="false" />
+    <list
+      default="true"
+      id="51ec2e0c-c9c7-433f-8a86-46f036911859"
+      name="Default Changelist"
+      comment="add product_price_group"
+    >
+      <change
+        beforePath="$PROJECT_DIR$/product_price_group/__manifest__.py"
+        beforeDir="false"
+        afterPath="$PROJECT_DIR$/product_price_group/__manifest__.py"
+        afterDir="false"
+      />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +47,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property
+      name="settings.editor.selected.configurable"
+      value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+    />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -55,10 +68,22 @@
       <recent name="$PROJECT_DIR$/realstate/static/description/icon.png" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component
+    name="SpellCheckerSettings"
+    RuntimeDictionaries="0"
+    Folders="0"
+    CustomDictionaries="0"
+    DefaultDictionary="application-level"
+    UseSingleDictionary="true"
+    transferred="true"
+  />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="" />
+      <changelist
+        id="51ec2e0c-c9c7-433f-8a86-46f036911859"
+        name="Default Changelist"
+        comment=""
+      />
       <created>1627657619456</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -434,7 +459,9 @@
     <MESSAGE value="purchase_price_update price_control =&gt; subtotal" />
     <MESSAGE value="purchase_price_update price_control =&gt; MESSAGE" />
     <MESSAGE value="purchase_price_update =&gt; TARGET PRICE" />
-    <MESSAGE value="partner_credential_equipment deleted, functionality in other modules" />
+    <MESSAGE
+      value="partner_credential_equipment deleted, functionality in other modules"
+    />
     <MESSAGE value="wup_discount review" />
     <MESSAGE value="contest rev" />
     <MESSAGE value="bug purchase_price_update div 0" />
