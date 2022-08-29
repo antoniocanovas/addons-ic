@@ -1,9 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_roi_user,ROI / User: Solo propios,model_roi,roi.roi_user,1,1,1,1
-access_roi_line_user,ROI / User: Solo propios,model_roi_line,roi.roi_user,1,1,1,1
-access_roi_set_user,ROI / User: Solo propios,model_roi_set,roi.roi_user,1,1,1,1
-access_roi_set_line_user,ROI / User: Solo propios,model_roi_set_line,roi.roi_user,1,1,1,1
-access_roi_admin,ROI / Admin,model_roi,roi.roi_admin,1,1,1,1
-access_roi_line_admin,ROI Line / Admin,model_roi_line,roi.roi_admin,1,1,1,1
-access_roi_set_admin,ROI Set / Admin,model_roi_set,roi.roi_admin,1,1,1,1
-access_roi_set_line_admin,ROI Set Line / Admin,model_roi_set_line,roi.roi_admin,1,1,1,1

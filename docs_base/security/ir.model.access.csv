@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_docs_types, Tipos de Docs,model_docs_types,base.group_user,1,1,1,1
-access_docs, Docs,model_docs_docs,base.group_user,1,1,1,1
-access_docs_texts, Textos de Docs,model_docs_texts,base.group_user,1,1,1,1
-access_docs_portal, Docs,model_docs_docs,base.group_portal,1,1,0,0
