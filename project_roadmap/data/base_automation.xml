@@ -11,7 +11,7 @@ if user not in roadmap_manager.users:
   raise Warning('Sorry, only Managers can change this option.')
             </field>
             <field name="trigger">on_change</field>
-            <field name="on_change_field_ids" eval="[(6,0, [ref('project_roadmap.field_active')])]"/>
+            <field name="on_change_field_ids" eval="[(6,0, [ref('project_roadmap.field_project_roadmap__active')])]"/>
             <field name="filter_pre_domain"></field>
             <field name="filter_domain"></field>
             <field name="active" eval="True"/>
