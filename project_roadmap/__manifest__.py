@@ -30,6 +30,7 @@
         'views/account_move_view.xml',
         'views/crm_lead_view.xml',
         'views/views_menu.xml',
+        'data/base_automation.xml',
     ],
     'installable':True,
 }
