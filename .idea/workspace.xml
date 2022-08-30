@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="upd roadmap">
-      <change afterPath="$PROJECT_DIR$/project_roadmap/data/base_automation.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_roadmap/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_roadmap/data/base_automation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/data/base_automation.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_roadmap/models/project_roadmap.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_roadmap.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,20 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00347" summary="contest rev">
-      <created>1659892665435</created>
-      <option name="number" value="00347" />
-      <option name="presentableId" value="LOCAL-00347" />
-      <option name="project" value="LOCAL" />
-      <updated>1659892665435</updated>
-    </task>
-    <task id="LOCAL-00348" summary="contest rev">
-      <created>1659892875570</created>
-      <option name="number" value="00348" />
-      <option name="presentableId" value="LOCAL-00348" />
-      <option name="project" value="LOCAL" />
-      <updated>1659892875570</updated>
     </task>
     <task id="LOCAL-00349" summary="contest rev">
       <created>1659892955590</created>
@@ -410,7 +395,21 @@
       <option name="project" value="LOCAL" />
       <updated>1661856885172</updated>
     </task>
-    <option name="localTasksCounter" value="396" />
+    <task id="LOCAL-00396" summary="upd roadmap">
+      <created>1661859656180</created>
+      <option name="number" value="00396" />
+      <option name="presentableId" value="LOCAL-00396" />
+      <option name="project" value="LOCAL" />
+      <updated>1661859656180</updated>
+    </task>
+    <task id="LOCAL-00397" summary="upd roadmap">
+      <created>1661859896310</created>
+      <option name="number" value="00397" />
+      <option name="presentableId" value="LOCAL-00397" />
+      <option name="project" value="LOCAL" />
+      <updated>1661859896310</updated>
+    </task>
+    <option name="localTasksCounter" value="398" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

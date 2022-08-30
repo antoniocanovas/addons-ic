@@ -25,7 +25,7 @@ class ProjectRoadmap(models.Model):
     task_id = fields.Many2one('project.task', string='Tarea')
     picking_id = fields.Many2one('stock.picking', string='Albarán')
     invoice_id = fields.Many2one('account.move', string='Factura')
-    active = fields.Boolean('Active', default=True, copy=False, tracking=True)
+    active = fields.Boolean('Active', default=True, copy=False, tracking=True, groups=)
 
     @api.depends('lead_id.probability', 'sale_id.state', 'purchase_id.state', 'task_id.stage_id', 'picking_id.state',
                  'invoice_id.state')

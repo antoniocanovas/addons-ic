@@ -1,6 +1,6 @@
 <odoo>
     <record id="roadmap_check_for_managers" model="base.automation">
-            <field name="name">=> Roadmap Managers controls</field>
+            <field name="name">=> Roadmap Archive control only by Managers</field>
             <field name="model_id" ref="project_roadmap.model_project_roadmap"/>
             <field name="state">code</field>
             <field name="code">
