@@ -7,8 +7,8 @@
 # Only Managers can change field state (Archive to disable this option):
 group_manager_external_id = env['ir.model.data'].search([('name','=','group_roadmap_manager')])
 roadmap_manager = env['res.groups'].search([('id','=',group_manager_external_id.res_id)])
-if user not in roadmap_manager.users:
-  raise Warning('Sorry, only Managers can change this option.')
+if (user not in roadmap_manager.users) and (user != record.project_id.user_id):
+  raise Warning('Sorry, only Roadmap Managers and this project manager can change this option.')
             </field>
             <field name="trigger">on_change</field>
             <field name="on_change_field_ids" eval="[(6,0, [ref('project_roadmap.field_project_roadmap__active')])]"/>
