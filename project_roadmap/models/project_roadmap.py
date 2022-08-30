@@ -3,6 +3,7 @@
 
 
 from odoo import fields, models, api
+from odoo.exceptions import ValidationError
 
 
 class ProjectRoadmap(models.Model):
@@ -57,3 +58,12 @@ class ProjectRoadmap(models.Model):
                 state = record.invoice_id.payment_state
             record.state = state
     state = fields.Char(string='Estado', compute="_get_roadmap_state", store=True, default='New')
+
+    @api.depends('active')
+    def check_user_is_manager(self):
+        managers = self.env['ir.model.data'].search([('name','=','group_roadmap_manager')])
+        group_manager = self.env['res.groups'].search([('id','=',managers.res_id)])
+        if self.user not in group_manager.users:
+            raise ValidationError('This option is only for Roadmap Managers')
+
+
