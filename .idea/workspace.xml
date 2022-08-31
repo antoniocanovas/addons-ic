@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale wup purchase_price">
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/sale_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/models/sale_order_line.py" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale wup purchase_price" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,13 +61,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00363" summary="bug purchase_price_update div 0">
-      <created>1659955235954</created>
-      <option name="number" value="00363" />
-      <option name="presentableId" value="LOCAL-00363" />
-      <option name="project" value="LOCAL" />
-      <updated>1659955235954</updated>
     </task>
     <task id="LOCAL-00364" summary="bug purchase_price_update div 0">
       <created>1659955672507</created>
@@ -407,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661961888133</updated>
     </task>
-    <option name="localTasksCounter" value="412" />
+    <task id="LOCAL-00412" summary="sale wup purchase_price">
+      <created>1661962881205</created>
+      <option name="number" value="00412" />
+      <option name="presentableId" value="LOCAL-00412" />
+      <option name="project" value="LOCAL" />
+      <updated>1661962881205</updated>
+    </task>
+    <option name="localTasksCounter" value="413" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
