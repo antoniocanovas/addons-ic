@@ -8,6 +8,7 @@
     'author': 'Serincloud',
     'depends': [
         'sale_management',
+        'sale_margin',
         'product_brand',
         'hr',
         'base_automation',

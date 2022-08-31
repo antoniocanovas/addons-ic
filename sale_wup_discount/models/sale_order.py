@@ -29,13 +29,6 @@ class WupSaleOrder(models.Model):
 
             # CASE "TARGER_PRICE" (wup prices are not recalculated, working with discount in SOL):
             if record.discount_type == 'target_price':
-                # REQUIRED: ENABLE DISCOUNTS in Sales => Configuration:
-                group_id = self.env['ir.model.data'].search(
-                    [('model', '=', 'res.groups'), ('name', '=', 'group_discount_per_so_line')]).res_id
-                group = self.env['res.groups'].search([('id', '=', group_id)])
-                if self.env.user not in group.users:
-                    raise ValidationError('It is required to enable discounts in Sales Settings, please ask to your admin.')
-
                 # PREVIOUS: Compute real total cost and sale without discount:
                 cost_amount, price_amount, margin_wup_percent, message_under_cost = 0, 0, 0, ""
                 for li in record.order_line:

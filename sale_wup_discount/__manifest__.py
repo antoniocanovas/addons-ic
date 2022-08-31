@@ -7,8 +7,9 @@
 """,
     'author': 'Serincloud',
     'depends': [
-        'sale_wup',
+        'sale_management',
         'sale_margin',
+        'sale_wup',
     ],
     'data': [
         'views/model_views.xml',
