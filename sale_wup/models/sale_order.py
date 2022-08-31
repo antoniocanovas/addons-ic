@@ -5,7 +5,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-class SaleOrderiSet(models.Model):
+class SaleOrderWup(models.Model):
     _inherit = 'sale.order'
 
     def get_worksheets_products(self):

@@ -4,7 +4,7 @@
             <field name="model_id" ref="sale.model_sale_order_line"/>
             <field name="state">code</field>
             <field name="code">
-# Change default behaviour when change QYT on SOL for WUP and update purchase_price on SOL:
+# Change default behaviour when change QYT on SOL with WUP, and update purchase_price on SOL:
 if record.wup_line_ids.ids:
     wup_price_unit = 0
     for li in record.wup_line_ids:
