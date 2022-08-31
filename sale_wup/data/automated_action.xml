@@ -12,7 +12,6 @@ if record.wup_line_ids.ids:
     record.write({'price_unit':wup_price_unit, 'purchase_price':record.wup_cost_amount})
             </field>
             <field name="trigger">on_write</field>
-            <field name="on_change_field_ids">False<field/>
             <field name="filter_pre_domain"></field>
             <field name="filter_domain"></field>
             <field name="active" eval="True"/>

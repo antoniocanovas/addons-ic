@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale wup purchase_price" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale wup line deletion review">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,13 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00364" summary="bug purchase_price_update div 0">
-      <created>1659955672507</created>
-      <option name="number" value="00364" />
-      <option name="presentableId" value="LOCAL-00364" />
-      <option name="project" value="LOCAL" />
-      <updated>1659955672507</updated>
     </task>
     <task id="LOCAL-00365" summary="bug purchase_price_update div 0">
       <created>1659955960266</created>
@@ -405,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661962881205</updated>
     </task>
-    <option name="localTasksCounter" value="413" />
+    <task id="LOCAL-00413" summary="sale wup line deletion review">
+      <created>1661966652549</created>
+      <option name="number" value="00413" />
+      <option name="presentableId" value="LOCAL-00413" />
+      <option name="project" value="LOCAL" />
+      <updated>1661966652549</updated>
+    </task>
+    <option name="localTasksCounter" value="414" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -421,7 +423,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="project_procedure stages new created by default" />
     <MESSAGE value="helpdesk_credential services" />
     <MESSAGE value="wup details" />
     <MESSAGE value="purchase_price_update price_control =&gt; subtotal" />
@@ -446,7 +447,8 @@
     <MESSAGE value="sale wup discount rename margin 2 margin_wup_percent" />
     <MESSAGE value="sale wup discount v3" />
     <MESSAGE value="sale wup purchase_price" />
-    <option name="LAST_COMMIT_MESSAGE" value="sale wup purchase_price" />
+    <MESSAGE value="sale wup line deletion review" />
+    <option name="LAST_COMMIT_MESSAGE" value="sale wup line deletion review" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
