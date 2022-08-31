@@ -31,6 +31,7 @@ class WupSaleOrderLine(models.Model):
     wup_template_id = fields.Many2one('wup.template', string='wup Template', copy=True)
     wup_line_ids = fields.One2many('wup.line', 'sale_line_id', string='wup Line', copy=True)
 
+    @api.depends('wup_line_ids','wup_line_ids.price_unit_cost')
     def get_wup_cost_amount(self):
         for record in self:
             cost = 0
@@ -38,7 +39,7 @@ class WupSaleOrderLine(models.Model):
                 cost += line.price_unit_cost * line.product_uom_qty
             record.wup_cost_amount = cost
 
-    wup_cost_amount = fields.Monetary('wup Cost', store=False, compute='get_wup_cost_amount')
+    wup_cost_amount = fields.Monetary('wup Cost', store=True, compute='get_wup_cost_amount')
 
 
     @api.depends('product_id', 'product_uom', 'discount', 'price_unit')
