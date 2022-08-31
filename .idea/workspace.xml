@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale wup discount v3">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale wup purchase_price">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/__manifest__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sale_wup/models/sale_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/models/sale_order_line.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup_discount/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup_discount/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup_discount/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup_discount/models/sale_order.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00360" summary="contest rev">
-      <created>1659915106883</created>
-      <option name="number" value="00360" />
-      <option name="presentableId" value="LOCAL-00360" />
-      <option name="project" value="LOCAL" />
-      <updated>1659915106883</updated>
     </task>
     <task id="LOCAL-00361" summary="contest rev">
       <created>1659920287139</created>
@@ -411,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661957660995</updated>
     </task>
-    <option name="localTasksCounter" value="409" />
+    <task id="LOCAL-00409" summary="sale wup purchase_price">
+      <created>1661960770895</created>
+      <option name="number" value="00409" />
+      <option name="presentableId" value="LOCAL-00409" />
+      <option name="project" value="LOCAL" />
+      <updated>1661960770896</updated>
+    </task>
+    <option name="localTasksCounter" value="410" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -427,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="project_procedure stage to new tasks" />
     <MESSAGE value="project_procedure stages new created by default" />
     <MESSAGE value="helpdesk_credential services" />
     <MESSAGE value="wup details" />
@@ -452,7 +448,8 @@
     <MESSAGE value="upd roadmap" />
     <MESSAGE value="sale wup discount rename margin 2 margin_wup_percent" />
     <MESSAGE value="sale wup discount v3" />
-    <option name="LAST_COMMIT_MESSAGE" value="sale wup discount v3" />
+    <MESSAGE value="sale wup purchase_price" />
+    <option name="LAST_COMMIT_MESSAGE" value="sale wup purchase_price" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
