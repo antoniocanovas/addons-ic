@@ -41,22 +41,6 @@ class WupSaleOrderLine(models.Model):
     wup_cost_amount = fields.Monetary('wup Cost', store=False, compute='get_wup_cost_amount')
 
 
-    # 31/08/22 test
-    @api.depends('wup_line_ids.price_unit_cost')
-    def compute_updated_purchase_price_from_wup(self):
-        for record in self:
-            if record.wup_line_ids.ids:
-                purchase_price = 10
-            else:
-     #           purchase_price = self._compute_purchase_price()
-                purchase_price = 3
-            record.purchase_price = purchase_price
-
-
-
-
-
-
     @api.depends('product_id', 'product_uom', 'discount', 'price_unit')
     def get_lst_price(self):
         for record in self:
