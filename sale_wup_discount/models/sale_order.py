@@ -17,7 +17,7 @@ class WupSaleOrder(models.Model):
 
     target_price = fields.Monetary('Target price', currency_field='currency_id')
     price_our_service = fields.Monetary(string='Price our service')
-    margin = fields.Float('Margin')
+    margin_wup_percent = fields.Float('Margin')
     discount_type = fields.Selection(
         selection=VALUES, string="Type",
     )
@@ -37,7 +37,7 @@ class WupSaleOrder(models.Model):
                     raise ValidationError('It is required to enable discounts in Sales Settings, please ask to your admin.')
 
                 # PREVIOUS: Compute real total cost and sale without discount:
-                cost_amount, price_amount, margin, message_under_cost = 0, 0, 0, ""
+                cost_amount, price_amount, margin_wup_percent, message_under_cost = 0, 0, 0, ""
                 for li in record.order_line:
                     if (len(li.wup_line_ids.ids) == 0) and (li.product_uom_qty > 0):
                         cost_amount += li.price_unit_cost * li.product_uom_qty
@@ -120,13 +120,13 @@ class WupSaleOrder(models.Model):
                                       'lst_price': li.product_id.lst_price * qty_uom})
                         # ... others:
                         else:
-                            if (record.margin < 100):
+                            if (record.margin_wup_percent < 100):
                                 li.write(
-                                    {'price_unit': (li.product_id.standard_price / (1 - record.margin / 100) * qty_uom),
+                                    {'price_unit': (li.product_id.standard_price / (1 - record.margin_wup_percent / 100) * qty_uom),
                                      'lst_price': li.product_id.lst_price * qty_uom})
                             else:
                                 li.write(
-                                    {'price_unit': (li.product_id.standard_price * (1 + record.margin / 100) * qty_uom),
+                                    {'price_unit': (li.product_id.standard_price * (1 + record.margin_wup_percent / 100) * qty_uom),
                                      'lst_price': li.product_id.lst_price * qty_uom})
 
                     # Case Line IS 'computed by wups':
@@ -145,9 +145,9 @@ class WupSaleOrder(models.Model):
                                     record.discount_type == 'fixed_service_margin_over_cost'):
                                 price_unit = record.price_our_service
                             else:
-                                if (record.margin < 100):
-                                    price_unit = round(price_unit_cost / (1 - record.margin / 100), monetary_precision)
+                                if (record.margin_wup_percent < 100):
+                                    price_unit = round(price_unit_cost / (1 - record.margin_wup_percent / 100), monetary_precision)
                                 else:
-                                    price_unit = round(price_unit_cost * (1 + record.margin / 100), monetary_precision)
+                                    price_unit = round(price_unit_cost * (1 + record.margin_wup_percent / 100), monetary_precision)
 
                             liwup.write({'price_unit': price_unit, 'price_unit_cost': price_unit_cost})

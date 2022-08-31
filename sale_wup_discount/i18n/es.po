@@ -41,7 +41,7 @@ msgid "Last Modified on"
 msgstr "Última modificación el"
 
 #. module: sale_wup_discount
-#: model:ir.model.fields,field_description:sale_wup_discount.field_sale_order__margin
+#: model:ir.model.fields,field_description:sale_wup_discount.field_sale_order__margin_wup_percent
 msgid "Margin"
 msgstr "Margen"
 
