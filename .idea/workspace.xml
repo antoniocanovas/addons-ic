@@ -64,13 +64,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00375" summary="rules roadmap">
-      <created>1661443546965</created>
-      <option name="number" value="00375" />
-      <option name="presentableId" value="LOCAL-00375" />
-      <option name="project" value="LOCAL" />
-      <updated>1661443546966</updated>
-    </task>
     <task id="LOCAL-00376" summary="rules roadmap">
       <created>1661444414596</created>
       <option name="number" value="00376" />
@@ -407,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662392042486</updated>
     </task>
-    <option name="localTasksCounter" value="424" />
+    <task id="LOCAL-00424" summary="sale wup line discounts review">
+      <created>1662392972999</created>
+      <option name="number" value="00424" />
+      <option name="presentableId" value="LOCAL-00424" />
+      <option name="project" value="LOCAL" />
+      <updated>1662392972999</updated>
+    </task>
+    <option name="localTasksCounter" value="425" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

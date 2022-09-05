@@ -27,7 +27,7 @@ class WupSaleOrder(models.Model):
             # Round prices with Odoo monetary_precision:
             monetary_precision = self.env['decimal.precision'].sudo().search([('id', '=', 1)]).digits
 
-            # CASE "TARGER_PRICE" (wup prices are not recalculated, working with discount in SOL):
+            # CASE "TARGET_PRICE" (wup prices are not recalculated, working with discount in SOL):
             if record.discount_type == 'target_price':
                 # PREVIOUS: Compute real total cost and sale without discount:
                 cost_amount, price_amount, margin_wup_percent, message_under_cost = 0, 0, 0, ""
@@ -53,9 +53,12 @@ class WupSaleOrder(models.Model):
                         if (len(li.wup_line_ids.ids) == 0) and (li.product_uom_qty > 0):
                             li.write({'price_unit': li.lst_price, 'discount': margin})
                         elif (len(li.wup_line_ids.ids) > 0) and (li.product_uom_qty > 0):
+                            sol_price_unit_from_wup = 0
                             for wupline in li.wup_line_ids:
-                                wupline['price_unit'] = wupline.price_unit * (1 - margin / 100)
-# Aquí hay que escribir el price_unit !!! (ya no lo hace porque he quitado la AA
+                                wup_price_unit = wupline.price_unit * (1 - margin / 100)
+                                sol_price_unit_from_wup += wup_price_unit * wupline.product_uom_qty
+                                wupline['price_unit'] = wup_price_unit
+                            li.write({'price_unit':sol_price_unit_from_wup, 'discount':0})
 
                 # CASE: TARGET UNDER PVP => Let's work with list prices:
                 else:
@@ -64,9 +67,11 @@ class WupSaleOrder(models.Model):
                         if (len(li.wup_line_ids.ids) == 0) and (li.product_uom_qty > 0):
                             li.write({'price_unit': li.lst_price * margin, 'discount': 0})
                         elif (len(li.wup_line_ids.ids) > 0) and (li.product_uom_qty > 0):
+                            sol_price_unit_from_wup = 0
                             for wupline in li.wup_line_ids:
                                 wupline.write({'price_unit': wupline.price_unit * margin, 'fix_price_unit_sale': False})
-# Aquí hay que escribir el price_unit !!! (ya no lo hace porque he quitado la AA
+                                sol_price_unit_from_wup += wupline.price_unit * margin * wupline.product_uom_qty
+                            li.write({'price_unit':sol_price_unit_from_wup, 'discount':0})
 
                 # ROUNDING Method on the first line with units = 1:
                 diference = round(record.target_price - record.amount_untaxed, 2)
@@ -87,16 +92,16 @@ class WupSaleOrder(models.Model):
             elif record.discount_type == 'wup_pricing_reset':
                 for li in record.order_line:
                     if li.wup_line_ids.ids:
-                        total = 0
+                        sol_price_unit_from_wup = 0
                         for wul in record.wup_line_ids:
-                            total += wul.product_id.list_price * wul.product_uom_qty
+                            sol_price_unit_from_wup += wul.product_id.list_price * wul.product_uom_qty
                             wul.write({'price_unit': wul.product_id.list_price,
                                       'price_unit_cost': wul.product_id.standard_price,
                                       'fix_price_unit_cost': False, 'fix_price_unit_sale': False})
-                        li.write({'price_unit':total, 'discount':0})
+                        li.write({'price_unit':sol_price_unit_from_wup, 'discount':0})
 
 
-            # CASES FIXED_SERVICE_MARGIN_OVER_COST  or  MARGIN_OVER_COST:
+            # CASES FIX_OUR_SERVICES (or not) AND MARGIN_OVER_COST:
             else:
                 for li in record.order_line:
                     # If we use type, there is not line discount:
@@ -130,7 +135,7 @@ class WupSaleOrder(models.Model):
 
                     # Case Line IS WUP':
                     elif (len(li.wup_line_ids.ids) > 0):
-                        total = 0
+                        sol_price_unit_from_wup = 0
                         for liwup in li.wup_line_ids:
                             # COST Price:
                             if (liwup.fix_price_unit_cost == True):
@@ -149,6 +154,6 @@ class WupSaleOrder(models.Model):
                                     price_unit = round(price_unit_cost / (1 - record.margin_wup_percent / 100), monetary_precision)
                                 else:
                                     price_unit = round(price_unit_cost * (1 + record.margin_wup_percent / 100), monetary_precision)
-                            total += price_unit * liwup.product_uom_qty
+                            sol_price_unit_from_wup += price_unit * liwup.product_uom_qty
                             liwup.write({'price_unit': price_unit, 'price_unit_cost': price_unit_cost})
-                        li.write({'price_unit':total, 'discount':0})
+                        li.write({'price_unit':sol_price_unit_from_wup, 'discount':0})
