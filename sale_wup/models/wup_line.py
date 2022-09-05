@@ -76,7 +76,7 @@ class WupLine(models.Model):
     def get_subtotal_sale(self):
         for record in self:
             total = record.subtotal * record.sale_line_id.product_uom_qty
-            if record.sale_line_id.discount:
+            if (record.sale_line_id.discount != False):
                 total = total * (1 - record.sale_line_id.discount/100)
             record.subtotal_sale = total
 
