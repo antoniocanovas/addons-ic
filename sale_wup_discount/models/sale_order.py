@@ -88,10 +88,10 @@ class WupSaleOrder(models.Model):
                 for li in record.order_line:
                     if li.wup_line_ids.ids:
                         total = 0
-                        for wup in record.wup_line_ids:
-                            total += wup.product_id.list_price * wup.product_uom_qty
-                            li.write({'price_unit': wup.product_id.list_price,
-                                      'price_unit_cost': wup.product_id.standard_price,
+                        for wul in record.wup_line_ids:
+                            total += wul.product_id.list_price * wul.product_uom_qty
+                            wul.write({'price_unit': wul.product_id.list_price,
+                                      'price_unit_cost': wul.product_id.standard_price,
                                       'fix_price_unit_cost': False, 'fix_price_unit_sale': False})
                         li.write({'price_unit':total, 'discount':0})
 # Aquí hay que escribir el price_unit !!! (ya no lo hace porque he quitado la AA
