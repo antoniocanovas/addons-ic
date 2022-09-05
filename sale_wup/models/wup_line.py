@@ -14,7 +14,7 @@ class WupLine(models.Model):
     currency_id = fields.Many2one('res.currency')
     sale_line_id = fields.Many2one('sale.order.line', string='SO Line')
     sale_id = fields.Many2one('sale.order', related='sale_line_id.order_id', string='Sale')
-    sale_discount = fields.Float('Discount', related='sale_line_id.discount', string='Disc.', store=False)
+    sale_discount = fields.Float('Disc.(%)', related='sale_line_id.discount', store=False)
     task_id = fields.Many2one('project.task', string='WU Task')
     effective_hours = fields.Float(string="Eff. Hours", related='task_id.effective_hours', store=False)
     sale_line_name = fields.Char(string='Sale line', related='sale_line_id.name')
