@@ -94,7 +94,7 @@ class WupSaleOrder(models.Model):
                                       'price_unit_cost': wul.product_id.standard_price,
                                       'fix_price_unit_cost': False, 'fix_price_unit_sale': False})
                         li.write({'price_unit':total, 'discount':0})
-# Aquí hay que escribir el price_unit !!! (ya no lo hace porque he quitado la AA
+
 
             # CASES FIXED_SERVICE_MARGIN_OVER_COST  or  MARGIN_OVER_COST:
             else:
@@ -103,7 +103,7 @@ class WupSaleOrder(models.Model):
                     if (li.discount != 0):
                         li['discount'] = 0
 
-                    # Line NOT WUP:
+                    # Line is NOT WUP:
                     if (len(li.wup_line_ids.ids) == 0) and (li.product_uom_qty > 0):
                         if li.product_uom.uom_type == 'reference':
                             qty_uom = 1
@@ -117,7 +117,7 @@ class WupSaleOrder(models.Model):
                                 record.discount_type == 'fixed_service_margin_over_cost'):
                             li.write({'price_unit': record.price_our_service * qty_uom,
                                       'lst_price': li.product_id.lst_price * qty_uom})
-                        # ... others:
+                        # ... others products in NO WUP LINE:
                         else:
                             if (record.margin_wup_percent < 100):
                                 li.write(
@@ -128,15 +128,16 @@ class WupSaleOrder(models.Model):
                                     {'price_unit': (li.product_id.standard_price * (1 + record.margin_wup_percent / 100) * qty_uom),
                                      'lst_price': li.product_id.lst_price * qty_uom})
 
-                    # Case Line IS 'computed by wups':
+                    # Case Line IS WUP':
                     elif (len(li.wup_line_ids.ids) > 0):
+                        total = 0
                         for liwup in li.wup_line_ids:
-                            # Price unit cost:
+                            # COST Price:
                             if (liwup.fix_price_unit_cost == True):
                                 price_unit_cost = liwup.price_unit_cost
                             else:
                                 price_unit_cost = round(liwup.product_id.standard_price, monetary_precision)
-                                # Price unit sale:
+                            # SALE Price unit (and total):
                             if (liwup.fix_price_unit_sale == True):
                                 price_unit = liwup.price_unit
                             elif (liwup.fix_price_unit_sale == False) and (
@@ -148,5 +149,6 @@ class WupSaleOrder(models.Model):
                                     price_unit = round(price_unit_cost / (1 - record.margin_wup_percent / 100), monetary_precision)
                                 else:
                                     price_unit = round(price_unit_cost * (1 + record.margin_wup_percent / 100), monetary_precision)
-
+                            total += price_unit * liwup.product_uom_qty
                             liwup.write({'price_unit': price_unit, 'price_unit_cost': price_unit_cost})
+                        li.write({'price_unit':total, 'discount':0})
