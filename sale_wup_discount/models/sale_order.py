@@ -5,7 +5,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 VALUES = [
-    ('fixed_service_margin_over_cost', 'Our services with fixed price, and margin over cost for others.'),
+    ('fixed_service_margin_over_cost', 'Fixed price for "our services", and margin over cost for others.'),
     ('margin_over_cost', 'Margin over cost.'),
     ('target_price', 'Target price.'),
     ('wup_pricing_reset', 'Reset WUPs (prices & fixeds).'),
@@ -55,6 +55,7 @@ class WupSaleOrder(models.Model):
                         elif (len(li.wup_line_ids.ids) > 0) and (li.product_uom_qty > 0):
                             for wupline in li.wup_line_ids:
                                 wupline['price_unit'] = wupline.price_unit * (1 - margin / 100)
+# Aquí hay que escribir el price_unit !!! (ya no lo hace porque he quitado la AA
 
                 # CASE: TARGET UNDER PVP => Let's work with list prices:
                 else:
@@ -65,6 +66,7 @@ class WupSaleOrder(models.Model):
                         elif (len(li.wup_line_ids.ids) > 0) and (li.product_uom_qty > 0):
                             for wupline in li.wup_line_ids:
                                 wupline.write({'price_unit': wupline.price_unit * margin, 'fix_price_unit_sale': False})
+# Aquí hay que escribir el price_unit !!! (ya no lo hace porque he quitado la AA
 
                 # ROUNDING Method on the first line with units = 1:
                 diference = round(record.target_price - record.amount_untaxed, 2)
@@ -85,10 +87,14 @@ class WupSaleOrder(models.Model):
             elif record.discount_type == 'wup_pricing_reset':
                 for li in record.order_line:
                     if li.wup_line_ids.ids:
-                        for li in record.wup_line_ids:
-                            li.write({'price_unit': li.product_id.list_price,
-                                      'price_unit_cost': li.product_id.standard_price,
+                        total = 0
+                        for wup in record.wup_line_ids:
+                            total += wup.product_id.list_price * wup.product_uom_qty
+                            li.write({'price_unit': wup.product_id.list_price,
+                                      'price_unit_cost': wup.product_id.standard_price,
                                       'fix_price_unit_cost': False, 'fix_price_unit_sale': False})
+                        li.write({'price_unit':total, 'discount':0})
+# Aquí hay que escribir el price_unit !!! (ya no lo hace porque he quitado la AA
 
             # CASES FIXED_SERVICE_MARGIN_OVER_COST  or  MARGIN_OVER_COST:
             else:

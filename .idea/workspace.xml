@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale wup line discounts review">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/wup_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/models/wup_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_wup_discount/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup_discount/models/sale_order.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,27 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00370" summary="sale_target helps">
-      <created>1660959552105</created>
-      <option name="number" value="00370" />
-      <option name="presentableId" value="LOCAL-00370" />
-      <option name="project" value="LOCAL" />
-      <updated>1660959552105</updated>
-    </task>
-    <task id="LOCAL-00371" summary="sale_target helps">
-      <created>1661155882438</created>
-      <option name="number" value="00371" />
-      <option name="presentableId" value="LOCAL-00371" />
-      <option name="project" value="LOCAL" />
-      <updated>1661155882442</updated>
-    </task>
-    <task id="LOCAL-00372" summary="sale_target target in tree view">
-      <created>1661156079889</created>
-      <option name="number" value="00372" />
-      <option name="presentableId" value="LOCAL-00372" />
-      <option name="project" value="LOCAL" />
-      <updated>1661156079889</updated>
     </task>
     <task id="LOCAL-00373" summary="rule roadmap">
       <created>1661441653387</created>
@@ -408,7 +387,28 @@
       <option name="project" value="LOCAL" />
       <updated>1662389637980</updated>
     </task>
-    <option name="localTasksCounter" value="419" />
+    <task id="LOCAL-00419" summary="sale wup line discounts review">
+      <created>1662389999672</created>
+      <option name="number" value="00419" />
+      <option name="presentableId" value="LOCAL-00419" />
+      <option name="project" value="LOCAL" />
+      <updated>1662389999672</updated>
+    </task>
+    <task id="LOCAL-00420" summary="sale wup line discounts review">
+      <created>1662390098781</created>
+      <option name="number" value="00420" />
+      <option name="presentableId" value="LOCAL-00420" />
+      <option name="project" value="LOCAL" />
+      <updated>1662390098781</updated>
+    </task>
+    <task id="LOCAL-00421" summary="sale wup line discounts review">
+      <created>1662390183691</created>
+      <option name="number" value="00421" />
+      <option name="presentableId" value="LOCAL-00421" />
+      <option name="project" value="LOCAL" />
+      <updated>1662390183691</updated>
+    </task>
+    <option name="localTasksCounter" value="422" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
