@@ -148,7 +148,7 @@
                 <field name="product_sale_qty"/>
                 <field name="product_uom"/>
                 <field name="price_unit"/>
-                <field name="subtotal"/>
+                <field name="subtotal_sale"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>

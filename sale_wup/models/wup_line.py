@@ -72,3 +72,13 @@ class WupLine(models.Model):
     price_unit = fields.Monetary('Price Unit', currency_field='currency_id',
                                  store=True, readonly=False, compute="get_price_unit")
 
+    @api.depends('sale_line_id.discount', 'sale_line_id.product_uom_qty', 'subtotal')
+    def get_subtotal_sale(self):
+        for record in self:
+            total = record.subtotal * record.sale_line_id.product_uom_qty
+            if record.sale_line_id.discount:
+                total = total * (1 - record.sale_line_id.discount/100)
+            record.subtotal_sale = total
+
+    subtotal_sale = fields.Monetary('Sale subtotal', currency_field='currency_id',
+                                 store=True, readonly=True, compute="get_subtotal_sale")
