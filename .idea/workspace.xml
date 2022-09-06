@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale wup line discounts review">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sale_wup/models/wup_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/models/wup_line.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/views/model_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00378" summary="rules roadmap">
-      <created>1661445340612</created>
-      <option name="number" value="00378" />
-      <option name="presentableId" value="LOCAL-00378" />
-      <option name="project" value="LOCAL" />
-      <updated>1661445340613</updated>
     </task>
     <task id="LOCAL-00379" summary="rules roadmap">
       <created>1661445643708</created>
@@ -409,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662395240884</updated>
     </task>
-    <option name="localTasksCounter" value="427" />
+    <task id="LOCAL-00427" summary="sale wup line discounts review">
+      <created>1662462347769</created>
+      <option name="number" value="00427" />
+      <option name="presentableId" value="LOCAL-00427" />
+      <option name="project" value="LOCAL" />
+      <updated>1662462347770</updated>
+    </task>
+    <option name="localTasksCounter" value="428" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

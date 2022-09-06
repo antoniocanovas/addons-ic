@@ -62,7 +62,7 @@ class WupLine(models.Model):
         for record in self:
             record.price_unit_cost = record.product_id.standard_price
 
-    price_unit_cost = fields.Monetary('Cost Price', currency_field='currency_id',
+    price_unit_cost = fields.Monetary('Unit Cost', currency_field='currency_id',
                                       readonly=False, store=True, compute="get_price_unit_cost")
 
     @api.depends('product_id','product_uom_qty')
@@ -70,7 +70,7 @@ class WupLine(models.Model):
         for record in self:
             record.price_cost = record.price_unit_cost * record.product_uom_qty
 
-    price_cost = fields.Monetary('Cost Price', currency_field='currency_id',
+    price_cost = fields.Monetary('Cost', currency_field='currency_id',
                                       readonly=False, store=True, compute="get_wupline_cost")
 
     @api.depends('product_id')
