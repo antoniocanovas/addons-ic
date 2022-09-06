@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-18 11:02+0000\n"
-"PO-Revision-Date: 2022-03-18 12:07+0100\n"
+"PO-Revision-Date: 2022-09-06 12:51+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -126,27 +126,27 @@ msgstr "Fecha de contabilidad"
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Acción requerida"
 
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_ids
 msgid "Activities"
-msgstr ""
+msgstr "Actividades"
 
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr ""
+msgstr "Decoración de la Actividad a Excepción"
 
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_state
 msgid "Activity State"
-msgstr ""
+msgstr "Estado de la actividad"
 
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_type_icon
 msgid "Activity Type Icon"
-msgstr ""
+msgstr "Ícono de tipo de actividad"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -196,17 +196,17 @@ msgstr ""
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.view_account_invoice_filter_app_upload
 msgid "App upload"
-msgstr ""
+msgstr "Subido por la Aplicacion"
 
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Numero de Adjuntos"
 
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__attachment_ids
 msgid "Attachments"
-msgstr ""
+msgstr "Adjuntos"
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -216,7 +216,7 @@ msgstr "Auto-completar"
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_res_company__ocr_disable_queue_jobs
 msgid "Avoid queue_job"
-msgstr ""
+msgstr "Sin Colas de Trabajo "
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_account_invoice_form
@@ -276,7 +276,7 @@ msgstr "Configuración"
 #: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__ocr_post_transactions_jobs_ids
 #: model:ir.model.fields,field_description:ocr_transactions.field_res_company__ocr_transactions_jobs_ids
 msgid "Connector Jobs"
-msgstr ""
+msgstr "Conectores de Trabajo "
 
 #. module: ocr_transactions
 #: model:ir.model,name:ocr_transactions.model_res_partner
@@ -474,12 +474,12 @@ msgstr "Seguidores"
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_channel_ids
 msgid "Followers (Channels)"
-msgstr ""
+msgstr "Seguidores (Canales)"
 
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Seguidores (Contactos)"
 
 #. module: ocr_transactions
 #: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__activity_type_icon
@@ -491,7 +491,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ocr_transactions.field_account_move__to_correct
 #: model:ir.model.fields,field_description:ocr_transactions.field_account_payment__to_correct
 msgid "For correction portal"
-msgstr ""
+msgstr "Portal de Corrección "
 
 #. module: ocr_transactions
 #: model_terms:ir.ui.view,arch_db:ocr_transactions.ocr_uploads_form
@@ -542,12 +542,12 @@ msgstr ""
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_ocr_uploads__activity_exception_icon
 msgid "Icon"
-msgstr ""
+msgstr "Icono"
 
 #. module: ocr_transactions
 #: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr ""
+msgstr "Icono para indicar una actividad excepcional "
 
 #. module: ocr_transactions
 #: model:ir.model.fields,help:ocr_transactions.field_ocr_uploads__message_needaction
@@ -650,7 +650,7 @@ msgstr ""
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_ocr_dictionary__name
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #. module: ocr_transactions
 #: model:ir.model.fields,field_description:ocr_transactions.field_account_move____last_update
