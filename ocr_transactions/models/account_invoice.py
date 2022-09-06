@@ -71,11 +71,12 @@ class AccountInvoice(models.Model):
             })
             if ocr_upload:
                 ocr_upload.prepare_ocr_post_transactions_from_invoice()
-                print("DEBUG",ocr_upload)
-                print("Transaction",ocr_upload.ocr_transaction_ids[0])
-                self.ocr_transaction_id = ocr_upload.ocr_transaction_ids[0]
-                self.ocr_transaction_id.invoice_id = self.id
-                self.is_ocr = True
+                if ocr_upload.ocr_transaction_ids:
+                    self.ocr_transaction_id = ocr_upload.ocr_transaction_ids[0]
+                    self.ocr_transaction_id.invoice_id = self.id
+                    self.is_ocr = True
+                else:
+                    raise ValidationError("Cuota excedida, hablar con Biyectiva")
 
     @api.multi
     def create_invoice_lines_from_ocr(self):
