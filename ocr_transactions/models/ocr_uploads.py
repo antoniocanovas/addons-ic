@@ -249,7 +249,8 @@ class OcrUploads(models.Model):
                 if upload.state == "processing" or upload.state == "sending":
                     raise ValidationError(
                         "Odoo is still uploading this!!! Please be patient")
-                upload.action_post_invoices()
+                else:
+                    upload.action_post_invoices()
 
     @job
     @api.multi
@@ -265,6 +266,7 @@ class OcrUploads(models.Model):
         header = self.get_uploader_header(api_key)
 
         for attachment in self.attachment_ids:
+            print("FOR ATTACHMENT")
             djson = self.prepare_attachment(attachment, self)
             if not djson:
                 self.state = "error"
@@ -302,6 +304,7 @@ class OcrUploads(models.Model):
                                                                 " Error " + \
                                                                 str(attachment.datas_fname) + 'OCR post NULL'
                     else:
+                        print("OCR_transaction")
                         ocr_transaction_id = self.create_ocr_transaction(
                             res['token'], api_key, attachment, False, False, self, False
                         )
