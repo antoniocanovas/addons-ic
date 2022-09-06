@@ -65,6 +65,14 @@ class WupLine(models.Model):
     price_unit_cost = fields.Monetary('Cost Price', currency_field='currency_id',
                                       readonly=False, store=True, compute="get_price_unit_cost")
 
+    @api.depends('product_id','product_uom_qty')
+    def get_wupline_cost(self):
+        for record in self:
+            record.price_cost = record.price_unit_cost * record.product_uom_qty
+
+    price_cost = fields.Monetary('Cost Price', currency_field='currency_id',
+                                      readonly=False, store=True, compute="get_wupline_cost")
+
     @api.depends('product_id')
     def get_price_unit(self):
         for record in self:

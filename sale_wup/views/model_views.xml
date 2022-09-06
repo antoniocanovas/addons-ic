@@ -150,6 +150,8 @@
                 <field name="price_unit"/>
                 <field name="sale_discount"/>
                 <field name="subtotal_sale"/>
+                <field name="price_unit_cost" optional="hide"/>
+                <field name="price_cost" optional="hide"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
