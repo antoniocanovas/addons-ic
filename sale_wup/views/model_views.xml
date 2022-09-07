@@ -145,13 +145,13 @@
             <tree create="0" editable="bottom">
                 <field name="product_id"/>
                 <field name="name"/>
-                <field name="product_sale_qty"/>
+                <field name="product_sale_qty" sum="Units"/>
                 <field name="product_uom"/>
                 <field name="price_unit"/>
                 <field name="sale_discount"/>
-                <field name="subtotal_sale"/>
+                <field name="subtotal_sale" sum="Sale"/>
                 <field name="price_unit_cost" optional="hide"/>
-                <field name="price_cost" optional="hide"/>
+                <field name="price_cost" sum="Cost" optional="hide"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
