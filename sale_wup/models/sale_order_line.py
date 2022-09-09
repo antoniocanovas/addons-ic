@@ -27,7 +27,7 @@ class WupSaleOrder(models.Model):
 class WupSaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
-    name = fields.Char(string='Name')
+    #name = fields.Text(string='Name')
     wup_template_id = fields.Many2one('wup.template', string='wup Template', copy=True)
     wup_line_ids = fields.One2many('wup.line', 'sale_line_id', string='wup Line', copy=True)
 
