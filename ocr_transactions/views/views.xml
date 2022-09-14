@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="ocr_transactions_form" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <form create="false" edit="false" delete="false">
+                <sheet string="OCR">
+                    <h2>
+                        <field name="name"/>
+                    </h2>
+                    <group name="basic_params" col="4">
+                        <field name="type"/>
+                        <field name="state"/>
+                        <field name="ocr_upload_id"/>
+                        <field name="invoice_reference"/>
+                        <!--context="{'form_view_ref': 'ocr_transactions.ocr_account_invoice_form'}" />-->
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Valores">
+                            <field name="value_ids" context="{'default_ocr_transaction_id': id}">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="value"/>
+                                    <field name="dictionary_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Job">
+                            <group col="2">
+                                <field name="attachment_id"/>
+                                <field name="token"/>
+                                <field name="json_text"/>
+                                <field name="create_date"/>
+                                <field name="write_date"/>
+                                <field name="transaction_error"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    <footer>
+                        <button t-if="invoice_id" name="show_invoice" string="Ver Factura" class="oe_right oe_highlight"
+                                type="object"/>
+                    </footer>
+                </sheet>
+
+            </form>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">ocr.transactions</field>
+        <field name="name">Default form view for ocr transactions</field>
+        <field name="priority">16</field>
+        <field name="type">form</field>
+    </record>
+
+    <record id="ocr_transactions_tree" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <tree create="false" delete="false" edit="false" string="OCR">
+                <field name="name"/>
+                <field name="type"/>
+                <field name="state"/>
+                <field name="create_date"/>
+                <field name="write_date"/>
+                <field name="transaction_error"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">ocr.transactions</field>
+        <field name="name">Default tree view for ocr transactions</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
+    </record>
+
+    <record id="ocr_dictionary_tree" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <tree >
+                <field name="name"/>
+                <field name="type"/>
+                <field name="res_model"/>
+                <field name="res_field"/>
+                <field name="res_id"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">ocr.dictionary</field>
+        <field name="name">Default tree view for ocr dictionary</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
+    </record>
+
+    <record id="ocr_dictionary_form" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <form>
+                <sheet string="Ocr Dictionary">
+                    <group col="4">
+                        <field name="name" colspan="4"/>
+                        <field name="type" colspan="4" />
+                        <field name="res_model" colspan="4"/>
+                        <field name="tax_id" colspan="4" attrs="{
+                        'invisible':[('res_model','!=','account.tax')],
+                        'required':[('res_model','=','account.tax')]
+                        }"/>
+                        <field name="res_field" colspan="4" />
+                        <field name="res_id" colspan="4" />
+                        <separator/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">ocr.dictionary</field>
+        <field name="name">Default form view for ocr.dictionary</field>
+        <field name="priority">16</field>
+        <field name="type">form</field>
+    </record>
+
+    <record id="ocr_uploads_tree" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="type"/>
+                <field name="state"/>
+            </tree>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">ocr.uploads</field>
+        <field name="name">Default tree view for ocr uploads</field>
+        <field name="priority">16</field>
+        <field name="type">tree</field>
+    </record>
+
+    <record id="ocr_uploads_form" model="ir.ui.view">
+        <field name="active" eval="True"/>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="prepare_ocr_post_transactions" string="Send" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'enviado')]}"/>
+                    <!--<button name="action_post_invoices" string="Send" type="object" class="oe_highlight" attrs="{'invisible': [('state', '=', 'enviado')]}"/>-->
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sending,processing,done,error"/>
+                </header>
+                <sheet string="Ocr Uploads">
+                    <h2>
+                        <field name="name" placeholder="Cliente/Proveedor y algo descriptivo ..."/>
+                    </h2>
+                    <group><field name="ocr_delivery_upload" invisible="1"/></group>
+                    <group col="4">
+                        <field name="type"/>
+                        <field name="partner_credentials_id" placeholder="En blanco si no es para cliente"
+                               attrs="{'invisible': [('ocr_delivery_upload', '!=', True)]}"
+                        />
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Documentos">
+                            <field name="attachment_ids" widget="many2many_binary" attrs="{'invisible':[('state','!=','draft')]}"/>
+                            <!--<field name="attachment_ids" attrs="{'invisible':[('state','!=','draft')]}"/>-->
+                            <field name="ocr_transaction_ids" readonly="True" attrs="{'invisible':[('state','=','draft')]}"/>
+                            <separator/>
+                            Formatos soportados: jpeg, pdf y jpg
+
+                        </page>
+                        <page string="Jobs" attrs="{'invisible':[('state','not in',['sending','done','error'])]}">
+                            <field name="ocr_post_transactions_jobs_ids" readonly="True"/>
+                            <button name="action_post_invoices" string="Send to OCR" type="object" groups="base.group_system"/>
+                        </page>
+                        <page string="Error" attrs="{'invisible':[('state','not in',['error'])]}">
+                            <group col="4">
+                                <field name="upload_transaction_error" string="Error:"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh':'recipients'}"/>
+                </div>
+            </form>
+        </field>
+        <field name="field_parent" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="inherit_id" eval="False"/>
+        <field name="key" eval="False"/>
+        <field name="mode">primary</field>
+        <field name="model">ocr.uploads</field>
+        <field name="name">Default form view for ocr.uploads</field>
+        <field name="priority">16</field>
+        <field name="type">form</field>
+    </record>
+
+</odoo>
