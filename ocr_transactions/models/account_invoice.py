@@ -79,7 +79,7 @@ class AccountMove(models.Model):
                         record.ocr_transaction_id.invoice_id = record.id
                         record.is_ocr = True
                     else:
-                        raise ValidationError("Cuota excedida, Hablar con Biyectiva")
+                        raise ValidationError(ocr_upload.upload_transaction_error)
 
     def create_invoice_lines_from_ocr(self):
         for record in self:

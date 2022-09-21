@@ -117,6 +117,8 @@ class OcrUploads(models.Model):
                     d_json = json.dumps(djson)
                     return d_json
                 else:
+                    self.upload_transaction_error = str(self.upload_transaction_error) + \
+                                                    "El archivo de lotes debe ser PDF"
                     raise ValidationError("El archivo de lotes debe ser PDF")
             else:
                 if ext == "JPG" or ext == "jpeg" or ext == "jpg":
