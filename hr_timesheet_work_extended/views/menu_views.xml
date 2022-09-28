@@ -89,6 +89,4 @@
         <field name="web_icon" eval="False"/>
     </record>
 
-
-
 </odoo>
