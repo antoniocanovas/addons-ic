@@ -10,6 +10,7 @@ class SaleOrder(models.Model):
     all_revision_ids = fields.Many2many('sale.order',
                                         string="Revisions",
                                         compute="get_all_revisions",
+                                        store=False,
                                         context={'active_test': False}
                                         )
     all_revision_count = fields.Integer(string="Revisions",
