@@ -28,7 +28,7 @@ class SaleOrder(models.Model):
             unrevision_name = self.name.split(".")[0]
             revision = self.env['sale.order'].search([('name', 'ilike', unrevision_name),
                                                   ('active','in',[True,False])])
-        self.all_revision_ids = [(6, 0, revision.ids)]
+            self.all_revision_ids = [(6, 0, revision.ids)]
 
     def get_all_revisions_count(self):
         self.all_revision_count = len(self.all_revision_ids.ids)
