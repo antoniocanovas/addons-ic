@@ -7,43 +7,40 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order',
 
     active = fields.Boolean('Active', store=True, default=True)
-    all_revision_ids = fields.Many2many('sale.order',
-                                        string="Revisions",
-                                        compute="get_all_revisions",
-                                        store=False,
-                                        context={'active_test': False}
-                                        )
-    all_revision_count = fields.Integer(string="Revisions",
-                                        compute="get_all_revisions_count",
-                                        store=False
-                                        )
-    all_mail_messages = fields.Many2many('mail.message',
+    revision_ids = fields.Many2many(comodel_name='sale.order',
+                                    string="Revisions",
+                                    relation='so_sorevision_rel',
+                                    column1="so",
+                                    column2="sorevision",
+                                    store=True,
+                                    context={'active_test': False}
+                                    )
+    revision_count = fields.Integer(string="Revisions",
+                                    compute="get_revisions_count",
+                                    store=False
+                                    )
+    revision_messages = fields.Many2many('mail.message',
                                          string="Messages",
-                                         compute="get_all_messages",
+                                         compute="get_revision_messages",
                                          store=False
                                          )
 
-    def get_all_revisions(self):
-        if self.id:
-            unrevision_name = self.name.split(".")[0]
-            revision = self.env['sale.order'].search([('name', 'ilike', unrevision_name),
-                                                  ('active','in',[True,False])])
-            self.all_revision_ids = [(6, 0, revision.ids)]
+    def get_revisions_count(self):
+        self.revision_count = len(self.revision_ids.ids)
 
-    def get_all_revisions_count(self):
-        self.all_revision_count = len(self.all_revision_ids.ids)
-
-    def get_all_messages(self):
+    def get_revision_messages(self):
         messages = self.env['mail.message'].search([('model', '=', 'sale.order'),
-                                                    ('res_id', 'in', self.all_revision_ids.ids)])
-        self.all_mail_messages = [(6, 0, messages.ids)]
+                                                    ('res_id', 'in', self.revision_ids.ids)])
+        self.revision_messages = [(6, 0, messages.ids)]
 
     def get_new_sale_order_revision(self):
         for record in self:
-            original = record.name.split(".")[0]
             version = 0
-            saleorders = self.env['sale.order'].search([('name', 'ilike', original)])
+            original = record.name.split(".")[0]
 
+            # Looking for last revision code, and create new revision with code +1:
+            saleorders = self.env['sale.order'].search([('name', 'ilike', original),
+                                                        ('active','in',[False,True])])
             for so in saleorders:
                 name_version = so.name.split(".")
                 if (len(name_version) > 1) and (int(name_version[1]) > version):
@@ -54,8 +51,14 @@ class SaleOrder(models.Model):
                 versionchar = "." + str(version + 1)
             new = record.copy({'name': original + versionchar})
 
-            view_id = self.env.ref('sale.view_order_form').id
+            # Updating revision_ids in related sales orders:
+            saleorders = self.env['sale.order'].search([('name', 'ilike', original),
+                                                        ('active','in',[False,True])])
+            for so in saleorders:
+                so.write({'revision_ids':[(6,0,saleorders.ids)]})
 
+            # Refresh screen with new revision:
+            view_id = self.env.ref('sale.view_order_form').id
             return {
                 'view_type': 'form',
                 'view_mode': 'form',
