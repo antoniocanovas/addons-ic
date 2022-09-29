@@ -24,7 +24,7 @@ class SaleOrder(models.Model):
                                          )
 
     def get_all_revisions(self):
-        if record.id:
+        if self.id:
             unrevision_name = self.name.split(".")[0]
             revision = self.env['sale.order'].search([('name', 'ilike', unrevision_name),
                                                   ('active','in',[True,False])])
