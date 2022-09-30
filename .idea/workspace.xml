@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale revision v2">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_roadmap/models/project_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_project.py" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="roadmap bugs">
       <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,13 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00387" summary="search my">
-      <created>1661449528315</created>
-      <option name="number" value="00387" />
-      <option name="presentableId" value="LOCAL-00387" />
-      <option name="project" value="LOCAL" />
-      <updated>1661449528315</updated>
     </task>
     <task id="LOCAL-00388" summary="search my">
       <created>1661449978584</created>
@@ -413,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664495849077</updated>
     </task>
-    <option name="localTasksCounter" value="436" />
+    <task id="LOCAL-00436" summary="roadmap bugs">
+      <created>1664558786779</created>
+      <option name="number" value="00436" />
+      <option name="presentableId" value="LOCAL-00436" />
+      <option name="project" value="LOCAL" />
+      <updated>1664558786779</updated>
+    </task>
+    <option name="localTasksCounter" value="437" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -429,7 +426,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="partner_credential_equipment deleted, functionality in other modules" />
     <MESSAGE value="wup_discount review" />
     <MESSAGE value="contest rev" />
     <MESSAGE value="bug purchase_price_update div 0" />
@@ -454,7 +450,8 @@
     <MESSAGE value="sale rev v2" />
     <MESSAGE value="roadmap view change" />
     <MESSAGE value="sale revision v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="sale revision v2" />
+    <MESSAGE value="roadmap bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="roadmap bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
