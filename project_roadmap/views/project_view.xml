@@ -21,7 +21,7 @@
         <field name="type">search</field>
     </record>
 
-    <record id="project_project_roadmap_from_inh" model="ir.ui.view">
+    <record id="project_project_roadmap_form_inh" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <data>

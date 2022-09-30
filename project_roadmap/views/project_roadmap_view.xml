@@ -58,7 +58,7 @@
         <field name="arch" type="xml">
             <tree name="project_roadmaps"
                   decoration-success="active==False"
-                  decoration-danger="active==True and date_limit &lt; context_today().strftime('%Y-%m-%d')"
+                  decoration-danger="active==True and and date_limit != False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
                   default_order="active asc, priority asc">
                 <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
                 <field name="display_name"/>
@@ -119,7 +119,7 @@
             <tree name="project_roadmaps"
                   multi_edit="1"
                   decoration-success="active==False"
-                  decoration-danger="active==True and date_limit and date_limit != False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
+                  decoration-danger="active==True and date_limit != False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
                   default_order="active desc, priority asc">
                 <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
                 <field name="display_name"/>
