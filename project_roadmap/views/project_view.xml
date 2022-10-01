@@ -43,4 +43,23 @@
         <field name="type">form</field>
     </record>
 
+    <record id="project_roadmap_inh_kanban_view" model="ir.ui.view">
+        <field name="name">Roadmap kanban view inh</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+            <field name="task_count" position="after">
+                <field name="roadmap_count"/>
+            </field>
+            <xpath expr="//templates/t/div/div" position="inside">
+                <a class="o_project_kanban_box" name="%(project_roadmap.action_view_project_2_roadmap)d" type="action">
+                    <div>
+                        <span class="o_value"><t t-esc="record.roadmap_count.value"/></span>
+                        <span class="o_label">Roadmap(s)</span>
+                    </div>
+                </a>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
