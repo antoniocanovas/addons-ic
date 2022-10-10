@@ -42,7 +42,7 @@ class Viafirma(models.Model):
         selection=STATE,
         string="State",
         default='DRAFT',
-        track_visibility='onchange'
+        tracking='True'
     )
 
     template_id = fields.Many2one('viafirma.templates')
