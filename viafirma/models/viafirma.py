@@ -42,7 +42,7 @@ class Viafirma(models.Model):
         selection=STATE,
         string="State",
         default='DRAFT',
-        tracking='True'
+        tracking=True,
     )
 
     template_id = fields.Many2one('viafirma.templates')
@@ -92,13 +92,7 @@ class Viafirma(models.Model):
             'res_model': 'viafirma.wizard',
             'view_id': view_id,
             'target': 'new',
-            'context': {
-                #'default_name': 'Wizard -',
-                #'default_invoice_id_link': self.ocr_transaction_id.invoice_id.id,
-                #'default_attachment_datas': self.message_main_attachment_id.datas,
-                #'default_attachment_datas': attachment,
-                #'default_original_ocr_transaction_id': self.ocr_transaction_id.id,
-            }
+
         }
 
     def send_viafirma(self):

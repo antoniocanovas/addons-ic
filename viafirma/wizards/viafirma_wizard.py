@@ -38,7 +38,7 @@ class ViafirmaWizard(models.TransientModel):
 
     document_type = fields.Selection(
         selection=TYPE,
-        string="Document",
+        string="Document Type",
         default='upload',
     )
     document_type_text = fields.Char('Type of document',compute='check_type')
