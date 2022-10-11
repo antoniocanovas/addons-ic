@@ -1,6 +1,6 @@
 {
     'name': 'Timesheet Work Extended',
-    'version': '14.0.1.0.0',
+    'version': '14.0.8.0.0',
     'category': '',
     'description': u"""
 
@@ -13,7 +13,7 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'views/model_views.xml',
+        'views/timesheet_work_views.xml',
     ],
     'installable': True,
 }

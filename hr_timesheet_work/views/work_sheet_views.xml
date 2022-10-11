@@ -27,10 +27,15 @@
                             <group><group>
                                 <field name="task_id" options="{'no_create': True}" domain="[('project_id','=',project_id)]" attrs="{'invisible':[('project_id','=',False)]}"/>
                                 <field name="employee_ids" widget="many2many_tags" groups="hr_timesheet.group_hr_timesheet_approver"/>
+                                <field name="description" attrs="{'required':[('task_id','!=',False)]}"/>
                             </group><group>
+                                <!--
                                 <field name="start" widget="timesheet_uom" attrs="{'invisible':['|',('type','=','production'),('set_start_stop','=',False),('type','!=','production')]}"/>
                                 <field name="stop" widget="timesheet_uom" attrs="{'invisible':['|',('type','=','production'),('set_start_stop','=',False),('type','!=','production')]}"/>
-                                <field name="duration" widget="timesheet_uom" attrs="{'invisible':['|',('set_start_stop','=',True),('type','=','production')]}"/>
+                                -->
+                                <field name="start" widget="timesheet_uom" attrs="{'invisible':[('set_start_stop','=',False)]}"/>
+                                <field name="stop" widget="timesheet_uom" attrs="{'invisible':[('set_start_stop','=',False)]}"/>
+                                <field name="duration" widget="timesheet_uom" attrs="{'invisible':[('set_start_stop','=',True)]}"/>
                                 <field name="time_type_id" widget="selection"/>
                             </group></group>
                             <div attrs="{'invisible':[('project_id','!=',False)]}">
@@ -44,9 +49,9 @@
                                         <field name="user_id" invisible="1"/>
                                         <field name="employee_id" required="1" widget="many2one_avatar_employee" options="{'no_create': True}"/>
                                         <field name="name" required="0" widget="text"/>
-                                        <field name="time_start" widget="timesheet_uom"/>
-                                        <field name="time_stop" widget="timesheet_uom"/>
-                                        <field name="unit_amount" widget="timesheet_uom" decoration-danger="unit_amount &gt; 24"/>
+                                        <field name="time_start" widget="timesheet_uom" attrs="{'invisible':[('set_start_stop','=',False)]}"/>
+                                        <field name="time_stop" widget="timesheet_uom" attrs="{'invisible':[('set_start_stop','=',False)]}"/>
+                                        <field name="unit_amount" widget="timesheet_uom" force_save="1" decoration-danger="unit_amount &gt; 24" attrs="{'readonly':[('set_start_stop','=',True)]}"/>
                                         <field name="time_type_id"/>
                                         <field name="project_id" invisible="1"/>
                                         <field name="date"/>
@@ -58,6 +63,7 @@
                                 </field>
                             </div>
                         </page>
+
                         <page name="work_sheet_project_products" string="Products" attrs="{'invisible':[('type','!=','project')]}">
                             <h3>Pickings:</h3>
                             <field name="picking_ids" attrs="{'readonly':[('project_id','=',False)]}" context="{'default_company_id': company_id}"/>
@@ -68,6 +74,21 @@
                                     <field name="product_uom_qty"/>
                                     <field name="product_uom"/>
                                     <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page name="work_sheet_line_done" string="Done" attrs="{'invisible':[('type','!=','project')]}">
+                            <field name="line_done_ids" attrs="{'readonly':[('project_id','=',False)]}">
+                                <tree editable="botton">
+                                    <field name="todo_id" domain="[('work_id','=',work_id)]"/>
+                                    <field name="name"/>
+                                    <field name="note" optional="show"/>
+                                    <field name="qty"/>
+                                    <field name="time_elapsed" widget="timesheet_uom" optional="show"/>
+                                    <field name="uom_id"/>
+                                    <field name="work_sheet_id" invisible="1"/>
+                                    <field name="work_id" invisible="1"/>
                                 </tree>
                             </field>
                         </page>
@@ -138,104 +159,6 @@
                     <filter name="date" string="Date" context="{'group_by': 'date'}"/>
                 </group>
             </search>
-        </field>
-    </record>
-
-
-    <record id="timesheet_work_tree" model="ir.ui.view">
-        <field name="active" eval="True"/>
-        <field name="arch" type="xml">
-            <tree string="Work" sample="1"  default_order='create_date desc'>
-                <field name="name"/>
-                <field name="type"/>
-                <field name="partner_id"/>
-                <field name="active" invisible="1"/>
-            </tree>
-        </field>
-        <field name="field_parent" eval="False"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="inherit_id" eval="False"/>
-        <field name="key" eval="False"/>
-        <field name="mode">primary</field>
-        <field name="model">timesheet.work</field>
-        <field name="name">Work Work default Tree View</field>
-        <field name="priority">16</field>
-        <field name="type">tree</field>
-    </record>
-
-    <record id="timesheet_work_form" model="ir.ui.view">
-        <field name="active" eval="True"/>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <h1><field name="name"/></h1>
-                    <group name="project">
-                        <field name="type" widget="selection"/>
-                        <field name="partner_id"/>
-                        <field name="project_id"/>
-                        <field name="set_start_stop" string="Start/stop time" attrs="{'invisible':[('type','not in',['repair','project'])]}"/>
-                    </group>
-                    <field name="active" invisible="1"/>
-                </sheet>
-            </form>
-        </field>
-        <field name="field_parent" eval="False"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="inherit_id" eval="False"/>
-        <field name="key" eval="False"/>
-        <field name="mode">primary</field>
-        <field name="model">timesheet.work</field>
-        <field name="name">Work form default View</field>
-        <field name="priority">16</field>
-        <field name="type">form</field>
-    </record>
-
-    <record id="analytic_tag_worksheet_inh" model="ir.ui.view">
-        <field name="name">Hide analytic tag field in worksheets</field>
-        <field name="model">account.analytic.tag</field>
-        <field name="inherit_id" ref="analytic.account_analytic_tag_form_view"/>
-        <field name="arch" type="xml">
-            <field name="name" position="after">
-                <field name="timesheet_hidden"/>
-            </field>
-        </field>
-    </record>
-
-    <record id="stock_picking_worksheet_inh" model="ir.ui.view">
-        <field name="name">Show worksheet in stock picking</field>
-        <field name="model">stock.picking</field>
-        <field name="inherit_id" ref="stock.view_picking_form"/>
-        <field name="arch" type="xml">
-            <field name="origin" position="after">
-                <field name="work_sheet_id"/>
-            </field>
-        </field>
-    </record>
-
-    <record id="hr_timesheet_line_tree_self_id" model="ir.ui.view">
-        <field name="name">Hr timesheet self ID</field>
-        <field name="model">account.analytic.line</field>
-        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
-        <field name="arch" type="xml">
-            <field name="date" position="before">
-                <field name="self_id" optional="hide" context="{'form_view_ref':'hr_timesheet.timesheet_view_form_user'}" groups="account.group_account_manager"/>
-            </field>
-        </field>
-    </record>
-
-    <record id="view_hr_timesheet_line_form_tracking" model="ir.ui.view">
-        <field name="name">hr.timesheet.line.form.tracking</field>
-        <field name="model">account.analytic.line</field>
-        <field name="type">form</field>
-        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="/form/sheet" position="after">
-                <div class="oe_chatter">
-                    <field name="message_follower_ids" options="{'post_refresh':True}" groups="base.group_user"/>
-                    <field name="activity_ids"/>
-                    <field name="message_ids"/>
-                </div>
-            </xpath>
         </field>
     </record>
 
