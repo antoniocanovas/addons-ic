@@ -61,7 +61,7 @@
                 <sheet>
 
                     <div class="oe_button_box" name="button_box">
-                        <button name="import_sale_line_todo" string="Import Sale Lines" type="object" icon="fa-magic"/>
+                        <button name="import_sale_line_todo" string="Import Sale Lines" class="oe_stat_button" type="object" icon="fa-magic"/>
                         <button class="oe_stat_button" type="action" name="%(hr_timesheet_work.act_tswork_2_line_todo)d" icon="fa-tasks">
                             <field string="To do" name="todo_count" widget="statinfo"/>
                         </button>
