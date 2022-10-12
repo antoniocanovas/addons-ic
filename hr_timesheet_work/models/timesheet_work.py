@@ -17,7 +17,7 @@ class TimesheetWork(models.Model):
     active = fields.Boolean(string="Active", default=True)
     partner_id = fields.Many2one('res.partner', string='Partner')
     type = fields.Selection([('project','Project')],
-        required=True, string='Type', default='project', index=True, copy=False, tracking=True)
+                            required=True, string='Type', default='project', index=True, copy=False, tracking=True)
     project_id = fields.Many2one('project.project')
     set_start_stop = fields.Boolean('Set start & stop time')
     sale_order_ids = fields.Many2many('sale.order', string='Sale Orders')
@@ -39,10 +39,10 @@ class TimesheetWork(models.Model):
 
     # Action in buttom box to import sale order lines to lines to-do:
     def import_sale_line_todo(self):
-        lines = env['sale.order.line'].search([('display_type', '=', False), ('order_id', 'in', self.sale_order_ids.ids)])
+        lines = self.env['sale.order.line'].search([('display_type', '=', False), ('order_id', 'in', self.sale_order_ids.ids)])
         for li in lines:
-            exist = env['timesheet.line.todo'].search([('sale_line_id', '=', li.id)])
+            exist = self.env['timesheet.line.todo'].search([('sale_line_id', '=', li.id)])
             if not exist.ids:
-                env['timesheet.line.todo'].create({'work_id': record.id, 'sale_line_id': li.id, 'name': li.name,
-                                                   'product_id': li.product_id.id, 'uom_id': li.product_uom.id})
+                self.env['timesheet.line.todo'].create({'work_id': record.id, 'sale_line_id': li.id, 'name': li.name,
+                                                        'product_id': li.product_id.id, 'uom_id': li.product_uom.id})
     # - - - - - -
