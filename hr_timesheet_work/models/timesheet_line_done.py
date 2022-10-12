@@ -35,6 +35,7 @@ class TimesheetLineDone(models.Model):
         for record in self:
             performance = 0
             employees = len(record.employee_ids)
+            if (employees == 0): employees = 1
             if (employees > 0) and (record.time_elapsed > 0):
                 performance = record.qty / (employees * record.time_elapsed)
             record.performance = performance
