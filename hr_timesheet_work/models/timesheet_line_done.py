@@ -12,7 +12,7 @@ class TimesheetLineDone(models.Model):
     _description = "Timesheet Line Done"
 
     todo_id = fields.Many2one('timesheet.line.todo', string='Item', required=True)
-    qty = fields.Integer(string='Quantity', required="1")
+    qty = fields.Float(string='Quantity', required="1")
     uom_id = fields.Many2one('uom.uom', store=True, string='UOM', related='todo_id.uom_id')
     work_sheet_id = fields.Many2one('work.sheet', string='Sheet', store=True)
     sale_line_id = fields.Many2one('sale.order.line', string='Sale line', store=True, related='todo_id.sale_line_id')
