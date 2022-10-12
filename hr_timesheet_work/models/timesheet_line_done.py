@@ -20,7 +20,7 @@ class TimesheetLineDone(models.Model):
     date = fields.Date(string='Date', store=True, related='work_sheet_id.date' )
     time_elapsed = fields.Float('Time', store=True)
     work_id = fields.Many2one('timesheet.work', related='work_sheet_id.work_id', store=True)
-    product_id = fields.Many2One('product.product', related='todo_id.product_id', store=True)
+    product_id = fields.Many2one('product.product', related='todo_id.product_id', store=True)
     employee_ids = fields.Many2many('hr.employee')
 
     @api.depends('todo_id')
