@@ -50,7 +50,7 @@
                 <field name="time_elapsed" widget="timesheet_uom" sum="Time"/>
                 <field name="employee_ids" widget="many2many_tags" optional="hide"/>
                 <field name="note" optional="show"/>
-                <field name="performance" optional="show"/>
+                <field name="performance" optional="show" avg="Performance average"/>
                 <field name="date" optional="show"/>
                 <field name="work_id" optional="show"/>
                 <field name="sale_line_id" optional="hide"/>
