@@ -31,7 +31,7 @@ class TimesheetLineDone(models.Model):
     name = fields.Char(string='Description', compute='get_done_name', readonly=False, store=True, required="1")
 
     @api.depends('employee_ids','qty','time_elapsed')
-    def get_performace(self):
+    def get_performance(self):
         for record in self:
             performance = 0
             employees = len(record.employee_ids)
