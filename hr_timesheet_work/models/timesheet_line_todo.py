@@ -33,3 +33,12 @@ class TimesheetLineTodo(models.Model):
                               'uom_id': record.sale_line_id.product_uom.id})
     # - - - - - -
 
+    # Action in buttom box to import sale order lines to lines to-do:
+    def import_sale_line_todo(self):
+        lines = env['sale.order.line'].search([('display_type', '=', False), ('order_id', 'in', self.sale_order_ids.ids)])
+        for li in lines:
+            exist = env['timesheet.line.todo'].search([('sale_line_id', '=', li.id)])
+            if not exist.ids:
+                env['timesheet.line.todo'].create({'work_id': record.id, 'sale_line_id': li.id, 'name': li.name,
+                                                   'product_id': li.product_id.id, 'uom_id': li.product_uom.id})
+    # - - - - - -
