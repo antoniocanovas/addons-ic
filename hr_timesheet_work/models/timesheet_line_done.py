@@ -22,10 +22,20 @@ class TimesheetLineDone(models.Model):
     work_id = fields.Many2one('timesheet.work', related='work_sheet_id.work_id', store=True)
     product_id = fields.Many2one('product.product', related='todo_id.product_id', store=True)
     employee_ids = fields.Many2many('hr.employee')
+    note = fields.Char('Comment', store=True)
 
     @api.depends('todo_id')
     def get_done_name(self):
         for record in self:
             record.name = record.todo_id.name
     name = fields.Char(string='Description', compute='get_done_name', readonly=False, store=True, required="1")
-    note = fields.Char('Comment', store=True)
+
+    @api.dependes('employee_ids','qty','time_elapsed')
+    def get_performace(self):
+        for record in self:
+            performance = 0
+            employees = len(record.employee_ids)
+            if (employees > 0) and (record.time_elapsed > 0):
+                performance = record.qty / (employees * record.time_elapsed)
+            record.performance = performance
+    performance = fields.Float('Performance / hour', store=False, compute='get_performance')

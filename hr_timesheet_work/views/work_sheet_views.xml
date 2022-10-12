@@ -83,11 +83,11 @@
                                 <tree editable="botton">
                                     <field name="todo_id" domain="[('work_id','=',work_id)]" context="{'default_work_id':work_id}"/>
                                     <field name="name"/>
-                                    <field name="note" optional="show"/>
                                     <field name="qty"/>
-                                    <field name="time_elapsed" widget="timesheet_uom" optional="show"/>
                                     <field name="uom_id"/>
+                                    <field name="time_elapsed" widget="timesheet_uom" optional="show"/>
                                     <field name="employee_ids" widget="many2many_tags" optional="show"/>
+                                    <field name="note" optional="show"/>
                                     <field name="work_sheet_id" invisible="1"/>
                                     <field name="work_id" invisible="1"/>
                                 </tree>

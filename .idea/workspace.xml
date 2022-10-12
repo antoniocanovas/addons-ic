@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="upd hr_timesheet_work &amp; extended">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hr_timesheet_work imp">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_done.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_done.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_todo.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_todo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_done_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_done_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_todo_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_todo_views.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,20 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00395" summary="upd roadmap">
-      <created>1661856885171</created>
-      <option name="number" value="00395" />
-      <option name="presentableId" value="LOCAL-00395" />
-      <option name="project" value="LOCAL" />
-      <updated>1661856885172</updated>
-    </task>
-    <task id="LOCAL-00396" summary="upd roadmap">
-      <created>1661859656180</created>
-      <option name="number" value="00396" />
-      <option name="presentableId" value="LOCAL-00396" />
-      <option name="project" value="LOCAL" />
-      <updated>1661859656180</updated>
     </task>
     <task id="LOCAL-00397" summary="upd roadmap">
       <created>1661859896310</created>
@@ -415,7 +399,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665497996792</updated>
     </task>
-    <option name="localTasksCounter" value="444" />
+    <task id="LOCAL-00444" summary="hr_timesheet_work imp">
+      <created>1665533620236</created>
+      <option name="number" value="00444" />
+      <option name="presentableId" value="LOCAL-00444" />
+      <option name="project" value="LOCAL" />
+      <updated>1665533620236</updated>
+    </task>
+    <task id="LOCAL-00445" summary="hr_timesheet_work imp">
+      <created>1665533690479</created>
+      <option name="number" value="00445" />
+      <option name="presentableId" value="LOCAL-00445" />
+      <option name="project" value="LOCAL" />
+      <updated>1665533690479</updated>
+    </task>
+    <option name="localTasksCounter" value="446" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -431,7 +429,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="bug purchase_price_update div 0" />
     <MESSAGE value="contest es_es.po" />
     <MESSAGE value="workshop rename field" />
     <MESSAGE value="sale_target" />
@@ -456,7 +453,8 @@
     <MESSAGE value="roadmap bugs" />
     <MESSAGE value="roadmap kanban" />
     <MESSAGE value="upd hr_timesheet_work &amp; extended" />
-    <option name="LAST_COMMIT_MESSAGE" value="upd hr_timesheet_work &amp; extended" />
+    <MESSAGE value="hr_timesheet_work imp" />
+    <option name="LAST_COMMIT_MESSAGE" value="hr_timesheet_work imp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
