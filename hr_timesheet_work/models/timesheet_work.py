@@ -43,6 +43,6 @@ class TimesheetWork(models.Model):
         for li in lines:
             exist = self.env['timesheet.line.todo'].search([('sale_line_id', '=', li.id)])
             if not exist.ids:
-                self.env['timesheet.line.todo'].create({'work_id': record.id, 'sale_line_id': li.id, 'name': li.name,
+                self.env['timesheet.line.todo'].create({'work_id': self.id, 'sale_line_id': li.id, 'name': li.name,
                                                         'product_id': li.product_id.id, 'uom_id': li.product_uom.id})
     # - - - - - -
