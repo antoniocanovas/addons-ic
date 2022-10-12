@@ -39,4 +39,4 @@ class TimesheetLineDone(models.Model):
             if (employees > 0) and (record.time_elapsed > 0):
                 performance = record.qty / (employees * record.time_elapsed)
             record.performance = performance
-    performance = fields.Float('Performance / hour', store=False, compute='get_performance')
+    performance = fields.Float('Units/hour', store=False, compute='get_performance')
