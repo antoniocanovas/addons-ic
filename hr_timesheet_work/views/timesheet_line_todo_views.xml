@@ -12,8 +12,8 @@
                     </h1>
                     <group>
                         <field name="sale_line_id"/>
-                        <field name="product_id"/>
-                        <field name="uom_id"/>
+                        <field name="product_id" attrs="{'readonly':[('sale_line_id','!=',False)]}"/>
+                        <field name="uom_id" readonly="1"/>
                         <field name="active" widget="boolean_toggle"/>
                         <field name="work_id" invisible="1"/>
                     </group>

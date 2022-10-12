@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="roadmap kanban">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="upd hr_timesheet_work &amp; extended">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work_extended/views/menu_views.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_done.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_done.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_todo.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_todo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_done_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_done_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_todo_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_todo_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,20 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00393" summary="upd product_price_group">
-      <created>1661727603096</created>
-      <option name="number" value="00393" />
-      <option name="presentableId" value="LOCAL-00393" />
-      <option name="project" value="LOCAL" />
-      <updated>1661727603096</updated>
-    </task>
-    <task id="LOCAL-00394" summary="upd product_price_group">
-      <created>1661774296784</created>
-      <option name="number" value="00394" />
-      <option name="presentableId" value="LOCAL-00394" />
-      <option name="project" value="LOCAL" />
-      <updated>1661774296784</updated>
     </task>
     <task id="LOCAL-00395" summary="upd roadmap">
       <created>1661856885171</created>
@@ -411,7 +401,21 @@
       <option name="project" value="LOCAL" />
       <updated>1664623437322</updated>
     </task>
-    <option name="localTasksCounter" value="442" />
+    <task id="LOCAL-00442" summary="upd hr_timesheet_work &amp; extended">
+      <created>1665497850733</created>
+      <option name="number" value="00442" />
+      <option name="presentableId" value="LOCAL-00442" />
+      <option name="project" value="LOCAL" />
+      <updated>1665497850733</updated>
+    </task>
+    <task id="LOCAL-00443" summary="upd hr_timesheet_work &amp; extended">
+      <created>1665497996791</created>
+      <option name="number" value="00443" />
+      <option name="presentableId" value="LOCAL-00443" />
+      <option name="project" value="LOCAL" />
+      <updated>1665497996792</updated>
+    </task>
+    <option name="localTasksCounter" value="444" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -427,7 +431,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="contest rev" />
     <MESSAGE value="bug purchase_price_update div 0" />
     <MESSAGE value="contest es_es.po" />
     <MESSAGE value="workshop rename field" />
@@ -452,7 +455,8 @@
     <MESSAGE value="sale revision v2" />
     <MESSAGE value="roadmap bugs" />
     <MESSAGE value="roadmap kanban" />
-    <option name="LAST_COMMIT_MESSAGE" value="roadmap kanban" />
+    <MESSAGE value="upd hr_timesheet_work &amp; extended" />
+    <option name="LAST_COMMIT_MESSAGE" value="upd hr_timesheet_work &amp; extended" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

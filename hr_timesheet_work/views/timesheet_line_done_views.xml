@@ -17,6 +17,7 @@
                         <field name="date"/>
                         <field name="time_elapsed" widget="timesheeet_uom"/>
                         <fieldd name="note"/>
+                        <field name="employee_ids" widget="many2many_tags" optional="hide"/>
                         <fieldd name="work_id"/>
                         <field name="sale_line_id" readonly="1"/>
                         <field name="work_sheet_id" readonly="1"/>
@@ -39,14 +40,16 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree name="lines_done" default_order="date asc" create="0" edit="0">
-                <field name="name" optional="show"/>
-                <field name="work_id" optional="show"/>
-                <field name="sale_line_id" optional="hide"/>
+                <field name="todo_id" optional="hide"/>
                 <field name="qty" sum="Quantity"/>
+                <field name="name" optional="show"/>
                 <field name="uom_id"/>
                 <field name="time_elapsed" widget="timesheet_uom" sum="Time"/>
                 <field name="date"/>
-                <field name="todo_id" optional="hide"/>
+                <field name="product_id" optional="hide"/>
+                <field name="employee_ids" widget="many2many_tags" optional="hide"/>
+                <field name="work_id" optional="show"/>
+                <field name="sale_line_id" optional="hide"/>
                 <field name="work_sheet_id" optional="hide"/>
             </tree>
         </field>
@@ -71,6 +74,8 @@
                 <separator/>
                 <group expand="0" name="group_by" string="Group By">
                     <filter name="work" string="Work" domain="[]" context="{'group_by' : 'work_id'}"/>
+                    <filter name="date" string="Date" domain="[]" context="{'group_by' : 'date'}"/>
+                    <filter name="product" string="Product" domain="[]" context="{'group_by' : 'product_id'}"/>
                     <filter name="work_sheet_id" string="Sheet" context="{'group_by': 'work_sheet_id'}"/>
                     <filter name="sale_line_id" string="Sale line" context="{'group_by': 'sale_line_id'}"/>
                     <filter name="sale_id" string="Sale order" context="{'group_by': 'sale_id'}"/>

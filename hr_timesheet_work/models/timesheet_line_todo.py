@@ -11,7 +11,7 @@ class TimesheetLineTodo(models.Model):
     _name = "timesheet.line.todo"
     _description = "Timesheet Line To-Do"
 
-    name = fields.Char(string='Name', store=True)
+    name = fields.Char(string='Name', store=True, required=True)
     active = fields.Boolean('Active',default=True)
     work_id = fields.Many2one('timesheet.work', store=True, string='Work')
     sale_line_id = fields.Many2one('sale.order.line', store=True, string='Sale Line')
@@ -23,7 +23,6 @@ class TimesheetLineTodo(models.Model):
     # It will be executed from AA, it can't be compute because always null on save line:
     def get_update_work_todo_line(self):
         for record in self:
-            name, product = "", False
             if (record.product_id.id):
                 record.write({'product_id': record.product_id.id,
                               'name':record.product_id.name,
