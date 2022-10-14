@@ -87,7 +87,6 @@
                                     <field name="uom_id"/>
                                     <field name="time_elapsed" widget="timesheet_uom" optional="show"/>
                                     <field name="employee_ids" widget="many2many_tags" optional="show"/>
-                                    <field name="note" optional="show"/>
                                     <field name="performance" optional="hide"/>
                                     <field name="work_sheet_id" invisible="1"/>
                                     <field name="work_id" invisible="1"/>

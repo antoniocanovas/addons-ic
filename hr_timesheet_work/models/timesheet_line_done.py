@@ -22,7 +22,6 @@ class TimesheetLineDone(models.Model):
     work_id = fields.Many2one('timesheet.work', related='work_sheet_id.work_id', store=True)
     product_id = fields.Many2one('product.product', related='todo_id.product_id', store=True)
     employee_ids = fields.Many2many('hr.employee')
-    note = fields.Char('Comment', store=True)
 
     @api.depends('todo_id')
     def get_done_name(self):

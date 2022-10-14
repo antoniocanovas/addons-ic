@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hr_timesheet_work imp" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="SML Partner">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_done.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_done.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_done_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_done_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_views.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,13 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00415" summary="sale wup line deletion review">
-      <created>1661985995950</created>
-      <option name="number" value="00415" />
-      <option name="presentableId" value="LOCAL-00415" />
-      <option name="project" value="LOCAL" />
-      <updated>1661985995950</updated>
     </task>
     <task id="LOCAL-00416" summary="sale wup line deletion review">
       <created>1662378907586</created>
@@ -408,7 +406,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665673161514</updated>
     </task>
-    <option name="localTasksCounter" value="464" />
+    <task id="LOCAL-00464" summary="SML Partner">
+      <created>1665743506230</created>
+      <option name="number" value="00464" />
+      <option name="presentableId" value="LOCAL-00464" />
+      <option name="project" value="LOCAL" />
+      <updated>1665743506230</updated>
+    </task>
+    <option name="localTasksCounter" value="465" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +429,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="contest es_es.po" />
     <MESSAGE value="workshop rename field" />
     <MESSAGE value="sale_target" />
     <MESSAGE value="sale_target helps" />
@@ -449,7 +453,8 @@
     <MESSAGE value="roadmap kanban" />
     <MESSAGE value="upd hr_timesheet_work &amp; extended" />
     <MESSAGE value="hr_timesheet_work imp" />
-    <option name="LAST_COMMIT_MESSAGE" value="hr_timesheet_work imp" />
+    <MESSAGE value="SML Partner" />
+    <option name="LAST_COMMIT_MESSAGE" value="SML Partner" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
