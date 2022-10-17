@@ -18,7 +18,7 @@
         <field name="name">Open tab in analytic line</field>
         <field name="active" eval="True"/>
         <field name="model">account.analytic.line</field>
-        <field name="inherit_id">False</>
+        <field name="inherit_id" eva="False"/>
         <field name="arch" type="xml">
             <tree editable="top" string="Timesheet Activities" sample="1">
                 <field name="id" widget="open_tab" nolabel="1"/>
