@@ -9,7 +9,7 @@
     "name": "Stock Move Line Partner",
     "summary": "Add partner in SML. Go to Product=>Product moves"
     "version": "14.0.1.0.0",
-    "category": "Stock",
+    "category": "Inventory",
     "author": "www.serincloud.com",
     "maintainer": "Antonio Cánovas",
     "website": "www.serincloud.com",
