@@ -21,4 +21,5 @@
         'views/stock_move_line_views.xml'
     ],
     "installable": True,
+    "application": False,
 }
