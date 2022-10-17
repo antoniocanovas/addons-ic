@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="wor_id in analytic.line">
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/models/account_analytic_line.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/views/account_analytic_line_views.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="work sheet attachments in AAL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/account_analytic_line_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/account_analytic_line_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/menu_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,13 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00418" summary="sale wup line discounts review">
-      <created>1662389637980</created>
-      <option name="number" value="00418" />
-      <option name="presentableId" value="LOCAL-00418" />
-      <option name="project" value="LOCAL" />
-      <updated>1662389637980</updated>
     </task>
     <task id="LOCAL-00419" summary="sale wup line discounts review">
       <created>1662389999672</created>
@@ -415,7 +405,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665781730036</updated>
     </task>
-    <option name="localTasksCounter" value="467" />
+    <task id="LOCAL-00467" summary="work sheet attachments in AAL">
+      <created>1665828837156</created>
+      <option name="number" value="00467" />
+      <option name="presentableId" value="LOCAL-00467" />
+      <option name="project" value="LOCAL" />
+      <updated>1665828837156</updated>
+    </task>
+    <option name="localTasksCounter" value="468" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -431,7 +428,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sale_target helps" />
     <MESSAGE value="sale_target target in tree view" />
     <MESSAGE value="rule roadmap" />
     <MESSAGE value="rules roadmap" />
@@ -456,7 +452,8 @@
     <MESSAGE value="SML Partner" />
     <MESSAGE value="ts_work remove field note" />
     <MESSAGE value="wor_id in analytic.line" />
-    <option name="LAST_COMMIT_MESSAGE" value="wor_id in analytic.line" />
+    <MESSAGE value="work sheet attachments in AAL" />
+    <option name="LAST_COMMIT_MESSAGE" value="work sheet attachments in AAL" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
