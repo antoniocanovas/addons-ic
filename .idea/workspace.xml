@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="work sheet attachments in AAL">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/account_analytic_line_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/account_analytic_line_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/menu_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,27 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00419" summary="sale wup line discounts review">
-      <created>1662389999672</created>
-      <option name="number" value="00419" />
-      <option name="presentableId" value="LOCAL-00419" />
-      <option name="project" value="LOCAL" />
-      <updated>1662389999672</updated>
-    </task>
-    <task id="LOCAL-00420" summary="sale wup line discounts review">
-      <created>1662390098781</created>
-      <option name="number" value="00420" />
-      <option name="presentableId" value="LOCAL-00420" />
-      <option name="project" value="LOCAL" />
-      <updated>1662390098781</updated>
-    </task>
-    <task id="LOCAL-00421" summary="sale wup line discounts review">
-      <created>1662390183691</created>
-      <option name="number" value="00421" />
-      <option name="presentableId" value="LOCAL-00421" />
-      <option name="project" value="LOCAL" />
-      <updated>1662390183691</updated>
     </task>
     <task id="LOCAL-00422" summary="sale wup line discounts review">
       <created>1662391873359</created>
@@ -412,7 +389,28 @@
       <option name="project" value="LOCAL" />
       <updated>1665828837156</updated>
     </task>
-    <option name="localTasksCounter" value="468" />
+    <task id="LOCAL-00468" summary="work sheet attachments in AAL">
+      <created>1666008147978</created>
+      <option name="number" value="00468" />
+      <option name="presentableId" value="LOCAL-00468" />
+      <option name="project" value="LOCAL" />
+      <updated>1666008147978</updated>
+    </task>
+    <task id="LOCAL-00469" summary="work sheet attachments in AAL">
+      <created>1666008278163</created>
+      <option name="number" value="00469" />
+      <option name="presentableId" value="LOCAL-00469" />
+      <option name="project" value="LOCAL" />
+      <updated>1666008278163</updated>
+    </task>
+    <task id="LOCAL-00470" summary="work sheet attachments in AAL">
+      <created>1666008357202</created>
+      <option name="number" value="00470" />
+      <option name="presentableId" value="LOCAL-00470" />
+      <option name="project" value="LOCAL" />
+      <updated>1666008357202</updated>
+    </task>
+    <option name="localTasksCounter" value="471" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
