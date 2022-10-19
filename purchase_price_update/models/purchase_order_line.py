@@ -55,7 +55,7 @@ class PurchasePriceUpdate(models.Model):
 
         # Case: New purchase price and standard_price assigned:
         elif price_unit != self.product_id.standard_price and self.product_id.standard_price != 0:
-            message = "Precio de coste actual: " + str(round(self.standard_price, monetary_precision)) + "\n" + \
+            message = "Precio de coste actual: " + str(round(self.standard_price, monetary_precision)) + self.product_id.uom_po_id.name + "\n" + \
                       "Precio de venta actual: " + str(round(self.product_id.lst_price, monetary_precision)) + "\n" + \
                       "NUEVO PRECIO DE COSTE: " + str(round(price_unit,monetary_precision)) + " " + self.product_id.uom_po_id.name + "\n" + \
                       " !!  Recuerde pulsar el botón para actualizar, si procede el cambio !!"
