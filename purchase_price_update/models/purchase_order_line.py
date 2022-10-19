@@ -32,10 +32,22 @@ class PurchasePriceUpdate(models.Model):
     def price_unit_wizard(self):
         message = ''
         # Purchase price_unit in SOL:
+        # Unique parameter for all companies:
+        monetary_precision = self.env['decimal.precision'].sudo().search([('id', '=', 1)]).digits
         if self.price_subtotal != 0 and self.product_qty != 0:
-            price_unit = self.price_subtotal / self.product_qty
+            price_unit = round(self.price_subtotal / self.product_qty, monetary_precision)
         else:
             price_unit = self.product_id.standard_price
+
+        # CASE Different UOM in purchase_order_line and product_id:
+        if self.product_uom.id != self.product_id.uom_po_id.id:
+            ratio = 1
+            # uom_type: bigger, reference, smaller
+            if self.product_id.uom_po_id.uom_type == 'smaller': ratio = ratio / self.product_id.uom_po_id.factor
+            elif self.product_id.uom_po_id.uom_type == 'bigger': ratio = ratio * self.product_id.uom_po_id.factor_inv
+            if self.product_uom.uom_type == 'smaller': ratio = ratio * self.product_uom.factor
+            elif self.product_uom.uom_type == 'bigger': ratio = ratio / self.product_uom.factor_inv
+            price_unit = round(price_unit * ratio, monetary_precision)
 
         # Case: product_id without standard_price assigned:
         if price_unit != self.product_id.standard_price and self.standard_price == 0:
@@ -43,9 +55,9 @@ class PurchasePriceUpdate(models.Model):
 
         # Case: New purchase price and standard_price assigned:
         elif price_unit != self.product_id.standard_price and self.product_id.standard_price != 0:
-            message = "Precio de coste actual: " + str(self.standard_price) + "\n" + \
-                      "Precio de venta actual: " + str(self.product_id.lst_price) + "\n" + \
-                      "NUEVO PRECIO DE COSTE: " + str(round(price_unit,2)) + "\n" + \
+            message = "Precio de coste actual: " + str(round(self.standard_price, monetary_precision)) + "\n" + \
+                      "Precio de venta actual: " + str(round(self.product_id.lst_price, monetary_precision)) + "\n" + \
+                      "NUEVO PRECIO DE COSTE: " + str(round(price_unit,monetary_precision)) + "\n" + \
                       " !!  Recuerde pulsar el botón para actualizar, si procede el cambio !!"
 
         if message != '':
