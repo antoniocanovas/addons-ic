@@ -3,33 +3,12 @@ from odoo import _, api, fields, models
 import logging
 _logger = logging.getLogger(__name__)
 
-
-class WupSaleOrder(models.Model):
-    _inherit = 'sale.order'
-
-    wup_line_ids = fields.One2many('wup.line','sale_id', string='wup')
-
-    def _get_wup_line_count(self):
-        for record in self:
-            total = 0
-            results = self.env['wup.line'].search([('sale_id', '=', record.id)])
-            if results: total = len(results)
-            record.wup_line_count = total
-
-    wup_line_count = fields.Integer('wups', compute=_get_wup_line_count)
-
-    def action_view_wup_line(self):
-        action = self.env.ref(
-            'sale_wup.action_view_wups').read()[0]
-        return action
-
-
 class WupSaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
-    #name = fields.Text(string='Name')
     wup_template_id = fields.Many2one('wup.template', string='wup Template', copy=True)
     wup_line_ids = fields.One2many('wup.line', 'sale_line_id', string='wup Line', copy=True)
+    wup_line_note_id = fields.Many2one('sale.order.line')
 
     @api.depends('wup_line_ids','wup_line_ids.price_unit_cost')
     def get_wup_cost_amount(self):
@@ -107,3 +86,29 @@ class WupSaleOrderLine(models.Model):
             'target': 'new',
             'res_id': self.id,
         }
+
+    def wup_lines_from_wup_template(self):
+        for record in self:
+            price_unit = 0
+            if record.wup_qty > 0:
+                for li in record.wup_template_id.line_ids:
+                    newline = self.env['wup.line'].create(
+                        {'sale_line_id': record.id, 'product_id': li.product_id.id, 'name': li.name,
+                         'product_uom_qty': li.product_uom_qty * record.wup_qty, 'product_uom': li.product_uom,
+                         'price_unit_cost': li.product_id.standard_price, 'lst_price': li.product_id.lst_price,
+                         'price_unit': (1 - record.discount / 100) * li.product_id.list_price
+                         })
+                    price_unit += newline.product_uom_qty * newline.price_unit
+                record['price_unit'] = price_unit
+                return {
+                    'name': _('SOL'),
+                    'view_type': 'tree',
+                    'view_mode': 'form',
+                    'res_model': 'sale.order.line',
+                    'type': 'ir.actions.act_window',
+                    'view_id':
+                        self.env.ref('sale_wup.sale_order_line_wup_form').id,
+                    'context': dict(self.env.context),
+                    'target': 'new',
+                    'res_id': self.id,
+                }

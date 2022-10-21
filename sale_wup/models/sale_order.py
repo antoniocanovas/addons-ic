@@ -8,6 +8,16 @@ _logger = logging.getLogger(__name__)
 class SaleOrderWup(models.Model):
     _inherit = 'sale.order'
 
+    wup_line_ids = fields.One2many('wup.line','sale_id', string='wup')
+
+    def _get_wup_line_count(self):
+        for record in self:
+            total = 0
+            results = self.env['wup.line'].search([('sale_id', '=', record.id)])
+            if results: total = len(results)
+            record.wup_line_count = total
+    wup_line_count = fields.Integer('wups', compute=_get_wup_line_count)
+
     def get_worksheets_products(self):
         for record in self:
             aal = []
@@ -18,3 +28,9 @@ class SaleOrderWup(models.Model):
             record.product_consumed_ids = [(6, 0, aal)]
     product_consumed_ids = fields.Many2many('account.analytic.line', compute=get_worksheets_products, store=False)
     new_sale_id = fields.Many2one('sale.order', string='New quotation')
+
+    def action_view_wup_line(self):
+        action = self.env.ref(
+            'sale_wup.action_view_wups').read()[0]
+        return action
+

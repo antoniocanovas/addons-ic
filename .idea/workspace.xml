@@ -2,7 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="monetary_precision and different uom">
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/README.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/__manifest__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/readme/CONTRIBUTORS.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/readme/DESCRIPTION.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/readme/ROADMAP.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/readme/USAGE.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/static/description/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/static/description/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/tests/test_purchase_order_line_price_history.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/wizards/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/wizards/purchase_order_line_price_history.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/wizards/purchase_order_line_price_history.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_wup/data/automated_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/data/automated_action.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_wup/data/server_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/data/server_action.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_wup/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/models/sale_order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_wup/models/sale_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/models/sale_order_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_wup/views/sale_order_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/views/sale_order_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +85,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00433" summary="sale rev v2">
-      <created>1664470244446</created>
-      <option name="number" value="00433" />
-      <option name="presentableId" value="LOCAL-00433" />
-      <option name="project" value="LOCAL" />
-      <updated>1664470244446</updated>
     </task>
     <task id="LOCAL-00434" summary="roadmap view change">
       <created>1664491395677</created>
@@ -410,7 +422,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666202181920</updated>
     </task>
-    <option name="localTasksCounter" value="482" />
+    <task id="LOCAL-00482" summary="monetary_precision and different uom">
+      <created>1666213585788</created>
+      <option name="number" value="00482" />
+      <option name="presentableId" value="LOCAL-00482" />
+      <option name="project" value="LOCAL" />
+      <updated>1666213585788</updated>
+    </task>
+    <option name="localTasksCounter" value="483" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

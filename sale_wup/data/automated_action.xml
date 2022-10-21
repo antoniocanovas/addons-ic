@@ -1,6 +1,6 @@
 <odoo>
     <record id="wup_sol_update_general" model="base.automation">
-            <field name="name">=> Update SOL if WUP and change QTY</field>
+            <field name="name">=> Update SOL from WUP</field>
             <field name="model_id" ref="sale.model_sale_order_line"/>
             <field name="state">code</field>
             <field name="code">
@@ -9,33 +9,20 @@ if record.wup_line_ids.ids:
     wup_price_unit = 0
     for li in record.wup_line_ids:
         wup_price_unit += li.price_unit * li.product_uom_qty
-    record.write({'price_unit':wup_price_unit, 'purchase_price':record.wup_cost_amount})
+
+    if not (record.wup_line_note_id.id) and (record.wup_template_id.id) and (record.wup_template_id.description):
+        # Create a line note from wup template description:
+        new_note = env['sale.order.line'].create({'sequence':record.sequence, 'name':record.wup_template_id.description, 'display_type':'line_note', 'order_id':record.order_id.id})
+        record.write({'price_unit':wup_price_unit, 'purchase_price':record.wup_cost_amount, 'wup_line_note_id':new_note.id})
+    else:
+        record.write({'price_unit':wup_price_unit, 'purchase_price':record.wup_cost_amount})
+
             </field>
             <field name="trigger">on_write</field>
             <field name="filter_pre_domain"></field>
             <field name="filter_domain"></field>
             <field name="active" eval="True"/>
         </record>
-
-    <!-- Quitado 5/09/22, aparentemente ya no hace falta tras otras automatizaciones y permitir descuentos
-    <record id="update_sol_from_wup" model="base.automation">
-            <field name="name">=> Update SOL from wup_line</field>
-            <field name="model_id" ref="sale_wup.model_wup_line"/>
-            <field name="state">code</field>
-            <field name="code">
-# Compute price unit of sale_order_line from wup_line when updated:
-price_unit, subtotal, discount, cost = 0,0,0,0
-for li in record.sale_line_id.wup_line_ids:
-  subtotal += li.price_unit * li.product_uom_qty
-record.sale_line_id.write({'price_unit': subtotal, 'discount':0})
-
-            </field>
-            <field name="trigger">on_create_or_write</field>
-            <field name="filter_pre_domain"></field>
-            <field name="filter_domain"></field>
-            <field name="active" eval="True"/>
-        </record>
-        -->
 
         <record id="so_wup_tasks" model="base.automation">
             <field name="name">=>SO WUP Tasks</field>
