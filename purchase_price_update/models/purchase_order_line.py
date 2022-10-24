@@ -29,9 +29,9 @@ class PurchasePriceUpdate(models.Model):
         ratio = 1
         if self.product_uom.id != self.product_id.uom_po_id.id:
             # uom_type: bigger, reference, smaller
-            if self.product_id.uom_po_id.uom_type == 'smaller':
+            if self.product_id.uom_id.uom_type == 'smaller':
                 ratio = ratio / self.product_id.uom_po_id.factor
-            elif self.product_id.uom_po_id.uom_type == 'bigger':
+            elif self.product_id.uom_id.uom_type == 'bigger':
                 ratio = ratio * self.product_id.uom_po_id.factor_inv
             if self.product_uom.uom_type == 'smaller':
                 ratio = ratio * self.product_uom.factor
