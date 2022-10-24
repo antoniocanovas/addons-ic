@@ -7,16 +7,16 @@ class PurchaseOrderLinePriceHistoryLine(models.TransientModel):
 
     discount = fields.Float(
         string='Discount',
-        store = True,
+        store = False,
         related='purchase_order_line_id.discount'
     )
 
     @api.depends('price_unit', 'discount')
     def get_purchase_net_price(self):
-        price_net =  self.price_unit * (1 - self.purchase_order_line_id.discount/100)
+        price_net =  self.purchase_order_line_id.price_unit * (1 - self.purchase_order_line_id.discount/100)
         self.price_net = price_net
     price_net = fields.Float(
         string='Net price',
-        store=True,
+        store=False,
         compute='get_purchase_net_price',
     )

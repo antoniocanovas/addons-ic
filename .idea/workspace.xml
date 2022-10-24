@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug history discount">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/purchase_order_line_price_history_discount/wizards/purchase_order_line_price_history.py" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/wizards/purchase_order_line_price_history.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,20 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00446" summary="hr_timesheet_work imp">
-      <created>1665535037411</created>
-      <option name="number" value="00446" />
-      <option name="presentableId" value="LOCAL-00446" />
-      <option name="project" value="LOCAL" />
-      <updated>1665535037411</updated>
-    </task>
-    <task id="LOCAL-00447" summary="hr_timesheet_work imp">
-      <created>1665535088876</created>
-      <option name="number" value="00447" />
-      <option name="presentableId" value="LOCAL-00447" />
-      <option name="project" value="LOCAL" />
-      <updated>1665535088876</updated>
     </task>
     <task id="LOCAL-00448" summary="hr_timesheet_work imp">
       <created>1665535176104</created>
@@ -411,7 +396,21 @@
       <option name="project" value="LOCAL" />
       <updated>1666626743379</updated>
     </task>
-    <option name="localTasksCounter" value="495" />
+    <task id="LOCAL-00495" summary="bug history discount">
+      <created>1666627226507</created>
+      <option name="number" value="00495" />
+      <option name="presentableId" value="LOCAL-00495" />
+      <option name="project" value="LOCAL" />
+      <updated>1666627226507</updated>
+    </task>
+    <task id="LOCAL-00496" summary="bug history discount">
+      <created>1666627392935</created>
+      <option name="number" value="00496" />
+      <option name="presentableId" value="LOCAL-00496" />
+      <option name="project" value="LOCAL" />
+      <updated>1666627392935</updated>
+    </task>
+    <option name="localTasksCounter" value="497" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
