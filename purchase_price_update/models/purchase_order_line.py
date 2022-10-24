@@ -27,7 +27,7 @@ class PurchasePriceUpdate(models.Model):
     def update_product_standard_price(self):
         monetary_precision = self.env['decimal.precision'].sudo().search([('id', '=', 1)]).digits
         ratio = 1
-        if self.product_uom.id != self.product_id.uom_po_id.id:
+        if self.product_uom.id != self.product_id.uom_id.id:
             # uom_type: bigger, reference, smaller
             if self.product_id.uom_id.uom_type == 'smaller':
                 ratio = ratio / self.product_id.uom_po_id.factor
