@@ -7,6 +7,7 @@ class PurchaseOrderLinePriceHistoryLine(models.TransientModel):
 
     discount = fields.Float(
         string='Discount',
+        store = True,
         related='purchase_order_line_id.discount'
     )
 
