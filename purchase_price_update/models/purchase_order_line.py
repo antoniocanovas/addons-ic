@@ -37,7 +37,7 @@ class PurchasePriceUpdate(models.Model):
                 ratio = ratio * self.product_uom.factor
             elif self.product_uom.uom_type == 'bigger':
                 ratio = ratio / self.product_uom.factor_inv
-        new_purchase_price = round((self.price_subtotal / self.product_qty) * ratio, monetary_precision)
+        new_purchase_price = round((self.price_subtotal / self.product_qty) / ratio, monetary_precision)
         if new_purchase_price != self.product_id.standard_price:
             self.product_id.standard_price = new_purchase_price
 
