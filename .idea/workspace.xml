@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug history discount">
-      <change beforePath="$PROJECT_DIR$/purchase_order_line_price_history_discount/wizards/purchase_order_line_price_history.py" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/wizards/purchase_order_line_price_history.py" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug history discount" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00448" summary="hr_timesheet_work imp">
-      <created>1665535176104</created>
-      <option name="number" value="00448" />
-      <option name="presentableId" value="LOCAL-00448" />
-      <option name="project" value="LOCAL" />
-      <updated>1665535176104</updated>
     </task>
     <task id="LOCAL-00449" summary="hr_timesheet_work imp">
       <created>1665535618324</created>
@@ -410,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666627392935</updated>
     </task>
-    <option name="localTasksCounter" value="497" />
+    <task id="LOCAL-00497" summary="bug history discount">
+      <created>1666627601866</created>
+      <option name="number" value="00497" />
+      <option name="presentableId" value="LOCAL-00497" />
+      <option name="project" value="LOCAL" />
+      <updated>1666627601866</updated>
+    </task>
+    <option name="localTasksCounter" value="498" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
