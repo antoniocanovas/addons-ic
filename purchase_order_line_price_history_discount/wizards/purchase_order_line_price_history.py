@@ -14,7 +14,7 @@ class PurchaseOrderLinePriceHistoryLine(models.TransientModel):
     def get_purchase_net_price(self):
         self.ensure_one()
         for record in self:
-            record.price_net = record.price_unit * (1 - record.discount/100)
+            record.price_net = record.price_unit * (1 - record.purchase_order_line_id.discount/100)
     price_net = fields.Float(
         string='Net price',
         store=False,
