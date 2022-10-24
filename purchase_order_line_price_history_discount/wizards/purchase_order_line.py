@@ -10,7 +10,7 @@ class PurchaseOrderLine(models.Model):
         monetary_precision = self.env['decimal.precision'].sudo().search([('id', '=', 1)]).digits
         for record in self:
             price = 0
-            if record.price_qty != 0:
+            if record.product_qty != 0:
                 price = round(record.price_subtotal / record.product_qty, monetary_precision)
             record['price_net'] = price
     price_net = fields.Float(
