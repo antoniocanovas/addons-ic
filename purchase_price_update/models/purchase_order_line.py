@@ -53,11 +53,11 @@ class PurchasePriceUpdate(models.Model):
             price_unit = self.product_id.standard_price
 
         # CASE Different UOM in purchase_order_line and product_id:
-        if self.product_uom.id != self.product_id.uom_po_id.id:
+        if self.product_uom.id != self.product_id.uom_id.id:
             ratio = 1
             # uom_type: bigger, reference, smaller
-            if self.product_id.uom_po_id.uom_type == 'smaller': ratio = ratio / self.product_id.uom_po_id.factor
-            elif self.product_id.uom_po_id.uom_type == 'bigger': ratio = ratio * self.product_id.uom_po_id.factor_inv
+            if self.product_id.uom_id.uom_type == 'smaller': ratio = ratio / self.product_id.uom_po_id.factor
+            elif self.product_id.uom_id.uom_type == 'bigger': ratio = ratio * self.product_id.uom_po_id.factor_inv
             if self.product_uom.uom_type == 'smaller': ratio = ratio * self.product_uom.factor
             elif self.product_uom.uom_type == 'bigger': ratio = ratio / self.product_uom.factor_inv
             price_unit = round(price_unit * ratio, monetary_precision)
@@ -68,9 +68,9 @@ class PurchasePriceUpdate(models.Model):
 
         # Case: New purchase price and standard_price assigned:
         elif price_unit != self.product_id.standard_price and self.product_id.standard_price != 0:
-            message = "Precio de coste actual: " + str(round(self.standard_price, monetary_precision)) + self.product_id.uom_po_id.name + "\n" + \
+            message = "Precio de coste actual: " + str(round(self.standard_price, monetary_precision)) + self.product_id.uom_id.name + "\n" + \
                       "Precio de venta actual: " + str(round(self.product_id.lst_price, monetary_precision)) + "\n" + \
-                      "NUEVO PRECIO DE COSTE: " + str(round(price_unit,monetary_precision)) + " " + self.product_id.uom_po_id.name + "\n" + \
+                      "NUEVO PRECIO DE COSTE: " + str(round(price_unit,monetary_precision)) + " " + self.product_id.uom_id.name + "\n" + \
                       " !!  Recuerde pulsar el botón para actualizar, si procede el cambio !!"
 
         if message != '':
