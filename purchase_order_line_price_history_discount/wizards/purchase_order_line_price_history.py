@@ -12,10 +12,9 @@ class PurchaseOrderLinePriceHistoryLine(models.TransientModel):
 
     @api.depends('price_unit', 'discount')
     def get_purchase_net_price(self):
-        if self.discount:
-            self.price_net = self.price_unit * (1 - self.discount/100)
-        else:
-            self.price_net = self.price_unit
+        self.ensure_one()
+        for record in self:
+            record.price_net = record.price_unit * (1 - record.discount/100)
     price_net = fields.Float(
         string='Net price',
         store=False,
