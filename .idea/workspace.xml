@@ -1,27 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="monetary_precision and different uom">
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/README.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/readme/CONTRIBUTORS.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/readme/DESCRIPTION.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/readme/ROADMAP.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/readme/USAGE.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/static/description/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/static/description/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/tests/test_purchase_order_line_price_history.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/wizards/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/wizards/purchase_order_line_price_history.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/purchase_order_line_price_history_discount/wizards/purchase_order_line_price_history.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale_wup description+bugs + purchase discount history">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/data/automated_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/data/automated_action.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/data/server_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/data/server_action.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/models/sale_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/sale_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/models/sale_order_line.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/views/sale_order_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/views/sale_order_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,13 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00434" summary="roadmap view change">
-      <created>1664491395677</created>
-      <option name="number" value="00434" />
-      <option name="presentableId" value="LOCAL-00434" />
-      <option name="project" value="LOCAL" />
-      <updated>1664491395677</updated>
     </task>
     <task id="LOCAL-00435" summary="sale revision v2">
       <created>1664495849076</created>
@@ -429,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666213585788</updated>
     </task>
-    <option name="localTasksCounter" value="483" />
+    <task id="LOCAL-00483" summary="sale_wup description+bugs + purchase discount history">
+      <created>1666360885871</created>
+      <option name="number" value="00483" />
+      <option name="presentableId" value="LOCAL-00483" />
+      <option name="project" value="LOCAL" />
+      <updated>1666360885871</updated>
+    </task>
+    <option name="localTasksCounter" value="484" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -445,7 +427,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="rules roadmap" />
     <MESSAGE value="search my" />
     <MESSAGE value="product_chassis" />
     <MESSAGE value="add product_price_group" />
@@ -470,7 +451,8 @@
     <MESSAGE value="work sheet attachments in AAL" />
     <MESSAGE value="sm_line_partner" />
     <MESSAGE value="monetary_precision and different uom" />
-    <option name="LAST_COMMIT_MESSAGE" value="monetary_precision and different uom" />
+    <MESSAGE value="sale_wup description+bugs + purchase discount history" />
+    <option name="LAST_COMMIT_MESSAGE" value="sale_wup description+bugs + purchase discount history" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
