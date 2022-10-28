@@ -4,9 +4,20 @@
 #    Copyright (C) 2021 Serincloud S.L. All Rights Reserved
 #    PedroGuirao pedro@serincloud.com
 ##############################################################################
-from odoo import api, fields, models, _
 
-
-class AccountAnalyticLine(models.Model):
-    _name = 'account.analytic.line'
-    _inherit = ['account.analytic.line', 'mail.thread', 'mail.activity.mixin']
+{
+    "name": "Analytic Line Tracking",
+    "version": "14.0.1.0.0",
+    "category": "Analytic",
+    "author": "www.serincloud.com",
+    "maintainer": "Pedroguirao",
+    "website": "www.serincloud.com",
+    "license": "AGPL-3",
+    "depends": [
+        'analytic',
+        'mail',
+    ],
+    "data": [
+    ],
+    "installable": True,
+}

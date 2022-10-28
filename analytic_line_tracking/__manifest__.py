@@ -6,7 +6,7 @@
 ##############################################################################
 
 {
-    "name": "Analytic Line Tracking",
+    "name": "Analytic Line Fields Tracking",
     "version": "14.0.1.0.0",
     "category": "Analytic",
     "author": "www.serincloud.com",
@@ -14,7 +14,7 @@
     "website": "www.serincloud.com",
     "license": "AGPL-3",
     "depends": [
-        'analytic',
+        'analytic_line_tracking',
         'mail',
     ],
     "data": [
