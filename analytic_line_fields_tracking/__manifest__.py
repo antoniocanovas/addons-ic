@@ -14,7 +14,7 @@
     "website": "www.serincloud.com",
     "license": "AGPL-3",
     "depends": [
-        'analytic',
+        'analytic_line_tracking',
         'mail',
     ],
     "data": [
