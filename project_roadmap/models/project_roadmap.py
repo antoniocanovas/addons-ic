@@ -17,7 +17,7 @@ class ProjectRoadmap(models.Model):
     project_id = fields.Many2one('project.project', string='Proyecto', copy=True)
     partner_id = fields.Many2one(related='project_id.partner_id', string="Cliente", copy=True, tracking=True)
     type = fields.Selection([('lead','Oportunidad'), ('sale','Venta'), ('purchase','Compra'), ('task','Tarea'),
-                             ('picking','Albarán'),('invoice','Factura')], required=True)
+                             ('project','Proyecto'),('picking','Albarán'),('invoice','Factura')], required=True)
     roadmap_user_avatar = fields.Binary(string="Avatar", related="user_id.partner_id.image_128")
     lead_id = fields.Many2one('crm.lead', string='Oportunidad')
     sale_id = fields.Many2one('sale.order', string='Venta')
@@ -35,7 +35,7 @@ class ProjectRoadmap(models.Model):
             record['display_name'] = name
 
     @api.depends('lead_id.stage_id', 'sale_id.state', 'purchase_id.state', 'task_id.stage_id', 'picking_id.state',
-                 'invoice_id.state', 'invoice_id.payment_state')
+                 'invoice_id.state', 'invoice_id.payment_state','project_id.task_ids.stage_id')
     def _get_roadmap_state(self):
         for record in self:
             state = 'New'
@@ -47,6 +47,13 @@ class ProjectRoadmap(models.Model):
                 state = record.purchase_id.state
             elif (record.type == 'task') and (record.task_id.id):
                 state = record.task_id.stage_id.name
+            elif (record.type == 'project') and (record.project_id.id):
+                state = "Finalizado"
+                if record.project_id.task_ids:
+                    tasks = self.env['project.task'].search([('project_id','=',record.project_id.id), ('is_closed','!=',True)])
+                    recs_sorted = tasks.sorted(key=lambda r: r.stage_id.sequence)
+                if tasks.ids:
+                    state = recs_sorted[0].stage_id.name
             elif (record.type == 'picking') and (record.picking_id.id):
                 state = record.picking_id.state
             elif (record.type == 'invoice') and (record.invoice_id.id) and (record.invoice_id.state != 'posted'):
