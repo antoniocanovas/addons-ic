@@ -11,7 +11,7 @@
                         <field name="name"/>
                     </h1>
                     <group>
-                        <field name="todo_id" readonly="1"/>
+                        <field name="todo_id"/>
                         <field name="name" optional="show"/>
                         <field name="qty" readonly="1"/>
                         <field name="uom_id"/>
@@ -20,8 +20,8 @@
                         <field name="employee_ids" widget="many2many_tags" optional="hide"/>
                         <fieldd name="performance"/>
                         <fieldd name="work_id"/>
-                        <field name="sale_line_id" readonly="1"/>
-                        <field name="work_sheet_id" readonly="1"/>
+                        <field name="sale_line_id"/>
+                        <field name="work_sheet_id"/>
                     </group>
                 </sheet>
             </form>
@@ -40,8 +40,8 @@
         <field name="name">Default timesheet line done tree view</field>
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-            <tree name="lines_done" default_order="date asc" create="0" editable="top">
-                <field name="todo_id" optional="show" readonly="1"/>
+            <tree name="lines_done" default_order="date asc" editable="top">
+                <field name="todo_id" optional="show"/>
                 <field name="name" optional="show"/>
                 <field name="product_id" optional="hide"/>
                 <field name="qty" sum="Quantity"/>

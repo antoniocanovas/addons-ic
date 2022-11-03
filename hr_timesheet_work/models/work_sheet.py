@@ -19,19 +19,15 @@ class TimeSheetWorkSheet(models.Model):
 
     name = fields.Char('Name', required=True)
     date = fields.Date('Date', required=True)
-    start = fields.Float('Start')
-    stop = fields.Float('Stop')
-    duration = fields.Float('Duration', store=True)
     work_id = fields.Many2one('timesheet.work')
     type = fields.Selection(string='Type', related='work_id.type')
-    employee_ids = fields.Many2many('hr.employee', string='Employees')
     project_id = fields.Many2one('project.project')
-    task_id = fields.Many2one('project.task')
-    time_type_id = fields.Many2one('project.time.type', 'Schedule')
+    task_id = fields.Many2one('project.task', string="Task")
     picking_ids = fields.One2many('stock.picking', 'work_sheet_id', string='Pickings')
-    analytic_tag_ids = fields.Many2many('account.analytic.tag', store=True, string='Tags',
-                                        domain=[('timesheet_hidden', '=', False)]
-                                        )
+    reinvoice_expense_ids = fields.One2many('hr.expense', 'work_sheet_id', string='Expenses',
+                                            store=True, readonly=True,
+                                            domain=[('sale_order_id','!=',False)]
+                                            )
     line_done_ids = fields.One2many('timesheet.line.done', 'work_sheet_id', store=True)
 
     set_start_stop = fields.Boolean(related='work_id.set_start_stop', string='Set start & stop time')
@@ -60,13 +56,15 @@ class TimeSheetWorkSheet(models.Model):
         string='Imputaciones'
     )
 
-    @api.depends('name')
-    def get_task_name(self):
+    # SO pickings available to add:
+    @api.depends('work_id.sale_order_ids', 'picking_ids')
+    def get_pending_order_pickings(self):
         for record in self:
-            name = "/"
-            if record.name: name = record.name
-            record.description = name
-    description = fields.Char('Description', store=True, readonly=False, compute='get_task_name')
+            pickings = self.env['stock.picking'].search([('sale_id', 'in', record.work_id.sale_order_ids.ids),
+                                                         ('state', 'not in', ['done', 'cancel']),
+                                                         ('work_sheet_id', '=', False)])
+            record['order_picking_ids'] = pickings.ids
+    order_picking_ids = fields.Many2many('stock.picking', compute=get_pending_order_pickings, store=False)
 
     @api.depends('picking_ids')
     def get_project_products(self):
@@ -141,6 +139,7 @@ class TimeSheetWorkSheet(models.Model):
 
     signature_status = fields.Boolean(string='Signed & Approved',  compute=get_signed_report, store=True)
 
+    # ESTA ACCIÓN YA NO SE USA (31/10/2022), ahora está en el wizard:
     def create_lot_worksheet_services(self):
         # Check required fields:
         for record in self:
