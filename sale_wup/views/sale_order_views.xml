@@ -30,7 +30,9 @@
                         <field name="wup_template_id" attrs="{'readonly':[('state','!=','draft')]}"/>
                         <separate/>
                         <field name="wup_qty" attrs="{'readonly':[('state','!=','draft')]}"/>
-                        <button class="oe_highlight oe_edit_only" type="object" name="wup_lines_from_wup_template" string="Add WuPs" attrs="{'invisible':[('state','!=','draft')]}"/>
+                        <button class="oe_highlight oe_edit_only"
+                                type="object" name="wup_lines_from_wup_template"
+                                string="Add WuPs" attrs="{'invisible':[('state','!=','draft')]}"/>
                     </group>
                     <field name="wup_line_ids" context="{'default_product_uom_qty':1}" attrs="{'readonly':[('state','!=','draft')]}">
                         <tree editable="bottom">
@@ -83,7 +85,7 @@
     </record>
 
 
-    <!-- CREATE NEW ORDER LINES FROM ANALYTIC ADDTIONAL PRODUCTS:   -->
+    <!-- CREATE NEW ORDER LINES FROM ANALYTIC ADDITIONAL PRODUCTS:   -->
     <record id="additional_analytic_products_wizard" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
@@ -92,7 +94,7 @@
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
-        <field name="name">Addtional analytic products to SOL wizard view</field>
+        <field name="name">Additional analytic products to SOL wizard view</field>
         <field name="res_model">wup.saleline.wizard</field>
         <field name="search_view_id" eval="False"/>
         <field name="target">new</field>
@@ -133,7 +135,7 @@
             <xpath expr="//form/header" position="inside">
                     <button name="sale_wup.additional_analytic_products_wizard"
                             context="{'default_sale_id':active_id}"
-                            string="Addtional products" type="action" class="btn-primary"
+                            string="Extras" type="action" class="btn-primary"
                             attrs="{'invisible':['|',('product_consumed_ids','=',[]),('state','not in',['sale'])]}"/>
             </xpath>
 

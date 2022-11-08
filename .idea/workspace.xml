@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="duplicated id hr_ts_work">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale_wup_discount rev">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_wup/views/sale_order_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_wup/views/sale_order_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00459" summary="hr_timesheet_work imp">
-      <created>1665541319320</created>
-      <option name="number" value="00459" />
-      <option name="presentableId" value="LOCAL-00459" />
-      <option name="project" value="LOCAL" />
-      <updated>1665541319320</updated>
     </task>
     <task id="LOCAL-00460" summary="hr_timesheet_work imp">
       <created>1665541398421</created>
@@ -410,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667818003492</updated>
     </task>
-    <option name="localTasksCounter" value="508" />
+    <task id="LOCAL-00508" summary="sale_wup_discount rev">
+      <created>1667931508630</created>
+      <option name="number" value="00508" />
+      <option name="presentableId" value="LOCAL-00508" />
+      <option name="project" value="LOCAL" />
+      <updated>1667931508630</updated>
+    </task>
+    <option name="localTasksCounter" value="509" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,7 +427,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sale wup purchase_price" />
     <MESSAGE value="sale wup line deletion review" />
     <MESSAGE value="sale wup line discounts review" />
     <MESSAGE value="sale rev v1" />
@@ -451,7 +451,8 @@
     <MESSAGE value="hr_timesheet_work 10" />
     <MESSAGE value="sale_wup_discount v3" />
     <MESSAGE value="duplicated id hr_ts_work" />
-    <option name="LAST_COMMIT_MESSAGE" value="duplicated id hr_ts_work" />
+    <MESSAGE value="sale_wup_discount rev" />
+    <option name="LAST_COMMIT_MESSAGE" value="sale_wup_discount rev" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
