@@ -71,18 +71,18 @@
                                 <table class="table table-sm o_main_table">
                                     <thead style="display: table-row-group">
                                         <tr>
-                                            <th name="th_product">Empleado</th>
-                                            <th name="td_units">M.Pago</th>
-                                            <th name="th_measure">Estado</th>
+                                            <th name="th_product">Descripción</th>
+                                            <th name="td_units">Cantidad</th>
+                                            <th name="th_measure">Total</th>
                                             <th name="th_date">Fecha</th>
                                         </tr>
                                     </thead>
                                     <tbody class="sale_tbody">
                                         <t t-foreach="o.reinvoice_expense_ids" t-as="ex">
                                             <tr>
-                                                <td name="td_employee"><span t-field="ex.employee_id" /></td>
-                                                <td name="td_payment"><span t-field="ex.payment_mode" /></td>
-                                                <td name="td_state"><span t-field="ex.state" /></td>
+                                                <td name="td_employee"><span t-field="ex.name" /></td>
+                                                <td name="td_payment"><span t-field="ex.quantity" /></td>
+                                                <td name="td_state"><span t-field="ex.total_amount" /></td>
                                                 <td name="td_date"><span t-field="ex.date" t-options='{"widget": "date"}' /></td>
                                             </tr>
                                         </t>
