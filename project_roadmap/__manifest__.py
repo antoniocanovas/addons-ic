@@ -14,7 +14,7 @@ Roadmap integration for project, tasks, sales, purchases, picking and invoices.
         'stock',
         'account',
         'base_automation',
-        'web_widget_open_tab',
+#        'web_widget_open_tab',
     ],
     'data': [
         'data/ir_module_category_data.xml',

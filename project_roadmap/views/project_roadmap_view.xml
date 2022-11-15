@@ -249,7 +249,7 @@
                 <field name="date_limit"/>
                 <field name="state"/>
                 <field name="active" string="Active" widget="boolean_toggle"/>
-                <field name="id" widget="open_tab" nolabel="1"/>
+       <!--         <field name="id" widget="open_tab" nolabel="1"/> -->
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
