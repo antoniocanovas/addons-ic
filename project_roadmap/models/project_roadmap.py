@@ -10,11 +10,12 @@ class ProjectRoadmap(models.Model):
 
     name = fields.Char(string='Nombre', required=True, copy=True, tracking=True)
     display_name = fields.Char(string='Nombre mostrado', store=False, compute="_name_get")
-    priority = fields.Integer(string='Prioridad', default="1", copy=True)
+    sequence = fields.Integer(string='Sequence', default="1", copy=True)
     is_favorite = fields.Boolean('Is favorite', copy=False)
     user_id = fields.Many2one('res.users', string='Responsable', required=True, store=True, copy=True, tracking=True)
     date_limit = fields.Date(string='Fecha límite', copy=False, tracking=True)
     project_id = fields.Many2one('project.project', string='Proyecto', copy=True)
+    manager_id = fields.Many2one('res.users', related='project_id.user_id', store=True)
     partner_id = fields.Many2one(related='project_id.partner_id', string="Cliente", copy=True, tracking=True)
     type = fields.Selection([('lead','Oportunidad'), ('sale','Venta'), ('purchase','Compra'), ('task','Tarea'),
                              ('project','Proyecto'),('picking','Albarán'),('invoice','Factura')], required=True)
@@ -31,7 +32,7 @@ class ProjectRoadmap(models.Model):
                  'invoice_id.state')
     def _name_get(self):
         for record in self:
-            name = "[" + str(record.priority) + "] " + record.type +  ": " + " " + record.name
+            name = "[" + str(record.sequence) + "] " + record.type +  ": " + " " + record.name
             record['display_name'] = name
 
     @api.depends('lead_id.stage_id', 'sale_id.state', 'purchase_id.state', 'task_id.stage_id', 'picking_id.state',
@@ -49,11 +50,11 @@ class ProjectRoadmap(models.Model):
                 state = record.task_id.stage_id.name
             elif (record.type == 'project') and (record.project_id.id):
                 state = "Finalizado"
-                if record.project_id.task_ids:
-                    tasks = self.env['project.task'].search([('project_id','=',record.project_id.id), ('is_closed','!=',True)])
+                if record.project_id.task_ids.ids:
+                    tasks = record.env['project.task'].search([('project_id','=',record.project_id.id), ('is_closed','!=',True)])
                     recs_sorted = tasks.sorted(key=lambda r: r.stage_id.sequence)
-                if tasks.ids:
-                    state = recs_sorted[0].stage_id.name
+                    if tasks.ids:
+                        state = recs_sorted[0].stage_id.name
             elif (record.type == 'picking') and (record.picking_id.id):
                 state = record.picking_id.state
             elif (record.type == 'invoice') and (record.invoice_id.id) and (record.invoice_id.state != 'posted'):
