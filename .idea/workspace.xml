@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale_wup wizard bug">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="16 project_roadmap">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_roadmap/models/project_roadmap.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_roadmap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00462" summary="hr_timesheet_work imp">
-      <created>1665541596098</created>
-      <option name="number" value="00462" />
-      <option name="presentableId" value="LOCAL-00462" />
-      <option name="project" value="LOCAL" />
-      <updated>1665541596098</updated>
     </task>
     <task id="LOCAL-00463" summary="hr_timesheet_work imp">
       <created>1665673161513</created>
@@ -410,7 +405,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668075361596</updated>
     </task>
-    <option name="localTasksCounter" value="511" />
+    <task id="LOCAL-00511" summary="16 project_roadmap">
+      <created>1668515170181</created>
+      <option name="number" value="00511" />
+      <option name="presentableId" value="LOCAL-00511" />
+      <option name="project" value="LOCAL" />
+      <updated>1668515170182</updated>
+    </task>
+    <option name="localTasksCounter" value="512" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,7 +428,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sale rev v1" />
     <MESSAGE value="sale rev v2" />
     <MESSAGE value="roadmap view change" />
     <MESSAGE value="sale revision v2" />
@@ -451,7 +452,8 @@
     <MESSAGE value="sale_wup_discount rev" />
     <MESSAGE value="sale_wup upd" />
     <MESSAGE value="sale_wup wizard bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="sale_wup wizard bug" />
+    <MESSAGE value="16 project_roadmap" />
+    <option name="LAST_COMMIT_MESSAGE" value="16 project_roadmap" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

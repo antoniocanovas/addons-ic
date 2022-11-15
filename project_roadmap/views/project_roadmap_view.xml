@@ -23,7 +23,7 @@
                         <field name="lead_id" attrs="{'invisible':['|',('type','!=','lead'),('lead_id','!=',False)]}"/>
                         <field name="sale_id" attrs="{'invisible':['|',('type','!=','sale'),('sale_id','!=',False)]}"/>
                         <field name="purchase_id" attrs="{'invisible':['|',('type','!=','purchase'),('purchase_id','!=',False)]}"/>
-                        <field name="task_id" attrs="{'invisible':['|',('type','!=','task'),('task_id','!=',False)]}"  domain="[('stage_id.is_closed','=',False)]"/>
+                        <field name="task_id" attrs="{'invisible':['|',('type','!=','task'),('task_id','!=',False)]}"  domain="[('stage_id.fold','=',False)]"/>
                         <field name="picking_id" attrs="{'invisible':['|',('type','!=','picking'),('picking_id','!=',False)]}"/>
                         <field name="invoice_id" attrs="{'invisible':['|',('type','!=','invoice'),('invoice_id','!=',False)]}"/>
                         <field name="user_id"/>
