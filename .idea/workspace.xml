@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="16 project_roadmap">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_roadmap/models/project_roadmap.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_roadmap.py" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="roadmap rev">
       <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,20 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00463" summary="hr_timesheet_work imp">
-      <created>1665673161513</created>
-      <option name="number" value="00463" />
-      <option name="presentableId" value="LOCAL-00463" />
-      <option name="project" value="LOCAL" />
-      <updated>1665673161514</updated>
-    </task>
-    <task id="LOCAL-00464" summary="SML Partner">
-      <created>1665743506230</created>
-      <option name="number" value="00464" />
-      <option name="presentableId" value="LOCAL-00464" />
-      <option name="project" value="LOCAL" />
-      <updated>1665743506230</updated>
     </task>
     <task id="LOCAL-00465" summary="ts_work remove field note">
       <created>1665780782678</created>
@@ -412,7 +396,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668515170182</updated>
     </task>
-    <option name="localTasksCounter" value="512" />
+    <task id="LOCAL-00512" summary="roadmap is_closed =&gt; fold">
+      <created>1668515884657</created>
+      <option name="number" value="00512" />
+      <option name="presentableId" value="LOCAL-00512" />
+      <option name="project" value="LOCAL" />
+      <updated>1668515884657</updated>
+    </task>
+    <task id="LOCAL-00513" summary="roadmap rev">
+      <created>1668516099190</created>
+      <option name="number" value="00513" />
+      <option name="presentableId" value="LOCAL-00513" />
+      <option name="project" value="LOCAL" />
+      <updated>1668516099190</updated>
+    </task>
+    <option name="localTasksCounter" value="514" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -428,8 +426,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sale rev v2" />
-    <MESSAGE value="roadmap view change" />
     <MESSAGE value="sale revision v2" />
     <MESSAGE value="roadmap bugs" />
     <MESSAGE value="roadmap kanban" />
@@ -453,7 +449,9 @@
     <MESSAGE value="sale_wup upd" />
     <MESSAGE value="sale_wup wizard bug" />
     <MESSAGE value="16 project_roadmap" />
-    <option name="LAST_COMMIT_MESSAGE" value="16 project_roadmap" />
+    <MESSAGE value="roadmap is_closed =&gt; fold" />
+    <MESSAGE value="roadmap rev" />
+    <option name="LAST_COMMIT_MESSAGE" value="roadmap rev" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
