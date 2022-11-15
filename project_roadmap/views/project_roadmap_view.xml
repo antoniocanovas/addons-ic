@@ -267,7 +267,7 @@
     <record id="project_roadmap_search_view" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-            <data>
+            <search>
                 <field name="name" string="Name"/>
                 <field name="project_id"/>
                 <field name="partner_id"/>
@@ -282,22 +282,14 @@
                 <separator/>
                 <filter string="Unread Messages" name="message_needaction" domain="[('message_needaction', '=', True)]"/>
                 <separator/>
-                <!--
-                                <filter string="Archived" name="active" domain="[('active', '=', False)]"/>
-                                <filter string="Active" name="archived" domain="[('active', '=', True)]"/>
-                                <filter invisible="1" string="Late Activities" name="activities_overdue" domain="[('my_activity_date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]" help="Show all records which has next action date is before today"/>
-                                <filter invisible="1" string="Today Activities" name="activities_today" domain="[('my_activity_date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"/>
-                                <filter invisible="1" string="Future Activities" name="activities_upcoming_all" domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"/>
-                -->
-
                 <group expand="0" string="Group By">
-                    <filter string="Project" name="group_by_project" context="{'group_by': 'project_id'}"/>
-                    <filter string="User" name="group_by_user" context="{'group_by': 'user_id'}"/>
-                    <filter string="Manager" name="group_by_manager" context="{'group_by': 'manager_id'}"/>
-                    <filter string="Type" name="group_by_type" context="{'group_by': 'type'}"/>
-                    <filter string="Date limit" name="group_by_date_limit" context="{'group_by': 'date_limit'}"/>
+                    <filter string="Project" name="group_by_project" domain="[]" context="{'group_by': 'project_id'}"/>
+                    <filter string="User" name="group_by_user" domain="[]" context="{'group_by': 'user_id'}"/>
+                    <filter string="Manager" name="group_by_manager" domain="[]" context="{'group_by': 'manager_id'}"/>
+                    <filter string="Type" name="group_by_type" domain="[]" context="{'group_by': 'type'}"/>
+                    <filter string="Date limit" name="group_by_date_limit" domain="[]" context="{'group_by': 'date_limit'}"/>
                 </group>
-            </data>
+            </search>
         </field>
         <field name="field_parent" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
