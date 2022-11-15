@@ -8,7 +8,7 @@ class ProjectProject(models.Model):
 
     roadmap_ids = fields.One2many('project.roadmap','project_id', store=True)
 
-    @api.depends("roadmap_ids")
+    @api.depends('roadmap_ids', 'roadmap_ids.active')
     def _compute_roadmap_count(self):
         self.roadmap_count = len(self.roadmap_ids)
     roadmap_count = fields.Integer('Roadmaps', compute="_compute_roadmap_count", store=True)
