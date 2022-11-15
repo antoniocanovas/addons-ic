@@ -71,7 +71,7 @@
                 <field name="state"/>
                 <field name="active" string="Active" widget="boolean_toggle"/>
                 <field name="project_id" invisible="1"/>
-                <field name="manager_id" optional="hide"/>
+                <field name="manager_id" optional="hide"widget="many2one_avatar_user"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -199,37 +199,6 @@
         <field name="type">kanban</field>
     </record>
 
-    <record id="project_roadmap_my_phases_tree" model="ir.ui.view">
-        <field name="active" eval="True"/>
-        <field name="arch" type="xml">
-            <tree name="project_roadmap_my_phases"
-                  decoration-success="active==False"
-                  decoration-danger="active==True and date_limit and date_limit &lt; context_today().strftime('%Y-%m-%d')"
-                  default_order="active asc, sequence asc">
-                <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
-                <field name="project_id" optional="show"/>
-                <field name="manager_id" optional="hide"/>
-                <field name="display_name"/>
-                <field name="sequence" optional="hide"/>
-                <field name="type" invisible="1"/>
-                <field name="user_id" widget="many2one_avatar_user"/>
-                <field name="activity_ids" widget="list_activity" optional="show"/>
-                <field name="date_limit"/>
-                <field name="state"/>
-                <field name="active" string="Active" widget="boolean_toggle"/>
-            </tree>
-        </field>
-        <field name="field_parent" eval="False"/>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="inherit_id" eval="False"/>
-        <field name="key" eval="False"/>
-        <field name="mode">primary</field>
-        <field name="model">project.roadmap</field>
-        <field name="name">Default project roadmap tree view</field>
-        <field name="priority">16</field>
-        <field name="type">tree</field>
-    </record>
-
     <record id="project_roadmap_group_by_project_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
@@ -241,7 +210,7 @@
                 <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
                 <field name="display_name"/>
                 <field name="project_id" optional="hide"/>
-                <field name="manager_id" optional="hide"/>
+                <field name="manager_id" optional="hide" widget="many2one_avatar_user"/>
                 <field name="sequence" invisible="1"/>
                 <field name="type" invisible="1"/>
                 <field name="user_id" widget="many2one_avatar_user"/>
