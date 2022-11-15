@@ -5,7 +5,7 @@
             action="action_view_project_roadmap"
             id="roadmap_main"
             name="Roadmap"
-            sequence="3"
+            sequence="65"
             web_icon="project_roadmap,static/description/icon.png"
     />
 
