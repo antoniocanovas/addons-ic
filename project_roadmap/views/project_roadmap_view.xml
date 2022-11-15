@@ -123,6 +123,11 @@
                     <field name="active"/>
                     <field name="date_limit"/>
                     <field name="activity_ids"/>
+                    <field name="lead_id"/>
+                    <field name="purchase_id"/>
+                    <field name="picking_id"/>
+                    <field name="invoice_id"/>
+                    <field name="task_id"/>
 
                     <templates>
                     <t t-name="kanban-box">
@@ -152,10 +157,13 @@
                                 </div>
                                 <div class="o_kanban_record_body">
                                     <field name="type"/>
-                                    <t t-if="record.type.value == 'lead'">
-                                       <field name="lead_id"/>
-                                    </t>
-
+                                    <field name="lead_id" attrs="{'invisible':[('type','!=','lead')]}"/>
+                                    <field name="purchase_id" attrs="{'invisible':[('type','!=','purchase')]}"/>
+                                    <field name="sale_id" attrs="{'invisible':[('type','!=','sale')]}"/>
+                                    <field name="picking_id" attrs="{'invisible':[('type','!=','picking')]}"/>
+                                    <field name="invoice_id" attrs="{'invisible':[('type','!=','invoice')]}"/>
+                                    <field name="project_id" attrs="{'invisible':[('type','!=','project')]}"/>
+                                    <field name="task_id" attrs="{'invisible':[('type','!=','task')]}"/>
                                 </div>
                                 <div class="o_kanban_record_bottom" t-if="!selection_mode">
                                     <div class="oe_kanban_bottom_left">
