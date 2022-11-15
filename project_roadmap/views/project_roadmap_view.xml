@@ -18,7 +18,7 @@
                         <field name="invoice_id" attrs="{'invisible':['|',('type','!=','invoice'),('invoice_id','=',False)]}"/>
                     </h4>
                     <group>
-                        <field name="priority"/>
+                        <field name="sequence"/>
                         <field name="type"/>
                         <field name="lead_id" attrs="{'invisible':['|',('type','!=','lead'),('lead_id','!=',False)]}"/>
                         <field name="sale_id" attrs="{'invisible':['|',('type','!=','sale'),('sale_id','!=',False)]}"/>
@@ -33,6 +33,7 @@
                         <field name="state"/>
                         <field name="active" widget="boolean_toggle"/>
                         <field name="project_id" required="1"/>
+                        <field name="manager_id"/>
                     </group>
                 </sheet>
                 <div class="oe_chatter">
@@ -59,10 +60,10 @@
             <tree name="project_roadmaps"
                   decoration-success="active==False"
                   decoration-danger="active==True and date_limit != False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
-                  default_order="active asc, priority asc">
+                  default_order="active asc, sequence asc">
                 <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
                 <field name="display_name"/>
-                <field name="priority" invisible="1"/>
+                <field name="sequence" invisible="1"/>
                 <field name="type" invisible="1"/>
                 <field name="user_id" widget="many2one_avatar_user"/>
                 <field name="activity_ids" widget="list_activity" optional="show"/>
@@ -70,6 +71,7 @@
                 <field name="state"/>
                 <field name="active" string="Active" widget="boolean_toggle"/>
                 <field name="project_id" invisible="1"/>
+                <field name="manager_id" optional="hide"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -88,8 +90,9 @@
         <field name="arch" type="xml">
             <calendar date_start="date_limit" string="Roadmaps" mode="month" color="user_id" event_limit="5" hide_time="true" quick_add="False" js_class="project_calendar">
                 <field name="user_id" avatar_field="image_128" filters="1"/>
-                <field name="date_limit"/>
                 <field name="project_id"/>
+                <field name="manager_id"/>
+                <field name="date_limit"/>
                 <field name="type"/>
             </calendar>
         </field>
@@ -110,11 +113,12 @@
             <tree name="project_roadmap_my_phases"
                   decoration-success="active==False"
                   decoration-danger="active==True and date_limit and date_limit &lt; context_today().strftime('%Y-%m-%d')"
-                  default_order="active asc, priority asc">
+                  default_order="active asc, sequence asc">
                 <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
                 <field name="project_id" optional="show"/>
+                <field name="manager_id" optional="hide"/>
                 <field name="display_name"/>
-                <field name="priority" optional="hide"/>
+                <field name="sequence" optional="hide"/>
                 <field name="type" invisible="1"/>
                 <field name="user_id" widget="many2one_avatar_user"/>
                 <field name="activity_ids" widget="list_activity" optional="show"/>
@@ -141,11 +145,12 @@
                   multi_edit="1"
                   decoration-success="active==False"
                   decoration-danger="active==True and date_limit != False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
-                  default_order="active desc, priority asc">
+                  default_order="active desc, sequence asc">
                 <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
                 <field name="display_name"/>
                 <field name="project_id" optional="hide"/>
-                <field name="priority" invisible="1"/>
+                <field name="manager_id" optional="hide"/>
+                <field name="sequence" invisible="1"/>
                 <field name="type" invisible="1"/>
                 <field name="user_id" widget="many2one_avatar_user"/>
                 <field name="activity_ids" widget="list_activity" optional="show"/>
@@ -174,8 +179,11 @@
                 <field name="name" string="Name"/>
                 <field name="project_id"/>
                 <field name="partner_id"/>
-                <field name="user_id" string="Responsible"/>
+                <field name="user_id" string="User"/>
+                <field name="manager_id" string="Manager"/>
+                <field name="type" string="Type"/>
                 <filter string="My phases" name="my_phases" domain="[('user_id', '=', uid)]"/>
+                <separator/>
                 <filter string="Starred" name="starred" domain="[('is_favorite', '=', True)]"/>
                 <separator/>
                 <filter string="Archived too" name="active" domain="[('active', 'in', [True,False])]"/>
@@ -191,9 +199,11 @@
                 -->
 
                 <group expand="0" string="Group By">
-                    <filter string="Project" name="project" context="{'group_by': 'project_id'}"/>
-                    <filter string="Responsible" name="user" context="{'group_by': 'user_id'}"/>
-                    <filter string="Date limit" name="date_limit" context="{'group_by': 'date_limit'}"/>
+                    <filter string="Project" name="group_by_project" context="{'group_by': 'project_id'}"/>
+                    <filter string="User" name="group_by_user" context="{'group_by': 'user_id'}"/>
+                    <filter string="Manager" name="group_by_manager" context="{'group_by': 'manager_id'}"/>
+                    <filter string="Type" name="group_by_type" context="{'group_by': 'type'}"/>
+                    <filter string="Date limit" name="group_by_date_limit" context="{'group_by': 'date_limit'}"/>
                 </group>
             </data>
         </field>
@@ -228,7 +238,7 @@
     <record id="action_view_project_roadmap" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
-        <field name="context">{'search_default_project':1}</field>
+        <field name="context">{'search_default_my_phases':1}</field>
         <field name="domain">[]</field>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="help"></field>
@@ -244,49 +254,11 @@
             (0, 0, {'view_mode': 'tree', 'view_id': ref('project_roadmap_group_by_project_tree')}),]"/>
     </record>
 
-    <record id="action_view_project_roadmap_starred" model="ir.actions.act_window">
-        <field name="binding_model_id" eval="False"/>
-        <field name="binding_type">action</field>
-        <field name="context">{'search_default_project':1}</field>
-        <field name="domain">[('is_favorite','=',True)]</field>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="help"></field>
-        <field name="limit">80</field>
-        <field name="name">Starreds</field>
-        <field name="res_model">project.roadmap</field>
-        <field name="target">current</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="view_id" ref="project_roadmap_group_by_project_tree"/>
-        <field name="usage" eval="False"/>
-        <field name="view_mode">tree,form</field>
-        <field name="view_ids" eval="[(5, 0, 0),
-            (0, 0, {'view_mode': 'tree', 'view_id': ref('project_roadmap_group_by_project_tree')}),]"/>
-    </record>
-
-    <record id="action_view_project_roadmap_mine" model="ir.actions.act_window">
-        <field name="binding_model_id" eval="False"/>
-        <field name="binding_type">action</field>
-        <field name="context">{'search_default_my_phases':1}</field>
-        <field name="domain">[]</field>
-        <field name="groups_id" eval="[(6, 0, [])]"/>
-        <field name="help"></field>
-        <field name="limit">80</field>
-        <field name="name">My roadmap phases</field>
-        <field name="res_model">project.roadmap</field>
-        <field name="target">current</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="view_id" ref="project_roadmap_group_by_project_tree"/>
-        <field name="usage" eval="False"/>
-        <field name="view_mode">tree,form</field>
-        <field name="view_ids" eval="[(5, 0, 0),
-            (0, 0, {'view_mode': 'tree', 'view_id': ref('project_roadmap_my_phases_tree')}),]"/>
-    </record>
-
     <record id="roadmap_kanban_project_act_window" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
-        <field name="context">{}</field>
-        <field name="domain">[('roadmap_count','!=',0)]</field>
+        <field name="context">{'search_default_roadmap':1}</field>
+        <field name="domain">[]</field>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="help"></field>
         <field name="limit">80</field>
