@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="roadmap v4 rev">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/work_sheet.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/models/work_sheet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_views.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hrtsw state" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,20 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00467" summary="work sheet attachments in AAL">
-      <created>1665828837156</created>
-      <option name="number" value="00467" />
-      <option name="presentableId" value="LOCAL-00467" />
-      <option name="project" value="LOCAL" />
-      <updated>1665828837156</updated>
-    </task>
-    <task id="LOCAL-00468" summary="work sheet attachments in AAL">
-      <created>1666008147978</created>
-      <option name="number" value="00468" />
-      <option name="presentableId" value="LOCAL-00468" />
-      <option name="project" value="LOCAL" />
-      <updated>1666008147978</updated>
     </task>
     <task id="LOCAL-00469" summary="work sheet attachments in AAL">
       <created>1666008278163</created>
@@ -412,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668525723067</updated>
     </task>
-    <option name="localTasksCounter" value="516" />
+    <task id="LOCAL-00516" summary="hrtsw state">
+      <created>1668617235974</created>
+      <option name="number" value="00516" />
+      <option name="presentableId" value="LOCAL-00516" />
+      <option name="project" value="LOCAL" />
+      <updated>1668617235974</updated>
+    </task>
+    <task id="LOCAL-00517" summary="hrtsw state">
+      <created>1668617452737</created>
+      <option name="number" value="00517" />
+      <option name="presentableId" value="LOCAL-00517" />
+      <option name="project" value="LOCAL" />
+      <updated>1668617452737</updated>
+    </task>
+    <option name="localTasksCounter" value="518" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -428,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="roadmap view change" />
     <MESSAGE value="sale revision v2" />
     <MESSAGE value="roadmap bugs" />
     <MESSAGE value="roadmap kanban" />
@@ -453,7 +448,8 @@
     <MESSAGE value="sale_wup wizard bug" />
     <MESSAGE value="roadmap v4 proj menu" />
     <MESSAGE value="roadmap v4 rev" />
-    <option name="LAST_COMMIT_MESSAGE" value="roadmap v4 rev" />
+    <MESSAGE value="hrtsw state" />
+    <option name="LAST_COMMIT_MESSAGE" value="hrtsw state" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
