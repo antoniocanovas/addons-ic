@@ -101,6 +101,7 @@
                             context="{'default_work_sheet_id':active_id}"
                             string="Sale Pickings" type="action" class="btn-primary"/>
                     <widget name="signature" string="Sign" highlight="1" attrs="{'invisible': [('partner_id', '=', False)]}" full_name="partner_id"/>
+                    <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
                 </header>
                 <sheet>
                     <!-- O2M Buttons:  -->
@@ -218,6 +219,7 @@
                 <field name="name"/>
                 <field name="work_id"/>
                 <field name="date"/>
+                <field name="state"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>

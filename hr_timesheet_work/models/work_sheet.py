@@ -11,6 +11,11 @@ TYPES = [
     ('project', 'Project'),
 ]
 
+STATES = [
+    ('new', 'New'),
+    ('done', 'Done')
+]
+
 
 class TimeSheetWorkSheet(models.Model):
     _name = 'work.sheet'
@@ -19,6 +24,7 @@ class TimeSheetWorkSheet(models.Model):
 
     name = fields.Char('Name', required=True)
     date = fields.Date('Date', required=True)
+    state = fields.Selection(selection=STATES, string="Status")
     work_id = fields.Many2one('timesheet.work')
     type = fields.Selection(string='Type', related='work_id.type')
     project_id = fields.Many2one('project.project')
