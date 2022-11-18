@@ -21,7 +21,7 @@ class TimesheetLineTodo(models.Model):
 
     @api.depends('sale_line_id')
     def get_sale_order(self):
-        self.sale_id = self.sale_line_id.sale_id.id
+        self.sale_id = self.sale_line_id.order_id.id
     sale_id = fields.Many2one('sale.order', compute=get_sale_order, store=True)
 
     # It will be executed from AA, it can't be compute because always null on save line:
