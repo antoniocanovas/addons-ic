@@ -16,10 +16,14 @@ class TimesheetLineTodo(models.Model):
     work_id = fields.Many2one('timesheet.work', store=True, string='Work')
     sale_line_id = fields.Many2one('sale.order.line', store=True, string='Sale Line')
     section_id = fields.Many2one('sale.order.line', store=True, related='sale_line_id.section_id')
-    sale_id = fields.Many2one('sale.order', related='sale_line_id.order_id', store=True)
     sale_order_ids = fields.Many2many('sale.order',related='work_id.sale_order_ids', store=False)
     product_id = fields.Many2one('product.product', string='Product', required=True, readonly=False)
     uom_id = fields.Many2one('uom.uom', string='UOM', store=True)
+
+    @api.depends('sale_line_id')
+    def get_sale_order(self):
+        self.sale_id = self.sale_line_id.sale_id.id
+    sale_id = fields.Many2one('sale.order', compute=get_sale_order, store=True)
 
     # It will be executed from AA, it can't be compute because always null on save line:
     def get_update_work_todo_line(self):
