@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hrtsw state">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hrtsw todo sale_id required">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_todo.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_todo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_done_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_done_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,13 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00472" summary="work sheet attachments in AAL">
-      <created>1666008736234</created>
-      <option name="number" value="00472" />
-      <option name="presentableId" value="LOCAL-00472" />
-      <option name="project" value="LOCAL" />
-      <updated>1666008736235</updated>
     </task>
     <task id="LOCAL-00473" summary="work sheet attachments in AAL">
       <created>1666008806168</created>
@@ -411,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668790982865</updated>
     </task>
-    <option name="localTasksCounter" value="521" />
+    <task id="LOCAL-00521" summary="hrtsw todo sale_id required">
+      <created>1668793479321</created>
+      <option name="number" value="00521" />
+      <option name="presentableId" value="LOCAL-00521" />
+      <option name="project" value="LOCAL" />
+      <updated>1668793479321</updated>
+    </task>
+    <option name="localTasksCounter" value="522" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -427,7 +427,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sale revision v2" />
     <MESSAGE value="roadmap bugs" />
     <MESSAGE value="roadmap kanban" />
     <MESSAGE value="upd hr_timesheet_work &amp; extended" />
@@ -452,7 +451,8 @@
     <MESSAGE value="roadmap v4 proj menu" />
     <MESSAGE value="roadmap v4 rev" />
     <MESSAGE value="hrtsw state" />
-    <option name="LAST_COMMIT_MESSAGE" value="hrtsw state" />
+    <MESSAGE value="hrtsw todo sale_id required" />
+    <option name="LAST_COMMIT_MESSAGE" value="hrtsw todo sale_id required" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

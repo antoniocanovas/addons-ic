@@ -18,8 +18,8 @@
                         <field name="date"/>
                         <field name="time_elapsed" widget="timesheeet_uom"/>
                         <field name="employee_ids" widget="many2many_tags" optional="hide"/>
-                        <fieldd name="performance"/>
-                        <fieldd name="work_id"/>
+                        <field name="performance"/>
+                        <field name="work_id"/>
                         <field name="sale_line_id"/>
                         <field name="work_sheet_id"/>
                     </group>
