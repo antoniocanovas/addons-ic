@@ -35,6 +35,7 @@
                 Create a new measure item !
             </p>
         </field>
+        <field name="view_mode">tree,form,pivot</field>
     </record>
     # Fin acción de ventana to-do
 
@@ -50,6 +51,7 @@
             <p class="o_view_nocontent_smiling_face">
                 Nothing finished in this work !
             </p>
+        <field name="view_mode">tree,form,pivot</field>
         </field>
     </record>
     # Fin acción de ventana done

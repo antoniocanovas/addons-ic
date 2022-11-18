@@ -7,6 +7,7 @@
         <field name="res_model">timesheet.line.done</field>
         <field name="view_mode">tree,form</field>
         <field name="context">{'search_default_sale_id': active_id, 'default_sale_id': active_id}</field>
+        <field name="domain">[('sale_id','=',active_id)]</field>
         <field name="groups_id" eval="False"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
