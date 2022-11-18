@@ -15,7 +15,6 @@ class TimesheetLineTodo(models.Model):
     active = fields.Boolean('Active',default=True)
     work_id = fields.Many2one('timesheet.work', store=True, string='Work')
     sale_line_id = fields.Many2one('sale.order.line', store=True, string='Sale Line')
-    section_id = fields.Many2one('sale.order.line', store=True, related='sale_line_id.section_id')
     sale_order_ids = fields.Many2many('sale.order',related='work_id.sale_order_ids', store=False)
     product_id = fields.Many2one('product.product', string='Product', required=True, readonly=False)
     uom_id = fields.Many2one('uom.uom', string='UOM', store=True)
