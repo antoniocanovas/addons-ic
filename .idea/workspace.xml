@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hrtsw todo sale_id required">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hrtsw_section2done">
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/models/timesheet_line_todo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_done_views.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_todo_views.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work_section2done/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work_section2done/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work_section2done/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work_section2done/models/timesheet_line_done.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/models/timesheet_line_done.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work_section2done/static/hr_worksheet_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/static/hr_worksheet_icon.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,17 +46,17 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hr_timesheet_work_multisection" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hr_timesheet_work_multisection" />
+      <recent name="$PROJECT_DIR$/hr_timesheet_work_section2done/models" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/project_roadmap/data" />
       <recent name="$PROJECT_DIR$/project_roadmap/security" />
-      <recent name="$PROJECT_DIR$/crm_contest" />
-      <recent name="$PROJECT_DIR$/project_procedure_sale" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/project_roadmap/static/description" />
@@ -66,13 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00479" summary="monetary_precision and different uom">
-      <created>1666202009483</created>
-      <option name="number" value="00479" />
-      <option name="presentableId" value="LOCAL-00479" />
-      <option name="project" value="LOCAL" />
-      <updated>1666202009483</updated>
     </task>
     <task id="LOCAL-00480" summary="monetary_precision and different uom">
       <created>1666202064956</created>
@@ -410,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668796919588</updated>
     </task>
-    <option name="localTasksCounter" value="528" />
+    <task id="LOCAL-00528" summary="hrtsw_section2done">
+      <created>1668816616991</created>
+      <option name="number" value="00528" />
+      <option name="presentableId" value="LOCAL-00528" />
+      <option name="project" value="LOCAL" />
+      <updated>1668816616991</updated>
+    </task>
+    <option name="localTasksCounter" value="529" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,7 +434,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="roadmap bugs" />
     <MESSAGE value="roadmap kanban" />
     <MESSAGE value="upd hr_timesheet_work &amp; extended" />
     <MESSAGE value="hr_timesheet_work imp" />
@@ -451,7 +458,8 @@
     <MESSAGE value="roadmap v4 rev" />
     <MESSAGE value="hrtsw state" />
     <MESSAGE value="hrtsw todo sale_id required" />
-    <option name="LAST_COMMIT_MESSAGE" value="hrtsw todo sale_id required" />
+    <MESSAGE value="hrtsw_section2done" />
+    <option name="LAST_COMMIT_MESSAGE" value="hrtsw_section2done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
