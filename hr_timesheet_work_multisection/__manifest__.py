@@ -1,9 +1,9 @@
 {
-    'name': 'Timesheet Work Section to Timesheet Done',
+    'name': 'Timesheet Work Multisection',
     'version': '14.0.1.0.0',
     'category': '',
     'description': u"""
-Add sale line section in timesheet.work.done to allow filtering and grouping by.
+Add sale line section in timesheet.work.todo and done to allow filtering and grouping by.
 """,
     'author': 'Serincloud',
     'depends': [
