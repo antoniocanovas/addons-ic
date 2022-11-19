@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hrtsw_multisection">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work_multisection/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_done_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_done_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work_multisection/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/models/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,20 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00481" summary="monetary_precision and different uom">
-      <created>1666202181920</created>
-      <option name="number" value="00481" />
-      <option name="presentableId" value="LOCAL-00481" />
-      <option name="project" value="LOCAL" />
-      <updated>1666202181920</updated>
-    </task>
-    <task id="LOCAL-00482" summary="monetary_precision and different uom">
-      <created>1666213585788</created>
-      <option name="number" value="00482" />
-      <option name="presentableId" value="LOCAL-00482" />
-      <option name="project" value="LOCAL" />
-      <updated>1666213585788</updated>
     </task>
     <task id="LOCAL-00483" summary="sale_wup description+bugs + purchase discount history">
       <created>1666360885871</created>
@@ -412,7 +396,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668871491940</updated>
     </task>
-    <option name="localTasksCounter" value="530" />
+    <task id="LOCAL-00530" summary="hrtsw_multisection">
+      <created>1668872111238</created>
+      <option name="number" value="00530" />
+      <option name="presentableId" value="LOCAL-00530" />
+      <option name="project" value="LOCAL" />
+      <updated>1668872111238</updated>
+    </task>
+    <task id="LOCAL-00531" summary="hrtsw_multisection">
+      <created>1668872184846</created>
+      <option name="number" value="00531" />
+      <option name="presentableId" value="LOCAL-00531" />
+      <option name="project" value="LOCAL" />
+      <updated>1668872184846</updated>
+    </task>
+    <option name="localTasksCounter" value="532" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
