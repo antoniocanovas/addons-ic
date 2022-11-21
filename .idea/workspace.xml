@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hrtsw_multisection">
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_done_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_done_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/menu_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_done_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_done_views.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_todo_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_todo_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,20 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00484" summary="purches_price_update rev dif uoms">
-      <created>1666622822133</created>
-      <option name="number" value="00484" />
-      <option name="presentableId" value="LOCAL-00484" />
-      <option name="project" value="LOCAL" />
-      <updated>1666622822133</updated>
-    </task>
-    <task id="LOCAL-00485" summary="purches_price_update rev dif uoms">
-      <created>1666623027658</created>
-      <option name="number" value="00485" />
-      <option name="presentableId" value="LOCAL-00485" />
-      <option name="project" value="LOCAL" />
-      <updated>1666623027659</updated>
     </task>
     <task id="LOCAL-00486" summary="purches_price_update rev dif uoms">
       <created>1666623218828</created>
@@ -411,7 +399,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668872412309</updated>
     </task>
-    <option name="localTasksCounter" value="533" />
+    <task id="LOCAL-00533" summary="hrtsw_multisection">
+      <created>1668872849961</created>
+      <option name="number" value="00533" />
+      <option name="presentableId" value="LOCAL-00533" />
+      <option name="project" value="LOCAL" />
+      <updated>1668872849961</updated>
+    </task>
+    <task id="LOCAL-00534" summary="hrtsw_multisection">
+      <created>1668872981460</created>
+      <option name="number" value="00534" />
+      <option name="presentableId" value="LOCAL-00534" />
+      <option name="project" value="LOCAL" />
+      <updated>1668872981460</updated>
+    </task>
+    <option name="localTasksCounter" value="535" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
