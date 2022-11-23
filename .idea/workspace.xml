@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hrtsw_multisection">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hrtsw_ added domain todo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/menu_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_done_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_done_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_todo_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_todo_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,13 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00486" summary="purches_price_update rev dif uoms">
-      <created>1666623218828</created>
-      <option name="number" value="00486" />
-      <option name="presentableId" value="LOCAL-00486" />
-      <option name="project" value="LOCAL" />
-      <updated>1666623218828</updated>
     </task>
     <task id="LOCAL-00487" summary="purches_price_update rev dif uoms">
       <created>1666623725513</created>
@@ -413,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668872981460</updated>
     </task>
-    <option name="localTasksCounter" value="535" />
+    <task id="LOCAL-00535" summary="hrtsw_ added domain todo">
+      <created>1669053906754</created>
+      <option name="number" value="00535" />
+      <option name="presentableId" value="LOCAL-00535" />
+      <option name="project" value="LOCAL" />
+      <updated>1669053906754</updated>
+    </task>
+    <option name="localTasksCounter" value="536" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -429,7 +427,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="upd hr_timesheet_work &amp; extended" />
     <MESSAGE value="hr_timesheet_work imp" />
     <MESSAGE value="SML Partner" />
     <MESSAGE value="ts_work remove field note" />
@@ -454,7 +451,8 @@
     <MESSAGE value="hrtsw todo sale_id required" />
     <MESSAGE value="hrtsw_section2done" />
     <MESSAGE value="hrtsw_multisection" />
-    <option name="LAST_COMMIT_MESSAGE" value="hrtsw_multisection" />
+    <MESSAGE value="hrtsw_ added domain todo" />
+    <option name="LAST_COMMIT_MESSAGE" value="hrtsw_ added domain todo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

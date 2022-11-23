@@ -118,7 +118,7 @@
                         </button>
                         <button name="hr_timesheet_work.hr_work_sheet_output_button" class="oe_stat_button" icon="fa-tasks" type="action" help="List output operations">
                             <div class="o_form_field o_stat_info">
-                                <span class="o_stat_text">Outputs</span>
+                                <span class="o_stat_text">Milestones</span>
                             </div>
                         </button>
                     </div>
@@ -180,6 +180,11 @@
                         <div name="work_sheet_expenses" string="Expenses" attrs="{'invisible':[('type','!=','project')]}">
                             <h2>Expenses:</h2>
                             <field name="reinvoice_expense_ids"/>
+                        </div>
+
+                        <div name="work_sheet_milestones" string="Milestones" attrs="{'invisible':[('type','!=','project')]}">
+                            <h2>Milestones:</h2>
+                            <field name="line_done_ids"/>
                         </div>
 
                     </div>
