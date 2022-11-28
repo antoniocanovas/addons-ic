@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hrtsw_ added domain todo">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hrtsw milestones in form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/equipment_service/models/equipment_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/equipment_service/models/equipment_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/equipment_service/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/equipment_service/views/views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpdesk_equipment/models/helpdesk_ticket.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk_equipment/models/helpdesk_ticket.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpdesk_equipment/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk_equipment/views/views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,13 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00487" summary="purches_price_update rev dif uoms">
-      <created>1666623725513</created>
-      <option name="number" value="00487" />
-      <option name="presentableId" value="LOCAL-00487" />
-      <option name="project" value="LOCAL" />
-      <updated>1666623725513</updated>
     </task>
     <task id="LOCAL-00488" summary="purches_price_update rev dif uoms">
       <created>1666623806724</created>
@@ -411,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669053906754</updated>
     </task>
-    <option name="localTasksCounter" value="536" />
+    <task id="LOCAL-00536" summary="hrtsw milestones in form">
+      <created>1669221299382</created>
+      <option name="number" value="00536" />
+      <option name="presentableId" value="LOCAL-00536" />
+      <option name="project" value="LOCAL" />
+      <updated>1669221299383</updated>
+    </task>
+    <option name="localTasksCounter" value="537" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -427,7 +430,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="hr_timesheet_work imp" />
     <MESSAGE value="SML Partner" />
     <MESSAGE value="ts_work remove field note" />
     <MESSAGE value="wor_id in analytic.line" />
@@ -452,7 +454,8 @@
     <MESSAGE value="hrtsw_section2done" />
     <MESSAGE value="hrtsw_multisection" />
     <MESSAGE value="hrtsw_ added domain todo" />
-    <option name="LAST_COMMIT_MESSAGE" value="hrtsw_ added domain todo" />
+    <MESSAGE value="hrtsw milestones in form" />
+    <option name="LAST_COMMIT_MESSAGE" value="hrtsw milestones in form" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

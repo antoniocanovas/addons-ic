@@ -16,6 +16,7 @@
                     <group>
                         <field name="type_id" required="1"/>
                         <field name="equipment_id"/>
+                        <field name="docurl" widget="url"/>
                     </group>
                     <field name="note" placeholder="Notes, version, tips, ..."/>
                 </sheet>

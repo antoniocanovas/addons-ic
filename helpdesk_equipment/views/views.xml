@@ -9,6 +9,7 @@
         <field name="arch" type="xml">
             <xpath expr="//form/sheet/group/group[1]/field[@name='priority']" position="after">
                 <field name="service_id"/>
+                <field name="docurl" widget="url" attrs="{'invisible':[('service_id','=',False)]}"
                 <field name="equipment_id"/>
                 <field name="partner_credentials_id" readonly="1"/>
             </xpath>
