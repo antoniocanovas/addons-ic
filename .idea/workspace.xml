@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="docurl in equipment_service &amp; helpdesk">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,20 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00489" summary="purches_price_update rev dif uoms">
-      <created>1666624064625</created>
-      <option name="number" value="00489" />
-      <option name="presentableId" value="LOCAL-00489" />
-      <option name="project" value="LOCAL" />
-      <updated>1666624064625</updated>
-    </task>
-    <task id="LOCAL-00490" summary="bug history discount">
-      <created>1666625889647</created>
-      <option name="number" value="00490" />
-      <option name="presentableId" value="LOCAL-00490" />
-      <option name="project" value="LOCAL" />
-      <updated>1666625889647</updated>
     </task>
     <task id="LOCAL-00491" summary="bug history discount">
       <created>1666626283764</created>
@@ -410,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669659180505</updated>
     </task>
-    <option name="localTasksCounter" value="538" />
+    <task id="LOCAL-00538" summary="bug1">
+      <created>1669717979942</created>
+      <option name="number" value="00538" />
+      <option name="presentableId" value="LOCAL-00538" />
+      <option name="project" value="LOCAL" />
+      <updated>1669717979942</updated>
+    </task>
+    <task id="LOCAL-00539" summary="bug">
+      <created>1669718116252</created>
+      <option name="number" value="00539" />
+      <option name="presentableId" value="LOCAL-00539" />
+      <option name="project" value="LOCAL" />
+      <updated>1669718116252</updated>
+    </task>
+    <option name="localTasksCounter" value="540" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,8 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ts_work remove field note" />
-    <MESSAGE value="wor_id in analytic.line" />
     <MESSAGE value="work sheet attachments in AAL" />
     <MESSAGE value="sm_line_partner" />
     <MESSAGE value="monetary_precision and different uom" />
@@ -451,7 +447,9 @@
     <MESSAGE value="hrtsw_ added domain todo" />
     <MESSAGE value="hrtsw milestones in form" />
     <MESSAGE value="docurl in equipment_service &amp; helpdesk" />
-    <option name="LAST_COMMIT_MESSAGE" value="docurl in equipment_service &amp; helpdesk" />
+    <MESSAGE value="bug1" />
+    <MESSAGE value="bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
