@@ -16,6 +16,7 @@
                     <group>
                         <field name="type_id" required="1"/>
                         <field name="equipment_id"/>
+                        <field name="customer_id"/>
                         <field name="docurl" widget="url"/>
                     </group>
                     <field name="note" placeholder="Notes, version, tips, ..."/>
@@ -44,6 +45,7 @@
             <tree name="equipment_service_main_tree">
                 <field name="name"/>
                 <field name="type_id"/>
+                <field name="customer_id"/>
                 <field name="activity_ids" widget="list_activity" optional="show"/>
                 <field name="equipment_id"/>
                 <field name="create_date" optional="hide"/>
@@ -68,6 +70,8 @@
             <search string="Equipment Service">
                 <field name="name"/>
                 <field name="equipment_id"/>
+                <field name="type_id"/>
+                <field name="customer_id"/>
                 <separator/>
                 <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
                 <separator/>

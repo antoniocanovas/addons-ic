@@ -12,6 +12,7 @@ class EquipmentService(models.Model):
     name = fields.Char('Name')
     type_id = fields.Many2one('equipment.service.type', string="Type")
     equipment_id = fields.Many2one('maintenance.equipment', string="Equipment")
+    customer_id = fields.Many2one('res.partner', string="Customer")
     note = fields.Text('Description')
     docurl = fields.Char('Document URL')
     active = fields.Boolean('Active', default=True)
