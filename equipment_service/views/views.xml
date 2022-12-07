@@ -70,8 +70,8 @@
             <search string="Equipment Service">
                 <field name="name"/>
                 <field name="equipment_id"/>
-                <field name="type_id"/>
                 <field name="customer_id"/>
+                <field name="type_id"/>
                 <separator/>
                 <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
                 <separator/>
