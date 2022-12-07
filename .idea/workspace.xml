@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug">
-      <change afterPath="$PROJECT_DIR$/product_chassis/i18n/es.po" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="translate chassis">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product_chassis/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/product_chassis/i18n/es.po" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,11 +52,11 @@
       <recent name="$PROJECT_DIR$/project_roadmap/security" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/product_chassis/i18n" />
       <recent name="$PROJECT_DIR$/project_roadmap/static/description" />
       <recent name="$PROJECT_DIR$/crm_contest/i18n" />
       <recent name="$PROJECT_DIR$/contest/static/description" />
       <recent name="$PROJECT_DIR$/realstate/static/description" />
-      <recent name="$PROJECT_DIR$/realstate/static/description/icon.png" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -67,13 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00492" summary="bug history discount">
-      <created>1666626485919</created>
-      <option name="number" value="00492" />
-      <option name="presentableId" value="LOCAL-00492" />
-      <option name="project" value="LOCAL" />
-      <updated>1666626485920</updated>
     </task>
     <task id="LOCAL-00493" summary="bug history discount">
       <created>1666626632619</created>
@@ -411,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669718936483</updated>
     </task>
-    <option name="localTasksCounter" value="541" />
+    <task id="LOCAL-00541" summary="translate chassis">
+      <created>1670427779623</created>
+      <option name="number" value="00541" />
+      <option name="presentableId" value="LOCAL-00541" />
+      <option name="project" value="LOCAL" />
+      <updated>1670427779624</updated>
+    </task>
+    <option name="localTasksCounter" value="542" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -427,7 +427,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="work sheet attachments in AAL" />
     <MESSAGE value="sm_line_partner" />
     <MESSAGE value="monetary_precision and different uom" />
     <MESSAGE value="sale_wup description+bugs + purchase discount history" />
@@ -452,7 +451,8 @@
     <MESSAGE value="docurl in equipment_service &amp; helpdesk" />
     <MESSAGE value="bug1" />
     <MESSAGE value="bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug" />
+    <MESSAGE value="translate chassis" />
+    <option name="LAST_COMMIT_MESSAGE" value="translate chassis" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
