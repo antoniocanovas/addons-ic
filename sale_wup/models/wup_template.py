@@ -18,4 +18,4 @@ class WupTemplate(models.Model):
     type_id = fields.Many2one('wup.type',  string='Type',  store=True)
     product_brand_id = fields.Many2one('product.brand', string='Product brand',  store=True)
 
-    line_ids = fields.One2many('wup.template.line', 'template_id', string='Line', store=True)
+    line_ids = fields.One2many('wup.template.line', 'template_id', string='Line', store=True, copy=True)

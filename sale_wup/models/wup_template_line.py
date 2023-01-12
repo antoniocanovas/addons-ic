@@ -12,6 +12,7 @@ class WupTemplateLine(models.Model):
     product_id = fields.Many2one('product.product', string='Product')
     product_uom_qty = fields.Float(string='Quantity')
     product_uom = fields.Many2one('uom.uom', related='product_id.uom_id')
+    sequence = fields.Integer('Sequence')
 
     @api.depends('product_id')
     def get_name_from_line_product_id(self):
