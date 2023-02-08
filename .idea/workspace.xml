@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="wup handle">
-      <change afterPath="$PROJECT_DIR$/account_move_sale_tags/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account_move_sale_tags/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account_move_sale_tags/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account_move_sale_tags/models/account_invoice_tags.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account_move_sale_tags/models/option_advance_payment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account_move_sale_tags/models/sale_order_tags.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account_move_sale_tags/static/description/banner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account_move_sale_tags/static/description/company-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account_move_sale_tags/static/description/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account_move_sale_tags/static/description/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account_move_sale_tags/views/account_invoice_tags_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account_move_sale_tags/views/sale_order_view.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="account_move_sale_tags">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_revision/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_revision/views/views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,9 +53,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/hr_timesheet_work_multisection" />
       <recent name="$PROJECT_DIR$/hr_timesheet_work_section2done/models" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/project_roadmap/data" />
       <recent name="$PROJECT_DIR$/project_roadmap/security" />
     </key>
@@ -86,13 +75,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00498" summary="bug history discount">
-      <created>1666631857011</created>
-      <option name="number" value="00498" />
-      <option name="presentableId" value="LOCAL-00498" />
-      <option name="project" value="LOCAL" />
-      <updated>1666631857011</updated>
     </task>
     <task id="LOCAL-00499" summary="bug history discount">
       <created>1666632264345</created>
@@ -430,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673538815254</updated>
     </task>
-    <option name="localTasksCounter" value="547" />
+    <task id="LOCAL-00547" summary="account_move_sale_tags">
+      <created>1674055292156</created>
+      <option name="number" value="00547" />
+      <option name="presentableId" value="LOCAL-00547" />
+      <option name="project" value="LOCAL" />
+      <updated>1674055292156</updated>
+    </task>
+    <option name="localTasksCounter" value="548" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -446,7 +435,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="purches_price_update rev dif uoms" />
     <MESSAGE value="bug history discount" />
     <MESSAGE value="analytic tracking no fields" />
     <MESSAGE value="roadmap v3 (project type)" />
@@ -471,7 +459,8 @@
     <MESSAGE value="equipment_service customer_id" />
     <MESSAGE value="equipment_service group" />
     <MESSAGE value="wup handle" />
-    <option name="LAST_COMMIT_MESSAGE" value="wup handle" />
+    <MESSAGE value="account_move_sale_tags" />
+    <option name="LAST_COMMIT_MESSAGE" value="account_move_sale_tags" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
