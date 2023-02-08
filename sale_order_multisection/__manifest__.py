@@ -1,9 +1,9 @@
 {
     'name': 'Sale Order Multisection',
-    'version': '14.0.2.0.0',
+    'version': '16.0.1.0.0',
     'category': '',
     'description': u"""
-
+Sale Multisection
 """,
     'author': 'Serincloud',
     'depends': [
@@ -12,7 +12,6 @@
 
     ],
     'data': [
-        #'data/crea_lineas_factura.xml',
         'views/sale_order_views.xml',
         'security/ir.model.access.csv',
         'data/automatic_actions.xml',

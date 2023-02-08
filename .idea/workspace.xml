@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="roadmap rev">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="analytic_picking_auto 16">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytic_picking_auto/data/action_server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/analytic_picking_auto/data/action_server.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,13 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00470" summary="work sheet attachments in AAL">
-      <created>1666008357202</created>
-      <option name="number" value="00470" />
-      <option name="presentableId" value="LOCAL-00470" />
-      <option name="project" value="LOCAL" />
-      <updated>1666008357202</updated>
     </task>
     <task id="LOCAL-00471" summary="work sheet attachments in AAL">
       <created>1666008547572</created>
@@ -411,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668525776255</updated>
     </task>
-    <option name="localTasksCounter" value="519" />
+    <task id="LOCAL-00519" summary="analytic_picking_auto 16">
+      <created>1673951488125</created>
+      <option name="number" value="00519" />
+      <option name="presentableId" value="LOCAL-00519" />
+      <option name="project" value="LOCAL" />
+      <updated>1673951488125</updated>
+    </task>
+    <option name="localTasksCounter" value="520" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -427,7 +426,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sale revision v2" />
     <MESSAGE value="roadmap bugs" />
     <MESSAGE value="roadmap kanban" />
     <MESSAGE value="upd hr_timesheet_work &amp; extended" />
@@ -452,7 +450,8 @@
     <MESSAGE value="16 project_roadmap" />
     <MESSAGE value="roadmap is_closed =&gt; fold" />
     <MESSAGE value="roadmap rev" />
-    <option name="LAST_COMMIT_MESSAGE" value="roadmap rev" />
+    <MESSAGE value="analytic_picking_auto 16" />
+    <option name="LAST_COMMIT_MESSAGE" value="analytic_picking_auto 16" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
