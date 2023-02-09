@@ -1,72 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!--<template id="iniesta_external_layout_standard">
-            <div class="header" t-att-style="report_header_style">
-                <div class="row">
-                    <div class="col-3 mb4">
-                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;" alt="Logo"/>
-                    </div>
-                    <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
-                </div>
-                <div class="row">
-                    <strong><span t-field="o.company_id" style="text-align:right;font-weight: 900;white-space: nowrap;font-size:16px;"/></strong><br/>
-                    <span t-field="o.company_id.street"/><br/>
-                    <span t-field="o.company_id.zip"/> <span t-field="o.company_id.state_id"/>
-                    <span t-field="o.company_id.country_id"/><br/>
-                    CIF: <span t-field="o.company_id.vat"/><br/>
-                </div>
-            </div>
-
-            <div class="article o_report_layout_standard"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
-                <t t-call="web.address_layout"/>
-                <t t-raw="0"/>
-            </div>
-
-            <div class="footer o_standard_footer">
-                <div class="text-center" style="border-top: 1px solid black;">
-                    <ul class="list-inline mb4">
-                        <li t-if="company.phone" class="list-inline-item">Phone: <span t-field="company.phone"/></li>
-                        <li t-if="company.email" class="list-inline-item">Email: <span t-field="company.email"/></li>
-                        <li t-if="company.website" class="list-inline-item">Web: <span t-field="company.website"/></li>
-                        <li t-if="company.vat" class="list-inline-item"><t t-esc="(company.country_id.vat_label or 'Tax ID').replace(' ','\N{NO-BREAK SPACE}')"/>: <span t-esc="company.vat.replace(' ','\N{NO-BREAK SPACE}')"/></li>
-                    </ul>
-
-                    <div name="financial_infos" style="border-top: 1px solid black;font-size: 10px !important;">
-                        <span t-field="company.report_footer"/>
-                    </div>
-
-                    <div t-if="report_type == 'pdf'" class="text-muted">
-                        Page: <span class="page"/> / <span class="topage"/>
-                    </div>
-                </div>
-            </div>
-        </template>
-
-
-
-        <template id="iniesta_external_layout">
-            <t t-if="not o" t-set="o" t-value="doc"/>
-
-            <t t-if="not company">
-
-                <t t-if="company_id">
-                    <t t-set="company" t-value="company_id"/>
-                </t>
-                <t t-elif="o and 'company_id' in o">
-                    <t t-set="company" t-value="o.company_id.sudo()"/>
-                </t>
-                <t t-else="else">
-                    <t t-set="company" t-value="res_company"/>
-                </t>
-            </t>
-            <t t-call="iniesta_invoice_report.iniesta_external_layout_standard"><t t-raw="0"/></t>
-
-        </template> -->
-
         <template id="multisection_executive_summary">
             <t t-call="web.external_layout">
-                <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+                <!--<t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>-->
                 <t t-set="address">
                     <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
                     <p t-if="doc.partner_id.vat"><t t-esc="doc.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="doc.partner_id.vat"/></p>
@@ -141,12 +78,12 @@
                                 <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
                                     <t t-if="line.display_type == 'line_section'">
 
-                                            <td name="td_section_line" colspan="99">
-                                                <span t-field="line.name"/>
-                                                <span t-field="line.level"/>
-                                            </td>
-                                            <t t-set="current_section" t-value="line"/>
-                                            <t t-set="current_subtotal" t-value="0"/>
+                                        <td name="td_section_line" colspan="99">
+                                            <span t-field="line.name"/>
+                                            <span t-field="line.level"/>
+                                        </td>
+                                        <t t-set="current_section" t-value="line"/>
+                                        <t t-set="current_subtotal" t-value="0"/>
 
                                     </t>
                                     <t t-if="line.display_type == 'line_note'">
@@ -234,33 +171,7 @@
                     </p>
                 </div>
             </t>
-
-
         </template>
-
-        <!-- <template id="iniesta_report_invoice_document_with_payments" inherit_id="iniesta_invoice_report.iniesta_report_invoice_document" primary="True">
-             <xpath expr="//div[@id='total']/div/table" position="inside">
-                 <t t-set="payments_vals" t-value="o._get_payments_vals()"/>
-                 <t t-foreach="payments_vals" t-as="payment_vals">
-                     <tr>
-                         <td>
-                             <i class="oe_form_field text-right oe_payment_label">Paid on <t t-esc="payment_vals['date']" t-options='{"widget": "date"}'/></i>
-                         </td>
-                         <td class="text-right">
-                             <span t-esc="payment_vals['amount']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
-                         </td>
-                     </tr>
-                 </t>
-                 <t t-if="len(payments_vals) > 0">
-                     <tr class="border-black">
-                         <td><strong>Amount Due</strong></td>
-                         <td class="text-right">
-                             <span t-field="o.residual"/>
-                         </td>
-                     </tr>
-                 </t>
-             </xpath>
-         </template> -->
 
         <template id="sale_order_multisection_executive_summary">
             <t t-call="web.html_container">
@@ -271,13 +182,20 @@
 
         </template>
 
-        <!-- <template id="iniesta_report_invoice_with_payments">
-             <t t-call="web.html_container">
-                 <t t-foreach="docs" t-as="o">
-                     <t t-set="lang" t-value="o.user_id.sudo().lang if o.type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>
-                     <t t-call="iniesta_invoice_report.iniesta_report_invoice_document_with_payments" t-lang="lang"/>
-                 </t>
-             </t>
-         </template> -->
+        <template id="report_saleorder_document_multisection" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//td[@name='td_priceunit']" position="attributes">
+                <attribute name="t-if">not line.hide_subtotal_line</attribute>
+            </xpath>
+            <xpath expr="//td[@t-if='display_discount']/span" position="attributes">
+                <attribute name="t-if">not line.hide_subtotal_line</attribute>
+            </xpath>
+            <xpath expr="//td[@name='td_taxes']" position="attributes">
+                <attribute name="t-if">not line.hide_subtotal_line</attribute>
+            </xpath>
+            <xpath expr="//td[@name='td_subtotal']" position="attributes">
+                <attribute name="t-if">not line.hide_subtotal_line</attribute>
+            </xpath>
+        </template>
+
     </data>
 </odoo>
