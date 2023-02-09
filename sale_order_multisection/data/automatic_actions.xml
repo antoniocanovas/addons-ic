@@ -77,7 +77,7 @@ if (sections_ids) and (record.state == 'draft'):
           level = len(parents) +1
         lenght_section = len(se.section)
         if (se.section == li.section[:lenght_section]):
-          chidren.append(li.id)
+          children.append(li.id)
     se.write({'parent_ids':[(6,0,parents)], 'child_ids':[(6,0,children)], 'level':level})
             </field>
             <field name="trigger">on_create_or_write</field>
