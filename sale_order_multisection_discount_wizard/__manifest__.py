@@ -1,9 +1,9 @@
 {
     'name': 'Sale Order Multisection Discount',
-    'version': '14.0.1.0.0',
+    'version': '16.0.1.0.0',
     'category': '',
     'description': u"""
-
+Wizard discounts for multisections sales orders
 """,
     'author': 'Serincloud',
     'depends': [
