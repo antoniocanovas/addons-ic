@@ -37,8 +37,8 @@ if record.type == 'services':
       importe_productos += li.price_subtotal
     elif  (li.display_type == False) and (li.product_id.type == 'service'):
       importe_servicios += li.price_unit * li.product_uom_qty
-  # Cálculo del descuento (distinto si es positivo o negativo):
 
+  # Cálculo del descuento (pendiente de desarrollo si distinto si es positivo o negativo, que sería 0 y cambiar precio):
   if importe_servicios > 0:
     descuento = 100 - (100* (record.price - importe_productos)/importe_servicios)
   else:
