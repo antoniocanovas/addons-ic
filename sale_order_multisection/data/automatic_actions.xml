@@ -8,11 +8,11 @@
             <field name="state">code</field>
             <field name="code">
 if (record.display_type == 'line_section') and (record.name[:1] == record.order_id.multisection_key):
-  seccion = record.name.split()[0]
-  lineas = env['sale.order.line'].search([('order_id','=',record.order_id.id),('display_type','=','line_section'),('section','!=',False),('id','!=',record.id)])
-  if lineas.ids:
-    for li in lineas:
-      if seccion == li.section: raise UserError('Nombre de sección duplicado ' + seccion + ' !!!')
+  section_code = record.name.split()[0]
+  line_ids = env['sale.order.line'].search([('order_id','=',record.order_id.id),('display_type','=','line_section'),('section','!=',False),('id','!=',record.id)])
+  if line_ids.ids:
+    for li in line_ids:
+      if section_code == li.section: raise UserError('Nombre de sección duplicado ' + section_code + ' !!!')
             </field>
             <field name="trigger">on_create_or_write</field>
             <!--<field name="on_change_fields">state</field>-->
@@ -47,30 +47,30 @@ if record.ms_review:
             <field name="state">code</field>
             <field name="code">
 # Ejecutar sólo si hay secciones y estamos en modo DRAFT:
-hay_secciones = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
-if (hay_secciones) and (record.state == 'draft'):
-  lineas = record.order_line.sorted(key=lambda r: r.sequence)
-  seccion_id = 0
+sections_ids = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
+if (sections_ids) and (record.state == 'draft'):
+  line_ids = record.order_line.sorted(key=lambda r: r.sequence)
+  section_id = 0
     # Asingar 'section' en Secciones y 'section_id' en el resto de líneas, en base a la secuencia de orden de líneas:
-  for li in lineas:
+  for li in line_ids:
     if (li.display_type == 'line_section') and (li.name):
-      seccion_id = li.id
-      seccion = str(li.sequence)
+      section_id = li.id
+      section_code = str(li.sequence)
       if (li.name[:1] == record.multisection_key):
-        seccion = li.name.split()[0]
-      li.write({'section':seccion})
-    elif (li.display_type != 'line_section') and (seccion_id > 0):
-      li.write({'section_id':seccion_id})
+        section_code = li.name.split()[0]
+      li.write({'section':section_code})
+    elif (li.display_type != 'line_section') and (section_id > 0):
+      li.write({'section_id':section_id})
     else:
       li.write({'section_id':False})
 
     # Cálculo de 'parent_ids', 'child_ids' y 'level' por sección, si hay multinivel ($ o multisection_key):
-  secciones = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
-  for se in secciones:
+  section_ids = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
+  for se in section_ids:
     padres, hijos, nivel = [], [], 1
-    lineas = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section'),('id','!=',se.id)])
+    line_ids = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section'),('id','!=',se.id)])
     if  (se.name[:1] == record.multisection_key):
-      for li in lineas:
+      for li in line_ids:
         largoli = len(li.section)
         if (li.section == se.section[:largoli]):
           padres.append(li.id)

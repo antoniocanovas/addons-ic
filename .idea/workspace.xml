@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale multisection 16v0">
-      <change beforePath="$PROJECT_DIR$/sale_order_multisection_discount_wizard/data/server_actions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection_discount_wizard/data/server_actions.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sale_order_multisection/models/account_move_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_order_multisection/data/automatic_actions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/data/automatic_actions.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,17 +40,17 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/sale_order_multisection/models" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sale_order_multisection/models" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/project_roadmap/data" />
       <recent name="$PROJECT_DIR$/project_roadmap/security" />
       <recent name="$PROJECT_DIR$/crm_contest" />
-      <recent name="$PROJECT_DIR$/project_procedure_sale" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/project_roadmap/static/description" />
@@ -66,20 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00482" summary="monetary_precision and different uom">
-      <created>1666213585788</created>
-      <option name="number" value="00482" />
-      <option name="presentableId" value="LOCAL-00482" />
-      <option name="project" value="LOCAL" />
-      <updated>1666213585788</updated>
-    </task>
-    <task id="LOCAL-00483" summary="sale_wup description+bugs + purchase discount history">
-      <created>1666360885871</created>
-      <option name="number" value="00483" />
-      <option name="presentableId" value="LOCAL-00483" />
-      <option name="project" value="LOCAL" />
-      <updated>1666360885871</updated>
     </task>
     <task id="LOCAL-00484" summary="purches_price_update rev dif uoms">
       <created>1666622822133</created>
@@ -410,7 +398,21 @@
       <option name="project" value="LOCAL" />
       <updated>1675904476269</updated>
     </task>
-    <option name="localTasksCounter" value="531" />
+    <task id="LOCAL-00531" summary="sale multisection 16v0">
+      <created>1675905227957</created>
+      <option name="number" value="00531" />
+      <option name="presentableId" value="LOCAL-00531" />
+      <option name="project" value="LOCAL" />
+      <updated>1675905227957</updated>
+    </task>
+    <task id="LOCAL-00532" summary="sale multisection 16v0">
+      <created>1675905280753</created>
+      <option name="number" value="00532" />
+      <option name="presentableId" value="LOCAL-00532" />
+      <option name="project" value="LOCAL" />
+      <updated>1675905280753</updated>
+    </task>
+    <option name="localTasksCounter" value="533" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
