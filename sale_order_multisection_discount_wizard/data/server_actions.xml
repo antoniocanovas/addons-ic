@@ -43,7 +43,7 @@ if record.type == 'services':
   if importe_servicios > 0:
     descuento = 100 - (100* (record.price - importe_productos)/importe_servicios)
   else:
-    raise Warning('No ha servicios en el presupuesto donde operar !!')
+    raise UserError('No hay servicios en el presupuesto donde operar !!')
 
 # ASIGNACIÓN DE DESCUENTO EN LÍNEAS, TANTO PARA DESCUENTO DIRECTO COMO PARA PRECIO FINAL DESEADO POR AJUSTE DE SERVICIOS:
 for li in lineas:
