@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale multisection 16v0">
-      <change afterPath="$PROJECT_DIR$/sale_order_multisection/models/account_move_line.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_multisection/data/automatic_actions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/data/automatic_actions.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale multisection 16v0" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00484" summary="purches_price_update rev dif uoms">
-      <created>1666622822133</created>
-      <option name="number" value="00484" />
-      <option name="presentableId" value="LOCAL-00484" />
-      <option name="project" value="LOCAL" />
-      <updated>1666622822133</updated>
     </task>
     <task id="LOCAL-00485" summary="purches_price_update rev dif uoms">
       <created>1666623027658</created>
@@ -412,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675905280753</updated>
     </task>
-    <option name="localTasksCounter" value="533" />
+    <task id="LOCAL-00533" summary="sale multisection 16v0">
+      <created>1675948727217</created>
+      <option name="number" value="00533" />
+      <option name="presentableId" value="LOCAL-00533" />
+      <option name="project" value="LOCAL" />
+      <updated>1675948727217</updated>
+    </task>
+    <option name="localTasksCounter" value="534" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

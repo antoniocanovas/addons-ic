@@ -46,12 +46,12 @@ if record.ms_review:
             <field name="model_id" ref="sale.model_sale_order"/>
             <field name="state">code</field>
             <field name="code">
-# Ejecutar sólo si hay secciones y estamos en modo DRAFT:
+# Authomated Actions if section_ids and 'draft' status:
 sections_ids = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
 if (sections_ids) and (record.state == 'draft'):
   line_ids = record.order_line.sorted(key=lambda r: r.sequence)
   section_id = 0
-    # Asingar 'section' en Secciones y 'section_id' en el resto de líneas, en base a la secuencia de orden de líneas:
+    # Set 'section' in section lines and 'section_id' in others, ordered by sequence:
   for li in line_ids:
     if (li.display_type == 'line_section') and (li.name):
       section_id = li.id
@@ -67,18 +67,18 @@ if (sections_ids) and (record.state == 'draft'):
     # Cálculo de 'parent_ids', 'child_ids' y 'level' por sección, si hay multinivel ($ o multisection_key):
   section_ids = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
   for se in section_ids:
-    padres, hijos, nivel = [], [], 1
+    parents, chidren, level = [], [], 1
     line_ids = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section'),('id','!=',se.id)])
     if  (se.name[:1] == record.multisection_key):
       for li in line_ids:
-        largoli = len(li.section)
-        if (li.section == se.section[:largoli]):
-          padres.append(li.id)
-          nivel = len(padres) +1
-        largosec = len(se.section)
-        if (se.section == li.section[:largosec]):
-          hijos.append(li.id)
-    se.write({'parent_ids':[(6,0,padres)], 'child_ids':[(6,0,hijos)], 'level':nivel})
+        lenght_line = len(li.section)
+        if (li.section == se.section[:lenght_line]):
+          parents.append(li.id)
+          level = len(parents) +1
+        lenght_section = len(se.section)
+        if (se.section == li.section[:lenght_section]):
+          chidren.append(li.id)
+    se.write({'parent_ids':[(6,0,parents)], 'child_ids':[(6,0,children)], 'level':level})
             </field>
             <field name="trigger">on_create_or_write</field>
             <!--<field name="on_change_fields">state</field>-->
