@@ -1,6 +1,6 @@
 {
     'name': 'Docs Base',
-    'version': '14.0.1.0',
+    'version': '14.0.2.0',
     'category': 'Documentation',
     'description': u"""
 
