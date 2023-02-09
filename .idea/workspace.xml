@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale multisection 16v0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_multisection/views/sale_order_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/views/sale_order_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_order_multisection/data/automatic_actions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/data/automatic_actions.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,27 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00473" summary="work sheet attachments in AAL">
-      <created>1666008806168</created>
-      <option name="number" value="00473" />
-      <option name="presentableId" value="LOCAL-00473" />
-      <option name="project" value="LOCAL" />
-      <updated>1666008806168</updated>
-    </task>
-    <task id="LOCAL-00474" summary="sm_line_partner">
-      <created>1666040398958</created>
-      <option name="number" value="00474" />
-      <option name="presentableId" value="LOCAL-00474" />
-      <option name="project" value="LOCAL" />
-      <updated>1666040398958</updated>
-    </task>
-    <task id="LOCAL-00475" summary="sm_line_partner">
-      <created>1666041351730</created>
-      <option name="number" value="00475" />
-      <option name="presentableId" value="LOCAL-00475" />
-      <option name="project" value="LOCAL" />
-      <updated>1666041351730</updated>
     </task>
     <task id="LOCAL-00476" summary="sm_line_partner">
       <created>1666084342434</created>
@@ -411,7 +390,28 @@
       <option name="project" value="LOCAL" />
       <updated>1675898610258</updated>
     </task>
-    <option name="localTasksCounter" value="522" />
+    <task id="LOCAL-00522" summary="sale multisection 16v0">
+      <created>1675899005797</created>
+      <option name="number" value="00522" />
+      <option name="presentableId" value="LOCAL-00522" />
+      <option name="project" value="LOCAL" />
+      <updated>1675899005797</updated>
+    </task>
+    <task id="LOCAL-00523" summary="sale multisection 16v0">
+      <created>1675899077959</created>
+      <option name="number" value="00523" />
+      <option name="presentableId" value="LOCAL-00523" />
+      <option name="project" value="LOCAL" />
+      <updated>1675899077959</updated>
+    </task>
+    <task id="LOCAL-00524" summary="sale multisection 16v0">
+      <created>1675899292904</created>
+      <option name="number" value="00524" />
+      <option name="presentableId" value="LOCAL-00524" />
+      <option name="project" value="LOCAL" />
+      <updated>1675899292904</updated>
+    </task>
+    <option name="localTasksCounter" value="525" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

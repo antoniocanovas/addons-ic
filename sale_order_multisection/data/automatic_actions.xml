@@ -10,8 +10,9 @@
 if (record.display_type == 'line_section') and (record.name[:1] == record.order_id.multisection_key):
   seccion = record.name.split()[0]
   lineas = env['sale.order.line'].search([('order_id','=',record.order_id.id),('display_type','=','line_section'),('section','!=',False),('id','!=',record.id)])
-  for li in lineas:
-    if seccion == li.section: raise Warning('Nombre de sección duplicado !!!')
+  if lineas.ids:
+    for li in lineas:
+      if seccion == li.section: raise UserError('Nombre de sección duplicado ' + seccion + ' !!!')
             </field>
             <field name="trigger">on_create_or_write</field>
             <!--<field name="on_change_fields">state</field>-->
@@ -25,7 +26,7 @@ if (record.display_type == 'line_section') and (record.name[:1] == record.order_
             <field name="model_id" ref="sale.model_sale_order_line"/>
             <field name="state">code</field>
             <field name="code">
-# Sequence en las que se han creado desde "secciones" (están las últimas) en vez de por section_id
+# Organizar Sequence de nuevas líneas creadas desde "secciones", ya aparecerían las últimas en vez de por section_id:
 if record.ms_review:
   seq = record.section_id.sequence
   lines = env['sale.order.line'].search([('section_id','=',record.section_id.id),('id','!=',record.id),('create_date','&lt;',record.create_date)])

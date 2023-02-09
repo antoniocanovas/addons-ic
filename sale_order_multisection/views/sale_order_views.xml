@@ -3,7 +3,7 @@
     <record id="sol_sections_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
-            <tree string="Sections">
+            <tree string="Sections" multi_edit="1">
                 <field name="hide_subtotal_section"/>
                 <field name="name"/>
                 <field name="section_total"/>
@@ -122,7 +122,7 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@name='button_box']" position="inside">
+            <xpath expr="//div[@name='oe_button_box']" position="inside">
                 <button class="oe_stat_button oe_read_only" icon="fa-spinner" type="action" name="%(sale_order_multisection.action_view_sections)d">
                     <field widget="statinfo" name="section_line_count" string="Secciones"/>
                 </button>
