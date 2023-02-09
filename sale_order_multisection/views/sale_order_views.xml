@@ -33,8 +33,8 @@
                     </h1>
                     <group>
                         <field name="parent_ids" widget="many2many_tags"/>
-                        <field name="child_ids" widget="many2many_tags"/>
                         <field name="print_mode_section"/>
+                        <field name="child_ids" widget="many2many_tags"/>
 <!--                        <field name="hide_subtotal_section"/> -->
                     </group>
 
