@@ -12,7 +12,7 @@ if (record.display_type == 'line_section') and (record.name[:1] == record.order_
   line_ids = env['sale.order.line'].search([('order_id','=',record.order_id.id),('display_type','=','line_section'),('section','!=',False),('id','!=',record.id)])
   if line_ids.ids:
     for li in line_ids:
-      if section_code == li.section: raise UserError('Nombre de sección duplicado ' + section_code + ' !!!')
+      if section_code == li.section: raise UserError('Duplicated section name ' + section_code + ' !!!')
             </field>
             <field name="trigger">on_create_or_write</field>
             <!--<field name="on_change_fields">state</field>-->
@@ -26,7 +26,7 @@ if (record.display_type == 'line_section') and (record.name[:1] == record.order_
             <field name="model_id" ref="sale.model_sale_order_line"/>
             <field name="state">code</field>
             <field name="code">
-# Organizar Sequence de nuevas líneas creadas desde "secciones", ya aparecerían las últimas en vez de por section_id:
+# Review Sequence for new lines created from o2m sections buttom (by default would be the last and must be in record section):
 if record.ms_review:
   seq = record.section_id.sequence
   lines = env['sale.order.line'].search([('section_id','=',record.section_id.id),('id','!=',record.id),('create_date','&lt;',record.create_date)])
