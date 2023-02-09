@@ -67,7 +67,7 @@ if (sections_ids) and (record.state == 'draft'):
     # Cálculo de 'parent_ids', 'child_ids' y 'level' por sección, si hay multinivel ($ o multisection_key):
   section_ids = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
   for se in section_ids:
-    parents, chidren, level = [], [], 1
+    parents, children, level = [], [], 1
     line_ids = env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section'),('id','!=',se.id)])
     if  (se.name[:1] == record.multisection_key):
       for li in line_ids:
