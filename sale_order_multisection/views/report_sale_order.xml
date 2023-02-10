@@ -168,7 +168,7 @@
             <xpath expr="//td[@name='td_priceunit']" position="attributes">
                 <attribute name="t-if">line.print_mode_line not in ['hide_price','hide_subtotal_and_price']</attribute>
             </xpath>
-            <xpath expr="//td[@t-if='display_discount']/span" position="attributes">
+            <xpath expr="//td[@t-if='display_discount']" position="attributes">
                 <attribute name="t-if">line.print_mode_line not in ['hide_price','hide_subtotal_and_price']</attribute>
             </xpath>
             <xpath expr="//td[@name='td_taxes']" position="attributes">
@@ -185,7 +185,7 @@
                 </t>
             </xpath>
              <xpath expr="//td[@name='td_section_subtotal']" position="attributes">
-                <attribute name="t-if">line.print_mode_line in ['executive','hide_subtotal_and_price']</attribute>
+                <attribute name="t-if">line.print_mode_line not in ['executive','hide_subtotal','hide_subtotal_and_price']</attribute>
             </xpath>
         </template>
 
