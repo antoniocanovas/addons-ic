@@ -18,7 +18,7 @@ class SaleOrderLine(models.Model):
     print_mode_section  = fields.Selection([('hide_price','Hide line prices'),
                                             ('executive','Executive'),
                                             ('hide_subtotal', 'Hide section subtotals'),
-                                            ('hide_subtotal_and_price', 'Hide subtotal and prices')],
+                                            ('hide_subtotal_and_price', 'Hide subtotal and prices'),],
                                            string='Print format')
 
     print_mode_line     = fields.Selection(related='section_id.print_mode_section')
