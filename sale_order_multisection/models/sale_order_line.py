@@ -16,7 +16,7 @@ class SaleOrderLine(models.Model):
 
     # Reports hidden price line fields:
     print_mode_section  = fields.Selection([('hide_price','Hide line prices'),
-                                            ('executive','Executive')
+                                            ('executive','Executive'),
                                             ('hide_subtotal', 'Hide section subtotals'),],
                                            string='Print format')
 
