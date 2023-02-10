@@ -175,7 +175,7 @@
                 <attribute name="t-if">line.print_mode_line not in ['hide_price','hide_subtotal_and_price']</attribute>
             </xpath>
             <xpath expr="//td[@name='td_subtotal']" position="attributes">
-                <attribute name="t-if">line.print_mode_line not in ['hide_price','hide_subtotal_and_price']</attribute>
+                <attribute name="t-if">line.print_mode_line not in ['hide_subtotal','hide_subtotal_and_price']</attribute>
             </xpath>
             <xpath expr="//td[@name='td_note_line']" position="replace">
                 <t t-if="line.print_mode_line not in ['executive']">
