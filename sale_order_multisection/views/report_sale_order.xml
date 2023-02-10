@@ -166,16 +166,16 @@
                 <attribute name="t-if">not line.display_type and line.print_mode_line not in ['executive']</attribute>
             </xpath>
             <xpath expr="//td[@name='td_priceunit']" position="attributes">
-                <attribute name="t-if">line.print_mode_line in ['hide_price','hide_subtotal_and_price']</attribute>
+                <attribute name="t-if">line.print_mode_line not in ['hide_price','hide_subtotal_and_price']</attribute>
             </xpath>
             <xpath expr="//td[@t-if='display_discount']/span" position="attributes">
-                <attribute name="t-if">line.print_mode_line in ['hide_price','hide_subtotal_and_price']</attribute>
+                <attribute name="t-if">line.print_mode_line not in ['hide_price','hide_subtotal_and_price']</attribute>
             </xpath>
             <xpath expr="//td[@name='td_taxes']" position="attributes">
-                <attribute name="t-if">line.print_mode_line in ['hide_price','hide_subtotal_and_price']</attribute>
+                <attribute name="t-if">line.print_mode_line not in ['hide_price','hide_subtotal_and_price']</attribute>
             </xpath>
             <xpath expr="//td[@name='td_subtotal']" position="attributes">
-                <attribute name="t-if">line.print_mode_line in ['hide_price','hide_subtotal_and_price']</attribute>
+                <attribute name="t-if">line.print_mode_line not in ['hide_price','hide_subtotal_and_price']</attribute>
             </xpath>
             <xpath expr="//td[@name='td_note_line']" position="replace">
                 <t t-if="line.print_mode_line not in ['executive']">
