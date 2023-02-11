@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale multisection 16v0">
-      <change afterPath="$PROJECT_DIR$/sale_order_konery/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_order_konery/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_order_konery/data/server_actions.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_order_konery/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_order_konery/models/sale_order.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_order_konery/models/sale_order_margin_wizard.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_order_konery/security/ir.model.access.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_order_konery/views/sale_order_margin_wizard_views.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_order_konery/views/sale_order_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale konery v0">
+      <change beforePath="$PROJECT_DIR$/sale_order_konery/views/sale_order_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_konery/views/sale_order_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,13 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00501" summary="analytic tracking no fields">
-      <created>1666962244538</created>
-      <option name="number" value="00501" />
-      <option name="presentableId" value="LOCAL-00501" />
-      <option name="project" value="LOCAL" />
-      <updated>1666962244539</updated>
     </task>
     <task id="LOCAL-00502" summary="analytic tracking no fields">
       <created>1666962468529</created>
@@ -419,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676051442878</updated>
     </task>
-    <option name="localTasksCounter" value="550" />
+    <task id="LOCAL-00550" summary="sale konery v0">
+      <created>1676113527348</created>
+      <option name="number" value="00550" />
+      <option name="presentableId" value="LOCAL-00550" />
+      <option name="project" value="LOCAL" />
+      <updated>1676113527348</updated>
+    </task>
+    <option name="localTasksCounter" value="551" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -435,7 +426,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="roadmap kanban" />
     <MESSAGE value="upd hr_timesheet_work &amp; extended" />
     <MESSAGE value="hr_timesheet_work imp" />
     <MESSAGE value="SML Partner" />
@@ -460,7 +450,8 @@
     <MESSAGE value="roadmap rev" />
     <MESSAGE value="analytic_picking_auto 16" />
     <MESSAGE value="sale multisection 16v0" />
-    <option name="LAST_COMMIT_MESSAGE" value="sale multisection 16v0" />
+    <MESSAGE value="sale konery v0" />
+    <option name="LAST_COMMIT_MESSAGE" value="sale konery v0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
