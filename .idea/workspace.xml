@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale multisection 16v0">
+      <change afterPath="$PROJECT_DIR$/sale_order_konery/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sale_order_konery/__manifest__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sale_order_konery/data/server_actions.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sale_order_konery/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sale_order_konery/models/sale_order.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sale_order_konery/models/sale_order_margin_wizard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sale_order_konery/security/ir.model.access.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sale_order_konery/views/sale_order_margin_wizard_views.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sale_order_konery/views/sale_order_views.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_multisection/views/report_sale_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/views/report_sale_order.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,14 +47,14 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/sale_order_multisection/models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/sale_order_multisection/models" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/sale_order_multisection/models" />
       <recent name="$PROJECT_DIR$/project_roadmap/data" />
       <recent name="$PROJECT_DIR$/project_roadmap/security" />
       <recent name="$PROJECT_DIR$/crm_contest" />
@@ -67,13 +75,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00500" summary="bug history discount">
-      <created>1666632319109</created>
-      <option name="number" value="00500" />
-      <option name="presentableId" value="LOCAL-00500" />
-      <option name="project" value="LOCAL" />
-      <updated>1666632319109</updated>
     </task>
     <task id="LOCAL-00501" summary="analytic tracking no fields">
       <created>1666962244538</created>
@@ -411,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676044205595</updated>
     </task>
-    <option name="localTasksCounter" value="549" />
+    <task id="LOCAL-00549" summary="sale multisection 16v0">
+      <created>1676051442878</created>
+      <option name="number" value="00549" />
+      <option name="presentableId" value="LOCAL-00549" />
+      <option name="project" value="LOCAL" />
+      <updated>1676051442878</updated>
+    </task>
+    <option name="localTasksCounter" value="550" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
