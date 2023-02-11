@@ -21,6 +21,7 @@
                     <field name="team_id"/>
                 </group>
             </xpath>
+            <!-- END -->
         </field>
     </record>
 
