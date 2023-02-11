@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="multisection hide subtotals v0">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="product price update with supplierinfo" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,13 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00500" summary="bug history discount">
-      <created>1666632319109</created>
-      <option name="number" value="00500" />
-      <option name="presentableId" value="LOCAL-00500" />
-      <option name="project" value="LOCAL" />
-      <updated>1666632319109</updated>
     </task>
     <task id="LOCAL-00501" summary="analytic tracking no fields">
       <created>1666962244538</created>
@@ -418,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675879710534</updated>
     </task>
-    <option name="localTasksCounter" value="549" />
+    <task id="LOCAL-00549" summary="product price update with supplierinfo">
+      <created>1676056091805</created>
+      <option name="number" value="00549" />
+      <option name="presentableId" value="LOCAL-00549" />
+      <option name="project" value="LOCAL" />
+      <updated>1676056091805</updated>
+    </task>
+    <option name="localTasksCounter" value="550" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -434,7 +432,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="analytic tracking no fields" />
     <MESSAGE value="roadmap v3 (project type)" />
     <MESSAGE value="hr_timesheet_work 10" />
     <MESSAGE value="sale_wup_discount v3" />
@@ -459,7 +456,8 @@
     <MESSAGE value="wup handle" />
     <MESSAGE value="account_move_sale_tags" />
     <MESSAGE value="multisection hide subtotals v0" />
-    <option name="LAST_COMMIT_MESSAGE" value="multisection hide subtotals v0" />
+    <MESSAGE value="product price update with supplierinfo" />
+    <option name="LAST_COMMIT_MESSAGE" value="product price update with supplierinfo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
