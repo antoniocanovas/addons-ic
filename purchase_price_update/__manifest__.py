@@ -7,14 +7,15 @@
 
 {
     "name": "Purchase price update",
-    "version": "14.0.2.0.0",
+    "version": "14.0.2.0.1",
     "category": "Sales",
-    "author": "www.serincloud.com",
-    "maintainer": "Pedroguirao",
+    "author": "Serincloud",
+    "maintainer": "Serincloud",
     "website": "www.serincloud.com",
     "license": "AGPL-3",
     "depends": [
         'purchase',
+        'purchase_discount',
     ],
     "data": [
         "views/model_view.xml",

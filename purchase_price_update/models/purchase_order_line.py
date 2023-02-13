@@ -9,39 +9,58 @@ from odoo import api, fields, models, _
 class PurchasePriceUpdate(models.Model):
     _inherit = "purchase.order.line"
 
+    # Invisible icon in purchase_order_line standard_price:
     @api.depends('price_subtotal','price_unit')
     def get_price_control(self):
-        for record in self:
-            control = False
-            if (record.product_qty) and (record.price_subtotal / record.product_qty) == record.standard_price:
-                control = True
-            record.price_control = control
+        control = False
+        if (self.product_qty) and (self.price_subtotal / self.product_qty) == self.product_id.standard_price:
+            control = True
+        self.price_control = control
     price_control = fields.Boolean(string='Price Control', compute='get_price_control')
+
+    # Invisible icon in purchase_order_line with supplierinfo:
+    @api.depends('price_subtotal','price_unit')
+    def get_supplierinfo_control(self):
+        control = False
+        supplier_price = self.env['product.supplierinfo'].search([
+            ('name', '=', self.partner_id.id),
+            ('product_id', '=', self.product_id.id),
+            ('product_uom', '=', self.product_uom.id),
+            ('min_qty', '=', 0),
+        ])
+        if (supplier_price.id) and (self.product_qty) and \
+                (self.price_subtotal / self.product_qty) == (supplier_price.price * (1 - supplier_price.discount/100)):
+            control = True
+        self.price_supplierinfo_control = control
+    price_supplierinfo_control = fields.Boolean(string='Supplierinfo Control', compute='get_supplierinfo_control')
 
     @api.depends('product_id')
     def get_standard_price(self):
-        for record in self:
-            record.standard_price = record.product_id.standard_price
+        self.standard_price = self.product_id.standard_price
     standard_price = fields.Float(string='Prev. Price', store=True, compute="get_standard_price")
 
     def update_supplier_price(self):
         supplier_price = self.env['product.supplierinfo'].search([
             ('name','=',self.partner_id.id),
             ('product_id','=',self.product_id.id),
-            ('product_uom','=',self.product_uom.id)
+            ('product_uom','=',self.product_uom.id),
+            ('min_qty','=',0),
         ])
-        if (supplier_price.id) and (supplier_price.price != self.price_unit):
-            supplier_price.price = self.price_unit
-        elif (supplier_price.id) and (supplier_price.price == self.price_unit):
-            a = "Ok"
-        else:
+        control = False
+        if (supplier_price.id) and (supplier_price.price != self.price_unit):   control = True
+        if (supplier_price.id) and (supplier_price.discount != self.discount):  control = True
+        if (control == True):
+            supplier_price.write({'price':self.price_unit, 'discount':self.discount})
+        if not (supplier_price.id):
             self.env['product.supplierinfo'].create({'name':self.partner_id.id,
                                                      'product_id':self.product_id.id,
                                                      'product_uom':self.product_uom.id,
                                                      'price':self.price_unit,
-                                                     'min_qty':1,
+                                                     'discount':self.discount,
+                                                     'min_qty':0,
                                                      'product_tmpl_id':self.product_id.product_tmpl_id.id,
                                                      'delay':1})
+        self.price_supplierinfo_control = True
 
     def update_product_standard_price(self):
         monetary_precision = self.env['decimal.precision'].sudo().search([('id', '=', 1)]).digits
@@ -59,6 +78,7 @@ class PurchasePriceUpdate(models.Model):
         new_purchase_price = round((self.price_subtotal / self.product_qty * ratio), monetary_precision)
         if new_purchase_price != self.product_id.standard_price:
             self.product_id.standard_price = new_purchase_price
+        self.price_control = True
 
     @api.onchange('price_subtotal')
     def price_unit_wizard(self):
