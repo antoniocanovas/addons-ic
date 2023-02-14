@@ -9,34 +9,37 @@ from odoo import api, fields, models, _
 class PurchasePriceUpdate(models.Model):
     _inherit = "purchase.order.line"
 
-    # Invisible icon in purchase_order_line standard_price:
+    # Invisible icon in purchase_order_line standard_price (requiere for record in self):
     @api.depends('price_subtotal','price_unit')
     def get_price_control(self):
-        control = False
-        if (self.product_qty) and (self.price_subtotal / self.product_qty) == self.product_id.standard_price:
-            control = True
-        self.price_control = control
+        for record in self:
+            control = False
+            if (record.product_qty) and (record.price_subtotal / record.product_qty) == record.product_id.standard_price:
+                control = True
+            record.price_control = control
     price_control = fields.Boolean(string='Price Control', compute='get_price_control')
 
-    # Invisible icon in purchase_order_line with supplierinfo:
+    # Invisible icon in purchase_order_line with supplierinfo (requiere for record in self):
     @api.depends('price_subtotal','price_unit')
     def get_supplierinfo_control(self):
-        control = False
-        supplier_price = self.env['product.supplierinfo'].search([
-            ('name', '=', self.partner_id.id),
-            ('product_id', '=', self.product_id.id),
-            ('product_uom', '=', self.product_uom.id),
-            ('min_qty', '=', 0),
-        ])
-        if (supplier_price.id) and (self.product_qty) and \
-                (self.price_subtotal / self.product_qty) == (supplier_price.price * (1 - supplier_price.discount/100)):
-            control = True
-        self.price_supplierinfo_control = control
+        for record in self:
+            control = False
+            supplier_price = self.env['product.supplierinfo'].search([
+                ('name', '=', record.partner_id.id),
+                ('product_id', '=', record.product_id.id),
+                ('product_uom', '=', record.product_uom.id),
+                ('min_qty', '=', 0),
+            ])
+            if (supplier_price.id) and (record.product_qty) and \
+                    (record.price_subtotal / record.product_qty) == (supplier_price.price * (1 - supplier_price.discount/100)):
+                control = True
+            record.price_supplierinfo_control = control
     price_supplierinfo_control = fields.Boolean(string='Supplierinfo Control', compute='get_supplierinfo_control')
 
     @api.depends('product_id')
     def get_standard_price(self):
-        self.standard_price = self.product_id.standard_price
+        for record in self:
+            record.standard_price = record.product_id.standard_price
     standard_price = fields.Float(string='Prev. Price', store=True, compute="get_standard_price")
 
     def update_supplier_price(self):
