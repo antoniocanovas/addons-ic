@@ -43,47 +43,45 @@ class PurchasePriceUpdate(models.Model):
     standard_price = fields.Float(string='Prev. Price', store=True, compute="get_standard_price")
 
     def update_supplier_price(self):
-        for record in self:
-            supplier_price = self.env['product.supplierinfo'].search([
-                ('name','=',record.partner_id.id),
-                ('product_id','=',record.product_id.id),
-                ('product_uom','=',record.product_uom.id),
-                ('min_qty','=',0),
-            ])
-            control = False
-            if (supplier_price.id) and (supplier_price.price != record.price_unit):   control = True
-            if (supplier_price.id) and (supplier_price.discount != record.discount):  control = True
-            if (control == True):
-                supplier_price.write({'price':record.price_unit, 'discount':record.discount})
-            if not (supplier_price.id):
-                self.env['product.supplierinfo'].create({'name':record.partner_id.id,
-                                                         'product_id':record.product_id.id,
-                                                         'product_uom':record.product_uom.id,
-                                                         'price':record.price_unit,
-                                                         'discount':record.discount,
-                                                         'min_qty':0,
-                                                         'product_tmpl_id':record.product_id.product_tmpl_id.id,
-                                                         'delay':1})
-            record['price_supplierinfo_control'] = True
+        supplier_price = self.env['product.supplierinfo'].search([
+            ('name','=',self.partner_id.id),
+            ('product_id','=',self.product_id.id),
+            ('product_uom','=',self.product_uom.id),
+            ('min_qty','=',0),
+        ])
+        control = False
+        if (supplier_price.id) and (supplier_price.price != self.price_unit):   control = True
+        if (supplier_price.id) and (supplier_price.discount != self.discount):  control = True
+        if (control == True):
+            supplier_price.write({'price':self.price_unit, 'discount':self.discount})
+        if not (supplier_price.id):
+            self.env['product.supplierinfo'].create({'name':self.partner_id.id,
+                                                     'product_id':self.product_id.id,
+                                                     'product_uom':self.product_uom.id,
+                                                     'price':self.price_unit,
+                                                     'discount':self.discount,
+                                                     'min_qty':0,
+                                                     'product_tmpl_id':self.product_id.product_tmpl_id.id,
+                                                     'delay':1})
+        self.price_supplierinfo_control = True
 
     def update_product_standard_price(self):
-        for record in self:
-            monetary_precision = self.env['decimal.precision'].sudo().search([('id', '=', 1)]).digits
-            ratio = 1
-            if record.product_uom.id != record.product_id.uom_id.id:
-                # uom_type: bigger, reference, smaller
-                if record.product_id.uom_id.uom_type == 'smaller':
-                    ratio = ratio / record.product_id.uom_po_id.factor
-                elif record.product_id.uom_id.uom_type == 'bigger':
-                    ratio = ratio * record.product_id.uom_po_id.factor_inv
-                if record.product_uom.uom_type == 'smaller':
-                    ratio = ratio * record.product_uom.factor
-                elif record.product_uom.uom_type == 'bigger':
-                    ratio = ratio / record.product_uom.factor_inv
-            new_purchase_price = round((record.price_subtotal / record.product_qty * ratio), monetary_precision)
-            if new_purchase_price != record.product_id.standard_price:
-                record['product_id.standard_price'] = new_purchase_price
-            record['price_control'] = True
+        monetary_precision = self.env['decimal.precision'].sudo().search([('id', '=', 1)]).digits
+        ratio = 1
+        if self.product_uom.id != self.product_id.uom_id.id:
+            # uom_type: bigger, reference, smaller
+            if self.product_id.uom_id.uom_type == 'smaller':
+                ratio = ratio / self.product_id.uom_po_id.factor
+            elif self.product_id.uom_id.uom_type == 'bigger':
+                ratio = ratio * self.product_id.uom_po_id.factor_inv
+            if self.product_uom.uom_type == 'smaller':
+                ratio = ratio * self.product_uom.factor
+            elif self.product_uom.uom_type == 'bigger':
+                ratio = ratio / self.product_uom.factor_inv
+        new_purchase_price = round((self.price_subtotal / self.product_qty * ratio), monetary_precision)
+        if new_purchase_price != self.product_id.standard_price:
+            self.product_id.standard_price = new_purchase_price
+        self.price_control = True
 
     @api.onchange('price_subtotal')
     def price_unit_wizard(self):
