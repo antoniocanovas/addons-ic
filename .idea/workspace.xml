@@ -76,20 +76,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00505" summary="hr_timesheet_work 10">
-      <created>1667436844777</created>
-      <option name="number" value="00505" />
-      <option name="presentableId" value="LOCAL-00505" />
-      <option name="project" value="LOCAL" />
-      <updated>1667436844777</updated>
-    </task>
-    <task id="LOCAL-00506" summary="sale_wup_discount v3">
-      <created>1667558310643</created>
-      <option name="number" value="00506" />
-      <option name="presentableId" value="LOCAL-00506" />
-      <option name="project" value="LOCAL" />
-      <updated>1667558310643</updated>
-    </task>
     <task id="LOCAL-00507" summary="duplicated id hr_ts_work">
       <created>1667818003491</created>
       <option name="number" value="00507" />
@@ -419,7 +405,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676292369419</updated>
     </task>
-    <option name="localTasksCounter" value="554" />
+    <task id="LOCAL-00554" summary="product price update with supplierinfo">
+      <created>1676369951687</created>
+      <option name="number" value="00554" />
+      <option name="presentableId" value="LOCAL-00554" />
+      <option name="project" value="LOCAL" />
+      <updated>1676369951688</updated>
+    </task>
+    <task id="LOCAL-00555" summary="product price update with supplierinfo">
+      <created>1676370123929</created>
+      <option name="number" value="00555" />
+      <option name="presentableId" value="LOCAL-00555" />
+      <option name="project" value="LOCAL" />
+      <updated>1676370123929</updated>
+    </task>
+    <option name="localTasksCounter" value="556" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

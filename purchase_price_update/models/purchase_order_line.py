@@ -24,14 +24,14 @@ class PurchasePriceUpdate(models.Model):
     def get_supplierinfo_control(self):
         for record in self:
             control = False
-            supplier_price = self.env['product.supplierinfo'].search([
+            supplierinfo = self.env['product.supplierinfo'].search([
                 ('name', '=', record.partner_id.id),
                 ('product_id', '=', record.product_id.id),
                 ('product_uom', '=', record.product_uom.id),
                 ('min_qty', '=', 0),
             ])
-            if (supplier_price.id) and (record.product_qty) and \
-                    (record.price_subtotal / record.product_qty) == (supplier_price.price * (1 - supplier_price.discount/100)):
+            if (supplierinfo.id) and (record.product_qty != 0) and \
+                    (record.price_subtotal / record.product_qty == supplierinfo.price * (1 - supplierinfo.discount/100)):
                 control = True
             record['price_supplierinfo_control'] = control
     price_supplierinfo_control = fields.Boolean(string='Supplierinfo Control', compute='get_supplierinfo_control')
