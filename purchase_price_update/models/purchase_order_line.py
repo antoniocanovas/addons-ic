@@ -16,7 +16,7 @@ class PurchasePriceUpdate(models.Model):
             control = False
             if (record.product_qty) and (record.price_subtotal / record.product_qty) == record.product_id.standard_price:
                 control = True
-            record.price_control = control
+            record['price_control'] = control
     price_control = fields.Boolean(string='Price Control', compute='get_price_control')
 
     # Invisible icon in purchase_order_line with supplierinfo (requiere for record in self):
@@ -33,13 +33,13 @@ class PurchasePriceUpdate(models.Model):
             if (supplier_price.id) and (record.product_qty) and \
                     (record.price_subtotal / record.product_qty) == (supplier_price.price * (1 - supplier_price.discount/100)):
                 control = True
-            record.price_supplierinfo_control = control
+            record['price_supplierinfo_control'] = control
     price_supplierinfo_control = fields.Boolean(string='Supplierinfo Control', compute='get_supplierinfo_control')
 
     @api.depends('product_id')
     def get_standard_price(self):
         for record in self:
-            record.standard_price = record.product_id.standard_price
+            record['standard_price'] = record.product_id.standard_price
     standard_price = fields.Float(string='Prev. Price', store=True, compute="get_standard_price")
 
     def update_supplier_price(self):
