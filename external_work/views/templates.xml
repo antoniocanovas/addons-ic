@@ -37,13 +37,13 @@
                         </div>
                     </div>
 
-                    <h2>Productos:</h2>
+                    <h2>Products:</h2>
                     <table class="table table-sm o_main_table">
                         <thead style="display: table-row-group">
                             <tr>
-                                <th name="th_product">Producto</th>
-                                <th name="td_units">Cantidad</th>
-                                <th name="th_measure">Unidad de medida</th>
+                                <th name="th_product">Product</th>
+                                <th name="td_units">Quantity</th>
+                                <th name="th_measure">Unit</th>
                             </tr>
                         </thead>
                         <tbody class="sale_tbody">
@@ -57,7 +57,7 @@
                         </tbody>
                     </table>
 
-                    <p>Firmado por: <span t-field="o.signed_by" /> el <span t-field="o.write_date" />
+                    <p>Signd by: <span t-field="o.signed_by" /> el <span t-field="o.write_date" />
                         <br/>
                         <img t-if="o.signature" t-attf-src="data:image/*;base64,{{o.signature}}"/>
                     </p>

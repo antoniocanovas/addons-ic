@@ -98,7 +98,7 @@
                                 <group>
                                     <field name="project_id" attrs="{'invisible':[('type','in',['sale'])], 'required':[('type','in',['project','task'])]}"/>
                                     <field name="task_id" attrs="{'invisible':[('type','in',['sale'])], 'required':[('type','in',['task'])]}"/>
-                                    <field name="sale_id" attrs="{'invisible':[('type','in',['project','task'])]}"/>
+                                    <field name="sale_id"/>
                                 </group>
                                 <group>
                                     <field name="signed_by" placeholder="Name or VAT ..."/>
