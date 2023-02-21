@@ -23,7 +23,7 @@
             id="external_work_menu_main"
             name="External Works"
             sequence="10"
-            web_icon="external_work,static/hr_worksheet_icon.png"
+            web_icon="external_work,static/worker.png"
     />
 
     <record id="external_work_action_submenu" model="ir.ui.menu">
