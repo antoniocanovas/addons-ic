@@ -57,7 +57,7 @@
                         </tbody>
                     </table>
 
-                    <p>Signd by: <span t-field="o.signed_by" /> el <span t-field="o.write_date" />
+                    <p>Signed by: <span t-field="o.signed_by" /> on <span t-field="o.write_date" />
                         <br/>
                         <img t-if="o.signature" t-attf-src="data:image/*;base64,{{o.signature}}"/>
                     </p>
