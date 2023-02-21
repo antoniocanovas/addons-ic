@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-21 15:39+0000\n"
-"PO-Revision-Date: 2023-02-21 16:45+0100\n"
+"POT-Creation-Date: 2023-02-21 15:48+0000\n"
+"PO-Revision-Date: 2023-02-21 16:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -490,14 +490,14 @@ msgid "Signature"
 msgstr "Firma"
 
 #. module: external_work
-#: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
-msgid "Signd by:"
-msgstr "Firmado por:"
-
-#. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__signed_by
 msgid "Signed by"
 msgstr "Firmado por"
+
+#. module: external_work
+#: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
+msgid "Signed by:"
+msgstr "Firmado por:"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__state
@@ -570,7 +570,7 @@ msgstr "Unidad"
 #. module: external_work
 #: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
 msgid "Unit"
-msgstr ""
+msgstr "Unidad"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__message_unread
@@ -625,5 +625,5 @@ msgstr "Escribe algo que quieras que se imprima o tenga que ser tenido en cuenta
 
 #. module: external_work
 #: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
-msgid "el"
-msgstr ""
+msgid "on"
+msgstr "el"
