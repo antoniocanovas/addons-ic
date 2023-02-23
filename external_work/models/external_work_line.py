@@ -3,8 +3,8 @@ from odoo import _, api, fields, models
 TYPE = [
     ('pin', 'Product billable'),
     ('pni', 'Product not billable'),
-    ('sin', 'Service billable'),
-    ('sni', 'Service not billable'),
+    ('sin', 'Technical Service billable'),
+    ('sni', 'Technical Service not billable'),
     ('ein', 'Employee expense billable'),
     ('eni', 'Internal employee expense'),
 ]
@@ -39,8 +39,8 @@ class ExternalWork(models.Model):
 
     user_id     = fields.Many2one('res.users', string="User", related='employee_id.user_id')
     partner_id  = fields.Many2one('res.partner', string="Partner", related='external_work_id.partner_id')
-    material_id = fields.Many2one('product.product', string='Material', domain="[('type','!=','service'),('sale_ok','=',True)]")
-    service_id  = fields.Many2one('product.product', string='Service', domain="[('type','=','service'),('sale_ok','=',True)]")
+    material_id = fields.Many2one('product.product', string='Material', domain="[('sale_ok','=',True)]")
+    service_id  = fields.Many2one('product.product', string='Work product', domain="[('is_work_time','=',True),('sale_ok','=',True)]")
     expense_id  = fields.Many2one('product.product', string='Expense', domain="[('can_be_expensed','=',True)]")
 
     @api.depends('type','material_id','service_id','expense_id')
