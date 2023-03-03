@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-03 15:39+0000\n"
-"PO-Revision-Date: 2023-03-03 16:54+0100\n"
+"POT-Creation-Date: 2023-03-03 15:58+0000\n"
+"PO-Revision-Date: 2023-03-03 17:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -115,7 +115,7 @@ msgstr "Borrar"
 #: model:ir.model.fields,field_description:project_roadmap.field_sale_order__display_name
 #: model:ir.model.fields,field_description:project_roadmap.field_stock_picking__display_name
 msgid "Display Name"
-msgstr "Asunto"
+msgstr "Nombre mostrado"
 
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__display_name
@@ -131,16 +131,6 @@ msgstr "Menú desplegable"
 #: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_default_kanban
 msgid "Edit"
 msgstr "Editar"
-
-#. module: project_roadmap
-#: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__state
-msgid "Estado"
-msgstr ""
-
-#. module: project_roadmap
-#: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_default_form
-msgid "Fases del proyecto"
-msgstr ""
 
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__message_follower_ids
@@ -283,7 +273,7 @@ msgstr "Mis vencimientos de actividad"
 #. module: project_roadmap
 #: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_search_view
 msgid "My phases"
-msgstr "Mis fases"
+msgstr "Mis hitos"
 
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__name
@@ -339,7 +329,7 @@ msgstr "En curso"
 #. module: project_roadmap
 #: model:ir.ui.menu,name:project_roadmap.menu_project_roadmap_phases
 msgid "Phases"
-msgstr "Fases"
+msgstr "Hitos"
 
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__picking_id
@@ -359,6 +349,11 @@ msgstr "Proyecto"
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__manager_id
 msgid "Project manager"
 msgstr "Gestor de proyecto"
+
+#. module: project_roadmap
+#: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_default_form
+msgid "Project phases"
+msgstr "Hitos Roadmap"
 
 #. module: project_roadmap
 #: model:ir.model,name:project_roadmap.model_project_roadmap
@@ -472,6 +467,11 @@ msgid "Starred"
 msgstr "Prioritario"
 
 #. module: project_roadmap
+#: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__state
+msgid "State"
+msgstr "Estado"
+
+#. module: project_roadmap
 #: model:ir.model.fields,help:project_roadmap.field_project_roadmap__activity_state
 msgid ""
 "Status based on activities\n"
@@ -510,7 +510,7 @@ msgstr "Tipo"
 #. module: project_roadmap
 #: model:ir.model.fields,help:project_roadmap.field_project_roadmap__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr "Tipo de incidencia en la actividad"
+msgstr "Tipo de incidencia en la actividad."
 
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__message_unread
