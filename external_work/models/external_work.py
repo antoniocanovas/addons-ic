@@ -16,6 +16,7 @@ class ExternalWork(models.Model):
 
     type = fields.Selection(selection=TYPE, string="Type", default=TYPE[0][0])
 
+    subject     = fields.Char('Subject')
     date        = fields.Date('Date')
     employee_id = fields.Many2one('hr.employee', string="Employee")
     user_id     = fields.Many2one('res.users', string="User", related='employee_id.user_id')
@@ -51,12 +52,11 @@ class ExternalWork(models.Model):
         self.line_count = len(self.line_ids.ids)
     line_count  = fields.Integer('Lines', store=False, compute='get_line_count')
 
-    @api.depends('partner_id','employee_id')
+    @api.depends('code', 'subject')
     def _get_work_name(self):
         name=""
-        if self.employee_id.id: name += self.employee_id.name
-        if name: name += " - "
-        if self.partner_id.id:  name += self.partner_id.name
+        if self.code: name += "[" + self.code + "] "
+        if self.subject: name += self.subject
         self.name = name
     name = fields.Char('Name', compute='_get_work_name', store=True)
 

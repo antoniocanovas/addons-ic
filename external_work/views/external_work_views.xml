@@ -84,14 +84,15 @@
                         </button>
                     </div>
                     <!-- MAIN Form:  -->
-                    <h1><field name="name" widget="text"/></h1>
-                    <h2>  <field name="code"/></h2>
+                    <h1><field name="subject" required="1"/></h1>
                     <group name="external_work_sheet_main"><group>
                         <field name="type" required="1"/>
                         <field name="date" required="1"/>
+                        <field name="name" invisible="1"/>
                     </group><group>
                         <field name="employee_id" required="1"/>
                         <field name="partner_id" required="1"/>
+                        <field name="code" invisible="1"/>
                     </group></group>
                     <div attrs="{'invisible':['|','|','|',('type','=',False),('partner_id','=',False),('employee_id','=',False),('date','=',False)]}">
                         <div>
@@ -183,6 +184,8 @@
                 <field name="task_id" optional="hide"/>
                 <field name="sale_id" optional="hide"/>
                 <field name="sale_subtotal" optional="hide"/>
+                <field name="subject" invisible="1"/>
+                <field name="code" invisible="1"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
@@ -205,12 +208,15 @@
                 <field name="name" filter_domain="[('name', 'ilike', self)]"/>
                 <field name="type" filter_domain="[('time_type_id', 'ilike', self)]"/>
                 <field name="partner_id" filter_domain="[('partner_id', 'ilike', self)]"/>
+                <field name="employee_id" filter_domain="[('employee_id', 'ilike', self)]"/>
                 <separator/>
                 <filter string="My works" name="my_works" domain="[('user_id', '=', uid)]"/>
                 <filter string="Projects" name="type_project" domain="[('type', '=', 'project')]"/>
                 <separator/>
                 <group expand="0" name="group_by" string="Group By">
                     <filter name="date" string="Date" context="{'group_by': 'date'}"/>
+                    <filter name="partner" string="Partner" context="{'group_by': 'partner_id'}"/>
+                    <filter name="employee" string="Employee" context="{'group_by': 'employee_id'}"/>
                 </group>
             </search>
         </field>
