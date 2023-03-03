@@ -8,25 +8,25 @@ class ProjectRoadmap(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Project roadmap'
 
-    name = fields.Char(string='Nombre', required=True, copy=True, tracking=True)
-    display_name = fields.Char(string='Nombre mostrado', store=False, compute="_name_get")
+    name = fields.Char(string='Name', required=True, copy=True, tracking=True)
+    display_name = fields.Char(string='Display name', store=False, compute="_name_get")
     sequence = fields.Integer(string='Sequence', default="1", copy=True)
     is_favorite = fields.Boolean('Is favorite', copy=False)
-    user_id = fields.Many2one('res.users', string='Responsable', required=True, store=True, copy=True, tracking=True)
-    date_limit = fields.Date(string='Fecha límite', copy=False, tracking=True)
-    project_id = fields.Many2one('project.project', string='Proyecto', copy=True)
-    manager_id = fields.Many2one('res.users', related='project_id.user_id', store=True)
-    partner_id = fields.Many2one(related='project_id.partner_id', string="Cliente", copy=True, tracking=True)
-    contact_id = fields.Many2one('res.partner', string="Contacto", copy=True, tracking=True)
-    type = fields.Selection([('lead','Oportunidad'), ('sale','Venta'), ('purchase','Compra'), ('task','Tarea'),
-                             ('project','Proyecto'),('picking','Albarán'),('invoice','Factura')], required=True)
+    user_id = fields.Many2one('res.users', string='Responsible', required=True, store=True, copy=True, tracking=True)
+    date_limit = fields.Date(string='Date limit', copy=False, tracking=True)
+    project_id = fields.Many2one('project.project', string='Project', copy=True)
+    manager_id = fields.Many2one('res.users', related='project_id.user_id', store=True, string='Project manager')
+    partner_id = fields.Many2one(related='project_id.partner_id', string="Customer", copy=True, tracking=True)
+    contact_id = fields.Many2one('res.partner', string="Contact", copy=True, tracking=True)
+    type = fields.Selection([('lead','Lead'), ('sale','Sale'), ('purchase','Purchase'), ('task','Task'),
+                             ('project','Project'),('picking','Picking'),('invoice','Invoice')], required=True)
     roadmap_user_avatar = fields.Binary(string="Avatar", related="user_id.partner_id.image_128")
-    lead_id = fields.Many2one('crm.lead', string='Oportunidad')
-    sale_id = fields.Many2one('sale.order', string='Venta')
-    purchase_id = fields.Many2one('purchase.order', string='Compra')
-    task_id = fields.Many2one('project.task', string='Tarea')
-    picking_id = fields.Many2one('stock.picking', string='Albarán')
-    invoice_id = fields.Many2one('account.move', string='Factura')
+    lead_id = fields.Many2one('crm.lead', string='Lead')
+    sale_id = fields.Many2one('sale.order', string='Sale order')
+    purchase_id = fields.Many2one('purchase.order', string='Purchase order')
+    task_id = fields.Many2one('project.task', string='Task')
+    picking_id = fields.Many2one('stock.picking', string='Picking')
+    invoice_id = fields.Many2one('account.move', string='Invoice')
     active = fields.Boolean('Active', default=True, copy=False, tracking=True)
 
     @api.depends('lead_id.probability', 'sale_id.state', 'purchase_id.state', 'task_id.stage_id', 'picking_id.state',
