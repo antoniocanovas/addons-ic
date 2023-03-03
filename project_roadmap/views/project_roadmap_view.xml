@@ -7,7 +7,7 @@
             <form>
                 <sheet string="Fases del proyecto">
                     <h1>
-                        <field name="name" modifiers="{}"/>
+                        <field name="name" placeholder="Subject ..."/>
                     </h1>
                     <h4>
                         <field name="lead_id" attrs="{'invisible':['|',('type','!=','lead'),('lead_id','=',False)]}"/>

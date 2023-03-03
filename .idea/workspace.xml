@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="external work v1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_roadmap/models/project_roadmap.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/models/project_roadmap.py" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="roadmap with contact_id">
       <change beforePath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/views/project_roadmap_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,13 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00526" summary="hrtsw todo sale_id required">
-      <created>1668796584724</created>
-      <option name="number" value="00526" />
-      <option name="presentableId" value="LOCAL-00526" />
-      <option name="project" value="LOCAL" />
-      <updated>1668796584724</updated>
     </task>
     <task id="LOCAL-00527" summary="hrtsw todo sale_id required">
       <created>1668796919588</created>
@@ -420,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677805546788</updated>
     </task>
-    <option name="localTasksCounter" value="575" />
+    <task id="LOCAL-00575" summary="roadmap with contact_id">
+      <created>1677848984165</created>
+      <option name="number" value="00575" />
+      <option name="presentableId" value="LOCAL-00575" />
+      <option name="project" value="LOCAL" />
+      <updated>1677848984165</updated>
+    </task>
+    <option name="localTasksCounter" value="576" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -436,7 +434,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="hr_timesheet_work 10" />
     <MESSAGE value="sale_wup_discount v3" />
     <MESSAGE value="duplicated id hr_ts_work" />
     <MESSAGE value="sale_wup_discount rev" />
@@ -461,7 +458,8 @@
     <MESSAGE value="multisection hide subtotals v0" />
     <MESSAGE value="product price update with supplierinfo" />
     <MESSAGE value="external work v1" />
-    <option name="LAST_COMMIT_MESSAGE" value="external work v1" />
+    <MESSAGE value="roadmap with contact_id" />
+    <option name="LAST_COMMIT_MESSAGE" value="roadmap with contact_id" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
