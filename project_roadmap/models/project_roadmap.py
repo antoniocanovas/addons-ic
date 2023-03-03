@@ -63,4 +63,4 @@ class ProjectRoadmap(models.Model):
             elif (record.type == 'invoice') and (record.invoice_id.id) and (record.invoice_id.state == 'posted'):
                 state = record.invoice_id.payment_state
             record.state = state
-    state = fields.Char(string='Estado', compute="_get_roadmap_state", store=True, default='New')
+    state = fields.Char(string='State', compute="_get_roadmap_state", store=True, default='New')

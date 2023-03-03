@@ -5,7 +5,7 @@
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <form>
-                <sheet string="Fases del proyecto">
+                <sheet string="Project phases">
                     <h1>
                         <field name="name" placeholder="Subject ..."/>
                     </h1>
