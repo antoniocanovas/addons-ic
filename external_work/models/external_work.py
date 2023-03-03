@@ -34,7 +34,7 @@ class ExternalWork(models.Model):
 
     @api.depends('create_date')
     def _get_external_work_code(self):
-        self.code = env['ir.sequence'].next_by_code('external.work.sequence')
+        self.code = self.env['ir.sequence'].next_by_code('external.work.sequence')
     code = fields.Char('Code', store=True, readonly=True, compute=_get_external_work_code)
 
     @api.depends('sale_id')
