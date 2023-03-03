@@ -16,12 +16,13 @@ External Work
     ],
     'data': [
         'security/ir.model.access.csv',
+        'security/user_groups.xml',
+        'data/default_rules.xml',
         'data/sequence.xml',
         'views/external_work_views.xml',
         'views/menu_views.xml',
         'views/external_work_report.xml',
         'views/templates.xml',
-        'data/default_rules.xml',
     ],
     'installable': True,
 }
