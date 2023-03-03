@@ -201,7 +201,7 @@
         <field name="type">kanban</field>
     </record>
 
-    <record id="project_roadmap_group_by_project_tree" model="ir.ui.view">
+    <record id="project_roadmap_main_tree" model="ir.ui.view">
         <field name="active" eval="True"/>
         <field name="arch" type="xml">
             <tree name="project_roadmaps"
@@ -217,6 +217,7 @@
                 <field name="type" invisible="1"/>
                 <field name="user_id" widget="many2one_avatar_user"/>
                 <field name="activity_ids" widget="list_activity" optional="show"/>
+                <field name="contact_id" widget="res_partner_many2one" optional="show"/>
                 <field name="date_limit"/>
                 <field name="state"/>
                 <field name="active" string="Active" widget="boolean_toggle"/>
@@ -310,11 +311,11 @@
         <field name="res_model">project.roadmap</field>
         <field name="target">current</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="view_id" ref="project_roadmap_group_by_project_tree"/>
+        <field name="view_id" ref="project_roadmap_main_tree"/>
         <field name="usage" eval="False"/>
         <field name="view_mode">tree,kanban,calendar,graph,pivot,form,activity</field>
         <field name="view_ids" eval="[(5, 0, 0),
-            (0, 0, {'view_mode': 'tree', 'view_id': ref('project_roadmap_group_by_project_tree')}),]"/>
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('project_roadmap_main_tree')}),]"/>
     </record>
 
     <record id="roadmap_kanban_project_act_window" model="ir.actions.act_window">
