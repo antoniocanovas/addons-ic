@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="external work v1" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="external work v1">
+      <change afterPath="$PROJECT_DIR$/external_work/data/default_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external_work/data/sequence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external_work/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external_work/models/external_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/models/external_work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external_work/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/security/ir.model.access.csv" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,17 +51,17 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/external_work" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/external_work" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/hr_timesheet_work_multisection" />
       <recent name="$PROJECT_DIR$/hr_timesheet_work_section2done/models" />
       <recent name="$PROJECT_DIR$/project_roadmap/data" />
-      <recent name="$PROJECT_DIR$/project_roadmap/security" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/product_chassis/i18n" />

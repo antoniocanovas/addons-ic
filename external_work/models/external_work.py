@@ -32,6 +32,11 @@ class ExternalWork(models.Model):
     currency_id = fields.Many2one('res.currency', store=True, default=1)
     state       = fields.Selection([('draft','Draft'),('done','Done')], store=True, default='draft')
 
+    @api.depends('create_date')
+    def _get_external_work_code(self):
+        self.code = env['ir.sequence'].next_by_code('external.work.sequence')
+    code = fields.Char('Code', store=True, readonly=True, compute=_get_external_work_code)
+
     @api.depends('sale_id')
     def _get_default_note_from_sale_id(self):
         for record in self:
