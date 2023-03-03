@@ -17,6 +17,7 @@ class ProjectRoadmap(models.Model):
     project_id = fields.Many2one('project.project', string='Proyecto', copy=True)
     manager_id = fields.Many2one('res.users', related='project_id.user_id', store=True)
     partner_id = fields.Many2one(related='project_id.partner_id', string="Cliente", copy=True, tracking=True)
+    contact_id = fields.Many2one('res.partner', string="Contacto", copy=True, tracking=True)
     type = fields.Selection([('lead','Oportunidad'), ('sale','Venta'), ('purchase','Compra'), ('task','Tarea'),
                              ('project','Proyecto'),('picking','Albarán'),('invoice','Factura')], required=True)
     roadmap_user_avatar = fields.Binary(string="Avatar", related="user_id.partner_id.image_128")
