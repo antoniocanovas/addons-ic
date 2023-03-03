@@ -85,6 +85,7 @@
                     </div>
                     <!-- MAIN Form:  -->
                     <h1><field name="name" widget="text"/></h1>
+                    <h2>  <field name="code"/></h2>
                     <group name="external_work_sheet_main"><group>
                         <field name="type" required="1"/>
                         <field name="date" required="1"/>
