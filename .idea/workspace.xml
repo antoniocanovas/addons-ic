@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="external work v1">
+      <change afterPath="$PROJECT_DIR$/external_work/security/user_groups.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/external_work/data/default_rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/data/default_rules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external_work/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/security/ir.model.access.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,17 +48,17 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/external_work" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/external_work/security" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/external_work/security" />
       <recent name="$PROJECT_DIR$/external_work" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/hr_timesheet_work_multisection" />
       <recent name="$PROJECT_DIR$/hr_timesheet_work_section2done/models" />
-      <recent name="$PROJECT_DIR$/project_roadmap/data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/product_chassis/i18n" />
@@ -74,13 +76,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00520" summary="hrtsw state">
-      <created>1668790982865</created>
-      <option name="number" value="00520" />
-      <option name="presentableId" value="LOCAL-00520" />
-      <option name="project" value="LOCAL" />
-      <updated>1668790982865</updated>
     </task>
     <task id="LOCAL-00521" summary="hrtsw todo sale_id required">
       <created>1668793479321</created>
@@ -418,7 +413,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677803352927</updated>
     </task>
-    <option name="localTasksCounter" value="569" />
+    <task id="LOCAL-00569" summary="external work v1">
+      <created>1677803534520</created>
+      <option name="number" value="00569" />
+      <option name="presentableId" value="LOCAL-00569" />
+      <option name="project" value="LOCAL" />
+      <updated>1677803534520</updated>
+    </task>
+    <option name="localTasksCounter" value="570" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
