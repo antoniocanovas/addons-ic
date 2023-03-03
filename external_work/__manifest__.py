@@ -15,8 +15,8 @@ External Work
         'hr_expense',
     ],
     'data': [
-        'security/ir.model.access.csv',
         'security/user_groups.xml',
+        'security/ir.model.access.csv',
         'data/default_rules.xml',
         'data/sequence.xml',
         'views/external_work_views.xml',
