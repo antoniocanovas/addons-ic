@@ -12,7 +12,7 @@ class ProjectRoadmap(models.Model):
     display_name = fields.Char(string='Display name', store=False, compute="_name_get")
     sequence = fields.Integer(string='Sequence', default="1", copy=True)
     is_favorite = fields.Boolean('Is favorite', copy=False)
-    user_id = fields.Many2one('res.users', string='Responsible', required=True, store=True, copy=True, tracking=True)
+    user_id = fields.Many2one('res.users', string='Controller', required=True, store=True, copy=True, tracking=True)
     date_limit = fields.Date(string='Date limit', copy=False, tracking=True)
     project_id = fields.Many2one('project.project', string='Project', copy=True)
     manager_id = fields.Many2one('res.users', related='project_id.user_id', store=True, string='Project manager')

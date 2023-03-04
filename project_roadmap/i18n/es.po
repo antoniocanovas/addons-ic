@@ -25,7 +25,7 @@ msgstr "<span class=“o_label”>Fases Roadmap</span>"
 #. module: project_roadmap
 #: model:base.automation,name:project_roadmap.roadmap_check_for_managers
 #: model:ir.actions.server,name:project_roadmap.roadmap_check_for_managers_ir_actions_server
-msgid "=> Roadmap Archive control only by Managers"
+msgid "=> Roadmap Archive control only by Controllers"
 msgstr "=> Archivado de Roadmap, sólo para Controllers"
 
 #. module: project_roadmap
@@ -252,8 +252,8 @@ msgstr "Adjunto principal"
 #. module: project_roadmap
 #: model:res.groups,name:project_roadmap.group_roadmap_manager
 #: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_search_view
-msgid "Manager"
-msgstr "Gestor"
+msgid "Controller"
+msgstr "Controller"
 
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__message_has_error
