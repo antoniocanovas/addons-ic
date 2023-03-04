@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-03 15:58+0000\n"
-"PO-Revision-Date: 2023-03-03 17:03+0100\n"
+"POT-Creation-Date: 2023-03-04 16:45+0000\n"
+"PO-Revision-Date: 2023-03-04 17:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -25,8 +25,8 @@ msgstr "<span class=“o_label”>Fases Roadmap</span>"
 #. module: project_roadmap
 #: model:base.automation,name:project_roadmap.roadmap_check_for_managers
 #: model:ir.actions.server,name:project_roadmap.roadmap_check_for_managers_ir_actions_server
-msgid "=> Roadmap Archive control only by Controllers"
-msgstr "=> Archivado de Roadmap, sólo para Controllers"
+msgid "=> Roadmap Archive control only by Managers"
+msgstr "=> Archivado de Roadmap, sólo para supervisores"
 
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__message_needaction
@@ -48,7 +48,7 @@ msgstr "Actividades"
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr "Decorador de excepción de actividad"
+msgstr "Señal de alerta en actividad"
 
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__activity_state
@@ -79,6 +79,12 @@ msgstr "Avatar"
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__contact_id
 msgid "Contact"
 msgstr "Contacto"
+
+#. module: project_roadmap
+#: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__user_id
+#: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_search_view
+msgid "Controller"
+msgstr "Supervisor"
 
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__create_uid
@@ -252,8 +258,8 @@ msgstr "Adjunto principal"
 #. module: project_roadmap
 #: model:res.groups,name:project_roadmap.group_roadmap_manager
 #: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_search_view
-msgid "Controller"
-msgstr "Controller"
+msgid "Manager"
+msgstr "Gestor de proyecto"
 
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__message_has_error
@@ -346,6 +352,11 @@ msgid "Project"
 msgstr "Proyecto"
 
 #. module: project_roadmap
+#: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_search_view
+msgid "Project Manager"
+msgstr "Gestor de proyecto"
+
+#. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__manager_id
 msgid "Project manager"
 msgstr "Gestor de proyecto"
@@ -381,11 +392,6 @@ msgid "Purchase order"
 msgstr "Pedido de compra"
 
 #. module: project_roadmap
-#: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__user_id
-msgid "Responsible"
-msgstr "Responsable"
-
-#. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__activity_user_id
 msgid "Responsible User"
 msgstr "Usuario responsable"
@@ -410,7 +416,7 @@ msgstr "Usuario responsable"
 #: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_sale_form_inh
 #: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_task_form_inh
 msgid "Roadmap"
-msgstr "Roadmap"
+msgstr ""
 
 #. module: project_roadmap
 #: model:ir.actions.act_window,name:project_roadmap.roadmap_kanban_project_act_window
@@ -429,7 +435,7 @@ msgstr "Proyectos en roadmap"
 #: model:ir.model.fields,field_description:project_roadmap.field_stock_picking__roadmap_count
 #: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_default_calendar
 msgid "Roadmaps"
-msgstr "Roadmaps"
+msgstr ""
 
 #. module: project_roadmap
 #: model:ir.model.fields.selection,name:project_roadmap.selection__project_roadmap__type__sale
