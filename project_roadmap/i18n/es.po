@@ -26,7 +26,7 @@ msgstr "<span class=“o_label”>Fases Roadmap</span>"
 #: model:base.automation,name:project_roadmap.roadmap_check_for_managers
 #: model:ir.actions.server,name:project_roadmap.roadmap_check_for_managers_ir_actions_server
 msgid "=> Roadmap Archive control only by Managers"
-msgstr "=> Archivado de Roadmap, sólo para supervisores"
+msgstr "=> Archivado de Roadmap, sólo para Administradores"
 
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__message_needaction
@@ -83,8 +83,8 @@ msgstr "Contacto"
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__user_id
 #: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_search_view
-msgid "Controller"
-msgstr "Supervisor"
+msgid "User"
+msgstr "Usuario"
 
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__create_uid
@@ -533,7 +533,7 @@ msgstr "Nº mensajes no leídos"
 #: model:res.groups,name:project_roadmap.group_roadmap_user
 #: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_search_view
 msgid "User"
-msgstr "Supervisor"
+msgstr "Usuario"
 
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__website_message_ids
