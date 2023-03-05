@@ -81,11 +81,6 @@ msgid "Contact"
 msgstr "Contacto"
 
 #. module: project_roadmap
-#: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__user_id
-#: model_terms:ir.ui.view,arch_db:project_roadmap.project_roadmap_search_view
-msgid "Controller"
-msgstr "Supervisor"
-
 #. module: project_roadmap
 #: model:ir.model.fields,field_description:project_roadmap.field_project_roadmap__create_uid
 msgid "Created by"

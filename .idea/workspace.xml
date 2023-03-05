@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="roadmap with contact_id" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="roadmap with contact_id">
+      <change beforePath="$PROJECT_DIR$/project_roadmap/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/i18n/es.po" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,13 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00533" summary="hrtsw_multisection">
-      <created>1668872849961</created>
-      <option name="number" value="00533" />
-      <option name="presentableId" value="LOCAL-00533" />
-      <option name="project" value="LOCAL" />
-      <updated>1668872849961</updated>
     </task>
     <task id="LOCAL-00534" summary="hrtsw_multisection">
       <created>1668872981460</created>
@@ -416,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677978977118</updated>
     </task>
-    <option name="localTasksCounter" value="582" />
+    <task id="LOCAL-00582" summary="roadmap with contact_id">
+      <created>1677980454700</created>
+      <option name="number" value="00582" />
+      <option name="presentableId" value="LOCAL-00582" />
+      <option name="project" value="LOCAL" />
+      <updated>1677980454700</updated>
+    </task>
+    <option name="localTasksCounter" value="583" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
