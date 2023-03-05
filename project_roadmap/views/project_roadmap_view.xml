@@ -61,7 +61,7 @@
             <tree name="project_roadmaps"
                   decoration-success="active==False"
                   decoration-danger="active==True and date_limit != False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
-                  default_order="active asc, sequence asc">
+                  default_order="active desc, is_favorite desc, sequence asc, date_limit asc, id asc">
                 <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
                 <field name="display_name"/>
                 <field name="sequence" invisible="1"/>
@@ -114,25 +114,25 @@
         <field name="arch" type="xml">
             <kanban group_create="false" default_order="sequence" default_group_by="project_id" class="o_kanban_small_column" js_class="project_kanban" records_draggable="false" quick_create="false" sample="1">
 
-                    <field name="name"/>
-                    <field name="project_id"/>
-                    <field name="type"/>
-                    <field name="sequence"/>
-                    <field name="is_favorite"/>
-                    <field name="user_id"/>
-                    <field name="manager_id"/>
-                    <field name="contact_id"/>
-                    <field name="date_limit"/>
-                    <field name="active"/>
-                    <field name="date_limit"/>
-                    <field name="activity_ids"/>
-                    <field name="lead_id"/>
-                    <field name="purchase_id"/>
-                    <field name="picking_id"/>
-                    <field name="invoice_id"/>
-                    <field name="task_id"/>
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="type"/>
+                <field name="sequence"/>
+                <field name="is_favorite"/>
+                <field name="user_id"/>
+                <field name="manager_id"/>
+                <field name="contact_id"/>
+                <field name="date_limit"/>
+                <field name="active"/>
+                <field name="date_limit"/>
+                <field name="activity_ids"/>
+                <field name="lead_id"/>
+                <field name="purchase_id"/>
+                <field name="picking_id"/>
+                <field name="invoice_id"/>
+                <field name="task_id"/>
 
-                    <templates>
+                <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_card oe_kanban_global_click">
                             <div class="oe_kanban_content">
@@ -188,7 +188,7 @@
                 </templates>
 
 
-                </kanban>
+            </kanban>
         </field>
         <field name="field_parent" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
@@ -208,7 +208,7 @@
                   multi_edit="1"
                   decoration-success="active==False"
                   decoration-danger="active==True and date_limit != False and date_limit &lt; context_today().strftime('%Y-%m-%d')"
-                  default_order="active desc, sequence asc">
+                  default_order="active desc, is_favorite desc, sequence asc, date_limit asc, id asc">
                 <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
                 <field name="display_name"/>
                 <field name="project_id" optional="hide"/>
