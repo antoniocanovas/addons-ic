@@ -28,12 +28,12 @@
                         <field name="invoice_id" attrs="{'invisible':['|',('type','!=','invoice'),('invoice_id','!=',False)]}"/>
                         <field name="user_id"/>
                         <field name="contact_id"/>
+                        <field name="project_id" required="1"/>
                         <field name="date_limit"/>
                     </group>
                     <group>
                         <field name="state"/>
                         <field name="active" widget="boolean_toggle"/>
-                        <field name="project_id" required="1"/>
                         <field name="manager_id"/>
                     </group>
                 </sheet>

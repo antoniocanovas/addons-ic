@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="roadmap with contact_id">
-      <change beforePath="$PROJECT_DIR$/project_roadmap/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/project_roadmap/i18n/es.po" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="roadmap with contact_id" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,13 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00534" summary="hrtsw_multisection">
-      <created>1668872981460</created>
-      <option name="number" value="00534" />
-      <option name="presentableId" value="LOCAL-00534" />
-      <option name="project" value="LOCAL" />
-      <updated>1668872981460</updated>
     </task>
     <task id="LOCAL-00535" summary="hrtsw_ added domain todo">
       <created>1669053906754</created>
@@ -418,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677980454700</updated>
     </task>
-    <option name="localTasksCounter" value="583" />
+    <task id="LOCAL-00583" summary="roadmap with contact_id">
+      <created>1677980764842</created>
+      <option name="number" value="00583" />
+      <option name="presentableId" value="LOCAL-00583" />
+      <option name="project" value="LOCAL" />
+      <updated>1677980764842</updated>
+    </task>
+    <option name="localTasksCounter" value="584" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
