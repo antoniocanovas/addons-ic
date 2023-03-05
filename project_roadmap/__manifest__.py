@@ -33,4 +33,5 @@ Project Controller's Roadmap
         'data/base_automation.xml',
     ],
     'installable':True,
+    'application':True
 }
