@@ -14,5 +14,5 @@
     'data': [
         'views/model_views.xml',
     ],
-    'installable': True,
+    'installable': False,
 }

@@ -25,5 +25,5 @@
         'views/project_task.xml',
         'views/wup_saleline_wizard_views.xml',
     ],
-    'installable': True,
+    'installable': False,
 }
