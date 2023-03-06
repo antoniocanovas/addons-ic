@@ -8,16 +8,16 @@
         <field name="priority">32</field>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="get_new_sale_order_revision" string="Create Revision" type="object" class="oe_stat_button" icon="fa-pencil-square-o">
-
-                </button>
+                <button name="get_new_sale_order_revision" string="Create Revision" type="object" class="oe_stat_button" icon="fa-pencil-square-o"/>
             </xpath>
+
             <xpath expr="//page/field[@name='order_line']/.." position="after">
                 <page string="Revisions" name="revisions" attrs="{'invisible':[('revision_count','=',1)]}">
                     <h3>Revisions: </h3>
                     <field name="revision_ids" readonly="1">
                         <tree>
-                            <field name="id" widget="open_tab"/>
+                            <!--
+                            <field name="id" widget="open_tab"/>  -->
                             <field name="message_needaction" invisible="1"/>
                             <field name="name" string="Number" readonly="1" decoration-bf="1"/>
                             <field name="date_order" string="Order Date" widget="date" optional="show"/>

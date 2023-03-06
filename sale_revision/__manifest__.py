@@ -4,13 +4,13 @@
         Create sale order revision with secuential code.
         Internal tab with other revisions and chatter messages.
         """,
-    'author': "Pedro Guirao",
+    'author': "Serincloud SL",
     'license': 'AGPL-3',
     'website': "https://ingenieriacloud.com",
     'category': 'Tools',
-    'version': '14.0.1.0.0',
+    'version': '16.0.1.0.0',
     'depends': [
-        'sale_management', 'web_widget_open_tab',
+        'sale_management',
     ],
     'data': [
         'views/views.xml',
