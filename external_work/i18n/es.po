@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-23 01:14+0000\n"
-"PO-Revision-Date: 2023-02-23 02:32+0100\n"
+"POT-Creation-Date: 2023-03-07 22:25+0000\n"
+"PO-Revision-Date: 2023-03-08 00:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -50,7 +50,7 @@ msgstr "<strong>Estado del pedido:</strong>"
 #. module: external_work
 #: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
 msgid "<strong>Subtotal:</strong>"
-msgstr "<strong>Subtotal:</strong>"
+msgstr ""
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__message_needaction
@@ -65,7 +65,7 @@ msgstr "Actividades"
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr "Decorador de actividad por excepción"
+msgstr "Icono de actividad por alerta"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__activity_state
@@ -76,6 +76,11 @@ msgstr "Estado de la actividad"
 #: model:ir.model.fields,field_description:external_work.field_external_work__activity_type_icon
 msgid "Activity Type Icon"
 msgstr "Icono de tipo de actividad"
+
+#. module: external_work
+#: model:res.groups,name:external_work.admin_external_work_group
+msgid "Admin External Work"
+msgstr "Administrador de trabajo externo"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__analytic_line_id
@@ -96,6 +101,11 @@ msgstr "Pasar a borrador"
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__time_begin
 msgid "Begin"
 msgstr "Comienzo"
+
+#. module: external_work
+#: model:ir.model.fields,field_description:external_work.field_external_work__code
+msgid "Code"
+msgstr "Código"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__company_id
@@ -142,7 +152,7 @@ msgstr "Unidad de medida por defecto para todas las operaciones de stock."
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__display_name
 #: model:ir.model.fields,field_description:external_work.field_product_product__display_name
 msgid "Display Name"
-msgstr "Nombre mostrado"
+msgstr "Nombre"
 
 #. module: external_work
 #: model:ir.model.fields.selection,name:external_work.selection__external_work__state__done
@@ -157,13 +167,14 @@ msgstr "Borrador"
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__employee_id
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__employee_id
+#: model_terms:ir.ui.view,arch_db:external_work.external_work_search
 msgid "Employee"
 msgstr "Empleado"
 
 #. module: external_work
 #: model:ir.model.fields.selection,name:external_work.selection__external_work_line__type__ein
 msgid "Employee expense billable"
-msgstr "Gasto de empleado facturable"
+msgstr "Gasto de empleado facturable (crea línea de ventas y gasto de empleado)"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__time_end
@@ -256,7 +267,7 @@ msgstr "Si chequeado, algunos mensajes tienen error de entrega."
 #. module: external_work
 #: model:ir.model.fields.selection,name:external_work.selection__external_work_line__type__eni
 msgid "Internal employee expense"
-msgstr "Gasto interno de empleado (no facturable)"
+msgstr "Gasto interno de empleado (no facturable, crea línea de gasto, no de venta)"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__message_is_follower
@@ -271,7 +282,7 @@ msgstr "Sólo lectura"
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_product_product__is_work_time
 msgid "Is working time"
-msgstr "Es tiempo de trabajo"
+msgstr "Parte laboral"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work____last_update
@@ -307,12 +318,12 @@ msgstr "Anexo principal"
 #. module: external_work
 #: model:ir.model.fields.selection,name:external_work.selection__external_work__type__warranty
 msgid "Maintenance or warranty"
-msgstr "Mantenimiento o garantía"
+msgstr "Mantenimiento o garantía (se añade el producto o servicio en el pedido a precio nulo)"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__material_id
 msgid "Material"
-msgstr "Material y otros servicios"
+msgstr "Materiales y otros servicios"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__message_has_error
@@ -332,7 +343,7 @@ msgstr "Vencimiento de mis actividades"
 #. module: external_work
 #: model_terms:ir.ui.view,arch_db:external_work.external_work_search
 msgid "My works"
-msgstr "Mis trabajos"
+msgstr "Los míos"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__name
@@ -343,7 +354,7 @@ msgstr "Nombre"
 #. module: external_work
 #: model_terms:ir.ui.view,arch_db:external_work.external_work_form
 msgid "Name or VAT ..."
-msgstr "Nombre o NIF …"
+msgstr "Nombre o NIF  del firmante …"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__activity_date_deadline
@@ -393,6 +404,7 @@ msgstr "Número de mensajes sin leer"
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__partner_id
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__partner_id
+#: model_terms:ir.ui.view,arch_db:external_work.external_work_search
 msgid "Partner"
 msgstr "Cliente"
 
@@ -406,12 +418,12 @@ msgstr "Producto"
 #. module: external_work
 #: model:ir.model.fields.selection,name:external_work.selection__external_work_line__type__pin
 msgid "Product billable"
-msgstr "Producto facturable"
+msgstr "Producto facturable (crea línea de venta valorado)"
 
 #. module: external_work
 #: model:ir.model.fields.selection,name:external_work.selection__external_work_line__type__pni
 msgid "Product not billable"
-msgstr "Producto NO facturable"
+msgstr "Producto NO facturable (crea línea de venta a precio nulo)"
 
 #. module: external_work
 #: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
@@ -433,7 +445,7 @@ msgstr "Proyectos"
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__product_qty
 msgid "Qty"
-msgstr "Cent"
+msgstr "Cantidad"
 
 #. module: external_work
 #: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
@@ -471,7 +483,7 @@ msgstr "Subtotal pedido"
 #. module: external_work
 #: model_terms:ir.ui.view,arch_db:external_work.external_work_search
 msgid "Search External Work"
-msgstr "Buscar trabajo externo"
+msgstr "Buscar parte"
 
 #. module: external_work
 #: model_terms:ir.ui.view,arch_db:external_work.external_work_form
@@ -524,6 +536,11 @@ msgid "Status of the expense."
 msgstr "Estado del gasto."
 
 #. module: external_work
+#: model:ir.model.fields,field_description:external_work.field_external_work__subject
+msgid "Subject"
+msgstr "Asunto"
+
+#. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__task_id
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__task_id
 msgid "Task"
@@ -537,12 +554,12 @@ msgstr "Tareas"
 #. module: external_work
 #: model:ir.model.fields.selection,name:external_work.selection__external_work_line__type__sin
 msgid "Technical Service billable"
-msgstr "Partes de trabajo facturables"
+msgstr "Partes de trabajo facturables (crea línea de venta valorada y parte de trabajo)"
 
 #. module: external_work
 #: model:ir.model.fields.selection,name:external_work.selection__external_work_line__type__sni
 msgid "Technical Service not billable"
-msgstr "Partes de trabajo NO facturables"
+msgstr "Partes de trabajo NO facturables (crea parte de trabajo)"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__ticket_amount
@@ -564,7 +581,7 @@ msgstr "Tipo"
 #. module: external_work
 #: model:ir.model.fields,help:external_work.field_external_work__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr "Tipo de excepción en el registro."
+msgstr "Tipo de alarma en el registro."
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__uom_id
@@ -625,7 +642,7 @@ msgstr "Líneas de productos, servicios y gastos."
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__service_id
 msgid "Work product"
-msgstr "Prod. Ser. Técnico"
+msgstr "Prod. Servicio Técnico"
 
 #. module: external_work
 #: model_terms:ir.ui.view,arch_db:external_work.external_work_form
