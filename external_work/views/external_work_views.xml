@@ -250,7 +250,6 @@
                             <field name="product_qty" required="1" attrs="{'readonly':[('is_readonly','=',True)]}"/>
                             <field name="uom_id"/>
                             <field name="date"/>
-                            <field name="task_id" domain="[('project_id','=',project_id)]" attrs="{'readonly':[('is_readonly','=',True)]}"/>
                         </group>
                     </div>
                     <div name="service" attrs="{'invisible':[('type','not in',['sin','sni'])]}">
