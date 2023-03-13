@@ -1,43 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="delete 14">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="-wup">
+      <change afterPath="$PROJECT_DIR$/pcv_product_custom(beta requiere parametrización)/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pcv_product_custom(beta requiere parametrización)/__manifest__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pcv_product_custom(beta requiere parametrización)/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pcv_product_custom(beta requiere parametrización)/models/product.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pcv_product_custom(beta requiere parametrización)/static/description/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pcv_product_custom(beta requiere parametrización)/views/views.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/__manifest__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/data/automated_action.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/data/server_action.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/i18n/es.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/account_analytic_line.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/product_template.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/project_task.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/sale_order.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/sale_order_line.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/wup_line.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/wup_quality.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/wup_saleline_wizard.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/wup_style.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/wup_target.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/wup_template.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/wup_template_line.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/models/wup_type.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/security/ir.model.access.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/static/description/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/views/menu_views.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/views/model_views.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/views/product_views.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/views/project_task.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/views/sale_order_views.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/views/wup_saleline_wizard_views.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup_discount/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup_discount/__manifest__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup_discount/i18n/es.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup_discount/models/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup_discount/models/sale_order.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup_discount/models/wup_line.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup_discount/static/description/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup_discount/views/model_views.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,13 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00504" summary="hr_timesheet_work 10">
-      <created>1667436541769</created>
-      <option name="number" value="00504" />
-      <option name="presentableId" value="LOCAL-00504" />
-      <option name="project" value="LOCAL" />
-      <updated>1667436541769</updated>
     </task>
     <task id="LOCAL-00505" summary="hr_timesheet_work 10">
       <created>1667436844777</created>
@@ -442,7 +406,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678121151664</updated>
     </task>
-    <option name="localTasksCounter" value="553" />
+    <task id="LOCAL-00553" summary="-wup">
+      <created>1678314941996</created>
+      <option name="number" value="00553" />
+      <option name="presentableId" value="LOCAL-00553" />
+      <option name="project" value="LOCAL" />
+      <updated>1678314941996</updated>
+    </task>
+    <option name="localTasksCounter" value="554" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -458,7 +429,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="hr_timesheet_work imp" />
     <MESSAGE value="SML Partner" />
     <MESSAGE value="ts_work remove field note" />
     <MESSAGE value="wor_id in analytic.line" />
@@ -483,7 +453,8 @@
     <MESSAGE value="sale multisection 16v0" />
     <MESSAGE value="sale konery v0" />
     <MESSAGE value="delete 14" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete 14" />
+    <MESSAGE value="-wup" />
+    <option name="LAST_COMMIT_MESSAGE" value="-wup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
