@@ -1,7 +1,7 @@
 ##############################################################################
 #    License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 #    Copyright (C) 2021 Serincloud S.L. All Rights Reserved
-#    PedroGuirao pedro@serincloud.com
+#    Serincloud SL
 ##############################################################################
 from odoo import api, fields, models, _
 
@@ -31,7 +31,8 @@ class PurchasePriceUpdate(models.Model):
                 ('min_qty', '=', 0),
             ])
             if (supplierinfo.id) and (record.product_qty != 0) and \
-                    (record.price_subtotal / record.product_qty == supplierinfo.price * (1 - supplierinfo.discount/100)):
+                    (record.price_unit == supplierinfo.price) and \
+                    (record.discount == supplierinfo.discount):
                 control = True
             record['price_supplierinfo_control'] = control
     price_supplierinfo_control = fields.Boolean(string='Supplierinfo Control', compute='get_supplierinfo_control')
