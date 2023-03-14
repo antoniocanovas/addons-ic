@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+    <record id="website_menu_groups_inh_tree" model="ir.ui.view">
+        <field name="name">website.menu.groups.inh.tree</field>
+        <field name="model">website.menu</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="website.menu_tree"/>
+        <field name="priority">90</field>
+        <field name="arch" type="xml">
+            <data>
+                <field name="parent_id" position="after">
+                    <field name="groups" widget="many2many_tags"/>
+                </field>
+            </data>
+        </field>
+    </record>
+
 <!--
     <record id="form_website_menu_permission" model="ir.ui.view">
         <field name="name">website.menu.form.permission</field>
