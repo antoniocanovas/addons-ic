@@ -7,8 +7,8 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
-            <field name="product_tag_ids" position="before">
-                <field name="service_bom_id" string="Analytic line"/>
+            <field name="barcode" position="before">
+                <field name="service_bom_id"/>
             </field>
         </field>
     </record>

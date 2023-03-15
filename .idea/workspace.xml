@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="website_menu v0">
-      <change afterPath="$PROJECT_DIR$/analytic_picking_auto/static/description/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mrp_service_bom/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mrp_service_bom/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mrp_service_bom/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mrp_service_bom/models/mrp_bom.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mrp_service_bom/models/product.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mrp_service_bom/static/description/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mrp_service_bom/views/product_views.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_order_konery/static/description/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_order_multisection/static/description/icon.png" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="service bom v0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_service_bom/models/product.py" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_service_bom/models/product.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_service_bom/views/product_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_service_bom/views/product_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,34 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00511" summary="16 project_roadmap">
-      <created>1668515170181</created>
-      <option name="number" value="00511" />
-      <option name="presentableId" value="LOCAL-00511" />
-      <option name="project" value="LOCAL" />
-      <updated>1668515170182</updated>
-    </task>
-    <task id="LOCAL-00512" summary="roadmap is_closed =&gt; fold">
-      <created>1668515884657</created>
-      <option name="number" value="00512" />
-      <option name="presentableId" value="LOCAL-00512" />
-      <option name="project" value="LOCAL" />
-      <updated>1668515884657</updated>
-    </task>
-    <task id="LOCAL-00513" summary="roadmap rev">
-      <created>1668516099190</created>
-      <option name="number" value="00513" />
-      <option name="presentableId" value="LOCAL-00513" />
-      <option name="project" value="LOCAL" />
-      <updated>1668516099190</updated>
-    </task>
-    <task id="LOCAL-00514" summary="roadmap rev">
-      <created>1668516387646</created>
-      <option name="number" value="00514" />
-      <option name="presentableId" value="LOCAL-00514" />
-      <option name="project" value="LOCAL" />
-      <updated>1668516387646</updated>
     </task>
     <task id="LOCAL-00515" summary="roadmap rev">
       <created>1668516632880</created>
@@ -417,7 +381,35 @@
       <option name="project" value="LOCAL" />
       <updated>1678759736794</updated>
     </task>
-    <option name="localTasksCounter" value="560" />
+    <task id="LOCAL-00560" summary="service bom v0">
+      <created>1678900929365</created>
+      <option name="number" value="00560" />
+      <option name="presentableId" value="LOCAL-00560" />
+      <option name="project" value="LOCAL" />
+      <updated>1678900929365</updated>
+    </task>
+    <task id="LOCAL-00561" summary="service bom v0">
+      <created>1678901115530</created>
+      <option name="number" value="00561" />
+      <option name="presentableId" value="LOCAL-00561" />
+      <option name="project" value="LOCAL" />
+      <updated>1678901115530</updated>
+    </task>
+    <task id="LOCAL-00562" summary="service bom v0">
+      <created>1678901137546</created>
+      <option name="number" value="00562" />
+      <option name="presentableId" value="LOCAL-00562" />
+      <option name="project" value="LOCAL" />
+      <updated>1678901137546</updated>
+    </task>
+    <task id="LOCAL-00563" summary="service bom v0">
+      <created>1678901175425</created>
+      <option name="number" value="00563" />
+      <option name="presentableId" value="LOCAL-00563" />
+      <option name="project" value="LOCAL" />
+      <updated>1678901175425</updated>
+    </task>
+    <option name="localTasksCounter" value="564" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -433,7 +425,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="work sheet attachments in AAL" />
     <MESSAGE value="sm_line_partner" />
     <MESSAGE value="monetary_precision and different uom" />
     <MESSAGE value="sale_wup description+bugs + purchase discount history" />
@@ -458,7 +449,8 @@
     <MESSAGE value="beta pcv" />
     <MESSAGE value="- beta pcv" />
     <MESSAGE value="website_menu v0" />
-    <option name="LAST_COMMIT_MESSAGE" value="website_menu v0" />
+    <MESSAGE value="service bom v0" />
+    <option name="LAST_COMMIT_MESSAGE" value="service bom v0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
