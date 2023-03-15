@@ -9,10 +9,3 @@ class ProductTemplate(models.Model):
 
     def _get_update_sale_price(self):
         return(False)
-
-class ProductProduct(models.Model):
-    _inherit = "product.product"
-
-    service_bom_id = fields.Many2one('mrp.bom', string='Bill of service',
-                                     domain="[('product_tmpl_id', '=', product_tmpl_id)]",
-                                     )
