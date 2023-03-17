@@ -1,6 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
+    <record id="product_product_bom_inh_form" model="ir.ui.view">
+        <field name="name">product.product.bom.form.inh</field>
+        <field name="model">product.product</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <field name="barcode" position="before">
+                <field name="service_bom_id"/>
+            </field>
+        </field>
+    </record>
+
     <record id="product_template_bom_button_inh_form" model="ir.ui.view">
         <field name="name">product.template.bom.button.form.inh</field>
         <field name="model">product.template</field>
@@ -13,6 +25,7 @@
         </field>
     </record>
 
+    <!-- no funciona: -->
     <record id="product_product_bom_button_inh_form" model="ir.ui.view">
         <field name="name">product.product.bom.button.form.inh</field>
         <field name="model">product.product</field>
@@ -24,7 +37,6 @@
             </xpath>
         </field>
     </record>
-
 
 
 </odoo>
