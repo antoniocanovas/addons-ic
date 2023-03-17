@@ -13,8 +13,9 @@ class ProductTemplate(models.Model):
 class ProductProduct(models.Model):
     _inherit = "product.product"
 
-    service_bom_id = fields.Many2one('mrp.bom', string='Bill of service',
-                                     domain="[('product_tmpl_id', '=', product_tmpl_id), '|', ('company_id', '=', False), ('company_id', '=', company_id)]",
+    service_bom_id = fields.Many2one('mrp.bom', string='Sale BOM price',
+                                     domain="[('product_tmpl_id', '=', product_tmpl_id), ('company_id', '=', False), "
+                                            "'|', ('product_tmpl_id','=', product_tmpl_id), ('company_id', '=', company_id)]",
                                      )
 
     def _get_update_sale_price_from_pp(self):
