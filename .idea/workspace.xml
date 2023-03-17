@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="service bom v1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mrp_service_bom/models/mrp_bom.py" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_service_bom/models/mrp_bom.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mrp_service_bom/models/product.py" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_service_bom/models/product.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,27 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00518" summary="roadmap rev">
-      <created>1668525776255</created>
-      <option name="number" value="00518" />
-      <option name="presentableId" value="LOCAL-00518" />
-      <option name="project" value="LOCAL" />
-      <updated>1668525776255</updated>
-    </task>
-    <task id="LOCAL-00519" summary="analytic_picking_auto 16">
-      <created>1673951488125</created>
-      <option name="number" value="00519" />
-      <option name="presentableId" value="LOCAL-00519" />
-      <option name="project" value="LOCAL" />
-      <updated>1673951488125</updated>
-    </task>
-    <task id="LOCAL-00520" summary="sale multisection 16v0">
-      <created>1675898075084</created>
-      <option name="number" value="00520" />
-      <option name="presentableId" value="LOCAL-00520" />
-      <option name="project" value="LOCAL" />
-      <updated>1675898075084</updated>
     </task>
     <task id="LOCAL-00521" summary="sale multisection 16v0">
       <created>1675898610258</created>
@@ -409,7 +387,28 @@
       <option name="project" value="LOCAL" />
       <updated>1679057256503</updated>
     </task>
-    <option name="localTasksCounter" value="567" />
+    <task id="LOCAL-00567" summary="service bom v1">
+      <created>1679058020304</created>
+      <option name="number" value="00567" />
+      <option name="presentableId" value="LOCAL-00567" />
+      <option name="project" value="LOCAL" />
+      <updated>1679058020304</updated>
+    </task>
+    <task id="LOCAL-00568" summary="service bom v1">
+      <created>1679058195235</created>
+      <option name="number" value="00568" />
+      <option name="presentableId" value="LOCAL-00568" />
+      <option name="project" value="LOCAL" />
+      <updated>1679058195235</updated>
+    </task>
+    <task id="LOCAL-00569" summary="service bom v1">
+      <created>1679077449809</created>
+      <option name="number" value="00569" />
+      <option name="presentableId" value="LOCAL-00569" />
+      <option name="project" value="LOCAL" />
+      <updated>1679077449809</updated>
+    </task>
+    <option name="localTasksCounter" value="570" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
