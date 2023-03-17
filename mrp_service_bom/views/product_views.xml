@@ -8,7 +8,7 @@
         <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="_get_update_sale_price_from_product" string="Price from BOM" type="object" class="oe_stat_button" icon="fa-pencil-square-o"/>
+                <button name="get_update_sale_price_from_product" string="Price from BOM" type="object" class="oe_stat_button" icon="fa-pencil-square-o"/>
             </xpath>
             <field name="barcode" position="before">
                 <field name="service_bom_id"/>
@@ -35,7 +35,7 @@
         <field name="inherit_id" ref="mrp.product_product_form_view_bom_button"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="_get_update_sale_price_from_product_template" string="Variant prices from BOM" type="object" class="oe_stat_button" icon="fa-pencil-square-o"/>
+                <button name="get_update_sale_price_from_product_template" string="Variant prices from BOM" type="object" class="oe_stat_button" icon="fa-pencil-square-o"/>
             </xpath>
             <xpath expr="//button[@name='action_view_bom']" position="attributes">
                 <attribute name="attrs">{}</attribute>
