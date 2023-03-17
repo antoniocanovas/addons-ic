@@ -34,9 +34,11 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="mrp.product_product_form_view_bom_button"/>
         <field name="arch" type="xml">
+            <!--
             <xpath expr="//header" position="inside">
                 <button name="get_update_sale_price_from_product_template" string="Variant prices from BOM" type="action" class="oe_stat_button" icon="fa-pencil-square-o"/>
             </xpath>
+            -->
             <xpath expr="//button[@name='action_view_bom']" position="attributes">
                 <attribute name="attrs">{}</attribute>
             </xpath>
