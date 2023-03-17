@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="external_work remove task from sale">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchase_price_update rev with discounts">
+      <change afterPath="$PROJECT_DIR$/website_menu_permission/README.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website_menu_permission/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website_menu_permission/__manifest__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website_menu_permission/readme/CONTRIBUTORS.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website_menu_permission/readme/DESCRIPTION.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website_menu_permission/readme/USAGE.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website_menu_permission/security/record_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website_menu_permission/static/description/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website_menu_permission/static/description/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external_work/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external_work/models/external_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/models/external_work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external_work/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/security/ir.model.access.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external_work/views/external_work_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/views/external_work_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,15 +59,15 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/external_work/security" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/external_work/security" />
       <recent name="$PROJECT_DIR$/external_work" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/hr_timesheet_work_multisection" />
       <recent name="$PROJECT_DIR$/hr_timesheet_work_section2done/models" />
     </key>
@@ -75,13 +87,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00537" summary="docurl in equipment_service &amp; helpdesk">
-      <created>1669659180505</created>
-      <option name="number" value="00537" />
-      <option name="presentableId" value="LOCAL-00537" />
-      <option name="project" value="LOCAL" />
-      <updated>1669659180505</updated>
     </task>
     <task id="LOCAL-00538" summary="bug1">
       <created>1669717979942</created>
@@ -419,7 +424,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678212327094</updated>
     </task>
-    <option name="localTasksCounter" value="586" />
+    <task id="LOCAL-00586" summary="purchase_price_update rev with discounts">
+      <created>1678722410144</created>
+      <option name="number" value="00586" />
+      <option name="presentableId" value="LOCAL-00586" />
+      <option name="project" value="LOCAL" />
+      <updated>1678722410144</updated>
+    </task>
+    <option name="localTasksCounter" value="587" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -435,7 +447,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="duplicated id hr_ts_work" />
     <MESSAGE value="sale_wup_discount rev" />
     <MESSAGE value="sale_wup upd" />
     <MESSAGE value="sale_wup wizard bug" />
@@ -460,7 +471,8 @@
     <MESSAGE value="external work v1" />
     <MESSAGE value="roadmap with contact_id" />
     <MESSAGE value="external_work remove task from sale" />
-    <option name="LAST_COMMIT_MESSAGE" value="external_work remove task from sale" />
+    <MESSAGE value="purchase_price_update rev with discounts" />
+    <option name="LAST_COMMIT_MESSAGE" value="purchase_price_update rev with discounts" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
