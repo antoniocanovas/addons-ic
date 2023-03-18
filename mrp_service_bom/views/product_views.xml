@@ -21,7 +21,7 @@
         </field>
     </record>
 
-    <!-- product_product inherit form view: -->
+    <!-- Product.product inherit form view: -->
     <record id="product_product_service_bom_inh_form" model="ir.ui.view">
         <field name="name">product.product.bom.button.form.inh</field>
         <field name="model">product.product</field>
