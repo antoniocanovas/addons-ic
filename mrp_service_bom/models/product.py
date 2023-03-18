@@ -23,7 +23,7 @@ class ProductProduct(models.Model):
     service_bom_id = fields.Many2one('mrp.bom', string='Sale BOM price', store=True,
                                      domain="[('product_tmpl_id', '=', product_tmpl_id)]")
 
-    @api.depends('service_bom_id')
+    @api.onchange('service_bom_id')
     def update_sale_price_from_service_bom(self):
         lst_price = 0
         if self.service_bom_id.id:
