@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="service bom v1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mrp_service_bom/models/product.py" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_service_bom/models/product.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mrp_service_bom/views/product_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_service_bom/views/product_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00527" summary="sale multisection 16v0">
-      <created>1675901564119</created>
-      <option name="number" value="00527" />
-      <option name="presentableId" value="LOCAL-00527" />
-      <option name="project" value="LOCAL" />
-      <updated>1675901564119</updated>
     </task>
     <task id="LOCAL-00528" summary="sale multisection 16v0">
       <created>1675901736288</created>
@@ -409,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679091479147</updated>
     </task>
-    <option name="localTasksCounter" value="576" />
+    <task id="LOCAL-00576" summary="service bom v1">
+      <created>1679134074984</created>
+      <option name="number" value="00576" />
+      <option name="presentableId" value="LOCAL-00576" />
+      <option name="project" value="LOCAL" />
+      <updated>1679134074984</updated>
+    </task>
+    <option name="localTasksCounter" value="577" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

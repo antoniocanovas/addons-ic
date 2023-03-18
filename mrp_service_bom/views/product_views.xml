@@ -12,7 +12,7 @@
                 <button name="update_variants_sale_price_from_service_bom" string="Update variants prices" type="object"
                         icon="fa-tasks" class="oe_stat_button"
                         attrs="{'invisible': ['|',('product_variant_count', '&lt;=', 1),('detailed_type','!=','service')]}"
-                        groups="group_sale_salesman_all_leads">
+                        groups="sales_team.group_sale_salesman_all_leads">
                 </button>
             </xpath>
             <xpath expr="//button[1]" position="attributes">
