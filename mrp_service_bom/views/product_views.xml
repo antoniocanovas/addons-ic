@@ -1,51 +1,40 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
-    <record id="product_product_bom_inh_form" model="ir.ui.view">
-        <field name="name">product.product.bom.form.inh</field>
-        <field name="model">product.product</field>
-        <field name="type">form</field>
-        <field name="inherit_id" ref="product.product_normal_form_view"/>
-        <field name="arch" type="xml">
-            <!--
-            <xpath expr="//header" position="inside">
-                <button name="get_update_sale_price_from_product" string="Price from BOM" type="action" class="oe_stat_button" icon="fa-pencil-square-o"/>
-            </xpath>
-            -->
-            <field name="barcode" position="before">
-                <field name="service_bom_id"/>
-            </field>
-        </field>
-    </record>
-
-    <record id="product_template_bom_button_inh_form" model="ir.ui.view">
+    <!-- Show Variants and UPDATE_PRICES_Button in Product_template if detailed_price = Service: -->
+    <record id="product_template_bom_service_inh_form" model="ir.ui.view">
         <field name="name">product.template.bom.button.form.inh</field>
         <field name="model">product.template</field>
         <field name="type">form</field>
         <field name="inherit_id" ref="mrp.product_template_form_view_bom_button"/>
         <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="update_variants_sale_price_from_service_bom" string="Update variants prices" type="object"
+                        icon="fa-tasks" class="oe_stat_button"
+                        attrs="{'invisible': ['|',('product_variant_count', '&lt;=', 1),('detailed_type','!=','service')]}"
+                        groups="group_sale_salesman_all_leads">
+                </button>
+            </xpath>
             <xpath expr="//button[1]" position="attributes">
                 <attribute name="invisible"></attribute>
             </xpath>
         </field>
     </record>
 
-    <record id="product_product_bom_button_inh_form" model="ir.ui.view">
+    <!-- product_product inherit form view: -->
+    <record id="product_product_service_bom_inh_form" model="ir.ui.view">
         <field name="name">product.product.bom.button.form.inh</field>
         <field name="model">product.product</field>
         <field name="type">form</field>
         <field name="inherit_id" ref="mrp.product_product_form_view_bom_button"/>
         <field name="arch" type="xml">
-            <!--
-            <xpath expr="//header" position="inside">
-                <button name="get_update_sale_price_from_product_template" string="Variant prices from BOM" type="action" class="oe_stat_button" icon="fa-pencil-square-o"/>
-            </xpath>
-            -->
             <xpath expr="//button[@name='action_view_bom']" position="attributes">
                 <attribute name="attrs">{}</attribute>
             </xpath>
+            <field name="barcode" position="before">
+                <field name="service_bom_id"/>
+            </field>
         </field>
     </record>
-
 
 </odoo>
