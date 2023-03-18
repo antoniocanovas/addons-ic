@@ -10,6 +10,7 @@
     "website": "https://www.ingenieriacloud.com",
     "license": "AGPL-3",
     "depends": [
+        "product_variant_sale_price",
         "mrp",
                 ],
     "data": [
