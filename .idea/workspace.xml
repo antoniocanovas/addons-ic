@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="service bom v1">
-      <change beforePath="$PROJECT_DIR$/mrp_service_bom/models/product.py" beforeDir="false" afterPath="$PROJECT_DIR$/mrp_service_bom/models/product.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_service_bom/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_bom_price/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_service_bom/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_bom_price/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_service_bom/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_bom_price/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_service_bom/models/mrp_bom.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_bom_price/models/mrp_bom.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_service_bom/models/product.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_bom_price/models/product.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_service_bom/static/description/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/product_bom_price/static/description/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mrp_service_bom/views/product_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_bom_price/views/product_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,20 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00530" summary="sale multisection 16v0">
-      <created>1675904476269</created>
-      <option name="number" value="00530" />
-      <option name="presentableId" value="LOCAL-00530" />
-      <option name="project" value="LOCAL" />
-      <updated>1675904476269</updated>
-    </task>
-    <task id="LOCAL-00531" summary="sale multisection 16v0">
-      <created>1675905227957</created>
-      <option name="number" value="00531" />
-      <option name="presentableId" value="LOCAL-00531" />
-      <option name="project" value="LOCAL" />
-      <updated>1675905227957</updated>
     </task>
     <task id="LOCAL-00532" summary="sale multisection 16v0">
       <created>1675905280753</created>
@@ -407,7 +400,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679135456892</updated>
     </task>
-    <option name="localTasksCounter" value="579" />
+    <task id="LOCAL-00579" summary="service bom v1">
+      <created>1679135645527</created>
+      <option name="number" value="00579" />
+      <option name="presentableId" value="LOCAL-00579" />
+      <option name="project" value="LOCAL" />
+      <updated>1679135645527</updated>
+    </task>
+    <task id="LOCAL-00580" summary="service bom v1">
+      <created>1679135800111</created>
+      <option name="number" value="00580" />
+      <option name="presentableId" value="LOCAL-00580" />
+      <option name="project" value="LOCAL" />
+      <updated>1679135800111</updated>
+    </task>
+    <option name="localTasksCounter" value="581" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

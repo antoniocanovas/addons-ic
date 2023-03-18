@@ -10,12 +10,14 @@ class ProductTemplate(models.Model):
     def update_variants_sale_price_from_service_bom(self):
         for product in self.product_variant_ids:
             if product.service_bom_id.id:
-                lst_price = 0
+                lst_price, standard_price = 0, 0
                 for li in product.service_bom_id.bom_line_ids:
                     lst_price += li.product_id.lst_price * li.product_qty
+                    standard_price += li.product_id.standard_price * li.product_qty
                 if product.service_bom_id.product_qty not in [0,1]:
                     lst_price = lst_price / product.service_bom_id.product_qty
-                product.write({'lst_price':lst_price})
+                    standard_price = standard_price / product.service_bom_id.product_qty
+                product.write({'lst_price':lst_price, 'standard_price':standard_price})
 
 class ProductProduct(models.Model):
     _inherit = "product.product"
@@ -25,10 +27,12 @@ class ProductProduct(models.Model):
 
     @api.onchange('service_bom_id')
     def update_sale_price_from_service_bom(self):
-        lst_price = 0
+        lst_price, standard_price = 0, 0
         if self.service_bom_id.id:
             for li in self.service_bom_id.bom_line_ids:
                 lst_price += li.product_id.lst_price * li.product_qty
+                standard_price += li.product_id.standard_price * li.product_qty
             if self.service_bom_id.product_qty not in [0,1]:
                 lst_price = lst_price / self.service_bom_id.product_qty
-        self.write({'lst_price': lst_price})
+                standard_price = standard_price / product.service_bom_id.product_qty
+        self.write({'lst_price': lst_price, 'standard_price':standard_price})

@@ -3,9 +3,9 @@
 
 {
     "name": "Service BOM",
-    "summary": "BOM in service products.",
+    "summary": "Product BOM price.",
     "version": "16.0.1.0.0",
-    'category': 'Manufacturing',
+    'category': 'Sales',
     "author": "Serincloud SL, ",
     "website": "https://www.ingenieriacloud.com",
     "license": "AGPL-3",
