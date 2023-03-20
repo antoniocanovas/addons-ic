@@ -18,6 +18,7 @@ class ExternalWork(models.Model):
 
     subject     = fields.Char('Subject')
     date        = fields.Date('Date')
+
     employee_id = fields.Many2one('hr.employee', string="Employee", default=lambda self: self.env.user.employee_id)
     user_id     = fields.Many2one('res.users', string="User", related='employee_id.user_id')
     project_id  = fields.Many2one('project.project', string="Project")
