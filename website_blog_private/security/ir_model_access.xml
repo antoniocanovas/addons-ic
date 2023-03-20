@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+
+  <!-- Modify empty group to existing access permission: -->
+  <record id="website_blog.blog_blog_all" model="ir.rule">
+    <field name="name">blog.blog</field>
+    <field name="model_id" ref="model_blog_blog"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_create" eval="False"/>
+    <field name="perm_write" eval="False"/>
+    <field name="perm_unlink" eval="False"/>
+    <field name="group_id" eval="ref('base.group_user')"/>
+  </record>
+
+</odoo>
