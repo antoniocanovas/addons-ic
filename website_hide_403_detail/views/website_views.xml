@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form view inherit: -->
+    <record id="website_hide_403_details" model="ir.ui.view">
+        <field name="name">website.hide.403.details.inh.qweb</field>
+        <field name="model"></field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="http_routing.403"/>
+        <field name="priority">90</field>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//t[@t-name='http_routing.403']" position="replace">
+                    <t t-name="http_routing.403">
+                        <t t-call="web.frontend_layout">
+                            <div id="wrap">
+                                <div class="container">
+                                    <h1 class="mt-5">403: Forbidden</h1>
+                                    <p>The page you were looking for could not be authorized.</p>
+                                </div>
+                            </div>
+                        </t>
+                    </t>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>
