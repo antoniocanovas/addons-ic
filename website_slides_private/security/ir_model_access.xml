@@ -2,8 +2,8 @@
 <odoo>
 
   <!-- Modify empty group to existing access permission: -->
-  <record id="website_slides.access_slide_slide_all" model="ir.model.access">
-    <field name="name">slide.slide.all</field>
+  <record id="website_blog.blog_blog_all" model="ir.model.access">
+    <field name="name">blog.blog</field>
     <field name="perm_read" eval="True"/>
     <field name="perm_create" eval="False"/>
     <field name="perm_write" eval="False"/>
