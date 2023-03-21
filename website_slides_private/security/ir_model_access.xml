@@ -4,7 +4,7 @@
   <!-- Modify empty group to existing access permission: -->
   <record id="website_slides.access_slide_slide_all" model="ir.model.access">
     <field name="name">slide.slide.all</field>
-    <field name="model_id">slide.slide</field>
+    <field name="model_id" eval="ref('model_slide_slide)" />
     <field name="perm_read" eval="True"/>
     <field name="perm_create" eval="False"/>
     <field name="perm_write" eval="False"/>
@@ -14,7 +14,7 @@
 
   <record id="website_slides.access_slide_channel_all" model="ir.model.access">
     <field name="name">slide.channel.all</field>
-    <field name="model_id">slide.channel</field>
+    <field name="model_id" eval="ref('model_slide_channel)" />
     <field name="perm_read" eval="True"/>
     <field name="perm_create" eval="False"/>
     <field name="perm_write" eval="False"/>
