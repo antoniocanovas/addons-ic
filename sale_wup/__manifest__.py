@@ -13,6 +13,7 @@
         'hr',
         'base_automation',
         'sale_timesheet_edit',
+        'analytic_picking_auto',
     ],
     'data': [
         'data/server_action.xml',
