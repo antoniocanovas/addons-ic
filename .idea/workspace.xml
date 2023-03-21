@@ -75,13 +75,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00542" summary="translate chassis">
-      <created>1670430152396</created>
-      <option name="number" value="00542" />
-      <option name="presentableId" value="LOCAL-00542" />
-      <option name="project" value="LOCAL" />
-      <updated>1670430152396</updated>
-    </task>
     <task id="LOCAL-00543" summary="equipment_service customer_id">
       <created>1670449622302</created>
       <option name="number" value="00543" />
@@ -418,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679403444087</updated>
     </task>
-    <option name="localTasksCounter" value="591" />
+    <task id="LOCAL-00591" summary="wup bug &amp; dependencies">
+      <created>1679403549120</created>
+      <option name="number" value="00591" />
+      <option name="presentableId" value="LOCAL-00591" />
+      <option name="project" value="LOCAL" />
+      <updated>1679403549121</updated>
+    </task>
+    <option name="localTasksCounter" value="592" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
