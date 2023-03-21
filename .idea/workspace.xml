@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="blog internal v0">
-      <change afterPath="$PROJECT_DIR$/website_slides_private/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website_slides_private/security/ir_model_access.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website_slides_private/static/description/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website_blog_private/security/ir_model_access.xml" beforeDir="false" afterPath="$PROJECT_DIR$/website_blog_private/security/ir_model_access.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="slide internal v0">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website_slides_private/security/ir_model_access.xml" beforeDir="false" afterPath="$PROJECT_DIR$/website_slides_private/security/ir_model_access.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,20 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00542" summary="sale multisection 16v0">
-      <created>1676019696385</created>
-      <option name="number" value="00542" />
-      <option name="presentableId" value="LOCAL-00542" />
-      <option name="project" value="LOCAL" />
-      <updated>1676019696385</updated>
-    </task>
-    <task id="LOCAL-00543" summary="sale multisection 16v0">
-      <created>1676026297636</created>
-      <option name="number" value="00543" />
-      <option name="presentableId" value="LOCAL-00543" />
-      <option name="project" value="LOCAL" />
-      <updated>1676026297636</updated>
     </task>
     <task id="LOCAL-00544" summary="sale multisection 16v0">
       <created>1676043143503</created>
@@ -410,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679355781298</updated>
     </task>
-    <option name="localTasksCounter" value="591" />
+    <task id="LOCAL-00591" summary="slide internal v0">
+      <created>1679356157120</created>
+      <option name="number" value="00591" />
+      <option name="presentableId" value="LOCAL-00591" />
+      <option name="project" value="LOCAL" />
+      <updated>1679356157120</updated>
+    </task>
+    <task id="LOCAL-00592" summary="slide internal v0">
+      <created>1679356324235</created>
+      <option name="number" value="00592" />
+      <option name="presentableId" value="LOCAL-00592" />
+      <option name="project" value="LOCAL" />
+      <updated>1679356324235</updated>
+    </task>
+    <option name="localTasksCounter" value="593" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="purches_price_update rev dif uoms" />
     <MESSAGE value="bug history discount" />
     <MESSAGE value="analytic tracking no fields" />
     <MESSAGE value="roadmap v3 (project type)" />
@@ -451,7 +448,8 @@
     <MESSAGE value="service bom v1" />
     <MESSAGE value="403 v0" />
     <MESSAGE value="blog internal v0" />
-    <option name="LAST_COMMIT_MESSAGE" value="blog internal v0" />
+    <MESSAGE value="slide internal v0" />
+    <option name="LAST_COMMIT_MESSAGE" value="slide internal v0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
