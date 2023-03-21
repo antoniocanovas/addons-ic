@@ -64,34 +64,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00545" summary="sale multisection 16v0">
-      <created>1676043312736</created>
-      <option name="number" value="00545" />
-      <option name="presentableId" value="LOCAL-00545" />
-      <option name="project" value="LOCAL" />
-      <updated>1676043312736</updated>
-    </task>
-    <task id="LOCAL-00546" summary="sale multisection 16v0">
-      <created>1676043641871</created>
-      <option name="number" value="00546" />
-      <option name="presentableId" value="LOCAL-00546" />
-      <option name="project" value="LOCAL" />
-      <updated>1676043641871</updated>
-    </task>
-    <task id="LOCAL-00547" summary="sale multisection 16v0">
-      <created>1676043814397</created>
-      <option name="number" value="00547" />
-      <option name="presentableId" value="LOCAL-00547" />
-      <option name="project" value="LOCAL" />
-      <updated>1676043814397</updated>
-    </task>
-    <task id="LOCAL-00548" summary="sale multisection 16v0">
-      <created>1676044205595</created>
-      <option name="number" value="00548" />
-      <option name="presentableId" value="LOCAL-00548" />
-      <option name="project" value="LOCAL" />
-      <updated>1676044205595</updated>
-    </task>
     <task id="LOCAL-00549" summary="sale multisection 16v0">
       <created>1676051442878</created>
       <option name="number" value="00549" />
@@ -407,7 +379,35 @@
       <option name="project" value="LOCAL" />
       <updated>1679388096656</updated>
     </task>
-    <option name="localTasksCounter" value="594" />
+    <task id="LOCAL-00594" summary="slide internal v0">
+      <created>1679388248703</created>
+      <option name="number" value="00594" />
+      <option name="presentableId" value="LOCAL-00594" />
+      <option name="project" value="LOCAL" />
+      <updated>1679388248703</updated>
+    </task>
+    <task id="LOCAL-00595" summary="slide internal v0">
+      <created>1679388364130</created>
+      <option name="number" value="00595" />
+      <option name="presentableId" value="LOCAL-00595" />
+      <option name="project" value="LOCAL" />
+      <updated>1679388364130</updated>
+    </task>
+    <task id="LOCAL-00596" summary="slide internal v0">
+      <created>1679388399670</created>
+      <option name="number" value="00596" />
+      <option name="presentableId" value="LOCAL-00596" />
+      <option name="project" value="LOCAL" />
+      <updated>1679388399670</updated>
+    </task>
+    <task id="LOCAL-00597" summary="slide internal v0">
+      <created>1679388499384</created>
+      <option name="number" value="00597" />
+      <option name="presentableId" value="LOCAL-00597" />
+      <option name="project" value="LOCAL" />
+      <updated>1679388499384</updated>
+    </task>
+    <option name="localTasksCounter" value="598" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
