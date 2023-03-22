@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="slide internal v0">
-      <change beforePath="$PROJECT_DIR$/website_slides_private/security/ir_model_access.xml" beforeDir="false" afterPath="$PROJECT_DIR$/website_slides_private/security/ir_model_access.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website_event_private/__manifest__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website_event_private/security/ir_model_access.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website_event_private/static/description/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,13 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00549" summary="sale multisection 16v0">
-      <created>1676051442878</created>
-      <option name="number" value="00549" />
-      <option name="presentableId" value="LOCAL-00549" />
-      <option name="project" value="LOCAL" />
-      <updated>1676051442878</updated>
     </task>
     <task id="LOCAL-00550" summary="sale konery v0">
       <created>1676113527348</created>
@@ -407,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679388499384</updated>
     </task>
-    <option name="localTasksCounter" value="598" />
+    <task id="LOCAL-00598" summary="slide internal v0">
+      <created>1679388861232</created>
+      <option name="number" value="00598" />
+      <option name="presentableId" value="LOCAL-00598" />
+      <option name="project" value="LOCAL" />
+      <updated>1679388861232</updated>
+    </task>
+    <option name="localTasksCounter" value="599" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
