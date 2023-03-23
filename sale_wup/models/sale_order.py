@@ -9,6 +9,8 @@ class SaleOrderWup(models.Model):
     _inherit = 'sale.order'
 
     wup_line_ids = fields.One2many('wup.line','sale_id', string='wup')
+    #Avoid same project when duplicating sale order:
+    project_id = fields.Many2one('project.project', copy=False)
 
     def _get_wup_line_count(self):
         for record in self:
