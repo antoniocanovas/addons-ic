@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="wup bug &amp; dependencies" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale_wup pre-post-domain">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external_work/models/external_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/models/external_work.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,13 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00547" summary="account_move_sale_tags">
-      <created>1674055292156</created>
-      <option name="number" value="00547" />
-      <option name="presentableId" value="LOCAL-00547" />
-      <option name="project" value="LOCAL" />
-      <updated>1674055292156</updated>
     </task>
     <task id="LOCAL-00548" summary="multisection hide subtotals v0">
       <created>1675879710534</created>
@@ -412,7 +408,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679588823636</updated>
     </task>
-    <option name="localTasksCounter" value="596" />
+    <task id="LOCAL-00596" summary="sale_wup pre-post-domain">
+      <created>1679660393847</created>
+      <option name="number" value="00596" />
+      <option name="presentableId" value="LOCAL-00596" />
+      <option name="project" value="LOCAL" />
+      <updated>1679660393848</updated>
+    </task>
+    <option name="localTasksCounter" value="597" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -428,7 +431,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sale_wup wizard bug" />
     <MESSAGE value="roadmap v4 proj menu" />
     <MESSAGE value="roadmap v4 rev" />
     <MESSAGE value="hrtsw state" />
@@ -453,7 +455,8 @@
     <MESSAGE value="purchase_price_update rev with discounts" />
     <MESSAGE value="external work employee permission" />
     <MESSAGE value="wup bug &amp; dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="wup bug &amp; dependencies" />
+    <MESSAGE value="sale_wup pre-post-domain" />
+    <option name="LAST_COMMIT_MESSAGE" value="sale_wup pre-post-domain" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

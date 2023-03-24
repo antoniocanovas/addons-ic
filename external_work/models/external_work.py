@@ -80,6 +80,22 @@ class ExternalWork(models.Model):
             if (li.type in ['sin','sni']) and (li.is_readonly == False): timesheet = True
             if (li.type in ['ein','eni']) and (li.is_readonly == False): expense = True
 
+            # EMPLOYEE EXPENSES (if not, sale line will not be created):
+            if (expense == True) and (li.hr_expense_id.id == False):
+                newexpense = self.env['hr.expense'].create({'employee_id':li.employee_id.id, 'name': li.name,
+                                                            'date': li.date, 'payment_mode':'own_account',
+                                                            'unit_amount':li.ticket_amount / li.product_qty,
+                                                            'product_id':li.product_id.id, 'quantity':li.product_qty,
+                                                            'product_uom_id':li.uom_id.id,})
+                li.hr_expense_id = newexpense.id
+            elif (expense == True) and (li.hr_expense_id.id != False):
+                amount = 0
+                if li.product_qty != 0: amount = li.ticket_amount / li.product_qty
+                li.hr_expense_id.write({'employee_id':li.employee_id.id, 'name': li.name,
+                                        'date': li.date, 'payment_mode':'own_account',
+                                        'product_id':li.product_id.id, 'quantity':li.product_qty,
+                                        'unit_amount':amount, 'product_uom_id':li.uom_id.id,})
+
             # SALE LINE FOR PRODUCT OR SERVICE:
             # Sale order based on list price:
             if (saleline == True) and (li.sale_line_id.id == False) and (li.type in ['pin','sin','ein']):
@@ -119,22 +135,6 @@ class ExternalWork(models.Model):
                                            'amount':li.product_qty * li.product_id.standard_price,
                                            'unit_amount':li.product_qty, 'product_id':li.product_id.id,
                                            'employee_id':li.employee_id.id})
-
-            # EMPLOYEE EXPENSES:
-            if (expense == True) and (li.hr_expense_id.id == False):
-                newexpense = self.env['hr.expense'].create({'employee_id':li.employee_id.id, 'name': li.name,
-                                                            'date': li.date, 'payment_mode':'own_account',
-                                                            'unit_amount':li.ticket_amount / li.product_qty,
-                                                            'product_id':li.product_id.id, 'quantity':li.product_qty,
-                                                            'product_uom_id':li.uom_id.id,})
-                li.hr_expense_id = newexpense.id
-            elif (expense == True) and (li.hr_expense_id.id != False):
-                amount = 0
-                if li.product_qty != 0: amount = li.ticket_amount / li.product_qty
-                li.hr_expense_id.write({'employee_id':li.employee_id.id, 'name': li.name,
-                                        'date': li.date, 'payment_mode':'own_account',
-                                        'product_id':li.product_id.id, 'quantity':li.product_qty,
-                                        'unit_amount':amount, 'product_uom_id':li.uom_id.id,})
 
     def action_work_confirm(self):
         self.action_work_update()
