@@ -12,7 +12,8 @@
         'website_blog',
     ],
     'data': [
-        'security/ir_model_access.xml',
+        'vies/res_company_views.xml',
+        'vies/product_views.xml',
     ],
     'installable': True,
 }
