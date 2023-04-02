@@ -9,5 +9,5 @@ class ProductTemplate(models.Model):
     final_jornada       = fields.Float(string="Inicio Jornada")
     hextra_inicio       = fields.Float(string="Inicio H. Extras")
     hextra_limite       = fields.Float(string="H. Extra límite")
-    hextra_percent      = fields.Float(string="H. Extra  inc.")
-    hfestivo_percent    = fields.Float(string="H. Festivo inc.")
+    hextra_factor       = fields.Float(string="H. Extra  inc.")
+    hfestivo_factor     = fields.Float(string="H. Festivo inc.")
