@@ -11,10 +11,11 @@
                 <page string="Service price computed">
                     <group name="prodct_price_calculation_python">
                         <field name="tipo_calculo" />
-                        <field name="inicio_jornada" widget="float_time" />
-                        <field name="final_jornada" widget="float_time" />
-                        <field name="hextra_inicio" widget="float_time" />
-                        <field name="hextra_limite" widget="float_time" />
+                        <field name="incio_extra" widget="float_time" />
+                        <field name="inicio_ordinario" widget="float_time" />
+                        <field name="final_ordinario" widget="float_time" />
+                        <field name="final_hextra" widget="float_time" />
+                        <field name="horas_minimo" />
                         <field name="hextra_factor" />
                         <field name="hfestivo_factor" />
                     </group>

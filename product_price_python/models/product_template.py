@@ -5,9 +5,10 @@ class ProductTemplate(models.Model):
 
     tipo_calculo        = fields.Selection([('personal', 'Servicios en horario habitual, extra y festivo')],
                                            string='Tipo', store=True, copy=True)
-    hextra_inicio       = fields.Float(string="Inicio Extra")
-    inicio_jornada      = fields.Float(string="Inicio Ordinaria")
-    final_jornada       = fields.Float(string="Fin Ordinaria")
-    hextra_limite       = fields.Float(string="Hora Extra límite")
+    incio_extra         = fields.Float(string="Inicio Extra")
+    inicio_ordinario    = fields.Float(string="Inicio Ordinaria")
+    final_ordinario     = fields.Float(string="Fin Ordinaria")
+    final_hextra        = fields.Float(string="Hora Extra límite")
     hextra_factor       = fields.Float(string="Factor Hora Extra")
     hfestivo_factor     = fields.Float(string="Factor Festivo")
+    horas_minimo        = fields Integer(string="Horas mínimas")
