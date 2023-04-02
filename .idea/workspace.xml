@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="event private">
-      <change afterPath="$PROJECT_DIR$/product_price_python/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_price_python/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_price_python/models/product_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_price_python/models/res_company.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_price_python/models/sale_order_line.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_price_python/static/description/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_price_python/views/product_views.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_price_python/views/res_company_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="price python v0">
+      <change beforePath="$PROJECT_DIR$/product_price_python/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_price_python/__manifest__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,27 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00552" summary="delete 14">
-      <created>1678121151664</created>
-      <option name="number" value="00552" />
-      <option name="presentableId" value="LOCAL-00552" />
-      <option name="project" value="LOCAL" />
-      <updated>1678121151664</updated>
-    </task>
-    <task id="LOCAL-00553" summary="-wup">
-      <created>1678314941996</created>
-      <option name="number" value="00553" />
-      <option name="presentableId" value="LOCAL-00553" />
-      <option name="project" value="LOCAL" />
-      <updated>1678314941996</updated>
-    </task>
-    <task id="LOCAL-00554" summary="beta pcv">
-      <created>1678725033005</created>
-      <option name="number" value="00554" />
-      <option name="presentableId" value="LOCAL-00554" />
-      <option name="project" value="LOCAL" />
-      <updated>1678725033006</updated>
     </task>
     <task id="LOCAL-00555" summary="- beta pcv">
       <created>1678756898473</created>
@@ -415,7 +386,28 @@
       <option name="project" value="LOCAL" />
       <updated>1679503084246</updated>
     </task>
-    <option name="localTasksCounter" value="601" />
+    <task id="LOCAL-00601" summary="price python v0">
+      <created>1680395270196</created>
+      <option name="number" value="00601" />
+      <option name="presentableId" value="LOCAL-00601" />
+      <option name="project" value="LOCAL" />
+      <updated>1680395270196</updated>
+    </task>
+    <task id="LOCAL-00602" summary="price python v0">
+      <created>1680395323864</created>
+      <option name="number" value="00602" />
+      <option name="presentableId" value="LOCAL-00602" />
+      <option name="project" value="LOCAL" />
+      <updated>1680395323864</updated>
+    </task>
+    <task id="LOCAL-00603" summary="price python v0">
+      <created>1680395498815</created>
+      <option name="number" value="00603" />
+      <option name="presentableId" value="LOCAL-00603" />
+      <option name="project" value="LOCAL" />
+      <updated>1680395498815</updated>
+    </task>
+    <option name="localTasksCounter" value="604" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -431,7 +423,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="analytic tracking no fields" />
     <MESSAGE value="roadmap v3 (project type)" />
     <MESSAGE value="hr_timesheet_work 10" />
     <MESSAGE value="sale_wup_discount v3" />
@@ -456,7 +447,8 @@
     <MESSAGE value="blog internal v0" />
     <MESSAGE value="slide internal v0" />
     <MESSAGE value="event private" />
-    <option name="LAST_COMMIT_MESSAGE" value="event private" />
+    <MESSAGE value="price python v0" />
+    <option name="LAST_COMMIT_MESSAGE" value="price python v0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

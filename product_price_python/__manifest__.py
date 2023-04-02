@@ -12,8 +12,8 @@
         'sale',
     ],
     'data': [
-        'vies/res_company_views.xml',
-        'vies/product_views.xml',
+        'views/res_company_views.xml',
+        'views/product_views.xml',
     ],
     'installable': True,
 }
