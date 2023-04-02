@@ -8,17 +8,16 @@
         <field name="priority">32</field>
         <field name="arch" type="xml">
             <xpath expr="//page[@name='general_information']" position="after">
-                <!--
-                <page string="Service price computed" attrs="{'invisible':{[('detailed_type','!=','service')]}" >
-                -->
                 <page string="Service price computed">
-                    <field name="tipo_calculo" />
-                    <field name="inicio_jornada" widget="float_time" />
-                    <field name="final_jornada" widget="float_time" />
-                    <field name="hextra_inicio" widget="float_time" />
-                    <field name="hextra_limite" widget="float_time" />
-                    <field name="hextra_factor" />
-                    <field name="hfestivo_factor" />
+                    <group name="prodct_price_calculation_python">
+                        <field name="tipo_calculo" />
+                        <field name="inicio_jornada" widget="float_time" />
+                        <field name="final_jornada" widget="float_time" />
+                        <field name="hextra_inicio" widget="float_time" />
+                        <field name="hextra_limite" widget="float_time" />
+                        <field name="hextra_factor" />
+                        <field name="hfestivo_factor" />
+                    </group>
                 </page>
             </xpath>
         </field>
