@@ -10,7 +10,7 @@
             <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
                 <page string="Service price computed" name="product_price_computed_parameters">
                     <field name="festivo_domingo"/>
-                    <field name="festivos"/>
+                    <field name="festivos" placeholder="En formato año-mes-día, separado por comas (2023-12-31)"/>
                 </page>
             </xpath>
         </field>
