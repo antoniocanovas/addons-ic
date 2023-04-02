@@ -9,6 +9,7 @@ class SaleOrderLine(models.Model):
     @api.depends('price_unit')
     def get_product_unit_python_price(self):
         for record in self:
+            raise UserError('funciona')
             # Inicialización:
             hmincontratable, hinicio, hfin, hmaxcontratable, hextras, hlaborales, hmincontrato, festivos, laborables = 7, 8, 20, 22, 0, 0, 4, 0, 0
             fecha = datetime.datetime(year=record.start_date.year, month=record.start_date.month, day=record.start_date.day,
