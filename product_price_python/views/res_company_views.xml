@@ -9,8 +9,10 @@
         <field name="arch" type="xml">
             <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
                 <page string="Service price computed" name="product_price_computed_parameters">
-                    <field name="festivo_domingo"/>
-                    <field name="festivos"/>
+                    <group>
+                        <field name="festivo_domingo"/>
+                        <field name="festivos"/>
+                    </group>
                 </page>
             </xpath>
         </field>
