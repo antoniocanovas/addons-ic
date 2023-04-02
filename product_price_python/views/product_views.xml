@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="price_unit_python_company_inh_form" model="ir.ui.view">
+        <field name="name">price.unit.python.product.template.inh.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="priority">32</field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_info]" position="after">
+                <page string="Service price computed" attrs="{'invisible':{[('detailed_type','!=','service')]}" >
+                    <field name="tipo_calculo" />
+                    <field name="inicio_jornada" widget="float_time" />
+                    <field name="final_jornada" widget="float_time" />
+                    <field name="hextra_inicio" widget="float_time" />
+                    <field name="hextra_limite" widget="float_time" />
+                    <field name="hextra_multiplo" />
+                    <field name="hfestivo_multiplo" />
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

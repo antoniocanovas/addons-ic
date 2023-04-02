@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="price_unit_python_company_inh_form" model="ir.ui.view">
+        <field name="name">price.unit.python.company.inh.form</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="priority">32</field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_info]" position="after">
+                <page string="Service price computed">
+                    <field name="festivo_domingo" />
+                    <field name="festivos" />
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
