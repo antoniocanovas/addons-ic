@@ -9,7 +9,7 @@
     'category': 'Sales',
     'summary': 'Product price updated by python',
     'depends': [
-        'sale',
+        'sale_management',
     ],
     'data': [
         'views/res_company_views.xml',
