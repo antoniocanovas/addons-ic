@@ -18,7 +18,7 @@
                     <field name="hextra_inicio" widget="float_time" />
                     <field name="hextra_limite" widget="float_time" />
                     <field name="hextra_factor" />
-                    <field name="hfestivo_facotr" />
+                    <field name="hfestivo_factor" />
                 </page>
             </xpath>
         </field>
