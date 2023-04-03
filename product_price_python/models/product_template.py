@@ -11,4 +11,4 @@ class ProductTemplate(models.Model):
     final_hextra        = fields.Float(string="Hora Extra límite")
     hextra_factor       = fields.Float(string="Factor Hora Extra")
     hfestivo_factor     = fields.Float(string="Factor Festivo")
-    horas_minimo        = fields Integer(string="Horas mínimas")
+    horas_minimo        = fields.Integer(string="Horas mínimas")
