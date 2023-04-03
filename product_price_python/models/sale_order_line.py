@@ -9,10 +9,10 @@ class SaleOrderLine(models.Model):
     @api.depends('price_unit')
     def get_product_unit_python_price(self):
         for record in self:
-            if (record.product_id.tipo_calculo == 'personal'):
+            if (record.product_id.tipo_calculo in ['personal']):
 
                 # Inicialización:
-                inicio_extra = record.incio_extra
+                inicio_extra = record.inicio_extra
                 inicio_ordinario = record.inicio_ordinario
                 final_ordinario = record.final_ordinario
                 final_extra = record.final_hextra
