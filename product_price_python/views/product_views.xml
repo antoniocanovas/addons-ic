@@ -11,7 +11,7 @@
                 <page string="Service price computed">
                     <group name="prodct_price_calculation_python">
                         <field name="tipo_calculo" />
-                        <field name="incio_extra" widget="float_time" />
+                        <field name="inicio_extra" widget="float_time" />
                         <field name="inicio_ordinario" widget="float_time" />
                         <field name="final_ordinario" widget="float_time" />
                         <field name="final_hextra" widget="float_time" />
