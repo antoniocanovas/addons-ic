@@ -27,10 +27,10 @@
                             <strong>Partner:</strong>
                             <p class="m-0" t-field="o.partner_id"/>
                         </div>
-                        <div class="col-auto col-3 mw-100 mb-2">
+                        <!--<div class="col-auto col-3 mw-100 mb-2">
                             <strong>Subtotal:</strong>
                             <p class="m-0" t-field="o.sale_subtotal"/>
-                        </div>
+                        </div>-->
                         <div class="col-auto col-3 mw-100 mb-2">
                             <strong>Sale State:</strong>
                             <p class="m-0" t-field="o.sale_state"/>
@@ -68,6 +68,7 @@
         <template id="work_sheet_report_document">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
+                    <t t-set="lang" t-value="o.partner_id.lang"/>
                     <t t-call="external_work.work_sheet_report_document_report" t-lang="lang"/>
                 </t>
             </t>
