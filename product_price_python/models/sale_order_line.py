@@ -9,22 +9,23 @@ class SaleOrderLine(models.Model):
     @api.depends('price_unit')
     def get_product_unit_python_price(self):
         for record in self:
-            if (record.product_id.tipo_calculo in ['personal']):
-
+            if (record.product_id.tipo_calculo in ['personal']) and (record.start_date) and (record.return_date):
+                #  raise UserError('SI')
                 # Inicialización:
-                inicio_extra = record.inicio_extra
-                inicio_ordinario = record.inicio_ordinario
-                final_ordinario = record.final_ordinario
-                final_extra = record.final_hextra
-                hextra_factor = record.hextra_factor
-                hfestivo_factor = record.hfestivo_factor
-                horas_minimo = record.horas_minimo
+                inicio_extra = record.product_id.inicio_extra
+                inicio_ordinario = record.product_id.inicio_ordinario
+                final_ordinario = record.product_id.final_ordinario
+                final_extra = record.product_id.final_hextra
+                hextra_factor = record.product_id.hextra_factor
+                hfestivo_factor = record.product_id.hfestivo_factor
+                horas_minimo = record.product_id.horas_minimo
                 hextras, hlaborales, festivos, laborables = 0, 0, 0, 0
 
                 fecha = datetime.datetime(year=record.start_date.year, month=record.start_date.month,
                                           day=record.start_date.day,
                                           hour=record.start_date.hour, minute=record.start_date.minute)
-                empieza_jornada = datetime.datetime(year=fecha.year, month=fecha.month, day=fecha.day, hour=incio_extra,
+                empieza_jornada = datetime.datetime(year=fecha.year, month=fecha.month, day=fecha.day,
+                                                    hour=inicio_extra,
                                                     minute=0)
                 termina_jornada = datetime.datetime(year=fecha.year, month=fecha.month, day=fecha.day, hour=final_extra,
                                                     minute=0)
@@ -38,10 +39,9 @@ class SaleOrderLine(models.Model):
                 # Número de días contratados:
                 ndias = (record.return_date - record.start_date).days + 1
 
-                # Fijar franja horaria cada media hora y como máximo empezamos en hmincontratable:
+                # Fijar franja horaria cada media hora y como máximo empezamos en inicio_extra:
                 empieza = fecha + datetime.timedelta(hours=inc)
-                empieza_minimo = datetime.datetime(year=fecha.year, month=fecha.month, day=fecha.day,
-                                                   hour=hmincontratable,
+                empieza_minimo = datetime.datetime(year=fecha.year, month=fecha.month, day=fecha.day, hour=inicio_extra,
                                                    minute=0)
 
                 if empieza.hour < empieza_minimo.hour:
@@ -59,9 +59,8 @@ class SaleOrderLine(models.Model):
                                                   hour=inicio_ordinario,
                                                   minute=0)
                 dif = (iniciojornada - empieza).total_seconds() / 3600.0
-                if (dif > 0) and (dif > inicio_ordinario - hmincontratable):  hextras += (
-                            inicio_ordinario - hmincontratable)
-                if (dif > 0) and (dif <= inicio_ordinario - hmincontratable):
+                if (dif > 0) and (dif > inicio_ordinario - inicio_extra):  hextras += (inicio_ordinario - inicio_extra)
+                if (dif > 0) and (dif <= inicio_ordinario - inicio_extra):
                     hextras += dif
                 else:
                     hextras += 0
@@ -101,9 +100,11 @@ class SaleOrderLine(models.Model):
                 # Festivos/laborables (pendiente):
                 date_list = [record.return_date.date() - datetime.timedelta(days=x) for x in range(ndias)]
                 for date in date_list:
-                    if (user.company_id.festivos) and (str(date) in user.company_id.festivos) or (date.weekday() == 6):
+
+                    if (date.weekday() == 6) or (user.company_id.festivos) and (str(date) in user.company_id.festivos):
                         festivos += 1
                 laborables = ndias - festivos
+                #  raise UserError(str(ndias) + " Laborables: " + str(laborables) + " Festivos: " + str(festivos))
 
                 # Cálculo coste total por día (laborable + festivos):
                 precio = record.product_id.list_price
