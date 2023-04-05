@@ -44,6 +44,7 @@
                                 <th name="th_product">Product</th>
                                 <th name="td_units">Quantity</th>
                                 <th name="th_measure">Unit</th>
+                                <th name="th_date">Date</th>
                             </tr>
                         </thead>
                         <tbody class="sale_tbody">
@@ -52,6 +53,7 @@
                                     <td name="td_product"><span t-field="line.product_id" /></td>
                                     <td name="td_units"><span t-field="line.product_qty" /></td>
                                     <td name="td_measure"><span t-field="line.uom_id.name" /></td>
+                                    <td name="td_date"><span t-field="line.date" /></td>
                                 </tr>
                             </t>
                         </tbody>
