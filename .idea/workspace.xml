@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="external_work expin" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="external_work rev">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external_work/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/i18n/es.po" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,13 +20,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/product_chassis/models/product_template.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/crm_contest/views/views_res_partner.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/account_invoice_merge/wizard/invoice_merge.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/product_vehicle/__manifest__.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/analytic_picking_auto/data/action_server.xml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -68,20 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00550" summary="product price update with supplierinfo">
-      <created>1676074446339</created>
-      <option name="number" value="00550" />
-      <option name="presentableId" value="LOCAL-00550" />
-      <option name="project" value="LOCAL" />
-      <updated>1676074446339</updated>
-    </task>
-    <task id="LOCAL-00551" summary="product price update with supplierinfo">
-      <created>1676074472400</created>
-      <option name="number" value="00551" />
-      <option name="presentableId" value="LOCAL-00551" />
-      <option name="project" value="LOCAL" />
-      <updated>1676074472400</updated>
     </task>
     <task id="LOCAL-00552" summary="product price update with supplierinfo">
       <created>1676075990637</created>
@@ -412,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679662709159</updated>
     </task>
-    <option name="localTasksCounter" value="599" />
+    <task id="LOCAL-00599" summary="external_work expin">
+      <created>1679663032914</created>
+      <option name="number" value="00599" />
+      <option name="presentableId" value="LOCAL-00599" />
+      <option name="project" value="LOCAL" />
+      <updated>1679663032914</updated>
+    </task>
+    <task id="LOCAL-00600" summary="external_work rev">
+      <created>1680695669903</created>
+      <option name="number" value="00600" />
+      <option name="presentableId" value="LOCAL-00600" />
+      <option name="project" value="LOCAL" />
+      <updated>1680695669903</updated>
+    </task>
+    <option name="localTasksCounter" value="601" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -428,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="roadmap v4 rev" />
     <MESSAGE value="hrtsw state" />
     <MESSAGE value="hrtsw todo sale_id required" />
     <MESSAGE value="hrtsw_section2done" />
@@ -453,7 +448,8 @@
     <MESSAGE value="wup bug &amp; dependencies" />
     <MESSAGE value="sale_wup pre-post-domain" />
     <MESSAGE value="external_work expin" />
-    <option name="LAST_COMMIT_MESSAGE" value="external_work expin" />
+    <MESSAGE value="external_work rev" />
+    <option name="LAST_COMMIT_MESSAGE" value="external_work rev" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

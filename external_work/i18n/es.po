@@ -594,6 +594,11 @@ msgid "Unit"
 msgstr "Unidad"
 
 #. module: external_work
+#: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
+msgid "Date"
+msgstr "Fecha"
+
+#. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__message_unread
 msgid "Unread Messages"
 msgstr "Menajes sin leer"
