@@ -7,7 +7,7 @@
 
 {
     "name": "Purchase price update",
-    "version": "14.0.2.0.1",
+    "version": "14.0.2.0.2",
     "category": "Sales",
     "author": "Serincloud",
     "maintainer": "Serincloud",
@@ -21,6 +21,7 @@
         "views/model_view.xml",
         "wizards/wizard_template.xml",
         "security/ir.model.access.csv",
+        "security/user_groups.xml",
     ],
     "installable": True,
 }
