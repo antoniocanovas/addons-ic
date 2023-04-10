@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="external_work rev">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="Purchase price update group warning" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,13 +61,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00553" summary="product price update with supplierinfo">
-      <created>1676292369419</created>
-      <option name="number" value="00553" />
-      <option name="presentableId" value="LOCAL-00553" />
-      <option name="project" value="LOCAL" />
-      <updated>1676292369419</updated>
     </task>
     <task id="LOCAL-00554" summary="product price update with supplierinfo">
       <created>1676369951687</created>
@@ -407,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680696830546</updated>
     </task>
-    <option name="localTasksCounter" value="602" />
+    <task id="LOCAL-00602" summary="Purchase price update group warning">
+      <created>1680912599995</created>
+      <option name="number" value="00602" />
+      <option name="presentableId" value="LOCAL-00602" />
+      <option name="project" value="LOCAL" />
+      <updated>1680912599995</updated>
+    </task>
+    <option name="localTasksCounter" value="603" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -423,7 +421,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="hrtsw state" />
     <MESSAGE value="hrtsw todo sale_id required" />
     <MESSAGE value="hrtsw_section2done" />
     <MESSAGE value="hrtsw_multisection" />
@@ -448,7 +445,8 @@
     <MESSAGE value="sale_wup pre-post-domain" />
     <MESSAGE value="external_work expin" />
     <MESSAGE value="external_work rev" />
-    <option name="LAST_COMMIT_MESSAGE" value="external_work rev" />
+    <MESSAGE value="Purchase price update group warning" />
+    <option name="LAST_COMMIT_MESSAGE" value="Purchase price update group warning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

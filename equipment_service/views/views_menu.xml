@@ -41,7 +41,7 @@
     <record id="menu_equipment_services" model="ir.ui.menu">
         <field name="action" ref="action_equipment_service"/>
         <field name="active" eval="True"/>
-        <field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('maintenance.group_equipment_manager')])]"/>
         <field name="name">Services</field>
         <field name="parent_id" ref="maintenance.menu_maintenance_title"/>
         <field name="sequence">5</field>
