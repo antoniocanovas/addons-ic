@@ -64,13 +64,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00555" summary="product price update with supplierinfo">
-      <created>1676370123929</created>
-      <option name="number" value="00555" />
-      <option name="presentableId" value="LOCAL-00555" />
-      <option name="project" value="LOCAL" />
-      <updated>1676370123929</updated>
-    </task>
     <task id="LOCAL-00556" summary="product price update with supplierinfo">
       <created>1676415201552</created>
       <option name="number" value="00556" />
@@ -407,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681148065131</updated>
     </task>
-    <option name="localTasksCounter" value="604" />
+    <task id="LOCAL-00604" summary="Services permission group">
+      <created>1682037247163</created>
+      <option name="number" value="00604" />
+      <option name="presentableId" value="LOCAL-00604" />
+      <option name="project" value="LOCAL" />
+      <updated>1682037247164</updated>
+    </task>
+    <option name="localTasksCounter" value="605" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
