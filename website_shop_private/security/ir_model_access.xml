@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+
+  <!-- Modify empty group to existing access permission: -->
+  <record id="website_sale.access_product_product_public" model="ir.model.access">
+    <field name="name">product.product</field>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_create" eval="False"/>
+    <field name="perm_write" eval="False"/>
+    <field name="perm_unlink" eval="False"/>
+    <field name="group_id" eval="ref('base.group_portal')"/>
+  </record>
+
+</odoo>
