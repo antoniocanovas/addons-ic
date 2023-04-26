@@ -26,11 +26,6 @@ class ExternalWork(models.Model):
     name = fields.Char('Name', compute='_get_workline_name')
 
     type        = fields.Selection(selection=TYPE, string="Type", default=TYPE[0][0])
-
-#    @api.depends('external_work_id')
-#    def _get_default_date(self):
-#        self.date = self.external_work_id.date
-#    date        = fields.Date(string='Date', compute=_get_default_date, readonly=False)
     date        = fields.Date(string='Date', readonly=False, default=date.today())
 
     @api.depends('external_work_id')
