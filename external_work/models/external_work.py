@@ -88,7 +88,7 @@ class ExternalWork(models.Model):
                                                             'unit_amount':li.ticket_amount / li.product_qty,
                                                             'product_id':li.product_id.id, 'quantity':li.product_qty,
                                                             'product_uom_id':li.uom_id.id,
-                                                            'external_work_id':record.id
+                                                            'external_work_id':self.id
                                                             })
                 li.hr_expense_id = newexpense.id
             elif (expense == True) and (li.hr_expense_id.id != False):
@@ -98,7 +98,7 @@ class ExternalWork(models.Model):
                                         'date': li.date, 'payment_mode':'own_account',
                                         'product_id':li.product_id.id, 'quantity':li.product_qty,
                                         'unit_amount':amount, 'product_uom_id':li.uom_id.id,
-                                        'external_work_id':record.id
+                                        'external_work_id':self.id
                                         })
 
             # SALE LINE FOR PRODUCT OR SERVICE:
