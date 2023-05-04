@@ -54,6 +54,11 @@ class ExternalWork(models.Model):
         self.line_count = len(self.line_ids.ids)
     line_count  = fields.Integer('Lines', store=False, compute='get_line_count')
 
+    @api.depends('line_ids')
+    def get_expense_count(self):
+        self.expense_count = len(self.expense_ids.ids)
+    expense_count  = fields.Integer('Expense count', store=False, compute='get_expense_count')
+
     @api.depends('code', 'subject')
     def _get_work_name(self):
         name=""
