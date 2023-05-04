@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="mrp_bom access">
-      <change afterPath="$PROJECT_DIR$/external_work/models/hr_expense.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external_work/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/models/__init__.py" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="external_work_expenses">
       <change beforePath="$PROJECT_DIR$/external_work/models/external_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/models/external_work.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,11 +41,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/external_work/models" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/external_work/security" />
       <recent name="$PROJECT_DIR$/external_work" />
       <recent name="$PROJECT_DIR$/hr_timesheet_work_multisection" />
-      <recent name="$PROJECT_DIR$/hr_timesheet_work_section2done/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/product_chassis/i18n" />
@@ -66,13 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00560" summary="external work v1">
-      <created>1676993754626</created>
-      <option name="number" value="00560" />
-      <option name="presentableId" value="LOCAL-00560" />
-      <option name="project" value="LOCAL" />
-      <updated>1676993754626</updated>
     </task>
     <task id="LOCAL-00561" summary="external work v1">
       <created>1676994296338</created>
@@ -410,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683077380053</updated>
     </task>
-    <option name="localTasksCounter" value="609" />
+    <task id="LOCAL-00609" summary="external_work_expenses">
+      <created>1683218865480</created>
+      <option name="number" value="00609" />
+      <option name="presentableId" value="LOCAL-00609" />
+      <option name="project" value="LOCAL" />
+      <updated>1683218865481</updated>
+    </task>
+    <option name="localTasksCounter" value="610" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,7 +423,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="hrtsw milestones in form" />
     <MESSAGE value="docurl in equipment_service &amp; helpdesk" />
     <MESSAGE value="bug1" />
     <MESSAGE value="bug" />
@@ -451,7 +447,8 @@
     <MESSAGE value="factura canje" />
     <MESSAGE value="external date today" />
     <MESSAGE value="mrp_bom access" />
-    <option name="LAST_COMMIT_MESSAGE" value="mrp_bom access" />
+    <MESSAGE value="external_work_expenses" />
+    <option name="LAST_COMMIT_MESSAGE" value="external_work_expenses" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
