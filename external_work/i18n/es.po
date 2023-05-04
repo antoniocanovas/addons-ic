@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-07 22:25+0000\n"
-"PO-Revision-Date: 2023-03-08 00:01+0100\n"
+"POT-Creation-Date: 2023-05-04 17:09+0000\n"
+"PO-Revision-Date: 2023-05-04 19:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -46,11 +46,6 @@ msgstr "<strong>Pedido de venta:</strong>"
 #: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
 msgid "<strong>Sale State:</strong>"
 msgstr "<strong>Estado del pedido:</strong>"
-
-#. module: external_work
-#: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
-msgid "<strong>Subtotal:</strong>"
-msgstr ""
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__message_needaction
@@ -139,6 +134,7 @@ msgstr "Moneda"
 #: model:ir.model.fields,field_description:external_work.field_external_work__date
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__date
 #: model_terms:ir.ui.view,arch_db:external_work.external_work_search
+#: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
 msgid "Date"
 msgstr "Fecha"
 
@@ -150,6 +146,7 @@ msgstr "Unidad de medida por defecto para todas las operaciones de stock."
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__display_name
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__display_name
+#: model:ir.model.fields,field_description:external_work.field_hr_expense__display_name
 #: model:ir.model.fields,field_description:external_work.field_product_product__display_name
 msgid "Display Name"
 msgstr "Nombre"
@@ -174,7 +171,8 @@ msgstr "Empleado"
 #. module: external_work
 #: model:ir.model.fields.selection,name:external_work.selection__external_work_line__type__ein
 msgid "Employee expense billable"
-msgstr "Gasto de empleado facturable (crea línea de ventas y gasto de empleado)"
+msgstr ""
+"Gasto de empleado facturable (crea línea de ventas y gasto de empleado)"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__time_end
@@ -182,9 +180,15 @@ msgid "End"
 msgstr "Fin"
 
 #. module: external_work
+#: model:ir.model,name:external_work.model_hr_expense
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__expense_id
 msgid "Expense"
 msgstr "Gasto"
+
+#. module: external_work
+#: model:ir.model.fields,field_description:external_work.field_external_work__expense_count
+msgid "Expense count"
+msgstr "Nº dietas"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__hr_expense_id
@@ -192,8 +196,15 @@ msgid "Expense line"
 msgstr "Línea de gasto"
 
 #. module: external_work
+#: model:ir.model.fields,field_description:external_work.field_external_work__expense_ids
+#: model_terms:ir.ui.view,arch_db:external_work.external_work_form
+msgid "Expenses"
+msgstr "Dietas"
+
+#. module: external_work
 #: model:ir.actions.report,name:external_work.external_work_report
 #: model:ir.model,name:external_work.model_external_work
+#: model:ir.model.fields,field_description:external_work.field_hr_expense__external_work_id
 #: model_terms:ir.ui.view,arch_db:external_work.external_work_tree
 msgid "External Work"
 msgstr "Trabajo externo"
@@ -237,8 +248,14 @@ msgid "Group By"
 msgstr "Agrupar por"
 
 #. module: external_work
+#: model:ir.actions.act_window,name:external_work.action_external_expenses
+msgid "HR Expenses"
+msgstr "Dietas RRHH"
+
+#. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__id
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__id
+#: model:ir.model.fields,field_description:external_work.field_hr_expense__id
 #: model:ir.model.fields,field_description:external_work.field_product_product__id
 msgid "ID"
 msgstr ""
@@ -267,7 +284,13 @@ msgstr "Si chequeado, algunos mensajes tienen error de entrega."
 #. module: external_work
 #: model:ir.model.fields.selection,name:external_work.selection__external_work_line__type__eni
 msgid "Internal employee expense"
-msgstr "Gasto interno de empleado (no facturable, crea línea de gasto, no de venta)"
+msgstr ""
+"Gasto interno de empleado (no facturable, crea línea de gasto, no de venta)"
+
+#. module: external_work
+#: model_terms:ir.actions.act_window,help:external_work.action_external_expenses
+msgid "Internal expense lines."
+msgstr "Líneas de dietas"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__message_is_follower
@@ -287,6 +310,7 @@ msgstr "Parte laboral"
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work____last_update
 #: model:ir.model.fields,field_description:external_work.field_external_work_line____last_update
+#: model:ir.model.fields,field_description:external_work.field_hr_expense____last_update
 #: model:ir.model.fields,field_description:external_work.field_product_product____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
@@ -318,7 +342,9 @@ msgstr "Anexo principal"
 #. module: external_work
 #: model:ir.model.fields.selection,name:external_work.selection__external_work__type__warranty
 msgid "Maintenance or warranty"
-msgstr "Mantenimiento o garantía (se añade el producto o servicio en el pedido a precio nulo)"
+msgstr ""
+"Mantenimiento o garantía (se añade el producto o servicio en el pedido a "
+"precio nulo)"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work_line__material_id
@@ -554,7 +580,9 @@ msgstr "Tareas"
 #. module: external_work
 #: model:ir.model.fields.selection,name:external_work.selection__external_work_line__type__sin
 msgid "Technical Service billable"
-msgstr "Partes de trabajo facturables (crea línea de venta valorada y parte de trabajo)"
+msgstr ""
+"Partes de trabajo facturables (crea línea de venta valorada y parte de "
+"trabajo)"
 
 #. module: external_work
 #: model:ir.model.fields.selection,name:external_work.selection__external_work_line__type__sni
@@ -592,11 +620,6 @@ msgstr "Unidad"
 #: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
 msgid "Unit"
 msgstr "Unidad"
-
-#. module: external_work
-#: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
-msgid "Date"
-msgstr "Fecha"
 
 #. module: external_work
 #: model:ir.model.fields,field_description:external_work.field_external_work__message_unread
@@ -652,7 +675,8 @@ msgstr "Prod. Servicio Técnico"
 #. module: external_work
 #: model_terms:ir.ui.view,arch_db:external_work.external_work_form
 msgid "Write anything you want be printed or must be take in account."
-msgstr "Escribe algo que quieras que se imprima o tenga que ser tenido en cuenta."
+msgstr ""
+"Escribe algo que quieras que se imprima o tenga que ser tenido en cuenta."
 
 #. module: external_work
 #: model_terms:ir.ui.view,arch_db:external_work.work_sheet_report_document_report
