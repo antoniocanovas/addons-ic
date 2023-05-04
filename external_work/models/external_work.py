@@ -33,6 +33,7 @@ class ExternalWork(models.Model):
     company_id  = fields.Many2one('res.company')
     currency_id = fields.Many2one('res.currency', store=True, default=1)
     state       = fields.Selection([('draft','Draft'),('done','Done')], store=True, default='draft')
+    expense_ids = fields.One2many('hr.expense', 'external_work_id', string='Expenses')
 
     @api.depends('create_date')
     def _get_external_work_code(self):
