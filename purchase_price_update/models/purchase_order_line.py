@@ -24,12 +24,14 @@ class PurchasePriceUpdate(models.Model):
     def get_supplierinfo_control(self):
         for record in self:
             control = False
+            # If not product variants, only product_tmpl_id is completed in supplierinfo:
             supplierinfo = self.env['product.supplierinfo'].search([
                 ('name', '=', record.partner_id.id),
-                ('product_id', '=', record.product_id.id),
+                ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id),
+                ('product_id', 'in', [record.product_id.id,False]),
                 ('product_uom', '=', record.product_uom.id),
                 ('min_qty', '=', 0),
-            ])
+            ])[0]
             if (supplierinfo.id) and (record.product_qty != 0) and \
                     (record.price_unit == supplierinfo.price) and \
                     (record.discount == supplierinfo.discount):
@@ -46,10 +48,11 @@ class PurchasePriceUpdate(models.Model):
     def update_supplier_price(self):
         supplier_price = self.env['product.supplierinfo'].search([
             ('name','=',self.partner_id.id),
-            ('product_id','=',self.product_id.id),
+            ('product_tmpl_id','=',self.product_tmpl_id.product_id.id),
+            ('product_id','in',[self.product_id.id, False]),
             ('product_uom','=',self.product_uom.id),
             ('min_qty','=',0),
-        ])
+        ])[0]
         control = False
         if (supplier_price.id) and (supplier_price.price != self.price_unit):   control = True
         if (supplier_price.id) and (supplier_price.discount != self.discount):  control = True
@@ -58,11 +61,11 @@ class PurchasePriceUpdate(models.Model):
         if not (supplier_price.id):
             self.env['product.supplierinfo'].create({'name':self.partner_id.id,
                                                      'product_id':self.product_id.id,
+                                                     'product_tmpl_id':self.product_id.product_tmpl_id.id,
                                                      'product_uom':self.product_uom.id,
                                                      'price':self.price_unit,
                                                      'discount':self.discount,
                                                      'min_qty':0,
-                                                     'product_tmpl_id':self.product_id.product_tmpl_id.id,
                                                      'delay':1})
         self.price_supplierinfo_control = True
 
