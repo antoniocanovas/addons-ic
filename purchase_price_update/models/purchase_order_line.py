@@ -25,13 +25,24 @@ class PurchasePriceUpdate(models.Model):
         for record in self:
             control = False
             # If not product variants, only product_tmpl_id is completed in supplierinfo:
+            # 1st.- Search by product_id:
             supplierinfo = self.env['product.supplierinfo'].search([
                 ('name', '=', record.partner_id.id),
                 ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id),
-                ('product_id', 'in', [record.product_id.id,False]),
+                ('product_id', '=', record.product_id.id),
                 ('product_uom', '=', record.product_uom.id),
                 ('min_qty', '=', 0),
             ])[0]
+            # 2nd.- Searhc by product_tmpl_id:
+            if not supplierinfo.id:
+                supplierinfo = self.env['product.supplierinfo'].search([
+                    ('name', '=', record.partner_id.id),
+                    ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id),
+                    ('product_id', '=', False),
+                    ('product_uom', '=', record.product_uom.id),
+                    ('min_qty', '=', 0),
+                ])[0]
+
             if (supplierinfo.id) and (record.product_qty != 0) and \
                     (record.price_unit == supplierinfo.price) and \
                     (record.discount == supplierinfo.discount):
@@ -49,7 +60,7 @@ class PurchasePriceUpdate(models.Model):
         supplier_price = self.env['product.supplierinfo'].search([
             ('name','=',self.partner_id.id),
             ('product_tmpl_id','=',self.product_id.product_tmpl_id.id),
-            ('product_id','in',[self.product_id.id, False]),
+            ('product_id','=',self.product_id.id),
             ('product_uom','=',self.product_uom.id),
             ('min_qty','=',0),
         ])[0]
