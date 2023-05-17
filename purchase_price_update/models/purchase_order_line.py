@@ -20,71 +20,52 @@ class PurchasePriceUpdate(models.Model):
     price_control = fields.Boolean(string='Price Control', compute='get_price_control')
 
     # Invisible icon in purchase_order_line with supplierinfo (requiere for record in self):
-    @api.depends('price_subtotal','price_unit')
+    @api.depends('price_subtotal', 'price_unit')
     def get_supplierinfo_control(self):
         for record in self:
             control = False
-            # If not product variants, only product_tmpl_id is completed in supplierinfo:
-            # 1st.- Search by product_id:
             supplierinfo = self.env['product.supplierinfo'].search([
                 ('name', '=', record.partner_id.id),
-                ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id),
                 ('product_id', '=', record.product_id.id),
                 ('product_uom', '=', record.product_uom.id),
                 ('min_qty', '=', 0),
-            ])[0]
-            # 2nd.- Searhc by product_tmpl_id:
-            if not supplierinfo.id:
-                supplierinfo = self.env['product.supplierinfo'].search([
-                    ('name', '=', record.partner_id.id),
-                    ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id),
-                    ('product_uom', '=', record.product_uom.id),
-                    ('min_qty', '=', 0),
-                ])[0]
-
+            ])
             if (supplierinfo.id) and (record.product_qty != 0) and \
                     (record.price_unit == supplierinfo.price) and \
                     (record.discount == supplierinfo.discount):
                 control = True
             record['price_supplierinfo_control'] = control
+
     price_supplierinfo_control = fields.Boolean(string='Supplierinfo Control', compute='get_supplierinfo_control')
 
     @api.depends('product_id')
     def get_standard_price(self):
         for record in self:
             record['standard_price'] = record.product_id.standard_price
+
     standard_price = fields.Float(string='Prev. Price', store=True, compute="get_standard_price")
 
     def update_supplier_price(self):
         supplier_price = self.env['product.supplierinfo'].search([
-            ('name','=',self.partner_id.id),
-            ('product_tmpl_id','=',self.product_id.product_tmpl_id.id),
-            ('product_id','=',self.product_id.id),
-            ('product_uom','=',self.product_uom.id),
-            ('min_qty','=',0),
-        ])[0]
-        if not supplier_price.id:
-            supplier_price = self.env['product.supplierinfo'].search([
-                ('name', '=', self.partner_id.id),
-                ('product_tmpl_id', '=', self.product_id.product_tmpl_id.id),
-                ('product_uom', '=', self.product_uom.id),
-                ('min_qty', '=', 0),
-            ])[0]
-
+            ('name', '=', self.partner_id.id),
+            ('product_id', '=', self.product_id.id),
+            ('product_uom', '=', self.product_uom.id),
+            ('min_qty', '=', 0),
+        ])
         control = False
         if (supplier_price.id) and (supplier_price.price != self.price_unit):   control = True
         if (supplier_price.id) and (supplier_price.discount != self.discount):  control = True
         if (control == True):
-            supplier_price.write({'price':self.price_unit, 'discount':self.discount})
+            supplier_price.write({'price': self.price_unit, 'discount': self.discount})
         if not (supplier_price.id):
-            self.env['product.supplierinfo'].create({'name':self.partner_id.id,
-                                                     'product_id':self.product_id.id,
-                                                     'product_tmpl_id':self.product_id.product_tmpl_id.id,
-                                                     'product_uom':self.product_uom.id,
-                                                     'price':self.price_unit,
-                                                     'discount':self.discount,
-                                                     'min_qty':0,
-                                                     'delay':1})
+            self.env['product.supplierinfo'].create({'name': self.partner_id.id,
+                                                     'product_id': self.product_id.id,
+                                                     'product_uom': self.product_uom.id,
+                                                     'price': self.price_unit,
+                                                     'discount': self.discount,
+                                                     'min_qty': 0,
+                                                     'product_tmpl_id': self.product_id.product_tmpl_id.id,
+                                                     'delay': 1})
         self.price_supplierinfo_control = True
 
     def update_product_standard_price(self):
@@ -124,10 +105,14 @@ class PurchasePriceUpdate(models.Model):
             if self.product_uom.id != self.product_id.uom_id.id:
                 ratio = 1
                 # uom_type: bigger, reference, smaller
-                if self.product_id.uom_id.uom_type == 'smaller': ratio = ratio / self.product_id.uom_po_id.factor
-                elif self.product_id.uom_id.uom_type == 'bigger': ratio = ratio * self.product_id.uom_po_id.factor_inv
-                if self.product_uom.uom_type == 'smaller': ratio = ratio * self.product_uom.factor
-                elif self.product_uom.uom_type == 'bigger': ratio = ratio / self.product_uom.factor_inv
+                if self.product_id.uom_id.uom_type == 'smaller':
+                    ratio = ratio / self.product_id.uom_po_id.factor
+                elif self.product_id.uom_id.uom_type == 'bigger':
+                    ratio = ratio * self.product_id.uom_po_id.factor_inv
+                if self.product_uom.uom_type == 'smaller':
+                    ratio = ratio * self.product_uom.factor
+                elif self.product_uom.uom_type == 'bigger':
+                    ratio = ratio / self.product_uom.factor_inv
                 price_unit = round(price_unit * ratio, monetary_precision)
 
             # Case: product_id without standard_price assigned:
@@ -136,9 +121,12 @@ class PurchasePriceUpdate(models.Model):
 
             # Case: New purchase price and standard_price assigned:
             elif price_unit != self.product_id.standard_price and self.product_id.standard_price != 0:
-                message = "Precio de coste actual: " + str(round(self.standard_price, monetary_precision)) + self.product_id.uom_id.name + "\n" + \
-                          "Precio de venta actual: " + str(round(self.product_id.lst_price, monetary_precision)) + "\n" + \
-                          "NUEVO PRECIO DE COSTE: " + str(round(price_unit,monetary_precision)) + " " + self.product_id.uom_id.name + "\n" + \
+                message = "Precio de coste actual: " + str(
+                    round(self.standard_price, monetary_precision)) + self.product_id.uom_id.name + "\n" + \
+                          "Precio de venta actual: " + str(
+                    round(self.product_id.lst_price, monetary_precision)) + "\n" + \
+                          "NUEVO PRECIO DE COSTE: " + str(
+                    round(price_unit, monetary_precision)) + " " + self.product_id.uom_id.name + "\n" + \
                           " !!  Recuerde pulsar el botón para actualizar, si procede el cambio !!"
 
         if message != '':
