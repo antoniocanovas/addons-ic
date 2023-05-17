@@ -38,7 +38,6 @@ class PurchasePriceUpdate(models.Model):
                 supplierinfo = self.env['product.supplierinfo'].search([
                     ('name', '=', record.partner_id.id),
                     ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id),
-                    ('product_id', '=', False),
                     ('product_uom', '=', record.product_uom.id),
                     ('min_qty', '=', 0),
                 ])[0]
@@ -64,6 +63,14 @@ class PurchasePriceUpdate(models.Model):
             ('product_uom','=',self.product_uom.id),
             ('min_qty','=',0),
         ])[0]
+        if not supplier_price.id:
+            supplier_price = self.env['product.supplierinfo'].search([
+                ('name', '=', self.partner_id.id),
+                ('product_tmpl_id', '=', self.product_id.product_tmpl_id.id),
+                ('product_uom', '=', self.product_uom.id),
+                ('min_qty', '=', 0),
+            ])[0]
+
         control = False
         if (supplier_price.id) and (supplier_price.price != self.price_unit):   control = True
         if (supplier_price.id) and (supplier_price.discount != self.discount):  control = True
