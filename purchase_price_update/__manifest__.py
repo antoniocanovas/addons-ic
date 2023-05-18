@@ -7,7 +7,7 @@
 
 {
     "name": "Purchase price update",
-    "version": "14.0.2.0.2",
+    "version": "14.0.2.0.3",
     "category": "Sales",
     "author": "Serincloud",
     "maintainer": "Serincloud",

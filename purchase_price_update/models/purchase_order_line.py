@@ -9,7 +9,7 @@ from odoo import api, fields, models, _
 class PurchasePriceUpdate(models.Model):
     _inherit = "purchase.order.line"
 
-    # Invisible icon in purchase_order_line standard_price (requiere for record in self):
+    # Invisible icon in purchase_order_line standard_price (requierd for record in self):
     @api.depends('price_subtotal','price_unit')
     def get_price_control(self):
         for record in self:
@@ -19,7 +19,7 @@ class PurchasePriceUpdate(models.Model):
             record['price_control'] = control
     price_control = fields.Boolean(string='Price Control', compute='get_price_control')
 
-    # Invisible icon in purchase_order_line with supplierinfo (requiere for record in self):
+    # Invisible icon in purchase_order_line with supplierinfo (requierd for record in self):
     @api.depends('price_subtotal', 'price_unit')
     def get_supplierinfo_control(self):
         for record in self:
@@ -38,6 +38,7 @@ class PurchasePriceUpdate(models.Model):
 
     price_supplierinfo_control = fields.Boolean(string='Supplierinfo Control', compute='get_supplierinfo_control')
 
+    # Store TODAY standard_price in this purchase.order.line to be used later:
     @api.depends('product_id')
     def get_standard_price(self):
         for record in self:
@@ -45,13 +46,27 @@ class PurchasePriceUpdate(models.Model):
 
     standard_price = fields.Float(string='Prev. Price', store=True, compute="get_standard_price")
 
+    # Create or Update supplierinfo line from purchase_order_line icon:
     def update_supplier_price(self):
+        # Case 'a': Variants from template => product_tmpl_id and product_id.id established in supplierinfo:
         supplier_price = self.env['product.supplierinfo'].search([
             ('name', '=', self.partner_id.id),
+            ('product_tmpl_id', '=', self.product_id.product_tmpl_id.id),
             ('product_id', '=', self.product_id.id),
             ('product_uom', '=', self.product_uom.id),
             ('min_qty', '=', 0),
         ])
+
+        # Case 'b': No variants => product_tmpl_id ok but no product_id.id in supplierinfo:
+        if not supplier_price.id:
+            supplier_price = self.env['product.supplierinfo'].search([
+                ('name', '=', self.partner_id.id),
+                ('product_tmpl_id', '=', self.product_id.product_tmpl_id.id),
+                ('product_id', '=', False),
+                ('product_uom', '=', self.product_uom.id),
+                ('min_qty', '=', 0),
+            ])
+
         control = False
         if (supplier_price.id) and (supplier_price.price != self.price_unit):   control = True
         if (supplier_price.id) and (supplier_price.discount != self.discount):  control = True
@@ -68,6 +83,7 @@ class PurchasePriceUpdate(models.Model):
                                                      'delay': 1})
         self.price_supplierinfo_control = True
 
+    # Update standar_price product from purchase_order_line icon:
     def update_product_standard_price(self):
         monetary_precision = self.env['decimal.precision'].sudo().search([('id', '=', 1)]).digits
         ratio = 1
@@ -86,6 +102,7 @@ class PurchasePriceUpdate(models.Model):
             self.product_id.standard_price = new_purchase_price
         self.price_control = True
 
+    # Floating Window notifying stored and this line comparison prices:
     @api.onchange('price_subtotal')
     def price_unit_wizard(self):
         message = ''
