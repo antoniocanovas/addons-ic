@@ -19,17 +19,33 @@ class PurchasePriceUpdate(models.Model):
             record['price_control'] = control
     price_control = fields.Boolean(string='Price Control', compute='get_price_control')
 
-    # Invisible icon in purchase_order_line with supplierinfo (requierd for record in self):
+
+
+    # Invisible icon in purchase_order_line with supplierinfo (required record in self):
     @api.depends('price_subtotal', 'price_unit')
     def get_supplierinfo_control(self):
         for record in self:
             control = False
+
+            # Case 'a': Variants enabled => product_tmpl_id and product_id.id established in supplierinfo:
             supplierinfo = self.env['product.supplierinfo'].search([
                 ('name', '=', record.partner_id.id),
+                ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id),
                 ('product_id', '=', record.product_id.id),
                 ('product_uom', '=', record.product_uom.id),
                 ('min_qty', '=', 0),
             ])
+
+            # Case 'b': Variants disabled => product_tmpl_id ok but no product_id.id in supplierinfo:
+            if not supplierinfo.id:
+                supplierinfo = self.env['product.supplierinfo'].search([
+                    ('name', '=', record.partner_id.id),
+                    ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id),
+                    ('product_id', '=', False),
+                    ('product_uom', '=', record.product_uom.id),
+                    ('min_qty', '=', 0),
+                ])
+
             if (supplierinfo.id) and (record.product_qty != 0) and \
                     (record.price_unit == supplierinfo.price) and \
                     (record.discount == supplierinfo.discount):
@@ -37,6 +53,9 @@ class PurchasePriceUpdate(models.Model):
             record['price_supplierinfo_control'] = control
 
     price_supplierinfo_control = fields.Boolean(string='Supplierinfo Control', compute='get_supplierinfo_control')
+
+
+
 
     # Store TODAY standard_price in this purchase.order.line to be used later:
     @api.depends('product_id')
@@ -48,7 +67,7 @@ class PurchasePriceUpdate(models.Model):
 
     # Create or Update supplierinfo line from purchase_order_line icon:
     def update_supplier_price(self):
-        # Case 'a': Variants from template => product_tmpl_id and product_id.id established in supplierinfo:
+        # Case 'a': Variant enabled => product_tmpl_id and product_id.id established in supplierinfo:
         supplier_price = self.env['product.supplierinfo'].search([
             ('name', '=', self.partner_id.id),
             ('product_tmpl_id', '=', self.product_id.product_tmpl_id.id),
@@ -57,7 +76,7 @@ class PurchasePriceUpdate(models.Model):
             ('min_qty', '=', 0),
         ])
 
-        # Case 'b': No variants => product_tmpl_id ok but no product_id.id in supplierinfo:
+        # Case 'b': Variant disabled => product_tmpl_id ok but no product_id.id in supplierinfo:
         if not supplier_price.id:
             supplier_price = self.env['product.supplierinfo'].search([
                 ('name', '=', self.partner_id.id),

@@ -2,12 +2,12 @@
 ##############################################################################
 #    License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 #    Copyright (C) 2021 Serincloud S.L. All Rights Reserved
-#    PedroGuirao pedro@serincloud.com
+#    Serincloud SL
 ##############################################################################
 
 {
     "name": "Purchase price update",
-    "version": "14.0.2.0.3",
+    "version": "14.0.2.0.2",
     "category": "Sales",
     "author": "Serincloud",
     "maintainer": "Serincloud",
