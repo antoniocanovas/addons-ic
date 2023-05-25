@@ -14,8 +14,9 @@ class PurchasePriceUpdate(models.Model):
     def get_price_control(self):
         for record in self:
             control = False
-            if (record.product_qty) and (record.price_subtotal / record.product_qty) == record.product_id.standard_price:
-                control = True
+            if (record.product_id.id):
+                if (record.product_qty) and (record.price_subtotal / record.product_qty) == record.product_id.standard_price:
+                    control = True
             record['price_control'] = control
     price_control = fields.Boolean(string='Price Control', compute='get_price_control')
 
@@ -26,30 +27,30 @@ class PurchasePriceUpdate(models.Model):
     def get_supplierinfo_control(self):
         for record in self:
             control = False
-
-            # Case 'a': Variants enabled => product_tmpl_id and product_id.id established in supplierinfo:
-            supplierinfo = self.env['product.supplierinfo'].search([
-                ('name', '=', record.partner_id.id),
-                ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id),
-                ('product_id', '=', record.product_id.id),
-                ('product_uom', '=', record.product_uom.id),
-                ('min_qty', '=', 0),
-            ])
-
-            # Case 'b': Variants disabled => product_tmpl_id ok but no product_id.id in supplierinfo:
-            if not supplierinfo.id:
+            if (record.product_id.id):
+                # Case 'a': Variants enabled => product_tmpl_id and product_id.id established in supplierinfo:
                 supplierinfo = self.env['product.supplierinfo'].search([
                     ('name', '=', record.partner_id.id),
                     ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id),
-                    ('product_id', '=', False),
+                    ('product_id', '=', record.product_id.id),
                     ('product_uom', '=', record.product_uom.id),
                     ('min_qty', '=', 0),
                 ])
 
-            if (supplierinfo.id) and (record.product_qty != 0) and \
-                    (record.price_unit == supplierinfo.price) and \
-                    (record.discount == supplierinfo.discount):
-                control = True
+                # Case 'b': Variants disabled => product_tmpl_id ok but no product_id.id in supplierinfo:
+                if not supplierinfo.id:
+                    supplierinfo = self.env['product.supplierinfo'].search([
+                        ('name', '=', record.partner_id.id),
+                        ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id),
+                        ('product_id', '=', False),
+                        ('product_uom', '=', record.product_uom.id),
+                        ('min_qty', '=', 0),
+                    ])
+
+                if (supplierinfo.id) and (record.product_qty != 0) and \
+                        (record.price_unit == supplierinfo.price) and \
+                        (record.discount == supplierinfo.discount):
+                    control = True
             record['price_supplierinfo_control'] = control
 
     price_supplierinfo_control = fields.Boolean(string='Supplierinfo Control', compute='get_supplierinfo_control')
