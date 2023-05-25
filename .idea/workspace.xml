@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="priceupdate_templ">
-      <change beforePath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/purchase_price_update/views/model_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_price_update/views/model_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,13 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00574" summary="external work v1">
-      <created>1677805546788</created>
-      <option name="number" value="00574" />
-      <option name="presentableId" value="LOCAL-00574" />
-      <option name="project" value="LOCAL" />
-      <updated>1677805546788</updated>
     </task>
     <task id="LOCAL-00575" summary="roadmap with contact_id">
       <created>1677848984165</created>
@@ -407,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685037148214</updated>
     </task>
-    <option name="localTasksCounter" value="623" />
+    <task id="LOCAL-00623" summary="priceupdate_templ">
+      <created>1685037527726</created>
+      <option name="number" value="00623" />
+      <option name="presentableId" value="LOCAL-00623" />
+      <option name="project" value="LOCAL" />
+      <updated>1685037527726</updated>
+    </task>
+    <option name="localTasksCounter" value="624" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

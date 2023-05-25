@@ -10,8 +10,8 @@
                 <field name="standard_price" widget="monetary" style="color: purple;font-weight: bold;"/>
                 <button name="update_product_standard_price" attrs="{'invisible':['|',('product_id','=',False),('price_control','=',True)]}" string="cost" type="object" icon="fa-share-square-o"/>
                 <button name="update_supplier_price" attrs="{'invisible':['|',('product_id','=',False),('price_supplierinfo_control','=',True)]}" string="pricelist" type="object" icon="fa-arrow-circle-right"/>
-                <field name="price_control" invisible="1"/>
-                <field name="price_supplierinfo_control" invisible="1"/>
+                <field name="price_control" invisible="1" force_save="1"/>
+                <field name="price_supplierinfo_control" invisible="1" force_save="1"/>
             </xpath>
         </field>
     </record>
