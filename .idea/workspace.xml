@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="priceupdate_templ">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/purchase_price_update/views/model_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_price_update/views/model_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,13 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00575" summary="roadmap with contact_id">
-      <created>1677848984165</created>
-      <option name="number" value="00575" />
-      <option name="presentableId" value="LOCAL-00575" />
-      <option name="project" value="LOCAL" />
-      <updated>1677848984165</updated>
     </task>
     <task id="LOCAL-00576" summary="roadmap with contact_id">
       <created>1677849438424</created>
@@ -407,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685037527726</updated>
     </task>
-    <option name="localTasksCounter" value="624" />
+    <task id="LOCAL-00624" summary="priceupdate_templ">
+      <created>1685037833310</created>
+      <option name="number" value="00624" />
+      <option name="presentableId" value="LOCAL-00624" />
+      <option name="project" value="LOCAL" />
+      <updated>1685037833310</updated>
+    </task>
+    <option name="localTasksCounter" value="625" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

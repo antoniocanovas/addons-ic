@@ -14,12 +14,11 @@ class PurchasePriceUpdate(models.Model):
     def get_price_control(self):
         for record in self:
             control = False
-            if (record.product_id.id):
-                if (record.product_qty) and (record.price_subtotal / record.product_qty) == record.product_id.standard_price:
+            if (record.product_id.id) and (record.product_qty) and \
+                    (record.price_subtotal / record.product_qty) == record.product_id.standard_price:
                     control = True
             record['price_control'] = control
     price_control = fields.Boolean(string='Price Control', compute='get_price_control')
-
 
 
     # Invisible icon in purchase_order_line with supplierinfo (required record in self):
