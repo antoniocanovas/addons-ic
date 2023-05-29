@@ -62,9 +62,6 @@ class TimeSheetWorkSheet(models.Model):
         string='Imputaciones'
     )
 
-    sheet_employee_ids = fields.One2many('work.sheet.employee', 'sheet_id', string='Employees', store=True)
-    sheet_task_ids = fields.Many2many('work.sheet.task', string='Employees', store=True)
-
     # SO pickings available to add:
     @api.depends('work_id.sale_order_ids', 'picking_ids')
     def get_pending_order_pickings(self):
@@ -103,14 +100,14 @@ class TimeSheetWorkSheet(models.Model):
 
     project_ids = fields.Many2many('project.project', compute=get_projects, store=False)
 
-    #    @api.depends('project_service_ids', 'project_product_ids', 'repair_service_ids', 'repair_product_ids','mrp_service_ids', 'mrp_product_ids')
+#    @api.depends('project_service_ids', 'project_product_ids', 'repair_service_ids', 'repair_product_ids','mrp_service_ids', 'mrp_product_ids')
     @api.depends('project_service_ids', 'project_product_ids')
     def get_workread_only(self):
         for record in self:
             isreadonly = False
-            #            if record.project_service_ids or record.project_product_ids or record.repair_service_ids.ids or record.repair_product_ids or record.mrp_service_ids or record.mrp_product_ids:
+#            if record.project_service_ids or record.project_product_ids or record.repair_service_ids.ids or record.repair_product_ids or record.mrp_service_ids or record.mrp_product_ids:
             if record.project_service_ids or record.project_product_ids:
-                isreadonly = True
+                    isreadonly = True
             record['work_readonly'] = isreadonly
 
     work_readonly = fields.Boolean(string='Read only', compute=get_workread_only, store=True)
@@ -125,7 +122,7 @@ class TimeSheetWorkSheet(models.Model):
                 # pdf result is a list
                 b64_pdf = base64.b64encode(pdf[0])
                 main_attachment = self.env['ir.attachment'].sudo().search(
-                    ['&', ('res_id', '=', record.id), ('name', '=', str(record.time_type_id.name) + '.pdf')]
+                   ['&', ('res_id', '=', record.id), ('name', '=', str(record.time_type_id.name) + '.pdf')]
                 )
                 main_attachment.unlink()
                 # save pdf as attachment
@@ -203,76 +200,3 @@ class TimeSheetWorkSheet(models.Model):
                     if (record.set_start_stop == True):
                         duration = record.stop - record.start
                         new.write({'time_start':record.start, 'time_stop':record.stop, 'unit_amount':duration})
-
-    @api.depends('state')
-    def update_employees_and_tasks_resume(self):
-        for record in self:
-            # Searching for unique employees and task names:
-            unique_ts_task, name_unique_task, sheet_employee = [], [], []
-            for aal in record.project_service_ids:
-                if aal.employee_id not in sheet_employee: sheet_employee.append(aal.employee_id)
-
-                name_task = str(aal.task_id.id) + aal.name
-                if name_task not in name_unique_task:
-                    unique_ts_task.append(aal)
-                    name_unique_task.append(name_task)
-
-            # Cleaning old data:
-            for li in record.sheet_employee_ids:
-                if li.employee_id.id not in sheet_employee: li.unlink()
-            for li in record.sheet_task_ids:
-                if li.task_id.id not in unique_ts_task: li.unlink()
-
-            # Computing employees:
-            for employee in sheet_employee:
-                standard, extra, tasks = 0, 0, []
-                exist = self.env['work.sheet.employee'].search(
-                    [('sheet_id', '=', record.id), ('employee_id', '=', employee.id)])
-                lines = self.env['account.analytic.line'].search(
-                    [('work_sheet_id', '=', record.id), ('employee_id', '=', employee.id)])
-
-                for li in lines:
-                    if li.task_id.id not in tasks: tasks.append(li.task_id.id)
-
-                    if (li.time_type_id.extra == True):
-                        extra += li.unit_amount
-                    else:
-                        standard += li.unit_amount
-
-                if not exist.id:
-                    new = self.env['work.sheet.employee'].create({'employee_id': employee.id, 'sheet_id': record.id,
-                                                                  'standard_time': standard, 'extra_time': extra,
-                                                                  'task_ids':[(6,0,tasks)]})
-                else:
-                    exist.write({'employee_id': employee.id, 'sheet_id': record.id, 'task_ids':[(6,0,tasks)],
-                                 'standard_time': standard, 'extra_time': extra})
-
-            # Computing tasks: (voy revisando por aquí)
-            task_list = []
-            for aal in unique_ts_task:
-                employees = []
-                standard, extra, name = 0, 0, ""
-                if aal.employee_id not in employees: employees.append(aal.employee_id.id)
-
-                exist = self.env['work.sheet.task'].search([('sheet_id', '=', record.id), ('task_id', '=', aal.task_id.id)])
-                lines = self.env['account.analytic.line'].search(
-                    [('work_sheet_id', '=', record.id), ('task_id', '=', aal.task_id.id)])
-
-
-                for li in lines:
-                    if li.employee_id.id not in employees: employees.append(li.employee_id.id)
-                    if (li.time_type_id.extra == True):
-                        extra += li.unit_amount
-                    else:
-                        standard += li.unit_amount
-
-                if not exist.id:
-                    new = self.env['work.sheet.task'].create({'task_id': aal.task_id.id, 'sheet_id': record.id,
-                                                              'name': aal.name, 'employee_ids':[(6,0,employees)],
-                                                              'standard_time': standard, 'extra_time': extra})
-                    task_list.append(new.id)
-                else:
-                    exist.write({'task_id': aal.task_id.id, 'sheet_id': record.id, 'name': aal.name,
-                                 'employee_ids':[(6,0,employees)], 'standard_time': standard, 'extra_time': extra})
-                    task_list.append(exist.id)
-            record['sheet_task_ids'] = [(6, 0, task_list)]

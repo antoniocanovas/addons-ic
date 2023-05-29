@@ -37,8 +37,7 @@ Printed format as receipt to customer.
         'views/timesheet_line_done_views.xml',
         'views/sale_order_views.xml',
         'views/hr_expense_views.xml',
-        'views/project_time_type_views.xml',
         'views/menu_views.xml',
     ],
-    'installable': True,
+    'installable': False,
 }
