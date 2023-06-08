@@ -98,7 +98,7 @@ class AccountBankStatementCBI(models.Model):
         company_ids = self.env['res.company'].search([])
 
         for company_id in company_ids:
-
+            print("COMPANY", company_id.name)
             if company_id.ftp_url_cbi and company_id.ftp_port_cbi and company_id.ftp_user_cbi and company_id.ftp_passwd_cbi:
                 try:
                     sftpclient = self.create_sftp_client(company_id.ftp_url_cbi, company_id.ftp_port_cbi,
@@ -113,7 +113,7 @@ class AccountBankStatementCBI(models.Model):
                         result = sftpclient.chdir(path=path)
                         filelist = sftpclient.listdir('.')
                         for f in filelist:
-
+                            print("file",f)
                             if f != 'Historico':
                                 if f not in imported_n43_list:
                                     file = sftpclient.file(f, mode='r', bufsize=-1)
@@ -131,6 +131,7 @@ class AccountBankStatementCBI(models.Model):
                                                 second_bank_secuence = bank_mnt_account_number[14:]
                                                 bank_account_number = first_bank_sequence + second_bank_secuence
                                                 if bank_account_number == bsa_bank_number:
+                                                    print("MACHT")
                                                     with open('/tmp/%s' % f, "r+b") as file:
                                                         data = file.read()
                                                         file.close()
