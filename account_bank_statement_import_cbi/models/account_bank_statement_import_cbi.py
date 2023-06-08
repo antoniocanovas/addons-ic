@@ -114,7 +114,7 @@ class AccountBankStatementCBI(models.Model):
                         filelist = sftpclient.listdir('.')
                         for f in filelist:
                             print("file",f)
-                            if f != 'Historico':
+                            if f != 'Historico' and f != 'Desplazados':
                                 if f not in imported_n43_list:
                                     file = sftpclient.file(f, mode='r', bufsize=-1)
                                     file_first = file.readline()
