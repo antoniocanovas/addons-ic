@@ -5,8 +5,14 @@ from odoo.exceptions import ValidationError
 class ExternalWork(models.Model):
     _inherit = 'external.work'
 
-
-    sale_type_id = fields.Many2one('sale.order.type', string="Sale type", store=True, required=True)
+    @api.depends('sale_id')
+    def _get_sale_order_type(self):
+        type = False
+        if self.sale_id.id:
+            type = self.sale_id.type_id.id
+        self.sale_type_id = type
+    sale_type_id = fields.Many2one('sale.order.type', string="Sale type", store=True, required=True,
+                                   readonly=False, compute='_get_sale_order_type')
 
     def action_work_update(self):
         # Create or update sale.order if not:

@@ -2,45 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="ts_work milestone in wizard">
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/data/action_server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/data/action_server.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/data/rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/data/rules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/i18n/es.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/account_analytic_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/account_analytic_line.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/account_analytic_tag.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/account_analytic_tag.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/hr_expense.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/hr_expense.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/project_time_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/project_time_type.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/sale_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/sale_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/sale_order_line.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/stock_picking.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/stock_picking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_done.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/timesheet_line_done.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_line_todo.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/timesheet_line_todo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/timesheet_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/timesheet_work.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/work_picking_wizard.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/work_picking_wizard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/work_sheet.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/work_sheet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/work_sheet_employee.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/work_sheet_employee.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/work_sheet_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/work_sheet_task.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/models/work_timesheet_wizard.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/models/work_timesheet_wizard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/security/ir.model.access.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/static/hr_worksheet_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/static/hr_worksheet_icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/account_analytic_line_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/account_analytic_line_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/account_analytic_tag_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/account_analytic_tag_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/hr_employee.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/hr_employee.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/hr_expense_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/hr_expense_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/menu_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/project_time_type_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/project_time_type_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/sale_order_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/sale_order_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/stock_picking_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/stock_picking_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/templates.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_done_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/timesheet_line_done_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_line_todo_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/timesheet_line_todo_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/timesheet_work_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/timesheet_work_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/work_picking_wizard_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/work_picking_wizard_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_report.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/work_sheet_report.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/work_sheet_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/work_sheet_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr_timesheet_work/views/work_timesheet_wizard_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hr_timesheet_work_150623/views/work_timesheet_wizard_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external_work_sale_type/models/external_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/external_work_sale_type/models/external_work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external_work_sale_type/views/external_work_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/external_work_sale_type/views/external_work_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,27 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00582" summary="roadmap with contact_id">
-      <created>1677980454700</created>
-      <option name="number" value="00582" />
-      <option name="presentableId" value="LOCAL-00582" />
-      <option name="project" value="LOCAL" />
-      <updated>1677980454700</updated>
-    </task>
-    <task id="LOCAL-00583" summary="roadmap with contact_id">
-      <created>1677980764842</created>
-      <option name="number" value="00583" />
-      <option name="presentableId" value="LOCAL-00583" />
-      <option name="project" value="LOCAL" />
-      <updated>1677980764842</updated>
-    </task>
-    <task id="LOCAL-00584" summary="roadmap with contact_id">
-      <created>1677982061945</created>
-      <option name="number" value="00584" />
-      <option name="presentableId" value="LOCAL-00584" />
-      <option name="project" value="LOCAL" />
-      <updated>1677982061945</updated>
     </task>
     <task id="LOCAL-00585" summary="external_work remove task from sale">
       <created>1678212327094</created>
@@ -446,7 +389,28 @@
       <option name="project" value="LOCAL" />
       <updated>1686844730023</updated>
     </task>
-    <option name="localTasksCounter" value="631" />
+    <task id="LOCAL-00631" summary="ts_work milestone in wizard">
+      <created>1686848214680</created>
+      <option name="number" value="00631" />
+      <option name="presentableId" value="LOCAL-00631" />
+      <option name="project" value="LOCAL" />
+      <updated>1686848214680</updated>
+    </task>
+    <task id="LOCAL-00632" summary="ts_work milestone in wizard">
+      <created>1686848303165</created>
+      <option name="number" value="00632" />
+      <option name="presentableId" value="LOCAL-00632" />
+      <option name="project" value="LOCAL" />
+      <updated>1686848303165</updated>
+    </task>
+    <task id="LOCAL-00633" summary="ts_work milestone in wizard">
+      <created>1686848337796</created>
+      <option name="number" value="00633" />
+      <option name="presentableId" value="LOCAL-00633" />
+      <option name="project" value="LOCAL" />
+      <updated>1686848337796</updated>
+    </task>
+    <option name="localTasksCounter" value="634" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
