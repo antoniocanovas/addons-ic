@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hr_tswork_new">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchase price multicompany">
+      <change beforePath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00578" summary="roadmap with contact_id">
-      <created>1677857848862</created>
-      <option name="number" value="00578" />
-      <option name="presentableId" value="LOCAL-00578" />
-      <option name="project" value="LOCAL" />
-      <updated>1677857848862</updated>
     </task>
     <task id="LOCAL-00579" summary="roadmap with contact_id">
       <created>1677947931045</created>
@@ -408,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685374912146</updated>
     </task>
-    <option name="localTasksCounter" value="627" />
+    <task id="LOCAL-00627" summary="purchase price multicompany">
+      <created>1686827156091</created>
+      <option name="number" value="00627" />
+      <option name="presentableId" value="LOCAL-00627" />
+      <option name="project" value="LOCAL" />
+      <updated>1686827156091</updated>
+    </task>
+    <option name="localTasksCounter" value="628" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="translate chassis" />
     <MESSAGE value="equipment_service customer_id" />
     <MESSAGE value="equipment_service group" />
     <MESSAGE value="wup handle" />
@@ -449,7 +448,8 @@
     <MESSAGE value="hr_ts-wizard_id" />
     <MESSAGE value="priceupdate_templ" />
     <MESSAGE value="hr_tswork_new" />
-    <option name="LAST_COMMIT_MESSAGE" value="hr_tswork_new" />
+    <MESSAGE value="purchase price multicompany" />
+    <option name="LAST_COMMIT_MESSAGE" value="purchase price multicompany" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
