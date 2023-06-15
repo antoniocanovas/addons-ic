@@ -40,5 +40,5 @@ Printed format as receipt to customer.
         'views/project_time_type_views.xml',
         'views/menu_views.xml',
     ],
-    'installable': True,
+    'installable': False,
 }
