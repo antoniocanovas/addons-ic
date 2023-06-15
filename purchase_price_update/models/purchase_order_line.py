@@ -55,8 +55,6 @@ class PurchasePriceUpdate(models.Model):
     price_supplierinfo_control = fields.Boolean(string='Supplierinfo Control', compute='get_supplierinfo_control')
 
 
-
-
     # Store TODAY standard_price in this purchase.order.line to be used later:
     @api.depends('product_id')
     def get_standard_price(self):
@@ -74,6 +72,7 @@ class PurchasePriceUpdate(models.Model):
             ('product_id', '=', self.product_id.id),
             ('product_uom', '=', self.product_uom.id),
             ('min_qty', '=', 0),
+            ('company_id','=', self.env.user.company_id.id),
         ])
 
         # Case 'b': Variant disabled => product_tmpl_id ok but no product_id.id in supplierinfo:
@@ -84,6 +83,7 @@ class PurchasePriceUpdate(models.Model):
                 ('product_id', '=', False),
                 ('product_uom', '=', self.product_uom.id),
                 ('min_qty', '=', 0),
+                ('company_id','=', self.env.user.company_id.id),
             ])
 
         control = False

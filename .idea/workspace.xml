@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="priceupdate_templ">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hr_tswork_new">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +35,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -63,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00577" summary="roadmap with contact_id">
-      <created>1677850088071</created>
-      <option name="number" value="00577" />
-      <option name="presentableId" value="LOCAL-00577" />
-      <option name="project" value="LOCAL" />
-      <updated>1677850088071</updated>
     </task>
     <task id="LOCAL-00578" summary="roadmap with contact_id">
       <created>1677857848862</created>
@@ -407,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685039156996</updated>
     </task>
-    <option name="localTasksCounter" value="626" />
+    <task id="LOCAL-00626" summary="hr_tswork_new">
+      <created>1685374912146</created>
+      <option name="number" value="00626" />
+      <option name="presentableId" value="LOCAL-00626" />
+      <option name="project" value="LOCAL" />
+      <updated>1685374912146</updated>
+    </task>
+    <option name="localTasksCounter" value="627" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -423,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="bug" />
     <MESSAGE value="translate chassis" />
     <MESSAGE value="equipment_service customer_id" />
     <MESSAGE value="equipment_service group" />
@@ -448,7 +448,8 @@
     <MESSAGE value="external_work_expenses" />
     <MESSAGE value="hr_ts-wizard_id" />
     <MESSAGE value="priceupdate_templ" />
-    <option name="LAST_COMMIT_MESSAGE" value="priceupdate_templ" />
+    <MESSAGE value="hr_tswork_new" />
+    <option name="LAST_COMMIT_MESSAGE" value="hr_tswork_new" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
