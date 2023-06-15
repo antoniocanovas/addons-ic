@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchase price multicompany">
-      <change beforePath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external_work_sale_type/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external_work_sale_type/__manifest__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external_work_sale_type/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external_work_sale_type/models/external_work.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external_work_sale_type/static/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/external_work_sale_type/views/external_work_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00579" summary="roadmap with contact_id">
-      <created>1677947931045</created>
-      <option name="number" value="00579" />
-      <option name="presentableId" value="LOCAL-00579" />
-      <option name="project" value="LOCAL" />
-      <updated>1677947931045</updated>
     </task>
     <task id="LOCAL-00580" summary="roadmap with contact_id">
       <created>1677977420888</created>
@@ -408,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686827156091</updated>
     </task>
-    <option name="localTasksCounter" value="628" />
+    <task id="LOCAL-00628" summary="purchase price multicompany">
+      <created>1686832953932</created>
+      <option name="number" value="00628" />
+      <option name="presentableId" value="LOCAL-00628" />
+      <option name="project" value="LOCAL" />
+      <updated>1686832953933</updated>
+    </task>
+    <option name="localTasksCounter" value="629" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
