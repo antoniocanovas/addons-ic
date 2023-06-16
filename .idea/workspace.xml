@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="multisec rev imp">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchasePriceError">
+      <change beforePath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00588" summary="external work employee permission">
-      <created>1679326955923</created>
-      <option name="number" value="00588" />
-      <option name="presentableId" value="LOCAL-00588" />
-      <option name="project" value="LOCAL" />
-      <updated>1679326955923</updated>
     </task>
     <task id="LOCAL-00589" summary="external work employee permission">
       <created>1679402661953</created>
@@ -408,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686907729565</updated>
     </task>
-    <option name="localTasksCounter" value="637" />
+    <task id="LOCAL-00637" summary="purchasePriceError">
+      <created>1686931823674</created>
+      <option name="number" value="00637" />
+      <option name="presentableId" value="LOCAL-00637" />
+      <option name="project" value="LOCAL" />
+      <updated>1686931823674</updated>
+    </task>
+    <option name="localTasksCounter" value="638" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="wup handle" />
     <MESSAGE value="account_move_sale_tags" />
     <MESSAGE value="multisection hide subtotals v0" />
     <MESSAGE value="product price update with supplierinfo" />
@@ -449,7 +448,8 @@
     <MESSAGE value="purchase price multicompany" />
     <MESSAGE value="ts_work milestone in wizard" />
     <MESSAGE value="multisec rev imp" />
-    <option name="LAST_COMMIT_MESSAGE" value="multisec rev imp" />
+    <MESSAGE value="purchasePriceError" />
+    <option name="LAST_COMMIT_MESSAGE" value="purchasePriceError" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

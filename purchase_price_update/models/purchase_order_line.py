@@ -28,13 +28,14 @@ class PurchasePriceUpdate(models.Model):
             control = False
             if (record.product_id.id):
                 # Case 'a': Variants enabled => product_tmpl_id and product_id.id established in supplierinfo:
+                company = self.env.company
                 supplierinfo = self.env['product.supplierinfo'].search([
                     ('name', '=', record.partner_id.id),
                     ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id),
                     ('product_id', '=', record.product_id.id),
                     ('product_uom', '=', record.product_uom.id),
                     ('min_qty', '=', 0),
-                    ('company_id', '=', self.env.company.id),
+                    ('company_id', '=', company.id),
                 ])
 
                 # Case 'b': Variants disabled => product_tmpl_id ok but no product_id.id in supplierinfo:
@@ -45,7 +46,7 @@ class PurchasePriceUpdate(models.Model):
                         ('product_id', '=', False),
                         ('product_uom', '=', record.product_uom.id),
                         ('min_qty', '=', 0),
-                        ('company_id', '=', self.env.company.id),
+                        ('company_id', '=', company.id),
                     ])
 
                 if (supplierinfo.id) and (record.product_qty != 0) and \
