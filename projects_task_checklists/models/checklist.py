@@ -79,18 +79,18 @@ class ChecklistProgress(models.Model):
 
     @api.onchange('checklist_tmpl_id')
     def _onchange_project_tmpl_id(self):
-        checklist = self.checklist_id
         if not self.checklist_id.id:
             self.checklist_id = self.env['task.checklist'].create({'name': self.name,
                                                                    'project_id': self.project_id.id,
-                                                                   'description': self.checklist_tmpl_id.description})
-
+                                                                   'description': self.checklist_tmpl_id.description,
+                                                                   'sequence': self.checklist_tmpl_id.sequence,
+                                                                   })
         for li in self.checklist_tmpl_id.checklist_ids:
             new_item = self.env['checklist.item'].create({
                 'projects_id': self.project_id.id,
                 'name': li.name,
                 'description': li.description,
-                'checklist_id': checklist.id
+                'checklist_id': self.checklist_id.id
             })
 
     @api.onchange('checklist_id')
