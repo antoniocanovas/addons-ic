@@ -34,7 +34,7 @@ class PurchasePriceUpdate(models.Model):
                     ('product_id', '=', record.product_id.id),
                     ('product_uom', '=', record.product_uom.id),
                     ('min_qty', '=', 0),
-                    ('company_id', '=', self.env.user.company_id.id),
+                    ('company_id', '=', self.env.company.id),
                 ])
 
                 # Case 'b': Variants disabled => product_tmpl_id ok but no product_id.id in supplierinfo:
@@ -45,7 +45,7 @@ class PurchasePriceUpdate(models.Model):
                         ('product_id', '=', False),
                         ('product_uom', '=', record.product_uom.id),
                         ('min_qty', '=', 0),
-                        ('company_id', '=', self.env.user.company_id.id),
+                        ('company_id', '=', self.env.company.id),
                     ])
 
                 if (supplierinfo.id) and (record.product_qty != 0) and \
@@ -74,7 +74,7 @@ class PurchasePriceUpdate(models.Model):
             ('product_id', '=', self.product_id.id),
             ('product_uom', '=', self.product_uom.id),
             ('min_qty', '=', 0),
-            ('company_id','=', self.env.user.company_id.id),
+            ('company_id', '=', self.env.company.id),
         ])
 
         # Case 'b': Variant disabled => product_tmpl_id ok but no product_id.id in supplierinfo:
@@ -85,7 +85,7 @@ class PurchasePriceUpdate(models.Model):
                 ('product_id', '=', False),
                 ('product_uom', '=', self.product_uom.id),
                 ('min_qty', '=', 0),
-                ('company_id','=', self.env.user.company_id.id),
+                ('company_id', '=', self.env.company.id),
             ])
 
         control = False

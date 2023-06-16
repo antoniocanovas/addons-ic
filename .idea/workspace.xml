@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="ew_sale_type">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="multisec rev imp">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,20 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00586" summary="purchase_price_update rev with discounts">
-      <created>1678722410144</created>
-      <option name="number" value="00586" />
-      <option name="presentableId" value="LOCAL-00586" />
-      <option name="project" value="LOCAL" />
-      <updated>1678722410144</updated>
-    </task>
-    <task id="LOCAL-00587" summary="external work employee permission">
-      <created>1679012262841</created>
-      <option name="number" value="00587" />
-      <option name="presentableId" value="LOCAL-00587" />
-      <option name="project" value="LOCAL" />
-      <updated>1679012262841</updated>
     </task>
     <task id="LOCAL-00588" summary="external work employee permission">
       <created>1679326955923</created>
@@ -408,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686849437020</updated>
     </task>
-    <option name="localTasksCounter" value="635" />
+    <task id="LOCAL-00635" summary="multisec rev imp">
+      <created>1686907696826</created>
+      <option name="number" value="00635" />
+      <option name="presentableId" value="LOCAL-00635" />
+      <option name="project" value="LOCAL" />
+      <updated>1686907696826</updated>
+    </task>
+    <task id="LOCAL-00636" summary="multisec rev imp">
+      <created>1686907729565</created>
+      <option name="number" value="00636" />
+      <option name="presentableId" value="LOCAL-00636" />
+      <option name="project" value="LOCAL" />
+      <updated>1686907729565</updated>
+    </task>
+    <option name="localTasksCounter" value="637" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="equipment_service group" />
     <MESSAGE value="wup handle" />
     <MESSAGE value="account_move_sale_tags" />
     <MESSAGE value="multisection hide subtotals v0" />
@@ -449,7 +448,8 @@
     <MESSAGE value="hr_tswork_new" />
     <MESSAGE value="purchase price multicompany" />
     <MESSAGE value="ts_work milestone in wizard" />
-    <option name="LAST_COMMIT_MESSAGE" value="ts_work milestone in wizard" />
+    <MESSAGE value="multisec rev imp" />
+    <option name="LAST_COMMIT_MESSAGE" value="multisec rev imp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
