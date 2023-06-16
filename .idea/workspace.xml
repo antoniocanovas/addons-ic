@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="ts_work milestone in wizard">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="ew_sale_type">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external_work_sale_type/models/external_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/external_work_sale_type/models/external_work.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external_work_sale_type/views/external_work_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/external_work_sale_type/views/external_work_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00585" summary="external_work remove task from sale">
-      <created>1678212327094</created>
-      <option name="number" value="00585" />
-      <option name="presentableId" value="LOCAL-00585" />
-      <option name="project" value="LOCAL" />
-      <updated>1678212327094</updated>
     </task>
     <task id="LOCAL-00586" summary="purchase_price_update rev with discounts">
       <created>1678722410144</created>
@@ -410,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686848337796</updated>
     </task>
-    <option name="localTasksCounter" value="634" />
+    <task id="LOCAL-00634" summary="ts_work milestone in wizard">
+      <created>1686849437020</created>
+      <option name="number" value="00634" />
+      <option name="presentableId" value="LOCAL-00634" />
+      <option name="project" value="LOCAL" />
+      <updated>1686849437020</updated>
+    </task>
+    <option name="localTasksCounter" value="635" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
