@@ -65,27 +65,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00589" summary="external work employee permission">
-      <created>1679402661953</created>
-      <option name="number" value="00589" />
-      <option name="presentableId" value="LOCAL-00589" />
-      <option name="project" value="LOCAL" />
-      <updated>1679402661953</updated>
-    </task>
-    <task id="LOCAL-00590" summary="wup bug &amp; dependencies">
-      <created>1679403444087</created>
-      <option name="number" value="00590" />
-      <option name="presentableId" value="LOCAL-00590" />
-      <option name="project" value="LOCAL" />
-      <updated>1679403444087</updated>
-    </task>
-    <task id="LOCAL-00591" summary="wup bug &amp; dependencies">
-      <created>1679403549120</created>
-      <option name="number" value="00591" />
-      <option name="presentableId" value="LOCAL-00591" />
-      <option name="project" value="LOCAL" />
-      <updated>1679403549121</updated>
-    </task>
     <task id="LOCAL-00592" summary="wup bug &amp; dependencies">
       <created>1679404290581</created>
       <option name="number" value="00592" />
@@ -408,7 +387,28 @@
       <option name="project" value="LOCAL" />
       <updated>1686931823674</updated>
     </task>
-    <option name="localTasksCounter" value="638" />
+    <task id="LOCAL-00638" summary="purchasePriceError">
+      <created>1686932200303</created>
+      <option name="number" value="00638" />
+      <option name="presentableId" value="LOCAL-00638" />
+      <option name="project" value="LOCAL" />
+      <updated>1686932200304</updated>
+    </task>
+    <task id="LOCAL-00639" summary="purchasePriceError">
+      <created>1686932333609</created>
+      <option name="number" value="00639" />
+      <option name="presentableId" value="LOCAL-00639" />
+      <option name="project" value="LOCAL" />
+      <updated>1686932333610</updated>
+    </task>
+    <task id="LOCAL-00640" summary="purchasePriceError">
+      <created>1686932452400</created>
+      <option name="number" value="00640" />
+      <option name="presentableId" value="LOCAL-00640" />
+      <option name="project" value="LOCAL" />
+      <updated>1686932452400</updated>
+    </task>
+    <option name="localTasksCounter" value="641" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

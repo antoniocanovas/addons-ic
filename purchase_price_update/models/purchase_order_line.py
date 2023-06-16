@@ -26,8 +26,6 @@ class PurchasePriceUpdate(models.Model):
     def get_supplierinfo_control(self):
         for record in self:
             control = False
-            company = self.env.user.company_id
-            raise Warning(company.name)
             if (record.product_id.id):
                 # Case 'a': Variants enabled => product_tmpl_id and product_id.id established in supplierinfo:
                 supplierinfo = self.env['product.supplierinfo'].search([
@@ -36,7 +34,7 @@ class PurchasePriceUpdate(models.Model):
                     ('product_id', '=', record.product_id.id),
                     ('product_uom', '=', record.product_uom.id),
                     ('min_qty', '=', 0),
-                    ('company_id', '=', company.id),
+                    ('company_id', '=', record.company_id.id),
                 ])
 
                 # Case 'b': Variants disabled => product_tmpl_id ok but no product_id.id in supplierinfo:
@@ -47,7 +45,7 @@ class PurchasePriceUpdate(models.Model):
                         ('product_id', '=', False),
                         ('product_uom', '=', record.product_uom.id),
                         ('min_qty', '=', 0),
-                        ('company_id', '=', company.id),
+                        ('company_id', '=', record.company_id.id),
                     ])
 
                 if (supplierinfo.id) and (record.product_qty != 0) and \
@@ -76,7 +74,7 @@ class PurchasePriceUpdate(models.Model):
             ('product_id', '=', self.product_id.id),
             ('product_uom', '=', self.product_uom.id),
             ('min_qty', '=', 0),
-            ('company_id', '=', self.env.company.id),
+            ('company_id', '=', record.company_id.id),
         ])
 
         # Case 'b': Variant disabled => product_tmpl_id ok but no product_id.id in supplierinfo:
@@ -87,7 +85,7 @@ class PurchasePriceUpdate(models.Model):
                 ('product_id', '=', False),
                 ('product_uom', '=', self.product_uom.id),
                 ('min_qty', '=', 0),
-                ('company_id', '=', self.env.company.id),
+                ('company_id', '=', record.company_id.id),
             ])
 
         control = False
