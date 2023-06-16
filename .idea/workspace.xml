@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchasePriceError" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchasePriceError">
+      <change beforePath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,20 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00595" summary="wup bug &amp; dependencies">
-      <created>1679588823636</created>
-      <option name="number" value="00595" />
-      <option name="presentableId" value="LOCAL-00595" />
-      <option name="project" value="LOCAL" />
-      <updated>1679588823636</updated>
-    </task>
-    <task id="LOCAL-00596" summary="sale_wup pre-post-domain">
-      <created>1679660393847</created>
-      <option name="number" value="00596" />
-      <option name="presentableId" value="LOCAL-00596" />
-      <option name="project" value="LOCAL" />
-      <updated>1679660393848</updated>
     </task>
     <task id="LOCAL-00597" summary="external_work expin">
       <created>1679662199623</created>
@@ -406,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686938036323</updated>
     </task>
-    <option name="localTasksCounter" value="644" />
+    <task id="LOCAL-00644" summary="purchasePriceError">
+      <created>1686938198615</created>
+      <option name="number" value="00644" />
+      <option name="presentableId" value="LOCAL-00644" />
+      <option name="project" value="LOCAL" />
+      <updated>1686938198615</updated>
+    </task>
+    <task id="LOCAL-00645" summary="purchasePriceError">
+      <created>1686938391449</created>
+      <option name="number" value="00645" />
+      <option name="presentableId" value="LOCAL-00645" />
+      <option name="project" value="LOCAL" />
+      <updated>1686938391449</updated>
+    </task>
+    <option name="localTasksCounter" value="646" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
