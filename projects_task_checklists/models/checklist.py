@@ -83,7 +83,6 @@ class ChecklistProgress(models.Model):
             self.checklist_id = self.env['task.checklist'].create({'name': self.name,
                                                                    'project_id': self.project_id.id,
                                                                    'description': self.checklist_tmpl_id.description,
-                                                                   'sequence': self.checklist_tmpl_id.sequence,
                                                                    })
         for li in self.checklist_tmpl_id.checklist_ids:
             new_item = self.env['checklist.item'].create({
