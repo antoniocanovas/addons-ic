@@ -27,6 +27,7 @@ class PurchasePriceUpdate(models.Model):
         for record in self:
             control = False
             company = self.env.user.company_id
+            raise Warning(company.name)
             if (record.product_id.id):
                 # Case 'a': Variants enabled => product_tmpl_id and product_id.id established in supplierinfo:
                 supplierinfo = self.env['product.supplierinfo'].search([
