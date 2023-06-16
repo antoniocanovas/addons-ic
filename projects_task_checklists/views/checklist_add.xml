@@ -18,8 +18,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='tag_ids']" position="after">
                 <field name="checklist_tmpl_id" domain="['|',('project_id','=',project_id),('project_id','=',False)]"
-                       attrs="{'readonly':[('checklists','!=',False)]}"/>
-
+                       attrs="{'readonly':[('checklists','!=',[])]}"/>
                 <field name="checklist_id"/>
             </xpath>
 

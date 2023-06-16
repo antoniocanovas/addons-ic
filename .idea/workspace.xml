@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="shop private v0">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="task checklist cybro ic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects_task_checklists/views/checklist_add.xml" beforeDir="false" afterPath="$PROJECT_DIR$/projects_task_checklists/views/checklist_add.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00580" summary="service bom v1">
-      <created>1679135800111</created>
-      <option name="number" value="00580" />
-      <option name="presentableId" value="LOCAL-00580" />
-      <option name="project" value="LOCAL" />
-      <updated>1679135800111</updated>
     </task>
     <task id="LOCAL-00581" summary="service bom v1">
       <created>1679144633559</created>
@@ -408,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682356222531</updated>
     </task>
-    <option name="localTasksCounter" value="629" />
+    <task id="LOCAL-00629" summary="task checklist cybro ic">
+      <created>1686851752749</created>
+      <option name="number" value="00629" />
+      <option name="presentableId" value="LOCAL-00629" />
+      <option name="project" value="LOCAL" />
+      <updated>1686851752749</updated>
+    </task>
+    <option name="localTasksCounter" value="630" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +425,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="hr_timesheet_work 10" />
     <MESSAGE value="sale_wup_discount v3" />
     <MESSAGE value="duplicated id hr_ts_work" />
     <MESSAGE value="sale_wup_discount rev" />
@@ -449,7 +449,8 @@
     <MESSAGE value="event private" />
     <MESSAGE value="price python v0" />
     <MESSAGE value="shop private v0" />
-    <option name="LAST_COMMIT_MESSAGE" value="shop private v0" />
+    <MESSAGE value="task checklist cybro ic" />
+    <option name="LAST_COMMIT_MESSAGE" value="task checklist cybro ic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
