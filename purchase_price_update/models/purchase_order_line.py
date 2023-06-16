@@ -26,9 +26,9 @@ class PurchasePriceUpdate(models.Model):
     def get_supplierinfo_control(self):
         for record in self:
             control = False
+            company = self.env.user.company_id
             if (record.product_id.id):
                 # Case 'a': Variants enabled => product_tmpl_id and product_id.id established in supplierinfo:
-                company = self.env.company
                 supplierinfo = self.env['product.supplierinfo'].search([
                     ('name', '=', record.partner_id.id),
                     ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id),
