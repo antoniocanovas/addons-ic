@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchasePriceError" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchasePriceError">
+      <change beforePath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/purchase_price_update/models/purchase_order_line.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,20 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00604" summary="Services permission group">
-      <created>1682037247163</created>
-      <option name="number" value="00604" />
-      <option name="presentableId" value="LOCAL-00604" />
-      <option name="project" value="LOCAL" />
-      <updated>1682037247164</updated>
-    </task>
-    <task id="LOCAL-00605" summary="factura canje">
-      <created>1682118140747</created>
-      <option name="number" value="00605" />
-      <option name="presentableId" value="LOCAL-00605" />
-      <option name="project" value="LOCAL" />
-      <updated>1682118140747</updated>
     </task>
     <task id="LOCAL-00606" summary="external date today">
       <created>1682553191435</created>
@@ -406,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1687018979694</updated>
     </task>
-    <option name="localTasksCounter" value="653" />
+    <task id="LOCAL-00653" summary="purchasePriceError">
+      <created>1687019541118</created>
+      <option name="number" value="00653" />
+      <option name="presentableId" value="LOCAL-00653" />
+      <option name="project" value="LOCAL" />
+      <updated>1687019541118</updated>
+    </task>
+    <task id="LOCAL-00654" summary="purchasePriceError">
+      <created>1687019567362</created>
+      <option name="number" value="00654" />
+      <option name="presentableId" value="LOCAL-00654" />
+      <option name="project" value="LOCAL" />
+      <updated>1687019567362</updated>
+    </task>
+    <option name="localTasksCounter" value="655" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
