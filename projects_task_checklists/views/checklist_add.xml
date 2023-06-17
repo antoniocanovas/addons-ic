@@ -23,7 +23,7 @@
             </xpath>
 
             <xpath expr="//form/sheet/notebook/page[last()]" position="after">
-                <page string="Checklist" attrs="{'invisible':[('checklist.ids','=',[])]}">
+                <page string="Checklist" attrs="{'invisible':[('checklist','=',[])]}">
                     <field name="checklists">
                         <tree>
                             <field name="name"/>
