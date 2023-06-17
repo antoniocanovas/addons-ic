@@ -65,13 +65,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00586" summary="service bom v1">
-      <created>1679213031093</created>
-      <option name="number" value="00586" />
-      <option name="presentableId" value="LOCAL-00586" />
-      <option name="project" value="LOCAL" />
-      <updated>1679213031093</updated>
-    </task>
     <task id="LOCAL-00587" summary="403 v0">
       <created>1679354401787</created>
       <option name="number" value="00587" />
@@ -408,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686930625204</updated>
     </task>
-    <option name="localTasksCounter" value="635" />
+    <task id="LOCAL-00635" summary="task checklist cybro ic">
+      <created>1687020585420</created>
+      <option name="number" value="00635" />
+      <option name="presentableId" value="LOCAL-00635" />
+      <option name="project" value="LOCAL" />
+      <updated>1687020585420</updated>
+    </task>
+    <option name="localTasksCounter" value="636" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
