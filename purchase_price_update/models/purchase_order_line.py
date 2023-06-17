@@ -87,7 +87,7 @@ class PurchasePriceUpdate(models.Model):
            #     ('product_id', '=', False),
                 ('product_uom', '=', self.product_uom.id),
                 ('min_qty', '=', 0),
-                ('company_id', '=', self.env.user.company_id.id),
+                ('company_id', '=', self.company_id.id),
             ])
 
         control = False
