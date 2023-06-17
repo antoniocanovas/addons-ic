@@ -54,7 +54,6 @@ class PurchasePriceUpdate(models.Model):
                 if (supplierinfo.id) and (record.product_qty != 0) and \
                         (record.price_unit == supplierinfo.price) and \
                         (record.discount == supplierinfo.discount):
-                    raise Warning('oi')
                     control = True
             record['price_supplierinfo_control'] = control
 
