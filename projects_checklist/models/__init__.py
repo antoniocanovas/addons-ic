@@ -20,4 +20,6 @@
 ##############################################################################
 
 from . import stage
-from . import checklist
+from . import project_task
+from . import project_checklist
+from . import project_task_type

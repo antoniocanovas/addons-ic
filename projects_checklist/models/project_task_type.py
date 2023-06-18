@@ -18,30 +18,11 @@
 #    If not, see <https://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name': 'Project Task Checklist',
-    'version': '16.0.1.0.0',
-    'category': 'Project/Project',
-    'summary': "To Manage the Project's tasks, subtasks checklists",
-    'description': "To Manage the Project's tasks, subtasks checklists",
-    'author': 'Cybrosys Techno Solutions',
-    'company': 'Cybrosys Techno Solutions',
-    'maintainer': 'Cybrosys Techno Solutions',
-    'website': 'https://www.cybrosys.com',
-    'depends': ['project'],
-    'data': [
-        'security/ir.model.access.csv',
-        'views/checklist_menu.xml',
-        'views/checklist_add.xml',
-    ],
-    'assets': {
-        'web.assets_backend': [
-            "projects_task_checklists/static/src/js/progress.js",
-        ],
-    },
-    'images': ['static/description/banner.png'],
-    'license': 'LGPL-3',
-    'installable': True,
-    'application': False,
-    'auto_install': False,
-}
+
+from odoo import models, fields, api, _
+
+
+class ChecklistStage(models.Model):
+    _inherit = "project.task.type"
+
+    is_checklist = fields.Boolean(string='Checklist Task')
