@@ -53,7 +53,7 @@ class ProjectTask(models.Model):
         checklist = self.env['task.checklist'].search(
             [('name', '=', self.checklist_id.name)])
         for rec in checklist:
-            self.checklists += rec.checklist_ids
+            self.checklist_item_ids += rec.checklist_ids
 
     def _compute_progress(self):
         for rec in self:
