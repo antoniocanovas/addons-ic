@@ -41,7 +41,7 @@ class ProjectTask(models.Model):
 
         for li in self.checklist_tmpl_id.checklist_ids:
             new_item = self.env['project.checklist.item'].create({
-                'projects_id': self.project_id.id,
+                'project_id': self.project_id.id,
                 'name': li.name,
                 'description': li.description,
                 'checklist_id': self.checklist_id.id
