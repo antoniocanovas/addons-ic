@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="task_checklist_action_tree" model="ir.ui.view">
-        <field name="name">task.checklist.action.tree</field>
-        <field name="model">task.checklist</field>
+    <record id="project_checklist_action_tree" model="ir.ui.view">
+        <field name="name">project.checklist.action.tree</field>
+        <field name="model">project.checklist</field>
         <field name="arch" type="xml">
             <tree string="Task Checklist">
                 <field name="name"/>
@@ -12,9 +12,9 @@
     </record>
 
 
-    <record id="task_checklist_action_form" model="ir.ui.view">
-        <field name="name">task.checklist.action.form</field>
-        <field name="model">task.checklist</field>
+    <record id="project_checklist_action_form" model="ir.ui.view">
+        <field name="name">project.checklist.action.form</field>
+        <field name="model">project.checklist</field>
         <field name="arch" type="xml">
             <form string="Task Checklist">
                 <sheet>
@@ -108,9 +108,9 @@
         </field>
     </record>
 
-    <record id="task_checklist_action" model="ir.actions.act_window">
-        <field name="name">Task Checklist</field>
-        <field name="res_model">task.checklist</field>
+    <record id="project_checklist_action" model="ir.actions.act_window">
+        <field name="name">Project Checklist</field>
+        <field name="res_model">project.checklist</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
