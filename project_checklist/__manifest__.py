@@ -31,7 +31,7 @@
     'depends': ['project'],
     'data': [
         'security/ir.model.access.csv',
-#        'views/project_checklist_views.xml',
+        'views/project_checklist_views.xml',
 #        'views/project_task_views.xml',
     ],
     'assets': {
