@@ -31,8 +31,8 @@ class ProjectTask(models.Model):
                                  string='CheckList Items', required=True)
 
     @api.onchange('checklist_tmpl_id')
-    def _onchange_project_tmpl_id(self):
-        if (self.project_tmpl_id.id != False) and (self.checklist_id.id == False):
+    def _onchange_checklist_tmpl_id(self):
+        if (self.checklist_tmpl_id.id != False) and (self.checklist_id.id == False):
             new_checklist = self.env['project.checklist'].create({'name': self.checklist_tmpl_id.name,
                                                      'project_id': self.project_id.id,
                                                      'description': self.checklist_tmpl_id.description,
