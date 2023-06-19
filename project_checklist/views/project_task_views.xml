@@ -19,12 +19,12 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='tag_ids']" position="after">
                 <field name="checklist_tmpl_id" domain="['|',('project_id','=',project_id),('project_id','=',False)]"
-                       attrs="{'readonly':[('checklist_ids','!=',[])]}"/>
+                       attrs="{'readonly':[('checklist_item_ids','!=',[])]}"/>
                 <field name="checklist_id"/>
             </xpath>
 
             <xpath expr="//form/sheet/notebook/page[last()]" position="after">
-                <page string="Checklist" attrs="{'invisible':[('checklist_ids','=',[])]}">
+                <page string="Checklist" attrs="{'invisible':[('checklist_item_ids','=',[])]}">
                     <field name="checklist_item_ids">
                         <tree>
                             <field name="name"/>
