@@ -50,7 +50,7 @@ class ProjectTask(models.Model):
     @api.onchange('checklist_id')
     def _onchange_project_id(self):
         self.checklist_item_ids = []
-        checklist = self.env['task.checklist'].search(
+        checklist = self.env['prject.checklist'].search(
             [('name', '=', self.checklist_id.name)])
         for rec in checklist:
             self.checklist_item_ids += rec.checklist_ids
