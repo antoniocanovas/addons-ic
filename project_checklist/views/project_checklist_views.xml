@@ -97,47 +97,4 @@
         </field>
     </record>
 
-    <record id="checklist_activity_stage_action" model="ir.actions.act_window">
-        <field name="name">Checklist Activity Stage</field>
-        <field name="res_model">checklist.activity.stages</field>
-        <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Create a checklist activity
-            </p>
-        </field>
-    </record>
-
-    <record id="project_checklist_action" model="ir.actions.act_window">
-        <field name="name">Project Checklist</field>
-        <field name="res_model">project.checklist</field>
-        <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Create a checklist
-            </p>
-        </field>
-    </record>
-
-
-    <menuitem
-            id="project_checklist_root"
-            name="Checklist"
-            parent="project.menu_project_config"
-            sequence="6"/>
-
-
-    <menuitem
-            parent="project_checklist_root"
-            id="menu_checklist_activity_stage"
-            action="checklist_activity_stage_action"
-            name="Checklist Activity Stage"
-            sequence="3"/>
-    <menuitem
-            parent="project_checklist_root"
-            id="menu_task_checklist"
-            name="Task Checklist"
-            action="task_checklist_action"
-            sequence="1"/>
-
 </odoo>

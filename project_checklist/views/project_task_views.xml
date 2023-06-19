@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
     <record id="project_task_type_inherited" model="ir.ui.view">
         <field name="name">project.task.type.inherit</field>
         <field name="model">project.task.type</field>

@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="checklist to project_checklist">
+      <change afterPath="$PROJECT_DIR$/project_checklist/views/menu_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_checklist/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_checklist/views/project_checklist_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/views/project_checklist_views.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_checklist/views/project_task_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/views/project_task_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,17 +40,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/projects_checklist/models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_checklist/views" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/project_checklist/views" />
       <recent name="$PROJECT_DIR$/projects_checklist/models" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/product_price_python" />
       <recent name="$PROJECT_DIR$/product_price_python/views" />
-      <recent name="$PROJECT_DIR$/product_price_python/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/project_roadmap/static/description" />
@@ -64,20 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00599" summary="event private">
-      <created>1679502674538</created>
-      <option name="number" value="00599" />
-      <option name="presentableId" value="LOCAL-00599" />
-      <option name="project" value="LOCAL" />
-      <updated>1679502674538</updated>
-    </task>
-    <task id="LOCAL-00600" summary="event private">
-      <created>1679503084246</created>
-      <option name="number" value="00600" />
-      <option name="presentableId" value="LOCAL-00600" />
-      <option name="project" value="LOCAL" />
-      <updated>1679503084246</updated>
     </task>
     <task id="LOCAL-00601" summary="price python v0">
       <created>1680395270196</created>
@@ -408,7 +398,21 @@
       <option name="project" value="LOCAL" />
       <updated>1687160412022</updated>
     </task>
-    <option name="localTasksCounter" value="648" />
+    <task id="LOCAL-00648" summary="checklist to project_checklist">
+      <created>1687160569426</created>
+      <option name="number" value="00648" />
+      <option name="presentableId" value="LOCAL-00648" />
+      <option name="project" value="LOCAL" />
+      <updated>1687160569426</updated>
+    </task>
+    <task id="LOCAL-00649" summary="checklist to project_checklist">
+      <created>1687160582236</created>
+      <option name="number" value="00649" />
+      <option name="presentableId" value="LOCAL-00649" />
+      <option name="project" value="LOCAL" />
+      <updated>1687160582236</updated>
+    </task>
+    <option name="localTasksCounter" value="650" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
