@@ -1,70 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="checklist to project_checklist">
-      <change beforePath="$PROJECT_DIR$/projects_checklist/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/README.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/doc/RELEASE_NOTES.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/doc/RELEASE_NOTES.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/models/project_checklist.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/models/project_checklist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/models/project_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/models/project_task.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/models/project_task_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/models/project_task_type.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/models/stage.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/models/stage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/security/ir.model.access.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/check.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/check.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/chevron.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/chevron.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/cogs.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/cogs.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/consultation.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/consultation.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/ecom-black.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/ecom-black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/education-black.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/education-black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/hotel-black.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/hotel-black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/license.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/license.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/lifebuoy.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/lifebuoy.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/manufacturing-black.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/manufacturing-black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/pos-black.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/pos-black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/puzzle.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/puzzle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/restaurant-black.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/restaurant-black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/service-black.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/service-black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/trading-black.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/trading-black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/training.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/training.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/update.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/update.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/user.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/user.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/icons/wrench.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/icons/wrench.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/categories.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/categories.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/check-box.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/check-box.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/compass.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/compass.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/corporate.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/corporate.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/customer-support.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/customer-support.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/cybrosys-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/cybrosys-logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/features.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/features.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/pictures.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/pictures.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/pie-chart.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/pie-chart.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/right-arrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/right-arrow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/star.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/star.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/support.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/support.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/misc/whatsapp.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/misc/whatsapp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/modules/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/modules/1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/modules/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/modules/2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/modules/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/modules/3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/modules/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/modules/4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/modules/5.gif" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/modules/5.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/modules/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/modules/6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/screenshots/Screenshot1.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/screenshots/Screenshot1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/screenshots/Screenshot2.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/screenshots/Screenshot2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/screenshots/Screenshot3.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/screenshots/Screenshot3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/screenshots/Screenshot4.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/screenshots/Screenshot4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/screenshots/Screenshot5.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/screenshots/Screenshot5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/assets/screenshots/hero.gif" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/assets/screenshots/hero.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/banner.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/banner.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/description/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/description/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/src/js/progress.js" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/src/js/progress.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/static/src/xml/progress.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/static/src/xml/progress.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/views/project_checklist_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/views/project_checklist_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects_checklist/views/project_task_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/views/project_task_views.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="checklist to project_checklist" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -125,20 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00592" summary="slide internal v0">
-      <created>1679356324235</created>
-      <option name="number" value="00592" />
-      <option name="presentableId" value="LOCAL-00592" />
-      <option name="project" value="LOCAL" />
-      <updated>1679356324235</updated>
-    </task>
-    <task id="LOCAL-00593" summary="slide internal v0">
-      <created>1679388096656</created>
-      <option name="number" value="00593" />
-      <option name="presentableId" value="LOCAL-00593" />
-      <option name="project" value="LOCAL" />
-      <updated>1679388096656</updated>
     </task>
     <task id="LOCAL-00594" summary="slide internal v0">
       <created>1679388248703</created>
@@ -469,7 +392,21 @@
       <option name="project" value="LOCAL" />
       <updated>1687128485487</updated>
     </task>
-    <option name="localTasksCounter" value="641" />
+    <task id="LOCAL-00641" summary="checklist to project_checklist">
+      <created>1687158631639</created>
+      <option name="number" value="00641" />
+      <option name="presentableId" value="LOCAL-00641" />
+      <option name="project" value="LOCAL" />
+      <updated>1687158631639</updated>
+    </task>
+    <task id="LOCAL-00642" summary="checklist to project_checklist">
+      <created>1687158799087</created>
+      <option name="number" value="00642" />
+      <option name="presentableId" value="LOCAL-00642" />
+      <option name="project" value="LOCAL" />
+      <updated>1687158799087</updated>
+    </task>
+    <option name="localTasksCounter" value="643" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
