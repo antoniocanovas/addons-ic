@@ -4,7 +4,7 @@ from odoo import models, fields, api, _
 
 class ProjectChecklistLine(models.Model):
     _name = 'project.checklist.line'
-    _inherit = ['mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Project Checklist Lines'
 
     name = fields.Char(required=True)
