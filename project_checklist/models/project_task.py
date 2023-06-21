@@ -13,15 +13,16 @@ class ProjectTask(models.Model):
 
     @api.onchange('checklist_tmpl_id')
     def _onchange_checklist_tmpl_id(self):
-        if (self.checklist_tmpl_id.id != False) and (self.checklist_id.id == False):
-            name = self.checklist_tmpl_id.name
-            if self.project_id.name:
-                name = self.project_id.name + ": " + name
-            new_checklist = self.env['project.checklist'].create({'name': name,
-                                                                  'task_id': self.id,
-                                                                  'description': self.checklist_tmpl_id.description,
-                                                                  })
-            self.checklist_id = new_checklist.id
+        for record in self:
+            if (record.checklist_tmpl_id.id != False) and (record.checklist_id.id == False):
+                name = record.checklist_tmpl_id.name
+                if record.project_id.name:
+                    name = record.project_id.name + ": " + name
+                new = record.env['project.checklist'].create({'name': name,
+                                                                      'task_id': record.id,
+                                                                      'description': record.checklist_tmpl_id.description,
+                                                                      })
+                self.checklist_id = new.id
 
         for li in self.checklist_tmpl_id.line_ids:
             new_item = self.env['project.checklist.line'].create({
