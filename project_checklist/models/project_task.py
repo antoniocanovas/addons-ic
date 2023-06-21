@@ -26,12 +26,12 @@ class ProjectTask(models.Model):
                                                         })
             self.checklist_id = new.id
 
-    for li in record.checklist_tmpl_id.line_ids:
-        new_item = record.env['project.checklist.line'].create({
-            'name': li.name,
-            'description': li.description,
-            'checklist_id': record.checklist_id.id
-        })
+            for li in self.checklist_tmpl_id.line_ids:
+                new_item = self.env['project.checklist.line'].create({
+                    'name': li.name,
+                    'description': li.description,
+                    'checklist_id': self.checklist_id.id
+                })
 
     @api.onchange('checklist_id')
     def _checklist_move(self):
