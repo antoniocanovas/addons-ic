@@ -28,7 +28,7 @@
                         </group>
                     </group>
 
-                    <label for="checklist_ids" string="CheckList Items"/>
+                    <label for="line_ids" string="CheckList Items"/>
                     <field name="line_ids">
                         <tree create="1">
                             <field name="sequence" widget="handle"/>

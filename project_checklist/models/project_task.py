@@ -23,7 +23,7 @@ class ProjectTask(models.Model):
                                                                   })
             self.checklist_id = new_checklist.id
 
-        for li in self.checklist_tmpl_id.checklist_ids:
+        for li in self.checklist_tmpl_id.line_ids:
             new_item = self.env['project.checklist.line'].create({
                 'name': li.name,
                 'description': li.description,
