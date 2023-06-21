@@ -15,7 +15,7 @@
                 <field name="checklist_id"/>
             </xpath>
             <field name="description" position="before">
-                <field name="line_ids" context="{'default_cheklist_id':checklist_id, 'active_test':False}">
+                <field name="line_ids" context="{'default_cheklist_id':checklist_id}">
                     <tree>
                         <field name="sequence" widget="handle"/>
                         <field name="name"/>

@@ -9,6 +9,7 @@ class ProjectTask(models.Model):
     checklist_tmpl_id = fields.Many2one('project.checklist')
     checklist_id = fields.Many2one('project.checklist')
     line_ids = fields.One2many('project.checklist.line', 'task_id',
+                               context={'active_test': False},
                                string='CheckLists', required=True)
 
     @api.onchange('checklist_tmpl_id')
