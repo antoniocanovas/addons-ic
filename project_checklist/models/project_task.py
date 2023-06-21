@@ -21,7 +21,7 @@ class ProjectTask(models.Model):
                 else:
                     name = record.name + ": " + name
 
-                new = record.env['project.checklist'].create({'name': name,
+                new = self.env['project.checklist'].create({'name': name,
                                                               'task_id': record.id,
                                                               'description': record.checklist_tmpl_id.description,
                                                               })
