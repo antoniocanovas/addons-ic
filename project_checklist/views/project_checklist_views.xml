@@ -48,7 +48,7 @@
         <field name="arch" type="xml">
             <form string="Checklist Item">
                 <header>
-                    <field name="state" widget="statusbar" clickable="1"/>
+                    <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
                 </header>
                 <sheet>
                     <group>
