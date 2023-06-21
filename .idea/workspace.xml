@@ -63,20 +63,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00621" summary="price python v0">
-      <created>1680479872554</created>
-      <option name="number" value="00621" />
-      <option name="presentableId" value="LOCAL-00621" />
-      <option name="project" value="LOCAL" />
-      <updated>1680479872554</updated>
-    </task>
-    <task id="LOCAL-00622" summary="price python v0">
-      <created>1680480064273</created>
-      <option name="number" value="00622" />
-      <option name="presentableId" value="LOCAL-00622" />
-      <option name="project" value="LOCAL" />
-      <updated>1680480064273</updated>
-    </task>
     <task id="LOCAL-00623" summary="price python v0">
       <created>1680480721243</created>
       <option name="number" value="00623" />
@@ -406,7 +392,21 @@
       <option name="project" value="LOCAL" />
       <updated>1687366566001</updated>
     </task>
-    <option name="localTasksCounter" value="670" />
+    <task id="LOCAL-00670" summary="checklist to project_checklist">
+      <created>1687366704160</created>
+      <option name="number" value="00670" />
+      <option name="presentableId" value="LOCAL-00670" />
+      <option name="project" value="LOCAL" />
+      <updated>1687366704160</updated>
+    </task>
+    <task id="LOCAL-00671" summary="checklist to project_checklist">
+      <created>1687366802457</created>
+      <option name="number" value="00671" />
+      <option name="presentableId" value="LOCAL-00671" />
+      <option name="project" value="LOCAL" />
+      <updated>1687366802457</updated>
+    </task>
+    <option name="localTasksCounter" value="672" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
