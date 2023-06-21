@@ -24,7 +24,7 @@ class ProjectTask(models.Model):
             self.checklist_id = new_checklist.id
 
         for li in self.checklist_tmpl_id.checklist_ids:
-            new_item = self.env['project.checklist.item'].create({
+            new_item = self.env['project.checklist.line'].create({
                 'name': li.name,
                 'description': li.description,
                 'checklist_id': self.checklist_id.id
@@ -38,7 +38,7 @@ class ProjectTask(models.Model):
     def _compute_progress(self):
         for rec in self:
             total_completed = 0
-            for activity in rec.checklist_item_ids:
+            for activity in rec.line_ids:
                 if activity.state in ['cancel', 'done', 'in_progress']:
                     total_completed += 1
             if total_completed:

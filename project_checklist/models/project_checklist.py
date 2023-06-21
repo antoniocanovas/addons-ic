@@ -11,5 +11,5 @@ class ProjectChecklist(models.Model):
     project_id = fields.Many2one('project.project', string='Project')
     task_id = fields.Many2one('project.task', string='Task')
 
-    checklist_ids = fields.One2many('project.checklist.line', 'checklist_id',
-                                    string='CheckLists', required=True)
+    line_ids = fields.One2many('project.checklist.line', 'checklist_id',
+                               string='CheckLists', required=True)

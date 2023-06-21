@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="checklist to project_checklist">
-      <change afterPath="$PROJECT_DIR$/project_checklist/models/project_checklist_line.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_checklist/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/models/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_checklist/models/project_checklist.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/models/project_checklist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_checklist/models/project_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/models/project_task.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00617" summary="price python v0">
-      <created>1680452972568</created>
-      <option name="number" value="00617" />
-      <option name="presentableId" value="LOCAL-00617" />
-      <option name="project" value="LOCAL" />
-      <updated>1680452972568</updated>
     </task>
     <task id="LOCAL-00618" summary="price python v0">
       <created>1680453340007</created>
@@ -410,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687365551275</updated>
     </task>
-    <option name="localTasksCounter" value="666" />
+    <task id="LOCAL-00666" summary="checklist to project_checklist">
+      <created>1687365969644</created>
+      <option name="number" value="00666" />
+      <option name="presentableId" value="LOCAL-00666" />
+      <option name="project" value="LOCAL" />
+      <updated>1687365969644</updated>
+    </task>
+    <option name="localTasksCounter" value="667" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
