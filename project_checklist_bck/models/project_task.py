@@ -1,4 +1,23 @@
 # -*- coding: utf-8 -*-
+##############################################################################
+#
+#    Cybrosys Technologies Pvt. Ltd.
+#
+#    Copyright (C) 2022-TODAY Cybrosys Technologies(<https://www.cybrosys.com>).
+#    Author: LINTO C T(<https://www.cybrosys.com>)
+#    you can modify it under the terms of the GNU LESSER
+#    GENERAL PUBLIC LICENSE (LGPL v3), Version 3.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU LESSER GENERAL PUBLIC LICENSE (LGPL v3) for more details.
+#
+#    You should have received a copy of the GNU LESSER GENERAL PUBLIC LICENSE
+#    GENERAL PUBLIC LICENSE (LGPL v3) along with this program.
+#    If not, see <https://www.gnu.org/licenses/>.
+#
+##############################################################################
 
 from odoo import models, fields, api, _
 
@@ -8,8 +27,8 @@ class ProjectTask(models.Model):
     progress = fields.Float(compute='_compute_progress', string='Progress in %')
     checklist_tmpl_id = fields.Many2one('project.checklist')
     checklist_id = fields.Many2one('project.checklist')
-    line_ids = fields.One2many('project.checklist.line', 'task_id',
-                                         string='CheckLists', required=True)
+    checklist_item_ids = fields.One2many('project.checklist.item', 'task_id',
+                                         string='CheckList Items', required=True)
 
     @api.onchange('checklist_tmpl_id')
     def _onchange_checklist_tmpl_id(self):
@@ -31,9 +50,12 @@ class ProjectTask(models.Model):
             })
 
     @api.onchange('checklist_id')
-    def _checklist_move(self):
-        for li in self.checklist_id:
-            li['task_id'] = self.id
+    def _onchange_project_id(self):
+        self.checklist_item_ids = []
+        checklist = self.env['project.checklist'].search(
+            [('name', '=', self.checklist_id.name)])
+        for rec in checklist:
+            self.checklist_item_ids += rec.checklist_ids
 
     def _compute_progress(self):
         for rec in self:
@@ -43,6 +65,6 @@ class ProjectTask(models.Model):
                     total_completed += 1
             if total_completed:
                 rec.progress = float(total_completed) / len(
-                    rec.line_ids) * 100
+                    rec.checklist_item_ids) * 100
             else:
                 rec.progress = 0.0

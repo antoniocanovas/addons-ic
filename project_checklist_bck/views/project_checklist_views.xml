@@ -69,4 +69,32 @@
         </field>
     </record>
 
+    <record id="checklist_activity_stages_action_tree" model="ir.ui.view">
+        <field name="name">checklist.activity.stages.tree</field>
+        <field name="model">checklist.activity.stages</field>
+        <field name="arch" type="xml">
+            <tree string="Checklist Activity Stage">
+                <field name="stage_name"/>
+                <field name="sequence"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="checklist_activity_stages_action_form" model="ir.ui.view">
+        <field name="name">checklist.activity.stages.form</field>
+        <field name="model">checklist.activity.stages</field>
+        <field name="arch" type="xml">
+            <form string="Checklist Activity Stage">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="stage_name"/>
+                            <field name="sequence"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
 </odoo>
