@@ -8,6 +8,7 @@ class ProjectChecklistLine(models.Model):
     _description = 'Project Checklist Lines'
 
     name = fields.Char(required=True)
+    active = fields.Boolean('Active')
     sequence = fields.Integer(default=1)
     description = fields.Char()
     checklist_id = fields.Many2one('project.checklist')
