@@ -11,19 +11,15 @@
                        attrs="{'readonly':[('line_ids','!=',[])]}"/>
                 <field name="checklist_id"/>
             </xpath>
-
-            <xpath expr="//form/sheet/notebook/page[last()]" position="after">
-                <page string="Checklist" attrs="{'invisible':[('line_ids','=',[])]}">
-                    <field name="line_ids" context="{'default_cheklist_id':checklist_id}">
-                        <tree>
-                            <field name="name"/>
-                            <field name="description"/>
-                            <field name="state"/>
-                        </tree>
-                    </field>
-                </page>
-
-            </xpath>
+            <field name="description" position="before">
+                <field name="line_ids" context="{'default_cheklist_id':checklist_id}">
+                    <tree>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+            </field>
         </field>
     </record>
 
