@@ -9,7 +9,7 @@ class ProjectTask(models.Model):
     checklist_tmpl_id = fields.Many2one('project.checklist')
     checklist_id = fields.Many2one('project.checklist')
     line_ids = fields.One2many('project.checklist.line', 'task_id',
-                                         string='CheckLists', required=True)
+                               string='CheckLists', required=True)
 
     @api.onchange('checklist_tmpl_id')
     def _onchange_checklist_tmpl_id(self):
@@ -19,16 +19,16 @@ class ProjectTask(models.Model):
                 if record.project_id.name:
                     name = record.project_id.name + ": " + name
                 new = record.env['project.checklist'].create({'name': name,
-                                                                      'task_id': record.id,
-                                                                      'description': record.checklist_tmpl_id.description,
-                                                                      })
-                self.checklist_id = new.id
+                                                              'task_id': record.id,
+                                                              'description': record.checklist_tmpl_id.description,
+                                                              })
+                record.checklist_id = new.id
 
-        for li in self.checklist_tmpl_id.line_ids:
-            new_item = self.env['project.checklist.line'].create({
+        for li in record.checklist_tmpl_id.line_ids:
+            new_item = record.env['project.checklist.line'].create({
                 'name': li.name,
                 'description': li.description,
-                'checklist_id': self.checklist_id.id
+                'checklist_id': record.checklist_id.id
             })
 
     @api.onchange('checklist_id')
