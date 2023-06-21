@@ -16,6 +16,7 @@
                     <tree>
                         <field name="name"/>
                         <field name="description"/>
+                        <field name="activity_ids" string="Next Activity" widget="list_activity" optional="show"/>
                         <field name="state"/>
                     </tree>
                 </field>

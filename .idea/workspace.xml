@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="checklist to project_checklist">
-      <change beforePath="$PROJECT_DIR$/project_checklist/models/project_checklist_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/models/project_checklist_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_checklist/views/project_checklist_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/views/project_checklist_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_checklist/views/project_task_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/views/project_task_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00635" summary="task checklist cybro ic">
-      <created>1687020585420</created>
-      <option name="number" value="00635" />
-      <option name="presentableId" value="LOCAL-00635" />
-      <option name="project" value="LOCAL" />
-      <updated>1687020585420</updated>
     </task>
     <task id="LOCAL-00636" summary="task checklist cybro ic">
       <created>1687022018044</created>
@@ -408,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687375082278</updated>
     </task>
-    <option name="localTasksCounter" value="684" />
+    <task id="LOCAL-00684" summary="checklist to project_checklist">
+      <created>1687375277625</created>
+      <option name="number" value="00684" />
+      <option name="presentableId" value="LOCAL-00684" />
+      <option name="project" value="LOCAL" />
+      <updated>1687375277625</updated>
+    </task>
+    <option name="localTasksCounter" value="685" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

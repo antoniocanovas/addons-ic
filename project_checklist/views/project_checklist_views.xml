@@ -42,7 +42,7 @@
     </record>
 
 
-    <record id="checklist_item_action_form" model="ir.ui.view">
+    <record id="checklist_line_action_form" model="ir.ui.view">
         <field name="name">checklist.line.action.form</field>
         <field name="model">project.checklist.line</field>
         <field name="arch" type="xml">
