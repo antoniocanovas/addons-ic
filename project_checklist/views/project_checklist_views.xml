@@ -29,7 +29,7 @@
                     </group>
 
                     <label for="checklist_ids" string="CheckList Items"/>
-                    <field name="checklist_ids">
+                    <field name="line_ids">
                         <tree create="1">
                             <field name="sequence" widget="handle"/>
                             <field name="name" required="1"/>
