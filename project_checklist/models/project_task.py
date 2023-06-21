@@ -25,6 +25,7 @@ class ProjectTask(models.Model):
                                                               'task_id': record.id,
                                                               'description': record.checklist_tmpl_id.description,
                                                               })
+                new['task_id'] = record.id
                 record.checklist_id = new.id
 
         for li in record.checklist_tmpl_id.line_ids:
