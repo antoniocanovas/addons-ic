@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="checklist to project_checklist">
-      <change beforePath="$PROJECT_DIR$/project_checklist/models/project_checklist_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/models/project_checklist_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_checklist/models/project_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/models/project_task.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,27 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00624" summary="price python v0">
-      <created>1680480841102</created>
-      <option name="number" value="00624" />
-      <option name="presentableId" value="LOCAL-00624" />
-      <option name="project" value="LOCAL" />
-      <updated>1680480841102</updated>
-    </task>
-    <task id="LOCAL-00625" summary="price python v0">
-      <created>1680481388804</created>
-      <option name="number" value="00625" />
-      <option name="presentableId" value="LOCAL-00625" />
-      <option name="project" value="LOCAL" />
-      <updated>1680481388805</updated>
-    </task>
-    <task id="LOCAL-00626" summary="price python v0">
-      <created>1680484059758</created>
-      <option name="number" value="00626" />
-      <option name="presentableId" value="LOCAL-00626" />
-      <option name="project" value="LOCAL" />
-      <updated>1680484059758</updated>
     </task>
     <task id="LOCAL-00627" summary="shop private v0">
       <created>1682334700153</created>
@@ -408,7 +387,28 @@
       <option name="project" value="LOCAL" />
       <updated>1687366964034</updated>
     </task>
-    <option name="localTasksCounter" value="673" />
+    <task id="LOCAL-00673" summary="checklist to project_checklist">
+      <created>1687367360435</created>
+      <option name="number" value="00673" />
+      <option name="presentableId" value="LOCAL-00673" />
+      <option name="project" value="LOCAL" />
+      <updated>1687367360435</updated>
+    </task>
+    <task id="LOCAL-00674" summary="checklist to project_checklist">
+      <created>1687367581906</created>
+      <option name="number" value="00674" />
+      <option name="presentableId" value="LOCAL-00674" />
+      <option name="project" value="LOCAL" />
+      <updated>1687367581906</updated>
+    </task>
+    <task id="LOCAL-00675" summary="checklist to project_checklist">
+      <created>1687367627774</created>
+      <option name="number" value="00675" />
+      <option name="presentableId" value="LOCAL-00675" />
+      <option name="project" value="LOCAL" />
+      <updated>1687367627774</updated>
+    </task>
+    <option name="localTasksCounter" value="676" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

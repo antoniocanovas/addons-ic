@@ -18,6 +18,9 @@ class ProjectTask(models.Model):
                 name = record.checklist_tmpl_id.name
                 if record.project_id.name:
                     name = record.project_id.name + ": " + name
+                else:
+                    name = record.task_id.name + ": " + name
+
                 new = record.env['project.checklist'].create({'name': name,
                                                               'task_id': record.id,
                                                               'description': record.checklist_tmpl_id.description,
