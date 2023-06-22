@@ -35,10 +35,10 @@ class ProjectTask(models.Model):
                 })
 
     @api.onchange('checklist_id')
-    def _checklist_move(self):
-        checklists = self.env['project.checklist'].search([('task_id','=',self.id)])
-        for li in checklists: li['task_id'] = False
-        self.checklist_id.task_id = self.id
+#    def _checklist_move(self):
+#        checklists = self.env['project.checklist'].search([('task_id','=',self.id)])
+#        for li in checklists: li['task_id'] = False
+#        self.checklist_id.task_id = self.id
 
     def _compute_progress(self):
         for rec in self:
