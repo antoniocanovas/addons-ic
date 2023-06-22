@@ -6,9 +6,9 @@ class ProjectTask(models.Model):
     _inherit = 'project.task'
 
     progress = fields.Float(compute='_compute_progress', string='Progress in %')
-    checklist_tmpl_id = fields.Many2one('project.checklist')
-    checklist_id = fields.Many2one('project.checklist')
-    line_ids = fields.One2many('project.checklist.line', 'task_id',
+    checklist_tmpl_id = fields.Many2one('project.checklist', store=True, copy=False)
+    checklist_id = fields.Many2one('project.checklist', store=True, copy=False)
+    line_ids = fields.One2many('project.checklist.line', 'task_id', store=True,
                                context={'active_test': False},
                                string='CheckLists', required=True)
 
@@ -36,8 +36,9 @@ class ProjectTask(models.Model):
 
     @api.onchange('checklist_id')
     def _checklist_move(self):
-        for li in self.checklist_id.line_ids:
-            li['task_id'] = self.id
+        checklists = self.env['project.checklist'].search([('task_id','=',self.id)])
+        for li in checklists: li['task_id'] = False
+    self.checklist_id.task_id = self.id
 
     def _compute_progress(self):
         for rec in self:

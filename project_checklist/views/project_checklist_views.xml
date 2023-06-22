@@ -41,7 +41,7 @@
         </field>
     </record>
 
-
+<!--
     <record id="checklist_line_action_form" model="ir.ui.view">
         <field name="name">checklist.line.action.form</field>
         <field name="model">project.checklist.line</field>
@@ -61,5 +61,5 @@
             </form>
         </field>
     </record>
-
+-->
 </odoo>
