@@ -11,7 +11,7 @@ class ProjectTask(models.Model):
 #    line_ids = fields.One2many('project.checklist.line', 'task_id', store=True,
 #                               context={'active_test': False},
 #                               string='CheckLists', required=True)
-    @def _get_checklist_lines(self):
+    def _get_checklist_lines(self):
         lines = self.env['project.checklist.line'].search(['checklist_id','=',self.checklist_id.id])
         self.line_ids = [(6,0,lines.ids)]
     line_ids = fields.Many2many('project.checklist.line', store=False, compute='_get_checklist_lines')
