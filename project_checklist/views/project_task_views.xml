@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-    <record id="project_task_progress_notebook" model="ir.ui.view">
+    <record id="project_task_checklist_inh" model="ir.ui.view">
         <field name="name">project.task.notebook</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
@@ -10,10 +10,8 @@
                 <field name="progress" widget="progressbar" class="oe_inline"/>
             </xpath>
             <xpath expr="//field[@name='tag_ids']" position="after">
-                <field name="checklist_tmpl_id" domain="[('is_template','=',True)]"/>
-                <!--
+                <field name="checklist_tmpl_id" domain="[('is_template','=',True)]"
                        attrs="{'invisible':[('checklist_id','!=',False)]}"/>
-                -->
                 <field name="checklist_id"/>
                 <!--
                 attrs="{'domain':[('project_id,'=',project_id.id)]}"/>

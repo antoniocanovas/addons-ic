@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="checklist to project_checklist">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_checklist/views/project_task_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_checklist/views/project_task_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,27 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00658" summary="checklist to project_checklist">
-      <created>1687194666426</created>
-      <option name="number" value="00658" />
-      <option name="presentableId" value="LOCAL-00658" />
-      <option name="project" value="LOCAL" />
-      <updated>1687194666426</updated>
-    </task>
-    <task id="LOCAL-00659" summary="checklist to project_checklist">
-      <created>1687194789091</created>
-      <option name="number" value="00659" />
-      <option name="presentableId" value="LOCAL-00659" />
-      <option name="project" value="LOCAL" />
-      <updated>1687194789091</updated>
-    </task>
-    <task id="LOCAL-00660" summary="checklist to project_checklist">
-      <created>1687194895294</created>
-      <option name="number" value="00660" />
-      <option name="presentableId" value="LOCAL-00660" />
-      <option name="project" value="LOCAL" />
-      <updated>1687194895294</updated>
     </task>
     <task id="LOCAL-00661" summary="checklist to project_checklist">
       <created>1687195161939</created>
@@ -408,7 +388,28 @@
       <option name="project" value="LOCAL" />
       <updated>1687479774712</updated>
     </task>
-    <option name="localTasksCounter" value="707" />
+    <task id="LOCAL-00707" summary="checklist to project_checklist">
+      <created>1687479867313</created>
+      <option name="number" value="00707" />
+      <option name="presentableId" value="LOCAL-00707" />
+      <option name="project" value="LOCAL" />
+      <updated>1687479867313</updated>
+    </task>
+    <task id="LOCAL-00708" summary="checklist to project_checklist">
+      <created>1687479970133</created>
+      <option name="number" value="00708" />
+      <option name="presentableId" value="LOCAL-00708" />
+      <option name="project" value="LOCAL" />
+      <updated>1687479970133</updated>
+    </task>
+    <task id="LOCAL-00709" summary="checklist to project_checklist">
+      <created>1687480055489</created>
+      <option name="number" value="00709" />
+      <option name="presentableId" value="LOCAL-00709" />
+      <option name="project" value="LOCAL" />
+      <updated>1687480055489</updated>
+    </task>
+    <option name="localTasksCounter" value="710" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
