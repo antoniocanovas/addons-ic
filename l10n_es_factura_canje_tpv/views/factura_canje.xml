@@ -28,52 +28,69 @@
                 <!-- Datos -->
                 <div style="display: flex; align-items: center; justify-content: space-between;">
                     <!-- Ubicación Abasto -->
-                  <div>
-                      <table>
-                          <tr>
-                              <th>Abasto</th>
-                          </tr>
-                          <tr>
-                              <th>C/Pepito de los palomos</th>
-                          </tr>
-                          <tr>
-                              <th>Población</th>
-                          </tr>
-                      </table>
-                  </div>
+                    <div>
+                        <table>
+                            <tr>
+                                <th>Abasto</th>
+                            </tr>
+                            <tr>
+                                <th>C/Pepito de los palomos</th>
+                            </tr>
+                            <tr>
+                                <th>Población</th>
+                            </tr>
+                        </table>
+                    </div>
 
                     <!-- Datos fiscales -->
-                  <div>
-                      <table>
-                          <tr>
-                              <th>Datos Fiscales</th>
-                          </tr>
-                          <tr>
-                              <th>Razón Social:</th>
-                          </tr>
-                          <tr>
-                              <th>NIF:</th>
-                          </tr>
-                      </table>
-                  </div>
+                    <div>
+                        <table>
+                            <tr>
+                                <th>Datos Fiscales</th>
+                            </tr>
+                            <tr>
+                                <th>Razón Social:</th>
+                            </tr>
+                            <tr>
+                                <th>NIF:</th>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
 
                 <div style="border-bottom: 1px solid black;"/>
+
                 <!-- Datos Factura -->
-                <div>
-                      <table>
-                          <tr>
-                              <th>Datos Fiscales</th>
-                          </tr>
-                          <tr>
-                              <th>Razón Social:</th>
-                          </tr>
-                          <tr>
-                              <th>NIF:</th>
-                          </tr>
-                      </table>
-                  </div>
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <!-- Factura -->
+                    <div>
+                        <table>
+                            <tr>
+                                <th>Nº Factura:</th>
+                            </tr>
+                            <tr>
+                                <th>C/</th>
+                            </tr>
+                            <tr>
+                                <th>Factura simplificada</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <table>
+                            <tr>
+                                <th>Fecha Factura:</th>
+                            </tr>
+                            <tr>
+                                <th>Telf:</th>
+                            </tr>
+                            <tr>
+                                <th>Fecha factura simplificada:</th>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
+                <br/>
 
                 <!-- Tabla factura -->
                 <div>
@@ -107,6 +124,47 @@
                             <td></td>
                             <td></td>
                         </tr>
+                    </table>
+                </div>
+                <br/>
+
+                <!-- Detalle -->
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Detalle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>IVA</td>
+                                <td>Base imponible</td>
+                                <td>Cuota</td>
+                                <td>Total</td>
+                            </tr>
+                            <tr>
+                                <th colspan="5" style="text-align: right;">Total factura:</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+
+                <!-- Forma de pago -->
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Forma de pago</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Efectivo</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
 
