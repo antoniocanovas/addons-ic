@@ -13,10 +13,10 @@ class ProjectTask(models.Model):
 #                               string='CheckLists', required=True)
     @api.depends('checklist_id', 'checklist_id.line_ids')
     def _get_checklist_lines(self):
-        lines = []
-        if (self.checklist_id.id != False) and (self.checklist_id.line_ids.ids != []):
-            lines = self.checklist_id.line_ids.ids
-        self.line_ids = [(6,0,lines)]
+#        lines = []
+#        if (self.checklist_id.id != False) and (self.checklist_id.line_ids.ids != []):
+#            lines = self.checklist_id.line_ids.ids
+        self.line_ids = [(6,0,self.checklist_id.line_ids.ids)]
     line_ids = fields.Many2many('project.checklist.line', store=True, compute='_get_checklist_lines')
 
     @api.onchange('checklist_tmpl_id')

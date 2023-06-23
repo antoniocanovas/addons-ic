@@ -65,27 +65,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00650" summary="checklist to project_checklist">
-      <created>1687162406779</created>
-      <option name="number" value="00650" />
-      <option name="presentableId" value="LOCAL-00650" />
-      <option name="project" value="LOCAL" />
-      <updated>1687162406779</updated>
-    </task>
-    <task id="LOCAL-00651" summary="checklist to project_checklist">
-      <created>1687163600731</created>
-      <option name="number" value="00651" />
-      <option name="presentableId" value="LOCAL-00651" />
-      <option name="project" value="LOCAL" />
-      <updated>1687163600731</updated>
-    </task>
-    <task id="LOCAL-00652" summary="checklist to project_checklist">
-      <created>1687163777834</created>
-      <option name="number" value="00652" />
-      <option name="presentableId" value="LOCAL-00652" />
-      <option name="project" value="LOCAL" />
-      <updated>1687163777834</updated>
-    </task>
     <task id="LOCAL-00653" summary="checklist to project_checklist">
       <created>1687163922344</created>
       <option name="number" value="00653" />
@@ -408,7 +387,28 @@
       <option name="project" value="LOCAL" />
       <updated>1687478261575</updated>
     </task>
-    <option name="localTasksCounter" value="699" />
+    <task id="LOCAL-00699" summary="checklist to project_checklist">
+      <created>1687478638252</created>
+      <option name="number" value="00699" />
+      <option name="presentableId" value="LOCAL-00699" />
+      <option name="project" value="LOCAL" />
+      <updated>1687478638252</updated>
+    </task>
+    <task id="LOCAL-00700" summary="checklist to project_checklist">
+      <created>1687478838807</created>
+      <option name="number" value="00700" />
+      <option name="presentableId" value="LOCAL-00700" />
+      <option name="project" value="LOCAL" />
+      <updated>1687478838807</updated>
+    </task>
+    <task id="LOCAL-00701" summary="checklist to project_checklist">
+      <created>1687478911083</created>
+      <option name="number" value="00701" />
+      <option name="presentableId" value="LOCAL-00701" />
+      <option name="project" value="LOCAL" />
+      <updated>1687478911083</updated>
+    </task>
+    <option name="localTasksCounter" value="702" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
