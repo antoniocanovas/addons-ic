@@ -15,6 +15,7 @@ Facturas de canje para TPV.
         'views/menu_views.xml',
         'views/factura_canje_views.xml',
         'views/pos_order_views.xml',
+        'views/factura_canje.xml',
     ],
     'installable': True,
 }
