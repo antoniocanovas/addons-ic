@@ -11,10 +11,11 @@ class ProjectTask(models.Model):
 #    line_ids = fields.One2many('project.checklist.line', 'task_id', store=True,
 #                               context={'active_test': False},
 #                               string='CheckLists', required=True)
+    @api.depends('checklist_id', 'checklist_id.line_ids')
     def _get_checklist_lines(self):
         lines = self.env['project.checklist.line'].search(['checklist_id','=',self.checklist_id.id])
         self.line_ids = [(6,0,lines.ids)]
-    line_ids = fields.Many2many('project.checklist.line', store=False, compute='_get_checklist_lines')
+    line_ids = fields.Many2many('project.checklist.line', store=True, compute='_get_checklist_lines')
 
     @api.onchange('checklist_tmpl_id')
     def _onchange_checklist_tmpl_id(self):
