@@ -20,7 +20,7 @@
                     <tree>
                         <field name="sequence" widget="handle"/>
                         <field name="name"/>
-                        <field name="description"/>
+                        <field name="description" optional="hide"/>
                         <field name="activity_ids" string="Next Activity" widget="list_activity" optional="show"/>
                         <field name="state" widget="selection"/>
                         <field name="active" widget="boolean_toggle"/>
