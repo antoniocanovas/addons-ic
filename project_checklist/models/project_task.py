@@ -13,8 +13,10 @@ class ProjectTask(models.Model):
 #                               string='CheckLists', required=True)
     @api.depends('checklist_id', 'checklist_id.line_ids')
     def _get_checklist_lines(self):
-        lines = self.env['project.checklist.line'].search(['checklist_id','=',self.checklist_id.id])
-        self.line_ids = [(6,0,lines.ids)]
+        lines = []
+        if (self.checklist_id.id) and (self.checklist_id.line_ids.ids):
+            lines = self.checklist_id.line_ids.ids
+        self.line_ids = [(6,0,lines)]
     line_ids = fields.Many2many('project.checklist.line', store=True, compute='_get_checklist_lines')
 
     @api.onchange('checklist_tmpl_id')
