@@ -2,7 +2,7 @@
 <odoo>
 
     <record id="project_task_checklist_inh" model="ir.ui.view">
-        <field name="name">project.task.notebook</field>
+        <field name="name">project.task.checklist.inh</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
