@@ -16,7 +16,6 @@
             </xpath>
             <field name="description" position="before">
                 <field name="line_ids"
-  <!--                     domain="[('checklist_id','=',checklist_id)]" -->
                        context="{'default_cheklist_id':checklist_id}">
                     <tree editable="botton">
                         <field name="sequence" widget="handle"/>
