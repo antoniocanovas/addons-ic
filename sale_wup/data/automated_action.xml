@@ -4,9 +4,10 @@
             <field name="model_id" ref="sale.model_sale_order_line"/>
             <field name="state">code</field>
             <field name="code">
-if (record.wup_line_ids.ids) and (record.wup_price_unit != record.price_unit):
-  record['price_unit'] = record.wup_price_unit
-if (record.wup_line_ids.ids) and not (record.wup_line_note_id.id) and (record.wup_template_id.id) and (record.wup_template_id.description):
+if (record.wup_line_ids.ids):
+  if (record.wup_price_unit != record.price_unit) or (record.wup_cost_amount != record.purchase_price):
+    record.write({'price_unit':record.wup_price_unit, 'purchase_price':record.wup_cost_amount, 'wup_update':False})
+  if not (record.wup_line_note_id.id) and (record.wup_template_id.id) and (record.wup_template_id.description):
     # Create a line note from wup template description:
     new_note = env['sale.order.line'].create({'sequence':record.sequence, 'name':record.wup_template_id.description, 'display_type':'line_note', 'order_id':record.order_id.id})
             </field>

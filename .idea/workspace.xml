@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="purchasePriceError">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug fcanje sec">
+      <change afterPath="$PROJECT_DIR$/sale_wup/description/icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_wup/static/description/icon.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,17 +38,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/sale_wup" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sale_wup" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/external_work/models" />
       <recent name="$PROJECT_DIR$/external_work/security" />
       <recent name="$PROJECT_DIR$/external_work" />
-      <recent name="$PROJECT_DIR$/hr_timesheet_work_multisection" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/product_chassis/i18n" />
@@ -64,13 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00608" summary="mrp_bom access">
-      <created>1683077380053</created>
-      <option name="number" value="00608" />
-      <option name="presentableId" value="LOCAL-00608" />
-      <option name="project" value="LOCAL" />
-      <updated>1683077380053</updated>
     </task>
     <task id="LOCAL-00609" summary="external_work_expenses">
       <created>1683218865480</created>
@@ -408,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687183975967</updated>
     </task>
-    <option name="localTasksCounter" value="657" />
+    <task id="LOCAL-00657" summary="bug fcanje sec">
+      <created>1687448656009</created>
+      <option name="number" value="00657" />
+      <option name="presentableId" value="LOCAL-00657" />
+      <option name="project" value="LOCAL" />
+      <updated>1687448656009</updated>
+    </task>
+    <option name="localTasksCounter" value="658" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +426,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="account_move_sale_tags" />
     <MESSAGE value="multisection hide subtotals v0" />
     <MESSAGE value="product price update with supplierinfo" />
     <MESSAGE value="external work v1" />
@@ -449,7 +450,8 @@
     <MESSAGE value="ts_work milestone in wizard" />
     <MESSAGE value="multisec rev imp" />
     <MESSAGE value="purchasePriceError" />
-    <option name="LAST_COMMIT_MESSAGE" value="purchasePriceError" />
+    <MESSAGE value="bug fcanje sec" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fcanje sec" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
