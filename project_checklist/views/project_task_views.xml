@@ -10,13 +10,13 @@
                 <field name="progress" widget="progressbar" class="oe_inline"/>
             </xpath>
             <xpath expr="//field[@name='tag_ids']" position="after">
-                <field name="checklist_tmpl_id" domain="['|',('project_id','=',project_id),('project_id','=',False)]"
-                       attrs="{'readonly':[('line_ids','!=',[])]}"/>
-                <field name="checklist_id"/>
+                <field name="checklist_tmpl_id" domain="[('is_template','=',True)]"
+                       attrs="{'invisible':[('checklist_id','!=',[])]}"/>
+                <field name="checklist_id" domain="[('project_id,'=',project_id)]"/>
             </xpath>
             <field name="description" position="before">
                 <field name="line_ids"
-                       domain="[('checklist_id','=',checklist_id)]"
+  <!--                     domain="[('checklist_id','=',checklist_id)]" -->
                        context="{'default_cheklist_id':checklist_id}">
                     <tree editable="botton">
                         <field name="sequence" widget="handle"/>

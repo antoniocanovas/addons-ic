@@ -8,14 +8,9 @@ class ProjectTask(models.Model):
     progress = fields.Float(compute='_compute_progress', string='Progress in %')
     checklist_tmpl_id = fields.Many2one('project.checklist', store=True, copy=False)
     checklist_id = fields.Many2one('project.checklist', store=True, copy=False)
-#    line_ids = fields.One2many('project.checklist.line', 'task_id', store=True,
-#                               context={'active_test': False},
-#                               string='CheckLists', required=True)
+
     @api.depends('checklist_id', 'checklist_id.line_ids')
     def _get_checklist_lines(self):
-#        lines = []
-#        if (self.checklist_id.id != False) and (self.checklist_id.line_ids.ids != []):
-#            lines = self.checklist_id.line_ids.ids
         self.line_ids = [(6,0,self.checklist_id.line_ids.ids)]
     line_ids = fields.Many2many('project.checklist.line', store=True, compute='_get_checklist_lines')
 

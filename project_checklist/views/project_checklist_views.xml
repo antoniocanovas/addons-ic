@@ -6,7 +6,8 @@
         <field name="arch" type="xml">
             <tree string="Task Checklist">
                 <field name="name"/>
-                <field name="task_id"/>
+                <field name="project_id"/>
+                <field name="is_template"/>
             </tree>
         </field>
     </record>
@@ -24,7 +25,8 @@
                             <field name="description"/>
                         </group>
                         <group>
-                            <field name="task_id"/>
+                            <field name="project_id"/>
+                            <field name="is_template"/>
                         </group>
                     </group>
 

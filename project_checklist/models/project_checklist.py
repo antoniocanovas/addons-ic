@@ -9,7 +9,6 @@ class ProjectChecklist(models.Model):
     name = fields.Char(string='Name')
     description = fields.Char(string='Description')
     project_id = fields.Many2one('project.project', string='Project')
-    task_id = fields.Many2one('project.task', string='Task')
-
+    is_template = fields.Boolean('Template')
     line_ids = fields.One2many('project.checklist.line', 'checklist_id',
                                string='CheckLists', required=True)
