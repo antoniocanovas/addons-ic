@@ -12,7 +12,7 @@
             <xpath expr="//field[@name='tag_ids']" position="after">
                 <field name="checklist_tmpl_id" domain="[('is_template','=',True)]"
                        attrs="{'invisible':[('checklist_id','!=',[])]}"/>
-                <field name="checklist_id" attrs="{'domain':[('project_id,'=',project_id)]}"/>
+                <field name="checklist_id" attrs="{'domain':[('project_id,'=',project_id.id)]}"/>
             </xpath>
             <field name="description" position="before">
                 <field name="line_ids"
