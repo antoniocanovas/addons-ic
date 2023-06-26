@@ -12,6 +12,17 @@
         </field>
     </record>
 
+    <record id="task_checklist_line_action" model="ir.actions.act_window">
+        <field name="name">Task Checklist Lines</field>
+        <field name="res_model">project.checklist.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Checklist lines
+            </p>
+        </field>
+    </record>
+
     <menuitem
             id="project_checklist_root"
             name="Checklist"
@@ -24,5 +35,12 @@
             name="Task Checklist"
             action="task_checklist_action"
             sequence="1"/>
+
+    <menuitem
+            parent="project_checklist_root"
+            id="menu_task_checklist_line"
+            name="Checklist lines"
+            action="task_checklist_line_action"
+            sequence="2"/>
 
 </odoo>
