@@ -36,6 +36,9 @@
                             <field name="sequence" widget="handle"/>
                             <field name="name" required="1"/>
                             <field name="description"/>
+                            <field name="activity_ids" string="Next Activity" widget="list_activity" optional="show"/>
+                            <field name="state" widget="selection"/>
+                            <field name="active" widget="boolean_toggle"/>
                         </tree>
                     </field>
                 </sheet>
@@ -43,7 +46,6 @@
         </field>
     </record>
 
-<!--
     <record id="checklist_line_action_form" model="ir.ui.view">
         <field name="name">checklist.line.action.form</field>
         <field name="model">project.checklist.line</field>
@@ -60,8 +62,13 @@
                         </group>
                     </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh':'recipients'}"/>
+                </div>
             </form>
         </field>
     </record>
--->
+
 </odoo>
