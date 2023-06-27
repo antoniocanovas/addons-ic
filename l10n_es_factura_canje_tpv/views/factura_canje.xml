@@ -23,13 +23,13 @@
 
     <record id="factura_canje_report" model="ir.ui.view">
         <template id="factura_canje_report">
-            <t t-call="web.html_container">
-                <t t-call="web.internal_layout">
+            <t t-call="web.html_container"/>
+                <t t-call="web.internal_layout"/>
                     <field name="name">report.factura.canje.report</field>
                     <!--
                     <field name="inherit_id" ref="factura_canje.factura_canje"/>
                     -->
-                    <field name="arch" type="xml">
+                    <field name="arch" type="xml"/>
 
                     <data>
 
