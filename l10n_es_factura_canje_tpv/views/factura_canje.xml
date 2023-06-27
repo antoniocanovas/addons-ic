@@ -190,7 +190,6 @@
             </t>
         </template>
 
-    </field>
     <field name="type">qweb</field>
     <field name="priority">999</field>
 </record>
