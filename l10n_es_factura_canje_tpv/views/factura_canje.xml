@@ -13,15 +13,15 @@
         <field name="binding_type">report</field>
     </record>
 
-
+<!--
     <template id="factura_canje_report">
         <t t-call="web.external_layout">
 
         </t>
     </template>
+-->
 
-
-    <record id="report_factura_canje_report" model="ir.ui.view">
+    <record id="factura_canje_report" model="ir.ui.view">
         <field name="name">report.factura.canje.inh.report</field>
         <!--
         <field name="inherit_id" ref="factura_canje.factura_canje"/>
