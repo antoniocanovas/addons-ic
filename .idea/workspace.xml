@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="fcanje" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="fcanje">
+      <change beforePath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/views/factura_canje.xml" beforeDir="false" afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/views/factura_canje.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,20 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00613" summary="external_work_expenses">
-      <created>1683220033691</created>
-      <option name="number" value="00613" />
-      <option name="presentableId" value="LOCAL-00613" />
-      <option name="project" value="LOCAL" />
-      <updated>1683220033691</updated>
-    </task>
-    <task id="LOCAL-00614" summary="hr_ts-wizard_id">
-      <created>1683649859200</created>
-      <option name="number" value="00614" />
-      <option name="presentableId" value="LOCAL-00614" />
-      <option name="project" value="LOCAL" />
-      <updated>1683649859200</updated>
     </task>
     <task id="LOCAL-00615" summary="priceupdate_templ">
       <created>1684330710991</created>
@@ -406,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1687859651059</updated>
     </task>
-    <option name="localTasksCounter" value="662" />
+    <task id="LOCAL-00662" summary="fcanje">
+      <created>1687859780032</created>
+      <option name="number" value="00662" />
+      <option name="presentableId" value="LOCAL-00662" />
+      <option name="project" value="LOCAL" />
+      <updated>1687859780032</updated>
+    </task>
+    <task id="LOCAL-00663" summary="fcanje">
+      <created>1687859957729</created>
+      <option name="number" value="00663" />
+      <option name="presentableId" value="LOCAL-00663" />
+      <option name="project" value="LOCAL" />
+      <updated>1687859957729</updated>
+    </task>
+    <option name="localTasksCounter" value="664" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
