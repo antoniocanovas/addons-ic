@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug fcanje sec">
-      <change afterPath="$PROJECT_DIR$/sale_wup/description/icon.png" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="sale_wup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_wup/static/description/icon.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00609" summary="external_work_expenses">
-      <created>1683218865480</created>
-      <option name="number" value="00609" />
-      <option name="presentableId" value="LOCAL-00609" />
-      <option name="project" value="LOCAL" />
-      <updated>1683218865481</updated>
     </task>
     <task id="LOCAL-00610" summary="external_work_expenses">
       <created>1683219328506</created>
@@ -410,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687448656009</updated>
     </task>
-    <option name="localTasksCounter" value="658" />
+    <task id="LOCAL-00658" summary="sale_wup">
+      <created>1687540540219</created>
+      <option name="number" value="00658" />
+      <option name="presentableId" value="LOCAL-00658" />
+      <option name="project" value="LOCAL" />
+      <updated>1687540540219</updated>
+    </task>
+    <option name="localTasksCounter" value="659" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="multisection hide subtotals v0" />
     <MESSAGE value="product price update with supplierinfo" />
     <MESSAGE value="external work v1" />
     <MESSAGE value="roadmap with contact_id" />
@@ -451,7 +448,8 @@
     <MESSAGE value="multisec rev imp" />
     <MESSAGE value="purchasePriceError" />
     <MESSAGE value="bug fcanje sec" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fcanje sec" />
+    <MESSAGE value="sale_wup" />
+    <option name="LAST_COMMIT_MESSAGE" value="sale_wup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

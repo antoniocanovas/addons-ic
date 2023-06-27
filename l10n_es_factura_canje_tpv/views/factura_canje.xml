@@ -3,7 +3,9 @@
 
     <record id="report_factura_canje_report" model="ir.ui.view">
         <field name="name">report.factura.canje.inh.report</field>
+        <!--
         <field name="inherit_id" ref="factura_canje.factura_canje"/>
+        -->
         <field name="arch" type="xml">
 
             <data>
