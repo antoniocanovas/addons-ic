@@ -23,168 +23,172 @@
 
     <record id="factura_canje_report" model="ir.ui.view">
         <template id="factura_canje_report">
-            <t t-call="web.html_container"/>
-                <t t-call="web.internal_layout"/>
-                    <field name="name">report.factura.canje.report</field>
-                    <!--
-                    <field name="inherit_id" ref="factura_canje.factura_canje"/>
-                    -->
-                    <field name="arch" type="xml"/>
+            <t t-call="web.external_layout">
 
-                    <data>
+                <field name="name">report.factura.canje.report</field>
+                <!--
+                <field name="inherit_id" ref="factura_canje.factura_canje"/>
+                -->
+                <field name="arch" type="xml"/>
 
-                        <!-- Encabezado -->
-                        <div>
-                            <img t-if="env.company.logo" t-att-src="image_data_uri(env.company.logo)" style="height: 40px; width: 80px; text-align: left; margin: -10px; margin-left: 10px;" alt="Logo"/>
-                        </div>
-                        <div style="border-bottom: 1px solid black;"/>
+                <data>
 
-                        <!-- Datos -->
-                        <div style="display: flex; align-items: center; justify-content: space-between;">
-                            <!-- Ubicación Abasto -->
-                            <div>
-                                <table>
-                                    <tr>
-                                        <th>Abasto</th>
-                                    </tr>
-                                    <tr>
-                                        <th>C/Pepito de los palomos</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Población</th>
-                                    </tr>
-                                </table>
-                            </div>
+                    <!-- Encabezado -->
+                    <div>
+                        <img t-if="env.company.logo" t-att-src="image_data_uri(env.company.logo)" style="height: 40px; width: 80px; text-align: left; margin: -10px; margin-left: 10px;" alt="Logo"/>
+                    </div>
+                    <div style="border-bottom: 1px solid black;"/>
 
-                            <!-- Datos fiscales -->
-                            <div>
-                                <table>
-                                    <tr>
-                                        <th>Datos Fiscales</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Razón Social:</th>
-                                    </tr>
-                                    <tr>
-                                        <th>NIF:</th>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div style="border-bottom: 1px solid black;"/>
-
-                        <!-- Datos Factura -->
-                        <div style="display: flex; align-items: center; justify-content: space-between;">
-                            <!-- Factura -->
-                            <div>
-                                <table>
-                                    <tr>
-                                        <th>Nº Factura:</th>
-                                    </tr>
-                                    <tr>
-                                        <th>C/</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Factura simplificada</th>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div>
-                                <table>
-                                    <tr>
-                                        <th>Fecha Factura:</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Telf:</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Fecha factura simplificada:</th>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <br/>
-
-                        <!-- Tabla factura -->
+                    <!-- Datos -->
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <!-- Ubicación Abasto -->
                         <div>
                             <table>
-                                <thead>
-                                    <tr>
-                                        <th>Descripción</th>
-                                        <th>Unid.</th>
-                                        <th>P.Unitario</th>
-                                        <th>B.Imp</th>
-                                        <th>IVA</th>
-                                        <th>Cuota IVA</th>
-                                        <th>Importe</th>
-                                    </tr>
-                                </thead>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <th>Abasto</th>
                                 </tr>
                                 <tr>
-                                    <th>Total:</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <th>C/Pepito de los palomos</th>
+                                </tr>
+                                <tr>
+                                    <th>Población</th>
                                 </tr>
                             </table>
                         </div>
-                        <br/>
 
-                        <!-- Detalle -->
+                        <!-- Datos fiscales -->
                         <div>
                             <table>
-                                <thead>
-                                    <tr>
-                                        <th>Detalle</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>IVA</td>
-                                        <td>Base imponible</td>
-                                        <td>Cuota</td>
-                                        <td>Total</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="5" style="text-align: right;">Total factura:</th>
-                                    </tr>
-                                </tbody>
+                                <tr>
+                                    <th>Datos Fiscales</th>
+                                </tr>
+                                <tr>
+                                    <th>Razón Social:</th>
+                                </tr>
+                                <tr>
+                                    <th>NIF:</th>
+                                </tr>
                             </table>
                         </div>
-                        <br/>
+                    </div>
 
-                        <!-- Forma de pago -->
+                    <div style="border-bottom: 1px solid black;"/>
+
+                    <!-- Datos Factura -->
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <!-- Factura -->
                         <div>
                             <table>
-                                <thead>
-                                    <tr>
-                                        <th>Forma de pago</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Efectivo</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
+                                <tr>
+                                    <th>Nº Factura:</th>
+                                </tr>
+                                <tr>
+                                    <th>C/</th>
+                                </tr>
+                                <tr>
+                                    <th>Factura simplificada</th>
+                                </tr>
                             </table>
                         </div>
-                    </data>
+                        <div>
+                            <table>
+                                <tr>
+                                    <th>Fecha Factura:</th>
+                                </tr>
+                                <tr>
+                                    <th>Telf:</th>
+                                </tr>
+                                <tr>
+                                    <th>Fecha factura simplificada:</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <!-- Tabla factura -->
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <th>Unid.</th>
+                                    <th>P.Unitario</th>
+                                    <th>B.Imp</th>
+                                    <th>IVA</th>
+                                    <th>Cuota IVA</th>
+                                    <th>Importe</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>Total:</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br/>
+
+                    <!-- Detalle -->
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Detalle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>IVA</td>
+                                    <td>Base imponible</td>
+                                    <td>Cuota</td>
+                                    <td>Total</td>
+                                </tr>
+                                <tr>
+                                    <th colspan="5" style="text-align: right;">Total factura:</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br/>
+
+                    <!-- Forma de pago -->
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Forma de pago</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Efectivo</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </data>
+            </t>
         </template>
 
-
+        <template id="factura_canje_report">
+            <t t-call="web.html_container">
+            </t>
+        </template>
 
     </field>
     <field name="type">qweb</field>
