@@ -63,13 +63,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00671" summary="checklist to project_checklist">
-      <created>1687366802457</created>
-      <option name="number" value="00671" />
-      <option name="presentableId" value="LOCAL-00671" />
-      <option name="project" value="LOCAL" />
-      <updated>1687366802457</updated>
-    </task>
     <task id="LOCAL-00672" summary="checklist to project_checklist">
       <created>1687366964034</created>
       <option name="number" value="00672" />
@@ -406,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688559872701</updated>
     </task>
-    <option name="localTasksCounter" value="720" />
+    <task id="LOCAL-00720" summary="project_des_tracking v0">
+      <created>1688560575569</created>
+      <option name="number" value="00720" />
+      <option name="presentableId" value="LOCAL-00720" />
+      <option name="project" value="LOCAL" />
+      <updated>1688560575569</updated>
+    </task>
+    <option name="localTasksCounter" value="721" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
