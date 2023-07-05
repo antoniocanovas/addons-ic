@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="cheklist line form">
-      <change afterPath="$PROJECT_DIR$/project_description_tracking/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_description_tracking/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_description_tracking/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_description_tracking/models/project_project.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_description_tracking/static/description/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="cheklist line form" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,13 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00668" summary="checklist to project_checklist">
-      <created>1687366459204</created>
-      <option name="number" value="00668" />
-      <option name="presentableId" value="LOCAL-00668" />
-      <option name="project" value="LOCAL" />
-      <updated>1687366459204</updated>
     </task>
     <task id="LOCAL-00669" summary="checklist to project_checklist">
       <created>1687366566001</created>
@@ -413,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687772570246</updated>
     </task>
-    <option name="localTasksCounter" value="717" />
+    <task id="LOCAL-00717" summary="cheklist line form">
+      <created>1688558730110</created>
+      <option name="number" value="00717" />
+      <option name="presentableId" value="LOCAL-00717" />
+      <option name="project" value="LOCAL" />
+      <updated>1688558730110</updated>
+    </task>
+    <option name="localTasksCounter" value="718" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
