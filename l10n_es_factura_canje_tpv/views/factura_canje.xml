@@ -17,150 +17,77 @@
         <t t-name="factura_canje_report_document">
             <t t-call="web.external_layout">
 
-                    <div style="border-bottom: 1px solid black;"/>
+                <!-- <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/> -->
+                <t t-set="address">
+                    <div t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                    <p t-if="o.partner_id.vat"><t t-esc="o.partner_id.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></p>
+                </t>
+                <!--
+                <t t-if="o.partner_id.partner_shipping_id == o.partner_id.partner_invoice_id                              and o.partner_id.partner_invoice_id != o.partner_id                              or doc.partner_shipping_id != doc.partner_invoice_id">
+                     <t t-set="information_block">
+                         <strong t-if="o.partner_id.partner_shipping_id == o.partner_invoice_id">Invoicing and Shipping Address:</strong>
+                         <strong t-if="o.partner_id.partner_shipping_id != o.partner_invoice_id">Invoicing Address:</strong>
+                         <div t-field="o.partner_id.partner_invoice_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                         <t t-if="o.partner_shipping_id != o.partner_invoice_id">
+                             <strong>Shipping Address:</strong>
+                             <div t-field="o.partner_shipping_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                         </t>
+                   </t>
+                 </t>
+                 <div class="page">
+                     <div class="oe_structure"/>
 
-                    <!-- Datos -->
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <!-- Ubicación Abasto -->
-                        <div>
-                            <table>
-                                <tr>
-                                    <th>Abasto</th>
-                                </tr>
-                                <tr>
-                                    <th>C/Pepito de los palomos</th>
-                                </tr>
-                                <tr>
-                                    <th>Población</th>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <!-- Datos fiscales -->
-                        <div>
-                            <table>
-                                <tr>
-                                    <th>Datos Fiscales</th>
-                                </tr>
-                                <tr>
-                                    <th>Razón Social:</th>
-                                </tr>
-                                <tr>
-                                    <th>NIF:</th>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div style="border-bottom: 1px solid black;"/>
-
-                    <!-- Datos Factura -->
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <!-- Factura -->
-                        <div>
-                            <table>
-                                <tr>
-                                    <th>Nº Factura:</th>
-                                </tr>
-                                <tr>
-                                    <th>C/</th>
-                                </tr>
-                                <tr>
-                                    <th>Factura simplificada</th>
-                                </tr>
-                            </table>
-                        </div>
-                        <div>
-                            <table>
-                                <tr>
-                                    <th>Fecha Factura:</th>
-                                </tr>
-                                <tr>
-                                    <th>Telf:</th>
-                                </tr>
-                                <tr>
-                                    <th>Fecha factura simplificada:</th>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <br/>
-
-                    <!-- Tabla factura -->
-                    <div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Descripción</th>
-                                    <th>Unid.</th>
-                                    <th>P.Unitario</th>
-                                    <th>B.Imp</th>
-                                    <th>IVA</th>
-                                    <th>Cuota IVA</th>
-                                    <th>Importe</th>
-                                </tr>
-                            </thead>
+                     <h2 class="mt16">
+                         <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                             <span t-if="o.state not in ['draft','sent']">Order # </span>
+                             <span t-if="o.state in ['draft','sent']">Quotation # </span>
+                         </t>
+                         <t t-if="env.context.get('proforma', False) or is_pro_forma">
+                             <span>Pro-Forma Invoice # </span>
+                         </t>
+                         <span t-field="o.name"/>
+                     </h2>
+                     </div>
+                     -->
+                <div>
+                    <table style="border-collapse: collapse;">
+                        <thead>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <th style="padding: 10px;">Ref. Venta</th>
+                                <th style="padding: 10px;">Sesión</th>
+                                <th style="padding: 10px;">Fecha</th>
+                                <th style="padding: 10px;">N. recibo</th>
+                                <th style="padding: 10px;">Cliente</th>
+                                <th style="padding: 10px;">Cajero</th>
+                                <th style="padding: 10px;">Total</th>
+                                <th style="padding: 10px;">Estado</th>
+                                <th style="padding: 10px;">Factura de canje</th>
                             </tr>
-                            <tr>
-                                <th>Total:</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <br/>
+                        </thead>
 
-                    <!-- Detalle -->
-                    <div>
-                        <table>
-                            <thead>
+                        <t t-foreach="o.pos_order_ids" t-as="line">
+                            <tbody style="font-size: 12px">
                                 <tr>
-                                    <th>Detalle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>IVA</td>
-                                    <td>Base imponible</td>
-                                    <td>Cuota</td>
-                                    <td>Total</td>
+                                    <td style="padding: 10px;"><span t-field="line.name"/></td>
+                                    <td style="padding: 10px;"><span t-field="line.session_id"/></td>
+                                    <td style="padding: 10px;"><span t-field="line.date_order"/></td>
+                                    <td style="padding: 10px;"><span t-field="line.pos_reference"/></td>
+                                    <td style="padding: 10px;"><span t-field="line.partner_id"/></td>
+                                    <td style="padding: 10px;"><span t-field="line.user_id"/></td>
+                                    <td style="padding: 10px;"><span t-field="line.amount_total"  t-options="{&quot;widget&quot;: &quot;monetary&quot;}"/></td>
+                                    <td style="padding: 10px;"><span t-field="line.state"/></td>
+                                    <td style="padding: 10px;"><span t-field="line.fcanje_id"/></td>
                                 </tr>
                                 <tr>
-                                    <th colspan="5" style="text-align: right;">Total factura:</th>
+                                    <td><span t-field="line.total_amount"/></td>
                                 </tr>
                             </tbody>
-                        </table>
-                    </div>
-                    <br/>
-
-                    <!-- Forma de pago -->
-                    <div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Forma de pago</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Efectivo</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                        </t>
+                    </table>
+                </div>
+                <div style="margin: 10%">
+                    <span t-field="o.description"/>
+                </div>
             </t>
         </t>
     </template>
