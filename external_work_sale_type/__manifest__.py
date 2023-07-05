@@ -1,9 +1,9 @@
 {
-    'name': 'External Work',
+    'name': 'External Work Sale Type',
     'version': '14.0.1.0.1',
     'category': '',
     'description': u"""
-External Work sale type
+External Work integration with OCA sale_order_type
 """,
     'author': 'Serincloud',
     'depends': [

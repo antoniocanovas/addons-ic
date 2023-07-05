@@ -3,7 +3,7 @@
     'version': '14.0.1.0.1',
     'category': '',
     'description': u"""
-External Work
+External Work app to include services, product and expenses from one place.
 """,
     'author': 'Serincloud',
     'depends': [
