@@ -107,24 +107,25 @@ class ExternalWork(models.Model):
                                         })
 
             # SALE LINE FOR PRODUCT OR SERVICE:
+            name = self.code + " " + li.product_id.name
             # Sale order based on list price:
             if (saleline == True) and (li.sale_line_id.id == False) and (li.type in ['pin','sin','ein']):
-                newsol = self.env['sale.order.line'].create({'product_id':li.product_id.id, 'name':li.product_id.name,
+                newsol = self.env['sale.order.line'].create({'product_id':li.product_id.id, 'name':name,
                                                              'product_uom':li.uom_id.id, 'product_uom_qty':li.product_qty,
                                                              'order_id':self.sale_id.id})
                 # Line with price = 0:
             elif (saleline == True) and (li.sale_line_id.id == False) and (li.type in ['pni']):
-                newsol = self.env['sale.order.line'].create({'product_id':li.product_id.id, 'name':li.product_id.name,
+                newsol = self.env['sale.order.line'].create({'product_id':li.product_id.id, 'name':name,
                                                              'product_uom':li.uom_id.id, 'product_uom_qty':li.product_qty,
                                                              'order_id':self.sale_id.id, 'price_unit':0})
                 # Overwrite line with list price:
             elif (saleline == True) and (li.sale_line_id.id == False) and (li.type in ['pin','sin','ein']):
-                li.sale_line_id.write({'product_id':li.product_id.id, 'name':li.product_id.name,
+                li.sale_line_id.write({'product_id':li.product_id.id, 'name':name,
                                        'product_uom':li.uom_id.id, 'product_uom_qty':li.product_qty,
                                        'order_id':self.sale_id.id})
                 # Overwrite line with price = 0
             elif (saleline == True) and (li.sale_line_id.id != False) and (li.type in ['pni']):
-                li.sale_line_id.write({'product_id':li.product_id.id, 'name':li.product_id.name,
+                li.sale_line_id.write({'product_id':li.product_id.id, 'name':name,
                                        'product_uom':li.uom_id.id, 'product_uom_qty':li.product_qty,
                                        'order_id':self.sale_id.id, 'price_unit':0})
             if newsol: li.sale_line_id = newsol.id
