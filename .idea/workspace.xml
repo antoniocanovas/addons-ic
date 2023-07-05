@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="cheklist line form" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_des_tracking v0">
+      <change beforePath="$PROJECT_DIR$/project_description_tracking/models/project_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_description_tracking/models/project_project.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00669" summary="checklist to project_checklist">
-      <created>1687366566001</created>
-      <option name="number" value="00669" />
-      <option name="presentableId" value="LOCAL-00669" />
-      <option name="project" value="LOCAL" />
-      <updated>1687366566001</updated>
     </task>
     <task id="LOCAL-00670" summary="checklist to project_checklist">
       <created>1687366704160</created>
@@ -406,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688558730110</updated>
     </task>
-    <option name="localTasksCounter" value="718" />
+    <task id="LOCAL-00718" summary="project_des_tracking v0">
+      <created>1688559548688</created>
+      <option name="number" value="00718" />
+      <option name="presentableId" value="LOCAL-00718" />
+      <option name="project" value="LOCAL" />
+      <updated>1688559548688</updated>
+    </task>
+    <option name="localTasksCounter" value="719" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -422,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sale_wup_discount rev" />
     <MESSAGE value="sale_wup upd" />
     <MESSAGE value="sale_wup wizard bug" />
     <MESSAGE value="16 project_roadmap" />
@@ -447,7 +448,8 @@
     <MESSAGE value="task checklist cybro ic" />
     <MESSAGE value="checklist to project_checklist" />
     <MESSAGE value="cheklist line form" />
-    <option name="LAST_COMMIT_MESSAGE" value="cheklist line form" />
+    <MESSAGE value="project_des_tracking v0" />
+    <option name="LAST_COMMIT_MESSAGE" value="project_des_tracking v0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

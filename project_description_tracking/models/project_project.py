@@ -4,6 +4,6 @@ from odoo import models, fields, api, _
 
 
 class ProjectProject(models.Model):
-    _name = 'project.project'
+    _inherit = 'project.project'
 
     description = fields.Html(tracking=100)
