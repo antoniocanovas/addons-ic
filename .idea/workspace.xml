@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_des_tracking v0">
-      <change beforePath="$PROJECT_DIR$/project_description_tracking/models/project_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_description_tracking/models/project_project.py" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_des_tracking v0" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,13 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00670" summary="checklist to project_checklist">
-      <created>1687366704160</created>
-      <option name="number" value="00670" />
-      <option name="presentableId" value="LOCAL-00670" />
-      <option name="project" value="LOCAL" />
-      <updated>1687366704160</updated>
     </task>
     <task id="LOCAL-00671" summary="checklist to project_checklist">
       <created>1687366802457</created>
@@ -408,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688559548688</updated>
     </task>
-    <option name="localTasksCounter" value="719" />
+    <task id="LOCAL-00719" summary="project_des_tracking v0">
+      <created>1688559872700</created>
+      <option name="number" value="00719" />
+      <option name="presentableId" value="LOCAL-00719" />
+      <option name="project" value="LOCAL" />
+      <updated>1688559872701</updated>
+    </task>
+    <option name="localTasksCounter" value="720" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
