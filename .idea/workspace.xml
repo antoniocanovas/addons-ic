@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="fcanje">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="ew li product with code">
       <change beforePath="$PROJECT_DIR$/external_work/models/external_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/models/external_work.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00617" summary="priceupdate_templ">
-      <created>1684331600563</created>
-      <option name="number" value="00617" />
-      <option name="presentableId" value="LOCAL-00617" />
-      <option name="project" value="LOCAL" />
-      <updated>1684331600563</updated>
     </task>
     <task id="LOCAL-00618" summary="priceupdate_templ">
       <created>1684331734172</created>
@@ -409,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687860575407</updated>
     </task>
-    <option name="localTasksCounter" value="666" />
+    <task id="LOCAL-00666" summary="ew li product with code">
+      <created>1688571660345</created>
+      <option name="number" value="00666" />
+      <option name="presentableId" value="LOCAL-00666" />
+      <option name="project" value="LOCAL" />
+      <updated>1688571660345</updated>
+    </task>
+    <option name="localTasksCounter" value="667" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -425,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="external work v1" />
     <MESSAGE value="roadmap with contact_id" />
     <MESSAGE value="external_work remove task from sale" />
     <MESSAGE value="purchase_price_update rev with discounts" />
@@ -450,7 +448,8 @@
     <MESSAGE value="bug fcanje sec" />
     <MESSAGE value="sale_wup" />
     <MESSAGE value="fcanje" />
-    <option name="LAST_COMMIT_MESSAGE" value="fcanje" />
+    <MESSAGE value="ew li product with code" />
+    <option name="LAST_COMMIT_MESSAGE" value="ew li product with code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

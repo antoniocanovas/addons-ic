@@ -107,7 +107,7 @@ class ExternalWork(models.Model):
                                         })
 
             # SALE LINE FOR PRODUCT OR SERVICE:
-            name = self.code + " " + li.product_id.name
+            name = "[" + self.code + "] " + li.product_id.name
             # Sale order based on list price:
             if (saleline == True) and (li.sale_line_id.id == False) and (li.type in ['pin','sin','ein']):
                 newsol = self.env['sale.order.line'].create({'product_id':li.product_id.id, 'name':name,
