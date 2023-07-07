@@ -43,7 +43,7 @@
                         <field name="code" placeholder="PACK1..." help="This code will be used in the reference of new products."/>
                         <field name="main_attribute_id"/>
                         <field name="main_value_id" attrs="{'domain':[('attribute_id','=',main_attribute_id)]}"/>
-                        <field name="attribute_id" attrs="{'domain':[('id','not in',[main_attribute_id.id])]}"/>
+                        <field name="attribute_id"/>
                         <field name="line_ids">
                             <tree editable="bottom">
                                 <field name="value_id" domain="[('attribute_id','=',attribute_id)]"/>
