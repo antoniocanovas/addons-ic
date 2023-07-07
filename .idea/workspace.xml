@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="license">
-      <change afterPath="$PROJECT_DIR$/product_from_set/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_from_set/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_from_set/data/action_server.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_from_set/i18n/es.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_from_set/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_from_set/models/product_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_from_set/models/set_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_from_set/security/ir.model.access.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_from_set/static/description/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product_from_set/views/set_template_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="product_from_set v0">
+      <change beforePath="$PROJECT_DIR$/product_from_set/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_from_set/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product_from_set/i18n/es.po" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,13 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00677" summary="checklist to project_checklist">
-      <created>1687367993861</created>
-      <option name="number" value="00677" />
-      <option name="presentableId" value="LOCAL-00677" />
-      <option name="project" value="LOCAL" />
-      <updated>1687367993861</updated>
     </task>
     <task id="LOCAL-00678" summary="checklist to project_checklist">
       <created>1687373642810</created>
@@ -418,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688725853073</updated>
     </task>
-    <option name="localTasksCounter" value="726" />
+    <task id="LOCAL-00726" summary="product_from_set v0">
+      <created>1688746550090</created>
+      <option name="number" value="00726" />
+      <option name="presentableId" value="LOCAL-00726" />
+      <option name="project" value="LOCAL" />
+      <updated>1688746550090</updated>
+    </task>
+    <option name="localTasksCounter" value="727" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -434,7 +425,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sale_wup wizard bug" />
     <MESSAGE value="16 project_roadmap" />
     <MESSAGE value="roadmap is_closed =&gt; fold" />
     <MESSAGE value="roadmap rev" />
@@ -459,7 +449,8 @@
     <MESSAGE value="cheklist line form" />
     <MESSAGE value="project_des_tracking v0" />
     <MESSAGE value="license" />
-    <option name="LAST_COMMIT_MESSAGE" value="license" />
+    <MESSAGE value="product_from_set v0" />
+    <option name="LAST_COMMIT_MESSAGE" value="product_from_set v0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

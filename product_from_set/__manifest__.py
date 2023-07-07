@@ -14,6 +14,7 @@
         "mrp",
     ],
     "data": [
+        "security/ir.model.access.csv",
         "views/set_template_views.xml",
     ],
     "installable": True,
