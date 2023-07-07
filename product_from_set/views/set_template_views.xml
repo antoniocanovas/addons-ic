@@ -41,6 +41,16 @@
                     </h1>
                     <group>
                         <field name="code" placeholder="PACK1..." help="This code will be used in the reference of new products."/>
+                        <field name="attribute1_id"/>
+                        <field name="value_id"/>
+                        <field name="attribute2_id"/>
+                        <field name="line_ids">
+                            <tree>
+                                <field name="value_id" domain="[('attribute_id','=',record.attribute_id.id)]"/>
+                                <field name="quantity"/>
+                                <field name="set_id" invisible="1"/>
+                            </tree>
+                        </field>
                     </group>
                 </sheet>
             </form>

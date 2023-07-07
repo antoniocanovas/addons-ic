@@ -8,5 +8,10 @@ class SetTemplate(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Set Template'
 
-    name = fields.Char(string='Nombre', required=True)
-    code = fields.Char(string='Nombre', required=True)
+    name = fields.Char(string='Nombre', required=True, store=True, copy=True)
+    code = fields.Char(string='Code', required=True, store=True, copy=False)
+    attribute1_id = fields.Many2one('product.attribute', string='Attribute', store=True, required=True, copy=True)
+    value_id = fields.Many2one('product.attribute.value', string='Value', store=True, required=True, copy=True)
+
+    attribute2_id = fields.Many2one('product.attribute', string='Attribute values', store=True, required=True, copy=True)
+    line_ids = fields.One2many('set.template.line', 'set_id', string='Lines', store=True, copy=True)
