@@ -41,15 +41,15 @@
                     </h1>
                     <group>
                         <field name="code" placeholder="PACK1..." help="This code will be used in the reference of new products."/>
-                        <field name="attribute1_id"/>
-                        <field name="value_id"/>
-                        <field name="attribute2_id"/>
+                        <field name="main_attribute_id"/>
+                        <field name="main_value_id"/>
+                        <field name="attribute_id"/>
                         <field name="line_ids">
                             <tree>
-                                <field name="value_id"/>
-                                <!-- attrs="{'domain':[('attribute_id','=',attribute2_id)]}"/> -->
+                                <field name="value_id" domain="[('attribute_id','=',attribute_id)]"/>
                                 <field name="quantity"/>
                                 <field name="set_id" invisible="1"/>
+                                <field name="attribute_id" invisible="1"/>
                             </tree>
                         </field>
                     </group>

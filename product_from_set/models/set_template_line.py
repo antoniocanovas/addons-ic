@@ -10,3 +10,4 @@ class SetTemplateLine(models.Model):
     set_id   = fields.Many2one('set.template', string='Set', store=True, required=True, copy=True)
     value_id = fields.Many2one('product.attribute.value', string='Value', store=True, required=True, copy=True)
     quantity = fields.Integer('Quantity', store=True, copy=True)
+    attribute_id = fields.Many2one('product.attribute', related='set_id.attribute_id')
