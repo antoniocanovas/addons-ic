@@ -7,6 +7,10 @@ class SetTemplateLine(models.Model):
     _name = 'set.template.line'
     _description = 'Set Template Line'
 
+    def _get_name(self):
+        self.name = str(self.value_id.name) + ": " + str(self.quantity)
+    name = fields.Char('Name', store=False, compute='_get_name')
+
     set_id   = fields.Many2one('set.template', string='Set', store=True, required=True, copy=True)
     value_id = fields.Many2one('product.attribute.value', string='Value', store=True, required=True, copy=True)
     quantity = fields.Integer('Quantity', store=True, copy=True)

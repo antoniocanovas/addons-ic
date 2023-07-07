@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="product_from_set v0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product_from_set/models/set_template_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_from_set/models/set_template_line.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product_from_set/views/set_template_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_from_set/views/set_template_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,13 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00691" summary="checklist to project_checklist">
-      <created>1687392182812</created>
-      <option name="number" value="00691" />
-      <option name="presentableId" value="LOCAL-00691" />
-      <option name="project" value="LOCAL" />
-      <updated>1687392182812</updated>
     </task>
     <task id="LOCAL-00692" summary="checklist to project_checklist">
       <created>1687419921643</created>
@@ -409,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688749840830</updated>
     </task>
-    <option name="localTasksCounter" value="740" />
+    <task id="LOCAL-00740" summary="product_from_set v0">
+      <created>1688750381964</created>
+      <option name="number" value="00740" />
+      <option name="presentableId" value="LOCAL-00740" />
+      <option name="project" value="LOCAL" />
+      <updated>1688750381964</updated>
+    </task>
+    <option name="localTasksCounter" value="741" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
