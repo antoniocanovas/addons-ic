@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_des_tracking v0">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="license">
+      <change afterPath="$PROJECT_DIR$/product_from_set/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product_from_set/__manifest__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product_from_set/data/action_server.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product_from_set/i18n/es.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product_from_set/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product_from_set/models/product_template.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product_from_set/models/set_template.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product_from_set/security/ir.model.access.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product_from_set/static/description/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product_from_set/views/set_template_views.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,17 +46,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/product_from_set" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/product_from_set" />
+      <recent name="$PROJECT_DIR$/product_from_set/models" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/project_checklist/models" />
       <recent name="$PROJECT_DIR$/project_checklist" />
-      <recent name="$PROJECT_DIR$/project_checklist/views" />
-      <recent name="$PROJECT_DIR$/projects_checklist/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/project_roadmap/static/description" />
@@ -64,13 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00676" summary="checklist to project_checklist">
-      <created>1687367926006</created>
-      <option name="number" value="00676" />
-      <option name="presentableId" value="LOCAL-00676" />
-      <option name="project" value="LOCAL" />
-      <updated>1687367926006</updated>
     </task>
     <task id="LOCAL-00677" summary="checklist to project_checklist">
       <created>1687367993861</created>
@@ -408,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688562202965</updated>
     </task>
-    <option name="localTasksCounter" value="725" />
+    <task id="LOCAL-00725" summary="license">
+      <created>1688725853073</created>
+      <option name="number" value="00725" />
+      <option name="presentableId" value="LOCAL-00725" />
+      <option name="project" value="LOCAL" />
+      <updated>1688725853073</updated>
+    </task>
+    <option name="localTasksCounter" value="726" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +434,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sale_wup upd" />
     <MESSAGE value="sale_wup wizard bug" />
     <MESSAGE value="16 project_roadmap" />
     <MESSAGE value="roadmap is_closed =&gt; fold" />
@@ -449,7 +458,8 @@
     <MESSAGE value="checklist to project_checklist" />
     <MESSAGE value="cheklist line form" />
     <MESSAGE value="project_des_tracking v0" />
-    <option name="LAST_COMMIT_MESSAGE" value="project_des_tracking v0" />
+    <MESSAGE value="license" />
+    <option name="LAST_COMMIT_MESSAGE" value="license" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
