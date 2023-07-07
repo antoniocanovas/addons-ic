@@ -5,6 +5,8 @@
     <record id="action_product_set_template" model="ir.actions.act_window">
         <field name="binding_model_id" eval="False"/>
         <field name="binding_type">action</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
         <field name="filter" eval="False"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
         <field name="limit">80</field>
@@ -59,7 +61,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="code" placeholder="PACK1..." help="This code will be used in the reference of new products."/>
+                <field name="code"/>
             </tree>
         </field>
         <field name="field_parent" eval="False"/>
