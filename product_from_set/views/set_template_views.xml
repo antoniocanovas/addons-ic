@@ -46,7 +46,7 @@
                         <field name="attribute2_id"/>
                         <field name="line_ids">
                             <tree>
-                                <field name="value_id" domain="[('attribute_id','=',attribute2_id)]"/>
+                                <field name="value_id" attrs="{'domain':[('attribute_id','=',attribute2_id)]}"/>
                                 <field name="quantity"/>
                                 <field name="set_id" invisible="1"/>
                             </tree>
