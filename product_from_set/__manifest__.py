@@ -3,7 +3,7 @@
 
 {
     "name": "Product from Set",
-    "summary": "Set Product template creation from set template variants."
+    "summary": "Set Product template creation from set template variants.",
     "version": "16.0.1.0.0",
     "category": "stock",
     "author": "Serincloud SL",

@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="product_from_set v0">
       <change beforePath="$PROJECT_DIR$/product_from_set/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/product_from_set/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_from_set/i18n/es.po" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00678" summary="checklist to project_checklist">
-      <created>1687373642810</created>
-      <option name="number" value="00678" />
-      <option name="presentableId" value="LOCAL-00678" />
-      <option name="project" value="LOCAL" />
-      <updated>1687373642810</updated>
     </task>
     <task id="LOCAL-00679" summary="checklist to project_checklist">
       <created>1687374032897</created>
@@ -409,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688746550090</updated>
     </task>
-    <option name="localTasksCounter" value="727" />
+    <task id="LOCAL-00727" summary="product_from_set v0">
+      <created>1688746888205</created>
+      <option name="number" value="00727" />
+      <option name="presentableId" value="LOCAL-00727" />
+      <option name="project" value="LOCAL" />
+      <updated>1688746888205</updated>
+    </task>
+    <option name="localTasksCounter" value="728" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
