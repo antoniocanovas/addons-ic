@@ -42,10 +42,10 @@
                     <group>
                         <field name="code" placeholder="PACK1..." help="This code will be used in the reference of new products."/>
                         <field name="main_attribute_id"/>
-                        <field name="main_value_id"/>
-                        <field name="attribute_id"/>
+                        <field name="main_value_id" attrs="{'domain':[('attribute_id','=',main_attribute_id)]}"/>
+                        <field name="attribute_id" attrs="{'domain':[('id','!=',main_attribute_id.id)]}"/>
                         <field name="line_ids">
-                            <tree>
+                            <tree editable="bottom">
                                 <field name="value_id" domain="[('attribute_id','=',attribute_id)]"/>
                                 <field name="quantity"/>
                                 <field name="set_id" invisible="1"/>

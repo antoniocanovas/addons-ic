@@ -13,5 +13,5 @@ class SetTemplate(models.Model):
     main_attribute_id = fields.Many2one('product.attribute', string='Attribute', store=True, required=True, copy=True)
     main_value_id = fields.Many2one('product.attribute.value', string='Value', store=True, required=True, copy=True)
 
-    attribute_id = fields.Many2one('product.attribute', string='Attribute values', store=True, required=True, copy=True)
+    attribute_id = fields.Many2one('product.attribute', string='Values Attribute', store=True, required=True, copy=True)
     line_ids = fields.One2many('set.template.line', 'set_id', string='Lines', store=True, copy=True)
