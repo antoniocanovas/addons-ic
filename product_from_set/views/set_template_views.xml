@@ -44,6 +44,7 @@
                         <field name="main_attribute_id"/>
                         <field name="main_value_id" attrs="{'domain':[('attribute_id','=',main_attribute_id)]}"/>
                         <field name="attribute_id"/>
+                        <!--
                         <field name="line_ids">
                             <tree editable="bottom">
                                 <field name="value_id" domain="[('attribute_id','=',attribute_id)]"/>
@@ -52,6 +53,7 @@
                                 <field name="attribute_id" invisible="1"/>
                             </tree>
                         </field>
+                        -->
                     </group>
                 </sheet>
             </form>
