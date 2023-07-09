@@ -7,6 +7,7 @@ from odoo.exceptions import UserError, ValidationError
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
+    set_code = fields.Char('Code')
     set_template_ids = fields.Many2many('set.template', string='Set templates', store="True",)
     parent_id = fields.Many2one('product.template', string='Parent set', store=True)
     set_product_ids  = fields.One2many('product.template','parent_id', string='Set products', store=True, readonly=True)
@@ -14,10 +15,8 @@ class ProductTemplate(models.Model):
 
 
     def _create_set_products(self):
-        if not self.default_code:
-            raise UserError('Asigna código a este producto para usarlo en las referencias de los surtidos')
         for li in self.set_template_ids:
-            code = self.default_code + self.li.code
+            code = self.set_code + self.li.code
             exist = self.env['product.template'].search([('default_code','=', code)])
             if not exist.id:
                 exist = self.env['product.template'].create({'name':code, 'default_code':code, 'barcode':code,

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="product_from_set v0">
-      <change beforePath="$PROJECT_DIR$/product_from_set/views/product_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_from_set/views/product_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,27 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00701" summary="checklist to project_checklist">
-      <created>1687478911083</created>
-      <option name="number" value="00701" />
-      <option name="presentableId" value="LOCAL-00701" />
-      <option name="project" value="LOCAL" />
-      <updated>1687478911083</updated>
-    </task>
-    <task id="LOCAL-00702" summary="checklist to project_checklist">
-      <created>1687479062925</created>
-      <option name="number" value="00702" />
-      <option name="presentableId" value="LOCAL-00702" />
-      <option name="project" value="LOCAL" />
-      <updated>1687479062925</updated>
-    </task>
-    <task id="LOCAL-00703" summary="checklist to project_checklist">
-      <created>1687479541988</created>
-      <option name="number" value="00703" />
-      <option name="presentableId" value="LOCAL-00703" />
-      <option name="project" value="LOCAL" />
-      <updated>1687479541988</updated>
     </task>
     <task id="LOCAL-00704" summary="checklist to project_checklist">
       <created>1687479604993</created>
@@ -408,7 +387,28 @@
       <option name="project" value="LOCAL" />
       <updated>1688867545305</updated>
     </task>
-    <option name="localTasksCounter" value="750" />
+    <task id="LOCAL-00750" summary="product_from_set v0">
+      <created>1688867683738</created>
+      <option name="number" value="00750" />
+      <option name="presentableId" value="LOCAL-00750" />
+      <option name="project" value="LOCAL" />
+      <updated>1688867683738</updated>
+    </task>
+    <task id="LOCAL-00751" summary="product_from_set v0">
+      <created>1688867725516</created>
+      <option name="number" value="00751" />
+      <option name="presentableId" value="LOCAL-00751" />
+      <option name="project" value="LOCAL" />
+      <updated>1688867725516</updated>
+    </task>
+    <task id="LOCAL-00752" summary="product_from_set v0">
+      <created>1688867801605</created>
+      <option name="number" value="00752" />
+      <option name="presentableId" value="LOCAL-00752" />
+      <option name="project" value="LOCAL" />
+      <updated>1688867801605</updated>
+    </task>
+    <option name="localTasksCounter" value="753" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
