@@ -13,6 +13,7 @@
                     <field name="set_template_ids"/>
                     <field name="set_product_ids"/>
                     <field name="parent_id" attrs="{'invisible':[('parent_id','=',False)]}"/>
+                    <button name="%(_create_set_products)d" string="Apply" type="action" class="oe_highlight"/>
                 </page>
             </xpath>
         </field>
