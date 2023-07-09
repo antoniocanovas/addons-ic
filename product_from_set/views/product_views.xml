@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="product_from_set_inh_form" model="ir.ui.view">
+        <field name="name">Product from Set</field>
+        <field name="model">product.template</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="priority">90</field>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="product_from_set" string="Sets">
+                    <field name="set_template_ids"/>
+                    <field name="set_product_ids"/>
+                    <field name="parent_id" attrs="{'invisible':[('parent_id','=',False)]}"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
