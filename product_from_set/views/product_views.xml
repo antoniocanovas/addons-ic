@@ -10,10 +10,12 @@
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside" attrs="{'invisible':[('detailed_type','in',['service'])]}">
                 <page name="product_from_set" string="Sets">
-                    <field name="set_template_ids"/>
-                    <field name="set_code" attrs="{'required':[('set_template_ids','!=',False)]}"/>
-                    <field name="set_product_ids"/>
-                    <field name="parent_id" attrs="{'invisible':[('parent_id','=',False)]}"/>
+                    <group>
+                        <field name="set_template_ids"/>
+                        <field name="set_code" attrs="{'required':[('set_template_ids','!=',False)]}"/>
+                        <field name="set_product_ids"/>
+                        <field name="parent_id" attrs="{'invisible':[('parent_id','=',False)]}"/>
+                    </group>
                 </page>
             </xpath>
         </field>
