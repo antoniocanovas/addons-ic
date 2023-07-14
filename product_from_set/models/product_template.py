@@ -7,7 +7,7 @@ from odoo.exceptions import UserError, ValidationError
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    set_code = fields.Char('Code')
+    set_code = fields.Char('Code', store=True, copy=False)
     set_template_ids = fields.Many2many('set.template', string='Set templates', store="True",)
     parent_id = fields.Many2one('product.template', string='Parent set', store=True)
     set_product_ids  = fields.One2many('product.template','parent_id', string='Set products', store=True, readonly=True)
@@ -26,7 +26,7 @@ class ProductTemplate(models.Model):
             # Exista o no, comprobamos si ya tiene la lista de materiales:
             if not exist.bom_ids.ids:
                 new_bom = self.env['mrp.bom'].create({'code':code, 'type':'normal', 'product_qty':1,
-                                                      'product_tmpl_id':self.id,})
+                                                      'product_tmpl_id':exist.id,})
 
             # Mismo chequeo con las líneas bom:
             if not exist.bom_ids.bom_line_ids.ids:

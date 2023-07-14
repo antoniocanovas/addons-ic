@@ -40,7 +40,6 @@ for te in record.set_template_ids:
                                                                 'product_qty':va.quantity,
                                                                 })
             else:
-
                 raise UserError("No existe: " + va.name)
         </field>
     </record>

@@ -11,7 +11,7 @@
             <xpath expr="//notebook" position="inside" attrs="{'invisible':[('detailed_type','in',['service'])]}">
                 <page name="product_from_set" string="Sets">
                     <group>
-                        <field name="set_code" attrs="{'required':[('set_template_ids','!=',False)]}"/>
+                        <field name="set_code" attrs="{'required':[('set_template_ids','!=',[])]}"/>
                         <field name="set_template_ids"/>
                     </group>
                     <group>
