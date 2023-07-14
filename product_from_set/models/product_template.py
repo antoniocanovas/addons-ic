@@ -14,7 +14,7 @@ class ProductTemplate(models.Model):
 
 
 
-    def _create_set_products(self):
+    def create_set_products(self):
         for te in self.set_template_ids:
             # Propuesta de código para el producto SURTIDO (SET):
             code = str(self.id) + self.set_code + te.code
