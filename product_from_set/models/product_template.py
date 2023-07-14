@@ -20,7 +20,7 @@ class ProductTemplate(models.Model):
             code = str(self.id) + self.set_code + te.code
             # Buscar línea de valor de atributo del producto, para la variante principal (habitualmente color o modelo):
             ptav1 = self.env['product.template.attribute.value'].search(
-                [('product_tmpl_id', '=', record.id), ('product_attribute_value_id', '=', te.main_value_id.id)])
+                [('product_tmpl_id', '=', self.id), ('product_attribute_value_id', '=', te.main_value_id.id)])
             # Comprobar si el producto SURTIDO ya estaba creado (búsqueda por referencia interna):
             exist = self.env['product.template'].search([('default_code','=', code)])
             if not exist.id:
@@ -38,9 +38,9 @@ class ProductTemplate(models.Model):
                 for va in te.line_ids:
                     # Búsqueda de línea de valor de atributo variable para cada talla de producto en SURTIDO:
                     ptav2 = self.env['product.template.attribute.value'].search(
-                        [('product_tmpl_id', '=', record.id), ('product_attribute_value_id', '=', va.value_id.id)])
+                        [('product_tmpl_id', '=', self.id), ('product_attribute_value_id', '=', va.value_id.id)])
                     # Búsqueda de producto con ambos valores de atributo (principal y variable):
-                    exist_pp = self.env['product.product'].search([('product_tmpl_id', '=', record.id),
+                    exist_pp = self.env['product.product'].search([('product_tmpl_id', '=', self.id),
                                                               ('product_template_variant_value_ids', 'in', ptav1.id),
                                                               ('product_template_variant_value_ids', 'in', ptav2.id)])
                     # Creación de línea de BOM, o ERROR de que la variante (talla) no existe:
