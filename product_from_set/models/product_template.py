@@ -34,7 +34,7 @@ class ProductTemplate(models.Model):
                 for value in li.line_ids:
                     # ERROR SACA SINGLETON PP SEARCH !!! =>
                     exist_pp = self.env['product.product'].search([('product_tmpl_id','=',self.id),
-                                                                   ('product_template_variant_value_ids', '=', [li.main_value_id.id,value.id]),
+                                                                   ('product_template_variant_value_ids', '=', [li.main_value_id,value]),
                                                                    ])
                     if exist_pp.id:
                         new_bom_line = self.env['mrp.bom.line'].create({'bom_id':new_bom.id,
