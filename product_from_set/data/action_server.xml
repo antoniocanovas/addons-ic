@@ -10,7 +10,8 @@ for te in record.set_template_ids:
             ptav1 = env['product.template.attribute.value'].search([('product_attribute_value_id','=',te.main_value_id.id)])
                 for va in te.line_ids:
                     ptav2 = env['product.template.attribute.value'].search([('product_attribute_value_id','=',va.value_id.id)])
-                pp = env['product.product'].search([('product_template_variant_value_ids','in',ptav1.id),('product_template_variant_value_ids','in',ptav2.id)])        </field>
+                pp = env['product.product'].search([('product_template_variant_value_ids','in',ptav1.id),('product_template_variant_value_ids','in',ptav2.id)])
+
         </field>
     </record>
 
