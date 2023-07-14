@@ -17,7 +17,7 @@
         "security/ir.model.access.csv",
         "views/set_template_views.xml",
         "views/product_views.xml",
-        "data/action_server.xml",
+#        "data/action_server.xml",
     ],
     "installable": True,
 }
