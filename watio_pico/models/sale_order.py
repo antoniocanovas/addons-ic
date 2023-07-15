@@ -19,6 +19,18 @@ class SsaleOrder(models.Model):
         self.wp_charger_margin = self.wp_template_id.wp_charger_margin
     wp_charger_margin =  fields.Float('Charger Margin', store=True, readonly=False, compute='get_wp_charger_template_margin')
 
+    @api.onchange('wp_template_id')
+    def get_wp_template_lines(self):
+        self.wp_line_ids.unlink()
+        subtotal = 0
+        for li in self.wp_template_id.line_ids:
+            subtotal = 0
+            newline = self.env['wp.sale.line'].create({'product_id':li.product_id.id,
+                                                       'name':li.name,
+                                                       'quantity':li.quantity,
+                                                       'subtotal':subtotal,
+                                                       'sale_id':self.id})
+
     wp_line_ids = fields.One2many('wp.sale.line', 'sale_id', string='WP Lines')
 
     @api.depends('wp_line_ids.subtotal')
