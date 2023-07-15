@@ -19,7 +19,7 @@ class SsaleOrder(models.Model):
         self.wp_charge_margin = self.wp_template_id.wp_charge_margin
     wp_charger_margin =  fields.Float('Charger Margin', store=True, readonly=False, compute='get_wp_charge_template_margin')
 
-    wp_line_ids = fields.One2many('wp_sale_line', 'sale_id', string='WP Lines')
+    wp_line_ids = fields.One2many('wp.sale.line', 'sale_id', string='WP Lines')
 
     @api.depends('wp_line_ids.subtotal')
     def get_wp_subtotal(self):
