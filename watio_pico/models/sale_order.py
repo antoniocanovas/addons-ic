@@ -10,6 +10,7 @@ class SsaleOrder(models.Model):
     wp_power = fields.Float('Power Kw', store=True)
     wp_template_id = fields.Many2one('wp.template', string='WP Template', store=True)
     wp_line_ids = fields.One2many('wp.sale.line', 'sale_id', string='WP Lines')
+    wp_total = fields.Monetary('WP Total')
 
     @api.onchange('wp_template_id')
     def get_wp_template_margin(self):
