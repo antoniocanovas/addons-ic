@@ -7,9 +7,13 @@ class WpSaleLine(models.Model):
     _name = 'wp.sale.line'
     _description = 'WP Sale line'
 
-    name = fields.Char('name', store=True, required=True)
     product_id = fields.Many2one('product.product', store=True, copy=True)
     quantity = fields.Float('Quantity', store=True, copy=True)
     subtotal = fields.Monetary('Subtotal', store=True, copy=True)
     sale_id = fields.Many2one('sale.order', store=True, reaonly=True, copy=False)
     currency_id = fields.Many2one('res.currency', store=True, default=1)
+
+    @api.onchange('product_id')
+    def get_wp_template_name(self):
+        self.name = self.product_id.name
+    name = fields.Char('name', store=True, required=True, compute='get_wp_template_name')

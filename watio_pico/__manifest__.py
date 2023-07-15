@@ -13,11 +13,11 @@
         "sale_management",
     ],
     "data": [
-#        "security/ir.model.access.csv",
+        "security/ir.model.access.csv",
         "views/wp_template_views.xml",
-#        "views/sale_order_views.xml",
-#        "views/product_views.xml",
-#        "views/menu_views.xml",
+        "views/sale_order_views.xml",
+        "views/product_views.xml",
+        "views/menu_views.xml",
     ],
     "installable": True,
 }
