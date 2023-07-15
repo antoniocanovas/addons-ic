@@ -33,7 +33,7 @@ class SsaleOrder(models.Model):
                                                        'subtotal':0,
                                                        'sale_id':self.id})
 
-    @api.onchange('wp_margin','wp_charger_margin','wp_line_ids')
+    @api.onchange('wp_margin','wp_charger_margin','wp_line_ids','wp_power')
     def _update_wp_prices(self):
         total = 0
         for li in self.wp_line_ids:
