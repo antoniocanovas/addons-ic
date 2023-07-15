@@ -10,7 +10,7 @@ class SsaleOrder(models.Model):
     wp_power = fields.Float('Power Kw', store=True)
     wp_template_id = fields.Many2one('wp.template', string='WP Template', store=True)
     wp_line_ids = fields.One2many('wp.sale.line', 'sale_id', string='WP Lines')
-    wp_total = fields.Monetary('WP Total')
+    wp_subtotal = fields.Monetary('Subtotal', store=True, compute='get_wp_subtotal')
 
     @api.onchange('wp_template_id')
     def get_wp_template_margin(self):
@@ -39,25 +39,16 @@ class SsaleOrder(models.Model):
         for li in self.wp_line_ids:
             # Case watio-pico:
             if li.product_id.wp_type == 'wp':
-                subtotal = 1
+                subtotal = self.wp_power * 1000 * li.factor * self.wp_template_id.wp_pico * (1 + self.wp_margin/100)
             # Case watio-hour:
             elif li.product_id.wp_type == 'wh':
-                subtotal = 2
+                subtotal = self.wp_power * 1000 * li.factor * self.wp_template_id.wp_hour * (1 + self.wp_margin/100)
             # Case charger:
             else:
-                subtotal = 3
+                subtotal = self.product_id.standard_price * (1 + self.wp_charger_margin/100)
             li.subtotal = subtotal
             total += subtotal
-        self.wp_total = total
-
-    @api.depends('wp_line_ids.subtotal')
-    def get_wp_subtotal(self):
-        for record in self:
-            subtotal = 0
-            for li in record.wp_line_ids:
-                subtotal += li.subtotal
-        self.wp_subtotal = subtotal
-    wp_subtotal = fields.Monetary('Subtotal', store=True, compute='get_wp_subtotal')
+        self.wp_subtotal = total
 
     def update_wp_margin(self):
         return True
