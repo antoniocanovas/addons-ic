@@ -6,7 +6,7 @@ from odoo import fields, models, api
 class SsaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    is_wp = fields.Boolean('WatioPico')
+    is_wp = fields.Boolean('Watio Pico')
     wp_power = fields.Float('Power Kw', store=True)
     wp_template_id = fields.Many2one('wp.template', string='WP Template', store=True)
     wp_line_ids = fields.One2many('wp.sale.line', 'sale_id', string='WP Lines')
