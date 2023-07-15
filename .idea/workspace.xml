@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="watio_pico v0">
-      <change beforePath="$PROJECT_DIR$/watio_pico/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/watio_pico/models/sale_order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/watio_pico/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/watio_pico/views/menu_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,20 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00721" summary="project_des_tracking v0">
-      <created>1688561481789</created>
-      <option name="number" value="00721" />
-      <option name="presentableId" value="LOCAL-00721" />
-      <option name="project" value="LOCAL" />
-      <updated>1688561481789</updated>
-    </task>
-    <task id="LOCAL-00722" summary="project_des_tracking v0">
-      <created>1688561724902</created>
-      <option name="number" value="00722" />
-      <option name="presentableId" value="LOCAL-00722" />
-      <option name="project" value="LOCAL" />
-      <updated>1688561724902</updated>
     </task>
     <task id="LOCAL-00723" summary="project_des_tracking v0">
       <created>1688561875475</created>
@@ -408,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1689430924407</updated>
     </task>
-    <option name="localTasksCounter" value="770" />
+    <task id="LOCAL-00770" summary="watio_pico v0">
+      <created>1689431305598</created>
+      <option name="number" value="00770" />
+      <option name="presentableId" value="LOCAL-00770" />
+      <option name="project" value="LOCAL" />
+      <updated>1689431305598</updated>
+    </task>
+    <task id="LOCAL-00771" summary="watio_pico v0">
+      <created>1689431400645</created>
+      <option name="number" value="00771" />
+      <option name="presentableId" value="LOCAL-00771" />
+      <option name="project" value="LOCAL" />
+      <updated>1689431400645</updated>
+    </task>
+    <option name="localTasksCounter" value="772" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
