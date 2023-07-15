@@ -11,6 +11,7 @@
             <xpath expr="//header" position="inside">
                     <button class="oe_highlight" type="object" name="update_wp_margin" string="WP Update"/>
             </xpath>
+            -->
             <!-- WPico lines: -->
             <field name="partner_shipping_id" position="after">
                 <field name="is_wp"/>
