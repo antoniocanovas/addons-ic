@@ -50,5 +50,5 @@ class SsaleOrder(models.Model):
             total += subtotal
         self.wp_subtotal = total
 
-    def update_wp_margin(self):
+    def update_wp_sale_order(self):
         return True
