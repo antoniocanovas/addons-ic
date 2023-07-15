@@ -7,10 +7,10 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <!-- Update WP Prices button -->
+            <!-- Update Order from WP lines -->
             <xpath expr="//header" position="inside">
                     <button class="oe_highlight"
-                            type="object" name="update_wp_sale_order" string="WP Update"
+                            type="object" name="update_wp_sale_order" string="Update order from WP"
                             attrs="{'invisible':[('wp_template_id','=',False)]}"/>
             </xpath>
             <!-- WPico lines: -->
