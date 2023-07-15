@@ -13,5 +13,5 @@ class WpTemplate(models.Model):
     wp_pico = fields.Float('Watio pico', store=True, copy=True)
     wp_hour = fields.Float('Watio hora', store=True, copy=True)
     wp_margin = fields.Float('Margin', store=True, copy=True)
-    wp_charger_margin = fields.Float('Watio hora', store=True, copy=True)
+    wp_charger_margin = fields.Float('Charger margin', store=True, copy=True)
     line_ids = fields.One2many('wp.template.line', 'wp_template_id', string='Lines', store=True)

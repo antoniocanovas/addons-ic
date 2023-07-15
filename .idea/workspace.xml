@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="watio_pico v0">
-      <change beforePath="$PROJECT_DIR$/watio_pico/views/menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/watio_pico/views/menu_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/watio_pico/models/wp_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/watio_pico/models/wp_template.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/watio_pico/models/wp_template_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/watio_pico/models/wp_template_line.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00723" summary="project_des_tracking v0">
-      <created>1688561875475</created>
-      <option name="number" value="00723" />
-      <option name="presentableId" value="LOCAL-00723" />
-      <option name="project" value="LOCAL" />
-      <updated>1688561875475</updated>
     </task>
     <task id="LOCAL-00724" summary="project_des_tracking v0">
       <created>1688562202965</created>
@@ -408,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689431400645</updated>
     </task>
-    <option name="localTasksCounter" value="772" />
+    <task id="LOCAL-00772" summary="watio_pico v0">
+      <created>1689431823100</created>
+      <option name="number" value="00772" />
+      <option name="presentableId" value="LOCAL-00772" />
+      <option name="project" value="LOCAL" />
+      <updated>1689431823100</updated>
+    </task>
+    <option name="localTasksCounter" value="773" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

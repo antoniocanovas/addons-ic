@@ -16,4 +16,4 @@ class WpTemplateLine(models.Model):
     @api.onchange('product_id')
     def get_wp_template_name(self):
         self.name = self.product_id.name
-    name = fields.Char('name', store=True, required=True, compute='get_wp_template_name')
+    name = fields.Char('name', store=True, readonly=False, compute='get_wp_template_name')
