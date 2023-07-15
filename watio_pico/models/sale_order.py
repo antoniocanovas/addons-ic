@@ -35,7 +35,7 @@ class SsaleOrder(models.Model):
     @api.onchange('wp_margin','wp_charger_margin','wp_line_ids')
     def _update_wp_prices(self):
         total = 0
-        for li in self.wp_line_id.line_ids:
+        for li in self.wp_line_ids:
             # Case watio-pico:
             if li.product_id.wp_type == 'wp':
                 subtotal = 1
