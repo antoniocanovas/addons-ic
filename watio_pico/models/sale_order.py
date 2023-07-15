@@ -52,7 +52,7 @@ class SsaleOrder(models.Model):
 
     def update_wp_sale_order(self):
         self.order_line.unlink()
-        for li in self.wp_sale_ids:
+        for li in self.wp_line_ids:
             newline = self.env['sale.order.line'].create({'product_id': li.product_id.id,
                                                           'name': li.name,
                                                           'product_uom_qty': li.quantity,
