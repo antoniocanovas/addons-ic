@@ -7,11 +7,12 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <!-- Update WP Prices button
+            <!-- Update WP Prices button -->
             <xpath expr="//header" position="inside">
-                    <button class="oe_highlight" type="object" name="update_wp_margin" string="WP Update"/>
+                    <button class="oe_highlight"
+                            type="object" name="update_wp_margin" string="WP Update"
+                            attrs="{'invisible':[('wp_template_id','=',False)]}"/>
             </xpath>
-            -->
             <!-- WPico lines: -->
             <field name="partner_shipping_id" position="after">
                 <field name="is_wp"/>
@@ -20,6 +21,7 @@
                 <page name="watiopico" attrs="{'invisible':[('is_wp','=',False)]}">
                     <group name="wp_info">
                         <group>
+                            <field name="wp_power"/>
                             <field name="wp_template_id"/>
                         </group>
                         <group>
@@ -33,6 +35,7 @@
                             <field name="name"/>
                             <field name="quantity"/>
                             <field name="subtotal"/>
+                            <field name="factor" invisible="1"/>
                             <field name="sale_id" invisible="1"/>
                         </tree>
                     </field>
