@@ -38,13 +38,13 @@ class SsaleOrder(models.Model):
         for li in self.wp_template_id.line_ids:
             # Case watio-pico:
             if li.product_id.wp_type == 'wp':
-                subtotal =
+                subtotal = 1
             # Case watio-hour:
             elif li.product_id.wp_type == 'wh':
-                subtotal =
+                subtotal = 2
             # Case charger:
             else:
-                subtotal =
+                subtotal = 3
             li.subtotal = subtotal
             total += subtotal
         li.wp_total = total
