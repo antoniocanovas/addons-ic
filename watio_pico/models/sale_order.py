@@ -47,7 +47,7 @@ class SsaleOrder(models.Model):
                 subtotal = 3
             li.subtotal = subtotal
             total += subtotal
-        li.wp_total = total
+        self.wp_total = total
 
     @api.depends('wp_line_ids.subtotal')
     def get_wp_subtotal(self):
