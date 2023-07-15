@@ -24,7 +24,7 @@
                             <tree editable="bottom">
                                 <field name="product_id" domain="[('wp_type','!=',False)]"
                                        options="{'no_quick_create': True, 'no_create_edit':True}"/>
-                                <field name="name"/>
+                                <field name="name" required="1"/>
                                 <field name="factor"/>
                                 <field name="quantity"/>
                                 <field name="wp_type" optional="hide"/>
