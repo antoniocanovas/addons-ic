@@ -11,7 +11,7 @@ class WpSaleLine(models.Model):
     quantity = fields.Float('Quantity', store=True, copy=True)
     factor = fields.Float('Factor', store=True, copy=True)
     subtotal = fields.Monetary('Subtotal', store=True, copy=True)
-    sale_id = fields.Many2one('sale.order', store=True, reaonly=True, copy=False)
+    sale_id = fields.Many2one('sale.order', store=True, readonly=True, copy=False)
     currency_id = fields.Many2one('res.currency', store=True, default=1)
 
     @api.onchange('product_id')

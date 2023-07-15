@@ -8,10 +8,10 @@ class WpTemplateLine(models.Model):
     _description = 'WP Template line'
 
     product_id = fields.Many2one('product.product', store=True, copy=True)
-    wp_type = fields.Selection('Type', related='product_id.wp_type', store=False)
+    wp_type = fields.Selection(string='Type', related='product_id.wp_type', store=False)
     quantity = fields.Float('Quantity', store=True, copy=True)
     factor = fields.Float('Factor', store=True, copy=True)
-    wp_template_id = fields.Many2one('wp.template', store=True, reaonly=True, copy=False)
+    wp_template_id = fields.Many2one('wp.template', store=True, readonly=True, copy=False)
 
     @api.onchange('product_id')
     def get_wp_template_name(self):
