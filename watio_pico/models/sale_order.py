@@ -10,7 +10,6 @@ class SsaleOrder(models.Model):
     wp_power = fields.Float('Power Kw', store=True)
     wp_template_id = fields.Many2one('wp.template', string='WP Template', store=True)
     wp_line_ids = fields.One2many('wp.sale.line', 'sale_id', string='WP Lines')
-    wp_subtotal = fields.Monetary('Subtotal', store=True, readonly=True)
 
     @api.onchange('wp_template_id')
     def get_wp_template_margin(self):
@@ -58,3 +57,11 @@ class SsaleOrder(models.Model):
                                                           'product_uom_qty': li.quantity,
                                                           'price_unit': li.subtotal / li.quantity,
                                                           'order_id': self.id})
+
+    @api.onchange('wp_line_ids.subtotal')
+    def _get_wp_subtotal(self):
+        subtotal = 0
+        for li in self.wp_line_ids:
+            subtotal += li.subtotal
+        self.wp_subtotal = subtotal
+    wp_subtotal = fields.Monetary('Subtotal', store=False, compute='_get_wp_subtotal')
