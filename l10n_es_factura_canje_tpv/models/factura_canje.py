@@ -26,7 +26,7 @@ class FacturaCanje(models.Model):
     @api.onchange('pos_order_ids')
     def get_fcanje_taxlines(self):
         for record in self:
-            record.tax_line_ids.unlink()
+            #record.tax_line_ids.unlink()
             impuestos = []
             for po in record.pos_order_ids:
                 for li in po.lines:
