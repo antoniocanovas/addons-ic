@@ -20,6 +20,7 @@ class FacturaCanje(models.Model):
                                      string="Factura de canje",
                                      domain="[('fcanje_id','=',False),('state','in',['done','paid'])]"
                                      )
+    tax_line_ids = fields.One2many('factura.canje.taxline', 'fcanje_id', store=True, copy=False, readonly=True)
 
     @api.depends('pos_order_ids', 'pos_order_ids.amount_total', 'pos_order_ids.amount_tax')
     def get_fcanje_taxlines(self):
@@ -38,8 +39,6 @@ class FacturaCanje(models.Model):
                             if tax.id == im.id:
                                 amount += li.price_subtotal * (im.amount / 100)
                 new = env['tax_line_ids'].create({'fcanje_id': record.id, 'amount': amount, 'tax_id': im.id})
-
-    tax_line_ids = fields.One2many('factura_canje_taxline', 'fcanje_id', store=True, copy=False, readonly=True)
 
     @api.depends('create_date')
     def _get_pos_factura_canje_code(self):
