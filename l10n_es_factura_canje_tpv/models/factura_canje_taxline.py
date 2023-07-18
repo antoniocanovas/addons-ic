@@ -7,6 +7,7 @@ class FacturaCanjeTaxline(models.Model):
     _name = 'factura.canje.taxline'
     _description = 'Facturas de canje, resumen impuestos'
 
+    name = fields.Char('Name', related='fcanje_id.name')
     tax_id = fields.Many2one('account.tax', string='Impuesto', store=True, copy=False)
     amount = fields.Monetary('Importe', store=True, copy=False)
     fcanje_id = fields.Many2one('factura.canje', string='Factura de canje', store=True, copy=False)
