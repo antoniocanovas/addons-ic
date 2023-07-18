@@ -23,7 +23,7 @@ class FacturaCanje(models.Model):
 
     tax_line_ids = fields.One2many('factura.canje.taxline', 'fcanje_id', store=True, copy=False)
 
-    @api.onchange('pos_order_ids')
+    @api.depends('pos_order_ids')
     def get_fcanje_taxlines(self):
         for record in self:
             record.tax_line_ids.unlink()
