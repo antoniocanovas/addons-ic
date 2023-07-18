@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="ew li product with code">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" beforeDir="false" afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/views/factura_canje_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/views/factura_canje_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00643" summary="purchasePriceError">
-      <created>1686938036323</created>
-      <option name="number" value="00643" />
-      <option name="presentableId" value="LOCAL-00643" />
-      <option name="project" value="LOCAL" />
-      <updated>1686938036323</updated>
     </task>
     <task id="LOCAL-00644" summary="purchasePriceError">
       <created>1686938198615</created>
@@ -409,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689679968360</updated>
     </task>
-    <option name="localTasksCounter" value="692" />
+    <task id="LOCAL-00692" summary="ew li product with code">
+      <created>1689722926788</created>
+      <option name="number" value="00692" />
+      <option name="presentableId" value="LOCAL-00692" />
+      <option name="project" value="LOCAL" />
+      <updated>1689722926789</updated>
+    </task>
+    <option name="localTasksCounter" value="693" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
