@@ -20,8 +20,8 @@ class FacturaCanje(models.Model):
                                      string="Factura de canje",
                                      domain="[('fcanje_id','=',False),('state','in',['done','paid'])]"
                                      )
-    tax_line_ids = fields.One2many('factura.canje.taxline', 'fcanje_id', store=True, copy=False, readonly=True)
 
+#    tax_line_ids = fields.One2many('factura.canje.taxline', 'fcanje_id', store=True, copy=False, readonly=True)
 
 
 
