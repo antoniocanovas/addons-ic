@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="ew li product with code">
-      <change beforePath="$PROJECT_DIR$/external_work/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/external_work/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external_work_sale_type/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/external_work_sale_type/__manifest__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje_taxline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" beforeDir="false" afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/security/ir.model.access.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,17 +39,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/sale_wup" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models" />
       <recent name="$PROJECT_DIR$/sale_wup" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/external_work/models" />
       <recent name="$PROJECT_DIR$/external_work/security" />
-      <recent name="$PROJECT_DIR$/external_work" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/product_chassis/i18n" />
@@ -65,13 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00619" summary="priceupdate_templ">
-      <created>1684331895288</created>
-      <option name="number" value="00619" />
-      <option name="presentableId" value="LOCAL-00619" />
-      <option name="project" value="LOCAL" />
-      <updated>1684331895288</updated>
     </task>
     <task id="LOCAL-00620" summary="priceupdate_templ">
       <created>1684369288603</created>
@@ -409,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688572510102</updated>
     </task>
-    <option name="localTasksCounter" value="668" />
+    <task id="LOCAL-00668" summary="ew li product with code">
+      <created>1688574776714</created>
+      <option name="number" value="00668" />
+      <option name="presentableId" value="LOCAL-00668" />
+      <option name="project" value="LOCAL" />
+      <updated>1688574776714</updated>
+    </task>
+    <option name="localTasksCounter" value="669" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
