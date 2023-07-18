@@ -36,7 +36,6 @@
                     <notebook attrs="{'invisible':[('type','=','historica')]}">
                         <page string="Tickets">
                             <field name="pos_order_ids"/>
-                            <!--
                             <field name="tax_line_ids">
                                 <tree>
                                     <field name="tax_id"/>
@@ -44,7 +43,6 @@
                                     <field name="fcanje_id" invisible="1"/>
                                 </tree>
                             </field>
-                            -->
                         </page>
                     </notebook>
                     <field name="description" placeholder="Notas en caso de facturas actuales, o detalle completo fiscal de históricas"/>
