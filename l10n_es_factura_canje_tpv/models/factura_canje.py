@@ -40,7 +40,7 @@ class FacturaCanje(models.Model):
                             if tax.id == im.id:
                                 amount += li.price_subtotal * (im.amount / 100)
                 new = self.env['factura.canje.taxline'].create({'fcanje_id': record.id, 'amount': amount, 'tax_id': im.id})
-
+                self.env.cr.commit()
 
     @api.depends('create_date')
     def _get_pos_factura_canje_code(self):
