@@ -39,7 +39,7 @@ class FacturaCanje(models.Model):
                                 amount += li.price_subtotal * (im.amount / 100)
                 new = env['tax_line_ids'].create({'fcanje_id': record.id, 'amount': amount, 'tax_id': im.id})
 
-    tax_line_ids = Fields.One2many('factura_canje_taxline', 'fcanje_id', store=True, copy=False, readonly=True)
+    tax_line_ids = fields.One2many('factura_canje_taxline', 'fcanje_id', store=True, copy=False, readonly=True)
 
     @api.depends('create_date')
     def _get_pos_factura_canje_code(self):
