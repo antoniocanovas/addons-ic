@@ -10,4 +10,4 @@ class FacturaCanjeTaxline(models.Model):
     tax_id = fields.Many2one('account.tax', string='Impuesto', store=True, copy=False)
     amount = fields.Monetary('Importe', store=True, copy=False)
     fcanje_id = fields.Many2one('factura.canje', string='Factura de canje', store=True, copy=False)
-    currency_id = fields.Many2one('res.currency', string='Moneda', default=1)
+    currency_id = fields.Many2one('res.currency', string='Moneda', store=True, default=1)
