@@ -40,7 +40,7 @@
                                 <tree>
                                     <field name="tax_id"/>
                                     <field name="amount"/>
-                                    <field name="fcanje_id" invisible="1"/>
+                                    <field name="fcanje_id" optional="hide"/>
                                 </tree>
                             </field>
                         </page>

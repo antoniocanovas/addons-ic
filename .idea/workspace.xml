@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="ew li product with code">
-      <change beforePath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" beforeDir="false" afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/views/factura_canje_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/views/factura_canje_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00637" summary="purchasePriceError">
-      <created>1686931823674</created>
-      <option name="number" value="00637" />
-      <option name="presentableId" value="LOCAL-00637" />
-      <option name="project" value="LOCAL" />
-      <updated>1686931823674</updated>
     </task>
     <task id="LOCAL-00638" summary="purchasePriceError">
       <created>1686932200303</created>
@@ -408,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689677233826</updated>
     </task>
-    <option name="localTasksCounter" value="686" />
+    <task id="LOCAL-00686" summary="ew li product with code">
+      <created>1689677339394</created>
+      <option name="number" value="00686" />
+      <option name="presentableId" value="LOCAL-00686" />
+      <option name="project" value="LOCAL" />
+      <updated>1689677339394</updated>
+    </task>
+    <option name="localTasksCounter" value="687" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
