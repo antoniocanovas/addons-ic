@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="ew li product with code">
       <change beforePath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" beforeDir="false" afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/views/factura_canje_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/views/factura_canje_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,27 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00621" summary="priceupdate_templ">
-      <created>1684802021583</created>
-      <option name="number" value="00621" />
-      <option name="presentableId" value="LOCAL-00621" />
-      <option name="project" value="LOCAL" />
-      <updated>1684802021583</updated>
-    </task>
-    <task id="LOCAL-00622" summary="priceupdate_templ">
-      <created>1685037148214</created>
-      <option name="number" value="00622" />
-      <option name="presentableId" value="LOCAL-00622" />
-      <option name="project" value="LOCAL" />
-      <updated>1685037148214</updated>
-    </task>
-    <task id="LOCAL-00623" summary="priceupdate_templ">
-      <created>1685037527726</created>
-      <option name="number" value="00623" />
-      <option name="presentableId" value="LOCAL-00623" />
-      <option name="project" value="LOCAL" />
-      <updated>1685037527726</updated>
     </task>
     <task id="LOCAL-00624" summary="priceupdate_templ">
       <created>1685037833310</created>
@@ -408,7 +388,28 @@
       <option name="project" value="LOCAL" />
       <updated>1689674709694</updated>
     </task>
-    <option name="localTasksCounter" value="670" />
+    <task id="LOCAL-00670" summary="ew li product with code">
+      <created>1689674944352</created>
+      <option name="number" value="00670" />
+      <option name="presentableId" value="LOCAL-00670" />
+      <option name="project" value="LOCAL" />
+      <updated>1689674944352</updated>
+    </task>
+    <task id="LOCAL-00671" summary="ew li product with code">
+      <created>1689675028996</created>
+      <option name="number" value="00671" />
+      <option name="presentableId" value="LOCAL-00671" />
+      <option name="project" value="LOCAL" />
+      <updated>1689675028996</updated>
+    </task>
+    <task id="LOCAL-00672" summary="ew li product with code">
+      <created>1689675119983</created>
+      <option name="number" value="00672" />
+      <option name="presentableId" value="LOCAL-00672" />
+      <option name="project" value="LOCAL" />
+      <updated>1689675119983</updated>
+    </task>
+    <option name="localTasksCounter" value="673" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
