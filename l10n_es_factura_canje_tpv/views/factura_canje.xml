@@ -22,7 +22,7 @@
                     <div t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
                     <p t-if="o.partner_id.vat"><t t-esc="o.partner_id.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></p>
                 </t>
-                <div>
+                <div style="float:right;">
                     <table style="border-collapse: collapse;">
                         <thead>
                             <tr>
@@ -37,7 +37,7 @@
                         </thead>
 
                         <t t-foreach="o.pos_order_ids" t-as="order">
-                            <tbody style="font-size: 12px">
+                            <tbody style="font-size: 14px">
                                 <tr>
                                     <td style="padding: 10px;"><span t-field="order.date_order"/></td>
                                     <td style="padding: 10px;"><span t-field="order.pos_reference"/></td>
@@ -55,9 +55,33 @@
                         </t>
                     </table>
                 </div>
+
+                <div style="float:right;">
+                  <t t-foreach="o.tax_line_ids" t-as="line">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th style="padding: 10px;">Impuesto</th>
+                          <th style="padding: 10px;">Importe</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="padding: 10px;"><span t-field="line.tax_id"/></td>
+                          <td style="padding: 10px;"><span t-field="line.amount"/></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+
+                  </t>
+                </div>
+
+
+  <!--
                 <div class="clearfix">
-                    <t t-set="total" t-value='0'/>
-                    <t t-set="subtotal" t-value='0'/>
+                    <t t-set="total" t-value="0"/>
+                    <t t-set="subtotal" t-value="0"/>
                     <div id="total" class="row">
                         <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
                             <table class="table table-sm" style="page-break-inside: avoid;">
@@ -123,6 +147,7 @@
                         </div>
                     </div>
                 </div>
+-->
 
 
                 <div style="margin: 10%">
