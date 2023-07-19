@@ -49,80 +49,80 @@
 
                                 </tr>
                                 <tr>
-                                  <!--  <td><span t-field="order.total_amount"/></td> -->
+                                    <!--  <td><span t-field="order.total_amount"/></td> -->
                                 </tr>
                             </tbody>
                         </t>
                     </table>
                 </div>
-               <div class="clearfix">
-                        <t t-set="total" t-value='0'/>
-                        <t t-set="subtotal" t-value='0'/>
-                        <div id="total" class="row">
-                            <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
-                                <table class="table table-sm" style="page-break-inside: avoid;">
-                                   <t t-foreach="o.pos_order_ids" t-as="order">
-                                      <tr class="border-black o_subtotal" style="">
-                                          <td><strong>Subtotal</strong></td>
-                                          <td class="text-right">
-                                              <span t-field="order.account_move.amount_untaxed"/>
-                                          </td>
-                                      </tr>
-                                      <t t-foreach="order.account_move.amount_by_group" t-as="amount_by_group">
-                                          <tr style="">
-                                              <t t-if="len(order.account_move.line_ids.filtered(lambda line: line.tax_line_id)) in [0, 1] and float_compare(order.account_move.amount_untaxed, amount_by_group[2], precision_rounding=order.account_move.currency_id.rounding) == 0">
-                                                  <td><span class="text-nowrap" t-esc="amount_by_group[0]"/></td>
-                                                  <td class="text-right o_price_total">
-                                                      <span class="text-nowrap" t-esc="amount_by_group[3]"/>
-                                                  </td>
-                                              </t>
-                                              <t t-else="">
-                                                  <td>
-                                                      <span t-esc="amount_by_group[0]"/>
-                                                      <span class="text-nowrap"> on
-                                                          <t t-esc="amount_by_group[4]"/>
-                                                      </span>
-                                                  </td>
-                                                  <td class="text-right o_price_total">
-                                                      <span class="text-nowrap" t-esc="amount_by_group[3]"/>
-                                                  </td>
-                                              </t>
-                                          </tr>
-                                      </t>
-                                      <tr class="border-black o_total">
-                                          <td><strong>Total</strong></td>
-                                          <td class="text-right">
-                                              <span class="text-nowrap" t-field="order.account_move.amount_total"/>
-                                          </td>
-                                      </tr>
-                                      <t t-if="print_with_payments">
-                                          <t t-if="o.payment_state != 'invoicing_legacy'">
-                                              <t t-set="payments_vals" t-value="order.account_move.sudo()._get_reconciled_info_JSON_values()"/>
-                                              <t t-foreach="payments_vals" t-as="payment_vals">
-                                                  <tr>
-                                                      <td>
-                                                          <i class="oe_form_field text-right oe_payment_label">Paid on <t t-esc="payment_vals['date']" t-options="{&quot;widget&quot;: &quot;date&quot;}"/></i>
-                                                      </td>
-                                                      <td class="text-right">
-                                                          <span t-esc="payment_vals['amount']" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: order.account_move.currency_id}"/>
-                                                      </td>
-                                                  </tr>
-                                              </t>
-                                              <t t-if="len(payments_vals) &gt; 0">
-                                                  <tr class="border-black">
-                                                      <td><strong>Amount Due</strong></td>
-                                                      <td class="text-right">
-                                                          <span t-field="order.account_move.amount_residual"/>
-                                                      </td>
-                                                  </tr>
-                                              </t>
-                                          </t>
-                                      </t>
+                <div class="clearfix">
+                    <t t-set="total" t-value='0'/>
+                    <t t-set="subtotal" t-value='0'/>
+                    <div id="total" class="row">
+                        <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
+                            <table class="table table-sm" style="page-break-inside: avoid;">
+                                <t t-foreach="o.pos_order_ids" t-as="order">
+                                    <tr class="border-black o_subtotal" style="">
+                                        <td><strong>Subtotal</strong></td>
+                                        <td class="text-right">
+                                            <span t-field="order.account_move.amount_untaxed"/>
+                                        </td>
+                                    </tr>
+                                    <t t-foreach="order.account_move.amount_by_group" t-as="amount_by_group">
+                                        <tr style="">
+                                            <t t-if="len(order.account_move.line_ids.filtered(lambda line: line.tax_line_id)) in [0, 1] and float_compare(order.account_move.amount_untaxed, amount_by_group[2], precision_rounding=order.account_move.currency_id.rounding) == 0">
+                                                <td><span class="text-nowrap" t-esc="amount_by_group[0]"/></td>
+                                                <td class="text-right o_price_total">
+                                                    <span class="text-nowrap" t-esc="amount_by_group[3]"/>
+                                                </td>
+                                            </t>
+                                            <t t-else="">
+                                                <td>
+                                                    <span t-esc="amount_by_group[0]"/>
+                                                    <span class="text-nowrap"> on
+                                                        <t t-esc="amount_by_group[4]"/>
+                                                    </span>
+                                                </td>
+                                                <td class="text-right o_price_total">
+                                                    <span class="text-nowrap" t-esc="amount_by_group[3]"/>
+                                                </td>
+                                            </t>
+                                        </tr>
                                     </t>
-                                </table>
-                            </div>
+                                    <tr class="border-black o_total">
+                                        <td><strong>Total</strong></td>
+                                        <td class="text-right">
+                                            <span class="text-nowrap" t-field="order.account_move.amount_total"/>
+                                        </td>
+                                    </tr>
+                                    <t t-if="print_with_payments">
+                                        <t t-if="o.payment_state != 'invoicing_legacy'">
+                                            <t t-set="payments_vals" t-value="order.account_move.sudo()._get_reconciled_info_JSON_values()"/>
+                                            <t t-foreach="payments_vals" t-as="payment_vals">
+                                                <tr>
+                                                    <td>
+                                                        <i class="oe_form_field text-right oe_payment_label">Paid on <t t-esc="payment_vals['date']" t-options="{&quot;widget&quot;: &quot;date&quot;}"/></i>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span t-esc="payment_vals['amount']" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: order.account_move.currency_id}"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                            <t t-if="len(payments_vals) &gt; 0">
+                                                <tr class="border-black">
+                                                    <td><strong>Amount Due</strong></td>
+                                                    <td class="text-right">
+                                                        <span t-field="order.account_move.amount_residual"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </t>
+                            </table>
                         </div>
                     </div>
+                </div>
 
 
                 <div style="margin: 10%">
@@ -131,4 +131,15 @@
             </t>
         </t>
     </template>
+
+    <template id="factura_canje_report">
+        <t t-name="factura_canje_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <!--<t t-set="lang" t-value="o.invoice_user_id.sudo().lang if o.move_type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>-->
+                    <t t-call="l10n_es_factura_canje_tpv.factura_canje_report_document"/>
+                </t>
+            </t>
+        </t>
+    </template>A
 </odoo>
