@@ -12,6 +12,8 @@ class ProjectProject(models.Model):
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
+    tag_ids = fiels.Many2many(tracking=100)
+
     @api.depends('description')
     def _get_description_text(self):
         for record in self:
