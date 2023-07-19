@@ -92,61 +92,79 @@ class AccountBankStatementCBI(models.Model):
             _logger.debug("ERROR", IOError)
 
     def automated_ftp_get_n43_files(self):
+        print("DEBUG 1")
         company_ids = self.env['res.company'].sudo().search([])
+
         for company_id in company_ids:
+            print(company_id)
             if company_id.ftp_url_cbi and company_id.ftp_port_cbi and company_id.ftp_user_cbi and company_id.ftp_passwd_cbi:
+                print("ENTRA,", company_id.name)
                 try:
                     sftpclient = self.create_sftp_client(company_id.ftp_url_cbi, company_id.ftp_port_cbi,
                                                          company_id.ftp_user_cbi, company_id.ftp_passwd_cbi, None, 'DSA')
                     # List files in the default directory on the remote computer.
                     dirlist = sftpclient.listdir('.')
                     imported_n43_list = self.get_n43_list()
+                    print(imported_n43_list)
                     for d in dirlist:
-                        path = "/%s" % d
-                        result = sftpclient.chdir(path=path)
-                        filelist = sftpclient.listdir('.')
-                        for f in filelist:
-                            if f != 'Historico':
-                                if f not in imported_n43_list:
-                                    file = sftpclient.file(f, mode='r', bufsize=-1)
-                                    file_first = file.readline()
-                                    bsa_bank_number = file_first[2:20]
-                                    #rename = sftpclient.rename(f,(str(bank_number) + str(f)+ '.n43'))
-                                    sftpclient.get(f, '/tmp/%s' % f)
+                        print("DIR",d)
+                        if d == "test":
+                            path = "/%s" % d
+                            result = sftpclient.chdir(path=path)
+                            filelist = sftpclient.listdir('.')
+                            for f in filelist:
+                                if f != 'Historico':
+                                    if f not in imported_n43_list:
+                                        print("NOT IMPORTED")
+                                        file = sftpclient.file(f, mode='r', bufsize=-1)
+                                        file_first = file.readline()
+                                        bsa_bank_number = file_first[2:20]
+                                        print("BANK",bsa_bank_number)
+                                        #rename = sftpclient.rename(f,(str(bank_number) + str(f)+ '.n43'))
+                                        sftpclient.get(f, '/tmp/%s' % f)
 
-                                    try:
-                                        journal = self.env['account.journal'].sudo().search([])
-                                        for journal_id in journal:
-                                            if journal_id.bank_account_id.acc_number:
-                                                bank_account_number = journal_id.bank_account_id.acc_number
-                                                bank_mnt_account_number = bank_account_number.replace(' ', '')
-                                                first_bank_sequence = bank_mnt_account_number[4:12]
-                                                second_bank_secuence = bank_mnt_account_number[14:]
-                                                bank_account_number = first_bank_sequence + second_bank_secuence
-                                                if bank_account_number == bsa_bank_number:
-                                                    with open('/tmp/%s' % f, "r+b") as file:
-                                                        data = file.read()
-                                                        file.close()
-                                                        attachment_id = self.env['ir.attachment'].sudo().create({
+                                        try:
+                                            journal = self.env['account.journal'].sudo().search([])
+                                            for journal_id in journal:
+                                                print("JOURNAL", journal_id.name)
+
+                                                if journal_id.bank_account_id.acc_number:
+                                                    print("Bank", journal_id.bank_account_id.acc_number)
+
+                                                    bank_account_number = journal_id.bank_account_id.acc_number
+                                                    bank_mnt_account_number = bank_account_number.replace(' ', '')
+                                                    first_bank_sequence = bank_mnt_account_number[4:12]
+                                                    second_bank_secuence = bank_mnt_account_number[14:]
+                                                    bank_account_number = first_bank_sequence + second_bank_secuence
+                                                    print("MATCH", bank_account_number, bsa_bank_number)
+                                                    if bank_account_number == bsa_bank_number:
+                                                        print("MATCH")
+                                                        with open('/tmp/%s' % f, "r+b") as file:
+                                                            data = file.read()
+                                                            file.close()
+                                                            print("READ")
+                                                            attachment_id = self.env['ir.attachment'].sudo().create({
+                                                                'name': f,
+                                                                'type': 'binary',
+                                                                'datas': base64.b64encode(data),
+                                                                'store_fname': f,
+                                                                'res_model': 'account.bank.statement.cbi',
+                                                                # 'res_id': self.id,
+                                                                'mimetype': 'text/plain'
+                                                            })
+                                                            print("ATT", attachment_id.name)
+
+                                                        abs = self.env['account.bank.statement.cbi'].sudo().create({
                                                             'name': f,
-                                                            'type': 'binary',
-                                                            'datas': base64.b64encode(data),
-                                                            'store_fname': f,
-                                                            'res_model': 'account.bank.statement.cbi',
-                                                            # 'res_id': self.id,
-                                                            'mimetype': 'text/plain'
+                                                            'journal_id': journal_id.id,
+                                                            'bank_statement_attachment_id': attachment_id.id,
+                                                            'company_id': journal_id.company_id.id,
                                                         })
+                                                        print("abs.name",abs.name)
+                                                        self.move_file_to_downloaded_dir(sftpclient, f)
 
-                                                    self.env['account.bank.statement.cbi'].sudo().create({
-                                                        'name': f,
-                                                        'journal_id': journal_id.id,
-                                                        'bank_statement_attachment_id': attachment_id.id,
-                                                        'company_id': journal_id.company_id.id,
-                                                    })
-                                                    self.move_file_to_downloaded_dir(sftpclient, f)
-
-                                    except Exception as e:
-                                        raise ValidationError('Server Error: %s' % e)
+                                        except Exception as e:
+                                            raise ValidationError('Server Error: %s' % e)
 
                     sftpclient.close()
                     time = datetime.now()

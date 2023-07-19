@@ -36,7 +36,7 @@
                     <notebook attrs="{'invisible':[('type','=','historica')]}">
                         <page string="Tickets">
                             <field name="pos_order_ids" force_save="1"/>
-                            <field name="tax_line_ids" readonly="1">
+                            <field name="tax_line_ids" readonly="1" force_save="1">
                                 <tree>
                                     <field name="tax_id"/>
                                     <field name="amount"/>
