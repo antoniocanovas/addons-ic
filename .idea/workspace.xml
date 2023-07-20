@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="ew li product with code" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="canje totales">
+      <change beforePath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" beforeDir="false" afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00644" summary="purchasePriceError">
-      <created>1686938198615</created>
-      <option name="number" value="00644" />
-      <option name="presentableId" value="LOCAL-00644" />
-      <option name="project" value="LOCAL" />
-      <updated>1686938198615</updated>
     </task>
     <task id="LOCAL-00645" summary="purchasePriceError">
       <created>1686938391449</created>
@@ -406,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689722926789</updated>
     </task>
-    <option name="localTasksCounter" value="693" />
+    <task id="LOCAL-00693" summary="canje totales">
+      <created>1689872185401</created>
+      <option name="number" value="00693" />
+      <option name="presentableId" value="LOCAL-00693" />
+      <option name="project" value="LOCAL" />
+      <updated>1689872185401</updated>
+    </task>
+    <option name="localTasksCounter" value="694" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -422,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="roadmap with contact_id" />
     <MESSAGE value="external_work remove task from sale" />
     <MESSAGE value="purchase_price_update rev with discounts" />
     <MESSAGE value="external work employee permission" />
@@ -447,7 +448,8 @@
     <MESSAGE value="sale_wup" />
     <MESSAGE value="fcanje" />
     <MESSAGE value="ew li product with code" />
-    <option name="LAST_COMMIT_MESSAGE" value="ew li product with code" />
+    <MESSAGE value="canje totales" />
+    <option name="LAST_COMMIT_MESSAGE" value="canje totales" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

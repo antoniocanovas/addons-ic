@@ -50,6 +50,7 @@ class FacturaCanje(models.Model):
             print("id", im._origin.id)
             new = self.env['factura.canje.taxline'].create({'fcanje_id': self.id, 'amount': amount, 'tax_id': im._origin.id})
             print("NEW", new)
+        self.write({'amount_total':amount_total, 'amount_tax':amount_tax, 'amount_subtotal':amount_total - amount_tax})
 
 
     @api.depends('create_date')
