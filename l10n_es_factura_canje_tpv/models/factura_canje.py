@@ -29,7 +29,7 @@ class FacturaCanje(models.Model):
 
     @api.onchange('pos_order_ids')
     def get_fcanje_taxlines(self):
-#        monetary_precision = self.env['decimal.precision'].sudo().search([('id', '=', 1)]).digits
+        monetary_precision = self.env['decimal.precision'].sudo().search([('id', '=', 1)]).digits
         print("DEBUG")
         for l in self.tax_line_ids:
             l.unlink()
