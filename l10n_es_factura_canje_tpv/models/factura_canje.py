@@ -49,7 +49,7 @@ class FacturaCanje(models.Model):
                 for li in po.lines:
                     for tax in li.tax_ids_after_fiscal_position:
                         if tax.id == im.id:
-                            amount += round(li.price_subtotal * (im.amount / 100, monetary_precision)
+                            amount += round(li.price_subtotal * (im.amount / 100), monetary_precision)
             print("id", im._origin.id)
             new = self.env['factura.canje.taxline'].create({'fcanje_id': self.id, 'amount': amount, 'tax_id': im._origin.id})
             print("NEW", new)
