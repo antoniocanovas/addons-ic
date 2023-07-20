@@ -21,12 +21,14 @@ class FacturaCanje(models.Model):
                                      domain="[('fcanje_id','=',False),('state','in',['done','paid'])]"
                                      )
 
-    tax_line_ids = fields.One2many('factura.canje.taxline', 'fcanje_id', store=True, copy=False, compute='get_fcanje_taxlines')
+    tax_line_ids = fields.One2many('factura.canje.taxline', 'fcanje_id', store=True, copy=False)
 
     @api.onchange('pos_order_ids')
     def get_fcanje_taxlines(self):
         print("DEBUG")
-        self.tax_line_ids.unlink()
+        for l in self.tax_line_ids:
+            l.unlink()
+
         impuestos = []
         for po in self.pos_order_ids:
             for li in po.lines:
@@ -41,28 +43,10 @@ class FacturaCanje(models.Model):
                     for tax in li.tax_ids_after_fiscal_position:
                         if tax.id == im.id:
                             amount += li.price_subtotal * (im.amount / 100)
-            new = self.env['factura.canje.taxline'].create({'fcanje_id': self.id, 'amount': amount, 'tax_id': im.id})
+            print("id", im._origin.id)
+            new = self.env['factura.canje.taxline'].create({'fcanje_id': self.id, 'amount': amount, 'tax_id': im._origin.id})
             print("NEW", new)
 
-        #for record in self:
-        #    record.tax_line_ids.unlink()
-        #    impuestos = []
-        #    for po in record.pos_order_ids:
-        #        for li in po.lines:
-        #            for tax in li.tax_ids_after_fiscal_position:
-        #                print("TAX FOR", li.tax_ids_after_fiscal_position)
-        #                if tax not in impuestos: impuestos.append(tax)
-                #self.env.cr.commit()
-        #    print("TAX", impuestos)
-        #    for im in impuestos:
-        #        amount = 0
-        #        for po in record.pos_order_ids:
-        #            for li in po.lines:
-        #                for tax in li.tax_ids_after_fiscal_position:
-        #                    if tax.id == im.id:
-        #                        amount += li.price_subtotal * (im.amount / 100)
-        #        new = self.env['factura.canje.taxline'].create({'fcanje_id': record.id, 'amount': amount, 'tax_id': im.id})
-        #        print("NEW", new)
 
     @api.depends('create_date')
     def _get_pos_factura_canje_code(self):
