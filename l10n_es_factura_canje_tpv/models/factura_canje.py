@@ -21,6 +21,10 @@ class FacturaCanje(models.Model):
                                      domain="[('fcanje_id','=',False),('state','in',['done','paid'])]"
                                      )
 
+    amount_total = fields.Monetary('Total', store=True, copy=False)
+    amount_tax = fields.Monetary('Impuestos', store=True, copy=False)
+    amount_subtotal = fields.Monetary('Subtotal', store=True, copy=False)
+    currency_id = fields.Many2one('res.currency', default=1, store=True)
     tax_line_ids = fields.One2many('factura.canje.taxline', 'fcanje_id', store=True, copy=False)
 
     @api.onchange('pos_order_ids')
@@ -29,7 +33,7 @@ class FacturaCanje(models.Model):
         for l in self.tax_line_ids:
             l.unlink()
 
-        impuestos = []
+        impuestos, amount_total, amount_tax = [], 0, 0
         for po in self.pos_order_ids:
             for li in po.lines:
                 for tax in li.tax_ids_after_fiscal_position:

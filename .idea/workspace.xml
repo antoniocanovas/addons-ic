@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="ew li product with code">
-      <change beforePath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" beforeDir="false" afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/views/factura_canje_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/views/factura_canje_views.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="ew li product with code" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
