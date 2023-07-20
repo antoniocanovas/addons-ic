@@ -30,7 +30,6 @@ class FacturaCanje(models.Model):
 #    @api.onchange('pos_order_ids')
     def get_fcanje_taxlines(self):
         monetary_precision = self.env['decimal.precision'].sudo().search([('id', '=', 1)]).digits
-        print("DEBUG")
         for l in self.tax_line_ids:
             l.unlink()
 
@@ -41,9 +40,7 @@ class FacturaCanje(models.Model):
             amount_tax += po.amount_tax
             for li in po.lines:
                 for tax in li.tax_ids_after_fiscal_position:
-                    print("TAX FOR", li.tax_ids_after_fiscal_position)
                     if tax not in impuestos: impuestos.append(tax)
-        print("TAX", impuestos)
         for im in impuestos:
             amount = 0
             for po in self.pos_order_ids:
@@ -51,9 +48,7 @@ class FacturaCanje(models.Model):
                     for tax in li.tax_ids_after_fiscal_position:
                         if tax.id == im.id:
                             amount += round(li.price_subtotal * (im.amount / 100), monetary_precision)
-            print("id", im._origin.id)
             new = self.env['factura.canje.taxline'].create({'fcanje_id': self.id, 'amount': amount, 'tax_id': im._origin.id})
-            print("NEW", new)
         self.write({'amount_total':amount_total, 'amount_tax':amount_tax, 'amount_subtotal':amount_total - amount_tax})
 
 
