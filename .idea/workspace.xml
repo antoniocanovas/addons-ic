@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="canje totales">
-      <change beforePath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" beforeDir="false" afterPath="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models/factura_canje.py" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="canje totales" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,27 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00645" summary="purchasePriceError">
-      <created>1686938391449</created>
-      <option name="number" value="00645" />
-      <option name="presentableId" value="LOCAL-00645" />
-      <option name="project" value="LOCAL" />
-      <updated>1686938391449</updated>
-    </task>
-    <task id="LOCAL-00646" summary="purchasePriceError">
-      <created>1686938534827</created>
-      <option name="number" value="00646" />
-      <option name="presentableId" value="LOCAL-00646" />
-      <option name="project" value="LOCAL" />
-      <updated>1686938534827</updated>
-    </task>
-    <task id="LOCAL-00647" summary="purchasePriceError">
-      <created>1686938587611</created>
-      <option name="number" value="00647" />
-      <option name="presentableId" value="LOCAL-00647" />
-      <option name="project" value="LOCAL" />
-      <updated>1686938587611</updated>
     </task>
     <task id="LOCAL-00648" summary="purchasePriceError">
       <created>1686962474244</created>
@@ -408,7 +385,28 @@
       <option name="project" value="LOCAL" />
       <updated>1689872185401</updated>
     </task>
-    <option name="localTasksCounter" value="694" />
+    <task id="LOCAL-00694" summary="canje totales">
+      <created>1689872613583</created>
+      <option name="number" value="00694" />
+      <option name="presentableId" value="LOCAL-00694" />
+      <option name="project" value="LOCAL" />
+      <updated>1689872613583</updated>
+    </task>
+    <task id="LOCAL-00695" summary="canje totales">
+      <created>1689872636472</created>
+      <option name="number" value="00695" />
+      <option name="presentableId" value="LOCAL-00695" />
+      <option name="project" value="LOCAL" />
+      <updated>1689872636472</updated>
+    </task>
+    <task id="LOCAL-00696" summary="canje totales">
+      <created>1689872907894</created>
+      <option name="number" value="00696" />
+      <option name="presentableId" value="LOCAL-00696" />
+      <option name="project" value="LOCAL" />
+      <updated>1689872907894</updated>
+    </task>
+    <option name="localTasksCounter" value="697" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
