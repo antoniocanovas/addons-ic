@@ -35,6 +35,8 @@ class FacturaCanje(models.Model):
 
         impuestos, amount_total, amount_tax = [], 0, 0
         for po in self.pos_order_ids:
+            amount_total += po.amount_total
+            amount_tax += po.amount_tax
             for li in po.lines:
                 for tax in li.tax_ids_after_fiscal_position:
                     print("TAX FOR", li.tax_ids_after_fiscal_position)
