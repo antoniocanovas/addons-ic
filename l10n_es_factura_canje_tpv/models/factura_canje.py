@@ -27,7 +27,7 @@ class FacturaCanje(models.Model):
     currency_id = fields.Many2one('res.currency', default=1, store=True)
     tax_line_ids = fields.One2many('factura.canje.taxline', 'fcanje_id', store=True, copy=False)
 
-    @api.onchange('pos_order_ids')
+#    @api.onchange('pos_order_ids')
     def get_fcanje_taxlines(self):
         monetary_precision = self.env['decimal.precision'].sudo().search([('id', '=', 1)]).digits
         print("DEBUG")
@@ -35,10 +35,10 @@ class FacturaCanje(models.Model):
             l.unlink()
 
         impuestos = []
-#        amount_total, amount_tax = 0, 0
+        amount_total, amount_tax = 0, 0
         for po in self.pos_order_ids:
-#            amount_total += po.amount_total
-#            amount_tax += po.amount_tax
+            amount_total += po.amount_total
+            amount_tax += po.amount_tax
             for li in po.lines:
                 for tax in li.tax_ids_after_fiscal_position:
                     print("TAX FOR", li.tax_ids_after_fiscal_position)
@@ -54,7 +54,7 @@ class FacturaCanje(models.Model):
             print("id", im._origin.id)
             new = self.env['factura.canje.taxline'].create({'fcanje_id': self.id, 'amount': amount, 'tax_id': im._origin.id})
             print("NEW", new)
-#        self.write({'amount_total':amount_total, 'amount_tax':amount_tax, 'amount_subtotal':amount_total - amount_tax})
+        self.write({'amount_total':amount_total, 'amount_tax':amount_tax, 'amount_subtotal':amount_total - amount_tax})
 
 
     @api.depends('create_date')
