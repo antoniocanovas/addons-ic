@@ -2,7 +2,7 @@
 
     <record id="update_fcanje" model="base.automation">
         <field name="name">=> Actualizar factura de canje</field>
-        <field name="model_id" ref="base.model_factura_canje"/>
+        <field name="model_id" ref="model_factura_canje"/>
         <field name="state">code</field>
         <field name="code">
 record.get_fcanje_taxlines()
