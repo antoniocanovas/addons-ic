@@ -27,7 +27,7 @@ class FacturaCanje(models.Model):
     currency_id = fields.Many2one('res.currency', default=1, store=True)
     tax_line_ids = fields.One2many('factura.canje.taxline', 'fcanje_id', store=True, copy=False)
 
-#    @api.onchange('pos_order_ids')
+#   Llamado desde acción automática, de otra forma no me funciona:
     def get_fcanje_taxlines(self):
         monetary_precision = self.env['decimal.precision'].sudo().search([('id', '=', 1)]).digits
         for l in self.tax_line_ids:
