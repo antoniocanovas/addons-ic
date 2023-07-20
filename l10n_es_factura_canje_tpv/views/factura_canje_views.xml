@@ -46,9 +46,9 @@
                         </page>
                     </notebook>
                     <group>
-                        <field name="amount_subtotal"/>
-                        <field name="amount_tax"/>
-                        <field name="amount_total"/>
+                        <field name="amount_subtotal" readonly="1"/>
+                        <field name="amount_tax" readonly="1"/>
+                        <field name="amount_total" readonly="1"/>
                     </group>
                     <field name="description" placeholder="Notas en caso de facturas actuales, o detalle completo fiscal de históricas"/>
                 </sheet>
