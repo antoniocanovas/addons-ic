@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="cubells vacp">
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/talleres_cubells_pnt/models/sale_order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/views/sale_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/talleres_cubells_pnt/views/sale_order.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,20 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00753" summary="product_from_set v0">
-      <created>1688893250428</created>
-      <option name="number" value="00753" />
-      <option name="presentableId" value="LOCAL-00753" />
-      <option name="project" value="LOCAL" />
-      <updated>1688893250428</updated>
-    </task>
-    <task id="LOCAL-00754" summary="product_from_set v0">
-      <created>1688893329465</created>
-      <option name="number" value="00754" />
-      <option name="presentableId" value="LOCAL-00754" />
-      <option name="project" value="LOCAL" />
-      <updated>1688893329465</updated>
     </task>
     <task id="LOCAL-00755" summary="product_from_set v0">
       <created>1688895059374</created>
@@ -408,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1690371073793</updated>
     </task>
-    <option name="localTasksCounter" value="802" />
+    <task id="LOCAL-00802" summary="cubells vacp">
+      <created>1690371730473</created>
+      <option name="number" value="00802" />
+      <option name="presentableId" value="LOCAL-00802" />
+      <option name="project" value="LOCAL" />
+      <updated>1690371730473</updated>
+    </task>
+    <task id="LOCAL-00803" summary="cubells vacp">
+      <created>1690371839950</created>
+      <option name="number" value="00803" />
+      <option name="presentableId" value="LOCAL-00803" />
+      <option name="project" value="LOCAL" />
+      <updated>1690371839950</updated>
+    </task>
+    <option name="localTasksCounter" value="804" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
