@@ -13,6 +13,6 @@ class ProductSupplierinfo(models.Model):
             if record.last_purchase_date:
                 name += str(record.last_purchase_date)
             record['display_name'] = name
-    display_name = fields.Char('Name', store=False, compute='name_get')
+    display_name = fields.Char('Name', store=True, compute='name_get')
 
     name = fields.Char('Name', store=False, compute='name_get')
