@@ -21,7 +21,12 @@
 
 
             <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
+                <!--
                 <field name="seller_ids" context="{'origin':'sale_order', 'default_product' : product_id}"/>
+                -->
+                <field name="supplierinfo_id" attrs="{'domain':[('product_id','=',product_id)]}"
+                <field name="supplier_id" optional="show"/>
+
                 <field name="product_cost_price"/>
                 <field name="product_discount_seller"/>
                 <field name="product_net_cost_price"/>

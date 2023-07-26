@@ -9,6 +9,11 @@ class SaleOrderLine(models.Model):
     _order = 'id asc'
     #_order = 'layout_category_id,id asc'
 
+    supplierinfo_id = fields.Many2one('product.supplierinfo', store=True)
+    supplier_id = fields.Many2one('res.partner', store=True, related='supplierinfo_id.partner_id')
+
+
+
     seller_ids = fields.Many2one(
         comodel_name="res.partner",
         string='Proveedor'
