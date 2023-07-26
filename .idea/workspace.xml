@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="cubells vacp">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/talleres_cubells_pnt/__manifest__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00760" summary="product_from_set v0">
-      <created>1689349353675</created>
-      <option name="number" value="00760" />
-      <option name="presentableId" value="LOCAL-00760" />
-      <option name="project" value="LOCAL" />
-      <updated>1689349353675</updated>
     </task>
     <task id="LOCAL-00761" summary="product_from_set v0">
       <created>1689350239384</created>
@@ -408,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690381520962</updated>
     </task>
-    <option name="localTasksCounter" value="809" />
+    <task id="LOCAL-00809" summary="cubells vacp">
+      <created>1690382387110</created>
+      <option name="number" value="00809" />
+      <option name="presentableId" value="LOCAL-00809" />
+      <option name="project" value="LOCAL" />
+      <updated>1690382387110</updated>
+    </task>
+    <option name="localTasksCounter" value="810" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
