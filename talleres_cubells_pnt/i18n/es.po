@@ -1,0 +1,344 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* talleres_cubells_pnt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-28 11:22+0000\n"
+"PO-Revision-Date: 2022-06-28 11:22+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_maintenance_equipment_pnt_burner
+msgid "Burner"
+msgstr "Quemador"
+
+#. module: talleres_cubells_pnt
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.view_stock_move_pnt_tree
+msgid "Cant."
+msgstr "Cant."
+
+#. module: talleres_cubells_pnt
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.view_sales_order_filter
+msgid "Client Ref"
+msgstr "Referencia Cliente"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_account_invoice_pnt_collaborator_id
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_sale_order_pnt_collaborator_id
+msgid "Collaborator"
+msgstr "Colaborador"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model,name:talleres_cubells_pnt.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_fuel_create_uid
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_model_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_fuel_create_date
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_model_create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: talleres_cubells_pnt
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.sale_order_form
+msgid "Ctdad Pedida"
+msgstr "Ctdad Pedida"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_maintenance_equipment_pnt_partner_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_stock_move_date_price
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.view_stock_move_pnt_tree
+msgid "Date Price"
+msgstr "Fecha Precio"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_stock_picking_partner_shipping_delivery_id
+msgid "Delivery address"
+msgstr "Dirección de entrega"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_stock_move_description_purchase_line
+msgid "Description"
+msgstr "Descripción"
+
+#. module: talleres_cubells_pnt
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.view_stock_move_pnt_tree
+msgid "Descuento"
+msgstr "Descuento"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_sale_order_line_product_discount_seller
+msgid "Descuento Proveedor"
+msgstr "Descuento Proveedor"
+
+
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_fuel_display_name
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_model_display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model,name:talleres_cubells_pnt.model_maintenance_equipment
+msgid "Equipment"
+msgstr "Equipamiento"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_maintenance_equipment_pnt_final_partner
+msgid "Final customer"
+msgstr "Cliente final"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_maintenance_equipment_pnt_fuel_id
+msgid "Fuel"
+msgstr "Combustible"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_fuel_id
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_model_id
+msgid "ID"
+msgstr "ID"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model,name:talleres_cubells_pnt.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_fuel___last_update
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_model___last_update
+msgid "Last Modified on"
+msgstr "Última actualización por"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_fuel_write_uid
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_model_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_fuel_write_date
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_model_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_maintenance_equipment_pnt_legalized
+msgid "Legalized"
+msgstr "Legalizado"
+
+#. module: talleres_cubells_pnt
+#: model:ir.actions.act_window,name:talleres_cubells_pnt.action_maintenance_equipment_fuel
+#: model:ir.ui.menu,name:talleres_cubells_pnt.menu_maintenance_equipment_fuel
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.pnt_maintenance_equipment_fuel_form
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.pnt_maintenance_equipment_fuel_search
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.pnt_maintenance_equipment_fuel_tree
+msgid "Maintenance Equipment Fuel"
+msgstr "Combustible equipo mantenimiento"
+
+#. module: talleres_cubells_pnt
+#: model:ir.actions.act_window,name:talleres_cubells_pnt.action_maintenance_equipment_model
+#: model:ir.ui.menu,name:talleres_cubells_pnt.menu_maintenance_equipment_model
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.pnt_maintenance_equipment_model_form
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.pnt_maintenance_equipment_model_search
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.pnt_maintenance_equipment_model_tree
+msgid "Maintenance Equipment Model"
+msgstr "Modelo equipo mantenimiento"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_maintenance_equipment_pnt_maintenance_year
+msgid "Maintenance year"
+msgstr "Año mantenimiento"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_maintenance_equipment_pnt_manufacturing_month
+msgid "Manufacturing Month"
+msgstr "Mes fabricación"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_sale_order_line_product_margin_price
+msgid "Margen"
+msgstr "Margen"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_maintenance_equipment_pnt_model_id
+msgid "Model"
+msgstr "Modelo"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_fuel_name
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_pnt_maintenance_equipment_model_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: talleres_cubells_pnt
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.view_stock_move_pnt_search
+msgid "Num. OT"
+msgstr "Num. OT"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_stock_move_wo_num
+msgid "Nº OT"
+msgstr "Nº OT"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_maintenance_equipment_pnt_ot_num
+msgid "OT number"
+msgstr "Número OT"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_sale_order_line_product_cost_price
+msgid "Precio Coste"
+msgstr "Precio Coste"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_sale_order_line_product_net_cost_price
+msgid "Precio Coste Neto"
+msgstr "Precio Coste Neto"
+
+#. module: talleres_cubells_pnt
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.view_stock_move_pnt_tree
+msgid "Precio Uni."
+msgstr "Precio Uni."
+
+#. module: talleres_cubells_pnt
+#: model:ir.model,name:talleres_cubells_pnt.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_sale_order_line_seller_ids
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.view_stock_move_pnt_search
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.view_stock_move_pnt_tree
+msgid "Proveedor"
+msgstr "Proveedor"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model,name:talleres_cubells_pnt.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea de pedido de compra"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_stock_move_quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model,name:talleres_cubells_pnt.model_sale_order
+msgid "Quotation"
+msgstr "Presupuesto"
+
+#. module: talleres_cubells_pnt
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.sale_order_form
+msgid "Recalcular Presupuesto"
+msgstr "Recalcular Presupuesto"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_stock_move_supplier_reference
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,help:talleres_cubells_pnt.field_stock_move_supplier_reference
+msgid "Reference of the sales order or bid sent by the vendor. It's used to do the matching when you receive the products as this reference is usually written on the delivery order sent by your vendor."
+msgstr "Referencia del pedido de venta o la oferta enviada por el proveedor. Se utiliza para encontrar el pedido cuando recibe los productos, la referencia se suele indicar en el albarán enviado por el proveedor."
+
+#. module: talleres_cubells_pnt
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.view_stock_move_pnt_tree
+msgid "Referencia"
+msgstr "Referencia"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model,name:talleres_cubells_pnt.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "Ventas. Anticipo pago factura"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model,name:talleres_cubells_pnt.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: talleres_cubells_pnt
+#: model:ir.ui.view,arch_db:talleres_cubells_pnt.sale_order_form
+msgid "Sort Lines"
+msgstr "Ordenar Lineas Presupuesto"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_maintenance_equipment_pnt_state_id
+msgid "State"
+msgstr "Provincia"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model,name:talleres_cubells_pnt.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de stock"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_stock_move_subtotal
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_stock_move_supplier_id
+msgid "Supplier"
+msgstr "Proveedor"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_stock_picking_supplier_picking
+msgid "Supplier picking"
+msgstr "Nº albarán proveedor"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model,name:talleres_cubells_pnt.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_maintenance_equipment_pnt_various1
+msgid "Various 1"
+msgstr "Varios 1"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_maintenance_equipment_pnt_various2
+msgid "Various 2"
+msgstr "Varios 2"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_maintenance_equipment_pnt_various3
+msgid "Various 3"
+msgstr "Varios 3"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model.fields,field_description:talleres_cubells_pnt.field_purchase_order_line_wo_num
+msgid "WO Num"
+msgstr "Nº OT"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model,name:talleres_cubells_pnt.model_pnt_maintenance_equipment_fuel
+msgid "pnt.maintenance.equipment.fuel"
+msgstr "pnt.maintenance.equipment.fuel"
+
+#. module: talleres_cubells_pnt
+#: model:ir.model,name:talleres_cubells_pnt.model_pnt_maintenance_equipment_model
+msgid "pnt.maintenance.equipment.model"
+msgstr "pnt.maintenance.equipment.model"
+

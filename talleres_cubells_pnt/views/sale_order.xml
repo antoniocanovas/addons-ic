@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- SALE Form -->
+    <record id="sale_order_form" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//button[@name='action_quotation_send']" position="after">
+                <button name="calc_price_sale_order"
+                        type="object"
+                        state="draft"
+                        string="Recalcular Presupuesto"
+                        class="btn-primary"/>
+                <!--<button name="pnt_sort_order_line"
+                        type="object"
+                        state="draft"
+                        string="Sort Lines"
+                        class="btn-primary"/>-->
+            </xpath>
+
+
+            <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
+                <field name="seller_ids" context="{'origin':'sale_order', 'default_product' : product_id}"/>
+                <field name="product_cost_price"/>
+                <field name="product_discount_seller"/>
+                <field name="product_net_cost_price"/>
+                <field name="product_margin_price"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="replace"/>
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="before">
+                <field name="product_uom_qty" string="Ctdad Pedida"
+                       context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id,
+                       'uom':product_uom, 'company_id': parent.company_id}"/>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_id']/parent::group" position="inside">
+                <field name="pnt_collaborator_id" options="{'no_create': True}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- SALE Tree -->
+    <record id="view_order_tree" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="client_order_ref"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- QUOTATION Tree -->
+    <record id="view_quotation_tree" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="client_order_ref"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- SALE Search -->
+   <!-- <record id="view_sales_order_filter" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="client_order_ref"/>
+            </xpath>
+            <xpath expr="//filter[@name='customer']" position="before">
+                <filter name="client_order_ref" string="Client Ref" context="{'group_by':'client_order_ref'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

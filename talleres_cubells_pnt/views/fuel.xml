@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="pnt_maintenance_equipment_fuel_form" model="ir.ui.view">
+        <field name="name">pnt.maintenance.equipment.fuel.form</field>
+        <field name="model">pnt.maintenance.equipment.fuel</field>
+        <field name="arch" type="xml">
+            <form string="Maintenance Equipment Fuel">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_maintenance_equipment_fuel_tree" model="ir.ui.view">
+        <field name="name">pnt.maintenance.equipment.fuel.tree</field>
+        <field name="model">pnt.maintenance.equipment.fuel</field>
+        <field name="arch" type="xml">
+            <tree string="Maintenance Equipment Fuel">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pnt_maintenance_equipment_fuel_search" model="ir.ui.view">
+        <field name="name">pnt.maintenance.equipment.fuel.search</field>
+        <field name="model">pnt.maintenance.equipment.fuel</field>
+        <field name="arch" type="xml">
+            <search string="Maintenance Equipment Fuel">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_maintenance_equipment_fuel" model="ir.actions.act_window">
+        <field name="name">Maintenance Equipment Fuel</field>
+        <field name="res_model">pnt.maintenance.equipment.fuel</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="menu_maintenance_equipment_fuel"
+        action="action_maintenance_equipment_fuel"
+        parent="maintenance.menu_maintenance_configuration"
+        sequence="11"
+    />
+
+</odoo>

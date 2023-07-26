@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+
+    <record id="purchase_order_pnt_form" model="ir.ui.view">
+        <field name="name">purchase.order.pnt.form</field>
+        <field name="model">purchase.order</field>
+        <field name="type">form</field>
+        <field name="priority">90</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <field name="date_planned" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+                <xpath expr="//field[@name='order_line']/tree" position="attributes">
+                    <attribute name="class">styles_tree_o2m</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
+                    <field name="wo_num"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <!-- RECEPCION DE PRODUCTOS TREE -->
+    <record id="view_stock_move_pnt_tree" model="ir.ui.view">
+        <field name="name">stock.move.pnt.tree</field>
+        <field name="model">stock.move</field>
+        <field name="type">tree</field>
+        <field name="priority">90</field>
+        <field name="inherit_id" ref="stock.view_move_tree_receipt_picking"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="field[@name='origin']" position="after">
+                    <field name="supplier_id" string="Proveedor"/>
+                    <field name="supplier_reference" string="Referencia"/>
+                    <field name="description_purchase_line"/>
+                    <field name="wo_num"/>
+                    <field name="quantity" string="Cant."/>
+                    <field name="price_unit" string="Precio Uni."/>
+                    <field name="date_price" string="Date Price"/>
+                    <!--<field name="discount" string="Descuento"/>-->
+                    <field name="subtotal"></field>
+
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <!-- RECEPCION DE PRODUCTOS SEARCH -->
+    <record id="view_stock_move_pnt_search" model="ir.ui.view">
+        <field name="name">stock.move.pnt.search</field>
+        <field name="model">stock.move</field>
+        <field name="type">search</field>
+        <field name="priority">90</field>
+        <field name="inherit_id" ref="stock.view_move_search"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="field[@name='product_id']" position="after">
+                    <field name="wo_num" string="Num. OT"/>
+                </xpath>
+                <xpath expr="group" position="inside">
+                    <filter string="Num. OT" name="wo_num" domain="[]" context="{'group_by':'wo_num'}"/>
+                    <filter string="Proveedor" name="supplier_id" domain="[]" context="{'group_by':'supplier_id'}"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

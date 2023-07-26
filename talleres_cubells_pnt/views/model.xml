@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="pnt_maintenance_equipment_model_form" model="ir.ui.view">
+        <field name="name">pnt.maintenance.equipment.model.form</field>
+        <field name="model">pnt.maintenance.equipment.model</field>
+        <field name="arch" type="xml">
+            <form string="Maintenance Equipment Model">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_maintenance_equipment_model_tree" model="ir.ui.view">
+        <field name="name">pnt.maintenance.equipment.model.tree</field>
+        <field name="model">pnt.maintenance.equipment.model</field>
+        <field name="arch" type="xml">
+            <tree string="Maintenance Equipment Model">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pnt_maintenance_equipment_model_search" model="ir.ui.view">
+        <field name="name">pnt.maintenance.equipment.model.search</field>
+        <field name="model">pnt.maintenance.equipment.model</field>
+        <field name="arch" type="xml">
+            <search string="Maintenance Equipment Model">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_maintenance_equipment_model" model="ir.actions.act_window">
+        <field name="name">Maintenance Equipment Model</field>
+        <field name="res_model">pnt.maintenance.equipment.model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="menu_maintenance_equipment_model"
+        action="action_maintenance_equipment_model"
+        parent="maintenance.menu_maintenance_configuration"
+        sequence="12"
+    />
+
+</odoo>
