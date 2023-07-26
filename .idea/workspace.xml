@@ -65,20 +65,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00761" summary="product_from_set v0">
-      <created>1689350239384</created>
-      <option name="number" value="00761" />
-      <option name="presentableId" value="LOCAL-00761" />
-      <option name="project" value="LOCAL" />
-      <updated>1689350239384</updated>
-    </task>
-    <task id="LOCAL-00762" summary="product_from_set v0">
-      <created>1689353040071</created>
-      <option name="number" value="00762" />
-      <option name="presentableId" value="LOCAL-00762" />
-      <option name="project" value="LOCAL" />
-      <updated>1689353040071</updated>
-    </task>
     <task id="LOCAL-00763" summary="product_from_set v0">
       <created>1689355733488</created>
       <option name="number" value="00763" />
@@ -408,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1690382387110</updated>
     </task>
-    <option name="localTasksCounter" value="810" />
+    <task id="LOCAL-00810" summary="cubells vacp">
+      <created>1690382566625</created>
+      <option name="number" value="00810" />
+      <option name="presentableId" value="LOCAL-00810" />
+      <option name="project" value="LOCAL" />
+      <updated>1690382566625</updated>
+    </task>
+    <task id="LOCAL-00811" summary="cubells vacp">
+      <created>1690382753264</created>
+      <option name="number" value="00811" />
+      <option name="presentableId" value="LOCAL-00811" />
+      <option name="project" value="LOCAL" />
+      <updated>1690382753264</updated>
+    </task>
+    <option name="localTasksCounter" value="812" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -13,7 +13,7 @@
     'application': False,
     'depends': [
         'purchase',
-        'sale',
+        'sale_management',
         'stock',
         'account',
         'maintenance',
