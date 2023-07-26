@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="watio_pico v0">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="cubells vacp">
+      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/views/sale_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/talleres_cubells_pnt/views/sale_order.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,15 +36,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/watio_pico/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/watio_pico/views" />
       <recent name="$PROJECT_DIR$/watio_pico/models" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/product_from_set/views" />
       <recent name="$PROJECT_DIR$/product_from_set/models" />
     </key>
@@ -64,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00749" summary="product_from_set v0">
-      <created>1688867545305</created>
-      <option name="number" value="00749" />
-      <option name="presentableId" value="LOCAL-00749" />
-      <option name="project" value="LOCAL" />
-      <updated>1688867545305</updated>
     </task>
     <task id="LOCAL-00750" summary="product_from_set v0">
       <created>1688867683738</created>
@@ -408,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689785211045</updated>
     </task>
-    <option name="localTasksCounter" value="798" />
+    <task id="LOCAL-00798" summary="cubells vacp">
+      <created>1690370262339</created>
+      <option name="number" value="00798" />
+      <option name="presentableId" value="LOCAL-00798" />
+      <option name="project" value="LOCAL" />
+      <updated>1690370262339</updated>
+    </task>
+    <option name="localTasksCounter" value="799" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="roadmap is_closed =&gt; fold" />
     <MESSAGE value="roadmap rev" />
     <MESSAGE value="analytic_picking_auto 16" />
     <MESSAGE value="sale multisection 16v0" />
@@ -449,7 +448,8 @@
     <MESSAGE value="license" />
     <MESSAGE value="product_from_set v0" />
     <MESSAGE value="watio_pico v0" />
-    <option name="LAST_COMMIT_MESSAGE" value="watio_pico v0" />
+    <MESSAGE value="cubells vacp" />
+    <option name="LAST_COMMIT_MESSAGE" value="cubells vacp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
