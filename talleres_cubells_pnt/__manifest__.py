@@ -8,7 +8,7 @@
     'website': 'http://www.puntsistemes.es',
     'license': 'AGPL-3',
     'category': 'Custom',
-    'installable': True,
+    'installable': False,
     'auto_install': False,
     'application': False,
     'depends': [
