@@ -15,5 +15,5 @@ class ProductSupplierinfo(models.Model):
             record['name'] = name
     name = fields.Char('Name', store=True, compute='name_get')
 
-    display_name = fields.Char('Name', store=True, related='name')
+#    display_name = fields.Char('Name', store=True, related='name')
 

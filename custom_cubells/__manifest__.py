@@ -21,13 +21,13 @@
         'purchase_discount',
     ],
     'data': [
-            'security/ir.model.access.csv',
-            'views/purchase_view.xml',
-            'views/stock_view.xml',
+#            'security/ir.model.access.csv',
+#           'views/purchase_view.xml',
+#           'views/stock_view.xml',
             'views/sale_order.xml',
-            'views/maintenance.xml',
-            'views/model.xml',
-            'views/fuel.xml',
-            'views/invoice.xml',
+#            'views/maintenance.xml',
+#            'views/model.xml',
+#            'views/fuel.xml',
+#            'views/invoice.xml',
     ]
 }

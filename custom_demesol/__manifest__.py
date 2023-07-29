@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name': 'Project description tracking',
+    'name': 'Custom Demesol',
     'version': '16.0.1.0.0',
     'category': 'Project/Project',
     'summary': "Project description tracking",
-    'description': "Enable tracking when description is changed, recommended to use if procedures or checklists inside",
+    'description': "Project description tracking",
     'author': 'Serincloud',
     'company': 'Serincloud',
     'maintainer': 'Serincloud',
@@ -14,7 +14,9 @@
     'data': [
     ],
     'assets': {},
-
+    "data": [
+        "views/project_task_views.xml",
+    ],
     'images': ['static/description/icon.png'],
     'license': 'LGPL-3',
     'installable': True,
