@@ -8,6 +8,8 @@ Facturas de canje para TPV.
     'author': 'Serincloud',
     'depends': [
         'point_of_sale',
+        'account',
+        'base_automation',
     ],
     'data': [
         'security/ir.model.access.csv',
