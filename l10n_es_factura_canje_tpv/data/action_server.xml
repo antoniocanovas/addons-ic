@@ -5,7 +5,7 @@
         <field name="model_id" ref="model_factura_canje"/>
         <field name="state">code</field>
         <field name="code">
-record.get_fcanje_taxlines()
+            record.get_fcanje_taxlines()
         </field>
         <field name="trigger">on_create_or_write</field>
         <field name="filter_pre_domain"></field>
