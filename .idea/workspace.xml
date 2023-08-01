@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="custom demesol v0">
-      <change afterPath="$PROJECT_DIR$/project_tag_tracking/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_tag_tracking/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_tag_tracking/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_tag_tracking/models/project.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_tag_tracking/static/description/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project tracking v0" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,13 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00766" summary="product_from_set v0">
-      <created>1689356433532</created>
-      <option name="number" value="00766" />
-      <option name="presentableId" value="LOCAL-00766" />
-      <option name="project" value="LOCAL" />
-      <updated>1689356433532</updated>
     </task>
     <task id="LOCAL-00767" summary="product_from_set v0">
       <created>1689356641247</created>
@@ -413,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690622788771</updated>
     </task>
-    <option name="localTasksCounter" value="815" />
+    <task id="LOCAL-00815" summary="project tracking v0">
+      <created>1690911200828</created>
+      <option name="number" value="00815" />
+      <option name="presentableId" value="LOCAL-00815" />
+      <option name="project" value="LOCAL" />
+      <updated>1690911200828</updated>
+    </task>
+    <option name="localTasksCounter" value="816" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -429,7 +422,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="analytic_picking_auto 16" />
     <MESSAGE value="sale multisection 16v0" />
     <MESSAGE value="sale konery v0" />
     <MESSAGE value="delete 14" />
@@ -454,7 +446,8 @@
     <MESSAGE value="watio_pico v0" />
     <MESSAGE value="cubells vacp" />
     <MESSAGE value="custom demesol v0" />
-    <option name="LAST_COMMIT_MESSAGE" value="custom demesol v0" />
+    <MESSAGE value="project tracking v0" />
+    <option name="LAST_COMMIT_MESSAGE" value="project tracking v0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
