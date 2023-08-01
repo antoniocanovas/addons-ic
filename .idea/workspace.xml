@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project tracking v0" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project tracking v0">
+      <change beforePath="$PROJECT_DIR$/project_tag_tracking/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_tag_tracking/models/__init__.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,17 +36,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_tag_tracking/models" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/project_tag_tracking/models" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/custom_demesol" />
       <recent name="$PROJECT_DIR$/watio_pico/views" />
       <recent name="$PROJECT_DIR$/watio_pico/models" />
-      <recent name="$PROJECT_DIR$/product_from_set/views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/project_roadmap/static/description" />
@@ -62,20 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00767" summary="product_from_set v0">
-      <created>1689356641247</created>
-      <option name="number" value="00767" />
-      <option name="presentableId" value="LOCAL-00767" />
-      <option name="project" value="LOCAL" />
-      <updated>1689356641247</updated>
-    </task>
-    <task id="LOCAL-00768" summary="watio_pico v0">
-      <created>1689413837484</created>
-      <option name="number" value="00768" />
-      <option name="presentableId" value="LOCAL-00768" />
-      <option name="project" value="LOCAL" />
-      <updated>1689413837484</updated>
     </task>
     <task id="LOCAL-00769" summary="watio_pico v0">
       <created>1689430924407</created>
@@ -406,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1690911200828</updated>
     </task>
-    <option name="localTasksCounter" value="816" />
+    <task id="LOCAL-00816" summary="project tracking v0">
+      <created>1690911747826</created>
+      <option name="number" value="00816" />
+      <option name="presentableId" value="LOCAL-00816" />
+      <option name="project" value="LOCAL" />
+      <updated>1690911747826</updated>
+    </task>
+    <task id="LOCAL-00817" summary="project tracking v0">
+      <created>1690911768543</created>
+      <option name="number" value="00817" />
+      <option name="presentableId" value="LOCAL-00817" />
+      <option name="project" value="LOCAL" />
+      <updated>1690911768543</updated>
+    </task>
+    <option name="localTasksCounter" value="818" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
