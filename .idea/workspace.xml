@@ -1,42 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="cubells vacp">
-      <change afterPath="$PROJECT_DIR$/custom_demesol/views/project_task_views.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="custom demesol v0">
+      <change afterPath="$PROJECT_DIR$/project_tag_tracking/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_tag_tracking/__manifest__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_tag_tracking/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_tag_tracking/models/project.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_tag_tracking/static/description/icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_description_tracking/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_demesol/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_description_tracking/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_demesol/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_description_tracking/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_demesol/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_description_tracking/models/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_demesol/models/project.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_description_tracking/static/description/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/custom_demesol/static/description/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/README.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/i18n/es.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/models/fuel.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/models/fuel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/models/invoice.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/models/invoice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/models/maintenance.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/models/maintenance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/models/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/models/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/models/product.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/models/product.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/models/product_supplierinfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/models/product_supplierinfo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/models/purchase.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/models/purchase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/models/res_partner.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/models/res_partner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/models/sale_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/models/stock.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/models/stock.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/security/ir.model.access.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/static/description/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/static/description/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/static/img/punt-sistemes.png" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/static/img/punt-sistemes.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/views/fuel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/views/fuel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/views/invoice.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/views/invoice.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/views/maintenance.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/views/maintenance.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/views/model.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/views/model.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/views/purchase_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/views/purchase_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/views/sale_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/views/sale_order.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/views/stock_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/views/stock_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/wizards/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/wizards/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talleres_cubells_pnt/wizards/sale_advanced_payment_inv.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_cubells/wizards/sale_advanced_payment_inv.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,14 +41,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/custom_demesol" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/custom_demesol" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/custom_demesol" />
       <recent name="$PROJECT_DIR$/watio_pico/views" />
       <recent name="$PROJECT_DIR$/watio_pico/models" />
       <recent name="$PROJECT_DIR$/product_from_set/views" />
@@ -98,20 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00764" summary="product_from_set v0">
-      <created>1689355919504</created>
-      <option name="number" value="00764" />
-      <option name="presentableId" value="LOCAL-00764" />
-      <option name="project" value="LOCAL" />
-      <updated>1689355919504</updated>
-    </task>
-    <task id="LOCAL-00765" summary="product_from_set v0">
-      <created>1689356238050</created>
-      <option name="number" value="00765" />
-      <option name="presentableId" value="LOCAL-00765" />
-      <option name="project" value="LOCAL" />
-      <updated>1689356238050</updated>
     </task>
     <task id="LOCAL-00766" summary="product_from_set v0">
       <created>1689356433532</created>
@@ -442,7 +399,21 @@
       <option name="project" value="LOCAL" />
       <updated>1690383164151</updated>
     </task>
-    <option name="localTasksCounter" value="813" />
+    <task id="LOCAL-00813" summary="custom demesol v0">
+      <created>1690622702512</created>
+      <option name="number" value="00813" />
+      <option name="presentableId" value="LOCAL-00813" />
+      <option name="project" value="LOCAL" />
+      <updated>1690622702513</updated>
+    </task>
+    <task id="LOCAL-00814" summary="custom demesol v0">
+      <created>1690622788771</created>
+      <option name="number" value="00814" />
+      <option name="presentableId" value="LOCAL-00814" />
+      <option name="project" value="LOCAL" />
+      <updated>1690622788771</updated>
+    </task>
+    <option name="localTasksCounter" value="815" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -458,7 +429,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="roadmap rev" />
     <MESSAGE value="analytic_picking_auto 16" />
     <MESSAGE value="sale multisection 16v0" />
     <MESSAGE value="sale konery v0" />
@@ -483,7 +453,8 @@
     <MESSAGE value="product_from_set v0" />
     <MESSAGE value="watio_pico v0" />
     <MESSAGE value="cubells vacp" />
-    <option name="LAST_COMMIT_MESSAGE" value="cubells vacp" />
+    <MESSAGE value="custom demesol v0" />
+    <option name="LAST_COMMIT_MESSAGE" value="custom demesol v0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
