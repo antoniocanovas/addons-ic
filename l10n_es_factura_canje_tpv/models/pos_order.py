@@ -12,4 +12,4 @@ class PosOrder(models.Model):
 
     def _get_amount_subtotal(self):
         self.amount_subtotal = self.amount_total - self.amount_tax
-    amount_subtotal = fiels.Monetary('Subtotal', store=False, compute='_get_amount_subtotal')
+    amount_subtotal = fields.Monetary('Subtotal', store=False, compute='_get_amount_subtotal')
