@@ -11,5 +11,6 @@ class PosOrder(models.Model):
                                          )
 
     def _get_amount_subtotal(self):
-        self.amount_subtotal = self.amount_total - self.amount_tax
+        for record in self:
+            record['amount_subtotal'] = record.amount_total - record.amount_tax
     amount_subtotal = fields.Float('Subtotal', store=False, compute='_get_amount_subtotal')

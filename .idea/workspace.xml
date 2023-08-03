@@ -65,20 +65,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00662" summary="fcanje">
-      <created>1687859780032</created>
-      <option name="number" value="00662" />
-      <option name="presentableId" value="LOCAL-00662" />
-      <option name="project" value="LOCAL" />
-      <updated>1687859780032</updated>
-    </task>
-    <task id="LOCAL-00663" summary="fcanje">
-      <created>1687859957729</created>
-      <option name="number" value="00663" />
-      <option name="presentableId" value="LOCAL-00663" />
-      <option name="project" value="LOCAL" />
-      <updated>1687859957729</updated>
-    </task>
     <task id="LOCAL-00664" summary="fcanje">
       <created>1687860479095</created>
       <option name="number" value="00664" />
@@ -408,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1691081151856</updated>
     </task>
-    <option name="localTasksCounter" value="711" />
+    <task id="LOCAL-00711" summary="canje amount_subtotal">
+      <created>1691081439352</created>
+      <option name="number" value="00711" />
+      <option name="presentableId" value="LOCAL-00711" />
+      <option name="project" value="LOCAL" />
+      <updated>1691081439352</updated>
+    </task>
+    <task id="LOCAL-00712" summary="canje amount_subtotal">
+      <created>1691081550609</created>
+      <option name="number" value="00712" />
+      <option name="presentableId" value="LOCAL-00712" />
+      <option name="project" value="LOCAL" />
+      <updated>1691081550609</updated>
+    </task>
+    <option name="localTasksCounter" value="713" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
