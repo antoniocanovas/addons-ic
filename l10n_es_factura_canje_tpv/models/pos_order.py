@@ -9,3 +9,7 @@ class PosOrder(models.Model):
                                          column2='posorder_id',
                                          string="Factura de canje",
                                          )
+
+    def _get_amount_subtotal(self):
+        self.amount_subtotal = self.amount_total - self.amount_tax
+    amount_subtotal = fiels.Monetary('Subtotal', store=False, compute='_get_amount_subtotal')
