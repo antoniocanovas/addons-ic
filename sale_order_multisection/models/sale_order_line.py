@@ -70,8 +70,22 @@ class SaleOrderLine(models.Model):
     def _avoid_duplicated_sections(self):
         for record in self:
             if (record.display_type == 'line_section') and (record.name[:1] == record.order_id.multisection_key):
-              section_code = record.name.split()[0]
-              line_ids = self.env['sale.order.line'].search([('order_id','=',record.order_id.id),('display_type','=','line_section'),('section','!=',False),('id','!=',record.id)])
-              if line_ids.ids:
-                for li in line_ids:
-                  if section_code == li.section: raise UserError('Duplicated section name ' + section_code + ' !!!')
+                section_code = record.name.split()[0]
+                line_ids = self.env['sale.order.line'].search([('order_id','=',record.order_id.id),('display_type','=','line_section'),('section','!=',False),('id','!=',record.id)])
+                if line_ids.ids:
+                    for li in line_ids:
+                        if section_code == li.section: raise UserError('Duplicated section name ' + section_code + ' !!!')
+
+
+    @api.depends('create_date')
+    def _sequence_in_o2m_new_sol(self):
+        # Review Sequence for new lines created from o2m sections buttom (by default would be the last and must be in record section):
+        for record in self:
+            if record.ms_review:
+                seq = record.section_id.sequence
+                lines = self.env['sale.order.line'].search([('section_id', '=', record.section_id.id), ('id', '!=', record.id),
+                                                            ('create_date', '<', record.create_date)])
+                if lines:
+                    lines_sorted = lines.sorted(key=lambda r: r.sequence)
+                    seq = env['sale.order.line'].search([('id', '=', lines_sorted.ids.pop())]).sequence
+                record.write({'sequence': seq, 'ms_review': False})

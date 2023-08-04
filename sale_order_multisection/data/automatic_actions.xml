@@ -2,28 +2,6 @@
 <odoo>
     <data>
 
-        <record id="sol_sequence_review" model="base.automation">
-            <field name="name">=>SOL Sequence Review</field>
-            <field name="model_id" ref="sale.model_sale_order_line"/>
-            <field name="state">code</field>
-            <field name="code">
-# Review Sequence for new lines created from o2m sections buttom (by default would be the last and must be in record section):
-if record.ms_review:
-  seq = record.section_id.sequence
-  lines = env['sale.order.line'].search([('section_id','=',record.section_id.id),('id','!=',record.id),('create_date','&lt;',record.create_date)])
-  if lines:
-    lines_sorted = lines.sorted(key=lambda r: r.sequence)
-    seq = env['sale.order.line'].search([('id','=',lines_sorted.ids.pop())]).sequence
-  record.write({'sequence':seq, 'ms_review':False})
-
-            </field>
-            <field name="trigger">on_create</field>
-            <!--<field name="on_change_fields">state</field>-->
-            <field name="active" eval="True"/>
-        </record>
-
-
-
         <record id="so_multisection_calculate" model="base.automation">
             <field name="name">=>SO Multisection</field>
             <field name="model_id" ref="sale.model_sale_order"/>
