@@ -77,7 +77,7 @@ class SaleOrderLine(models.Model):
                         if section_code == li.section: raise UserError('Duplicated section name ' + section_code + ' !!!')
 
 
-    @api.depends('create_date')
+#    @api.depends('create_date')
     def _sequence_in_o2m_new_sol(self):
         # Review Sequence for new lines created from o2m sections buttom (by default would be the last and must be in record section):
         for record in self:
