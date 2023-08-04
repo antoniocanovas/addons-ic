@@ -65,6 +65,3 @@ class SaleOrderLine(models.Model):
         compute=_get_total_section,
     )
 
-
-
-

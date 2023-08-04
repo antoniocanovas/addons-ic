@@ -55,3 +55,39 @@ class SaleOrderSets(models.Model):
             li['sequence'] = counter
             counter += 1
 
+
+    def update_multisection(self):
+        for record in self:
+            # Authomated Actions if section_ids and 'draft' status:
+            sections_ids = self.env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
+            if (sections_ids) and (record.state == 'draft'):
+                line_ids = record.order_line.sorted(key=lambda r: r.sequence)
+                section_id = 0
+                # Set 'section' in section lines and 'section_id' in others, ordered by sequence:
+                for li in line_ids:
+                    if (li.display_type == 'line_section') and (li.name):
+                        section_id = li.id
+                        section_code = str(li.sequence)
+                        if (li.name[:1] == record.multisection_key):
+                            section_code = li.name.split()[0]
+                        li.write({'section':section_code})
+                    elif (li.display_type != 'line_section') and (section_id > 0):
+                        li.write({'section_id':section_id})
+                    else:
+                        li.write({'section_id':False})
+                # Cálculo de 'parent_ids', 'child_ids' y 'level' por sección, si hay multinivel ($ o multisection_key):
+                section_ids = self.env['sale.order.line'].search([('order_id', '=', record.id), ('display_type', '=', 'line_section')])
+                for se in section_ids:
+                    parents, children, level = [], [], 1
+                    line_ids = self.env['sale.order.line'].search(
+                        [('order_id', '=', record.id), ('display_type', '=', 'line_section'), ('id', '!=', se.id)])
+                    if (se.name[:1] == record.multisection_key):
+                        for li in line_ids:
+                            lenght_line = len(li.section)
+                            if (li.section == se.section[:lenght_line]):
+                                parents.append(li.id)
+                                level = len(parents) + 1
+                            lenght_section = len(se.section)
+                            if (se.section == li.section[:lenght_section]):
+                                children.append(li.id)
+                    se.write({'parent_ids': [(6, 0, parents)], 'child_ids': [(6, 0, children)], 'level': level})
