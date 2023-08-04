@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="clean">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_multisection/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/models/sale_order.py" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="MULTISEC V1">
       <change beforePath="$PROJECT_DIR$/sale_order_multisection/models/sale_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/models/sale_order_line.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00773" summary="watio_pico v0">
-      <created>1689432133516</created>
-      <option name="number" value="00773" />
-      <option name="presentableId" value="LOCAL-00773" />
-      <option name="project" value="LOCAL" />
-      <updated>1689432133516</updated>
     </task>
     <task id="LOCAL-00774" summary="watio_pico v0">
       <created>1689432230592</created>
@@ -410,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690994965366</updated>
     </task>
-    <option name="localTasksCounter" value="822" />
+    <task id="LOCAL-00822" summary="MULTISEC V1">
+      <created>1691164410509</created>
+      <option name="number" value="00822" />
+      <option name="presentableId" value="LOCAL-00822" />
+      <option name="project" value="LOCAL" />
+      <updated>1691164410509</updated>
+    </task>
+    <option name="localTasksCounter" value="823" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sale konery v0" />
     <MESSAGE value="delete 14" />
     <MESSAGE value="-wup" />
     <MESSAGE value="beta pcv" />
@@ -451,7 +448,8 @@
     <MESSAGE value="custom demesol v0" />
     <MESSAGE value="project tracking v0" />
     <MESSAGE value="clean" />
-    <option name="LAST_COMMIT_MESSAGE" value="clean" />
+    <MESSAGE value="MULTISEC V1" />
+    <option name="LAST_COMMIT_MESSAGE" value="MULTISEC V1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

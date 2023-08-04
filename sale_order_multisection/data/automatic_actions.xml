@@ -2,25 +2,6 @@
 <odoo>
     <data>
 
-        <record id="avoid_duplicated_sections" model="base.automation">
-            <field name="name">=>Avoid duplicated sections</field>
-            <field name="model_id" ref="sale.model_sale_order_line"/>
-            <field name="state">code</field>
-            <field name="code">
-if (record.display_type == 'line_section') and (record.name[:1] == record.order_id.multisection_key):
-  section_code = record.name.split()[0]
-  line_ids = env['sale.order.line'].search([('order_id','=',record.order_id.id),('display_type','=','line_section'),('section','!=',False),('id','!=',record.id)])
-  if line_ids.ids:
-    for li in line_ids:
-      if section_code == li.section: raise UserError('Duplicated section name ' + section_code + ' !!!')
-            </field>
-            <field name="trigger">on_create_or_write</field>
-            <!--<field name="on_change_fields">state</field>-->
-            <field name="filter_pre_domain">[('display_type','=','line_section')]</field>
-            <field name="filter_domain">[('display_type','=','line_section')]</field>
-            <field name="active" eval="True"/>
-        </record>
-
         <record id="sol_sequence_review" model="base.automation">
             <field name="name">=>SOL Sequence Review</field>
             <field name="model_id" ref="sale.model_sale_order_line"/>
