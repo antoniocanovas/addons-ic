@@ -9,6 +9,7 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     partner_id = fields.Many2one('res.partner', related='order_id.partner_id', readonly=True)
+    tax_country_id = fields.Many2one('res.country', related='order_id.tax_country_id', readonly=True)
     pricelist_id = fields.Many2one('product.pricelist', related='order_id.pricelist_id', readonly=True)
     section_line_ids = fields.One2many('sale.order.line', 'section_id', store=True, string='Section Lines')
 
