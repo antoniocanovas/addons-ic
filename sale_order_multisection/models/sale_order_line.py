@@ -70,7 +70,7 @@ class SaleOrderLine(models.Model):
         for record in self:
             if (record.display_type == 'line_section') and (record.name[:1] == record.order_id.multisection_key):
               section_code = record.name.split()[0]
-              line_ids = env['sale.order.line'].search([('order_id','=',record.order_id.id),('display_type','=','line_section'),('section','!=',False),('id','!=',record.id)])
+              line_ids = self.env['sale.order.line'].search([('order_id','=',record.order_id.id),('display_type','=','line_section'),('section','!=',False),('id','!=',record.id)])
               if line_ids.ids:
                 for li in line_ids:
                   if section_code == li.section: raise UserError('Duplicated section name ' + section_code + ' !!!')
