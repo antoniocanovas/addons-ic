@@ -65,20 +65,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00774" summary="watio_pico v0">
-      <created>1689432230592</created>
-      <option name="number" value="00774" />
-      <option name="presentableId" value="LOCAL-00774" />
-      <option name="project" value="LOCAL" />
-      <updated>1689432230592</updated>
-    </task>
-    <task id="LOCAL-00775" summary="watio_pico v0">
-      <created>1689432377377</created>
-      <option name="number" value="00775" />
-      <option name="presentableId" value="LOCAL-00775" />
-      <option name="project" value="LOCAL" />
-      <updated>1689432377377</updated>
-    </task>
     <task id="LOCAL-00776" summary="watio_pico v0">
       <created>1689432483263</created>
       <option name="number" value="00776" />
@@ -408,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1691164410509</updated>
     </task>
-    <option name="localTasksCounter" value="823" />
+    <task id="LOCAL-00823" summary="MULTISEC V1">
+      <created>1691164850863</created>
+      <option name="number" value="00823" />
+      <option name="presentableId" value="LOCAL-00823" />
+      <option name="project" value="LOCAL" />
+      <updated>1691164850863</updated>
+    </task>
+    <task id="LOCAL-00824" summary="MULTISEC V1">
+      <created>1691164978407</created>
+      <option name="number" value="00824" />
+      <option name="presentableId" value="LOCAL-00824" />
+      <option name="project" value="LOCAL" />
+      <updated>1691164978407</updated>
+    </task>
+    <option name="localTasksCounter" value="825" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
