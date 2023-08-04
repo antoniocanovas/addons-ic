@@ -8,7 +8,7 @@
            <field name="state">code</field>
            <field name="code">
 # Review Sequence for new lines created from o2m sections buttom (by default would be the last and must be in record section):
-if record.ms_review:
+if (record.ms_review) and ( 1 == 0):
  seq = record.section_id.sequence
  lines = env['sale.order.line'].search([('section_id','=',record.section_id.id),('id','!=',record.id),('create_date','&lt;',record.create_date)])
  if lines:

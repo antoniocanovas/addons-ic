@@ -77,8 +77,8 @@ class SaleOrderLine(models.Model):
                         if section_code == li.section: raise UserError('Duplicated section name ' + section_code + ' !!!')
 
 
-#    @api.depends('create_date')
-    def _sequence_in_o2m_new_sol(self):
+    @api.depends('create_date')
+    def resequence_in_o2m_new_sol(self):
         # Review Sequence for new lines created from o2m sections buttom (by default would be the last and must be in record section):
         for record in self:
             if record.ms_review:
@@ -87,5 +87,5 @@ class SaleOrderLine(models.Model):
                                                             ('create_date', '<', record.create_date)])
                 if lines:
                     lines_sorted = lines.sorted(key=lambda r: r.sequence)
-                    seq = env['sale.order.line'].search([('id', '=', lines_sorted.ids.pop())]).sequence
+                    seq = self.env['sale.order.line'].search([('id', '=', lines_sorted.ids.pop())]).sequence
                 record.write({'sequence': seq, 'ms_review': False})
