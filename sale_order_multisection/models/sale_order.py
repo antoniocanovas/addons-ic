@@ -59,7 +59,6 @@ class SaleOrderSets(models.Model):
 
     def update_multisection(self):
         for record in self:
-            i = 1
             # Authomated Actions if section_ids and 'draft' status:
             sections_ids = self.env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
             if (sections_ids) and (record.state == 'draft'):
@@ -85,7 +84,8 @@ class SaleOrderSets(models.Model):
                         li.write({'section_id':False})
 
                 # Reordenar secuencias para líneas de new_section_id:
-                line_ids = record.order_line.sorted(key=lambda r: (r.section_id, r.sequence)
+                line_ids = record.order_line.sorted(key=lambda r: (r.section_id, r.sequence))
+                i = 1
                 for li in line_ids:
                     li.sequence = i
                     i += 1
