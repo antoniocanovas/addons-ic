@@ -14,7 +14,7 @@ class SaleOrderLine(models.Model):
     section_line_ids = fields.One2many('sale.order.line', 'section_id', store=True, string='Section Lines')
 
     section = fields.Char('Section', readonly=True)
-    section_id = fields.Many2one('sale.order.line', readonly=True)
+    section_id = fields.Many2one('sale.order.line', store=True, readonly=False)
 
     # Reports hidden price line fields:
     print_mode_section  = fields.Selection([('hide_price','Hide line prices'),
