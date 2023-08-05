@@ -78,19 +78,20 @@ class SaleOrderLine(models.Model):
                     for li in line_ids:
                         if section_code == li.section: raise UserError('Duplicated section name ' + section_code + ' !!!')
 
-    @api.onchange('new_section_id')
-    def _change_section_from_main(self):
-        for record in self:
-            sequence = 0
-            for li in record.order_id.order_line:
-                sequence += 10
-                li.sequence = sequence
-            lines = self.env['sale.order.line'].search([('section_id', '=', record.new_section_id.id)])
-            sequence = record.new_section_id.sequence
-            for li in lines:
-                if li.sequence > sequence:
-                    sequence = li.sequence
-            record.write({'sequence': sequence})
+#No funciona si se hacen 2 líneas porque el sistema no guarda hasta pulsar arriba:
+#    @api.onchange('new_section_id')
+#    def _change_section_from_main(self):
+#        for record in self:
+#            sequence = 0
+#            for li in record.order_id.order_line:
+#                sequence += 10
+#                li.sequence = sequence
+#            lines = self.env['sale.order.line'].search([('section_id', '=', record.new_section_id.id)])
+#            sequence = record.new_section_id.sequence
+#            for li in lines:
+#                if li.sequence > sequence:
+#                    sequence = li.sequence
+#            record.write({'sequence': sequence})
 
 
     def resequence_in_o2m_new_sol(self):
