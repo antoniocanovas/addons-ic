@@ -82,7 +82,7 @@ class SaleOrderLine(models.Model):
     def _change_section_from_main(self):
         for record in self:
             sequence = 0
-            for li in record.order_line:
+            for li in record.order_id.order_line:
                 sequence += 10
                 li.sequence = sequence
             lines = self.env['sale.order.line'].search([('section_id', '=', record.new_section_id.id)])
