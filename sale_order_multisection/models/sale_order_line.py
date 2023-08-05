@@ -52,7 +52,9 @@ class SaleOrderLine(models.Model):
 
     @api.onchange('section_id')
     def _update_sequence_before_saving_to_avoid_default_behaviour(self):
-        self.write({'sequence':self.section_id.sequence, 'ms_review':True})
+        for record in self:
+            record.write({'sequence':self.section_id.sequence, 'ms_review':True})
+            record.resequence_in_o2m_new_sol()
 
     @api.depends('create_date')
     def _get_total_section(self):
