@@ -76,7 +76,7 @@ class SaleOrderSets(models.Model):
                         li.write({'section':section_code})
                     # Cases products and notes:
                     elif (li.display_type != 'line_section') and (li.new_section_id.id):
-                        li.write({'section_id':new_section_id, 'new_section_id': False})
+                        li.write({'section_id':li.new_section_id, 'new_section_id': False})
                     elif (li.display_type != 'line_section') and (section_id > 0) and not (li.new_section_id.id):
                         li.write({'section_id':section_id})
                     # Para primeras líneas sin sección
