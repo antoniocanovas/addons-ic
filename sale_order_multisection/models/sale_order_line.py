@@ -97,6 +97,6 @@ class SaleOrderLine(models.Model):
                 lines = self.env['sale.order.line'].search([('section_id', '=', record.section_id.id), ('id', '!=', record.id),
                                                             ('create_date', '<', record.create_date)])
                 if lines:
-                    lines_sorted = lines.sorted(key=lambda r: (r.section_id, r.sequence))
+                    lines_sorted = lines.sorted(key=lambda r: (r.sequence))
                     seq = self.env['sale.order.line'].search([('id', '=', lines_sorted.ids.pop())]).sequence
                 record.write({'sequence': seq, 'ms_review': False})
