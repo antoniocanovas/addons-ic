@@ -81,6 +81,10 @@ class SaleOrderLine(models.Model):
     @api.onchange('new_section_id')
     def _change_section_from_main(self):
         for record in self:
+            sequence = 0
+            for li in record.order_line:
+                sequence += 10
+                li.sequence = sequence
             lines = self.env['sale.order.line'].search([('section_id', '=', record.new_section_id.id)])
             sequence = record.new_section_id.sequence
             for li in lines:
