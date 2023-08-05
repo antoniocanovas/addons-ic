@@ -77,18 +77,28 @@ class SaleOrderSets(models.Model):
                     # Cases products and notes:
                     else:
                         if (li.new_section_id.id):
-                            li.write({'section_id':li.new_section_id.id, 'new_section_id': False})
+                            section_id = li.new_section_id.id
                         elif (section_id > 0) and not (li.new_section_id.id):
-                            li.write({'section_id':section_id})
+                            section_id = section_id
                         else:
-                            li.write({'section_id':False})
+                            section_id = False
+                        li.write({'section_id': section_id})
 
                 # Reordenar secuencias para líneas de new_section_id:
-#                line_ids = record.order_line.sorted(key=lambda r: (r.section_id, r.sequence))
-#                i = 1
-#                for li in line_ids:
-#                    li.sequence = i
-#                    i += 1
+                i = 1
+                lines = self.env['sale.order.line'].search(
+                    [('order_id', '=', record.id), ('section_id', '=', False), ('display_type', '!=', 'line_section')])
+                for li in lines:
+                    li['sequence'] = i
+                    i += 1
+                sections_sorted = sections_ids.sorted(key=lambda r: r.sequence)
+                for se in sections_sorted:
+                    se['sequence'] = i
+                    i += 1
+                    lines = self.env['sale.order.line'].search([('section_id', '=', se.id)])
+                    for li in lines:
+                        li.write({'sequence': i, 'new_section_id': False})
+                        i += 1
 
                 # Cálculo de 'parent_ids', 'child_ids' y 'level' por sección, si hay multinivel ($ o multisection_key):
                 section_ids = self.env['sale.order.line'].search([('order_id', '=', record.id), ('display_type', '=', 'line_section')])
