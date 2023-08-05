@@ -121,8 +121,8 @@
         <field name="view_type">tree</field>-->
     </record>
 
-    <record id="view_saleorder_sections" model="ir.ui.view">
-        <field name="name">Sections</field>
+    <record id="multisection_saleorder_inh_view" model="ir.ui.view">
+        <field name="name">multisection.saleorder.inh.view</field>
         <field name="model">sale.order</field>
         <field name="type">form</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
@@ -133,24 +133,13 @@
                 </button>
             </xpath>
             <xpath expr="//header/button[@name='action_draft']" position="after">
-                <button class="oe_stat_butt" string="Reordenar Secciones" type="object" name="order_sections">
-
-                </button>
+                <button class="oe_stat_butt" string="Reordenar Secciones" type="object" name="order_sections"/>
             </xpath>
-
-        </field>
-    </record>
-
-
-
-    <record id="view_saleorder_sections_key" model="ir.ui.view">
-        <field name="name">Multisection Key</field>
-        <field name="model">sale.order</field>
-        <field name="type">form</field>
-        <field name="inherit_id" ref="sale.view_order_form"/>
-        <field name="arch" type="xml">
             <xpath expr="//field[@name='source_id']" position="after">
                 <field name="multisection_key"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="section_filter_id"/>
             </xpath>
         </field>
     </record>
