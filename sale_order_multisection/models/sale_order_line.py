@@ -14,7 +14,8 @@ class SaleOrderLine(models.Model):
     section_line_ids = fields.One2many('sale.order.line', 'section_id', store=True, string='Section Lines')
 
     section = fields.Char('Section', readonly=True)
-    section_id = fields.Many2one('sale.order.line', store=True, readonly=False)
+    section_id = fields.Many2one('sale.order.line', store=True, readonly=True)
+    new_section_id = fields.Many2one('sale.order.line', store=True, readonly=False)
 
     # Reports hidden price line fields:
     print_mode_section  = fields.Selection([('hide_price','Hide line prices'),
@@ -49,11 +50,6 @@ class SaleOrderLine(models.Model):
     )
 
     ms_review = fields.Boolean('Review')
-
-    @api.onchange('section_id')
-    def _update_sequence_before_saving_to_avoid_default_behaviour(self):
-        for record in self:
-            record.write({'sequence':record.section_id.sequence, 'section_id':record.section_id.id})
 
     @api.depends('create_date')
     def _get_total_section(self):
