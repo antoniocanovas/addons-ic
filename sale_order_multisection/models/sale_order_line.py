@@ -71,8 +71,9 @@ class SaleOrderLine(models.Model):
     @api.onchange('new_section_id')
     def _get_sequence_when_new_section_id_updated(self):
         for record in self:
-            lines = self.env['sale.order.line'].search([('section_id','=',record.new_section_id.id)])
-            raise UserError(lines)
+            lines = self.env['sale.order.line'].search([('section_id','=',record.new_section_id.id),('id','!=',record.id)])
+            lines_sorted = lines.sorted(key=lambda r: r.sequence, reverse=True)
+            raise UserError(lines_sorted[0].sequence)
 
     @api.constrains('name')
     def _avoid_duplicated_sections(self):
