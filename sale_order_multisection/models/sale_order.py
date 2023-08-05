@@ -64,18 +64,23 @@ class SaleOrderSets(models.Model):
             if (sections_ids) and (record.state == 'draft'):
                 line_ids = record.order_line.sorted(key=lambda r: r.sequence)
                 section_id = 0
+
                 # Set 'section' in section lines and 'section_id' in others, ordered by sequence:
                 for li in line_ids:
+                    # Case sections:
                     if (li.display_type == 'line_section') and (li.name):
                         section_id = li.id
                         section_code = str(li.sequence)
                         if (li.name[:1] == record.multisection_key):
                             section_code = li.name.split()[0]
                         li.write({'section':section_code})
+                    # Case products and notes:
                     elif (li.display_type != 'line_section') and (section_id > 0):
                         li.write({'section_id':section_id})
+                    # ¿para primeras líneas sin sección?
                     else:
                         li.write({'section_id':False})
+
                 # Cálculo de 'parent_ids', 'child_ids' y 'level' por sección, si hay multinivel ($ o multisection_key):
                 section_ids = self.env['sale.order.line'].search([('order_id', '=', record.id), ('display_type', '=', 'line_section')])
                 for se in section_ids:
