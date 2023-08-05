@@ -78,7 +78,7 @@ class SaleOrderLine(models.Model):
                     for li in line_ids:
                         if section_code == li.section: raise UserError('Duplicated section name ' + section_code + ' !!!')
 
-#    @api.onchange('new_section_id')
+    @api.onchange('new_section_id')
     def _change_section_from_main(self):
         for record in self:
             lines = self.env['sale.order.line'].search([('section_id', '=', record.new_section_id.id)])
