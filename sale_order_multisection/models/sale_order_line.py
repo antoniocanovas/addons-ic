@@ -50,6 +50,10 @@ class SaleOrderLine(models.Model):
 
     ms_review = fields.Boolean('Review')
 
+    @api.onchange('section_id')
+    def _update_sequence_before_saving_to_avoid_default_behaviour(self):
+        self.sequence = self.section_id.sequence
+
     @api.depends('create_date')
     def _get_total_section(self):
         for record in self:

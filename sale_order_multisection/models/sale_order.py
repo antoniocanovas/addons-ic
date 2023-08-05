@@ -7,7 +7,8 @@ _logger = logging.getLogger(__name__)
 class SaleOrderSets(models.Model):
     _inherit = 'sale.order'
 
-    section_filter_id = fields.Many2one('sale.order.line', string='Section filter', store=True)
+    # Test filtrar en tree (no funciona)
+#    section_filter_id = fields.Many2one('sale.order.line', string='Section filter', store=True)
 
     @api.depends('partner_id')
     def get_key(self):

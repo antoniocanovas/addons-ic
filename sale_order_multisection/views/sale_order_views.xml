@@ -138,9 +138,11 @@
             <xpath expr="//field[@name='source_id']" position="after">
                 <field name="multisection_key"/>
             </xpath>
+            <!-- Test filtrar en tree, no funciona:
             <xpath expr="//field[@name='payment_term_id']" position="after">
                 <field name="section_filter_id"/>
             </xpath>
+            -->
         </field>
     </record>
 
