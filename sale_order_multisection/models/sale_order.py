@@ -84,11 +84,11 @@ class SaleOrderSets(models.Model):
                             li.write({'section_id':False})
 
                 # Reordenar secuencias para líneas de new_section_id:
-                line_ids = record.order_line.sorted(key=lambda r: (r.section_id, r.sequence))
-                i = 1
-                for li in line_ids:
-                    li.sequence = i
-                    i += 1
+#                line_ids = record.order_line.sorted(key=lambda r: (r.section_id, r.sequence))
+#                i = 1
+#                for li in line_ids:
+#                    li.sequence = i
+#                    i += 1
 
                 # Cálculo de 'parent_ids', 'child_ids' y 'level' por sección, si hay multinivel ($ o multisection_key):
                 section_ids = self.env['sale.order.line'].search([('order_id', '=', record.id), ('display_type', '=', 'line_section')])
