@@ -65,20 +65,6 @@
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
     </task>
-    <task id="LOCAL-00825" summary="MULTISEC V1">
-      <created>1691165095963</created>
-      <option name="number" value="00825" />
-      <option name="presentableId" value="LOCAL-00825" />
-      <option name="project" value="LOCAL" />
-      <updated>1691165095963</updated>
-    </task>
-    <task id="LOCAL-00826" summary="MULTISEC V1">
-      <created>1691165617286</created>
-      <option name="number" value="00826" />
-      <option name="presentableId" value="LOCAL-00826" />
-      <option name="project" value="LOCAL" />
-      <updated>1691165617286</updated>
-    </task>
     <task id="LOCAL-00827" summary="MULTISEC V1">
       <created>1691166173915</created>
       <option name="number" value="00827" />
@@ -408,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1691257400406</updated>
     </task>
-    <option name="localTasksCounter" value="874" />
+    <task id="LOCAL-00874" summary="MULTISEC V1">
+      <created>1691257536481</created>
+      <option name="number" value="00874" />
+      <option name="presentableId" value="LOCAL-00874" />
+      <option name="project" value="LOCAL" />
+      <updated>1691257536481</updated>
+    </task>
+    <task id="LOCAL-00875" summary="MULTISEC V1">
+      <created>1691257653142</created>
+      <option name="number" value="00875" />
+      <option name="presentableId" value="LOCAL-00875" />
+      <option name="project" value="LOCAL" />
+      <updated>1691257653142</updated>
+    </task>
+    <option name="localTasksCounter" value="876" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
