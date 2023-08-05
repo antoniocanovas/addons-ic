@@ -76,10 +76,10 @@ class SaleOrderSets(models.Model):
                         li.write({'section':section_code})
                     # Case products and notes:
                     elif (li.display_type != 'line_section') and (section_id > 0):
-                        li.write({'section_id':section_id})
+                        li.write({'section_id':section_id, 'new_section_id': False})
                     # ¿para primeras líneas sin sección?
                     else:
-                        li.write({'section_id':False})
+                        li.write({'section_id':False, 'new_section_id': False})
 
                 # Cálculo de 'parent_ids', 'child_ids' y 'level' por sección, si hay multinivel ($ o multisection_key):
                 section_ids = self.env['sale.order.line'].search([('order_id', '=', record.id), ('display_type', '=', 'line_section')])

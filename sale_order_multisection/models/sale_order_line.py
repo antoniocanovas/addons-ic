@@ -78,6 +78,16 @@ class SaleOrderLine(models.Model):
                     for li in line_ids:
                         if section_code == li.section: raise UserError('Duplicated section name ' + section_code + ' !!!')
 
+    @api.onchange('new_section_id')
+    def _change_section_from_main(self):
+        for record in self:
+            lines = self.env['sale.order.line'].search([('section_id', '=', record.new_section_id.id)])
+            sequence = record.new_section_id.sequence + 1
+            for li in lines:
+                if li.sequence + 1 > sequence:
+                    sequence = li.sequence + 1
+            record.write({'sequence': sequence})
+
 
     def resequence_in_o2m_new_sol(self):
         # Review Sequence for new lines created from o2m sections buttom (by default would be the last and must be in record section):
