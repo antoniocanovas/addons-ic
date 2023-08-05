@@ -71,7 +71,7 @@ class SaleOrderLine(models.Model):
     @api.onchange('new_section_id')
     def _get_sequence_when_new_section_id_updated(self):
         for record in self:
-            lines = self.env['sale.order.line'].search([('order_id','=',record.id),('section_id','=',new_section_id)])
+            lines = self.env['sale.order.line'].search([('order_id','=',record.id),('section_id','=',record.new_section_id.id)])
             raise UserError(lines)
 
     @api.constrains('name')
