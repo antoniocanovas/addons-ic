@@ -82,10 +82,10 @@ class SaleOrderLine(models.Model):
     def _change_section_from_main(self):
         for record in self:
             lines = self.env['sale.order.line'].search([('section_id', '=', record.new_section_id.id)])
-            sequence = record.new_section_id.sequence + 1
+            sequence = record.new_section_id.sequence
             for li in lines:
-                if li.sequence + 1 > sequence:
-                    sequence = li.sequence + 1
+                if li.sequence > sequence:
+                    sequence = li.sequence
             record.write({'sequence': sequence})
 
 
