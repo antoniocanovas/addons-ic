@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="MULTISEC V1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_multisection/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/models/sale_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_multisection/models/sale_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/models/sale_order_line.py" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="MULTISEC V1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,34 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00803" summary="cubells vacp">
-      <created>1690371839950</created>
-      <option name="number" value="00803" />
-      <option name="presentableId" value="LOCAL-00803" />
-      <option name="project" value="LOCAL" />
-      <updated>1690371839950</updated>
-    </task>
-    <task id="LOCAL-00804" summary="cubells vacp">
-      <created>1690372012133</created>
-      <option name="number" value="00804" />
-      <option name="presentableId" value="LOCAL-00804" />
-      <option name="project" value="LOCAL" />
-      <updated>1690372012133</updated>
-    </task>
-    <task id="LOCAL-00805" summary="cubells vacp">
-      <created>1690372396136</created>
-      <option name="number" value="00805" />
-      <option name="presentableId" value="LOCAL-00805" />
-      <option name="project" value="LOCAL" />
-      <updated>1690372396136</updated>
-    </task>
-    <task id="LOCAL-00806" summary="cubells vacp">
-      <created>1690372726030</created>
-      <option name="number" value="00806" />
-      <option name="presentableId" value="LOCAL-00806" />
-      <option name="project" value="LOCAL" />
-      <updated>1690372726030</updated>
     </task>
     <task id="LOCAL-00807" summary="cubells vacp">
       <created>1690373073934</created>
@@ -410,7 +378,35 @@
       <option name="project" value="LOCAL" />
       <updated>1691239887035</updated>
     </task>
-    <option name="localTasksCounter" value="852" />
+    <task id="LOCAL-00852" summary="MULTISEC V1">
+      <created>1691244902876</created>
+      <option name="number" value="00852" />
+      <option name="presentableId" value="LOCAL-00852" />
+      <option name="project" value="LOCAL" />
+      <updated>1691244902876</updated>
+    </task>
+    <task id="LOCAL-00853" summary="MULTISEC V1">
+      <created>1691244978607</created>
+      <option name="number" value="00853" />
+      <option name="presentableId" value="LOCAL-00853" />
+      <option name="project" value="LOCAL" />
+      <updated>1691244978607</updated>
+    </task>
+    <task id="LOCAL-00854" summary="MULTISEC V1">
+      <created>1691245074331</created>
+      <option name="number" value="00854" />
+      <option name="presentableId" value="LOCAL-00854" />
+      <option name="project" value="LOCAL" />
+      <updated>1691245074331</updated>
+    </task>
+    <task id="LOCAL-00855" summary="MULTISEC V1">
+      <created>1691245199064</created>
+      <option name="number" value="00855" />
+      <option name="presentableId" value="LOCAL-00855" />
+      <option name="project" value="LOCAL" />
+      <updated>1691245199064</updated>
+    </task>
+    <option name="localTasksCounter" value="856" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
