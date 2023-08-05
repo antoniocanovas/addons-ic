@@ -53,7 +53,7 @@ class SaleOrderLine(models.Model):
     @api.onchange('section_id')
     def _update_sequence_before_saving_to_avoid_default_behaviour(self):
         for record in self:
-            record.write({'sequence':record.section_id.sequence, 'sectin_id':record.section_id.id})
+            record.write({'sequence':record.section_id.sequence, 'section_id':record.section_id.id})
 
     @api.depends('create_date')
     def _get_total_section(self):
