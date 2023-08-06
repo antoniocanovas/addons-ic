@@ -72,22 +72,21 @@ class SaleOrderSets(models.Model):
                     if (li.name[:1] == record.multisection_key):
                         section_code = li.name.split()[0]
                     li.write({'section': section_code})
-                self.env.cr.commit()
+
                 # Cases products and notes:
                 # (da igual secuencia porque utilizaré el nuevo indice ms_sequence)
+                section_id = 0
                 for li in line_ids:
                     if li.display_type == 'line_section':
                         section_id = li.id
                     else:
                         if (li.new_section_id.id):
-                            section_id = li.new_section_id.id
+                            value = li.new_section_id.id
                         elif (section_id != 0) and not (li.new_section_id.id):
-                            section_id = section_id
+                            value = section_id
                         else:
-                            section_id = False
-
-                    li.write({'section_id': section_id})
-                self.env.cr.commit()
+                            value = False
+                        li.write({'section_id': value})
 
                 # Reordenar secuencias para líneas de new_section_id:
                 lines = record.order_line.sorted(key=lambda r: r.ms_sequence)
