@@ -33,12 +33,11 @@ class SaleOrderLine(models.Model):
     def _get_ms_sequence(self):
         for record in self:
             section_id = 0
-#            if (record.display_type == 'line_section'): section_id = record.id
-#            else:
-            if (record.section_id.id): section_id = record.section_id.id
-            if (record.new_section_id.id): section_id = record.new_section_id.id
-            ms_sequence = str(section_id + 10000) + "." + str(record.sequence + 10000)
-            record['ms_sequence'] = ms_sequence
+            if (record.display_type != 'line_section'): section_id = record.id
+                if (record.section_id.id): section_id = record.section_id.id
+                if (record.new_section_id.id): section_id = record.new_section_id.id
+                ms_sequence = str(section_id + 10000) + "." + str(record.sequence + 10000)
+                record['ms_sequence'] = ms_sequence
     ms_sequence = fields.Char('Field to order', store=False, compute='_get_ms_sequence')
 
     level = fields.Integer(
