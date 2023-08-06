@@ -81,7 +81,7 @@ class SaleOrderSets(models.Model):
                     else:
                         if (li.new_section_id.id):
                             section_id = li.new_section_id.id
-                        elif (section_id == 0) and not (li.new_section_id.id):
+                        elif (section_id != 0) and not (li.new_section_id.id):
                             section_id = section_id
                         else:
                             section_id = False
