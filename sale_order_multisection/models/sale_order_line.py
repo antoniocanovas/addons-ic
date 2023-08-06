@@ -34,16 +34,16 @@ class SaleOrderLine(models.Model):
         for record in self:
             section_id, ms_sequence = 0, "."
             if record.sequence and record.id:
-#                if (record.section_id.id):      section_id = record.section_id.id
-#                if (record.new_section_id.id):  section_id = record.new_section_id.id
-                if (record.section_id.id):      section_id = record.section_id.section
-                if (record.new_section_id.id):  section_id = record.new_section_id.section
+                if (record.section_id.id):      section_id = record.section_id.id
+                if (record.new_section_id.id):  section_id = record.new_section_id.id
+#                if (record.section_id.id):      section_id = record.section_id.section
+#                if (record.new_section_id.id):  section_id = record.new_section_id.section
                 if (record.display_type == 'line_section'):
-#                    ms_sequence = str(record.id + 10000) + ".000000"
-                    ms_sequence = str(record.section) + ".000000"
+                    ms_sequence = str(record.id + 10000) + ".000000"
+#                    ms_sequence = str(record.section) + ".000000"
                 else:
-#                    ms_sequence = str(section_id + 10000) + "." + str(record.sequence + 10000)
-                    ms_sequence = str(section_id) + "." + str(record.sequence + 10000)
+                    ms_sequence = str(section_id + 10000) + "." + str(record.sequence + 10000)
+#                    ms_sequence = str(section_id) + "." + str(record.sequence + 10000)
             record['ms_sequence'] = ms_sequence
     ms_sequence = fields.Char('Field to order', store=False, compute='_get_ms_sequence')
 
