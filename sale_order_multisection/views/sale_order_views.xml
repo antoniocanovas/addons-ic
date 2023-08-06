@@ -131,7 +131,9 @@
                 <button class="oe_stat_button" icon="fa-spinner" type="action" name="%(sale_order_multisection.action_view_sections)d">
                     <field widget="statinfo" name="section_line_count" string="Secciones"/>
                 </button>
-                <button class="oe_stat_button" icon="fa-spinner" string="Update MS" type="object" name="update_multisection"/>
+                <xpath expr="//header/button[@name='action_draft']" position="after">
+                    <button class="oe_stat_butt" string="MS Update" type="object" name="update_multisection"/>
+                </xpath>
             </xpath>
             <xpath expr="//header/button[@name='action_draft']" position="after">
                 <button class="oe_stat_butt" string="Reordenar Secciones" type="object" name="order_sections"/>
