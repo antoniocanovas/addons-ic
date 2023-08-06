@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="MULTISEC V1">
-      <change beforePath="$PROJECT_DIR$/sale_order_multisection/models/sale_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/models/sale_order_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_order_multisection/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_order_multisection/data/automatic_actions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/data/automatic_actions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_order_multisection/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/models/sale_order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_order_multisection/views/sale_order_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/views/sale_order_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,27 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00840" summary="MULTISEC V1">
-      <created>1691224395573</created>
-      <option name="number" value="00840" />
-      <option name="presentableId" value="LOCAL-00840" />
-      <option name="project" value="LOCAL" />
-      <updated>1691224395573</updated>
-    </task>
-    <task id="LOCAL-00841" summary="MULTISEC V1">
-      <created>1691225073638</created>
-      <option name="number" value="00841" />
-      <option name="presentableId" value="LOCAL-00841" />
-      <option name="project" value="LOCAL" />
-      <updated>1691225073638</updated>
-    </task>
-    <task id="LOCAL-00842" summary="MULTISEC V1">
-      <created>1691227828120</created>
-      <option name="number" value="00842" />
-      <option name="presentableId" value="LOCAL-00842" />
-      <option name="project" value="LOCAL" />
-      <updated>1691227828120</updated>
     </task>
     <task id="LOCAL-00843" summary="MULTISEC V1">
       <created>1691227988765</created>
@@ -408,7 +391,28 @@
       <option name="project" value="LOCAL" />
       <updated>1691316235202</updated>
     </task>
-    <option name="localTasksCounter" value="889" />
+    <task id="LOCAL-00889" summary="MULTISEC V1">
+      <created>1691316443928</created>
+      <option name="number" value="00889" />
+      <option name="presentableId" value="LOCAL-00889" />
+      <option name="project" value="LOCAL" />
+      <updated>1691316443928</updated>
+    </task>
+    <task id="LOCAL-00890" summary="MULTISEC V1">
+      <created>1691316570438</created>
+      <option name="number" value="00890" />
+      <option name="presentableId" value="LOCAL-00890" />
+      <option name="project" value="LOCAL" />
+      <updated>1691316570438</updated>
+    </task>
+    <task id="LOCAL-00891" summary="MULTISEC V1">
+      <created>1691316636681</created>
+      <option name="number" value="00891" />
+      <option name="presentableId" value="LOCAL-00891" />
+      <option name="project" value="LOCAL" />
+      <updated>1691316636681</updated>
+    </task>
+    <option name="localTasksCounter" value="892" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

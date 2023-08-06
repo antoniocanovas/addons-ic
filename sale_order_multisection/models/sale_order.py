@@ -56,49 +56,44 @@ class SaleOrderSets(models.Model):
             li['sequence'] = counter
             counter += 1
 
-
     def update_multisection(self):
         for record in self:
             # Authomated Actions if section_ids and 'draft' status:
-            sections_ids = self.env['sale.order.line'].search([('order_id','=',record.id),('display_type','=','line_section')])
-            if (sections_ids) and (record.state == 'draft'):
+            section_ids = self.env['sale.order.line'].search(
+                [('order_id', '=', record.id), ('display_type', '=', 'line_section')])
+            if (section_ids) and (record.state == 'draft'):
                 line_ids = record.order_line.sorted(key=lambda r: r.sequence)
-                section_id = 0
+                section_id, i = 0, 1
 
                 # Set 'section' in section lines and 'section_id' in others, ordered by sequence:
+                for li in section_ids:
+                    section_id = li.id
+                    section_code = str(li.sequence)
+                    if (li.name[:1] == record.multisection_key):
+                        section_code = li.name.split()[0]
+                    li.write({'section': section_code})
+
+                # Cases products and notes:
+                # (da igual secuencia porque utilizaré el nuevo indice ms_sequence)
                 for li in line_ids:
-                    # Case sections:
-                    if (li.display_type == 'line_section') and (li.name):
-                        section_id = li.id
-                        section_code = str(li.sequence)
-                        if (li.name[:1] == record.multisection_key):
-                            section_code = li.name.split()[0]
-                        li.write({'section':section_code})
-                    # Cases products and notes:
+                    if li.display_type == 'line_section':
+                        section_id = li.section_id.id
                     else:
                         if (li.new_section_id.id):
                             section_id = li.new_section_id.id
-                        elif (section_id > 0) and not (li.new_section_id.id):
+                        elif (section_id == 0) and not (li.new_section_id.id):
                             section_id = section_id
                         else:
                             section_id = False
-                        li.write({'section_id': section_id})
+
+                    li.write({'section_id': section_id})
 
                 # Reordenar secuencias para líneas de new_section_id:
-                i = 1
-                lines = self.env['sale.order.line'].search(
-                    [('order_id', '=', record.id), ('section_id', '=', False), ('display_type', '!=', 'line_section')])
+                lines = record.order_line.sorted(key=lambda r: r.ms_sequence)
+                #    raise UserError(lines)
                 for li in lines:
-                    li['sequence'] = i
+                    li.write({'sequence': i, 'new_section_id': False})
                     i += 1
-                sections_sorted = sections_ids.sorted(key=lambda r: r.sequence)
-                for se in sections_sorted:
-                    se['sequence'] = i
-                    i += 1
-                    lines = self.env['sale.order.line'].search([('section_id', '=', se.id)])
-                    for li in lines:
-                        li.write({'sequence': i, 'new_section_id': False})
-                        i += 1
 
                 # Cálculo de 'parent_ids', 'child_ids' y 'level' por sección, si hay multinivel ($ o multisection_key):
                 section_ids = self.env['sale.order.line'].search([('order_id', '=', record.id), ('display_type', '=', 'line_section')])
