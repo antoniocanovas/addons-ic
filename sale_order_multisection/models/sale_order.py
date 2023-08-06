@@ -77,7 +77,7 @@ class SaleOrderSets(models.Model):
                 # (da igual secuencia porque utilizaré el nuevo indice ms_sequence)
                 for li in line_ids:
                     if li.display_type == 'line_section':
-                        section_id = li.section_id.id
+                        section_id = li.id
                     else:
                         if (li.new_section_id.id):
                             section_id = li.new_section_id.id
