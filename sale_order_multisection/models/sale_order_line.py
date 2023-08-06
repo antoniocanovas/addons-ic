@@ -29,12 +29,13 @@ class SaleOrderLine(models.Model):
     hide_subtotal_section   = fields.Boolean('Hide subtotal', store=True, readonly=False)
     hide_subtotal_line      = fields.Boolean('Hide price', store=False, related='section_id.hide_subtotal_section')
 
-    @api.depends('sequence', 'section_id')
+    @api.depends('sequence', 'section_id','new_section_id')
     def _get_ms_sequence(self):
         for record in self:
             section_id = 0
             if record.section_id.id != False: section_id = record.section_id.id
-            ms_sequence = str(section_id + 10000) + "." + str(record.sequence + 10000)
+            if record.new_section_id.id != False: section_id = record.new_section_id.id
+            ms_sequence = str(section_id + 10000) + "." + str(record.sequence + 10000) + "." + str(record.id + 10000)
             record['ms_sequence'] = ms_sequence
     ms_sequence = fields.Char('Field to order', store=False, compute='_get_ms_sequence')
 
