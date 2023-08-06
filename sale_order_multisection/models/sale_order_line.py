@@ -32,13 +32,14 @@ class SaleOrderLine(models.Model):
     @api.depends('sequence', 'section_id','new_section_id')
     def _get_ms_sequence(self):
         for record in self:
-            section_id = 0
-            if (record.section_id.id):      section_id = record.section_id.id
-            if (record.new_section_id.id):  section_id = record.new_section_id.id
-            if (record.display_type == 'line_section'):
-                ms_sequence = str(record.id + 10000) + ".000000"
-            else:
-                ms_sequence = str(section_id + 10000) + "." + str(record.sequence + 10000)
+            section_id, ms_sequence = 0, "."
+            if record.sequence and record.id:
+                if (record.section_id.id):      section_id = record.section_id.id
+                if (record.new_section_id.id):  section_id = record.new_section_id.id
+                if (record.display_type == 'line_section'):
+                    ms_sequence = str(record.id + 10000) + ".000000"
+                else:
+                    ms_sequence = str(section_id + 10000) + "." + str(record.sequence + 10000)
             record['ms_sequence'] = ms_sequence
     ms_sequence = fields.Char('Field to order', store=False, compute='_get_ms_sequence')
 
