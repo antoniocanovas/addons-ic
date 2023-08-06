@@ -34,12 +34,16 @@ class SaleOrderLine(models.Model):
         for record in self:
             section_id, ms_sequence = 0, "."
             if record.sequence and record.id:
-                if (record.section_id.id):      section_id = record.section_id.id
-                if (record.new_section_id.id):  section_id = record.new_section_id.id
+#                if (record.section_id.id):      section_id = record.section_id.id
+#                if (record.new_section_id.id):  section_id = record.new_section_id.id
+                if (record.section_id.id):      section_id = record.section_id.section_code
+                if (record.new_section_id.id):  section_id = record.new_section_id.section_code
                 if (record.display_type == 'line_section'):
-                    ms_sequence = str(record.id + 10000) + ".000000"
+#                    ms_sequence = str(record.id + 10000) + ".000000"
+                    ms_sequence = str(record.section_code) + ".000000"
                 else:
-                    ms_sequence = str(section_id + 10000) + "." + str(record.sequence + 10000)
+#                    ms_sequence = str(section_id + 10000) + "." + str(record.sequence + 10000)
+                    ms_sequence = str(section_id) + "." + str(record.sequence + 10000)
             record['ms_sequence'] = ms_sequence
     ms_sequence = fields.Char('Field to order', store=False, compute='_get_ms_sequence')
 
@@ -91,21 +95,6 @@ class SaleOrderLine(models.Model):
                 if line_ids.ids:
                     for li in line_ids:
                         if section_code == li.section: raise UserError('Duplicated section name ' + section_code + ' !!!')
-
-#No funciona si se hacen 2 líneas porque el sistema no guarda hasta pulsar arriba:
-#    @api.onchange('new_section_id')
-#    def _change_section_from_main(self):
-#        for record in self:
-#            sequence = 0
-#            for li in record.order_id.order_line:
-#                sequence += 10
-#                li.sequence = sequence
-#            lines = self.env['sale.order.line'].search([('section_id', '=', record.new_section_id.id)])
-#            sequence = record.new_section_id.sequence
-#            for li in lines:
-#                if li.sequence > sequence:
-#                    sequence = li.sequence
-#            record.write({'sequence': sequence})
 
 
     def resequence_in_o2m_new_sol(self):
