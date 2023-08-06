@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="MULTISEC V1">
-      <change beforePath="$PROJECT_DIR$/sale_order_multisection/views/sale_order_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/views/sale_order_views.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="MULTISEC V1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,20 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00846" summary="MULTISEC V1">
-      <created>1691228633387</created>
-      <option name="number" value="00846" />
-      <option name="presentableId" value="LOCAL-00846" />
-      <option name="project" value="LOCAL" />
-      <updated>1691228633387</updated>
-    </task>
-    <task id="LOCAL-00847" summary="MULTISEC V1">
-      <created>1691228739406</created>
-      <option name="number" value="00847" />
-      <option name="presentableId" value="LOCAL-00847" />
-      <option name="project" value="LOCAL" />
-      <updated>1691228739406</updated>
     </task>
     <task id="LOCAL-00848" summary="MULTISEC V1">
       <created>1691228968352</created>
@@ -408,7 +392,21 @@
       <option name="project" value="LOCAL" />
       <updated>1691319593329</updated>
     </task>
-    <option name="localTasksCounter" value="895" />
+    <task id="LOCAL-00895" summary="MULTISEC V1">
+      <created>1691319765879</created>
+      <option name="number" value="00895" />
+      <option name="presentableId" value="LOCAL-00895" />
+      <option name="project" value="LOCAL" />
+      <updated>1691319765879</updated>
+    </task>
+    <task id="LOCAL-00896" summary="MULTISEC V1">
+      <created>1691319815279</created>
+      <option name="number" value="00896" />
+      <option name="presentableId" value="LOCAL-00896" />
+      <option name="project" value="LOCAL" />
+      <updated>1691319815279</updated>
+    </task>
+    <option name="localTasksCounter" value="897" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
