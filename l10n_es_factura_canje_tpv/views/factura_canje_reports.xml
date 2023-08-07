@@ -22,78 +22,89 @@
                     <div t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
                     <p t-if="o.partner_id.vat"><t t-esc="o.partner_id.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></p>
                 </t>
-                <div style="float: right;">
-                    <div>
-                        <table style="border-collapse: collapse;">
-                            <thead>
+               <div style="float: right; margin-top: 2%;">
+                <div>
+                    <table style="border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th style="padding: 10px;">N. recibo</th>
+                                <th style="padding: 10px;">Fecha</th>
+                                <th style="padding: 10px;">Cliente</th>
+                                <th style="padding: 10px;">Subtotal</th>
+                            </tr>
+                        </thead>
+
+                        <t t-foreach="o.pos_order_ids" t-as="order">
+                            <tbody style="font-size: 14px">
                                 <tr>
-                                    <th style="padding: 10px;">N. recibo</th>
-                                    <th style="padding: 10px;">Fecha</th>
-                                    <th style="padding: 10px;">Cliente</th>
-                                    <th style="padding: 10px;">Subtotal</th>
+                                    <td style="padding: 10px;"><span t-field="order.pos_reference"/></td>
+                                    <td style="padding: 10px;"><span t-field="order.date_order"/></td>
+                                    <td style="padding: 10px;"><span t-field="order.partner_id"/></td>
+                                    <td style="padding: 10px;"><span t-field="order.amount_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;}"/></td>
                                 </tr>
-                            </thead>
-
-                            <t t-foreach="o.pos_order_ids" t-as="order">
-                                <tbody style="font-size: 14px">
-                                    <tr>
-                                        <td style="padding: 10px;"><span t-field="order.pos_reference"/></td>
-                                        <td style="padding: 10px;"><span t-field="order.date_order"/></td>
-                                        <td style="padding: 10px;"><span t-field="order.partner_id"/></td>
-                                        <td style="padding: 10px;"><span t-field="order.amount_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;}"/></td>
-                                    </tr>
-                                    <tr>
-                                        <!--  <td><span t-field="order.total_amount"/></td>   -->
-                                    </tr>
-                                </tbody>
-                            </t>
-                        </table>
-                    </div>
-
-                    <hr/>
-
-                    <div style="border-bottom: 1px solid black; float: right;">
-                        <table>
-                            <thead>
                                 <tr>
-                                    <th style="padding: 10px;">Impuesto</th>
-                                    <th style="padding: 10px;">Importe</th>
-                                </tr>
-                            </thead>
-                            <t t-foreach="o.tax_line_ids" t-as="line">
-
-                                <tbody>
-                                    <tr>
-                                        <td style="padding: 10px;"><span t-field="line.tax_id"/></td>
-                                        <td style="padding: 10px;"><span t-field="line.amount"/></td>
-                                    </tr>
-                                </tbody>
-                            </t>
-
-                            <thead style="border-top: 1px solid black;">
-                                <tr>
-                                    <th style="padding: 10px;">Subtotal</th>
-                                    <th style="padding: 10px;">Impuestos</th>
-                                    <th style="padding: 10px;">Total</th>
-                                </tr>
-                            </thead>
-
-                            <tbody style="border-bottom: 1px solid black;">
-                                <tr>
-                                    <td style="padding: 10px;"><span t-field="o.amount_subtotal"/></td>
-                                    <td style="padding: 10px;"><span t-field="o.amount_tax"/></td>
-                                    <td style="padding: 10px;"><span t-field="o.amount_total"/></td>
+                                    <!--  <td><span t-field="order.total_amount"/></td> -->
                                 </tr>
                             </tbody>
-                        </table>
-                    </div>
+                        </t>
+                    </table>
+                </div>
 
-                    <div style="margin: 10%">
-                        <span t-field="o.description"/>
-                    </div>
+                <hr/>
+
+                <div style="float:right; border-bottom: 1px solid black;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="padding: 10px;">Impuesto</th>
+                                <th style="padding: 10px;">Importe</th>
+                            </tr>
+                        </thead>
+                        <t t-foreach="o.tax_line_ids" t-as="line">
+
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 10px;"><span t-field="line.tax_id"/></td>
+                                    <td style="padding: 10px;"><span t-field="line.amount"/></td>
+                                </tr>
+                            </tbody>
+                        </t>
+
+
+                        <thead style="border-top: 1px solid black;">
+                            <tr>
+                                <th style="padding: 10px;">Subtotal</th>
+                                <th style="padding: 10px;">Impuestos</th>
+                                <th style="padding: 10px;">Total</th>
+                            </tr>
+                        </thead>
+
+                        <tbody style="border-bottom: 1px solid black;">
+                            <tr>
+                                <td style="padding: 10px;"><span t-field="o.amount_subtotal"/></td>
+                                <td style="padding: 10px;"><span t-field="o.amount_tax"/></td>
+                                <td style="padding: 10px;"><span t-field="o.amount_total"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+               </div>
+
+                <div style="margin: 10%">
+                    <span t-field="o.description"/>
                 </div>
             </t>
         </t>
-    </t>
-</template>
-        </odoo>
+    </template>
+
+    <template id="factura_canje_report">
+        <t t-name="factura_canje_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <!--<t t-set="lang" t-value="o.invoice_user_id.sudo().lang if o.move_type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>-->
+                    <t t-call="l10n_es_factura_canje_tpv.factura_canje_report_document"/>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
