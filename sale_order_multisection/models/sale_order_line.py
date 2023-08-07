@@ -32,7 +32,7 @@ class SaleOrderLine(models.Model):
     @api.depends('sequence', 'section_id','new_section_id')
     def _get_ms_sequence(self):
         for record in self:
-            section_id, ms_sequence = 0, "."
+            section_id, ms_sequence = " ", "."
             if record.sequence and record.id:
 #                if (record.section_id.id):      section_id = record.section_id.id
 #                if (record.new_section_id.id):  section_id = record.new_section_id.id
