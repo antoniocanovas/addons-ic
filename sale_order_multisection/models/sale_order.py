@@ -35,26 +35,27 @@ class SaleOrderSets(models.Model):
             'sale_order_multisection.action_view_sections').read()[0]
         return action
 
-    def order_sections(self):
+    # Sobra (8/2023) ya lo hace update_multisection:
+#    def order_sections(self):
         # Reorder sections and lines by section:
-        sections = self.env['sale.order.line'].search(
-            [('order_id', '=', self.id), ('display_type', '=', 'line_section')]).sorted(key=lambda r: r.section)
-        lineas, counter = [], 0
+        #        sections = self.env['sale.order.line'].search(
+        #    [('order_id', '=', self.id), ('display_type', '=', 'line_section')]).sorted(key=lambda r: r.section)
+        #lineas, counter = [], 0
         # Previous lines with no section:
-        lines_no_section = self.env['sale.order.line'].search(
-            [('order_id', '=', self.id), ('section_id', '=', False), ('display_type', '!=', 'line_section')])
-        for li in lines_no_section:
-            if li.sequence > counter: counter = li.sequence
-        counter = counter + 1
+        #lines_no_section = self.env['sale.order.line'].search(
+        #    [('order_id', '=', self.id), ('section_id', '=', False), ('display_type', '!=', 'line_section')])
+        #for li in lines_no_section:
+        #    if li.sequence > counter: counter = li.sequence
+        #counter = counter + 1
         # Ordering sections:
-        for se in sections:
-            for li in self.order_line:
-                if (li.id == se.id) or (li.section_id.id == se.id):
-                    lineas.append(li)
+        #for se in sections:
+        #    for li in self.order_line:
+        #        if (li.id == se.id) or (li.section_id.id == se.id):
+        #            lineas.append(li)
         # New sequence to array lines:
-        for li in lineas:
-            li['sequence'] = counter
-            counter += 1
+        #for li in lineas:
+        #    li['sequence'] = counter
+    #    counter += 1
 
     def update_multisection(self):
         for record in self:

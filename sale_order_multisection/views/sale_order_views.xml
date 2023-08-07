@@ -134,7 +134,6 @@
             </xpath>
             <xpath expr="//header/button[@name='action_draft']" position="after">
                 <button class="oe_stat_button" string="MS Update" type="object" icon="fa-tasks" name="update_multisection"/>
-                <button class="oe_stat_butt" string="Reordenar Secciones" type="object" name="order_sections"/>
             </xpath>
             <xpath expr="//field[@name='source_id']" position="after">
                 <field name="multisection_key"/>
