@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="MULTISEC V1">
       <change beforePath="$PROJECT_DIR$/google_fonts/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/google_fonts/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/i18n/l10n_th_fonts.pot" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,20 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00863" summary="MULTISEC V1">
-      <created>1691253560256</created>
-      <option name="number" value="00863" />
-      <option name="presentableId" value="LOCAL-00863" />
-      <option name="project" value="LOCAL" />
-      <updated>1691253560256</updated>
-    </task>
-    <task id="LOCAL-00864" summary="MULTISEC V1">
-      <created>1691253769759</created>
-      <option name="number" value="00864" />
-      <option name="presentableId" value="LOCAL-00864" />
-      <option name="project" value="LOCAL" />
-      <updated>1691253769759</updated>
     </task>
     <task id="LOCAL-00865" summary="MULTISEC V1">
       <created>1691254677676</created>
@@ -408,7 +395,21 @@
       <option name="project" value="LOCAL" />
       <updated>1692029228519</updated>
     </task>
-    <option name="localTasksCounter" value="912" />
+    <task id="LOCAL-00912" summary="MULTISEC V1">
+      <created>1692029613136</created>
+      <option name="number" value="00912" />
+      <option name="presentableId" value="LOCAL-00912" />
+      <option name="project" value="LOCAL" />
+      <updated>1692029613136</updated>
+    </task>
+    <task id="LOCAL-00913" summary="MULTISEC V1">
+      <created>1692029733746</created>
+      <option name="number" value="00913" />
+      <option name="presentableId" value="LOCAL-00913" />
+      <option name="project" value="LOCAL" />
+      <updated>1692029733746</updated>
+    </task>
+    <option name="localTasksCounter" value="914" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
