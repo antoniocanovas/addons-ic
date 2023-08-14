@@ -2,7 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="MULTISEC V1">
-      <change beforePath="$PROJECT_DIR$/google_fonts/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/google_fonts/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/README.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/__manifest__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/models/res_company.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/readme/CONFIGURE.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/readme/CONTRIBUTORS.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/readme/DESCRIPTION.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/static/description/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/static/description/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/static/fonts/OpenSans-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/static/fonts/OpenSans-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/static/fonts/Poly-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/static/fonts/Poly-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_fonts/static/src/scss/fonts_style.scss" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00866" summary="MULTISEC V1">
-      <created>1691254907972</created>
-      <option name="number" value="00866" />
-      <option name="presentableId" value="LOCAL-00866" />
-      <option name="project" value="LOCAL" />
-      <updated>1691254907972</updated>
     </task>
     <task id="LOCAL-00867" summary="MULTISEC V1">
       <created>1691255704725</created>
@@ -408,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692030021870</updated>
     </task>
-    <option name="localTasksCounter" value="915" />
+    <task id="LOCAL-00915" summary="MULTISEC V1">
+      <created>1692030359813</created>
+      <option name="number" value="00915" />
+      <option name="presentableId" value="LOCAL-00915" />
+      <option name="project" value="LOCAL" />
+      <updated>1692030359813</updated>
+    </task>
+    <option name="localTasksCounter" value="916" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
