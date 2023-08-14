@@ -10,17 +10,17 @@
     "website": "https://www.ingenieriacloud.com",
     "category": "Report",
     "depends": ["web"],
-    "assets": {
-        "web.report_assets_common": [
-            "google_fonts/static/src/scss/fonts_style.scss",
-        ],
+ #   "assets": {
+ #       "web.report_assets_common": [
+ #           "google_fonts/static/src/scss/fonts_style.scss",
+ #       ],
  #       'web.assets_backend': [
  #           "google_fonts/static/src/scss/fonts_style.scss",
  #       ],
  #       'web.assets_frontend': [
  #           "google_fonts/static/src/scss/fonts_style.scss",
  #       ],
-    },
+ #   },
 
     "installable": True,
     "maintainers": ["antoniocanovas"],
