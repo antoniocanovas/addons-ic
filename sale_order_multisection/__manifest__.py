@@ -19,5 +19,5 @@ Sale Multisection
         'views/report_sale_order.xml',
         'views/account_report.xml',
     ],
-    'installable': True,
+    'installable': False,
 }
