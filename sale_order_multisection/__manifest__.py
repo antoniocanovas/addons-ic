@@ -10,7 +10,6 @@ Sale Multisection
     'depends': [
         'sale_management',
         'base_automation',
-
     ],
     'data': [
         'views/sale_order_views.xml',
