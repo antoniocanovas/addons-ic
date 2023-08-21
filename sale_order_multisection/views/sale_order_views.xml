@@ -136,7 +136,7 @@
                 <button class="oe_stat_button" string="MS Update" type="object" icon="fa-tasks"
                         name="update_multisection" attrs="{'invisible':[('state','not in',['draft','sent'])]}"/>
                 <button class="oe_stat_button" string="Alphabetic lines order" type="object" icon="fa-adn"
-                        name="pnt_sort_order_line" attrs="{'invisible':[('state','not in',['draft','sent'])]}"/>
+                        name="sort_ms_alphabetic_product_lines" attrs="{'invisible':[('state','not in',['draft','sent'])]}"/>
             </xpath>
             <xpath expr="//field[@name='source_id']" position="after">
                 <field name="multisection_key"/>

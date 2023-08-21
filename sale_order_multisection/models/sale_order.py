@@ -97,7 +97,7 @@ class SaleOrderSets(models.Model):
                                 children.append(li.id)
                     se.write({'parent_ids': [(6, 0, parents)], 'child_ids': [(6, 0, children)], 'level': level})
 
-    def sort_ms_order_lines(self):
+    def sort_ms_alphabetic_product_lines(self):
         self.update_multisection()
         all_line_ids = self.order_line.sorted(key=lambda r: r.sequence)
         i, section = 1, 0
