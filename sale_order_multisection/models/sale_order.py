@@ -111,7 +111,7 @@ class SaleOrderSets(models.Model):
                   li.write({'sequence': i})
                   i += 1
                   section = li.id
-                  line_alphabetic_ids = env['sale.order.line'].search([('order_id','=',record.id),('section_id','=',li.id)]).sorted(key=lambda r: (r.name))
+                  line_alphabetic_ids = env['sale.order.line'].search([('order_id','=',record.id),('section_id','=',section)]).sorted(key=lambda r: (r.name))
                   for li2 in line_alphabetic_ids:
                     li2.write({'sequence': i})
                     i += 1
