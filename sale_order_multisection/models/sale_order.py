@@ -97,17 +97,20 @@ class SaleOrderSets(models.Model):
                                 children.append(li.id)
                     se.write({'parent_ids': [(6, 0, parents)], 'child_ids': [(6, 0, children)], 'level': level})
 
-    def pnt_sort_order_line(self):
+    def sort_ms_order_lines(self):
         self.update_multisection()
         all_line_ids = self.order_line.sorted(key=lambda r: r.sequence)
         i, section = 1, 0
-        # Asignar sección a todas las líneas:
+        # Alphabetic order CAPS first, lowers later:
         for li in all_line_ids:
-            if li.display_type == 'line_section': section = li.id
-            li.write({'sequence': i, 'section': section})
-            i += 1
-        # Ordenar alfabéticamente por sección:
-        line_alphabetic_ids = self.order_line.sorted(key=lambda r: (r.section, r.name))
-        for li in line_alphabetic_ids:
-            li['sequence'] = i
-            i += 1
+            if (li.display_type != 'line_section') and (section == 0):
+              li.write({'sequence': i})
+              i += 1
+            if (li.display_type == 'line_section'):
+              li.write({'sequence': i})
+              i += 1
+              section = li.id
+              line_alphabetic_ids = env['sale.order.line'].search([('order_id','=',record.id),('section_id','=',li.id)]).sorted(key=lambda r: (r.name))
+              for li2 in line_alphabetic_ids:
+                li2.write({'sequence': i})
+                i += 1
