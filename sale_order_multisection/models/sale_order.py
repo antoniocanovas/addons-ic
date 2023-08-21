@@ -98,19 +98,20 @@ class SaleOrderSets(models.Model):
                     se.write({'parent_ids': [(6, 0, parents)], 'child_ids': [(6, 0, children)], 'level': level})
 
     def sort_ms_alphabetic_product_lines(self):
-        update_multisection(self)
-        all_line_ids = self.order_line.sorted(key=lambda r: r.sequence)
-        i, section = 1, 0
-        # Alphabetic order CAPS first, lowers later:
-        for li in all_line_ids:
-            if (li.display_type != 'line_section') and (section == 0):
-              li.write({'sequence': i})
-              i += 1
-            if (li.display_type == 'line_section'):
-              li.write({'sequence': i})
-              i += 1
-              section = li.id
-              line_alphabetic_ids = env['sale.order.line'].search([('order_id','=',record.id),('section_id','=',li.id)]).sorted(key=lambda r: (r.name))
-              for li2 in line_alphabetic_ids:
-                li2.write({'sequence': i})
-                i += 1
+        for record in self:
+            record.update_multisection()
+            all_line_ids = record.order_line.sorted(key=lambda r: r.sequence)
+            i, section = 1, 0
+            # Alphabetic order CAPS first, lowers later:
+            for li in all_line_ids:
+                if (li.display_type != 'line_section') and (section == 0):
+                  li.write({'sequence': i})
+                  i += 1
+                if (li.display_type == 'line_section'):
+                  li.write({'sequence': i})
+                  i += 1
+                  section = li.id
+                  line_alphabetic_ids = env['sale.order.line'].search([('order_id','=',record.id),('section_id','=',li.id)]).sorted(key=lambda r: (r.name))
+                  for li2 in line_alphabetic_ids:
+                    li2.write({'sequence': i})
+                    i += 1
