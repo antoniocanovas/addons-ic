@@ -105,15 +105,20 @@ class SaleOrderSets(models.Model):
             # Alphabetic order CAPS first, lowers later:
             for li in all_line_ids:
                 if (li.display_type != 'line_section') and (section == 0):
-                  li.write({'sequence': o})
+                  li.write({'ms_sequence': o})
                   o += 1
                 if (li.display_type == 'line_section'):
-                  li.write({'sequence': o})
+                  li.write({'ms_sequence': o})
                   o += 1
                   section = li.id
                   line_alphabetic_ids = env['sale.order.line'].search([('order_id','=',record.id),
                                                                        ('section_id','=',section),
                                                                        ('display_type','!=','line_section')]).sorted(key=lambda r: (r.name))
                   for li2 in line_alphabetic_ids:
-                    li2.write({'sequence': o})
+                    li2.write({'ms_sequence': o})
                     o += 1
+            line_ids = record.order_line.sorted(key=lambda r: r.ms_sequence)
+            i = 1
+            for li3 in line_ids:
+                li3['sequence'] = i
+                i += 1
