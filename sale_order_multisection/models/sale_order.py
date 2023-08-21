@@ -101,17 +101,19 @@ class SaleOrderSets(models.Model):
         for record in self:
             record.update_multisection()
             all_line_ids = record.order_line.sorted(key=lambda r: r.sequence)
-            i, section = 1, 0
+            seq, section = 1, 0
             # Alphabetic order CAPS first, lowers later:
             for li in all_line_ids:
                 if (li.display_type != 'line_section') and (section == 0):
-                  li.write({'sequence': i})
-                  i += 1
+                  li.write({'sequence': seq})
+                  seq += 1
                 if (li.display_type == 'line_section'):
-                  li.write({'sequence': i})
-                  i += 1
+                  li.write({'sequence': seq})
+                  seq += 1
                   section = li.id
-                  line_alphabetic_ids = env['sale.order.line'].search([('order_id','=',record.id),('section_id','=',section)]).sorted(key=lambda r: (r.name))
+                  line_alphabetic_ids = env['sale.order.line'].search([('order_id','=',record.id),
+                                                                       ('section_id','=',section),
+                                                                       ('display_type','!=','line_section')]).sorted(key=lambda r: (r.name))
                   for li2 in line_alphabetic_ids:
-                    li2.write({'sequence': i})
-                    i += 1
+                    li2.write({'sequence': seq})
+                    seq += 1
