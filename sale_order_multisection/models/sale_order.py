@@ -99,7 +99,7 @@ class SaleOrderSets(models.Model):
 
     def sort_ms_alphabetic_product_lines(self):
         for record in self:
-            record.update_multisection()
+            #record.update_multisection()
             all_line_ids = record.order_line.sorted(key=lambda r: r.sequence)
             o, section = 1, 0
             # Alphabetic order CAPS first, lowers later:
