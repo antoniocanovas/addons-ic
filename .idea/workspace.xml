@@ -1,26 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="MULTISEC V1">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="STOCK PICKING AUTO V16">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytic_picking_auto/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytic_picking_auto/__manifest__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytic_picking_auto/data/action_server.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytic_picking_auto/i18n/es.po" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytic_picking_auto/models/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytic_picking_auto/models/stock_valuation_layer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytic_picking_auto/static/description/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytic_picking_auto/views/stock_valuation_layer.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_konery/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_konery/__manifest__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_konery/data/server_actions.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_konery/models/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_konery/models/sale_order.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_konery/models/sale_order_margin_wizard.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_konery/security/ir.model.access.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_konery/static/description/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_konery/views/sale_order_margin_wizard_views.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_konery/views/sale_order_views.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00883" summary="MULTISEC V1">
-      <created>1691310370525</created>
-      <option name="number" value="00883" />
-      <option name="presentableId" value="LOCAL-00883" />
-      <option name="project" value="LOCAL" />
-      <updated>1691310370525</updated>
     </task>
     <task id="LOCAL-00884" summary="MULTISEC V1">
       <created>1691314912500</created>
@@ -426,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692659068109</updated>
     </task>
-    <option name="localTasksCounter" value="932" />
+    <task id="LOCAL-00932" summary="STOCK PICKING AUTO V16">
+      <created>1692724388248</created>
+      <option name="number" value="00932" />
+      <option name="presentableId" value="LOCAL-00932" />
+      <option name="project" value="LOCAL" />
+      <updated>1692724388248</updated>
+    </task>
+    <option name="localTasksCounter" value="933" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -442,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="delete 14" />
     <MESSAGE value="-wup" />
     <MESSAGE value="beta pcv" />
     <MESSAGE value="- beta pcv" />
@@ -467,7 +448,8 @@
     <MESSAGE value="project tracking v0" />
     <MESSAGE value="clean" />
     <MESSAGE value="MULTISEC V1" />
-    <option name="LAST_COMMIT_MESSAGE" value="MULTISEC V1" />
+    <MESSAGE value="STOCK PICKING AUTO V16" />
+    <option name="LAST_COMMIT_MESSAGE" value="STOCK PICKING AUTO V16" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
