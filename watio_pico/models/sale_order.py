@@ -44,7 +44,7 @@ class SsaleOrder(models.Model):
                 subtotal = self.wp_power * 1000 * li.factor * self.wp_template_id.wp_hour * (1 + self.wp_margin/100)
             # Case charger:
             else:
-                subtotal = self.product_id.standard_price * (1 + self.wp_charger_margin/100)
+                subtotal = li.product_id.standard_price * (1 + self.wp_charger_margin/100)
             li.subtotal = subtotal
             total += subtotal
         self.wp_subtotal = total

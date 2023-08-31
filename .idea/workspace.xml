@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="STOCK PICKING AUTO V16">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="acc-fin-risk-contract">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00884" summary="MULTISEC V1">
-      <created>1691314912500</created>
-      <option name="number" value="00884" />
-      <option name="presentableId" value="LOCAL-00884" />
-      <option name="project" value="LOCAL" />
-      <updated>1691314912500</updated>
     </task>
     <task id="LOCAL-00885" summary="MULTISEC V1">
       <created>1691315436553</created>
@@ -408,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692724388248</updated>
     </task>
-    <option name="localTasksCounter" value="933" />
+    <task id="LOCAL-00933" summary="acc-fin-risk-contract">
+      <created>1693069835094</created>
+      <option name="number" value="00933" />
+      <option name="presentableId" value="LOCAL-00933" />
+      <option name="project" value="LOCAL" />
+      <updated>1693069835094</updated>
+    </task>
+    <option name="localTasksCounter" value="934" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="-wup" />
     <MESSAGE value="beta pcv" />
     <MESSAGE value="- beta pcv" />
     <MESSAGE value="website_menu v0" />
@@ -449,7 +448,8 @@
     <MESSAGE value="clean" />
     <MESSAGE value="MULTISEC V1" />
     <MESSAGE value="STOCK PICKING AUTO V16" />
-    <option name="LAST_COMMIT_MESSAGE" value="STOCK PICKING AUTO V16" />
+    <MESSAGE value="acc-fin-risk-contract" />
+    <option name="LAST_COMMIT_MESSAGE" value="acc-fin-risk-contract" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
