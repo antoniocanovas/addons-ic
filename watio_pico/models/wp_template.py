@@ -15,3 +15,11 @@ class WpTemplate(models.Model):
     wp_margin = fields.Float('Margin', store=True, copy=True)
     wp_charger_margin = fields.Float('Charger margin', store=True, copy=True)
     line_ids = fields.One2many('wp.template.line', 'wp_template_id', string='Lines', store=True)
+
+    @api.depends('line_ids.factor')
+    def _get_factor_sumatory(self):
+        total = 0
+        for li in self.line_ids:
+            total += li.factor
+        self.factor_total = total
+    factor_total = fields.Float('Factor sum', store=False, compute='_get_factor_sumatory')
