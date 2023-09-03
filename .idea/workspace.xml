@@ -1,44 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="wpico factor total">
-      <change afterPath="$PROJECT_DIR$/sale_wup/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/data/automated_action.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/data/server_action.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/description/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/i18n/es.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/account_analytic_line.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/product_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/project_task.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/sale_order.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/sale_order_line.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/wup_line.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/wup_quality.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/wup_saleline_wizard.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/wup_style.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/wup_target.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/wup_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/wup_template_line.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/models/wup_type.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/security/ir.model.access.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/views/menu_views.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/views/model_views.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/views/product_views.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/views/project_task.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/views/sale_order_views.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup/views/wup_saleline_wizard_views.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup_discount/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup_discount/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup_discount/i18n/es.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup_discount/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup_discount/models/sale_order.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup_discount/models/wup_line.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup_discount/static/description/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sale_wup_discount/views/model_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="wup &amp; wup_disc" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,13 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00887" summary="MULTISEC V1">
-      <created>1691316117888</created>
-      <option name="number" value="00887" />
-      <option name="presentableId" value="LOCAL-00887" />
-      <option name="project" value="LOCAL" />
-      <updated>1691316117888</updated>
     </task>
     <task id="LOCAL-00888" summary="MULTISEC V1">
       <created>1691316235202</created>
@@ -443,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693556759381</updated>
     </task>
-    <option name="localTasksCounter" value="936" />
+    <task id="LOCAL-00936" summary="wup &amp; wup_disc">
+      <created>1693781587511</created>
+      <option name="number" value="00936" />
+      <option name="presentableId" value="LOCAL-00936" />
+      <option name="project" value="LOCAL" />
+      <updated>1693781587511</updated>
+    </task>
+    <option name="localTasksCounter" value="937" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -459,7 +422,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="website_menu v0" />
     <MESSAGE value="service bom v0" />
     <MESSAGE value="service bom v1" />
     <MESSAGE value="403 v0" />
@@ -484,7 +446,8 @@
     <MESSAGE value="acc-fin-risk-contract" />
     <MESSAGE value="bug wpico" />
     <MESSAGE value="wpico factor total" />
-    <option name="LAST_COMMIT_MESSAGE" value="wpico factor total" />
+    <MESSAGE value="wup &amp; wup_disc" />
+    <option name="LAST_COMMIT_MESSAGE" value="wup &amp; wup_disc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
