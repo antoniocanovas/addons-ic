@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hr_equipment_stock">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="external_work">
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/__manifest__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/models/timesheet_line_done.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/models/timesheet_line_todo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/static/hr_worksheet_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_done_views.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_todo_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00892" summary="MULTISEC V1">
-      <created>1691319388929</created>
-      <option name="number" value="00892" />
-      <option name="presentableId" value="LOCAL-00892" />
-      <option name="project" value="LOCAL" />
-      <updated>1691319388929</updated>
     </task>
     <task id="LOCAL-00893" summary="MULTISEC V1">
       <created>1691319511986</created>
@@ -408,7 +408,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693843568544</updated>
     </task>
-    <option name="localTasksCounter" value="941" />
+    <task id="LOCAL-00941" summary="external_work">
+      <created>1693860791149</created>
+      <option name="number" value="00941" />
+      <option name="presentableId" value="LOCAL-00941" />
+      <option name="project" value="LOCAL" />
+      <updated>1693860791149</updated>
+    </task>
+    <option name="localTasksCounter" value="942" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +431,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="blog internal v0" />
     <MESSAGE value="slide internal v0" />
     <MESSAGE value="event private" />
     <MESSAGE value="price python v0" />
@@ -449,7 +455,8 @@
     <MESSAGE value="inv_retention" />
     <MESSAGE value="i2origin" />
     <MESSAGE value="hr_equipment_stock" />
-    <option name="LAST_COMMIT_MESSAGE" value="hr_equipment_stock" />
+    <MESSAGE value="external_work" />
+    <option name="LAST_COMMIT_MESSAGE" value="external_work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
