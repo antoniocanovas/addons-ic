@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="inv_retention">
-      <change afterPath="$PROJECT_DIR$/invoice2origin/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/invoice2origin/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/invoice2origin/data/server_action.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/invoice2origin/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/invoice2origin/models/account_move.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/invoice2origin/models/account_move_line.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/invoice2origin/models/sale_order.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/invoice2origin/views/account_move_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/invoice2origin/views/report.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/invoice2origin/views/sale_order_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/invoice2origin/views/templates.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="i2origin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00890" summary="MULTISEC V1">
-      <created>1691316570438</created>
-      <option name="number" value="00890" />
-      <option name="presentableId" value="LOCAL-00890" />
-      <option name="project" value="LOCAL" />
-      <updated>1691316570438</updated>
     </task>
     <task id="LOCAL-00891" summary="MULTISEC V1">
       <created>1691316636681</created>
@@ -419,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693816496117</updated>
     </task>
-    <option name="localTasksCounter" value="939" />
+    <task id="LOCAL-00939" summary="i2origin">
+      <created>1693824386066</created>
+      <option name="number" value="00939" />
+      <option name="presentableId" value="LOCAL-00939" />
+      <option name="project" value="LOCAL" />
+      <updated>1693824386066</updated>
+    </task>
+    <option name="localTasksCounter" value="940" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -435,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="service bom v1" />
     <MESSAGE value="403 v0" />
     <MESSAGE value="blog internal v0" />
     <MESSAGE value="slide internal v0" />
@@ -460,7 +448,8 @@
     <MESSAGE value="wpico factor total" />
     <MESSAGE value="wup &amp; wup_disc" />
     <MESSAGE value="inv_retention" />
-    <option name="LAST_COMMIT_MESSAGE" value="inv_retention" />
+    <MESSAGE value="i2origin" />
+    <option name="LAST_COMMIT_MESSAGE" value="i2origin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
