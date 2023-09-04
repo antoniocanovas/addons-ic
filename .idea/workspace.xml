@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="wup &amp; wup_disc" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="+analtyic*">
+      <change afterPath="$PROJECT_DIR$/account_invoice_retention/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account_invoice_retention/__manifest__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account_invoice_retention/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account_invoice_retention/models/account_move.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account_invoice_retention/static/description/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account_invoice_retention/static/description/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account_invoice_retention/views/account_move_views.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account_invoice_retention/views/report_invoice_document.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,13 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00888" summary="MULTISEC V1">
-      <created>1691316235202</created>
-      <option name="number" value="00888" />
-      <option name="presentableId" value="LOCAL-00888" />
-      <option name="project" value="LOCAL" />
-      <updated>1691316235202</updated>
     </task>
     <task id="LOCAL-00889" summary="MULTISEC V1">
       <created>1691316443928</created>
@@ -406,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693781587511</updated>
     </task>
-    <option name="localTasksCounter" value="937" />
+    <task id="LOCAL-00937" summary="wup &amp; wup_disc">
+      <created>1693782569325</created>
+      <option name="number" value="00937" />
+      <option name="presentableId" value="LOCAL-00937" />
+      <option name="project" value="LOCAL" />
+      <updated>1693782569325</updated>
+    </task>
+    <option name="localTasksCounter" value="938" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
