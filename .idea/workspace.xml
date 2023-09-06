@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="external_work">
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/models/timesheet_line_done.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/models/timesheet_line_todo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/static/hr_worksheet_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_done_views.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_work_multisection/views/timesheet_line_todo_views.xml" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hr_ts_work">
+      <change afterPath="$PROJECT_DIR$/viafirma/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/__manifest__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/data/data_notification_signature.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/data/update_sends.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/i18n/es.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/models/res_company.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/models/viafirma.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/models/viafirma_lines.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/models/viafirma_notification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/models/viafirma_signature.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/models/viafirma_templates.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/security/ir.model.access.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/static/description/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/views/res_company_views.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/views/views.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/views/views_menu.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/wizards/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/wizards/viafirma_wizard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viafirma/wizards/viafirma_wizard_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,20 +84,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00893" summary="MULTISEC V1">
-      <created>1691319511986</created>
-      <option name="number" value="00893" />
-      <option name="presentableId" value="LOCAL-00893" />
-      <option name="project" value="LOCAL" />
-      <updated>1691319511986</updated>
-    </task>
-    <task id="LOCAL-00894" summary="MULTISEC V1">
-      <created>1691319593329</created>
-      <option name="number" value="00894" />
-      <option name="presentableId" value="LOCAL-00894" />
-      <option name="project" value="LOCAL" />
-      <updated>1691319593329</updated>
     </task>
     <task id="LOCAL-00895" summary="MULTISEC V1">
       <created>1691319765879</created>
@@ -415,7 +414,21 @@
       <option name="project" value="LOCAL" />
       <updated>1693860791149</updated>
     </task>
-    <option name="localTasksCounter" value="942" />
+    <task id="LOCAL-00942" summary="external_work_multisec">
+      <created>1693861512284</created>
+      <option name="number" value="00942" />
+      <option name="presentableId" value="LOCAL-00942" />
+      <option name="project" value="LOCAL" />
+      <updated>1693861512284</updated>
+    </task>
+    <task id="LOCAL-00943" summary="hr_ts_work">
+      <created>1693861567616</created>
+      <option name="number" value="00943" />
+      <option name="presentableId" value="LOCAL-00943" />
+      <option name="project" value="LOCAL" />
+      <updated>1693861567616</updated>
+    </task>
+    <option name="localTasksCounter" value="944" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -431,8 +444,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="slide internal v0" />
-    <MESSAGE value="event private" />
     <MESSAGE value="price python v0" />
     <MESSAGE value="shop private v0" />
     <MESSAGE value="task checklist cybro ic" />
@@ -456,7 +467,9 @@
     <MESSAGE value="i2origin" />
     <MESSAGE value="hr_equipment_stock" />
     <MESSAGE value="external_work" />
-    <option name="LAST_COMMIT_MESSAGE" value="external_work" />
+    <MESSAGE value="external_work_multisec" />
+    <MESSAGE value="hr_ts_work" />
+    <option name="LAST_COMMIT_MESSAGE" value="hr_ts_work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
