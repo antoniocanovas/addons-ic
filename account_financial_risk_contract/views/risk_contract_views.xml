@@ -27,14 +27,14 @@
     <record id="risk_contract_form" model="ir.ui.view">
         <field name="arch" type="xml">
             <form>
-                    <header>
-                        <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
-                        <button class="oe_highlight" type="object" string="Update risk partner"
-                                name="update_risk_partner" attrs="{'invisible':[('state','!=', 'done')]}"/>
-                    </header>
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
+                    <button class="oe_highlight" type="object" string="Update risk partner"
+                            name="update_risk_partner" attrs="{'invisible':[('state','!=', 'done')]}"/>
+                </header>
                 <sheet name="main" string="Risk contract">
                     <h2>
-                            <field name="partner_id"/>
+                        <field name="partner_id"/>
                     </h2>
                     <group name="general_data">
                         <group string="Requested">
