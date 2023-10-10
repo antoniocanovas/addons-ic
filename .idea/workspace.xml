@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="viafirma v0">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project task tracking dif">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00896" summary="MULTISEC V1">
-      <created>1691319815279</created>
-      <option name="number" value="00896" />
-      <option name="presentableId" value="LOCAL-00896" />
-      <option name="project" value="LOCAL" />
-      <updated>1691319815279</updated>
     </task>
     <task id="LOCAL-00897" summary="MULTISEC V1">
       <created>1691359507185</created>
@@ -408,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693991881507</updated>
     </task>
-    <option name="localTasksCounter" value="945" />
+    <task id="LOCAL-00945" summary="project task tracking dif">
+      <created>1695737682870</created>
+      <option name="number" value="00945" />
+      <option name="presentableId" value="LOCAL-00945" />
+      <option name="project" value="LOCAL" />
+      <updated>1695737682870</updated>
+    </task>
+    <option name="localTasksCounter" value="946" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="shop private v0" />
     <MESSAGE value="task checklist cybro ic" />
     <MESSAGE value="checklist to project_checklist" />
     <MESSAGE value="cheklist line form" />
@@ -449,7 +448,8 @@
     <MESSAGE value="external_work_multisec" />
     <MESSAGE value="hr_ts_work" />
     <MESSAGE value="viafirma v0" />
-    <option name="LAST_COMMIT_MESSAGE" value="viafirma v0" />
+    <MESSAGE value="project task tracking dif" />
+    <option name="LAST_COMMIT_MESSAGE" value="project task tracking dif" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
