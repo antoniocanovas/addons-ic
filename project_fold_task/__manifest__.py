@@ -5,7 +5,7 @@
     'version': '16.0.1.0.0',
     'category': 'Project/Project',
     'summary': "Project fold boolean field in tasks",
-    'description': "Related field in task to allow hide tasks from folded stages in daily views",
+    'description': "Related field from project in task to hide them if project stage is folded (useful for templates, finnished an cancelled",
     'author': 'Serincloud',
     'company': 'Serincloud',
     'maintainer': 'Serincloud',
