@@ -7,4 +7,9 @@
         <field name="domain">[('project_fold','=',False),('is_blocked', '=', False)]</field>
     </record>
 
+    <!-- Archivar la vista kanban que obliga a ver por defecto en modo GTD, donde no se ven las etapas: -->
+    <record id="project.view_task_kanban_inherit_my_task" model="ir.actions.act_window">
+        <field name="active">False</field>
+    </record>
+
 </odoo>
