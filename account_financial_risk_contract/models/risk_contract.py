@@ -17,11 +17,11 @@ class RiskContract(models.Model):
              ('refused', 'Refused'),
              ]
 
-    name = fields.Char(string='Name', required=True, tracking=100)
+    name = fields.Char(string='Contract', store=True, default='pending', tracking=100)
     partner_id = fields.Many2one('res.partner', string='Partner', store=True, copy=True, required=True, tracking=100)
     date_begin = fields.Date('Date begin', store=True, copy=False, tracking=100)
     date_end = fields.Date('Date end', store=True, copy=False, tracking=100)
-    level = fields.Char('Level', store=True, copy=True, tracking=100)
+    risk_level = fields.Char('Risk level', store=True, copy=True, tracking=100)
     percentage = fields.Float('Coberture', store=True, copy=True, tracking=100)
     supplier_id = fields.Many2one('res.partner', string='Supplier', store=True, copy=True, required=True, tracking=100)
     demand = fields.Monetary('Demand', store=True, copy=True, required=True)

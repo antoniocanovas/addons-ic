@@ -10,7 +10,7 @@
                 <field name="activity_ids" widget="list_activity" optional="show"/>
                 <field name="date_begin" optional="hide"/>
                 <field name="date_end" optional="show"/>
-                <field name="level" optional="show"/>
+                <field name="risk_level" optional="show"/>
                 <field name="percentage" optional="show"/>
                 <field name="supplier_id" optional="show"/>
                 <field name="demand" optional="show"/>
@@ -34,27 +34,26 @@
                     </header>
                 <sheet name="main" string="Risk contract">
                     <h2>
-                        <field name="name"/>
+                            <field name="partner_id"/>
                     </h2>
                     <group name="general_data">
-                        <group>
+                        <group string="Requested">
                             <field name="demand"/>
-                            <field name="partner_id"/>
-                            <field name="date_begin"/>
-                            <field name="date_end" widget="remaining_days"/>
+                            <field name="supplier_id"/>
+                            <field name="name" placeholder="Nº suplemento o pendiente si aún no lo tenemos"/>
+                            <field name="currency_id"/>
                             <field name="create_uid"/>
                         </group>
-                        <group>
+                        <group string="Granted">
                             <field name="amount"/>
-                            <field name="supplier_id"/>
+                            <field name="date_begin"/>
+                            <field name="date_end" widget="remaining_days"/>
                             <field name="percentage"/>
-                            <field name="level"/>
-                            <field name="currency_id"/>
+                            <field name="risk_level"/>
                         </group>
                     </group>
-                    <group>
-                        <field name="description" class="field_description" placeholder="Description..."/>
-                    </group>
+                    <group string="Notes"/>
+                    <field name="description" nolabel="1" class="field_description" placeholder="Description..."/>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
