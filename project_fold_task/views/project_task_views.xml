@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
 
+    <!-- No mostrar las tareas de projectos en estado plegado, ni bloqueadas: -->
     <record id="project.action_view_all_task" model="ir.actions.act_window">
         <field name="binding_type">action</field>
-        <field name="domain">[('project_fold','=',False)]</field>
+        <field name="domain">[('project_fold','=',False),('is_blocked', '=', False)]</field>
     </record>
 
 </odoo>
