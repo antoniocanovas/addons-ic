@@ -10,3 +10,5 @@ from odoo import api, fields, models, _
 class ProductPricelist(models.Model):
     _name = 'product.pricelist'
     _inherit = ['product.pricelist', 'mail.thread', 'mail.activity.mixin']
+
+    item_ids = fields.One2many(tracking=True)

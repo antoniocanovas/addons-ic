@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="chasis (sin placa)">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="pricelist tracking v0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,16 +36,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/l10n_es_factura_canje_tpv/data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/l10n_es_factura_canje_tpv/data" />
       <recent name="$PROJECT_DIR$/l10n_es_factura_canje_tpv/models" />
       <recent name="$PROJECT_DIR$/sale_wup" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/external_work/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -64,13 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00666" summary="ew li product with code">
-      <created>1688571660345</created>
-      <option name="number" value="00666" />
-      <option name="presentableId" value="LOCAL-00666" />
-      <option name="project" value="LOCAL" />
-      <updated>1688571660345</updated>
     </task>
     <task id="LOCAL-00667" summary="ew li product with code">
       <created>1688572510102</created>
@@ -408,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691580086500</updated>
     </task>
-    <option name="localTasksCounter" value="715" />
+    <task id="LOCAL-00715" summary="pricelist tracking v0">
+      <created>1697537621016</created>
+      <option name="number" value="00715" />
+      <option name="presentableId" value="LOCAL-00715" />
+      <option name="project" value="LOCAL" />
+      <updated>1697537621016</updated>
+    </task>
+    <option name="localTasksCounter" value="716" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -424,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sale_wup pre-post-domain" />
     <MESSAGE value="external_work expin" />
     <MESSAGE value="external_work rev" />
     <MESSAGE value="Purchase price update group warning" />
@@ -449,7 +448,8 @@
     <MESSAGE value="canje rename baseauto" />
     <MESSAGE value="canje amount_subtotal" />
     <MESSAGE value="chasis (sin placa)" />
-    <option name="LAST_COMMIT_MESSAGE" value="chasis (sin placa)" />
+    <MESSAGE value="pricelist tracking v0" />
+    <option name="LAST_COMMIT_MESSAGE" value="pricelist tracking v0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
