@@ -7,6 +7,14 @@
         <field name="domain">[('project_fold','=',False),('is_blocked', '=', False)]</field>
     </record>
 
+    <!-- Mostrar tareas no bloqueadas en filtro del proyecto, por defecto: -->
+    <record id="project.act_project_project_2_project_task_all" model="ir.actions.act_window">
+        <field name="binding_type">action</field>
+        <field name="context">
+            {'default_project_id': active_id,'show_project_update': True, 'default_search_not_bloqued':1}
+        </field>
+    </record>
+
     <!-- Archivar la vista kanban que obliga a ver por defecto en modo GTD, donde no se ven las etapas: -->
     <record id="project.view_task_kanban_inherit_my_task" model="ir.actions.act_window">
         <field name="active">False</field>
