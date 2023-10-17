@@ -11,4 +11,5 @@ class ProductPricelist(models.Model):
     _name = 'product.pricelist'
     _inherit = ['product.pricelist', 'mail.thread', 'mail.activity.mixin']
 
-    item_ids = fields.One2many(tracking=True)
+    write_uid = fields.Many2one(tracking=True)
+    write_date = fields.Datetime(tracking=True)
