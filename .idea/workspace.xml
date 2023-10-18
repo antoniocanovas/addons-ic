@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_fold_task" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="project_fold_task">
+      <change beforePath="$PROJECT_DIR$/project_fold_task/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_fold_task/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_fold_task/views/project_task_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_fold_task/views/project_task_views.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,20 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00907" summary="MULTISEC V1">
-      <created>1691366414313</created>
-      <option name="number" value="00907" />
-      <option name="presentableId" value="LOCAL-00907" />
-      <option name="project" value="LOCAL" />
-      <updated>1691366414313</updated>
-    </task>
-    <task id="LOCAL-00908" summary="MULTISEC V1">
-      <created>1691367187077</created>
-      <option name="number" value="00908" />
-      <option name="presentableId" value="LOCAL-00908" />
-      <option name="project" value="LOCAL" />
-      <updated>1691367187077</updated>
     </task>
     <task id="LOCAL-00909" summary="MULTISEC V1">
       <created>1691367426365</created>
@@ -406,7 +395,21 @@
       <option name="project" value="LOCAL" />
       <updated>1697588737673</updated>
     </task>
-    <option name="localTasksCounter" value="956" />
+    <task id="LOCAL-00956" summary="project_fold_task">
+      <created>1697589156544</created>
+      <option name="number" value="00956" />
+      <option name="presentableId" value="LOCAL-00956" />
+      <option name="project" value="LOCAL" />
+      <updated>1697589156544</updated>
+    </task>
+    <task id="LOCAL-00957" summary="project_fold_task">
+      <created>1697589243725</created>
+      <option name="number" value="00957" />
+      <option name="presentableId" value="LOCAL-00957" />
+      <option name="project" value="LOCAL" />
+      <updated>1697589243726</updated>
+    </task>
+    <option name="localTasksCounter" value="958" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
