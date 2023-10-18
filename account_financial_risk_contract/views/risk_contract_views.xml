@@ -11,10 +11,11 @@
                 <field name="date_begin" optional="hide"/>
                 <field name="date_end" optional="show"/>
                 <field name="risk_level" optional="show"/>
-                <field name="percentage" optional="show"/>
+                <field name="cobertura" optional="show"/>
                 <field name="supplier_id" optional="show"/>
                 <field name="demand" optional="show"/>
                 <field name="amount" optional="show"/>
+                <field name="margin" optional="hide"/>
                 <field name="state" optional="show"/>
                 <field name="currency_id" optional="hide"/>
             </tree>
@@ -48,7 +49,8 @@
                             <field name="amount"/>
                             <field name="date_begin"/>
                             <field name="date_end" widget="remaining_days"/>
-                            <field name="percentage"/>
+                            <field name="cobertura"/>
+                            <field name="margin"/>
                             <field name="risk_level"/>
                         </group>
                     </group>

@@ -22,7 +22,7 @@ class RiskContract(models.Model):
     date_begin = fields.Date('Date begin', store=True, copy=False, tracking=100)
     date_end = fields.Date('Date end', store=True, copy=False, tracking=100)
     risk_level = fields.Char('Risk level', store=True, copy=True, tracking=100)
-    percentage = fields.Float('Coberture', store=True, copy=True, tracking=100)
+    cobertura = fields.Float('Coberture', store=True, copy=True, tracking=100)
     supplier_id = fields.Many2one('res.partner', string='Supplier', store=True, copy=True, required=True, tracking=100)
     demand = fields.Monetary('Demand', store=True, copy=True, required=True)
     amount = fields.Monetary('Amount', store=True, copy=True, tracking=100)
@@ -30,6 +30,7 @@ class RiskContract(models.Model):
     active = fields.Boolean('Active', store=True, copy=False, default=True, tracking=100)
     state = fields.Selection(selection=STATE, string="State", store=True, copy=False, default='draft', tracking=100)
     description = fields.Text('Notes', store=True, copy=False)
+    margin = fields.Float('Supplier margin (%)', store=True, copy=True)
 
     def update_risk_partner(self):
         if self.date_end > date.today():
