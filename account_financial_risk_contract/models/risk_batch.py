@@ -37,7 +37,7 @@ class RiskBatch(models.Model):
             if contract.id:
                 amount += li.amount_untaxed_signed * ( contract.margin / 100 )
         self.insurance_amount = amount
-    insurance_amount = fields.Monetary('Amount', store=False, copy=True, compute='_get_batch_risk_cost')
+    insurance_amount = fields.Monetary('Insurance cost', store=False, copy=True, compute='_get_batch_risk_cost')
 
 
     # NO FUNCIONA, NO SE ACTIVA (sería lo ideal y borrar el wizard):
