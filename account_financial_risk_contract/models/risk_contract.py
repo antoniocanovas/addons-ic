@@ -17,7 +17,7 @@ class RiskContract(models.Model):
              ('refused', 'Refused'),
              ]
 
-    name = fields.Char(string='Contract', store=True, default='pending', tracking=100)
+    name = fields.Char(string='Contract', store=True, tracking=100)
     partner_id = fields.Many2one('res.partner', string='Partner', store=True, copy=True, required=True, tracking=100)
     date_begin = fields.Date('Date begin', store=True, copy=False, tracking=100)
     date_end = fields.Date('Date end', store=True, copy=False, tracking=100)
