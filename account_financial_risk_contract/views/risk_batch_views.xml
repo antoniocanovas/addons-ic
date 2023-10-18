@@ -37,7 +37,8 @@
                         </group>
                         <group>
                             <field name="supplier_id"/>
-                            <field name="currency_id" optional="hide"/>
+                            <field name="insurance_amount" widget="monetary"/>
+                            <field name="currency_id" invisible="1"/>
                         </group>
                     </group>
                     <group>

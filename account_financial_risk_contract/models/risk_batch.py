@@ -29,6 +29,16 @@ class RiskBatch(models.Model):
         self.amount = amount
     amount = fields.Monetary('Amount', store=False, copy=True, compute='_get_invoices_net_amount')
 
+    def _get_batch_risk_cost(self):
+        amount = 0
+        for li in self.invoice_ids:
+            contract = self.env['risk.contract'].search([('partner_id','=',li.partner_id.id),
+                                                         ('state','=','done')], order='date_begin desc')[0]
+            if contract.id:
+                amount += li.amount_untaxed_signed * ( contract.margin / 100 )
+        self.insurance_amount = amount
+    insurance_amount = fields.Monetary('Amount', store=False, copy=True, compute='_get_batch_risk_cost')
+
 
     # NO FUNCIONA, NO SE ACTIVA (sería lo ideal y borrar el wizard):
 #    @api.depends('invoice_ids')
