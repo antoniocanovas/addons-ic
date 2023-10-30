@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="risc_contract margin">
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/models/account_analytic_line.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/views/account_analytic_line_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="hr_timeshhet_analytic_attachment  v16" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,13 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00914" summary="MULTISEC V1">
-      <created>1692030021870</created>
-      <option name="number" value="00914" />
-      <option name="presentableId" value="LOCAL-00914" />
-      <option name="project" value="LOCAL" />
-      <updated>1692030021870</updated>
     </task>
     <task id="LOCAL-00915" summary="MULTISEC V1">
       <created>1692030359813</created>
@@ -413,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697638703114</updated>
     </task>
-    <option name="localTasksCounter" value="963" />
+    <task id="LOCAL-00963" summary="hr_timeshhet_analytic_attachment  v16">
+      <created>1698653381126</created>
+      <option name="number" value="00963" />
+      <option name="presentableId" value="LOCAL-00963" />
+      <option name="project" value="LOCAL" />
+      <updated>1698653381126</updated>
+    </task>
+    <option name="localTasksCounter" value="964" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -429,7 +422,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="cheklist line form" />
     <MESSAGE value="project_des_tracking v0" />
     <MESSAGE value="license" />
     <MESSAGE value="product_from_set v0" />
@@ -454,7 +446,8 @@
     <MESSAGE value="project task tracking dif" />
     <MESSAGE value="project_fold_task" />
     <MESSAGE value="risc_contract margin" />
-    <option name="LAST_COMMIT_MESSAGE" value="risc_contract margin" />
+    <MESSAGE value="hr_timeshhet_analytic_attachment  v16" />
+    <option name="LAST_COMMIT_MESSAGE" value="hr_timeshhet_analytic_attachment  v16" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
