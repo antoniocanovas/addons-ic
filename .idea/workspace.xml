@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="risc_contract margin" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="risc_contract margin">
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/__manifest__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/models/account_analytic_line.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hr_timesheet_analytic_attachment/views/account_analytic_line_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,13 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00913" summary="MULTISEC V1">
-      <created>1692029733746</created>
-      <option name="number" value="00913" />
-      <option name="presentableId" value="LOCAL-00913" />
-      <option name="project" value="LOCAL" />
-      <updated>1692029733746</updated>
     </task>
     <task id="LOCAL-00914" summary="MULTISEC V1">
       <created>1692030021870</created>
@@ -406,7 +406,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697638460526</updated>
     </task>
-    <option name="localTasksCounter" value="962" />
+    <task id="LOCAL-00962" summary="risc_contract margin">
+      <created>1697638703114</created>
+      <option name="number" value="00962" />
+      <option name="presentableId" value="LOCAL-00962" />
+      <option name="project" value="LOCAL" />
+      <updated>1697638703114</updated>
+    </task>
+    <option name="localTasksCounter" value="963" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
