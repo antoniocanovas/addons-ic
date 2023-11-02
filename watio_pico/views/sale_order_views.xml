@@ -23,10 +23,12 @@
                         <group>
                             <field name="wp_power"/>
                             <field name="wp_template_id"/>
+                            <field name="wp_pico"/>
                         </group>
                         <group>
                             <field name="wp_margin"/>
                             <field name="wp_charger_margin"/>
+                            <field name="wp_hour"/>
                         </group>
                     </group>
                     <field name="wp_line_ids">

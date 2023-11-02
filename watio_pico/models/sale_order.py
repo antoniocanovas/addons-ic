@@ -11,6 +11,17 @@ class SsaleOrder(models.Model):
     wp_template_id = fields.Many2one('wp.template', string='WP Template', store=True)
     wp_line_ids = fields.One2many('wp.sale.line', 'sale_id', string='WP Lines')
 
+
+    @api.onchange('wp_template_id')
+    def get_wp_template_wp_pico(self):
+        self.wp_pico = self.wp_template_id.wp_pico
+    wp_pico = fields.Float('Watio pico', store=True, readonly=False, compute='get_wp_template_wp_pico')
+
+    @api.onchange('wp_template_id')
+    def get_wp_template_wp_hour(self):
+        self.wp_hour = self.wp_template_id.wp_hour
+    wp_hour = fields.Float('Watio hora', store=True, readonly=False, compute='get_wp_template_wp_hour')
+
     @api.onchange('wp_template_id')
     def get_wp_template_margin(self):
         self.wp_margin = self.wp_template_id.wp_margin
@@ -32,16 +43,16 @@ class SsaleOrder(models.Model):
                                                        'subtotal':0,
                                                        'sale_id':self.id})
 
-    @api.onchange('wp_margin','wp_charger_margin','wp_line_ids','wp_power')
+    @api.onchange('wp_pico','wp_hora','wp_margin','wp_charger_margin','wp_line_ids','wp_power')
     def _update_wp_prices(self):
         total = 0
         for li in self.wp_line_ids:
             # Case watio-pico:
             if li.product_id.wp_type == 'wp':
-                subtotal = self.wp_power * 1000 * li.factor * self.wp_template_id.wp_pico * (1 + self.wp_margin/100)
+                subtotal = self.wp_power * 1000 * li.factor * self.wp_pico * (1 + self.wp_margin/100)
             # Case watio-hour:
             elif li.product_id.wp_type == 'wh':
-                subtotal = self.wp_power * 1000 * li.factor * self.wp_template_id.wp_hour * (1 + self.wp_margin/100)
+                subtotal = self.wp_power * 1000 * li.factor * self.wp_hour * (1 + self.wp_margin/100)
             # Case charger:
             else:
                 subtotal = li.product_id.standard_price * (1 + self.wp_charger_margin/100)
