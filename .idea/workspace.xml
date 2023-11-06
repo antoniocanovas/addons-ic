@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="ptask_sale_multisec mig">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="wp rev1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/watio_pico/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/watio_pico/models/sale_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/watio_pico/views/sale_order_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/watio_pico/views/sale_order_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_financial_risk_contract/views/risk_contract_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/account_financial_risk_contract/views/risk_contract_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00916" summary="MULTISEC V1">
-      <created>1692030745192</created>
-      <option name="number" value="00916" />
-      <option name="presentableId" value="LOCAL-00916" />
-      <option name="project" value="LOCAL" />
-      <updated>1692030745192</updated>
     </task>
     <task id="LOCAL-00917" summary="MULTISEC V1">
       <created>1692228564042</created>
@@ -410,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698653808630</updated>
     </task>
-    <option name="localTasksCounter" value="965" />
+    <task id="LOCAL-00965" summary="wp rev1">
+      <created>1698946744779</created>
+      <option name="number" value="00965" />
+      <option name="presentableId" value="LOCAL-00965" />
+      <option name="project" value="LOCAL" />
+      <updated>1698946744779</updated>
+    </task>
+    <option name="localTasksCounter" value="966" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,7 +425,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="license" />
     <MESSAGE value="product_from_set v0" />
     <MESSAGE value="watio_pico v0" />
     <MESSAGE value="cubells vacp" />
@@ -451,7 +449,8 @@
     <MESSAGE value="risc_contract margin" />
     <MESSAGE value="hr_timeshhet_analytic_attachment  v16" />
     <MESSAGE value="ptask_sale_multisec mig" />
-    <option name="LAST_COMMIT_MESSAGE" value="ptask_sale_multisec mig" />
+    <MESSAGE value="wp rev1" />
+    <option name="LAST_COMMIT_MESSAGE" value="wp rev1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

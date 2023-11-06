@@ -47,8 +47,8 @@
                         </group>
                         <group string="Granted">
                             <field name="amount"/>
-                            <field name="date_begin"/>
-                            <field name="date_end" widget="remaining_days"/>
+                            <field name="date_begin" attrs="{'required':[('state','=','done')]}"/>
+                            <field name="date_end" attrs="{'required':[('state','=','done')]}"/>
                             <field name="cobertura"/>
                             <field name="margin"/>
                             <field name="risk_level"/>
