@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="wp rev1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_multisection/models/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/models/sale_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sale_order_multisection/models/sale_order_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/models/sale_order_line.py" afterDir="false" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="soMS rev parent-child16">
+      <change beforePath="$PROJECT_DIR$/sale_order_multisection/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sale_order_multisection/views/account_report.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sale_order_multisection/views/account_report.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627657619456</updated>
-    </task>
-    <task id="LOCAL-00919" summary="MULTISEC V1">
-      <created>1692605460328</created>
-      <option name="number" value="00919" />
-      <option name="presentableId" value="LOCAL-00919" />
-      <option name="project" value="LOCAL" />
-      <updated>1692605460328</updated>
     </task>
     <task id="LOCAL-00920" summary="MULTISEC V1">
       <created>1692638946700</created>
@@ -410,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699290358186</updated>
     </task>
-    <option name="localTasksCounter" value="968" />
+    <task id="LOCAL-00968" summary="soMS rev parent-child16">
+      <created>1700569630558</created>
+      <option name="number" value="00968" />
+      <option name="presentableId" value="LOCAL-00968" />
+      <option name="project" value="LOCAL" />
+      <updated>1700569630558</updated>
+    </task>
+    <option name="localTasksCounter" value="969" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,7 +425,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="product_from_set v0" />
     <MESSAGE value="watio_pico v0" />
     <MESSAGE value="cubells vacp" />
     <MESSAGE value="custom demesol v0" />
@@ -451,7 +449,8 @@
     <MESSAGE value="hr_timeshhet_analytic_attachment  v16" />
     <MESSAGE value="ptask_sale_multisec mig" />
     <MESSAGE value="wp rev1" />
-    <option name="LAST_COMMIT_MESSAGE" value="wp rev1" />
+    <MESSAGE value="soMS rev parent-child16" />
+    <option name="LAST_COMMIT_MESSAGE" value="soMS rev parent-child16" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

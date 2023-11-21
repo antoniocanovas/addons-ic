@@ -16,7 +16,7 @@ Sale Multisection
         'security/ir.model.access.csv',
         'data/automatic_actions.xml',
         'views/report_sale_order.xml',
-        'views/account_report.xml',
+#        'views/account_report.xml',
     ],
     'installable': True,
 }

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
     <data>
-        <!-- QWeb Reports -->
+        <!-- QWeb Reports (copia para empezar a hacer cosas, fuera de manifest) -->
         <record id="action_report_saleorder_executive_summary" model="ir.actions.report">
             <field name="name">Executive Summary</field>
             <field name="model">sale.order</field>
