@@ -13,7 +13,7 @@ class SaleOrderLine(models.Model):
     pricelist_id = fields.Many2one('product.pricelist', related='order_id.pricelist_id', readonly=True)
     section_line_ids = fields.One2many('sale.order.line', 'section_id', store=True, string='Section Lines')
 
-    section = fields.Char('Section', readonly=True)
+    section = fields.Char('Section', store=True, readonly=True)
 
     section_id = fields.Many2one('sale.order.line', store=True, readonly=True)
     new_section_id = fields.Many2one('sale.order.line', store=True, readonly=False)

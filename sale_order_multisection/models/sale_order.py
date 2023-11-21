@@ -81,6 +81,7 @@ class SaleOrderSets(models.Model):
                     i += 1
 
                 # Cálculo de 'parent_ids', 'child_ids' y 'level' por sección, si hay multinivel ($ o multisection_key):
+                # NOTA.- Las referencias ".split()[0]" es para quitar los espacios añadidos anteriormente en 'codigo'.
                 section_ids = self.env['sale.order.line'].search([('order_id', '=', record.id), ('display_type', '=', 'line_section')])
                 for se in section_ids:
                     parents, children, level = [], [], 1
@@ -88,12 +89,12 @@ class SaleOrderSets(models.Model):
                         [('order_id', '=', record.id), ('display_type', '=', 'line_section'), ('id', '!=', se.id)])
                     if (se.name[:1] == record.multisection_key):
                         for li in line_ids:
-                            lenght_line = len(li.section)
-                            if (li.section == se.section[:lenght_line]):
+                            lenght_line = len(li.section.split()[0])
+                            if (li.section.split()[0] == se.section.split()[0][:lenght_line]):
                                 parents.append(li.id)
                                 level = len(parents) + 1
-                            lenght_section = len(se.section)
-                            if (se.section == li.section[:lenght_section]):
+                            lenght_section = len(se.section.split()[0])
+                            if (se.section.split()[0] == li.section.split()[0][:lenght_section]):
                                 children.append(li.id)
                     se.write({'parent_ids': [(6, 0, parents)], 'child_ids': [(6, 0, children)], 'level': level})
 
