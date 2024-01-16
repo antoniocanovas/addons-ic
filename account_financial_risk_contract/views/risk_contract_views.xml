@@ -16,6 +16,7 @@
                 <field name="demand" optional="show"/>
                 <field name="amount" optional="show"/>
                 <field name="margin" optional="hide"/>
+                <field name="claim" optional="hide"/>
                 <field name="state" optional="show"/>
                 <field name="currency_id" optional="hide"/>
             </tree>
@@ -44,6 +45,7 @@
                             <field name="name" placeholder="Nº suplemento o pendiente si aún no lo tenemos"/>
                             <field name="currency_id"/>
                             <field name="create_uid"/>
+                            <field name="claim"/>
                         </group>
                         <group string="Granted">
                             <field name="amount"/>

@@ -31,6 +31,7 @@ class RiskContract(models.Model):
     state = fields.Selection(selection=STATE, string="State", store=True, copy=False, default='draft', tracking=100)
     description = fields.Text('Notes', store=True, copy=False)
     margin = fields.Float('Supplier margin (%)', store=True, copy=True)
+    claim = fields.Integer('Claim period (days)', store=True, copy=True)
 
     def update_risk_partner(self):
         if self.date_end > date.today():
