@@ -34,7 +34,9 @@ class RiskContract(models.Model):
     claim = fields.Integer('Claim period (days)', store=True, copy=True)
 
     def update_risk_partner(self):
-        if self.date_end > date.today():
-            self.partner_id.credit_limit = self.amount
-        else:
-            raise UserError('Expiration date must be after today')
+        for record in self:
+            partner = record.partner_id
+            if record.date_end and record.date_end > date.today():
+                raise UserError('Expiration date must be after today')
+            else:
+                partner['credit_limit'] = record.amount

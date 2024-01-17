@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="soMS rev parent-child16">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="claim risk">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_financial_risk_contract/models/risk_contract.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_financial_risk_contract/models/risk_contract.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +27,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="1w2XMqktEMEYJVK2HcR2h9F7e4P" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -37,14 +38,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "16.0",
-    "last_opened_file_path": "/Users/antoniocanovaspedreno/PycharmProjects/16addons-ic"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;16.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/antoniocanovaspedreno/PycharmProjects/16addons-ic&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -413,7 +414,7 @@
       <option name="project" value="LOCAL" />
       <updated>1700572963041</updated>
     </task>
-    <option name="localTasksCounter" value="970" />
+    <option name="localTasksCounter" value="972" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -429,7 +430,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="watio_pico v0" />
     <MESSAGE value="cubells vacp" />
     <MESSAGE value="custom demesol v0" />
     <MESSAGE value="project tracking v0" />
@@ -454,7 +454,8 @@
     <MESSAGE value="ptask_sale_multisec mig" />
     <MESSAGE value="wp rev1" />
     <MESSAGE value="soMS rev parent-child16" />
-    <option name="LAST_COMMIT_MESSAGE" value="soMS rev parent-child16" />
+    <MESSAGE value="claim risk" />
+    <option name="LAST_COMMIT_MESSAGE" value="claim risk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
