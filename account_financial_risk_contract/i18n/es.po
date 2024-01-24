@@ -120,7 +120,7 @@ msgstr "Fecha de inicio"
 #. module: account_financial_risk_contract
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__date_end
 msgid "Date end"
-msgstr "Fecha final"
+msgstr "Fecha de finalización"
 
 #. module: account_financial_risk_contract
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__demand
@@ -561,7 +561,7 @@ msgstr "Actualizar riesgo"
 #. module: account_financial_risk_contract
 #: model:ir.model.fields.selection,name:account_financial_risk_contract.selection__risk_contract__state__waiting
 msgid "Waiting"
-msgstr "Esperando"
+msgstr "En espera"
 
 #. module: account_financial_risk_contract
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__website_message_ids
