@@ -427,7 +427,7 @@ msgstr ""
 #. module: account_financial_risk_contract
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__partner_id
 msgid "Partner"
-msgstr "Partners"
+msgstr "Partner"
 
 #. module: account_financial_risk_contract
 #: model:ir.model.fields.selection,name:account_financial_risk_contract.selection__risk_contract__state__refused
