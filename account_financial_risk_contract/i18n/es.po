@@ -120,7 +120,7 @@ msgstr "Fecha de inicio"
 #. module: account_financial_risk_contract
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__date_end
 msgid "Date end"
-msgstr "Fecha de finalización"
+msgstr "Fecha final"
 
 #. module: account_financial_risk_contract
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__demand
@@ -161,7 +161,7 @@ msgstr "Seguidores"
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__message_partner_ids
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__message_partner_ids
 msgid "Followers (Partners)"
-msgstr "Seguidores (partners)"
+msgstr "Seguidores (Socios)"
 
 #. module: account_financial_risk_contract
 #: model:ir.model.fields,help:account_financial_risk_contract.field_risk_batch__activity_type_icon
@@ -427,7 +427,7 @@ msgstr ""
 #. module: account_financial_risk_contract
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__partner_id
 msgid "Partner"
-msgstr "Partner"
+msgstr "Socio"
 
 #. module: account_financial_risk_contract
 #: model:ir.model.fields.selection,name:account_financial_risk_contract.selection__risk_contract__state__refused
@@ -491,7 +491,7 @@ msgstr "Contratos de riesgo"
 #. module: account_financial_risk_contract
 #: model_terms:ir.actions.act_window,help:account_financial_risk_contract.action_partner_risk_contracts
 msgid "Risk contracts for partner"
-msgstr "Contratos de riesgo para partners"
+msgstr "Contratos de riesgo para socio"
 
 #. module: account_financial_risk_contract
 #: model:ir.model,name:account_financial_risk_contract.model_risk_batch
@@ -561,7 +561,7 @@ msgstr "Actualizar riesgo"
 #. module: account_financial_risk_contract
 #: model:ir.model.fields.selection,name:account_financial_risk_contract.selection__risk_contract__state__waiting
 msgid "Waiting"
-msgstr "En espera"
+msgstr "Esperando"
 
 #. module: account_financial_risk_contract
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__website_message_ids
