@@ -19,7 +19,7 @@
     <record id="partner_risk_contract_form" model="ir.ui.view">
         <field name="name">partner.risk.contract.form</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="inherit_id" ref="account_financial_risk.res_partner_view_risk"/>
         <field name="arch" type="xml">
             <xpath expr="//div[@name='button_box']" position="inside">
                 <button class="oe_stat_button" icon="fa-info" type="action"
@@ -28,7 +28,14 @@
                     <field name="risk_contract_count" string="Risk contracts" widget="statinfo"/>
                 </button>
             </xpath>
+
+            <field name="credit_policy" position="replace">
+                <field name="risk_contract_id" readonly="1"/>
+                <field name="risk_contract_description"/>
+            </field>
+
         </field>
     </record>
+
 
 </odoo>

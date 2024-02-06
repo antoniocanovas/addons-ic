@@ -7,6 +7,8 @@
     <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug date_end false">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account_financial_risk_contract/models/res_partner.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_financial_risk_contract/models/res_partner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_financial_risk_contract/models/risk_contract.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_financial_risk_contract/models/risk_contract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_financial_risk_contract/views/res_partner_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/account_financial_risk_contract/views/res_partner_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -414,7 +416,7 @@
       <option name="project" value="LOCAL" />
       <updated>1700572963041</updated>
     </task>
-    <option name="localTasksCounter" value="973" />
+    <option name="localTasksCounter" value="974" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
