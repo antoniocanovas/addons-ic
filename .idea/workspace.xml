@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug date_end false">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="riskcontract2">
+      <change afterPath="$PROJECT_DIR$/account_financial_risk_contract/i18n/es.po" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_financial_risk_contract/models/res_partner.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_financial_risk_contract/models/res_partner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_financial_risk_contract/models/risk_contract.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_financial_risk_contract/models/risk_contract.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_financial_risk_contract/views/res_partner_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/account_financial_risk_contract/views/res_partner_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -416,7 +414,7 @@
       <option name="project" value="LOCAL" />
       <updated>1700572963041</updated>
     </task>
-    <option name="localTasksCounter" value="974" />
+    <option name="localTasksCounter" value="977" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -432,7 +430,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="custom demesol v0" />
     <MESSAGE value="project tracking v0" />
     <MESSAGE value="clean" />
     <MESSAGE value="MULTISEC V1" />
@@ -457,7 +454,8 @@
     <MESSAGE value="soMS rev parent-child16" />
     <MESSAGE value="claim risk" />
     <MESSAGE value="bug date_end false" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug date_end false" />
+    <MESSAGE value="riskcontract2" />
+    <option name="LAST_COMMIT_MESSAGE" value="riskcontract2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
