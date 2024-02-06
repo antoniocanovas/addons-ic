@@ -1,0 +1,584 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_financial_risk_contract
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-05 07:35+0000\n"
+"PO-Revision-Date: 2024-02-05 08:36+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: account_financial_risk_contract
+#: model:ir.actions.server,name:account_financial_risk_contract.update_invoices_risk_batch_ir_actions_server
+msgid "=> Update invoices risk batch"
+msgstr ""
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__message_needaction
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__message_needaction
+msgid "Action Needed"
+msgstr "Acción requerida"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__activity_ids
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__activity_exception_decoration
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__activity_state
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__activity_state
+msgid "Activity State"
+msgstr "Estado de la actividad"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__activity_type_icon
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Tipo de icono de la actividad"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__amount
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__amount
+msgid "Amount"
+msgstr "Concedido"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__message_attachment_count
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__message_attachment_count
+msgid "Attachment Count"
+msgstr "Número de adjuntos"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__claim
+msgid "Claim period (days)"
+msgstr "Periodo de reclamación (días)"
+
+#. module: account_financial_risk_contract
+#: model:ir.model,name:account_financial_risk_contract.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__name
+msgid "Contract"
+msgstr "Suplemento"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__coverage
+msgid "Coverage"
+msgstr "% Cobertura"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__create_uid
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__create_date
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__currency_id
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__date_begin
+msgid "Date begin"
+msgstr "Fecha de inicio"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__date_end
+msgid "Date end"
+msgstr "Fecha de finalización"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__demand
+msgid "Demand"
+msgstr "Solicitado"
+
+#. module: account_financial_risk_contract
+#: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.risk_batch_form
+#: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.risk_contract_form
+msgid "Description..."
+msgstr "Descripción..."
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__display_name
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields.selection,name:account_financial_risk_contract.selection__risk_batch__state__done
+#: model:ir.model.fields.selection,name:account_financial_risk_contract.selection__risk_contract__state__done
+msgid "Done"
+msgstr "Hecho"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields.selection,name:account_financial_risk_contract.selection__risk_batch__state__draft
+#: model:ir.model.fields.selection,name:account_financial_risk_contract.selection__risk_contract__state__draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__message_follower_ids
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__message_partner_ids
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Partners)"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_batch__activity_type_icon
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_contract__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_res_partner__risk_invoice_draft_include
+#: model:ir.model.fields,help:account_financial_risk_contract.field_res_partner__risk_sale_order_include
+#: model:ir.model.fields,help:account_financial_risk_contract.field_res_users__risk_invoice_draft_include
+#: model:ir.model.fields,help:account_financial_risk_contract.field_res_users__risk_sale_order_include
+msgid "Full risk computation"
+msgstr "Computar en riesgo total"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_res_partner__risk_account_amount_unpaid_include
+#: model:ir.model.fields,help:account_financial_risk_contract.field_res_users__risk_account_amount_unpaid_include
+msgid ""
+"Full risk computation.\n"
+"Residual amount of move lines not reconciled with distinct account that is set as partner receivable and date maturity exceeded, considering Due Margin set in account settings."
+msgstr ""
+"Computar en riesgo total.\n"
+"Importe residual de apuntes no conciliados con cuenta distinta a la establecida como cuenta a cobrar del cliente y fecha vencimiento excedida, teniendo en cuenta los días de margen establecidos en la configuración de contabilidad."
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_res_partner__risk_account_amount_include
+#: model:ir.model.fields,help:account_financial_risk_contract.field_res_users__risk_account_amount_include
+msgid ""
+"Full risk computation.\n"
+"Residual amount of move lines not reconciled with distinct account that is set as partner receivable and date maturity not exceeded, considering Due Margin set in account settings."
+msgstr ""
+"Computar en riesgo total.\n"
+"Importe residual de apuntes no conciliados con cuenta distinta a la establecida como cuenta a cobrar del cliente y fecha vencimiento no excedida, teniendo en cuenta los días de margen establecidos en la configuración de contabilidad."
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_res_partner__risk_invoice_unpaid_include
+#: model:ir.model.fields,help:account_financial_risk_contract.field_res_users__risk_invoice_unpaid_include
+msgid ""
+"Full risk computation.\n"
+"Residual amount of move lines not reconciled with the same account that is set as partner receivable and date maturity exceeded, considering Due Margin set in account settings."
+msgstr ""
+"Computar en riesgo total.\n"
+"Importe residual de apuntes no conciliados con cuenta igual a la establecida como cuenta a cobrar del cliente y fecha vencimiento excedida, teniendo en cuenta los días de margen establecidos en la configuración de contabilidad."
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_res_partner__risk_invoice_open_include
+#: model:ir.model.fields,help:account_financial_risk_contract.field_res_users__risk_invoice_open_include
+msgid ""
+"Full risk computation.\n"
+"Residual amount of move lines not reconciled with the same account that is set as partner receivable and date maturity not exceeded, considering Due Margin set in account settings."
+msgstr ""
+"Computar en riesgo total.\n"
+"Importe residual de apuntes no conciliados con cuenta igual a la establecida como cuenta a cobrar del cliente y fecha vencimiento no excedida, teniendo en cuenta los días de margen establecidos en la configuración de contabilidad."
+
+#. module: account_financial_risk_contract
+#: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.risk_contract_form
+msgid "Granted"
+msgstr "Aceptado"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__has_message
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__has_message
+msgid "Has Message"
+msgstr "Tiene un mensaje"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__id
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__id
+msgid "ID"
+msgstr ""
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__activity_exception_icon
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__activity_exception_icon
+msgid "Icon"
+msgstr "Icono"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_batch__activity_exception_icon
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_contract__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icono  que muestra una excepción en la actividad."
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_batch__message_needaction
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_contract__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, los mensajes nuevos requieren su atención."
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_batch__message_has_error
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_batch__message_has_sms_error
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_contract__message_has_error
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_contract__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si está marcado, algunos mensajes tienen un error de entrega."
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_partner__risk_invoice_draft_include
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_users__risk_invoice_draft_include
+msgid "Include Draft Invoices"
+msgstr "Incluir facturas borrador"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_partner__risk_invoice_open_include
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_users__risk_invoice_open_include
+msgid "Include Open Invoices/Principal Balance"
+msgstr "Incluir facturas/saldo principal abierto"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_partner__risk_account_amount_include
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_users__risk_account_amount_include
+msgid "Include Other Account Open Amount"
+msgstr "Incluir otro saldo contable abierto"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_partner__risk_account_amount_unpaid_include
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_users__risk_account_amount_unpaid_include
+msgid "Include Other Account Unpaid Amount"
+msgstr "Incluir otro saldo contable impagado"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_partner__risk_sale_order_include
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_users__risk_sale_order_include
+msgid "Include Sales Orders"
+msgstr ""
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_partner__risk_invoice_unpaid_include
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_users__risk_invoice_unpaid_include
+msgid "Include Unpaid Invoices/Principal Balance"
+msgstr "Incluir facturas/saldo principal impagado"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__insurance_amount
+msgid "Insurance cost"
+msgstr "Coste del seguro"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__invoice_ids
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__message_is_follower
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__message_is_follower
+msgid "Is Follower"
+msgstr "Es seguidor"
+
+#. module: account_financial_risk_contract
+#: model:ir.model,name:account_financial_risk_contract.model_account_move
+msgid "Journal Entry"
+msgstr "Entrada Diaria"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch____last_update
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract____last_update
+msgid "Last Modified on"
+msgstr "Última modificación"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__write_uid
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__write_uid
+msgid "Last Updated by"
+msgstr "Última vez actualizado por"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__write_date
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__write_date
+msgid "Last Updated on"
+msgstr "Última vez actualizado"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__message_main_attachment_id
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjunto principal"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__message_has_error
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__message_has_error
+msgid "Message Delivery error"
+msgstr "Error en la entrega del mensaje"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__message_ids
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__my_activity_date_deadline
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Fecha límite de mi actividad"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__activity_calendar_event_id
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "Próximo evento del calendario de actividades"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__activity_date_deadline
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Fecha límite para la próxima actividad"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__activity_summary
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la próxima actividad"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__activity_type_id
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__activity_type_id
+msgid "Next Activity Type"
+msgstr "Siguiente tipo de actividad"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__description
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__description
+#: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.risk_contract_form
+msgid "Notes"
+msgstr "Notas"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__message_needaction_counter
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__message_has_error_counter
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_batch__message_needaction_counter
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_contract__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_batch__message_has_error_counter
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_contract__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con errores de entrega"
+
+#. module: account_financial_risk_contract
+#: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.risk_contract_form
+msgid "Nº suplemento o pendiente si aún no lo tenemos"
+msgstr ""
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__partner_id
+msgid "Partner"
+msgstr "Partner"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields.selection,name:account_financial_risk_contract.selection__risk_contract__state__refused
+msgid "Refused"
+msgstr "Rechazado"
+
+#. module: account_financial_risk_contract
+#: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.risk_contract_form
+msgid "Requested"
+msgstr "Solicitado"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__activity_user_id
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: account_financial_risk_contract
+#: model:ir.model,name:account_financial_risk_contract.model_risk_contract
+msgid "Risk Contracts"
+msgstr "Contratos de riesgo"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_account_bank_statement_line__risk_batch_id
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_account_move__risk_batch_id
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_account_payment__risk_batch_id
+#: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.risk_batch_form
+msgid "Risk batch"
+msgstr ""
+
+#. module: account_financial_risk_contract
+#: model:ir.actions.act_window,name:account_financial_risk_contract.action_risk_batch
+#: model:ir.ui.menu,name:account_financial_risk_contract.menu_risk_batch
+#: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.risk_batch_tree
+msgid "Risk batches"
+msgstr ""
+
+#. module: account_financial_risk_contract
+#: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.risk_contract_form
+msgid "Risk contract"
+msgstr "Contrato de riesgo"
+
+#. module: account_financial_risk_contract
+#: model:res.groups,name:account_financial_risk_contract.group_risk_contract_manager
+msgid "Risk contract Manager"
+msgstr "Contrato de riesgo del Gerente"
+
+#. module: account_financial_risk_contract
+#: model:ir.actions.act_window,name:account_financial_risk_contract.action_partner_risk_contracts
+#: model:ir.actions.act_window,name:account_financial_risk_contract.action_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_partner__risk_contract_count
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_partner__risk_contract_ids
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_users__risk_contract_count
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_users__risk_contract_ids
+#: model:ir.ui.menu,name:account_financial_risk_contract.menu_risk_contract
+#: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.partner_risk_contract_form
+#: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.risk_contract_tree
+msgid "Risk contracts"
+msgstr "Contratos de riesgo"
+
+#. module: account_financial_risk_contract
+#: model_terms:ir.actions.act_window,help:account_financial_risk_contract.action_partner_risk_contracts
+msgid "Risk contracts for partner"
+msgstr "Contratos de riesgo para partners"
+
+#. module: account_financial_risk_contract
+#: model:ir.model,name:account_financial_risk_contract.model_risk_batch
+msgid "Risk invoices batch"
+msgstr ""
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__risk_level
+msgid "Risk level"
+msgstr "Nivel de riesgo"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_account_bank_statement_line__risk_pending
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_account_move__risk_pending
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_account_payment__risk_pending
+msgid "Risk pending"
+msgstr "Riesgo pendiente"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__message_has_sms_error
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error de entrega de SMS"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_account_move__smart_search
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_partner__smart_search
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__smart_search
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__smart_search
+msgid "Smart Search"
+msgstr "Búsqueda inteligente"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__state
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__state
+msgid "State"
+msgstr "Estado"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_batch__activity_state
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_contract__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Estado basado en actividades.\n"
+"Vencido: la fecha de vencimiento ya pasó\n"
+"Hoy: la fecha de la actividad es hoy.\n"
+"Planificado: Actividades futuras."
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__supplier_id
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__supplier_id
+msgid "Supplier"
+msgstr "Asegurador"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__margin
+msgid "Supplier margin (%)"
+msgstr "Margen del asegurador (%)"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_batch__activity_exception_decoration
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_contract__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Tipo excepción de la actividad registrada."
+
+#. module: account_financial_risk_contract
+#: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.risk_contract_form
+msgid "Update risk partner"
+msgstr "Actualizar riesgo"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields.selection,name:account_financial_risk_contract.selection__risk_contract__state__waiting
+msgid "Waiting"
+msgstr "En espera"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__website_message_ids
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes de la página web"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_batch__website_message_ids
+#: model:ir.model.fields,help:account_financial_risk_contract.field_risk_contract__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicación de la página web"
