@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-05 07:35+0000\n"
-"PO-Revision-Date: 2024-02-05 08:36+0100\n"
+"POT-Creation-Date: 2024-02-07 07:26+0000\n"
+"PO-Revision-Date: 2024-02-07 11:53+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -288,7 +288,7 @@ msgstr "Incluir otro saldo contable impagado"
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_partner__risk_sale_order_include
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_users__risk_sale_order_include
 msgid "Include Sales Orders"
-msgstr ""
+msgstr "Incluir pedidos de ventas"
 
 #. module: account_financial_risk_contract
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_partner__risk_invoice_unpaid_include
@@ -389,6 +389,8 @@ msgid "Next Activity Type"
 msgstr "Siguiente tipo de actividad"
 
 #. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_partner__risk_contract_description
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_users__risk_contract_description
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_batch__description
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__description
 #: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.risk_contract_form
@@ -427,7 +429,7 @@ msgstr ""
 #. module: account_financial_risk_contract
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__partner_id
 msgid "Partner"
-msgstr "Partner"
+msgstr ""
 
 #. module: account_financial_risk_contract
 #: model:ir.model.fields.selection,name:account_financial_risk_contract.selection__risk_contract__state__refused
@@ -466,6 +468,8 @@ msgid "Risk batches"
 msgstr ""
 
 #. module: account_financial_risk_contract
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_partner__risk_contract_id
+#: model:ir.model.fields,field_description:account_financial_risk_contract.field_res_users__risk_contract_id
 #: model_terms:ir.ui.view,arch_db:account_financial_risk_contract.risk_contract_form
 msgid "Risk contract"
 msgstr "Contrato de riesgo"
@@ -554,6 +558,11 @@ msgstr "Asegurador"
 #: model:ir.model.fields,field_description:account_financial_risk_contract.field_risk_contract__margin
 msgid "Supplier margin (%)"
 msgstr "Margen del asegurador (%)"
+
+#. module: account_financial_risk_contract
+#: model:ir.model.constraint,message:account_financial_risk_contract.constraint_risk_contract_unique_name
+msgid "This code already exists"
+msgstr "Este código ya existe"
 
 #. module: account_financial_risk_contract
 #: model:ir.model.fields,help:account_financial_risk_contract.field_risk_batch__activity_exception_decoration
