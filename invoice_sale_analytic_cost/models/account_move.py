@@ -14,14 +14,6 @@ class AccountMove(models.Model):
                     uom_origin = li.product_uom_id
                     uom_cost = li.product_id.uom_id
                     uom_total = uom_cost._compute_quantity(li.quantity, uom_origin)
-
-#                    if li.product_uom_id.uom_type == 'reference':
-#                        cost = li.product_id.standard_price
-#                    elif li.product_uom_id.uom_type == 'bigger':
-#                        cost = li.product_id.standard_price * li.product_uom_id.factor_inv
-#                    elif li.product_uom_id.uom_type == 'smaller':
-#                        cost = li.product_id.standard_price / li.product_uom_id.factor
-#                   cost = -1 * cost * li.quantity
                     cost = -1 * uom_total * li.product_id.standard_price
 
                     new = self.env['account.analytic.line'].create({

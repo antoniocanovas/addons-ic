@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="pricelist tracking v0">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="bug compute_quantity invoice_sale_analytic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product_vehicle/views/model_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invoice_sale_analytic_cost/models/account_move.py" beforeDir="false" afterPath="$PROJECT_DIR$/invoice_sale_analytic_cost/models/account_move.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,14 +38,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "14.0",
-    "last_opened_file_path": "/Users/antoniocanovaspedreno/PycharmProjects/addons-ic"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;14.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/antoniocanovaspedreno/PycharmProjects/addons-ic&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -414,7 +414,7 @@
       <option name="project" value="LOCAL" />
       <updated>1697561365311</updated>
     </task>
-    <option name="localTasksCounter" value="718" />
+    <option name="localTasksCounter" value="720" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -430,8 +430,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="external_work expin" />
-    <MESSAGE value="external_work rev" />
     <MESSAGE value="Purchase price update group warning" />
     <MESSAGE value="Services permission group" />
     <MESSAGE value="factura canje" />
@@ -455,7 +453,9 @@
     <MESSAGE value="canje amount_subtotal" />
     <MESSAGE value="chasis (sin placa)" />
     <MESSAGE value="pricelist tracking v0" />
-    <option name="LAST_COMMIT_MESSAGE" value="pricelist tracking v0" />
+    <MESSAGE value="kalyd crm_produt tags" />
+    <MESSAGE value="bug compute_quantity invoice_sale_analytic" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug compute_quantity invoice_sale_analytic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
