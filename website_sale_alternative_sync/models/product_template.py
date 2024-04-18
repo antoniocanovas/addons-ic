@@ -7,4 +7,4 @@ from odoo import fields, models, api
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    last_product_aternative_ids = fields.Many2Many('product.template', string='Last alternative products', store="True",)
+    last_product_aternative_ids = fields.Many2many('product.template', string='Last alternative products', store="True",)
