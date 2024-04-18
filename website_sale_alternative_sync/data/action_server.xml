@@ -20,7 +20,8 @@ for p in review:
     alternatives.remove(record.id)
   if (p.id in now.ids) and (record.id not in alternatives):
     alternatives.append(record.id)
-  p.write({'alternative_product_ids':[(6,0,alternatives)]})
+  if p.alternative_product_ids != alternatives:
+      p.write({'alternative_product_ids':[(6,0,alternatives)]})
 
 record['last_product_aternative_ids'] = [(6,0,record.alternative_product_ids.ids)]
 
