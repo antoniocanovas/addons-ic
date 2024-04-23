@@ -232,10 +232,6 @@ class MailMessage(models.Model):
                 elif li.field_type == 'text':
                     mensaje += " * " + li.field_desc + ": " + li.old_value_text + " => " + li.new_value_text + "\n"
 
-            #plain_body = html2plaintext(mensaje)
-            #if len(plain_body) > body_preview_length:
-            #    plain_body = "".join((plain_body[:body_preview_length], "..."))
-
             rec.revision_subject_display = TREE_TEMPLATE % (
                 ("background-color:%s;"),
                 _("Internal Note") if rec.subtype_id.id == mt_note else _("Message"),
