@@ -27,24 +27,24 @@
                          />
                     </div>
                     <h2>
-                        <field name="name"/>
+                        <field name="name" attrs="{'readonly':[('user_can_edit','=',False)]}"/>
                     </h2>
                     <group name="basic_params">
                         <group>
-                            <field name="url" widget="url" placeholder="https://www.ejemplos.com"/>
-                            <field name="partner_id"/>
-                            <field name="type"/>
+                            <field name="url" widget="url" placeholder="https://www.ejemplos.com" attrs="{'readonly':[('user_can_edit','=',False)]}"/>
+                            <field name="partner_id" attrs="{'readonly':[('user_can_edit','=',False)]}"/>
+                            <field name="type" attrs="{'readonly':[('user_can_edit','=',False)]}"/>
                         </group>
                         <group>
                             <field name="user"/>
                             <field name="password" password="1"/>
-                            <field name="public"/>
+                            <field name="public" attrs="{'readonly':[('user_can_edit','=',False)]}"/>
                         </group>
                     </group>
                     <group>
-                        <field name="department_ids" widget="many2many_tags"/>
+                        <field name="department_ids" widget="many2many_tags" attrs="{'readonly':[('user_can_edit','=',False)]}"/>
                         <field name="user_ids" widget="many2many_tags" groups="base.group_no_one"/>
-                        <field name="user_can_edit" groups="base.group_no_one"/>
+                        <field name="user_can_edit" invisible="1"/>
                     </group>
                     <notebook>
                         <page string="Description">
