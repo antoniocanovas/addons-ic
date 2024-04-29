@@ -20,6 +20,7 @@ class PartnerCredentials(models.Model):
     url = fields.Char("Url")
     active = fields.Boolean("Active", default="True")
     description = fields.Text("Description")
+    department_ids = fields.Many2many('hr.department', string='Departments')
 
     def action_view_password(self):
         action = {

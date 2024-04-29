@@ -23,7 +23,7 @@
                 <sheet name="main" string="Credentials">
                     <div class="oe_button_box" name="button_box">
                          <button string="View Pwd" class="oe_stat_button" icon="fa-info" type="object" name="action_view_password" groups="base.group_user">
-                             </button>
+                         </button>
                     </div>
                     <h2>
                         <field name="name"/>
@@ -39,6 +39,9 @@
                             <field name="password" password="1"/>
                             <field name="public"/>
                         </group>
+                    </group>
+                    <group>
+                        <field name="department_ids" widget="many2many_tags"/>
                     </group>
                     <notebook>
                         <page string="Description">
