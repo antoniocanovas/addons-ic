@@ -20,7 +20,17 @@ class PartnerCredentials(models.Model):
     url = fields.Char("Url")
     active = fields.Boolean("Active", default="True")
     description = fields.Text("Description")
-    department_ids = fields.Many2many('hr.department', string='Departments')
+    department_ids = fields.Many2many("hr.department", string="Departments")
+
+    @api.depends('department_ids', 'department_ids.member_ids')
+    def _get_department_users(self):
+        users = []
+        for dep in self.department_ids:
+            for emp in dep.member_ids:
+                if emp.id not in users:
+                    users.append(emp.id)
+        self.user_ids = [(6,0,users)]
+    user_ids = fields.Many2many("res.users", string="Users", compute="_get_department_users")
 
     def action_view_password(self):
         action = {
