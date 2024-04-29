@@ -33,7 +33,7 @@ class PartnerCredentials(models.Model):
     user_ids = fields.Many2many("res.users", string="Users", compute="_get_department_users")
 
     def _user_can_edit(self):
-        admin_group = self.env.ref('admin_credentials_group').res_id
+        admin_group = self.env.ref('partner_credentials.admin_credentials_group').res_id
         admin_group_id = self.env['res.groups'].search([('id','=', admin_group)])
         for record in self:
             editable = False
