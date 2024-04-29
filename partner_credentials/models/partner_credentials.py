@@ -30,14 +30,14 @@ class PartnerCredentials(models.Model):
                 if emp.user_id.id not in users:
                     users.append(emp.user_id.id)
         self.user_ids = [(6,0,users)]
-    user_ids = fields.Many2many("res.users", string="Users", compute="_get_department_users")
+    user_ids = fields.Many2many("res.users", string="Users", store=True, compute="_get_department_users")
 
     def _user_can_edit(self):
         for record in self:
             admin_group = self.env.ref('partner_credentials.admin_credentials_group')
             edit = False
             if (self.user == record.create_uid): edit = True
-            if (self.user in admin_group.users.ids): edit = True
+            if (self.user in admin_group.users): edit = True
             record['user_can_edit'] = edit
     user_can_edit = fields.Boolean('Edit', compute='_user_can_edit')
 
