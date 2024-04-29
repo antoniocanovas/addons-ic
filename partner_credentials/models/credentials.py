@@ -27,7 +27,7 @@ class PartnerCredentials(models.Model):
             "tag": "display_notification",
             "params": {
                 "title": "Title",
-                "message": "message",
+                "message": self.password,
                 "sticky": False,
                 "next": {"type": "ir.actions.act_window_close"},
             },
