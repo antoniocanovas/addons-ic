@@ -32,12 +32,22 @@ class PartnerCredentials(models.Model):
         self.user_ids = [(6,0,users)]
     user_ids = fields.Many2many("res.users", string="Users", compute="_get_department_users")
 
+    def _user_can_edit(self):
+        admin_group = self.env.ref('admin_credentials_group').res_id
+        admin_group_id = self.env['res.groups'].search([('id','=', admin_group)])
+        for record in self:
+            editable = False
+            if (self.user.id == record.create_uid.id): editable = True
+            if (self.user.id in admin_group_id.user_ids.ids): editable = True
+            record['user_can_edit'] = editable
+    user_can_edit = fields.Boolean('Edit', compute='_user_can_edit')
+
     def action_view_password(self):
         action = {
             "type": "ir.actions.client",
             "tag": "display_notification",
             "params": {
-                "title": "Title",
+                "title": "Copy quickly !!",
                 "message": self.password,
                 "sticky": False,
                 "next": {"type": "ir.actions.act_window_close"},
