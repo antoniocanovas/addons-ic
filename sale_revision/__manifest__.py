@@ -13,7 +13,7 @@
         'sale_management',
     ],
     'data': [
-        'views/views.xml',
+        'views/partner_credentials_views.xml',
     ],
     'installable': True,
     'application': False,

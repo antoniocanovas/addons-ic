@@ -17,8 +17,6 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-
-
     <record id="view_search_partner_credentials" model="ir.ui.view">
             <field name="name">partner.credentials.search</field>
             <field name="model">partner.credentials</field>

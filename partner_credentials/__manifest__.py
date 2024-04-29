@@ -1,9 +1,7 @@
 {
     'name': "partner credentials",
     'summary': """
-        Añade un nuevo modelo para documentar usuario y contraseña de aplicaciones, y añade
-        al usuario un botón para ver los accesos configurados para este.
-        Faltan las reglas de acceso.
+        Nuevo modelo para documentar usuario y contraseña de aplicaciones.
         """,
     'author': "Pedro Guirao",
     'license': 'AGPL-3',
@@ -15,9 +13,9 @@
         'hr',
     ],
     'data': [
-        'views/views.xml',
-        'views/view_menu.xml',
-        'views/view_partner_credentials.xml',
+        'views/partner_credentials_views.xml',
+        'views/menu_views.xml',
+        'views/res_partner_views.xml',
         'security/user_groups.xml',
         'security/ir.model.access.csv',
         'data/default_rules.xml',

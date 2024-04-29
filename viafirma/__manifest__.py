@@ -28,7 +28,7 @@
     'data': [
         'data/update_sends.xml',
         'security/ir.model.access.csv',
-        'views/views.xml',
+        'views/partner_credentials_views.xml',
         'views/views_menu.xml',
         'views/res_company_views.xml',
         'data/data_notification_signature.xml',
