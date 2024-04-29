@@ -22,8 +22,9 @@
             <form>
                 <sheet name="main" string="Credentials">
                     <div class="oe_button_box" name="button_box">
-                         <button string="View Pwd" class="oe_stat_button" icon="fa-info" type="object" name="action_view_password" groups="base.group_user">
-                         </button>
+                         <button string="Password" class="oe_stat_button" icon="fa-eye"
+                                 type="object" name="action_view_password" groups="base.group_user"
+                         />
                     </div>
                     <h2>
                         <field name="name"/>
