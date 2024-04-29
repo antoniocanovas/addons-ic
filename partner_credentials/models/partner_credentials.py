@@ -33,13 +33,13 @@ class PartnerCredentials(models.Model):
     user_ids = fields.Many2many("res.users", string="Users", compute="_get_department_users")
 
     def _user_can_edit(self):
-        admin_group = self.env.ref('partner_credentials.admin_credentials_group')
         for record in self:
-            editable = False
-            if (self.user == record.create_uid): editable = True
-            if (self.user in admin_group.users.ids): editable = True
-            record['user_can_edit'] = editable
-    user_can_edit = fields.Boolean('Edit', store=False, compute='_user_can_edit')
+            admin_group = self.env.ref('partner_credentials.admin_credentials_group')
+            edit = False
+            if (self.user == record.create_uid): edit = True
+            if (self.user in admin_group.users.ids): edit = True
+            record['user_can_edit'] = edit
+    user_can_edit = fields.Boolean('Edit', compute='_user_can_edit')
 
     def action_view_password(self):
         action = {
