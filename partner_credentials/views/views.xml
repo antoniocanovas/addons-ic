@@ -27,22 +27,22 @@
                          />
                     </div>
                     <h2>
-                        <field name="name" readonly="[('user_can_edit','=',False)]"/>
+                        <field name="name"/>
                     </h2>
                     <group name="basic_params">
                         <group>
-                            <field name="url" widget="url" placeholder="https://www.ejemplos.com" readonly="[('user_can_edit','=',False)]"/>
-                            <field name="partner_id" readonly="[('user_can_edit','=',False)]"/>
-                            <field name="type" readonly="[('user_can_edit','=',False)]"/>
+                            <field name="url" widget="url" placeholder="https://www.ejemplos.com"/>
+                            <field name="partner_id"/>
+                            <field name="type"/>
                         </group>
                         <group>
                             <field name="user"/>
                             <field name="password" password="1"/>
-                            <field name="public" readonly="[('user_can_edit','=',False)]"/>
+                            <field name="public"/>
                         </group>
                     </group>
                     <group>
-                        <field name="department_ids" widget="many2many_tags" readonly="[('user_can_edit','=',False)]"/>
+                        <field name="department_ids" widget="many2many_tags"/>
                         <field name="user_ids" widget="many2many_tags" groups="base.group_no_one"/>
                         <field name="user_can_edit" groups="base.group_no_one"/>
                     </group>
