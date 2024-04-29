@@ -39,7 +39,7 @@ class PartnerCredentials(models.Model):
             if (self.user == record.create_uid): editable = True
             if (self.user in admin_group.users.ids): editable = True
             record['user_can_edit'] = editable
-    user_can_edit = fields.Boolean('Edit', compute='_user_can_edit')
+    user_can_edit = fields.Boolean('Edit', store=False, compute='_user_can_edit')
 
     def action_view_password(self):
         action = {
