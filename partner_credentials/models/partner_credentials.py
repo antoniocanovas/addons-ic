@@ -38,6 +38,7 @@ class PartnerCredentials(models.Model):
             edit = False
             if (self.env.user == record.create_uid): edit = True
             if (admin_group.users.ids) and (self.env.user in admin_group.users): edit = True
+            if (not record.id): edit = True
             record['user_can_edit'] = edit
     user_can_edit = fields.Boolean('Edit', compute='_user_can_edit')
 
