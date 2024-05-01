@@ -8,7 +8,7 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     last_alternative_product_ids = fields.Many2many(comodel_name='product.template',
-                                                   relation='product_alternative_rel',
+                                                   relation='product_tmpl_alternative_rel',
                                                    column1='product1_id',
                                                    column2='product2_id',
                                                    string='Last alternative products',
