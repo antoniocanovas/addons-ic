@@ -36,7 +36,7 @@ for i in now:
   if i not in before: review_accessories.append(i)
 
 for p in review_accessories:
-  accessories = env['product.template'].search([('accessory_product_ids','in',p.id)]).ids
+  accessories = env['product.product'].search([('accessory_product_ids','in',p.id)]).ids
   if (p.id not in now.ids) and (record.id in accessories):
     accessories.remove(record.id)
   if (p.id in now.ids) and (record.id not in accessories):
