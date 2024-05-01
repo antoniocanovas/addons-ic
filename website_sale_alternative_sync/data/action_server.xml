@@ -41,8 +41,8 @@ for p in review_accesories:
     accesories.remove(record.id)
   if (p.id in now.ids) and (record.id not in accesories):
     accesories.append(record.id)
-  if p.accesory_product_ids != accesories:
-      p.write({'accesory_product_ids':[(6,0,accesories)]})
+#  if p.accesory_product_ids != accesories:
+#      p.write({'accesory_product_ids':[(6,0,accesories)]})
 
 
 # SINGLE RECORD WRITE:
