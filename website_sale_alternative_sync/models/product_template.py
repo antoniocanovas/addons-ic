@@ -13,11 +13,11 @@ class ProductTemplate(models.Model):
                                                    column1='product1_id',
                                                    column2='product2_id',
                                                    string='Last alternative products',
-                                                   store="True",)
+                                                   store="True")
 
     last_accessory_product_ids = fields.Many2many(comodel_name='product.template',
                                                   relation='product_accessory_rel',
-                                                  column1='product1_id',
-                                                  column2='product2_id',
+                                                  column1='product3_id',
+                                                  column2='product4_id',
                                                   string='Last accessory products',
-                                                  store="True",)
+                                                  store="True")
