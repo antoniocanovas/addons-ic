@@ -25,29 +25,29 @@ for p in review_alternatives:
       p.write({'alternative_product_ids':[(6,0,alternatives)]})
 
 
-# ACCESORIES SYNC CODE:
-review_accesories = []
-before = record.last_accesory_product_ids
-now = record.accesory_product_ids
+# ACCESSORIES SYNC CODE:
+review_accessories = []
+before = record.last_accessory_product_ids
+now = record.accessory_product_ids
 
 for i in before:
-  if i not in now: review_accesories.append(i)
+  if i not in now: review_accessories.append(i)
 for i in now:
-  if i not in before: review_accesories.append(i)
+  if i not in before: review_accessories.append(i)
 
-for p in review_accesories:
-  accesories = env['product.template'].search([('accesory_product_ids','in',p.id)]).ids
-  if (p.id not in now.ids) and (record.id in accesories):
-    accesories.remove(record.id)
-  if (p.id in now.ids) and (record.id not in accesories):
-    accesories.append(record.id)
-  if p.accesory_product_ids != accesories:
-    p.write({'accesory_product_ids':[(6,0,accesories)]})
+for p in review_accessories:
+  accessories = env['product.template'].search([('accessory_product_ids','in',p.id)]).ids
+  if (p.id not in now.ids) and (record.id in accessories):
+    accessories.remove(record.id)
+  if (p.id in now.ids) and (record.id not in accessories):
+    accessories.append(record.id)
+  if p.accessory_product_ids != accessories:
+    p.write({'accessory_product_ids':[(6,0,accessories)]})
 
 # SINGLE RECORD WRITE:
 record.write(
             {'last_aternative_product_ids':[(6,0,record.alternative_product_ids.ids)],
-            'last_accesory_product_ids':[(6,0,record.accesory_product_ids.ids)],
+            'last_accessory_product_ids':[(6,0,record.accessory_product_ids.ids)],
             })
 
         </field>
