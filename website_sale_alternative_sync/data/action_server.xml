@@ -35,20 +35,6 @@ for i in before:
 for i in now:
   if i not in before: review_accesories.append(i)
 
-for p in review_accesories:
-  accesories = env['product.template'].search([('accesory_product_ids','in',p.id)]).ids
-  if (p.id not in now.ids) and (record.id in accesories):
-    accesories.remove(record.id)
-  if (p.id in now.ids) and (record.id not in accesories):
-    accesories.append(record.id)
-  if p.accesory_product_ids != accesories:
-    p.write({'accesory_product_ids':[(6,0,accesories)]})
-
-# SINGLE RECORD WRITE:
-record.write(
-            {'last_aternative_product_ids':[(6,0,record.alternative_product_ids.ids)],
-            'last_accesory_product_ids':[(6,0,record.accesory_product_ids.ids)],
-            }
 
         </field>
         <field name="trigger">on_create_or_write</field>
