@@ -7,7 +7,7 @@
         <field name="code">
 # ALTERNATIVES SYNC CODE:
 review_alternatives = []
-before = record.last_aternative_product_ids
+before = record.last_alternative_product_ids
 now = record.alternative_product_ids
 
 for i in before:
@@ -46,7 +46,7 @@ for p in review_accessories:
 
 # SINGLE RECORD WRITE:
 record.write(
-            {'last_aternative_product_ids':[(6,0,record.alternative_product_ids.ids)],
+            {'last_alternative_product_ids':[(6,0,record.alternative_product_ids.ids)],
             'last_accessory_product_ids':[(6,0,record.accessory_product_ids.ids)],
             })
 
