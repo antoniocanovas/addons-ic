@@ -1,7 +1,7 @@
 <odoo>
 
-    <record id="website_sale_product_template_alternative_sync" model="base.automation">
-        <field name="name">=> Website sale product template alternatives sync </field>
+    <record id="product_tmpl_addtional_sync" model="base.automation">
+        <field name="name">=> Sale addtional product sync </field>
         <field name="model_id" ref="model_product_template"/>
         <field name="state">code</field>
         <field name="code">

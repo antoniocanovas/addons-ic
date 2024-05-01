@@ -3,7 +3,7 @@
 
 {
     "name": "eComerce Alternative Product Sync",
-    "summary": "Al asignar un producto como alternativo en el comercio electrónico, automáticamente se genera en el otro.",
+    "summary": "Al asignar un producto como alternativo o complementario, automáticamente se sincroniza bidireccionamente.",
     "version": "14.0.1.0.0",
     "category": "Website",
     "author": "Antonio Cánovas, ",
