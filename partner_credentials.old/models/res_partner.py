@@ -16,7 +16,7 @@ class PartnerCredentialsFields(models.Model):
     )
 
     def action_view_credentials(self):
-        action = self.env.ref("partner_credentials.action_partner_credentials").read()[
+        action = self.env.ref("partner_credentials.old.action_partner_credentials").read()[
             0
         ]
         return action
