@@ -5,7 +5,7 @@
         <field name="model_id" ref="model_product_template"/>
         <field name="state">code</field>
         <field name="code">
-# ALTERNATIVES SYNC CODE:
+# ALTERNATIVES SYNC CODE (odoo without variants):
 review_alternatives = []
 before = record.last_alternative_product_ids
 now = record.alternative_product_ids
@@ -29,6 +29,7 @@ for p in review_alternatives:
 review_accessories = []
 before = record.last_accessory_product_ids
 now = record.accessory_product_ids
+recordpp = env['product.product'].search([('product_tmpl_id','=',record.id)])[0]
 
 for i in before:
   if i not in now: review_accessories.append(i)
@@ -37,10 +38,10 @@ for i in now:
 
 for p in review_accessories:
   accessories = env['product.product'].search([('accessory_product_ids','in',p.id)]).ids
-  if (p.id not in now.ids) and (record.id in accessories):
-    accessories.remove(record.id)
-  if (p.id in now.ids) and (record.id not in accessories):
-    accessories.append(record.id)
+  if (p.id not in now.ids) and (recordpp.id in accessories):
+    accessories.remove(recordpp.id)
+  if (p.id in now.ids) and (recordpp.id not in accessories):
+    accessories.append(recordpp.id)
   if p.accessory_product_ids != accessories:
     p.write({'accessory_product_ids':[(6,0,accessories)]})
 
