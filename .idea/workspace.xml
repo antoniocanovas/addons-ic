@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="credentials v2" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="credentials v2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,18 +37,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "16.0",
-    "last_opened_file_path": "/Users/antoniocanovaspedreno/PycharmProjects/16addons-ic/partner_credentials/models"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;16.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/antoniocanovaspedreno/PycharmProjects/16addons-ic&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/partner_credentials/models" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/partner_credentials/models" />
       <recent name="$PROJECT_DIR$/project_tag_tracking/models" />
       <recent name="$PROJECT_DIR$/custom_demesol" />
       <recent name="$PROJECT_DIR$/watio_pico/views" />
@@ -411,7 +413,7 @@
       <option name="project" value="LOCAL" />
       <updated>1700572963041</updated>
     </task>
-    <option name="localTasksCounter" value="1006" />
+    <option name="localTasksCounter" value="1007" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
