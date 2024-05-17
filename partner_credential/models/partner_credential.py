@@ -37,11 +37,11 @@ class PartnerCredential(models.Model):
             users = []
             for dep in record.department_ids:
                 for emp in dep.member_ids:
-                    if emp.user_id.id not in users:
+                    if (emp.user_id.id) and (emp.user_id.id not in users):
                         users.append(emp.user_id.id)
             for dep in record.department_categ_ids:
                 for emp in dep.member_ids:
-                    if emp.user_id.id not in users:
+                    if (emp.user_id.id) and (emp.user_id.id not in users):
                         users.append(emp.user_id.id)
             record['user_ids'] = [(6,0,users)]
     user_ids = fields.Many2many("res.users", string="Users", compute="_get_department_users")
