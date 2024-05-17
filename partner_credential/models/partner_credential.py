@@ -30,8 +30,7 @@ class PartnerCredential(models.Model):
             record['pass_updated'] = record.pass_updated +1
     pass_updated = fields.Integer("Password updated", store=True, tracking=100, compute="_get_pass_updated")
 
-    @api.depends('department_ids', 'department_ids.member_ids', 'department_categ_ids', 'department_categ_ids.member_ids')
-#    @api.depends('department_ids', 'department_categ_ids')
+    @api.depends('department_ids', 'department_ids.member_ids.user_id', 'department_categ_ids', 'department_categ_ids.member_ids.user_id')
     def _get_department_users(self):
         for record in self:
             users = []
