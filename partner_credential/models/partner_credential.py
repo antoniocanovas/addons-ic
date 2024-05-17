@@ -33,16 +33,17 @@ class PartnerCredential(models.Model):
 #    @api.depends('department_ids', 'department_ids.member_ids', 'department_categ_ids', 'department_categ_ids.member_ids')
     @api.depends('department_ids', 'department_categ_ids')
     def _get_department_users(self):
-        users = []
-        for dep in self.department_ids:
-            for emp in dep.member_ids:
-                if emp.user_id.id not in users:
-                    users.append(emp.user_id.id)
-        for dep in self.department_categ_ids:
-            for emp in dep.member_ids:
-                if emp.user_id.id not in users:
-                    users.append(emp.user_id.id)
-        self.user_ids = [(6,0,users)]
+        for record in self:
+            users = []
+            for dep in record.department_ids:
+                for emp in dep.member_ids:
+                    if emp.user_id.id not in users:
+                        users.append(emp.user_id.id)
+            for dep in record.department_categ_ids:
+                for emp in dep.member_ids:
+                    if emp.user_id.id not in users:
+                        users.append(emp.user_id.id)
+            record['user_ids'] = [(6,0,users)]
     user_ids = fields.Many2many("res.users", string="Users", compute="_get_department_users")
 
     def _user_can_edit(self):
