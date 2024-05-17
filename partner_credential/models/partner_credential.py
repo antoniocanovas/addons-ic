@@ -30,8 +30,8 @@ class PartnerCredential(models.Model):
             record['pass_updated'] = record.pass_updated +1
     pass_updated = fields.Integer("Password updated", store=True, tracking=100, compute="_get_pass_updated")
 
-#    @api.depends('department_ids', 'department_ids.member_ids', 'department_categ_ids', 'department_categ_ids.member_ids')
-    @api.depends('department_ids', 'department_categ_ids')
+    @api.depends('department_ids', 'department_ids.member_ids', 'department_categ_ids', 'department_categ_ids.member_ids')
+#    @api.depends('department_ids', 'department_categ_ids')
     def _get_department_users(self):
         for record in self:
             users = []
@@ -44,7 +44,7 @@ class PartnerCredential(models.Model):
                     if (emp.user_id.id) and (emp.user_id.id not in users):
                         users.append(emp.user_id.id)
             record['user_ids'] = [(6,0,users)]
-    user_ids = fields.Many2many("res.users", string="Users", compute="_get_department_users")
+    user_ids = fields.Many2many("res.users", string="Users", store=True, compute="_get_department_users")
 
     def _user_can_edit(self):
         for record in self:
