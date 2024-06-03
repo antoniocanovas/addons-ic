@@ -1,17 +1,15 @@
 {
-    'name': "partner credentials",
+    'name': "partner credential",
     'summary': """
         Nuevo modelo para documentar usuario y contraseña de aplicaciones.
-        Lee con atención las indicaciones de la dependencia field_encryption. Añadir en conf:
-        server_wide_modules = web,field_encryption y
-        encryption_key='YOUR_KEY'
         """,
     'author': "Antonio Cánovas",
     'license': 'AGPL-3',
     'website': "https://ingenieriacloud.com",
     'category': 'Tools',
-    'version': '16.0.1.0.0',
+    'version': '16.0.2.0.0',
     'depends': [
+        'web',
         'contacts',
         'hr',
         'field_encryption',
@@ -25,6 +23,12 @@
         'security/ir.model.access.csv',
         'data/default_rules.xml',
     ],
+    'assets': {
+    'web.assets_backend': [
+        'partner_credential/static/src/js/copy_clipboard.js',
+        'partner_credential/static/src/xml/copy_clipboard.xml',
+    ],
+},
     'installable': True,
     'application': True,
 }

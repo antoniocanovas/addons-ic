@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-inherit="web.CopyClipboardField" t-inherit-mode="extension" owl="1">
+        <xpath expr="//Field" position="attributes">
+            <attribute name="isPassword">isPassword</attribute>
+        </xpath>
+    </t>
+
+</templates>

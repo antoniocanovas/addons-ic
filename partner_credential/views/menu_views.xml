@@ -6,6 +6,7 @@
         <field name="binding_type">action</field>
         <field name="domain" eval="False"/>
         <field name="filter" eval="False"/>
+        <field name="context">{'search_default_category_id': 1}</field>
         <field name="limit">80</field>
         <field name="name">Credentials</field>
         <field name="res_model">partner.credential</field>
@@ -38,8 +39,15 @@
         <field name="model">partner.credential</field>
         <field name="arch" type="xml">
             <search string="Partner Credential">
-                <field name="name" string="Credential"
-                       filter_domain="['|','|',('name','ilike',self), ('category_id','ilike',self),('partner_id','child_of',self)]"/>
+                <field name="name" string="Credential" filter_domain="['|','|',('name','ilike',self),('category_id','ilike',self),('partner_id','child_of',self)]"/>
+                <field string="Partner" name="partner_id"/>
+                <field string="Category" name="category_id"/>
+                <filter string="Partner" name="Partner"
+                        domain="[('partner_id', 'ilike',self)]"/>
+                <group expand="1" string="Group By">
+                    <filter name="category_id" string="Category"  context="{'group_by':'category_id'}"/>
+                    <filter name="partner_id" string="Partner"  context="{'group_by':'partner_id'}"/>
+                </group>
             </search>
         </field>
     </record>
@@ -65,6 +73,7 @@
         <field name="action" ref="action_credential_category"/>
         <field name="active" eval="True"/>
         <field name="name">Categories</field>
+        <field name="groups_id" eval="[[4,  ref('partner_credential.admin_credential_group')]]" />
         <field name="parent_id" ref="menu_partner_credential"/>
         <field name="sequence">20</field>
         <field name="web_icon" eval="False"/>
