@@ -53,7 +53,7 @@
     </record>
 
     <menuitem
-            action="action_credential"
+            action="action_credential_category"
             id="menu_partner_credential"
             name="Credentials"
             sequence="1"
