@@ -31,7 +31,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="usage" eval="False"/>
         <field name="view_id" eval="False"/>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">kanban,tree</field>
     </record>
 
     <record id="view_search_partner_credential" model="ir.ui.view">
