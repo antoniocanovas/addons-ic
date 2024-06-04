@@ -22,7 +22,7 @@ class PartnerCredentialCategory(models.Model):
         action = self.env['ir.actions.act_window'].with_context({'active_id': self.id})._for_xml_id('partner_credential.act_credential_category_2_credential_all')
         action['display_name'] = _("%(name)s", name=self.name)
         context = action['context'].replace('active_id', str(self.id))
-        context = ast.literal_eval(context)
+        #context = ast.literal_eval(context)
         context.update({
             'create': self.active,
             'active_test': self.active
