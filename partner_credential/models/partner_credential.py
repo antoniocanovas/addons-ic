@@ -23,8 +23,8 @@ class PartnerCredential(models.Model):
     active = fields.Boolean("Active", default="True", tracking=100)
     description = fields.Text("Description")
 
-    department_categ_ids = fields.Many2many(related='category_id.department_ids', string='Default users')
-    department_ids = fields.Many2many("hr.department", string="Departments", tracking=100)
+    department_categ_ids = fields.Many2many(related='category_id.department_ids', string='Category deps.')
+    department_ids = fields.Many2many("hr.department", string="Addtional deps.", tracking=100)
 
     key_2fa_secret = fields.Char("2FA Secret")
 
