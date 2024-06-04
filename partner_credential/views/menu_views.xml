@@ -7,7 +7,7 @@
         <field name="domain" eval="False"/>
         <field name="filter" eval="False"/>
         <field name="limit">80</field>
-        <field name="name">Credentials</field>
+        <field name="name">Credential keys</field>
         <field name="res_model">partner.credential</field>
         <field name="search_view_id" eval="False"/>
         <field name="target">current</field>
@@ -23,7 +23,7 @@
         <field name="domain" eval="False"/>
         <field name="filter" eval="False"/>
         <field name="limit">80</field>
-        <field name="name">Credentials category</field>
+        <field name="name">Credential categories</field>
         <field name="res_model">partner.credential.category</field>
         <field name="search_view_id" eval="False"/>
         <field name="target">current</field>
