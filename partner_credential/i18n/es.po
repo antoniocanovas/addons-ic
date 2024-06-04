@@ -106,8 +106,8 @@ msgstr "Credenciales"
 #. module: partner_credential
 #: model:ir.actions.act_window,name:partner_credential.action_credential_category
 #: model_terms:ir.ui.view,arch_db:partner_credential.credential_category_tree
-msgid "Credentials category"
-msgstr "Categoría de credencial"
+msgid "Credential categories"
+msgstr "Categorías de credencial"
 
 #. module: partner_credential
 #: model_terms:ir.actions.act_window,help:partner_credential.action_partner_credential
