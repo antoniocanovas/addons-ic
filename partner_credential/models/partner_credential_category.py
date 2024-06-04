@@ -10,3 +10,4 @@ class PartnerCredentialCategory(models.Model):
 
     name = fields.Char(string='Name', required=True)
     department_ids = fields.Many2many("hr.department", string="Departments")
+    logo = fields.Binary('Logo')
