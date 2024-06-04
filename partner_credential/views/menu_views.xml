@@ -68,7 +68,6 @@
         <field name="web_icon" eval="False"/>
     </record>
 
-    <!--
     <record id="menu_main_partner_credential_category" model="ir.ui.menu">
         <field name="action" ref="action_credential_category"/>
         <field name="active" eval="True"/>
@@ -78,5 +77,5 @@
         <field name="sequence">20</field>
         <field name="web_icon" eval="False"/>
     </record>
-    -->
+
 </odoo>
