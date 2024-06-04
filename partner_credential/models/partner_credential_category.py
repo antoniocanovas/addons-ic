@@ -12,6 +12,7 @@ class PartnerCredentialCategory(models.Model):
     name = fields.Char(string='Name', required=True)
     department_ids = fields.Many2many("hr.department", string="Departments")
     logo = fields.Binary('Logo')
+    active = fields.Boolean('Active', default=True)
 
     def _get_credential_category_count(self):
         for record in self:
