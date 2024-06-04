@@ -14,6 +14,7 @@
         'hr',
         'field_encryption',
     ],
+    'external_dependencies': {"python": ["pyotp", "cryptography"]},
     'data': [
         'security/user_groups.xml',
         'views/partner_credential_views.xml',

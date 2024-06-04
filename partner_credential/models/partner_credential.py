@@ -46,6 +46,7 @@ class PartnerCredential(models.Model):
             record['pass_updated'] = record.pass_updated +1
     pass_updated = fields.Integer("Password updated", store=True, tracking=100, compute="_get_pass_updated")
 
+    """ Quitado 04/06/24, da error al entrar por primera vez como admin:
     def _get_allowed_categories(self):
         categories_obj = self.env['partner.credential.category'].search([])
         for credential in self:
@@ -56,7 +57,7 @@ class PartnerCredential(models.Model):
             credential['categ_ids'] = [(6, 0, categ_list)]
 
     categ_ids = fields.Many2many("partner.credential.category", string="Users", store=False, compute="_get_allowed_categories")
-
+    """
     @api.depends('department_ids', 'department_ids.member_ids.user_id', 'department_categ_ids', 'department_categ_ids.member_ids.user_id')
     def _get_department_users(self):
         for record in self:
