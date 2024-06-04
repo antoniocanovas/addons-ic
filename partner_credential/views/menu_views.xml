@@ -62,12 +62,13 @@
     <record id="menu_main_partner_credential" model="ir.ui.menu">
         <field name="action" ref="action_credential"/>
         <field name="active" eval="True"/>
-        <field name="name">Credentials</field>
+        <field name="name">Keys</field>
         <field name="parent_id" ref="menu_partner_credential"/>
         <field name="sequence">10</field>
         <field name="web_icon" eval="False"/>
     </record>
 
+    <!--
     <record id="menu_main_partner_credential_category" model="ir.ui.menu">
         <field name="action" ref="action_credential_category"/>
         <field name="active" eval="True"/>
@@ -77,5 +78,5 @@
         <field name="sequence">20</field>
         <field name="web_icon" eval="False"/>
     </record>
-
+    -->
 </odoo>
