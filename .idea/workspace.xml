@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="credentials v3" />
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="credentials v3">
+      <change beforePath="$PROJECT_DIR$/partner_credential/models/partner_credential.py" beforeDir="false" afterPath="$PROJECT_DIR$/partner_credential/models/partner_credential.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -411,7 +413,7 @@
       <option name="project" value="LOCAL" />
       <updated>1700572963041</updated>
     </task>
-    <option name="localTasksCounter" value="1033" />
+    <option name="localTasksCounter" value="1035" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
