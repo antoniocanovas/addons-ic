@@ -52,7 +52,7 @@ class PartnerCredential(models.Model):
     def _get_pass_updated(self):
         for record in self:
             record['pass_updated'] = record.pass_updated +1
-    pass_updated = fields.Integer("Password updated", store=True, tracking=100, compute="_get_pass_updated")
+    pass_updated = fields.Integer("Password updated", store=True, default=0, tracking=100, compute="_get_pass_updated")
 
     """ Quitado 04/06/24, da error al entrar por primera vez como admin:
     def _get_allowed_categories(self):
