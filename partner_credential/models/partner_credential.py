@@ -30,7 +30,7 @@ class PartnerCredential(models.Model):
     )
     department_ids = fields.Many2many(
         "hr.department", string="Addtional deps.", tracking=100,
-        help='Additional departments with access to this credential (in addition to those in the category). "\n"'
+        help='Additional departments with access to this credential (in addition to those in the category). \n'
              'NOTE: If you need to assign an specific user, set as follower.'
     )
 
