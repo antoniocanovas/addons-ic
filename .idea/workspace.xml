@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="website sale accesories sync">
+    <list default="true" id="51ec2e0c-c9c7-433f-8a86-46f036911859" name="Default Changelist" comment="website sale accesories sync bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -413,7 +413,7 @@
       <option name="project" value="LOCAL" />
       <updated>1697561365311</updated>
     </task>
-    <option name="localTasksCounter" value="752" />
+    <option name="localTasksCounter" value="753" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -429,7 +429,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="factura canje" />
     <MESSAGE value="external date today" />
     <MESSAGE value="mrp_bom access" />
     <MESSAGE value="external_work_expenses" />
@@ -454,7 +453,8 @@
     <MESSAGE value="bug compute_quantity invoice_sale_analytic" />
     <MESSAGE value="website sale alternatives sync" />
     <MESSAGE value="website sale accesories sync" />
-    <option name="LAST_COMMIT_MESSAGE" value="website sale accesories sync" />
+    <MESSAGE value="website sale accesories sync bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="website sale accesories sync bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
